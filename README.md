@@ -11,13 +11,12 @@ Quick Links:
 
 <a id="about_this_module"></a>
 ### About PiCar-X:
-
-
+picar-x is the car that is built based on the Raspberry Pi, with the functions, including line following,human following, color following, obstacle avoidance, horn,  remote control and use the web page to control
 
 <a id="update"></a>
 ### Update:
- - picar-x is the car that is built based on the Raspberry Pi, with the functions, including line following,human following, color following, obstacle avoidance, horn,  remote control and use the web page to control the picar-x
-2019-09-21:
+ - Add camera gimbal and horn 
+ 2020-04-01:
  - New Release
 
 ----------------------------------------------
