@@ -1,6 +1,7 @@
 #coding=utf-8
 from http.server import BaseHTTPRequestHandler
 import cgi
+import ssl
 class   PostHandler(BaseHTTPRequestHandler):
     def do_POST(self):
         if self.path != "/records":
@@ -46,6 +47,9 @@ class   PostHandler(BaseHTTPRequestHandler):
 def StartServer():
     from http.server import HTTPServer
     sever = HTTPServer(("",8000),PostHandler)
+    sever.socket = ssl.wrap_socket (sever.socket, 
+                                        keyfile="./server.key", 
+                                        certfile='./server.pem', server_side=True)
     sever.serve_forever()
  
  

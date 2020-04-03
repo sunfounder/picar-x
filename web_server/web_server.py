@@ -9,6 +9,9 @@ from ezblock import getIP, TTS, Pin
 from ezblock.modules import Ultrasonic
 from vilib import Vilib
 import Music as music
+# import pathlib
+# import ssl
+
 ip = getIP()
 
 Vilib.camera_start()
@@ -21,7 +24,7 @@ class Websocket():
         'JB':[0,0],  #云台控制
         'SS':['off',0,0.5], #喇叭播放音效
         'SM':['off',0,0.5], #喇叭播放音乐
-        'SL':['off',0,0.5], #喇叭播放录音
+        # 'SL':['off',0,0.5], #喇叭播放录音
         'TT':['off','you'],  #TTS
         'US':'off',  #超声波
         'GS':"off", #灰度开关
@@ -49,7 +52,7 @@ class Websocket():
         'TO':0,
         'CC':'blue',
         'AD':'http://' + ip + ':8888/mjpg',
-        'FD':'http://' + ip + ':8000/records',
+        # 'FD':'http://' + ip + ':8000/records',
         'FF':'True'
     } 
     
@@ -61,6 +64,7 @@ class Websocket():
         self.us = Ultrasonic(Pin('D0'), Pin('D1'))
         self.music_flag = True
         self.tts = TTS()
+        self.current_music = -1
         
         
     async def recv_server_func(self, websocket):
@@ -176,12 +180,22 @@ class Websocket():
                 car.color_follow()
             
             if self.recv_dict['SS'][0] == 'on':
-                music.sound_effect_threading(self.sound_name[int(self.recv_dict['SS'][1])],float(self.recv_dict['SS'][2]))
+                music.sound_effect_threading(self.sound_name[int(self.recv_dict['SS'][1])], float(self.recv_dict['SS'][2]))
                 self.recv_dict['SS'][0] = 'off' 
             
             if self.recv_dict['SM'][0] == 'on':
+                temp = int(self.recv_dict['SM'][1])
+                if self.current_music != temp:
+                    music.music_stop()
+                    self.music_flag = True
+                    self.current_music = temp
                 if self.music_flag:
-                    music.background_music(self.music_name[int(self.recv_dict['SM'][1])],volume = float(self.recv_dict['SM'][2])) 
+                    try:
+                        music_file = self.music_name[self.current_music]
+                        volume = float(self.recv_dict['SM'][2])
+                        music.background_music(music_file, volume=volume) 
+                    except IndexError:
+                        print("no such music file: ", int(self.recv_dict['SM'][1]) + 1)
                     self.music_flag = False
                 # self.recv_dict['SM'][0] = 'off' 
             elif self.recv_dict['SM'][0] == 'off':
@@ -189,14 +203,14 @@ class Websocket():
                     music.music_stop()
                     self.music_flag = True
             
-            if self.recv_dict['SL'][0] == 'on':
-                if self.found_name(self.record_name[int(self.recv_dict['SL'][1])]):
-                    self.send_dict['FF'] = 'True'
-                    print("play")
-                    music.record_play(self.record_name[int(self.recv_dict['SL'][1])],volume = float(self.recv_dict['SL'][2]))
-                    self.recv_dict['SL'][0] = 'off'
-                else:
-                    self.send_dict['FF'] = 'False'
+            # if self.recv_dict['SL'][0] == 'on':
+            #     if self.found_name(self.record_name[int(self.recv_dict['SL'][1])]):
+            #         self.send_dict['FF'] = 'True'
+            #         print("play")
+            #         music.record_play(self.record_name[int(self.recv_dict['SL'][1])],volume = float(self.recv_dict['SL'][2]))
+            #         self.recv_dict['SL'][0] = 'off'
+            #     else:
+            #         self.send_dict['FF'] = 'False'
                 
                 
             if self.recv_dict['TT'][0] == 'on':
@@ -240,6 +254,9 @@ class Websocket():
                     # start_http_server()
                     break
                 time.sleep(1)
+            # ssl_context = ssl.SSLContext(ssl.PROTOCOL_TLS_SERVER)
+            # localhost_pem = pathlib.Path(__file__).with_name("server.pem")
+            # ssl_context.load_cert_chain(localhost_pem)
             start_server_1 = websockets.serve(self.main_logic_1, ip, 8765)
             start_server_2 = websockets.serve(self.main_logic_2, ip, 8766)
             print('Start!')
@@ -254,4 +271,5 @@ class Websocket():
 if __name__ == "__main__":
     ws = Websocket()
     ws.test()
+
 
