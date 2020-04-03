@@ -4,6 +4,7 @@ PiCar-X
 Quick Links:
 
  * [About PiCar-X](#about_this_module)
+ * [Usage](#Usage)                            
  * [Update](#update)
  * [About SunFounder](#about_sunfounder)
  * [License](#license)
@@ -11,7 +12,17 @@ Quick Links:
 
 <a id="about_this_module"></a>
 ### About PiCar-X:
-picar-x is the car that is built based on the Raspberry Pi, with the functions, including line following,human following, color following, obstacle avoidance, horn,  remote control and use the web page to control
+PiCar-X is the car that is built based on the Raspberry Pi, with the functions, including line following,human following, color following, obstacle avoidance, horn,  remote control and use the web page to control
+
+<a id="usage"></a>
+### Usage:
+Enter the Raspberry Pi and run the following command
+```python
+git clone https://github.com/sunfounder/picar-x-web-control
+cd picar-x-web-control/web_server
+python3 start_server
+```
+
 
 <a id="update"></a>
 ### Update:
