@@ -33,6 +33,7 @@ if __name__ == '__main__':
                 break
             time.sleep(1)
         start_websocket()
+        start_http_server()
         print("Web example starts at %s" % (ip)) 
         print("Open http://%s in your web browser to control the car!" % (ip))
         # print("Press Ctrl + C to exit")
