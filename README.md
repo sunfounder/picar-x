@@ -20,7 +20,7 @@ Enter the Raspberry Pi and run the following command
 ```python
 git clone https://github.com/sunfounder/picar-x-web-control
 cd picar-x-web-control/web_server
-python3 start_server
+python3 start_server.py
 ```
 
 
