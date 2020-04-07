@@ -32,7 +32,6 @@ if __name__ == '__main__':
         start_http_server()
         print("Web example starts at %s" % (ip)) 
         print("Open http://%s in your web browser to control the car!" % (ip))
-        # print("Press Ctrl + C to exit")
         while 1:
             
             pass 
