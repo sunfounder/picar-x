@@ -44,7 +44,7 @@ class Websocket():
     }
 
     send_dict = {
-        'TP':'Picar-X',
+        'TP':'PiCar-X',
         'GS':[0,0,0],
         'US':20,
         'DO':0,  #方向舵机校准值
