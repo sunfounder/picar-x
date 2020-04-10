@@ -50,7 +50,9 @@ Then, press **RST** button on Robot hat, to run the example.
 ## Camera
 
 Click this link to view the real-time dynamics of the Raspberry Pi camera
+
 http://192.168.18.120:9000/mjpg
+
 Note to replace it with the IP address of your own Raspberry Pi
 
 
