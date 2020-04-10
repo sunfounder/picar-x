@@ -1,65 +1,112 @@
-## PiCar-X
-PiCar-X
+
+# PiCar-X Examples
+
+PiCar-X examples
 
 Quick Links:
 
- * [About PiCar-X](#about_this_module)
- * [Usage](#Usage)                            
- * [Update](#update)
- * [About SunFounder](#about_sunfounder)
- * [License](#license)
- * [Contact us](#contact_us)
+- [PiCar-X Examples](#picar-x-examples)
+  - [About this kit](#about-this-kit)
+  - [About PiCar-X:](#about-picar-x)
+  - [Download](#download)
+  - [Usage](#usage)
+  - [Camera](#camera)
+  - [Debug](#debug)
+  - [Update](#update)
+  - [Trouble Shootings](#trouble-shootings)
+  - [About SunFounder](#about-sunfounder)
+  - [About Ezblock](#about-ezblock)
+  - [License](#license)
+  - [Contact us](#contact-us)
 
-<a id="about_this_module"></a>
-### About PiCar-X:
+## About this kit
+
+We are happy to see your issus and pull request. Feel free to be apart.
+
+## About PiCar-X:
 PiCar-X is the car that is built based on the Raspberry Pi, with the functions, including line following,human following, color following, obstacle avoidance, horn,  remote control and use the web page to control
 
-<a id="usage"></a>
-### Usage:
-Enter the Raspberry Pi and run the following command
-```python
-git clone https://github.com/sunfounder/picar-x-web-control
-cd picar-x-web-control/web_server
-python3 start_server.py
+## Download
+
+Download this repository to your Raspberry Pi:
+
+```shell
+git clone https://github.com/ezblockcode/picar-x.git
 ```
 
+## Usage
 
-<a id="update"></a>
-### Update:
- - Add camera gimbal and horn 
- 2020-04-01:
- - New Release
+This kit runs with ezblock environment.
 
-----------------------------------------------
-<a id="about_sunfounder"></a>
-### About SunFounder
+Copy the script to `/opt/ezblock` as `main`
+
+```bash
+cd examples
+sudo cp xxx.py /opt/ezblock/main
+```
+
+Then, press **RST** button on Robot hat, to run the example.
+
+## Camera
+
+
+
+## Debug
+
+To edit, rewrite your own code, or just want to get debug messages. First stop ezblock service.
+
+```python
+sudo service ezblock stop
+```
+
+Then run `main` mannully
+
+```python
+sudo /opt/ezblock/main
+```
+
+After your code is done, press **RST** again to restart ezblock service, or run command:
+
+```python
+sudo service ezblock start
+```
+
+## Update
+
+- 2020-5-14: New Release
+
+## Trouble Shootings
+
+## About SunFounder
 SunFounder is a technology company focused on Raspberry Pi and Arduino open source community development. Committed to the promotion of open source culture, we strives to bring the fun of electronics making to people all around the world and enable everyone to be a maker. Our products include learning kits, development boards, robots, sensor modules and development tools. In addition to high quality products, SunFounder also offers video tutorials to help you make your own project. If you have interest in open source or making something cool, welcome to join us!
 
-----------------------------------------------
-<a id="license"></a>
-### License
-This is the code for PiCar-X and web-control.
+## About Ezblock
+
+Ezblock is a technology company focused on Raspberry Pi and Arduino open source community development. Committed to the promotion of open source culture, we strives to bring the fun of electronics making to people all around the world and enable everyone to be a maker. Our products include learning kits, development boards, robots, sensor modules and development tools. In addition to high quality products, Ezblock also offers video tutorials to help you make your own project. If you have interest in open source or making something cool, welcome to join us!
+
+## License
+
+This is the code for PiCar-X.
 This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.
 
 This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied wa rranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
-PiCar-X comes with ABSOLUTELY NO WARRANTY; for details run ./show w. This is free software, and you are welcome to redistribute it under certain conditions; run ./show c for details.
+PiCar-X examples comes with ABSOLUTELY NO WARRANTY; for details checkout [LICENCE](LICENCE). This is free software, and you are welcome to redistribute it under certain conditions; checkout [LICENCE](LICENCE) for details.
 
-SunFounder, Inc., hereby disclaims all copyright interest in the program 'PiCar-X' (which makes passes at compilers).
+SunFounder, Inc., hereby disclaims all copyright interest in the program 'PiCar-X examples' (which makes passes at compilers).
 
 Mike Huang, 21 August 2015
 
 Mike Huang, Chief Executive Officer
 
-Email: service@sunfounder.com, support@sunfounder.com
+Email: service@sunfounder.com
 
-----------------------------------------------
-<a id="contact_us"></a>
-### Contact us:
+## Contact us
+
 website:
-	www.sunfounder.com
+    www.ezblock.cc
 
 E-mail:
-	service@sunfounder.com, support@sunfounder.com
+    service@sunfounder.com
