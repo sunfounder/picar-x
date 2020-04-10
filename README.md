@@ -76,7 +76,7 @@ sudo service ezblock start
 
 ## Update
 
-- 2020-5-14: New Release
+- 2020-4-10: New Release
 
 ## Trouble Shootings
 
