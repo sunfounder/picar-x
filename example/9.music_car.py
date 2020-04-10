@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 from picarmini import set_dir_servo_angle
+from picarmini import dir_servo_angle_calibration
 from Music import *
 from ezblock import Pin
 from ezblock import Ultrasonic
@@ -13,7 +14,7 @@ Ref2 = None
 
 Ref1 = 30
 Ref2 = 10
-set_dir_servo_angle(0)
+dir_servo_angle_calibration(0)
 background_music('excitement.mp3')
 
 pin_D0=Pin("D0")

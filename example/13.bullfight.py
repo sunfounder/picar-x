@@ -1,5 +1,8 @@
 #!/usr/bin/python3
 from vilib import Vilib
+from picarmini import dir_servo_angle_calibration
+from picarmini import camera_servo1_angle_calibration
+from picarmini import camera_servo2_angle_calibration
 from ezblock import delay
 from ezblock import constrain
 from picarmini import set_camera_servo1_angle
@@ -16,6 +19,9 @@ Vilib.detect_color_name('blue')
 Vilib.color_detect_switch(True)
 Vilib.camera_start(True)
 pan_angle = 0
+dir_servo_angle_calibration(0)
+camera_servo1_angle_calibration(0)
+camera_servo2_angle_calibration(0)
 WiFi().write('CN', 'MakerStarsHall', 'sunfounder')
 
 
