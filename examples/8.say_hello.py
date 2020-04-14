@@ -12,9 +12,9 @@ __tts__ = TTS()
 
 Vilib.camera_start(True)
 Vilib.human_detect_switch(True)
+dir_servo_angle_calibration(0)
 camera_servo1_angle_calibration(0)
 camera_servo2_angle_calibration(0)
-dir_servo_angle_calibration(0)
 WiFi().write('CN', 'MakerStarsHall', 'sunfounder')
 
 def forever():

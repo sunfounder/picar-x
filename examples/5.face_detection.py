@@ -13,7 +13,7 @@ WiFi().write('CN', 'MakerStarsHall', 'sunfounder')
 
 
 def forever():
-  print("%s"%(''.join([str(x) for x in ['There are ', Vilib.human_detect_object(('number')), ' people']])))
+  print("%s"%(''.join([str(x) for x in ['There are ', Vilib.human_detect_object('number'), ' people']])))
 
 if __name__ == "__main__":
     while True:

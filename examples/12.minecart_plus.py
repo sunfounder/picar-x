@@ -27,9 +27,9 @@ def getDirection():
   if value == [0, 1, 0] or value == [1, 1, 1]:
     direction = 'FORWERD'
   elif value == [1, 0, 0] or value == [1, 1, 0]:
-    direction = 'LEFT'
-  elif value == [0, 0, 1] or value == [0, 1, 1]:
     direction = 'RIGHT'
+  elif value == [0, 0, 1] or value == [0, 1, 1]:
+    direction = 'LEFT'
   elif value == [0, 0, 0]:
     direction = 'OUT'
   return direction

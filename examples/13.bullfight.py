@@ -15,7 +15,7 @@ x_axis = None
 width = None
 pan_angle = None
 
-Vilib.detect_color_name('blue')
+Vilib.detect_color_name('red')
 Vilib.color_detect_switch(True)
 Vilib.camera_start(True)
 pan_angle = 0
