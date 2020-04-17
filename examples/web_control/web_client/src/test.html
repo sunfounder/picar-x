@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+    <title>Html5 Ajax 上传文件</title>
+
+    <script type="text/javascript">
+
+
+
+        function UpladFile() {
+
+
+
+            var fileObj = document.getElementById("file").files[0]; // 获取文件对象
+
+            var FileController = "http://192.168.18.70:8000/records";                    // 接收上传文件的后台地址 
+
+           
+
+            // FormData 对象
+
+            var form = new FormData();                       // 可以增加表单数据
+
+            form.append("file", fileObj);                           // 文件对象
+
+
+
+            // XMLHttpRequest 对象
+
+            var xhr = new XMLHttpRequest();
+
+            xhr.open("post", FileController, true);
+
+            xhr.onload = function () {
+
+                alert("上传完成!");
+
+            };
+
+            xhr.send(form);
+
+
+
+        }
+
+</script>
+
+</head>
+
+<body>
+
+<input type="file" id="file" name="myfile" />
+
+<input type="button" onclick="UpladFile()" value="上传" />
+
+</body>
+
+</html>

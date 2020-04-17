@@ -1,0 +1,21 @@
+export default {
+    socket: null,
+    msg: null,
+    messageSocket: null,
+    sendDatas: {
+        'US': {'US':'on'},
+        'GS': {'GS':"on"},
+        'OA': {'OA':'on'},
+        'TL': {"TL": ['on', 400]},
+        'CD': {'CD':['on', 110]},
+        'CA': {'CA':'on'},
+        'HT': {'HT':'on'},
+        'HF': {'HF':'on'},
+        'CT': {'CT':'on'},
+        'CF': {'CF':'on'},
+    },
+    color: 'blue',
+    line: 950,
+    cliff: 110,
+    isClose: false,
+}
