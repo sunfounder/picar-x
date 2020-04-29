@@ -1,4 +1,6 @@
 #!/usr/bin/python3
+import sys
+sys.path.append(r'/opt/ezblock')
 from picarmini import set_dir_servo_angle
 from picarmini import dir_servo_angle_calibration
 from Music import *

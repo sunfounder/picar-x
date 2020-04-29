@@ -1,4 +1,6 @@
 #!/usr/bin/python3
+import sys
+sys.path.append(r'/opt/ezblock')
 from Music import *
 
 background_music('spry.mp3')

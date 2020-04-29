@@ -1,4 +1,6 @@
 #!/usr/bin/python3
+import sys
+sys.path.append(r'/opt/ezblock')
 from vilib import Vilib
 from picarmini import camera_servo1_angle_calibration
 from picarmini import camera_servo2_angle_calibration
