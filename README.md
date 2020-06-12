@@ -24,28 +24,32 @@ Quick Links:
 We are happy to see your issus and pull request. Feel free to be apart.
 
 ## About PiCar-X:
-PiCar-X is the car that is built based on the Raspberry Pi, with the functions, including line following,human following, color following, obstacle avoidance, horn,  remote control and use the web page to control
+PiCar-X is the car that is built based on the Raspberry Pi, with the functions, including line following,human following, color following, obstacle avoidance, horn,  remote control and use the web page to control.
 
 ## Download
 
 Download this repository to your Raspberry Pi:
 
 ```shell
-git clone https://github.com/ezblockcode/picar-x.git
+git clone https://github.com/sunfounder/picar-x.git
 ```
 
 ## Usage
 
-This kit runs with ezblock environment.
+Before running the example, stop ezblock sercive
 
-Copy the script to `/opt/ezblock` as `main`
+```python
+sudo service ezblock stop
+```
+
+Then run the example
 
 ```bash
 cd examples
-sudo cp xxx.py /opt/ezblock/main
+sudo python3 xxx.py
 ```
 
-Then, press **RST** button on Robot hat, to run the example.
+Stop running the example by using <kbd>Ctrl</kbd>+<kbd>C</kbd>
 
 ## Camera
 
@@ -58,27 +62,21 @@ Note to replace it with the IP address of your own Raspberry Pi
 
 ## Debug
 
-To edit, rewrite your own code, or just want to get debug messages. First stop ezblock service.
+To edit, rewrite your own code, or just want to get debug messages. run the command：
 
 ```python
-sudo service ezblock stop
+sudo nano xxx.py
 ```
 
-Then run `main` mannully
+After your code is done, exit the text compiler via <kbd>Ctrl</kbd>+<kbd>X</kbd> and run the command:
 
 ```python
-sudo /opt/ezblock/main
-```
-
-After your code is done, press **RST** again to restart ezblock service, or run command:
-
-```python
-sudo service ezblock start
+sudo python3 xxx.py
 ```
 
 ## Update
 
-- 2020-4-10: New Release
+- 2020-6-12: New Release
 
 ## Trouble Shootings
 
@@ -111,7 +109,7 @@ Email: service@sunfounder.com
 ## Contact us
 
 website:
-    www.ezblock.cc
+    ezblock.cc
 
 E-mail:
     service@sunfounder.com
