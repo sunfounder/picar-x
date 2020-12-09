@@ -59,7 +59,7 @@ class Websocket():
     def __init__(self):
         self.gs_list = [0,0,0]
         self.sound_name = ['Weapon_Armor.wav', 'Emergency_Alarm.wav', 'Emergency_Truck_Honk.wav', 'Weapon_Continue_Shooting.wav', 'Weapon_Shell_Drop.wav']
-        self.music_name = ["excitement.mp3", 'peace.mp3', 'power.mp3', 'spry.mp3']
+        self.music_name = ["excitement.mp3", 'peace.mp3', 'power.mp3', 'spry.mp3','angry.mp3']
         self.record_name = ['1.mp3', '2.mp3', '3.mp3', '4.mp3', '5.mp3']
         self.us = Ultrasonic(Pin('D0'), Pin('D1'))
         self.music_flag = True
