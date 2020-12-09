@@ -16,7 +16,8 @@ class MyThreading(threading.Thread):
         self.func(**self.arg)
 
 def sound_effect_play(file_name,volume = 0.5):
-    file_name = '/opt/ezblock/sound/' + file_name
+    file_name = '/home/pi/Sound/' + file_name
+    #volume = round(volume / 100.0,2)
     music = pygame.mixer.Sound(str(file_name))
     music.set_volume(volume)
     time_delay = round(music.get_length(),2)
@@ -24,7 +25,9 @@ def sound_effect_play(file_name,volume = 0.5):
     time.sleep(time_delay)
 
 def sound_effect_threading(file_name,volume = 0.5):
+    #file_name = '/home/pi/Sound/' + file_name
     # file_name = './sound/' + file_name
+    #volume = round(volume / 100.0,2)
     obj = MyThreading(sound_effect_play,file_name = file_name,volume = volume)
     obj.start()
 
@@ -32,10 +35,18 @@ def sound_effect_threading(file_name,volume = 0.5):
 def background_music(file_name,loops=-1, start=0.0,volume = 0.5):#-1:continue
     if loops <= 0:
         loops = 0
-    file_name = '/opt/ezblock/music/' + str(file_name)
+    #volume = round(volume / 100.0,2)
+    file_name = '/home/pi/Music/' + str(file_name)
     pygame.mixer.music.load(str(file_name))
     pygame.mixer.music.set_volume(volume)
     pygame.mixer.music.play(loops-1, start)
+
+# def change_music(file_name,loops=-1, start=0.0,volume = 0.5):
+#     # pygame.mixer.init()
+#     pygame.mixer.music.load(str(file_name))
+#     pygame.mixer.music.set_volume(volume)
+#     pygame.mixer.music.play(loops, start)
+
 
 def record_play(file_name,loops=1, start=0.0,volume = 0.5):
     # pygame.mixer.init(16000)
