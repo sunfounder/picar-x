@@ -106,8 +106,8 @@ def get_adc_value():
     return adc_value_list
 
 def set_power(speed):
-    set_motor_speed(1, speed)
-    set_motor_speed(2, speed) 
+    set_motor_speed(1, -1*speed)
+    set_motor_speed(2, -1*speed) 
 
 def backward(speed):
     set_motor_speed(1, -1*speed)
