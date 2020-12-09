@@ -1,6 +1,10 @@
 #!/usr/bin/python3
 import sys
 sys.path.append(r'/opt/ezblock')
+from ezblock import __reset_mcu__
+import time
+__reset_mcu__()
+time.sleep(0.01)
 from picarmini import set_dir_servo_angle
 from picarmini import dir_servo_angle_calibration
 from Music import *
@@ -9,6 +13,8 @@ from ezblock import Ultrasonic
 from picarmini import forward
 from ezblock import delay
 from picarmini import backward
+
+
 
 Ref1 = None
 distance = None

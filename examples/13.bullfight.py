@@ -1,6 +1,10 @@
 #!/usr/bin/python3
 import sys
 sys.path.append(r'/opt/ezblock')
+from ezblock import __reset_mcu__
+import time
+__reset_mcu__()
+time.sleep(0.01)
 from vilib import Vilib
 from picarmini import dir_servo_angle_calibration
 from picarmini import camera_servo1_angle_calibration
@@ -12,6 +16,7 @@ from picarmini import set_dir_servo_angle
 from picarmini import forward
 from picarmini import stop
 from ezblock import WiFi
+
 
 x_axis = None
 width = None

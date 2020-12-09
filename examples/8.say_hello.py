@@ -1,6 +1,10 @@
 #!/usr/bin/python3
 import sys
 sys.path.append(r'/opt/ezblock')
+from ezblock import __reset_mcu__
+import time
+__reset_mcu__()
+time.sleep(0.01)
 from vilib import Vilib
 from picarmini import dir_servo_angle_calibration
 from picarmini import set_camera_servo2_angle
@@ -9,6 +13,7 @@ from ezblock import TTS
 from picarmini import camera_servo1_angle_calibration
 from picarmini import camera_servo2_angle_calibration
 from ezblock import WiFi
+
 
 __tts__ = TTS()
 

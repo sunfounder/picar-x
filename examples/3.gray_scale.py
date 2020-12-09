@@ -1,8 +1,15 @@
 #!/usr/bin/python3
 import sys
 sys.path.append(r'/opt/ezblock')
+from ezblock import __reset_mcu__
+import time
+__reset_mcu__()
+time.sleep(0.01)
 from ezblock import ADC
 from ezblock import print
+
+
+
 
 my_3ch = None
 
