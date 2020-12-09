@@ -3,7 +3,7 @@ from ezblock import getIP
 import time
 import os
 
-CODE_DIR = "/home/pi/picar-x/example/web_control"
+CODE_DIR = "/home/pi/picar-x/examples/web_control"
 
 
 
