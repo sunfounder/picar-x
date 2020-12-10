@@ -25,7 +25,7 @@ cam_cal_value_1 = 0
 cam_cal_value_2 = 0
 motor_direction_pins = [left_rear_dir_pin, right_rear_dir_pin]
 motor_speed_pins = [left_rear_pwm_pin, right_rear_pwm_pin]
-cali_dir_value = [1, -1]
+cali_dir_value = [-1, 1]
 cali_speed_value = [0, 0]
 #初始化PWM引脚
 for pin in motor_speed_pins:
@@ -106,8 +106,8 @@ def get_adc_value():
     return adc_value_list
 
 def set_power(speed):
-    set_motor_speed(1, -1*speed)
-    set_motor_speed(2, -1*speed) 
+    set_motor_speed(1, speed)
+    set_motor_speed(2, speed) 
 
 def backward(speed):
     set_motor_speed(1, -1*speed)

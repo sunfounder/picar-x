@@ -2,6 +2,9 @@ from os import system
 from ezblock import getIP
 import time
 import os
+from ezblock import __reset_mcu__
+__reset_mcu__()
+time.sleep(0.01)
 
 CODE_DIR = "/home/pi/picar-x/examples/web_control"
 
