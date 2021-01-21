@@ -75,8 +75,12 @@ sudo python3 xxx.py
 ```
 
 ## Update
+2021-1-21
+ -Add the Japanese user manual
+ -Upate the English user manual
 
-- 2020-6-12: New Release
+2020-6-12
+ -New Release
 
 ## Trouble Shootings
 
