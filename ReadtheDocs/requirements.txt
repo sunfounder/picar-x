@@ -10,7 +10,7 @@ chardet==3.0.4
 click==7.1.2
 colorama==0.4.1
 commonmark==0.9.1
-Django==2.2.7
+Django==2.2.20
 docutils==0.15.2
 future==0.18.2
 idna==2.8
