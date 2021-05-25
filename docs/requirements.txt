@@ -23,7 +23,7 @@ future==0.18.2
 idna==2.8
 imagesize==1.1.0
 importlib-metadata==2.0.0
-Jinja2==2.10.3
+Jinja2==2.11.3
 jmespath==0.10.0
 joblib==0.17.0
 karma-sphinx-theme==0.0.8
