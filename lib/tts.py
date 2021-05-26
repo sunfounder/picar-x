@@ -1,6 +1,6 @@
 # from .basic import _Basic_class
 from utils import mapping, is_installed
-from music import Music
+# from music import Music
 from distutils.spawn import find_executable
 
 class TTS(object):
@@ -34,6 +34,15 @@ class TTS(object):
             self.base64 = base64
             self.json = json
 
+
+    def run_command(self,cmd):
+        import subprocess
+        p = subprocess.Popen(
+            cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+        result = p.stdout.read().decode('utf-8')
+        status = p.poll()
+        return status, result
+
     def _check_executable(self, executable):
         executable_path = find_executable(executable)
         found = executable_path is not None
@@ -45,6 +54,7 @@ class TTS(object):
     def espeak(self, words):
         # self._debug('espeak:\n [%s]' % (words))
         if not self._check_executable('espeak'):
+            pass
             # self._debug('espeak is busy. Pass')
 
         cmd = 'espeak -a%d -s%d -g%d -p%d \"%s\" --stdout | aplay 2>/dev/null & ' % (self._amp, self._speed, self._gap, self._pitch, words)
@@ -75,8 +85,8 @@ class TTS(object):
         with open(sound_file, "wb") as f:
             f.write(data)
 
-        music = Music()
-        music.sound_play(sound_file)
+        # music = Music()
+        # music.sound_play(sound_file)
 
     def polly(self, words):
         sound_file = "/opt/ezblock/output.mp3"
@@ -111,8 +121,8 @@ class TTS(object):
         with open(sound_file, "wb") as f:
             f.write(data)
 
-        music = Music()
-        music.sound_play(sound_file)
+        # music = Music()
+        # music.sound_play(sound_file)
 
     def lang(self, *value):     # 切换语言，可识别5种语言
         if len(value) == 0:
@@ -182,20 +192,20 @@ def test_polly():
     with open(sound_file, "wb") as f:
         f.write(data)
 
-    music = Music()
-    music.sound_play(sound_file)
+    # music = Music()
+    # music.sound_play(sound_file)
 
 def test():
-    # tts = TTS(engine="espeak")
-    # tts.lang("en-US")
-    # tts.say('Hallo')
+    tts = TTS(engine="espeak")
+    tts.lang("en-US")
+    tts.say('start')
 
-    tts = TTS(engine="polly")
-    tts.lang("zh-CN")
+    # tts = TTS(engine="polly")
+    # tts.lang("zh-CN")
     # tts.say('你好, 我是小爱同学')
     count = 0
     while True:
-        tts.say('你好')
+        tts.say('hello')
         count +=1
         print(count)
 

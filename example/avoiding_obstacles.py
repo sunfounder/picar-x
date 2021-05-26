@@ -1,6 +1,9 @@
+import sys
+sys.path.append(r'/home/pi/picar-x/lib')
 from picarx import Picarx
 from ultrasonic import Ultrasonic
 from pin import Pin
+
 
 if __name__ == "__main__":
     trig_pin = Pin("D0") 

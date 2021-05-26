@@ -1,7 +1,9 @@
 # # import picar_4wd as fc
-import sys
+
 import tty
 import termios
+import sys
+sys.path.append(r'/home/pi/picar-x/lib')
 from picarx import Picarx
 import time
 

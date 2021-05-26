@@ -1,3 +1,5 @@
+import sys
+sys.path.append(r'/home/pi/picar-x/lib')
 from picarx import Picarx
 from pwm import pwm
 from servo import Servo

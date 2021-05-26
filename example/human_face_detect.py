@@ -3,7 +3,7 @@ import cv2
 from picamera.array import PiRGBArray
 from picamera import PiCamera
 
-face_cascade = cv2.CascadeClassifier('/home/pi/picarx_python_example/haarcascade_frontalface_default.xml') 
+face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml') 
 
 
 def human_face_detect(img):
