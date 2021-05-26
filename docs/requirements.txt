@@ -1,4 +1,4 @@
-alabaster==0.7.12
+﻿alabaster==0.7.12
 altgraph==0.17
 argh==0.26.2
 awscli==1.18.124
@@ -14,7 +14,7 @@ click==7.1.2
 colorama==0.4.1
 commonmark==0.9.1
 cryptography==3.4.7
-Django==2.2.20
+Django==2.2.7
 docutils==0.15.2
 ecdsa==0.16.1
 esptool==3.0
@@ -23,7 +23,7 @@ future==0.18.2
 idna==2.8
 imagesize==1.1.0
 importlib-metadata==2.0.0
-Jinja2==2.11.3
+Jinja2==2.10.3
 jmespath==0.10.0
 joblib==0.17.0
 karma-sphinx-theme==0.0.8
@@ -40,12 +40,12 @@ packaging==19.2
 pandas==1.1.1
 pathtools==0.1.2
 pefile==2019.4.18
-Pillow==8.1.1
+Pillow==7.2.0
 port-for==0.3.1
 pyasn1==0.4.8
 pycparser==2.20
 pygame==1.9.6
-Pygments==2.7.4
+Pygments==2.4.2
 PyInstaller==3.6
 PyMySQL==0.9.3
 pyparsing==2.4.2
@@ -56,12 +56,12 @@ python-dateutil==2.8.0
 python-magic==0.4.15
 pytz==2019.3
 pywin32-ctypes==0.2.0
-PyYAML==5.4
+PyYAML==5.1.2
 recommonmark==0.6.0
 reedsolo==1.5.4
 regex==2020.10.23
 requests==2.21.0
-rsa==4.7
+rsa==4.5
 s3cmd==2.0.2
 s3transfer==0.3.3
 sip==4.19.8
@@ -70,6 +70,7 @@ snowballstemmer==2.0.0
 soupsieve==2.2.1
 Sphinx==3.5.4
 sphinx-autobuild==0.7.1
+sphinx-intl==2.0.1
 sphinx-notfound-page==0.6
 sphinx-rtd-theme==0.4.3
 sphinxcontrib-applehelp==1.0.1
