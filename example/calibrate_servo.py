@@ -1,7 +1,10 @@
 import sys
 sys.path.append(r'/home/pi/picar-x/lib')
+from utils import reset_mcu
+reset_mcu()
+
 from picarx import Picarx
-from pwm import pwm
+from pwm import PWM
 from servo import Servo
 
 

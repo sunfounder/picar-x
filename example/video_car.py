@@ -2,6 +2,8 @@
 import sys
 sys.path.append(r'/home/pi/picar-x/lib')
 import cv2
+from utils import reset_mcu
+reset_mcu()
 from picamera.array import PiRGBArray
 from picamera import PiCamera
 import numpy as np

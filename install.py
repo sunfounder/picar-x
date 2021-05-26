@@ -66,7 +66,7 @@ def install():
     if "-h" in options or "--help" in options:
         print(usage)
         quit()
-    print("EzBlock service install process starts")
+    # print("EzBlock service install process starts")
     print("Install dependency")
     if "--no-dep" not in options:
         do(msg="update apt-get",

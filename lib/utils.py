@@ -3,7 +3,15 @@ import time
 import os
 import re
 import math
+from pin import Pin
 
+mcu_reset = mcu_reset = Pin("MCURST")
+
+def reset_mcu():
+    mcu_reset.off()
+    time.sleep(0.001)
+    mcu_reset.on() 
+    time.sleep(0.1)  
 # ble = BLE()
 
 # ble.write('NAME+ezb-RPi')
