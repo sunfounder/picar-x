@@ -10,16 +10,20 @@ from pin import Pin
 
 
 if __name__ == "__main__":
-    trig_pin = Pin("D0") 
-    echo_pin = Pin("D1")
-    px = Picarx()
-    px.forward(0)
-    while True:
-        distance = Ultrasonic(trig_pin, echo_pin).read()
-        if distance > 0:
-            if distance < 10:
-                px.set_dir_servo_angle(-30)
-            else:
-                px.set_dir_servo_angle(0)
+    try:
+        trig_pin = Pin("D2") 
+        echo_pin = Pin("D3")
+        px = Picarx()
+        px.forward(30)
+        while True:
+            distance = Ultrasonic(trig_pin, echo_pin).read()
+            print("distance:",distance)
+            if distance > 0:
+                if distance < 25:
+                    px.set_dir_servo_angle(-35)
+                else:
+                    px.set_dir_servo_angle(0)
+    finally:
+        px.forward(0)
 
 
