@@ -17,17 +17,9 @@
 
 # -- Project information -----------------------------------------------------
 
-<<<<<<< HEAD:docs/source/conf.py
 project = 'PiCar-X'
 copyright = '2021, SunFounder'
 author = 'SunFounder'
-=======
-import sphinx_rtd_theme
-
-project = 'SunFounder_PiCar-X'
-copyright = '2021, sunfounder'
-author = 'sunfounder'
->>>>>>> 176b7da2cc7bf184a4663bb488e774fced02244d:ReadtheDocs/source/conf.py
 
 
 # -- General configuration ---------------------------------------------------
