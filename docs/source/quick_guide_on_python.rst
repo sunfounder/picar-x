@@ -179,7 +179,7 @@ Clone the repository from github via `git clone command <https://github.com/git-
 
 .. code-block::
 
-    git clone -b v2.0 https://github.com/sunfounder/picar-x.git 
+    git clone -b v2.0 https://github.com/sunfounder/picar-x.git
 
 
 Run install.py file
