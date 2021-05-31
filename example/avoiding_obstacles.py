@@ -17,8 +17,8 @@ if __name__ == "__main__":
         px.forward(30)
         while True:
             distance = Ultrasonic(trig_pin, echo_pin).read()
-            print("distance:",distance)
-            if distance > 0:
+            if distance > 0 and distance < 300:
+                print("distance:",distance)
                 if distance < 25:
                     px.set_dir_servo_angle(-35)
                 else:

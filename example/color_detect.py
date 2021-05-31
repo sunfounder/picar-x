@@ -8,6 +8,7 @@ color_dict = {'red':[0,4],'orange':[5,18],'yellow':[22,37],'green':[42,85],'blue
 
 kernel_5 = np.ones((5,5),np.uint8) #定义了一个5×5，元素值全为1的卷积核
 
+
 def color_detect(img,color_name):
 
     # 蓝色的范围，不同光照条件下不一样，可灵活调整   H：色度，S：饱和度 v:明度
@@ -40,7 +41,7 @@ def color_detect(img,color_name):
                     cv2.rectangle(img,(x,y),(x+w,y+h),(0,255,0),2)  #画矩形的框
                     cv2.putText(img,color_type,(x,y), cv2.FONT_HERSHEY_SIMPLEX, 1,(0,0,255),2)# 添加字符描述
 
-        return img
+        return img,mask,morphologyEx_img
 
 
 #init camera
@@ -53,8 +54,10 @@ rawCapture = PiRGBArray(camera, size=camera.resolution)
 
 for frame in camera.capture_continuous(rawCapture, format="bgr",use_video_port=True):# use_video_port=True
     img = frame.array
-    img =  color_detect(img,'red')  #颜色检测函数
+    img,img_2,img_3 =  color_detect(img,'red')  #颜色检测函数
     cv2.imshow("video", img)    #opencv显示帧
+    cv2.imshow("mask", img_2)    #opencv显示帧
+    cv2.imshow("morphologyEx_img", img_3)    #opencv显示帧
     rawCapture.truncate(0)  # 清除缓存
    
     k = cv2.waitKey(1) & 0xFF
