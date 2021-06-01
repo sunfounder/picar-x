@@ -40,19 +40,4 @@ In addition to playing this product, you ought to flash the **Ezblock image** in
 
 
 
-Install Ezblock APP on device
--------------------------------
-
-您可以为iOS与Android设备安装APP进行玩耍，方法如下。
-
-
-Ezblock online
---------------------------------------
-
-你也可以使用web版ezblock进行玩耍，方法如下。
-
-
-
-
- **这里链进ezblock使用教程**
 

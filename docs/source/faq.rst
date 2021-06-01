@@ -8,6 +8,8 @@ FAQ
 
 A：你可以手动编写并烧录一个舵机校准程序，其代码如下所示。
 
+.. image:: img/faq_servo.png
+
 **Q：用VNC提示cannot currently show the desktop**
 
-A：在raspi-config里面改分辨率
+A：在 Terminal 中输入 ``sudo raspi-config`` 修改分辨率即可。

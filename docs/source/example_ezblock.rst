@@ -1,10 +1,31 @@
 Ezblock Project
 ===========================
 
+**Install Ezblock APP on device**
+
+
+您可以为iOS与Android设备安装APP进行玩耍，方法如下。
+
+
+**Ezblock online**
+
+你也可以使用web版ezblock进行玩耍，方法如下。
+
+
+
+
+Get `Ezblock Tutorials <docs.sunfounder.com>`_ Here !
+
+
+
+
+**Example List**
+
 Here, we show you the examples of playing PiCar-X with Ezblock. If you are new 
 to these, you can try to write the corresponding function according to TIPS, or directly 
 use the reference code in Example. We suggest you do it yourself and experience the 
 fun of challenges.
+
 
 .. toctree::
 

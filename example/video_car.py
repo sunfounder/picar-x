@@ -1,16 +1,17 @@
 # coding=utf-8
 import sys
 sys.path.append(r'/home/pi/picar-x/lib')
-import cv2
+
 from utils import reset_mcu
 reset_mcu()
-from picamera.array import PiRGBArray
-from picamera import PiCamera
-import numpy as np
 from picarx import Picarx
 from utils import run_command
 import datetime
 
+import cv2
+from picamera.array import PiRGBArray
+from picamera import PiCamera
+import numpy as np
 
 camera = PiCamera()
 camera.resolution = (640,480)
@@ -31,7 +32,6 @@ try:
         
             k = cv2.waitKey(1) & 0xFF
             # 27是ESC键，表示如果按ESC键则退出
-            # print(ord('esc'))
             if k == 27:
                 camera.close()
                 continue
@@ -59,8 +59,7 @@ try:
             elif k == ord('f'):    
                 px.stop()  #停下来
 
-            
-
+        
             elif k == ord('t'):   # 拍照
                 camera.close()
                 break
@@ -71,7 +70,6 @@ try:
         picture_path = '/home/pi/Pictures/' + picture_time + '.jpg'
 
         a_t = "sudo raspistill -t 250  -w 2592 -h 1944 " + " -o " + picture_path
-        
 
         print(a_t)
         run_command(a_t)

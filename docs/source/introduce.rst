@@ -1,4 +1,4 @@
-Introduce
+Introduction 
 ====================
 
 Experiments have been conducted on self-driving cars since at least the 1920s; promising trials took place in the 1950s and work has proceeded since then. 
@@ -46,12 +46,6 @@ The mounted camera module, ultrasonic module, line tracking module can separatel
 face detection, automatic obstacle avoidance, automatic line tracking, etc.
 
 其所有的功能（包括GPIO控制、计算机视觉和深度学习），是由Python（实际编程语言），OpenCV（功能强大的计算机视觉软件包）和Tensorflow（Google流行的深度学习框架）等软件实现的。
-
-如果你想避免艰难晦涩的 coding ，想要快速玩耍PiCar-X，可以直接进行基于 Ezblock 的使用，这是一种 Blockly 玩法，适合新生代的潮人。
-它将会需要你按照 :ref:`Quick Guide on Ezblock` 的指示完成配置。
-
-如果你更适应于传统编程的用户，我们建议你使用基于 Python 的玩法，这将要求你掌握基本的Python编程技能和基本的Linux操作系统知识。
-遵照 :ref:`Quick Guide on Python` 的指示，从源生的 Raspberry Pi OS 中配置出适应PiCar-X运作的环境。
 
 
 Think Further
