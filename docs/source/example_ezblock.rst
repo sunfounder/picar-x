@@ -6,15 +6,16 @@ Ezblock Project
 
 您可以为iOS与Android设备安装APP进行玩耍，方法如下。
 
+* docs.sunfounder.com
 
 **Ezblock online**
 
 你也可以使用web版ezblock进行玩耍，方法如下。
 
+* docs.sunfounder.com
 
 
-
-Get `Ezblock Tutorials <docs.sunfounder.com>`_ Here !
+.. note:: Get `Ezblock Tutorials <docs.sunfounder.com>`_ Here!
 
 
 

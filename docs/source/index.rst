@@ -11,12 +11,12 @@ obstacle avoidance, automatic line tracking, etc.
 对于本文，您被建议的阅读顺序是:
 
 1. :ref:`Introduction` ，了解PiCar-X与自动驾驶的背景。
-*. :ref:`List`  ， 核对你的零件没有缺失。
-*. :ref:`Building the PiCar-x` 。
+#. :ref:`List`  ， 核对你的零件没有缺失。
+#. :ref:`Building the PiCar-x` 。
 
    .. note:: 在进行小车构建（到安装舵机步骤）的时候，你会被要求完成 :ref:`Quick Guide on Ezblock` 或者 :ref:`Quick Guide on Python` 。当然你也可以完成其中一个Quick Guide后再进行组装。
 
-*. Check :ref:`Ezblock Project` 或者 :ref:`Python Project`。
+#. Check :ref:`Ezblock Project` 或者 :ref:`Python Project`。
 
 如遇到了问题，请查看 :ref:`FAQ` 或者 send an email to service@sunfounder.com .
 
