@@ -26,7 +26,6 @@ You can run the python codes by the following command:
 
     python_move
     python_avoid
-    python_line_track
     python_tts
     view_vnc
     python_view_pic

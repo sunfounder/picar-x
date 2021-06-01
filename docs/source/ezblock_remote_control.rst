@@ -9,7 +9,7 @@ X-axis reading of the Joystick as a suitable angle.
 
 .. image:: img/block/sp210512_114004.png
 
-To use the remote control function, you need to enter the Bluetooth Control page from the left side of main page.
+To use the remote control function, you need to enter the Bluetooth Control page from the left side of main page.
 
 .. image:: img/block/sp210512_114042.png
 
