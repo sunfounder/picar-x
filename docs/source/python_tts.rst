@@ -1,9 +1,9 @@
 Text to Speak
 ===========================
 
-在使用TTS功能之前，您需要先激活 amplifier ，让它能够发出声音。
+Before using TTS functions, you must activate amplifier so that it can make a sound.
 
-在 **picar-x** 目录下，运行 ``i2samp.sh`` script , This script will install everything needed to use i2s amplifier.
+Run ``i2samp.sh`` script in the directory of **picar-x**, and this script will install everything needed to use i2s amplifier.
 
 .. code-block::
 
@@ -11,9 +11,9 @@ Text to Speak
 
 .. image:: img/tt_bash.png
 
-你会被提示多次确认请求，都选 **Y** 。最后，some changes made to your system require your computer to reboot to take effect.
+You will be prompted to confirm the request many times and choose **Y**, and finally, some changes made to your system require your computer to reboot to take effect.
 
-重启之后，你可以再运行一次  ``i2samp.sh`` script ， 它会为你测试  amplifier 。 如果你成功听到了声音，就代表已经配置完成了。 
+After restarting, you can run ``i2samp.sh`` script again, which will test the amplifier for you. If you successfully hear the sound, it suggests that the configuration has been fully configured. 
 
 
 **Code**
@@ -35,17 +35,17 @@ Text to Speak
 
 **How it works?** 
 
-我们使用了 `eSpeak <http://espeak.sourceforge.net/>`_ 来实现tts的功能。
+We use `eSpeak <http://espeak.sourceforge.net/>`_ to implement the functions of tts.
 
-你可以用 ``tts.lang("")`` 来设置语种，用 ``tts.say("")`` 说出text
+You can use ``tts.lang("")`` to set the language and ``tts.say("")`` to speak out the text.
 
-你可以将 ``lang`` 的参数以下字符来设置语种。
+You can set the language by setting the parameters of ``lang("")`` with the following characters.
 
 .. list-table:: Language
     :widths: 15 50
 
     *   - zh-CN 
-        - 普通话(中国)
+        - Mandarin (Chinese)
     *   - en-US 
         - English-United States
     *   - en-GB     

@@ -1,7 +1,7 @@
 Face Detection
 ======================
 
-In addition to color detection, PiCar-X also provides face detection. Here we use Joystick to adjust the direction of the camera and let the faces number be displayed in 
+In addition to color detection, PiCar-X also provides face detection. Here we use Joystick to adjust the direction of the camera and let the faces number be displayed in 
 the debug monitor.
 
 **TIPS**

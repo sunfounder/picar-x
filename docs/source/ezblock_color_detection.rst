@@ -1,8 +1,12 @@
 Color Detection
 ===========================
 
-PiCar-X is a Robot with Camera. Ezblock also provides some object detection functions. Here we try color detection. Prior to this, you must ensure that the Pi Camera 
+PiCar-X is a Robot with Camera. Ezblock also provides some object detection functions. Here we try color detection. Prior to this, you must ensure that the Pi Camera 
 FFC cable is properly and securely connected.
+
+
+* `How to Use the Video Function? <https://docs.sunfounder.com/projects/ezblock3/en/latest/use_video.html>`_
+
 
 **TIPS**
 

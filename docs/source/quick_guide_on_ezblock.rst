@@ -1,11 +1,11 @@
 Quick Guide on Ezblock
 ===========================
 
-这个章节会教你怎么设置你的 Ezblock APP（平板、手机、电脑）以及树莓派。
+In this chapter, you will be taught the way to set up your Ezblock APP (tablet, mobile phone, computer) and Raspberry Pi.
 
-本章节步骤在你组装PiCar-X之前执行，否则将可能导致舵机装歪。 
+The steps in this chapter should be executed prior to your assembly of PiCar-X, otherwise the steering gear may be installed incorrectly. 
 
-.. warning:: 完成本章节步骤后，请勿着急为树莓派 flash 新的示例,而是应当去进行组装。
+.. warning:: upon completion of the steps in this chapter, do not hurry to create a new example of the flash of Raspberry Pi, but assemble it first.
 
 
 Setup Your Raspberry Pi

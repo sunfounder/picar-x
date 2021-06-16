@@ -1,9 +1,9 @@
 Video Car
 ==========================================
 
-现在我们结合 :ref:`Computer Vision` 和 :ref:`Let PiCar-X Move` 来玩耍。
+Now we can play in combination with :ref:`Computer Vision` and :ref:`Let PiCar-X Move` .
 
-让我们用PiCar-X的第一视角观察世界！用键盘的 O 和 P 调节速度，WSAD调节运动方向。
+Let's observe the world from the first point of view of PiCar-X! Adjust the speed with O and P of keyboard and the moving direction with WSAD.
 
 **code**
 
@@ -93,15 +93,15 @@ Video Car
 
 **How it works?** 
 
-这个代码大部分的内容都在 :ref:`Computer Vision` 和 :ref:`Let PiCar-X Move` 中阐述。
+Most of this code is described in :ref:`Computer Vision` and :ref:`Let PiCar-X Move` .
 
-你还需要了解以下内容。
+You also need to learn about the following.
 
 .. code-block:: python
 
     k = cv2.waitKey(1) & 0xFF
 
-``waitKey()`` 是OpenCV等待按键事件的函数。也是HighGUI中唯一可以获取和处理事件的方法。仅当至少创建了一个HighGUI窗口并且该窗口处于活动状态时，该功能才起作用。
+``waitKey()`` is a function of OpenCV waiting for key press events, and it is also the only way to get and process events in HighGUI. This function will only work when at least one HighGUI window is created and it is in an active state.
 
 * `High-level GUI <https://docs.opencv.org/3.4/d7/dfc/group__highgui.html>`_
 * `waitKey - OpenCV <https://docs.opencv.org/3.4/d7/dfc/group__highgui.html#ga5628525ad33f52eab17feebcfba38bd7>`_
@@ -117,7 +117,7 @@ Video Car
     print(a_t)
     run_command(a_t)
 
-这几行代码的效果是在 command line 工具中使用Raspberry Pi相机模块捕获静态照片。
-这些代码在主循环外部，只有当OpenCV接收到键盘的 **T** 键被按下时才会跳出循环，执行这些代码。
+The effect of these lines of codes is to capture static photos in the tool of command line with Raspberry Pi camera module.
+These codes are outside the main loop, and only when OpenCV receives that the **T** key of the keyboard is pressed will it jump out of the loop and execute these codes.
 
 * `raspistill <https://www.raspberrypi.org/documentation/usage/camera/raspicam/raspistill.md>`_

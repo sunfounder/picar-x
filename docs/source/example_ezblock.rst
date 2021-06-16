@@ -4,18 +4,15 @@ Ezblock Project
 **Install Ezblock APP on device**
 
 
-您可以为iOS与Android设备安装APP进行玩耍，方法如下。
+You can install APPs for iOS and Android devices in the following way.
 
-* docs.sunfounder.com
+* `Quick User Guide for Ezblock 3 <https://docs.sunfounder.com/projects/ezblock3/en/latest/quick_user_guide_for_ezblock3.html>`_
 
 **Ezblock online**
 
-你也可以使用web版ezblock进行玩耍，方法如下。
+You can also use the web version of ezblock in the following way.
 
 * docs.sunfounder.com
-
-
-.. note:: Get `Ezblock Tutorials <docs.sunfounder.com>`_ Here!
 
 
 

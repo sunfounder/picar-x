@@ -27,40 +27,38 @@ try:
     while True:
         for frame in camera.capture_continuous(rawCapture, format="bgr",use_video_port=True):# use_video_port=True
             img = frame.array
-            cv2.imshow("video", img)    #opencv显示帧
-            # 清除缓存
+            cv2.imshow("video", img)    
         
             k = cv2.waitKey(1) & 0xFF
-            # 27是ESC键，表示如果按ESC键则退出
+            # 27 is ESC key
             if k == 27:
                 camera.close()
                 continue
             elif k == ord('o'):
                 if power_val <=90:
                     power_val += 10
-                    print("power_val:",power_val)  # 增大电机速度
+                    print("power_val:",power_val)  # motor power up
             elif k == ord('p'):
                 if power_val >=10:
                     power_val -= 10
-                    print("power_val:",power_val)  #减小电机速度
+                    print("power_val:",power_val)  # motor power up down
             elif k == ord('w'):
-                # print("w:",)
-                px.set_dir_servo_angle(0)
-                px.forward(power_val)
+                px.set_dir_servo_angle(0) # go forward
+                px.forward(power_val) 
             elif k == ord('a'):
-                px.set_dir_servo_angle(-30) # 左转
+                px.set_dir_servo_angle(-30) # go left
                 px.forward(power_val)
             elif k == ord('s'):
-                px.set_dir_servo_angle(0) # 后退
+                px.set_dir_servo_angle(0) # go back
                 px.backward(power_val)
             elif k == ord('d'):
-                px.set_dir_servo_angle(30) # 右转
+                px.set_dir_servo_angle(30) # go right
                 px.forward(power_val)
             elif k == ord('f'):    
-                px.stop()  #停下来
+                px.stop()  # stop
 
         
-            elif k == ord('t'):   # 拍照
+            elif k == ord('t'):   # shoot
                 camera.close()
                 break
             rawCapture.truncate(0)

@@ -7,17 +7,17 @@ Quick Guide on Python
 
 This chapter is used to set up Raspberry Pi, from configure the Raspberry Pi environment to run the ``servo_zeroing.py`` file of PiCar-X. 
 
-接下来是远程访问PiCar-X的教程。
+The following is a tutorial on remote access to Picar-X.
 
-您需要准备以下物件:
-1. 个人电脑
-2. 树莓派
-3. 读卡器
-4. SD卡
-5. 电源
+You are required to prepare the following items:
+
+1. Personal computer
+2. Raspberry Pi
+3. Card reader
+4. SD card
+5. Power supply
     
-    .. note:: 在本页的步骤中，直到Run Servo-zeroing Code之前都与Robot HAT无关，可以仅为树莓派供电。而在进行 **servo zeroing** 时，为Robot HAT供电是必须的。为Robot HAT供电时，Robot HAT也将驱动树莓派。）
-
+    .. note:: The steps on this page have nothing to do with Robot HAT until Run Servo-zeroing Code, and it can only supply power to Raspberry Pi. In the course of **servo zeroing**, it is essential to supply power to Robot HAT. When supplying power to Robot HAT, Robot HAT will also drive Raspberry Pi).
 
 
 Setup Raspberry Pi OS
@@ -185,7 +185,7 @@ Clone the repository from github via `git clone command <https://github.com/git-
 Run install.py file
 -----------------------------------
 
-请执行 **picar-x** 目录下的 ``install.py`` 文件。在terminal中键入以下两句指令。
+Please execute the ``install.py`` file in the directory of **picar-x**, and type the following two commands in terminal.
 
 .. code-block::
 
@@ -196,13 +196,13 @@ Run install.py file
     sudo python3 install.py
 
     
-这个file会帮你完成所需要的库的安装及树莓派配置工作。
+This file will help you finish the installation of the required library and configuration of Raspberry Pi.
 
 .. image:: img/install_py.png
 
-.. warning:: 由于网络等原因，``install.py`` 在一些过程将可能会有 **Error** 。如遇到错误提示，请检查网络并重新运行 ``install.py`` ，直到所有过程显示 **Done** 并在最后提示 ``Finished`` 。
+.. warning:: for the reason of the network, etc., ``install.py`` may encounter some **Error** in some processes. Where there is error prompt, please check the network and re-run ``install.py`` until all processes show **Done** and prompt ``Finished`` at the end.
 
-这将会花上少许时间，请耐心等待。等文件执行完毕，并提示 ``Finished`` 后，请重启树莓派。
+This step will take a little time, so please be patient. After the file is fully executed and the prompt ``Finished`` is issued, please restart the Raspberry Pi.
 
 .. code-block::
 
@@ -212,7 +212,7 @@ Run install.py file
 Run Servo-zeroing Code
 ---------------------------------
 
-让我们为Robot HAT插上电源，打开开关，运行 **example** 目录下的 ``servo_zeroing.py`` 文件，来初始化Servo的输出轴角度。
+Let's plug in the power supply for Robot HAT, turn on the switch, and initialize the output axis angle of Servo by running the file ``servo_zeroing.py`` under the directory **example**.
 
 .. code-block::
 
@@ -222,4 +222,4 @@ Run Servo-zeroing Code
 
     sudo python3 servo_zeroing.py
 
-现在你只要将servo pin 插入P11 port即可对其进行调零了。
+Now you can zero-set the servo pin by inserting it into P11 port.

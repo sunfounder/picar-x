@@ -1,7 +1,7 @@
 Color Detect
 ==========================================
 
-简单的说，这就是在 :ref:`Computer Vision` 的基础上增加了颜色识别的算法。
+To put it simply, the algorithm of color recognition is added premised on :ref:`Computer Vision`.
 
 
 **Code**
@@ -73,20 +73,20 @@ Color Detect
 
 **How it works?**
 
-首先，我们将 `HSV颜色空间 <https://en.wikipedia.org/wiki/HSL_and_HSV>`_ 中的H的范围定义为一个字典，以便于接下来的色彩判断算法。
+In the first place, we define the range of H in `HSV color space <https://en.wikipedia.org/wiki/HSL_and_HSV>`_ as a dictionary, which is convenient for the following color judgment algorithm.
 
 .. code-block:: python
 
     color_dict = {'red':[0,4],'orange':[5,18],'yellow':[22,37],'green':[42,85],'blue':[92,110],'purple':[115,165],'red_2':[165,180]} 
 
-然后，定义了一个大小为5x5的 `convolution kernel <https://en.wikipedia.org/wiki/Kernel_(image_processing)>`_ ,我们将把它用于形态学运算（滤波）。
+Then, we define a 5x5 `convolution kernel <https://en.wikipedia.org/wiki/Kernel_(image_processing)>`_, which we will use for morphological operation (filtering).
 
 .. code-block:: python
 
     kernel_5 = np.ones((5,5),np.uint8)
 
 
-接下来让我们注视到 ``color_detect()`` ,它将图片进行了四个环节的处理过程：
+Next, let's focus on ``color_detect()``, which processes pictures in four steps:
 
 1. Extract the data of the target color as a new binary image (array).
 2. Performs advanced morphological transformations. 
@@ -130,7 +130,7 @@ Color Detect
 
         return img,mask,morphologyEx_img
 
-我们将 ``img`` , ``mask`` , ``morphologyEx_img`` 用三个窗口显示出来，以直接观察各个环节的处理结果。
+We display ``img``, ``mask`` and ``morphologyEx_img`` in three windows, in a bid to directly observe the processing results of each step.
 
 .. image:: img/color_detect.png
 

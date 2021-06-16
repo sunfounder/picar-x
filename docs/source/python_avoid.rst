@@ -1,7 +1,7 @@
 Avoiding Obstacles
 =============================
 
-在这个示例中你将使用超声波传感器来检测前方，从而躲避障碍物。
+In this example, you will detect the front by dint of ultrasonic sensors so as to avoid obstacles.
 
 **Code**
 
@@ -37,7 +37,7 @@ Avoiding Obstacles
 
 **How it works?**
 
-你只需要简单的调用Ultrasonic库就可以实现距离获取了。
+You can get the distance only by calling the Ultrasonic library.
 
 .. code-block:: python
 

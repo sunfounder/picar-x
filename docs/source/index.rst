@@ -8,29 +8,29 @@ control center. The mounted camera module, ultrasonic module, line tracking modu
 can separately realize the functions of color detection, face detection, automatic 
 obstacle avoidance, automatic line tracking, etc.
 
-对于本文，您被建议的阅读顺序是:
+For this article, your are suggested to follow the reading order as below:
 
-1. :ref:`Introduction` ，了解PiCar-X与自动驾驶的背景。
-#. 核对你的零件没有缺失。
-#. Building the PiCar-x 。
+1. :ref:'Introduction', learn about the background of PiCar-X and automatic driving.
+#. Check that your parts are not missing.
+#. Building the PiCar-x.
 
-   .. note:: 在进行小车构建（到安装舵机步骤）的时候，你会被要求完成 :ref:`Quick Guide on Ezblock` 或者 :ref:`Quick Guide on Python` 。当然你也可以完成其中一个Quick Guide后再进行组装。
+   .. note:: When carrying out the construction of the trolley (to the step of installing steering gear), you will be required to finish: :ref:'Quick Guide on Ezblock' or :ref:'Quick Guide on Python'. Definitely, you can also finish one of the Quick Guides prior to assembling.
 
-#. Check :ref:`Ezblock Project` 或者 :ref:`Python Project`。
+#. Check :ref:'Ezblock Project' or :ref:'Python Project'.
 
-如遇到了问题，请查看 :ref:`FAQ` 或者 send an email to service@sunfounder.com .
+Where there arises a problem, please check: :ref:'FAQ' or send an email to service@sunfounder.com.
 
 
 **Two Ways to Play**
 
 
-如果你想避免艰难晦涩的 coding ，想要快速玩耍PiCar-X，可以直接进行基于 Ezblock 的使用。它将会需要你按照 :ref:`Quick Guide on Ezblock` 的指示完成配置 —— 
+If you wish to avoid difficult and obscure coding and play PiCar-X as soon as possible, you can use it directly based on Ezblock. It will require you to finish the configuration as instructed in :ref:'Quick Guide on Ezblock' - 
 Ezblock Studio is a development platform developed by SunFounder designed for beginners to lower the barriers to getting started with Raspberry Pi. 
 It has two programming languages: Graphical and Python, and available on almost all different types of devices. 
 With Bluetooth and Wi-Fi support, you can download code, remote control a Raspberry Pi, on Ezblock Studio.
 
-如果你更适应于传统编程的用户，我们建议你使用基于 Python 的玩法，这将要求你掌握基本的 Python 编程技能和基本的 Linux 操作系统知识。
-请遵照 :ref:`Quick Guide on Python` 的指示，从源生的 Raspberry Pi OS 中配置出适应PiCar-X运作的环境。
+If you are more suitable for traditional programming users, we suggest you use Python-based gameplay, which will require you to have a good command of basic Python programming skills and basic knowledge of Linux operating system.
+Please follow the instruction: ref:'Quick Guide on Python', and configure the environment suitable for PiCar-X operation from the original Raspberry Pi OS.
 
 
 **Content**

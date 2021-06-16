@@ -1,7 +1,7 @@
 Human Face Detect
 ==========================================
 
-简单的说，这就是在 :ref:`Computer Vision` 的基础上增加了人脸识别的算法。
+To put it simply, this is to add a human face recognition algorithm based on :ref:`Computer Vision`.
 
 **Code**
 
@@ -52,23 +52,23 @@ Human Face Detect
 
 **How it works?**
 
-在与该示例的同级目录下，我们放置了一个文件 ``haarcascade_frontalface_default.xml`` ，它是OpenCV中已经经过训练的人脸识别模型文件。
+In the same directory as this example, we put a file ``haarcascade_frontalhuman face_default.xml`` , which is a trained human face recognition model file in OpenCV.
 
-这个文件由 OpenCV 的 Cascade Classifier 调用。
+This file is called by Cascade Classifier of OpenCV.
 
 .. code-block:: python
 
     face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')  
 
-基于Haar特征的级联分类器进行对象检测是Paul Viola和Michael Jones在其论文 `Rapid Object Detection using a Boosted Cascade of Simple Features <https://ieeexplore.ieee.org/document/990517>`_ 中于2001年提出的一种有效的对象检测方法。
-这是一种基于机器学习的方法，其中从许多正负图像中训练级联函数。然后用于检测其他图像中的对象。
-就像卷积核一样， 每个特征都是通过从黑色矩形下的像素总和中减去白色矩形下的像素总和而获得的单个值。
+Haar feature-based cascade classifier is an effective object detection method put forward by Paul Viola and Michael Jones in 2001 in their paper entitled `Rapid Object Detection using a Boosted Cascade of Simple Features <https://ieeexplore.ieee.org/document/990517>`_.
+This is a method premised on machine learning, in which cascade functions are trained from numerous positive and negative images, and then used to detect objects in other images.
+Just like convolution kernel, each feature is a single value acquired by subtracting the pixel sum under the white rectangle from the pixel sum under the black rectangle. 
 
 * `Cascade Classifier <https://docs.opencv.org/3.4/db/d28/tutorial_cascade_classifier.html>`_
 * `Cascade Classifier Training <https://docs.opencv.org/3.4/dc/d88/tutorial_traincascade.html>`_
 
 
-接下来让我们注视到 ``human_face_detect()`` ,它将图片进行了三个环节的处理过程：
+Next, let's focus on ``human_human face_detect()`` , which processes pictures in three steps:
 
 1. Convert picture to grayscale.
 2. Detect the human face on the grayscale image to obtain the bounding rectangle of the detected face.

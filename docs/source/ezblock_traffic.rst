@@ -1,11 +1,11 @@
 Traffic Sign Detection
 ===============================
 
-该示例在自动驾驶（ :ref:`Minecart` ）的基础上增加了交通标志识别。换而言之，PiCar-X依然会沿着道路行驶，但是改变它行驶与停止的条件将不再是前方障碍物，而是路边的交通标志。
+In this example, traffic sign recognition is added premised on automatic driving ( :ref:`Minecart` ). To put it another way, PiCar-X will still drive along the road, but the condition to change its driving and stopping state will no longer be the obstacle ahead, but the traffic sign on the roadside.
 
-在这里，检测到 **STOP** 标志将会让它停止，检测到 **Forward** 标志将会让他向前行驶。
+Here, it is detected that the **STOP** sign will stop it, and that the **Forward** sign will make it drive forward.
 
-它的工作逻辑也适用于其他的目标检测任务（如颜色识别，用于检测红绿灯）。打开video，你将能看到PiCar-X时是如何完成检测任务的。
+Its working logic is also applicable to other target detection missions (such as color recognition, which is used to detect traffic lights). When you turn on the video, you can see how PiCar-X completes the detection mission.
 
 **TIPS**
 

@@ -1,9 +1,9 @@
 Computer Vision
 ==========================================
 
-接下来我们正式进入计算机视觉的领域！
+Next, we will officially enter the realm of computer vision!
 
-为了更好的进行接下来的实验。你需要 :ref:`View RPi Desktop by VNC` ,并且在树莓派的Terminal中运行示例（而非通过SSH远程执行）。
+With a view to better execute the next experiment, you need :ref:`View RPi Desktop by VNC`, and run the example in the Terminal of Raspberry Pi (instead of remote execution through SSH).
 
 
 **Code**
@@ -35,11 +35,11 @@ Computer Vision
 
 **How it works?** 
 
-我们使用了 ``PiCamera`` 来获取照片。This package provides a pure Python interface to the Raspberry Pi camera.
+We get photos with ``PiCamera``. This package provides a pure Python interface to the Raspberry Pi camera.
 
 * `PiCamera Docs <https://picamera.readthedocs.io/en/latest/index.html>`_
 
-其最简单的使用方法如下。 Capturing an image to a file is as simple as specifying the name of the file as the output of whatever ``capture()`` method you require.
+The simplest way to use it is as below. Capturing an image to a file is as simple as specifying the name of the file as the output of whatever ``capture()`` method you require.
 
 .. code-block:: python
 
@@ -53,7 +53,7 @@ Computer Vision
     sleep(2)
     camera.capture('foo.jpg')
 
-而在我们的示例中，我们更确切的使用了 **capturing timelapse sequences** 的方法。这是为了使OpenCV能够获取连续的画面。
+In our example, we make use of the method of **capturing timelapse sequences** more exactly, which is to enable OpenCV to acquire continuous pictures.
 
 With this method, the camera captures images continually until you tell it to stop. Images are automatically given unique names and you can easily control the delay between captures.
 
@@ -71,7 +71,7 @@ With this method, the camera captures images continually until you tell it to st
         print('Captured %s' % filename)
         sleep(10) #  capture images with a 10s delay between each shot
 
-In order to capture OpenCV objects, we’ll capture an image to a `BytesIO` stream (Python’s in-memory stream class), then convert the stream to a `numpy` array and read the array with OpenCV:
+In order to capture OpenCV objects, we'll capture an image to a ``BytesIO`` stream (Python's in-memory stream class), then convert the stream to a ``numpy`` array and read the array with OpenCV:
 
 * `What is Numpy? <https://numpy.org/doc/stable/user/whatisnumpy.html>`_
 
@@ -97,7 +97,7 @@ In order to capture OpenCV objects, we’ll capture an image to a `BytesIO` stre
     # use the following...
     image = image[:, :, ::-1]
 
-To avoid the JPEG encoding and decoding (which is lossy) and potentially speed up the process, you can now use the classes in the `picamera.array` module. As OpenCV images are simply `numpy` arrays arranged in BGR order, one can use the `PiRGBArray` class and simply capture with the `'bgr'` format (given that RGB and BGR data is the same size and configuration, just with reversed color planes)
+To avoid the JPEG encoding and decoding (which is lossy) and potentially speed up the process, you can now use the classes in the ``picamera.array`` module. As OpenCV images are simply ``numpy`` arrays arranged in BGR order, one can use the ``PiRGBArray`` class and simply capture with the ``'bgr'`` format (given that RGB and BGR data is the same size and configuration, just with reversed color planes).
 
 * `PiRGBArray <https://picamera.readthedocs.io/en/release-1.13/api_array.html#pirgbarray>`_
 
@@ -117,7 +117,7 @@ To avoid the JPEG encoding and decoding (which is lossy) and potentially speed u
             image = stream.array
 
 
-结合 capturing timelapse sequences 的方法，将 these 3-dimensional RGB arrays show by OpenCV.
+By capturing timelapse sequences in combination, these 3-dimensional RGB arrays are shown by OpenCV.
 
 .. code-block:: python
 
@@ -142,7 +142,7 @@ To avoid the JPEG encoding and decoding (which is lossy) and potentially speed u
             camera.close()
             break
 
-用OpenCV读取视频流还有其他的方法，我们采用这个方法可以较好的适用于接下来的Color detection等任务。
-更多玩法请查看 `OpenCV-Python Tutorials <https://docs.opencv.org/4.0.0/d6/d00/tutorial_py_root.html>`_ .
+There are other methods available for reading the video stream with OpenCV, and it can be better applied to the next missions such as color detection.
+For more gameplay, please check `OpenCV-Python Tutorials <https://docs.opencv.org/4.0.0/d6/d00/tutorial_py_root.html>`_ .
 
 

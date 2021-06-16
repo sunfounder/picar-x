@@ -1,11 +1,11 @@
 Let PiCar-X Move
 ========================
 
-PiCar-X的基本功能都已被封装在 ``picarx.py`` 中，主要是控制舵机和车轮的工作。
+The basic functions of PiCar-X have been encapsulated in ``picarx.py``, chiefly controlling the servo and wheels.
 
-让PiCar-X往前移动，走个漂亮的S字，然后停下来摇头晃脑。这能让我们掌握驱动马达和车身上3个舵机的方法。
+Let PiCar-X move forward, walk in a smart S-shape, and then stop and shake its head. This will allow us to command the method of driving the motor and three servos on the car body.
 
-你可以在example文件夹中打开 ``move.py`` 或者直接复制以下代码到Python IDE运行。
+You can open ``move.py`` in the folder of the example or directly copy the following code to the Python IDE to run.
 
 **Code**
 
@@ -60,7 +60,7 @@ PiCar-X的基本功能都已被封装在 ``picarx.py`` 中，主要是控制舵�
 
 **How it works?**
 
-首先，导入工具函数库，以支持PiCar-X的基本功能。这几行代码将出现在所有让PiCar-X动起来的示例中。
+Primarily, import the tool function library, so as to support the basic functions of PiCar-X. These lines of code will appear in all the examples that make Picar-X move.
 
 .. code-block:: python
     :emphasize-lines: 0
@@ -73,7 +73,7 @@ PiCar-X的基本功能都已被封装在 ``picarx.py`` 中，主要是控制舵�
     from picarx import Picarx
     import time
 
-然后，找到以下几句代码，善用它们将可以顺利让PiCar-X动起来了。
+Then, find the following codes and make good use of them to make PiCar-X move smoothly.
 
 .. code-block:: python
     :emphasize-lines: 0

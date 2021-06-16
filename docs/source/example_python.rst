@@ -5,7 +5,7 @@ Python Project
 **Run the Code File**
 
 
-Open the **example** folder, and you will see there are some python codes and a in it.
+Open the **example** folder, and you will see there are some python codes in it.
 
 .. code-block::
 
@@ -17,7 +17,7 @@ You can run the python codes by the following command:
 
     sudo python3 FILENAME.py
 
-将 ``FILENAME.py`` 更改为具体的example即可启动对应的代码。
+You can start the corresponding code by changing ``FILENAME.py`` to a specific example.
 
 **Example List**
 

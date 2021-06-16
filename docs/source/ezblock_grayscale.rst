@@ -1,7 +1,7 @@
 Grayscale Sensor Test
 ==============================
 
-PiCar-X has 3 channel Grayscale sensors for your implementing some fun experiments, such as walking along the line, detecting cliffs and so on. Its three detection 
+PiCar-X has 3 channel Grayscale sensors for your implementing some fun experiments, such as walking along the line, detecting cliffs and so on. Its three detection 
 heads will read the value according to the detected color shades, such as pure black reading is "0".
 
 **TIPS**

@@ -1,13 +1,13 @@
 Beware of Pedestrians
 =============================
 
-该示例展示了智能车在行驶时判断路况（行人）而执行对策的过程。
+This example demonstrates the process of executing countermeasures based on road conditions (pedestrians) when an intelligent vehicle is driving. 
 
-Ezblock已经配置了已训练好的可用的人脸检测模型，PiCar-X直接调用了它，使得它可以直接认出镜头前人脸的存在。
+Ezblock has been provided with a well-trained and usable human face detection model, which PiCar-X calls directly, allowing it to directly recognize the presence of a human face in front of the camera. 
 
-如果你在PiCar-X正前方放置一张人物的照片，你将能看到 Camera Monitor 画面中人脸的部分将被圈选。
+If you put a photo of a person in front of PiCar-X, you will see that part of the human face in the screen of Camera Monitor will be circled and selected.
 
-我们让PiCar-X在看见人脸的时候自动停下。为了更稳定的保证行驶安全，我们为PiCar-X编写了一段人脸出现的频率判断：在单位时间内，执行10次人脸检测，如果出现了3次以上的人脸信息，则停止行驶。
+We instruct PiCar-X to stop automatically when it identifies a human face. With a view to guarantee driving safety more stably, we have programmed a section of frequency judgment of human face appearance for PiCar-X: human face detection is performed 10 times per unit time, and if human face information appears more than 3 times, the driving will stop.
 
 
 **EXAMPLE**

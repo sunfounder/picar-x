@@ -3,6 +3,13 @@ Move
 
 First we need to know how to make PiCar move. Here, we let it perform the five actions of "forward", "backward", "turn left", "turn right", and "stop" in order.
 
+Before that, you can learn the basic usage of ezblock from here.
+
+
+* `Quick User Guide for Ezblock 3 <https://docs.sunfounder.com/projects/ezblock3/en/latest/quick_user_guide_for_ezblock3.html>`_
+
+* `How to Create a New Project? <https://docs.sunfounder.com/projects/ezblock3/en/latest/create_new.html>`_
+
 
 **TIPS**
 
