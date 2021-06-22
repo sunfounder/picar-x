@@ -18,7 +18,7 @@ We trained 6 color models for PiCar-X, red, orange, yellow, green, blue and purp
 * `How to Use the Video Function? <https://docs.sunfounder.com/projects/ezblock3/en/latest/use_video.html>`_
 
 
-.. image:: img/block/color_detect.PNG
+.. image:: img/block/ezblock_color_detect.PNG
 
 **TIPS**
 
