@@ -1,11 +1,20 @@
 Traffic Sign Detection
 ===============================
 
-In this example, traffic sign recognition is added premised on automatic driving ( :ref:`Minecart` ). To put it another way, PiCar-X will still drive along the road, but the condition to change its driving and stopping state will no longer be the obstacle ahead, but the traffic sign on the roadside.
+In this project, you will use a new detection function, **traffic sign detection**. We have trained 4 traffic sign models for PiCar-X, which you can print yourself, but you need to be careful to make sure they are printed in color.
 
-Here, it is detected that the **STOP** sign will stop it, and that the **Forward** sign will make it drive forward.
+* `Traffic Sign Cards File <https://github.com/sunfounder/picar-x/blob/v2.0/printfile/Traffic%20Sign%20Cards.pdf>`_
 
-Its working logic is also applicable to other target detection missions (such as color recognition, which is used to detect traffic lights). When you turn on the video, you can see how PiCar-X completes the detection mission.
+.. image:: img/block/taffics_sign.png
+
+.. note::
+
+    Please understand that the printed traffic sign cardboard may be a little different from the one we trained because of the color difference or material, which will lead to a less accurate recognition.
+
+This project is based on :ref:`Minecart` with traffic sign detection, detecting a **STOP** sign will make it stop, and a **FORWARD** sign will make it drive forward. You can view the detection results via Video Monitor on Ezblock Studio.
+
+.. image:: img/block/traffic_detect.PNG
+
 
 **TIPS**
 

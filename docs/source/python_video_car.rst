@@ -1,9 +1,7 @@
 Video Car
 ==========================================
 
-Now we can play in combination with :ref:`Computer Vision` and :ref:`Let PiCar-X Move` .
-
-Let's observe the world from the first point of view of PiCar-X! Adjust the speed with O and P of keyboard and the moving direction with WSAD.
+Let's observe the world from the First Person View of PiCar-X! Use the O and P of the keyboard to adjust the speed, and WSAD to adjust the direction of movement.
 
 **code**
 
@@ -93,7 +91,7 @@ Let's observe the world from the first point of view of PiCar-X! Adjust the spee
 
 **How it works?** 
 
-Most of this code is described in :ref:`Computer Vision` and :ref:`Let PiCar-X Move` .
+Most of this code is described in :ref:`Computer Vision` and :ref:`Let PiCar-X Move`.
 
 You also need to learn about the following.
 
@@ -101,7 +99,8 @@ You also need to learn about the following.
 
     k = cv2.waitKey(1) & 0xFF
 
-``waitKey()`` is a function of OpenCV waiting for key press events, and it is also the only way to get and process events in HighGUI. This function will only work when at least one HighGUI window is created and it is in an active state.
+``waitKey()`` is a function of OpenCV waiting for key press events, and it is also the only way to get and process events in HighGUI. This function only works if at least one HighGUI window has been created and is active.
+
 
 * `High-level GUI <https://docs.opencv.org/3.4/d7/dfc/group__highgui.html>`_
 * `waitKey - OpenCV <https://docs.opencv.org/3.4/d7/dfc/group__highgui.html#ga5628525ad33f52eab17feebcfba38bd7>`_
@@ -117,7 +116,8 @@ You also need to learn about the following.
     print(a_t)
     run_command(a_t)
 
-The effect of these lines of codes is to capture static photos in the tool of command line with Raspberry Pi camera module.
-These codes are outside the main loop, and only when OpenCV receives that the **T** key of the keyboard is pressed will it jump out of the loop and execute these codes.
+The purpose of these lines of code is to capture still photos using the Raspberry Pi camera module.
+
+These codes are external to the main loop, and they are executed when OpenCV receives a **T** key on the keyboard, which breaks the main loop.
 
 * `raspistill <https://www.raspberrypi.org/documentation/usage/camera/raspicam/raspistill.md>`_

@@ -1,7 +1,7 @@
 View RPi Desktop by VNC
 =============================
 
-The following chapter relates to Computer Vision, and you are required to realize remote desktop with the help of VNC, in order to checked the pictures identified by PiCar-X.
+The following chapters are related to computer vision, where you need to implement a remote desktop with the help of VNC in order to check the images recognized by PiCar-X.
 
 **Enable VNC service**
 
@@ -52,6 +52,7 @@ Now you can see the desktop of the Raspberry Pi:
 .. image:: img/vnc9.png
 
 
-.. note:: on the desktop of Raspberry pi OS, you can execute commands by turning on the terminal.
+.. note::
+    On the desktop of Raspberry pi OS, you can execute commands by opening a terminal.
 
 .. image:: img/vnc10.png

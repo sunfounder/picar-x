@@ -8,7 +8,7 @@ You need to use the color detection function to make the camera always face the 
 
 .. image:: img/block/sp210512_174650.png
 
-Here we need to use "object detection" which is used to detect the quantity in "Human Face Detection". Now we know more about its usage.
+Here we need to use "object detection" which is used to detect the quantity in "Color Detection". Now we know more about its usage.
 
 .. image:: img/block/sp210512_174807.png
 

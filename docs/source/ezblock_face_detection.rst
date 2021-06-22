@@ -4,11 +4,16 @@ Face Detection
 In addition to color detection, PiCar-X also provides face detection. Here we use Joystick to adjust the direction of the camera and let the faces number be displayed in 
 the debug monitor.
 
+* `How to Use the Video Function? <https://docs.sunfounder.com/projects/ezblock3/en/latest/use_video.html>`_
+
+.. image:: img/block/face_detection.PNG
+
+
 **TIPS**
 
 .. image:: img/block/sp210512_141947.png
 
-You need to set face detection status to true to enable face detection.
+You need to set face detection to **on** to enable face detection.
 
 .. image:: img/block/sp210512_142327.png
 
@@ -20,7 +25,7 @@ You can read the image detection results through this block, modify the drop-dow
 
 .. image:: img/block/sp210512_142616.png
 
-you may want to use text block to print the combination of texts & data at once.
+You may want to use text block to print the combination of texts & data at once.
 
 **EXAMPLE**
 

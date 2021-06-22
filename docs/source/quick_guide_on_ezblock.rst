@@ -1,43 +1,37 @@
 Quick Guide on Ezblock
 ===========================
 
-In this chapter, you will be taught the way to set up your Ezblock APP (tablet, mobile phone, computer) and Raspberry Pi.
+We've put all the detailed tutorials for Ezblock 3 in `Ezblock Studio 3 <https://docs.sunfounder.com/projects/ezblock3/en/latest/#>`_.
 
-The steps in this chapter should be executed prior to your assembly of PiCar-X, otherwise the steering gear may be installed incorrectly. 
+Before Assembling
+--------------------
 
-.. warning:: upon completion of the steps in this chapter, do not hurry to create a new example of the flash of Raspberry Pi, but assemble it first.
+But before assembling, you only need to complete `Download and Install Ezblock OS <https://docs.sunfounder.com/projects/ezblock3/en/latest/quick_user_guide_for_ezblock3.html#download-and-install-ezblock-os>`_.
 
+After burning the Ezblock system, P11 was set to calibrate the servo angle to 0°. To make sure you can see that the servo has been set to 0°, you can insert a rocker arm in the servo shaft first and then turn the servo to another angle.
 
-Setup Your Raspberry Pi
-----------------------------
+.. image:: img/servo_arm.png
 
-In addition to playing this product, you ought to flash the **Ezblock image** into the Raspberry Pi.
+Now follow the diagram below and insert the servo to the P11 position.
 
+.. image:: img/pin11_connect.png
+    :width: 600
 
-**Required Components**
+So now if the servo arm returns after the servo arm returns, this function will take effect. If not, press the **RESET button** to restart.
 
+.. note::
+    Before assembling each servo, you need to plug the servo pin into P11 and keep the power on.
 
-* Raspberry Pi	
-* 1 x Power Adapter
-* 1 x Mirco SD Card	
-* 1 x Personal Computer
-
-**Procedures**
-
-1. Prepare the tool of image burning. Here we use the Etcher. You can download the software here: https://www.balena.io/etcher/. 
-   
-#. Download the Ezblock for Raspberry Pi image file here: https://ezblock.cc/download/index.html.
-   
-#. Unzip the package downloaded and you will see the ``.img`` file inside. 
-
-    .. note:: 
-        Do not extract the ``.img`` file. 
-
-#. With Etcher, flash the image file into the SD card.
-
-#. At this point, Ezblock for Raspberry Pi is installed. Please insert the Micro SD card into your Raspberry Pi. 
+    This function will be invalid after writing any programs.
 
 
 
+Before Programming
+------------------------
+
+
+Before you program, you need to download Ezblock Studio. The current download is Ezblock 2, and you will need to manually upgrade to Ezblock 3.
+
+For detailed tutorials, please refer to: `Install Ezblock Studio <https://docs.sunfounder.com/projects/ezblock3/en/latest/quick_user_guide_for_ezblock3.html#install-ezblock-studio>`_.
 
 

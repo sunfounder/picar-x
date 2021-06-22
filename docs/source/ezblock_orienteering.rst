@@ -1,12 +1,29 @@
 Orienteering
 ==================
 
-让PiCar-X进行一次寻宝游戏！布置一个有六个标记地点的场地（可以是迷宫、广场、房间、赛车道），在这六个标记地点各放入一张标准色卡（red, orange, yellow, green, blue & purple）。
+Put PiCar-X on a scavenger hunt!
 
-将PiCar-X放在场地中间，点击Bluetooth Control界面的Button开始游戏。PiCar-X将会接到任务 —— 依次寻找三个颜色。同时，PiCar-X会用语音功能告诉你正在寻找的颜色。
-你的任务便是在尽能短的时间里帮助它完成任务。
+Set up a scene with six markers (maze, square, room, race track) and place a color card in each of the six markers.
 
-你可以和朋友轮流进行这场游戏，来比一比谁能更快帮PiCar-X完成任务。
+
+We trained 6 color models for PiCar-X, red, orange, yellow, green, blue and purple. You can print them yourself, but you need to make sure they are printed in color.
+
+* `Color Cards File <https://github.com/sunfounder/picar-x/blob/v2.0/printfile/Color%20Cards.pdf>`_
+
+.. image:: img/block/color_card.png
+
+.. note::
+
+    Please understand that the printed traffic sign cardboard may be a little different from the one we trained because of the color difference or material, which will lead to a less accurate recognition.
+
+Place PiCar-X in the middle of the field and click the Button on the Remote Control page to start the game.
+
+PiCar-X will be given a task - to find the three colors in turn. At the same time, PiCar-X will tell you which color you are looking for using the voice function.
+Your task is to help it complete the task in as short a time as possible.
+
+.. image:: img/block/orienteering.png
+
+You can take turns playing this game with your friends to see who can help PiCar-X complete the task faster.
 
 **EXAMPLE**
 

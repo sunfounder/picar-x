@@ -9,7 +9,7 @@ PiCar-X can make voice. You can enter text to make it speak, or make specific so
 
 Write the sentence in this block, and PiCar-X will say it. It can be used with Text.
 
-.. image:: img/block/sp210512_144106.png
+.. image:: img/block/sp210512_144150.png
 
 A number block.
 
@@ -19,11 +19,11 @@ You may want to use repeat which can help you repeatedly execute the same statem
 
 .. image:: img/block/sp210512_144418.png
 
-Mathematical operation block can perform " + , - , x , ÷ ".
+Mathematical operation block can perform " + , - , x , ÷ ".
 
 .. image:: img/block/sp210512_144530.png
 
-This block can emit some preset sound effects, such as siren sound, gun sound and so on. The range of volume is 1~100.
+This block can emit some preset sound effects, such as siren sound, gun sound and so on. The range of volume is 1~100.
 
 **EXAMPLE**
 

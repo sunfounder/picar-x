@@ -1,13 +1,17 @@
 Beware of Pedestrians
 =============================
 
-This example demonstrates the process of executing countermeasures based on road conditions (pedestrians) when an intelligent vehicle is driving. 
+This project demonstrates PiCar-X performing appropriate measures based on road conditions (pedestrians) while driving.
 
-Ezblock has been provided with a well-trained and usable human face detection model, which PiCar-X calls directly, allowing it to directly recognize the presence of a human face in front of the camera. 
+If you put a photo of a person in front of PiCar-X, you will see the face circled in the Video Monitor.
 
-If you put a photo of a person in front of PiCar-X, you will see that part of the human face in the screen of Camera Monitor will be circled and selected.
+When PiCar-X detects a human face, we make it stop automatically.
 
-We instruct PiCar-X to stop automatically when it identifies a human face. With a view to guarantee driving safety more stably, we have programmed a section of frequency judgment of human face appearance for PiCar-X: human face detection is performed 10 times per unit time, and if human face information appears more than 3 times, the driving will stop.
+For driving safety, we wrote a judgment procedure: detecting a human face 10 times in a unit time, and if the face appears more than 3 times, it stops driving.
+
+* `How to Use the Video Function? <https://docs.sunfounder.com/projects/ezblock3/en/latest/use_video.html>`_
+
+.. image:: img/block/face_detection.PNG
 
 
 **EXAMPLE**

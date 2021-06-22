@@ -1,9 +1,9 @@
 Text to Speak
 ===========================
 
-Before using TTS functions, you must activate amplifier so that it can make a sound.
+Before using TTS functions, you must activate speaker so that it can make a sound.
 
-Run ``i2samp.sh`` script in the directory of **picar-x**, and this script will install everything needed to use i2s amplifier.
+Run ``i2samp.sh`` in the **picar-x** folder, and this script will install everything needed to use i2s amplifier.
 
 .. code-block::
 
@@ -11,10 +11,9 @@ Run ``i2samp.sh`` script in the directory of **picar-x**, and this script will i
 
 .. image:: img/tt_bash.png
 
-You will be prompted to confirm the request many times and choose **Y**, and finally, some changes made to your system require your computer to reboot to take effect.
+You will be prompted several times to confirm the request, all with **Y**. Finally, some changes made to your system require your computer to reboot to take effect.
 
-After restarting, you can run ``i2samp.sh`` script again, which will test the amplifier for you. If you successfully hear the sound, it suggests that the configuration has been fully configured. 
-
+After rebooting, you can run the ``i2samp.sh`` script again, which will test the amplifier for you. If you hear the sound successfully, the configuration is complete. 
 
 **Code**
 
@@ -37,7 +36,7 @@ After restarting, you can run ``i2samp.sh`` script again, which will test the am
 
 We use `eSpeak <http://espeak.sourceforge.net/>`_ to implement the functions of tts.
 
-You can use ``tts.lang("")`` to set the language and ``tts.say("")`` to speak out the text.
+You can use ``lang("")`` to set the language and ``say("")`` to speak out the text.
 
 You can set the language by setting the parameters of ``lang("")`` with the following characters.
 

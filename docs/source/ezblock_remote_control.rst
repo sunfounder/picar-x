@@ -1,17 +1,19 @@
 Remote Control
 =======================
 
-Next we control the PiCar-X with a tablet. You will need to use the Joystick at the 
-Bluetooth control page. By the way, you need to use the "Map" function to map the 
+Next we control the PiCar-X with your device. You will need to use the Joystick at the 
+Remote Control page. By the way, you need to use the "Map" function to map the 
 X-axis reading of the Joystick as a suitable angle.
 
 * `How to Use the Remote Control Function? <https://docs.sunfounder.com/projects/ezblock3/en/latest/remote.html>`_
+
+.. image:: img/block/remote_control23.png
 
 **TIPS**
 
 .. image:: img/block/sp210512_114004.png
 
-To use the remote control function, you need to enter the Bluetooth Control page from the left side of main page.
+To use the remote control function, you need to enter the Remote Control page from the left side of main page.
 
 .. image:: img/block/sp210512_114042.png
 
@@ -20,7 +22,8 @@ The range of the X or Y axis is "-100 ~ 100". Toggling the point to the left wil
 
 .. image:: img/block/sp210512_114136.png
 
-This block reads the Joystick value in the Bluetooth control page. You can click the drop-down menu to switch to the Y-axis reading.
+After dragging and dropping a widget on the remote control page, a new category-Remote with the above block will appear.
+This block reads the Joystick value in the Remote Control page. You can click the drop-down menu to switch to the Y-axis reading.
 
 .. image:: img/block/sp210512_114235.png
 

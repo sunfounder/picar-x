@@ -1,8 +1,7 @@
 Cliff Detection
 ===========================
 
-Next, we start the grayscale module to prevent the car from falling off the cliff when it 
-moves freely.
+Next, we start the grayscale module to prevent the car from falling off the cliff when it moves freely.
 
 **TIPS**
 

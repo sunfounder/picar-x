@@ -1,8 +1,8 @@
 Line Track
 ====================================
 
-Use 1cm of black insulating tape to paste a track on a light-colored ground (or desktop). 
-Run this program, and you will see PiCar-X sprinting into the track.
+Tape a track on a light colored ground (or table) with 1 cm black insulating tape.
+Run the program and you will see PiCar-X moving forward on the track.
 
 .. warning::
     In sharp bend will cause derailment!
@@ -48,15 +48,17 @@ Run this program, and you will see PiCar-X sprinting into the track.
 
 **How it works?** 
 
-在这里我们调用了 ``Grayscale_Module`` 库。
+Here we call the ``Grayscale_Module`` library.
 
-这个库有两个调用函数：
+This library has two methods:
 
-1. ``get_grayscale_data()`` :它会直接输出三个探测头的读数（从右侧到左侧牌序），通常，越明亮的地方获取到的值越大。
+* ``get_grayscale_data()``: It will directly output the readings of the three probes (from right to left), and usually, the brighter the area, the larger the value obtained.
 
-2. ``get_line_status()`` :它会根据三个探测头检测到的值生成小车的应对策略。分为 ``forward`` , ``left`` , ``right`` , ``stop`` 四种。
+* ``get_line_status()``: It will generate the corresponding actions based on the values detected by the three probes. There are four types: ``forward`` , ``left`` , ``right`` , and ``stop``.
 
-这些应对应策略的产生条件如下：在生成对象时，我们会传进一个数字作为阈值（如 ``gm = Grayscale_Module(500)`` 就是生成一个阈值为500的gm对象）。
-当，三个探测头的检测值都大于阈值，则说明探测头下都是白色，没有黑线， ``get_line_status()`` 产生返回值 ``stop`` 。
-如果右侧（也是第一个）探测头检测到黑线，则生成 ``right`` ; 中间探测头检测到黑线则返回 ``forward`` ; 左侧探测头检测到黑线则返回 ``left`` 。
+The trigger conditions for these actions are as follows: when generating the object, we pass in a number as a threshold (e.g. ``gm = Grayscale_Module(500)`` is to generate a gm object with a threshold of 500).
+When the detection value of all three probes is greater than the threshold, it means that the probes are all white under the head and there are no black lines, ``get_line_status()`` generates the return value ``stop``.
 
+* If the right (and the first) probe detects a black line, ``right`` is returned; 
+* If the middle probe detects a black line, return ``forward`` ; 
+* If the left probe detects a black line, ``left`` is returned.

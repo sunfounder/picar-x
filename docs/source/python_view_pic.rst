@@ -1,9 +1,9 @@
 Computer Vision
 ==========================================
 
-Next, we will officially enter the realm of computer vision!
+Next we officially enter the field of computer vision!
 
-With a view to better execute the next experiment, you need :ref:`View RPi Desktop by VNC`, and run the example in the Terminal of Raspberry Pi (instead of remote execution through SSH).
+To better perform the next experiments, you need to complete :ref:`View RPi Desktop by VNC`, and open a terminal to run the projects (not remotely via SSH).
 
 
 **Code**
@@ -53,7 +53,7 @@ The simplest way to use it is as below. Capturing an image to a file is as simpl
     sleep(2)
     camera.capture('foo.jpg')
 
-In our example, we make use of the method of **capturing timelapse sequences** more exactly, which is to enable OpenCV to acquire continuous pictures.
+In our project, we are more precisely using the **capturing timelapse sequences** method. This is to enable OpenCV to acquire sequential frames.
 
 With this method, the camera captures images continually until you tell it to stop. Images are automatically given unique names and you can easily control the delay between captures.
 
@@ -97,7 +97,10 @@ In order to capture OpenCV objects, we'll capture an image to a ``BytesIO`` stre
     # use the following...
     image = image[:, :, ::-1]
 
-To avoid the JPEG encoding and decoding (which is lossy) and potentially speed up the process, you can now use the classes in the ``picamera.array`` module. As OpenCV images are simply ``numpy`` arrays arranged in BGR order, one can use the ``PiRGBArray`` class and simply capture with the ``'bgr'`` format (given that RGB and BGR data is the same size and configuration, just with reversed color planes).
+To avoid the JPEG encoding and decoding (which is lossy) and potentially speed up the process, you can now use the classes in the `picamera.array` module.
+
+As OpenCV images are simply `numpy` arrays arranged in BGR order, one can use the `PiRGBArray` class and simply capture with the `'bgr'` format (given that RGB and BGR data is the same size and configuration, just with reversed color planes).
+
 
 * `PiRGBArray <https://picamera.readthedocs.io/en/release-1.13/api_array.html#pirgbarray>`_
 
@@ -117,7 +120,7 @@ To avoid the JPEG encoding and decoding (which is lossy) and potentially speed u
             image = stream.array
 
 
-By capturing timelapse sequences in combination, these 3-dimensional RGB arrays are shown by OpenCV.
+Combined with the method of capturing timelapse sequences, these 3-dimensional RGB arrays are shown by OpenCV.
 
 .. code-block:: python
 
@@ -142,7 +145,8 @@ By capturing timelapse sequences in combination, these 3-dimensional RGB arrays 
             camera.close()
             break
 
-There are other methods available for reading the video stream with OpenCV, and it can be better applied to the next missions such as color detection.
-For more gameplay, please check `OpenCV-Python Tutorials <https://docs.opencv.org/4.0.0/d6/d00/tutorial_py_root.html>`_ .
+There are other ways to read video streams with OpenCV, and the one we use is better suited for the next tasks such as Color detection.
+
+For more ways, please check `OpenCV-Python Tutorials <https://docs.opencv.org/4.0.0/d6/d00/tutorial_py_root.html>`_.
 
 
