@@ -1,4 +1,4 @@
-Line Track
+Line Tracking
 ====================================
 
 Tape a track on a light colored ground (or table) with 1 cm black insulating tape.
@@ -60,5 +60,5 @@ The trigger conditions for these actions are as follows: when generating the obj
 When the detection value of all three probes is greater than the threshold, it means that the probes are all white under the head and there are no black lines, ``get_line_status()`` generates the return value ``stop``.
 
 * If the right (and the first) probe detects a black line, ``right`` is returned; 
-* If the middle probe detects a black line, return ``forward`` ; 
+* If the middle probe detects a black line, return ``forward``; 
 * If the left probe detects a black line, ``left`` is returned.

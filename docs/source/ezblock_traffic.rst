@@ -1,7 +1,12 @@
 Traffic Sign Detection
 ===============================
 
-In this project, you will use a new detection function, **traffic sign detection**. We have trained 4 traffic sign models for PiCar-X, which you can print yourself, but you need to be careful to make sure they are printed in color.
+In this project, you will use a new detection function, **traffic sign detection**. The traffic sign detection process is as follows: 
+
+First, the video frames are pre-processed by OpenCV and regions are selected on the image, then the regions are passed into the model that has been trained using TensorFlow. Finally, according to the type and accuracy returned by the model, the corresponding region on the image is framed and labeled with the type and accuracy.
+
+We have trained 4 traffic sign models for PiCar-X, which you can print yourself, but you need to be careful to make sure they are printed in color.
+
 
 * `Traffic Sign Cards File <https://github.com/sunfounder/picar-x/blob/v2.0/printfile/Traffic%20Sign%20Cards.pdf>`_
 

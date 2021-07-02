@@ -1,4 +1,4 @@
-View RPi Desktop by VNC
+Remote Desktop via VNC
 =============================
 
 The following chapters are related to computer vision, where you need to implement a remote desktop with the help of VNC in order to check the images recognized by PiCar-X.

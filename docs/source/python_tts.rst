@@ -1,4 +1,4 @@
-Text to Speak
+Text to Speech
 ===========================
 
 Before using TTS functions, you must activate speaker so that it can make a sound.

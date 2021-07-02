@@ -4,6 +4,10 @@ Color Detection
 PiCar-X is a Self-driving car with Camera. Ezblock also provides some object detection functions. Here we try color detection. Prior to this, you must ensure that the Pi Camera 
 FFC cable is properly and securely connected.
 
+The color detection process is as follows:
+
+First find out the HSV space range of the color to be detected, then use OpenCV to process the colors in the range with open operations to remove the noise, and finally box the matching color.
+
 We trained 6 color models for PiCar-X, red, orange, yellow, green, blue and purple. You can print them yourself, but you need to make sure they are printed in color.
 
 * `Color Cards File <https://github.com/sunfounder/picar-x/blob/v2.0/printfile/Color%20Cards.pdf>`_

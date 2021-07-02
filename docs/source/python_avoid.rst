@@ -1,4 +1,4 @@
-Avoiding Obstacles
+Obstacle Avoidance
 =============================
 
 In this project, PiCar-X will detect obstacles in front of it with an ultrasonic module. When the distance of the detected obstacle is less than 25cm, PiCar-X will turn left, otherwise it will continue to move forward.

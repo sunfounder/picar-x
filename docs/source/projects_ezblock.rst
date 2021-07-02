@@ -10,7 +10,7 @@ If you don't want to write these projects one by one, we have uploaded them to E
 
 Also on the Examples page you can choose Block or Python language, but in the projects below, only the Block language is explained.
 
-You can use this `file <https://github.com/sunfounder/picar-x/blob/v2.0/docs/(EN)%20picarmini.mdthe>`_ to help you understand the Python code.
+You can use this `file <https://github.com/sunfounder/picar-x/blob/v2.0/docs/(EN)%20picarmini.md>`_ to help you understand the Python code.
 
 .. image:: img/block/examples23.png
 
