@@ -1,21 +1,21 @@
 Test Ultrasonic Module
 ==============================
 
-PiCar-X has Ultrasonic Sensor module that can be used for experiments such as obstacle avoidance and automatic follow. Here we will try to test this module and read the distance (unit: cm).
+PiCar-X has a built-in Ultrasonic Sensor module that can be used for obstacle avoidance and automatic object-following experiments. In this lesson the module will read a distance in centimeters (24 cm = 1 inch), and **Print** the results in a **Debug** window.
 
 **TIPS**
 
 .. image:: img/block/sp210512_114549.png 
 
-You can directly use this block to read the distance to the obstacle right ahead.
+The **Ultrasonic get distance** block will read the distance from the PiCar-X to an obstacle directly ahead.
 
 .. image:: img/block/sp210512_114830.png
 
-You may want to simplify your program with Variable. For example, when you have multiple functions that need to read the obstacle distance, you don't need to read the value for each function, just load the value into a variable and use it multiple times.
+This program is simplified with a **Variable**. For example, when there are multiple functions in a program that each need to use the distance to an obstacle, a **Variable** can be used to report the same distance value to each function, instead of each function reading the same value separately.
 
 .. image:: img/block/sp210512_114916.png
 
-Click the **Create variable** button on the **Variables** category to create a variable named distance.
+Click the **Create variable...** button on the **Variables** category, and use the drop-down arrow to select the variable named “distance”.
 
 .. image:: img/block/sp210512_114945.png
 
@@ -23,7 +23,7 @@ The **Print** function can print data such as variables and text for easy debugg
 
 .. image:: img/block/debug_monitor.png
 
-Once the code is running, you need to enable the debug monitor by clicking the debug icon in the bottom left corner.
+Once the code is running, enable the debug monitor by clicking the **Debug** icon in the bottom left corner.
 
 **EXAMPLE**
 

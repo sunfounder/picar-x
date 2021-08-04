@@ -1,16 +1,14 @@
 Projects
 =========================
 
-Here, we show you the projects of playing PiCar-X on Ezblock Studio. If you are new to these, 
-you can try to write the corresponding function according to TIPS, or directly 
-use the reference code in Example. We suggest you do it yourself and experience the 
-fun of challenges.
+This section begins with basic programming functions for the PiCar-X, and continues through to creating more advanced programs in Ezblock Studio. 
+Each tutorial contains TIPS that introduce new functions, allowing users to write the corresponding program. 
+There is also a complete reference code in the Example section that can be directly used. 
+We suggest attempting the programming without using the code in the Example sections, and enjoy the fun experience of overcoming the challenges!
 
-If you don't want to write these projects one by one, we have uploaded them to Ezblock Studio's Examples page and you can run them directly or edit them and run them later.
+All of the Ezblock projects have been uploaded to Ezblock Studio’s Examples page. From the Examples page, users can run the programs directly, or edit the examples and save them into the users My Projects folder.
 
-Also on the Examples page you can choose Block or Python language, but in the projects below, only the Block language is explained.
-
-You can use this `file <https://github.com/sunfounder/picar-x/blob/v2.0/docs/(EN)%20picarmini.md>`_ to help you understand the Python code.
+The Examples page allows users to choose between Block or Python language. The projects in this section only explain Block language, for an explanation of the Python code, please review this `file <https://github.com/sunfounder/picar-x/blob/v2.0/docs/(EN)%20picarmini.md>`_ to help you understand the Python code.
 
 .. image:: img/block/examples23.png
 

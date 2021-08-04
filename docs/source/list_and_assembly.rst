@@ -1,10 +1,11 @@
-List and Assembly
-=======================
+Component List and Assembly Instructions
+==========================================
 
-You need to check whether there are missing or damaged components according to the list first. If there are any problems, please contact us and we will solve them as soon as possible.
+Before assembling the PiCar-X, please first verify that all parts and components have been included. If there are any missing or damaged components, please contact SunFounder immediately at cs@sunfounder.com to resolve the issue as soon as possible.
 
-Please follow the steps on the PDF to assemble.
+Please follow the steps on the following PDF for assembly instructions: :download:`[PDF]Component List and Assembly of PiCar-X <https://github.com/sunfounder/sf-pdf/raw/master/assembly_file/a0000676-picar-x.pdf>`.
 
-If the servo has been powered on, please do not turn the steering gear shaft to avoid damage.
+.. note:: 
 
-Here is the `List and Assembly of PiCar-X.pdf <https://github.com/sunfounder/picar-x/blob/v2.0/printfile/List%20and%20Assembly%20of%20PiCar-X.pdf>`_.
+    If the servos has been powered on through the Robot HAT after assembly, do not manually force the steering gear, as this could cause damage to the servo.
+

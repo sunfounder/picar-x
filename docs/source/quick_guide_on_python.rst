@@ -1,13 +1,9 @@
 Quick Guide on Python
 ==========================
 
-This section is to teach you how to install Raspberry Pi OS, configure wifi to Raspberry Pi, remote access to Raspberry Pi to run the corresponding code.
+This section reviews how to install the Raspberry Pi OS, configure the WiFi settings on a Raspberry Pi, and how to remote access the Raspberry Pi to run code and create programs.
 
-If you are familiar with Raspberry Pi and can open the command line successfully, then you can skip the first 3 parts and start directly from :ref:`download_code` all the way to :ref:`run_servo_zeroing.py`. 
-
-.. note:: 
-
-    servo_zeroing.py is what makes the P11 output a stable square wave that sets the servo angle to 0. You need to run this code before assembling each servo.
+For users familiar with Raspberry Pi enough to open the command line interface, please ignore the first three parts of this section and skip ahead to :ref:`download_code` , :ref:`run_install.py` and :ref:`run_servo_zeroing.py`. 
 
 
 * :ref:`install_raspberry_pi_os`
@@ -16,13 +12,17 @@ If you are familiar with Raspberry Pi and can open the command line successfully
 * :ref:`download_code`
 * :ref:`run_install.py`
 * :ref:`run_servo_zeroing.py`
+  
+.. note:: 
+
+    The ``servo_zeroing.py`` is a Python program that enables the P11 port to output a stable square wave that will set the servo angle to 0°. This code needs to be run separately on each servo before assembly. 
 
 
 .. _install_raspberry_pi_os:
 
-Install Raspberry Pi OS
+Install the Raspberry Pi OS
 -------------------------------
-You are required to prepare the following items:
+Prepare the following items:
 
 * Personal computer
 * Raspberry Pi
@@ -30,41 +30,42 @@ You are required to prepare the following items:
 * SD card
 * Power supply
 
-1. Insert the SD card (with card reader) into the PC and open `Raspberry Pi Imager <https://www.raspberrypi.org/downloads/>`_ .
+1. Insert the Micro SD card (with card reader) into the PC and open `Raspberry Pi Imager <https://www.raspberrypi.org/downloads/>`_ .
 
     .. image:: img/RPi_imager.png
 
-#. Click CHOOSE OS and Select the first one (Recommended) to download and write.
+#. Click **CHOOSE OS** and Select the first one (Recommended for 32-bit systems) to download the Raspberry Pi OS.
 
     .. image:: img/RPi_imager2.png
 
-#. Click CHOOSE SD CARD. Select the one you just insert into PC.
+#. Click **CHOOSE SD CARD** . At the prompt, select the Micro SD card inserted into the PC.
     
     .. image:: img/RPi_imager3.png
 
-#. Write!
+#. Click **WRITE** to burn the Rasbian OS onto the Micro SD card.
 
     .. image:: img/RPi_imager4.png
 
 .. note::
     
-    For more ways to install Raspberry Pi OS, please click https://www.raspberrypi.org/documentation/installation/.
+    For full review of installing the Raspberry Pi OS, please reference the online documentation here: `Standard Installation <https://www.raspberrypi.org/documentation/installation/>`_.
 
 .. note::
-    If you have a display, getting into the Raspberry Pi and opening Terminal to run the code is a simple task for you, for a detailed tutorial please refer to: `Setting up your Raspberry Pi <https://projects.raspberrypi.org/en/projects/raspberry-pi-setting-up>`_ .
+
+    For a detailed tutorial on how to launch Raspberry Pi and open a Terminal interface, please refer to: `Setting up your Raspberry Pi <https://projects.raspberrypi.org/en/projects/raspberry-pi-setting-up>`_.
     
-    If you do not have a display, you will need to follow the tutorial below to access the Raspberry Pi remotely via your own PC.
+    For users without a display attached to the Raspberry Pi, follow the instructions below to access the Raspberry Pi remotely from a PC.
 
 .. _configure_wifi_file:
 
 Configure Wi-Fi File
 -----------------------------------------------
 
-You will need to define a ``wpa_supplicant.conf`` file for your particular wireless network. Put this file in the ``boot`` folder, and when the Pi first boots, it will copy that file into the correct location and use those settings to start up wireless networking. 
+A ``wpa_supplicant.conf`` file will need to be created and configured for the users local wireless network. Put this file in the ``boot`` folder of the Raspberry Pi. When the Raspberry Pi first boots, it will copy that file into the correct location and use the settings in the file for wireless networking.
 
-Depending on the operating system and editor you are using, the file may have incorrect line breaks or the wrong file extension, so make sure the editor you are using can fix this.
+Depending on the operating system and text-editor, the file may have incorrect line breaks, or possibly an incorrect file extension. Linux expects the line feed (LF) newline character. For more information, reference the following article: `Newline Wikipedia <https://en.wikipedia.org/wiki/Newline>`_ .
 
-Linux expects the line feed (LF) newline character. For more information, see this `Wikipedia article <https://en.wikipedia.org/wiki/Newline>`_ .
+If there are complications, SunFounder recommends using GNU Nano as a text editor.
 
 .. image:: img/setup_python1.png
 
@@ -81,10 +82,12 @@ Linux expects the line feed (LF) newline character. For more information, see th
 
 .. warning::
 
-    * More information on the ``wpa_supplicant.conf`` file can be found in https://www.raspberrypi.org/documentation/configuration/wireless/wireless-cli.md. 
-    * See `ISO_3166 - Wikipedia <https://en.wikipedia.org/wiki/ISO_3166-1>`_ for a list of 2 letter ISO 3166-1 country codes.
-    * Note that some older wireless dongles don't support 5GHz networks.
-    * For more ways to set up a wireless network, please click https://www.raspberrypi.org/documentation/configuration/wireless/README.md.
+    * More information on the ``wpa_supplicant.conf`` file can be found here: `Setting up a wireless LAN <https://www.raspberrypi.org/documentation/configuration/wireless/wireless-cli.md>`_. 
+    * Reference `ISO_3166 - Wikipedia <https://en.wikipedia.org/wiki/ISO_3166-1>`_ for a list of 2 letter ISO 3166-1 country codes.
+    * Some older wireless dongles do not support 5GHz networks.
+    * For more ways to set up a wireless network, please reference `Wireless connectivity <https://www.raspberrypi.org/documentation/configuration/wireless/README.md>`_.
+
+
 
 
 .. _remote_access_by_ssh:
@@ -92,32 +95,31 @@ Linux expects the line feed (LF) newline character. For more information, see th
 Remote Access by SSH
 ------------------------------------
 
-**Enable SSH** 
+**Enabling SSH** 
 
-You can access the command line of a Raspberry Pi remotely from another computer or device on the same network using SSH.  
+Using SSH, the command line of a Raspberry Pi can be accessed remotely from another computer or device on the same network.
 
-The Raspberry Pi will act as a remote device: you can connect to it using a client on another machine. In this way, you only have access to the command line, not the full desktop environment.
+The Raspberry Pi will act as a remote device, and can be connected to by using a client service on another machine. This will provide access to the command line interface, but will not show the full Rasbian desktop environment.
+When the Raspberry Pi OS is flashed onto a blank SD card, it will create two partitions. The first partition is the smaller one, and is used as the boot partition.
 
-SSH can be enabled by placing a file named ``ssh``, without any extension, onto the ``boot`` partition of the SD card from another computer. When the Pi boots, it looks for the ssh file. If it is found, SSH is enabled and the file is deleted. The content of the file does not matter; it could contain text, or nothing at all.
+SSH can be enabled by placing a file simply named ``ssh``, without an extension, onto the boot partition of the SD card. When the Raspberry Pi boots, it will first look for an “ssh” file in the boot partition. If an “ssh” file is found, Rasbian will enable the SSH protocol, and then delete the “ssh” file. The contents of the file will not matter, just the name of the file needs to be “ssh”.
 
 .. image:: img/ssh.png
 
-If you have loaded Raspberry Pi OS onto a blank SD card, you will have two partitions. The first one, which is the smaller one, is the boot partition. Place the file into this one.
+When the Raspberry Pi OS is loaded onto a blank SD card,there will be two partitions. The first one, which is the smaller one, is the boot partition. Place the ssh file into this partition.
 
 .. image:: img/boot_disk.png
 
-Now you can unplug the Micro SD, then plug it into the Raspberry Pi and power on the Raspberry Pi.
+Eject the Micro SD from the PC, then insert it into the Raspberry Pi, and then power on the Raspberry Pi.
 
 
-**Find the IP address**
+**Find the Raspberry Pi’s IP address**
 
-Any device connected to a Local Area Network is assigned an IP address.
-In order to connect to your Raspberry Pi from another machine using SSH, you need to know the Pi's IP address. 
+Any device connected to a Local Area Network is assigned an IP address. In order to connect to the Raspberry Pi from another machine using SSH, the Raspberry Pi’s IP address is needed.
 
 On Raspberry Pi OS, **multicast DNS** is supported out-of-the-box by the Avahi service.
 
-If your device supports mDNS, you can reach your Raspberry Pi by using its ``hostname`` and the ``.local`` suffix. The default hostname on a fresh Raspberry Pi OS install is ``raspberrypi``, so by default any Raspberry Pi running Raspberry Pi OS responds to:
-
+For PC’s that support multicast DNS, the Raspberry Pi can be reached by using a ``hostname`` and the ``.local`` suffix. The default hostname on a new Raspberry Pi OS install is ``raspberrypi``. By default, any Raspberry Pi running Raspberry Pi OS responds to:
 
 .. code-block:: shell
 
@@ -142,15 +144,15 @@ If the Raspberry Pi is reachable, ping will show its IP address:
         Minimum = 1ms, Maximum = 54ms, Average = 14ms
 
 
-For more ways to find the IP address, please click https://www.raspberrypi.org/documentation/remote-access/ip-address.md .
+For more ways to find the IP address, please reference the following site: `IP Address <https://www.raspberrypi.org/documentation/remote-access/ip-address.md>`_.
 
 
-**Remote Access**
+**Remote Access using SSH**
 
-You can use SSH to connect to your Raspberry Pi from a **Windows 10** computer that is using **October 2018 Update or later** without having to use third-party clients.
+SSH can be used to connect to a Raspberry Pi from a **Windows 10** computer with an **October 2018 Update or later** without having to use a third-party client software.
 
-* For use SSH from a Linux computer, or a Mac, please click https://www.raspberrypi.org/documentation/remote-access/ssh/unix.md .
-* For older version of Windows, please click https://www.raspberrypi.org/documentation/remote-access/ssh/windows.md .
+* For use SSH from a Linux computer or a Mac, please follow the instructions here: `SSH using Linux or Mac OS <https://www.raspberrypi.org/documentation/remote-access/ssh/unix.md>`_.
+* For older version of Windows, please  please follow the instructions here: `SSH using Windows OS <https://www.raspberrypi.org/documentation/remote-access/ssh/windows.md>`_.
 
 To connect to your Pi from a different computer, copy and paste the following command into the terminal window, but replace ``<IP>`` with the IP address of the Raspberry Pi.
 
@@ -160,39 +162,41 @@ To connect to your Pi from a different computer, copy and paste the following co
 
 .. image:: img/ssh_pi_ip.png
 
-When the connection works, you will see a security/authenticity warning, type ``yes`` to continue. You will only see this warning the first time you connect.
+When the connection is established, a security/authenticity warning will appear. Type ``yes`` to continue. This warning will only appear the first time a connection is established.
 
 .. image:: img/secure_warning.png
 
 .. warning::
 
-    In the event that your Pi has taken the IP address of a device to which your computer has connected before (even if this was on another network), you may be given a **warning** and asked to clear the record from your list of known devices. Following it and try to ssh again please.
+    In the event that the Raspberry Pi has taken the IP address of a device the PC has connected to before, even if the device was on a different network, a **warning** may appear, and request that the recorded IP from the list of known devices be cleared from memory. Follow the on-screen instructions to remove the cached IP address, and try to ssh into the Raspberry Pi again.
 
-Next you will be prompted for the password for the user as which you are trying to connect: the default password for the pi user on Raspberry Pi OS is  ``raspberry``.
+The next prompt will be for the user password. The default password for the Raspberry Pi OS is  ``raspberry``.
 
-* When you input the password, the characters do not display on window accordingly, which is normal. What you need is to input the correct password.
+.. note::
 
-* For security reasons it is highly recommended to change the default password on the Raspberry Pi. You should now be able to see the Raspberry Pi prompt, which will be identical to the one found on the Raspberry Pi itself.
+  * The characters do not display when typing in the password. Make sure to input the correct password.
+  * For security reasons it is highly recommended to change the default password on the Raspberry Pi. 
 
 .. image:: img/ssh_pi_terminal.png
 
-You are now connected to the Raspberry Pi remotely, and can execute commands in this terminal.
+The Raspberry Pi prompt should now be displayed in the terminal window, which will be identical to the terminal on the Raspberry Pi itself. This confirms that the remote connection to the Raspberry Pi has been established, and commands can be executed through this terminal interface.
 
 
 .. _download_code:
 
-Download Code
------------------
+Download the PiCar-X Code Files
+----------------------------------------
 
-We can download the files by using ``git clone`` in the command line.
+Download the PiCar-X files by using ``git clone`` in the command line.
 
-Change directory to **/home/pi/** via `cd command <https://en.wikipedia.org/wiki/Cd_(command)>`_ .
+
+First change the directory to **/home/pi/** via `cd command <https://en.wikipedia.org/wiki/Cd_(command)>`_ .
 
 .. code-block:: shell
 
     cd /home/pi/
 
-Clone the repository from github via `git clone command <https://github.com/git-guides/git-clone>`_ .
+Then clone the repository from github via `git clone command <https://github.com/git-guides/git-clone>`_ .
 
 .. code-block:: shell
 
@@ -213,15 +217,15 @@ Enter the following two commands to run the ``install.py`` file in the ``picar-x
 
     sudo python3 install.py
 
-This file will help you finish the installation of the required library and configuration of Raspberry Pi.
+The ``install.py`` file will finish the installation of the required Python libraries, and configure the Raspberry Pi for PiCar-X operations.
 
 .. image:: img/install_py.png
 
 .. warning::
     
-    For the reason of the network, ``install.py`` may encounter some **Errors** in some processes. If there is an error prompt, please check the network and re-run ``install.py`` until all processes show **Done** and prompt **Finished** at the end.
+    The ``install.py`` program may encounter some **Errors** due to network connectivity. If there is an error prompt, please check the network and re-run ``install.py`` until all processes show **Done** and the prompt **Finished** appears at the end.
 
-This step will take a little time, so please be patient. After the file is fully executed and the prompt ``Finished`` is issued, please restart the Raspberry Pi.
+This step can take several minutes. After the file is fully executed and the prompt **Finished** appears, please restart the Raspberry Pi.
 
 .. code-block:: shell
 
@@ -229,9 +233,9 @@ This step will take a little time, so please be patient. After the file is fully
 
 .. _run_servo_zeroing.py:
 
-Run servo_zeroing.py
----------------------------------
-Because the servo is powered by the power supply on the Robot HAT, when you only supply power to the Raspberry Pi, the servo will not work. You need to make sure that the batterries are placed in the battery box and the Robot HAT is powered on.
+Run servo_zeroing.py on each servo
+--------------------------------------
+The servos are powered through the power supply on the Robot HAT, and will not work correctly if the Robot HAT is only powered through the Raspberry Pi. Make sure that the two batteries are placed correctly in the battery box, the battery box’s power cable is connected to the Robot HAT, and the Robot HAT is powered on.
 
 .. image:: img/slide_to_power.png
     :width: 400
@@ -246,16 +250,17 @@ Run the file ``servo_zeroing.py`` in the **example** folder.
 
     sudo python3 servo_zeroing.py
 
-To make sure you can see that the servo has been set to 0°, you can insert a rocker arm in the servo shaft first and then turn the servo to another angle.
+To make sure the servo has been correctly set to 0°, first insert a rocker arm in the servo shaft, and then slightly rotate the rocker arm to a different angle.
 
 .. image:: img/servo_arm.png
 
-Now follow the diagram below and insert the servo to the P11 position.
+Insert the servo cable into the P11 port as per the diagram below.
 
 .. image:: img/pin11_connect.png
     :width: 600
 
-So now if the servo arm returns after the servo arm returns, this function will take effect. If not, If not, please check the insertion direction of the servo cable and re-run the code.
+Turn on the **Power Switch** to the Robot HAT, and the servo arm should return to the 0° position. If the servo arm does not return to 0°, press the **RST** button to restart the Robot HAT.
 
 .. note::
-    Before assembling each servo, you need to plug the servo pin into P11 and keep the power on.
+
+    Before attaching each servo, plug the servo cable into P11 and turn the power on to set the servo to 0°.

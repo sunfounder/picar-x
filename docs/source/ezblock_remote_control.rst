@@ -1,9 +1,9 @@
 Remote Control
 =======================
 
-Next we control the PiCar-X with your device. You will need to use the Joystick at the 
-Remote Control page. By the way, you need to use the "Map" function to map the 
-X-axis reading of the Joystick as a suitable angle.
+This project will teach how to remotely control the PiCar-X with the Joystick widget. 
+Note: After dragging and dropping the Joystick widget from the Remote Control page, use the “Map” function to calibrate the Joysticks X-axis and Y-axis readings. For more information on the Remote Control function, please reference the following link:
+
 
 * `How to Use the Remote Control Function? <https://docs.sunfounder.com/projects/ezblock3/en/latest/remote.html>`_
 
@@ -13,12 +13,11 @@ X-axis reading of the Joystick as a suitable angle.
 
 .. image:: img/block/sp210512_114004.png
 
-To use the remote control function, you need to enter the Remote Control page from the left side of main page.
+To use the remote control function, open the Remote Control page from the left side of the main page.
 
 .. image:: img/block/sp210512_114042.png
 
-Drag a Joystick to the central area. Toggle the white point in it to produce a coordinate. 
-The range of the X or Y axis is "-100 ~ 100". Toggling the point to the left will result in an X value of "-100" and a Y value of "0".
+Drag a Joystick to the central area of the Remote Control page. Toggling the white point in the center, and gently dragging in any direction will produce an (X,Y) coordinate. The range of the X-axis or Y-axis is defaulted to “-100” to “100”. Toggling the white point and dragging it directly to the far left of the Joystick will result in an X value of “-100” and a Y value of “0”.
 
 .. image:: img/block/sp210512_114136.png
 
@@ -27,7 +26,7 @@ This block reads the Joystick value in the Remote Control page. You can click th
 
 .. image:: img/block/sp210512_114235.png
 
-The map block can remap a number from one range to another. If a number is 50，it is at 50% position of the range of 0~100; then if we map it to the range 0~255 via the map block, the number will be 127.5.
+The map value block can remap a number from one range to another. If the range is set to 0 to 100, and the map value number is 50, then it is at a 50% position of the range, or “50”. If the range is set to 0 to 255 and the map value number is 50, then it is at a 50% position of the range, or “127.5”.
 
 **EXAMPLE**
 

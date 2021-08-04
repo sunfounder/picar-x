@@ -1,7 +1,7 @@
 Minecart Plus
 =======================
 
-In this experiment, derailment treatment was added on the basis of Minecart to adapt to the more severe curve following.
+In this project, derailment recovery has been added to the :ref:`Minecart` project to let the PiCar-X adapt and recover from a more severe curve.
 
 .. image:: img/block/minec.png
 
@@ -10,7 +10,8 @@ In this experiment, derailment treatment was added on the basis of Minecart to a
 
 .. image:: img/block/sp210512_171727.png
 
-Here, we also use **to do something** block to create a new funtion, but the block does not return any value.
+Use another **to do something** block to allow the PiCar-X to back up and recover from a sharp curve. 
+Note that the new **to do something** function does not return any values, but is used just for reorienting the PiCar-X.
 
 **EXAMPLE**
 

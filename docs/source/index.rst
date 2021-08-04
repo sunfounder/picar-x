@@ -3,19 +3,19 @@ Welcome to PiCar-X's Documentation!
 
 Thanks for choosing our PiCar-X.
 
-PiCar-X is an AI self-driving robot car for Raspberry Pi, on which RPi works as the 
-control center. The mounted camera module, ultrasonic module, line tracking module 
-can separately realize the functions of color detection, face detection, automatic 
-obstacle avoidance, automatic line tracking, etc.
+The PiCar-X is an AI-driven self-driving robot car for the Raspberry Pi platform, upon which the Raspberry Pi acts as the control center. 
+The PiCar-X’s 2-axis camera module, ultrasonic module, and line tracking modules can provide the functions of color/face/traffic-signs detection, 
+automatic obstacle avoidance, automatic line tracking, etc.
 
-In this tutorial, a list, assembly diagram, introduction to Robot HAT, and programming of PiCar-X are included.
+Included in this tutorial are a component list, an assembly diagram, an introduction to SunFounders Robot HAT, and programming tutorials for the PiCar-X in both Blockly-based and Python languages.
 
-The programming part is divided into two chapters: :ref:`Play with Ezblock` & :ref:`Play with Python`, and each of them can get you stated on making PiCar-X work in way you want.
+The programming sections are divided into two chapters: :ref:`Play with Ezblock` and :ref:`Play with Python`. Each programming chapter allows users to get started by making the PiCar-X perform basic movements, and proceed up to designing multiplayer games and beyond!
 
-Ezblock Studio is a development platform developed by SunFounder designed for beginners to lower the barriers to getting started with Raspberry Pi. It has two programming languages: Graphical and Python, and available on almost all different types of devices. With Bluetooth and Wi-Fi support, you can download code, remote control a Raspberry Pi, on Ezblock Studio.
+Ezblock Studio is a software development platform created by SunFounder for helping beginners and novices get started with programming on a Raspberry Pi platform. Ezbock Studio has two programming language environments: a Graphical User Interface environment, and a command-line Python environment.
 
-If you want to program in Python, then you will need to learn some basic Python programming skills and basic knowledge of Raspbeer Pi OS. 
+Ezblock is available for nearly all types of devices, including Mac, PC, and Android. Ezblock has recently been upgraded to version 3.0, which uses WebSocket to provide Bluetooth and Wi-Fi support.
 
+For users who only want to learn programming in Python 3.0, also included is an introduction to the fundamentals of the Raspberry Pi Operating System, and tutorials that provide basic Python programming skills.
 
 
 **Content**

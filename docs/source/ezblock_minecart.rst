@@ -1,16 +1,10 @@
 Minecart
 =====================
 
-Let's make a minecart project! Stick a dark-colored tape on the white ground as the 
-track (as straight as possible, not too curved), and use the Grayscale module to 
-make the PiCar-X move along the track.
+Let’s make a minecart project! This project will use the Grayscale module to make the PiCar-X move forward along a track. 
+Use dark-colored tape to make a track on the ground as straight as possible, and not too curved. Some experimenting might be needed if the PiCar-X becomes derailed. 
 
-This means: when moving along the track, the probes on the left and right sides of 
-the sensor detect light-colored ground, and the middle probe detects dark tracks.
-If the track has an arc (the probe on the left or right side of the sensor detects a dark 
-track), you need to adjust the direction of the minecart.
-If the minecart reaches the end of the track or derails, the Grayscale module can't detect the 
-dark track so stops it.
+When moving along the track, the probes on the left and right sides of the Grayscale module will detect light-colored ground, and the middle probe will detect the track. If the track has an arc, the probe on the left or right side of the sensor will detect the dark-colored tape, and turn the wheels in that direction. If the minecart reaches the end of the track or derails, the Grayscale module will no longer detect the dark-colored tape track, and the PiCar-X will come to a stop.
 
 **EXAMPLE**
 

@@ -1,18 +1,20 @@
 Test Grayscale Module
 ==============================
 
-PiCar-X has a Grayscale sensor modulefor your implementing some fun experiments, such as walking along the line, detecting cliffs and so on. Its three detection 
-probes will read the value according to the detected color shades, such as pure black reading is "0".
+PiCar-X includes a Grayscale module for implementing line-following, cliff detection, and other fun experiments. The Grayscale module has three detection sensors that will each report a value according to the shade of color detected by the sensor. For example, a sensor reading the shade of pure black will return a value of “0”.
 
 **TIPS**
 
 .. image:: img/block/sp210512_115406.png
 
-You can use this block to read the value of one of the probes of the Grayscale module.
+Use the **Grayscale module** block to read the value of one of the sensors. In the example above, the “A0” sensor is the sensor on the far left of the PiCar-X. Use the drop-down arrow to change the sensor to “A1” (center sensor), or “A2” (far right sensor).
 
 .. image:: img/block/sp210512_120023.png
 
-You may want to use **List** block to simplify your program. When you need to store the values of the three probes of Grayscale module, you do not have to set three variables. Set one as a List.
+The program is simplified with a **create list with** block. 
+A **List** is used in the same way as a single **Variable**, 
+but in this case a **List** is more efficient than a single **Variable** because the **Grayscale module** will be reporting more than one sensor value.
+The **create list with** block will create separate **Variables** for each sensor, and put them into a List.
 
 **EXAMPLE**
 

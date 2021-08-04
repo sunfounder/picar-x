@@ -1,15 +1,15 @@
 Play with Python
 ====================
 
-If you want to program in python, then you will need to learn some basic Python programming skills and basic knowledge of Raspbeer Pi OS, please configure the Raspberry Pi first according to :ref:`Quick Guide on Python`.
-
+For novices and beginners wishing to program in Python, some basic Python programming skills and knowledge of the Raspberry Pi OS are needed. 
+To start configuring the Raspberry Pi, please reference SunFounders Quick Guide on Python here:
 
 .. toctree::
 
     quick_guide_on_python
 
 
-After the assembly is complete, you can try to run the projects below.
+After the PiCar-X assembly is completed, try running the projects below:
 
 .. toctree::
 

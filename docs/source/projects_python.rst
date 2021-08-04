@@ -1,5 +1,5 @@
-Projects
-============
+Projects in Python
+=========================
 
 .. toctree::
 
@@ -14,22 +14,25 @@ Projects
     python_video_car
 
 
-**How to Run the Code File**
+**How to Run the Python Code Files**
 
 
-Open the **example** folder you downloaded earlier, and you will see some python code in it.
+Open the examples folder downloaded earlier in the Download the PiCar-X Code Files step. 
 
 .. code-block::
 
     cd /home/pi/picar-x/examples
 
-You can run the python codes by the following command:
+Run the python programs by using the following command:
 
 .. code-block::
 
     sudo python3 FILENAME.py
 
-You can start the corresponding code by changing ``FILENAME.py`` to a specific example.
+
+.. note::
+    
+    Change ``FILENAME.py`` to the specific program name in the examples folder.
 
 
 

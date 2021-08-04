@@ -1,9 +1,14 @@
 Color Detection
 ==========================================
 
-This project is to add a color detection algorithm to the previous project - :ref:`Computer Vision`.
+This project will add a color detection algorithm to the previous :ref:`Computer Vision`project.
 
-* `Color Cards File <https://github.com/sunfounder/picar-x/blob/v2.0/printfile/Color%20Cards.pdf>`_
+* `[PDF]Color Cards <https://github.com/sunfounder/picar-x/blob/v2.0/printfile/Color%20Cards.pdf>`_
+
+.. note::
+
+    The printed colors may have a slightly different hue from the Python color models due to printer toner differences, or the printed medium, such as a tan-colored paper. This can cause a less accurate color recognition.
+
 
 .. image:: img/block/color_card.png
     :width: 600
@@ -77,25 +82,26 @@ This project is to add a color detection algorithm to the previous project - :re
 
 **How it works?**
 
-First, we define the range of H in the `HSV color space <https://en.wikipedia.org/wiki/HSL_and_HSV>`_ as a dictionary, which is convenient for the following color judgment algorithm.
+First, the range of H in the `HSV color space <https://en.wikipedia.org/wiki/HSL_and_HSV>`_ is defined as a dictionary, which is convenient for the following color judgment algorithm:
 
 .. code-block:: python
 
     color_dict = {'red':[0,4],'orange':[5,18],'yellow':[22,37],'green':[42,85],'blue':[92,110],'purple':[115,165],'red_2':[165,180]} 
 
-Then, a `convolution kernel <https://en.wikipedia.org/wiki/Kernel_(image_processing)>`_ of size 5x5 is defined, which we will use for morphological operations (filtering).
+Then, a `convolution kernel <https://en.wikipedia.org/wiki/Kernel_(image_processing)>`_ of size 5x5 is defined, which will be used for morphological operations, like filtering.
+
 
 .. code-block:: python
 
     kernel_5 = np.ones((5,5),np.uint8)
 
 
-Next, let's focus on ``color_detect()``, which processes pictures in four steps:
+Next, the ``color_detect()`` function will processes pictures in four steps:
 
 1. Extract the data of the target color as a new binary image (array).
 2. Performs advanced morphological transformations. 
 3. Finds contours in a binary image.
-4. Draw a frame for the recognized object on the image.
+4. Draws a frame for the recognized object on the image.
 
 .. code-block:: python
 
@@ -134,9 +140,11 @@ Next, let's focus on ``color_detect()``, which processes pictures in four steps:
 
         return img,mask,morphologyEx_img
 
-We display ``img`` , ``mask`` , and ``morphologyEx_img`` in three windows to directly observe the processing results of each step.
+The ``img`` , ``mask`` , and ``morphologyEx_img`` are displayed in three windows to directly observe the processing results of each step.
 
 .. image:: img/color_detect.png
+
+For more information on morphology and contouring, please reference the following resources:
 
 * `Opening operation - Wikipedia <https://en.wikipedia.org/wiki/Opening_(morphology)>`_ 
 * `morphologyEx - OpenCV <https://docs.opencv.org/4.0.0/d4/d86/group__imgproc__filter.html#ga67493776e3ad1a3df63883829375201f>`_

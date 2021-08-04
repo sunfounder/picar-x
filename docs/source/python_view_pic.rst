@@ -1,10 +1,9 @@
 Computer Vision
 ==========================================
 
-Next we officially enter the field of computer vision!
+This next project will officially enter the field of computer vision!
 
-To better perform the next experiments, you need to complete :ref:`View RPi Desktop by VNC`, and open a terminal to run the projects (not remotely via SSH).
-
+To perform the next four experiments, make sure to have completed the :ref:`View RPi Desktop by VNC` project, and have an open terminal window for running the projects. A remote connection via SSH will not display the camera images.
 
 **Code**
 
@@ -35,11 +34,11 @@ To better perform the next experiments, you need to complete :ref:`View RPi Desk
 
 **How it works?** 
 
-We get photos with ``PiCamera``. This package provides a pure Python interface to the Raspberry Pi camera.
+Photos are obtained with ``PiCamera``. This package provides a pure Python interface to the Raspberry Pi camera.
 
 * `PiCamera Docs <https://picamera.readthedocs.io/en/latest/index.html>`_
 
-The simplest way to use it is as below. Capturing an image to a file is as simple as specifying the name of the file as the output of whatever ``capture()`` method you require.
+Capturing an image to a file only requires specifying the name of the file to the output of whatever ``capture()`` method was required.
 
 .. code-block:: python
 
@@ -53,9 +52,10 @@ The simplest way to use it is as below. Capturing an image to a file is as simpl
     sleep(2)
     camera.capture('foo.jpg')
 
-In our project, we are more precisely using the **capturing timelapse sequences** method. This is to enable OpenCV to acquire sequential frames.
+This project uses the **capturing timelapse sequences** method. This method enables OpenCV to acquire sequential frames.
 
-With this method, the camera captures images continually until you tell it to stop. Images are automatically given unique names and you can easily control the delay between captures.
+
+With this method, the camera captures images continually until it is told to stop. Images are automatically given unique names. The ``sleep(x)`` function controls the delay between captures.
 
 .. code-block:: python
 
@@ -71,7 +71,7 @@ With this method, the camera captures images continually until you tell it to st
         print('Captured %s' % filename)
         sleep(10) #  capture images with a 10s delay between each shot
 
-In order to capture OpenCV objects, we'll capture an image to a ``BytesIO`` stream (Python's in-memory stream class), then convert the stream to a ``numpy`` array and read the array with OpenCV:
+In order to capture OpenCV objects, an image will be captured to Python’s in-memory stream class: ``BytesIO`` . The BytesIO will convert the stream to a ``numpy`` array, and the program will read the array with OpenCV:
 
 * `What is Numpy? <https://numpy.org/doc/stable/user/whatisnumpy.html>`_
 
@@ -97,10 +97,9 @@ In order to capture OpenCV objects, we'll capture an image to a ``BytesIO`` stre
     # use the following...
     image = image[:, :, ::-1]
 
-To avoid the JPEG encoding and decoding (which is lossy) and potentially speed up the process, you can now use the classes in the `picamera.array` module.
+To avoid the losses with JPEG encoding and decoding, use the classes in the ``picamera.array`` module. This will also potentially increase the speed of image processing.
 
-As OpenCV images are simply `numpy` arrays arranged in BGR order, one can use the `PiRGBArray` class and simply capture with the `'bgr'` format (given that RGB and BGR data is the same size and configuration, just with reversed color planes).
-
+As OpenCV images are simply ``numpy`` arrays arranged in BGR order, the ``PiRGBArray`` class, and simply capture with the ``‘bgr’`` format. Note: RGB data and BGR data are the same size and configuration, but have reversed color planes.
 
 * `PiRGBArray <https://picamera.readthedocs.io/en/release-1.13/api_array.html#pirgbarray>`_
 
@@ -145,8 +144,8 @@ Combined with the method of capturing timelapse sequences, these 3-dimensional R
             camera.close()
             break
 
-There are other ways to read video streams with OpenCV, and the one we use is better suited for the next tasks such as Color detection.
+There are many other ways to read video streams with OpenCV. The ones used in these examples are better suited for the next four PiCar-X tasks, such as :ref:`Color Detection` and :ref:`Face Detection`.
 
-For more ways, please check `OpenCV-Python Tutorials <https://docs.opencv.org/4.0.0/d6/d00/tutorial_py_root.html>`_.
+For more ways to use video streams, please reference:  `OpenCV-Python Tutorials <https://docs.opencv.org/4.0.0/d6/d00/tutorial_py_root.html>`_.
 
 

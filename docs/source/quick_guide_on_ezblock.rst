@@ -1,37 +1,44 @@
 Quick Guide on Ezblock
 ===========================
 
-We've put all the detailed tutorials for Ezblock 3 in `Ezblock Studio 3 <https://docs.sunfounder.com/projects/ezblock3/en/latest/#>`_.
+There are 2 parts here:
 
-Before Assembling
---------------------
+* :ref:`Before Assembling PiCar-X` allows you to keep all the servos at 0 degrees to complete a proper and safe assembly (otherwise you will probably damage the servos).
+* :ref:`Before Programming With Ezblock` will guide you to download Ezblock Studio to play with your robot.
 
-But before assembling, you only need to complete `Download and Install Ezblock OS <https://docs.sunfounder.com/projects/ezblock3/en/latest/quick_user_guide_for_ezblock3.html#download-and-install-ezblock-os>`_.
+Before Assembling PiCar-X
+--------------------------------
 
-After burning the Ezblock system, P11 was set to calibrate the servo angle to 0°. To make sure you can see that the servo has been set to 0°, you can insert a rocker arm in the servo shaft first and then turn the servo to another angle.
+Before assembling the PiCar-X, follow the instructions on how to install the Ezblock OS on an Micro SD card here: `Download and Install Ezblock OS <https://docs.sunfounder.com/projects/ezblock3/en/latest/quick_user_guide_for_ezblock3.html#download-and-install-ezblock-os>`_.
+
+After burning the Ezblock system on the Micro SD card, the P11 port on the Robot HAT is set to calibrate the servo angle to a 0° angle. To make sure the servo has been correctly set to 0°, first gently insert a rocker arm in the servo shaft, then slightly rotate the rocker arm to a different angle.
 
 .. image:: img/servo_arm.png
 
-Now follow the diagram below and insert the servo to the P11 position.
+Next, insert the servo cable into the P11 port as shown below:
 
 .. image:: img/pin11_connect.png
     :width: 600
 
-So now if the servo arm returns after the servo arm returns, this function will take effect. If not, press the **RESET button** to restart.
+Turn on the **Power Switch** to the Robot HAT, and the servo arm should return to the 0° position. If the servo arm does not return to 0°, press the **RST** button to restart the Robot HAT.
 
 .. note::
-    Before assembling each servo, you need to plug the servo pin into P11 and keep the power on.
-
-    This function will be invalid after writing any programs.
-
+    Before attaching each servo, plug the servo cable into P11 and turn the power on to set the servo to 0°.
+    This function will become invalid after writing any programs to the Micro SD card.
 
 
-Before Programming
-------------------------
 
 
-Before you program, you need to download Ezblock Studio. The current download is Ezblock 2, and you will need to manually upgrade to Ezblock 3.
+Before Programming With Ezblock
+------------------------------------
 
-For detailed tutorials, please refer to: `Install Ezblock Studio <https://docs.sunfounder.com/projects/ezblock3/en/latest/quick_user_guide_for_ezblock3.html#install-ezblock-studio>`_.
 
+First download Ezblock Studio 2, and then manually upgrade to Ezblock Studio 3 to begin programming. 
 
+For a detailed installation tutorial, please refer to: `Install Ezblock Studio <https://docs.sunfounder.com/projects/ezblock3/en/latest/quick_user_guide_for_ezblock3.html#install-ezblock-studio>`_.
+
+.. note::
+
+    After you connect the PiCar-X, there will be a calibration step. This is because of possible deviations in the installation process or limitations of the servos themselves, making some servo angles slightly tilted, so you can calibrate them in this step.
+    
+    But if you think the assembly is perfect and no calibration is needed, you can also skip this step.

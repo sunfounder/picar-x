@@ -1,10 +1,10 @@
 Face Detection
 ======================
 
-In addition to color detection, PiCar-X also provides face detection. Here we use Joystick to adjust the direction of the camera and let the faces number be displayed in 
-the debug monitor.
+In addition to color detection, PiCar-X also includes a face detection function. In the following example the Joystick widget is used to adjust the direction of the camera, and the number of faces will be displayed in the debug monitor.
 
-* `How to Use the Video Function? <https://docs.sunfounder.com/projects/ezblock3/en/latest/use_video.html>`_
+For more information on how to use the Video widget, please reference the tutorial on Ezblock video here: 
+`How to Use the Video Function? <https://docs.sunfounder.com/projects/ezblock3/en/latest/use_video.html>`_
 
 .. image:: img/block/face_detection.PNG
 
@@ -13,19 +13,19 @@ the debug monitor.
 
 .. image:: img/block/sp210512_141947.png
 
-You need to set face detection to **on** to enable face detection.
+Set the **face detection** widget to **on** to enable facial detection.
 
 .. image:: img/block/sp210512_142327.png
 
-These two blocks are used to adjust the orientation of the pan-tilt camera. As the value increases, the camera rotates to the right or up.
+These two blocks are used to adjust the orientation of the pan-tilt camera, similar to driving the PiCar-X in the :ref:`Remote Control` tutorial. As the value increases, the camera will rotate to the right, or upwards, a decreasing value will rotate the camera right, or downwards.
 
 .. image:: img/block/sp210512_142407.png
 
-You can read the image detection results through this block, modify the drop-down menu options, and choose to read the coordinates, size or number of the image detection results.
+The image detection results are given through the of **detected face** block. Use the drop-down menu options to choose between reading the coordinates, size, or number of results from the image detection function.
 
 .. image:: img/block/sp210512_142616.png
 
-You may want to use text block to print the combination of texts & data at once.
+Use the **create text with** block to print the combination of **text** and of **detected face** data.
 
 **EXAMPLE**
 

@@ -1,27 +1,29 @@
 Background Music
 ======================
 
-In addition to having PiCar-X play sound effects or speak on specific occasions, you can also add background music to it. Use a Slider here to control the adjust music volume.
+In addition to programming the PiCar-X to play sound effects or text-to-speech (TTS), the PiCar-X will also play background music. This project will also use a **Slider** widget for adjusting the music volume. 
 
 * `How to Use the Remote Control Function? <https://docs.sunfounder.com/projects/ezblock3/en/latest/remote.html>`_
+
+For a detailed tutorial on Ezblocks remote control functions, please reference the :ref:`Remote Control` tutorial.
 
 **TIPS**
 
 .. image:: img/block/sp210512_152803.png
 
-You can choose different background music in the block drop-down menu to let PiCar-X play.
+The **play background music** block will need to be added to the **Start** function. Use the drop-down menu to choose different background music for the PiCar-X to play.
 
 .. image:: img/block/sp210512_153123.png
 
-Adjust the volume in the range “0 ~ 100”.
+The block **set background music volume to** will adjust the volume between the range of 0 to 100.
 
 .. image:: img/block/sp210512_154708.png
 
-Here we drag a Slider from the **Remote Control** page to adjust music volume.
+Drag a **Slider** bar from the **Remote Control** page to adjust music volume.
 
 .. image:: img/block/sp210512_154259.png
 
-This block reads the Slider value.
+The **slider [A] get value** block will read the slider value. The example above has slider ‘A’ selected. If there are multiple sliders, use the drop-down menu to select the appropriate one.
 
 **EXAMPLE**
 

@@ -1,11 +1,14 @@
 Let PiCar-X Move
 ========================
 
-The basic functions of PiCar-X have been encapsulated in ``picarx.py`` under the path ``/home/pi/picar-x/lib``, chiefly controlling the servo and wheels.
+The basic functions of PiCar-X are in the ``picarx.py`` program file, 
+under the path ``/home/pi/picar-x/lib``. The ``picarx.py`` program is used for controlling the servo and wheels, 
+and will make the PiCar-X move forward, turn in an S-shape, and then stop and shake its head. 
 
-Let PiCar-X move forward, walk in a smart S-shape, and then stop and shake its head. This will allow us to command the method of driving the motor and three servos on the car body.
+The code shows how to control driving the two motors and the three servos on the car body.
 
-You can open ``move.py`` in the folder of the ``example`` or directly copy the following code to the Python IDE to run.
+Open ``move.py`` in the folder of the ``example`` directory, or copy the code below directly to the Python IDE to run.
+
 
 **Code**
 
@@ -60,7 +63,7 @@ You can open ``move.py`` in the folder of the ``example`` or directly copy the f
 
 **How it works?**
 
-First, import the libraries to support the basic functionality of PiCar-X. These lines will appear in all the examples that get PiCar-X moving.
+First, the libraries to support the basic functionality of PiCar-X are imported. These lines will appear in all the examples that involve PiCar-X movement.
 
 .. code-block:: python
     :emphasize-lines: 0
@@ -73,7 +76,7 @@ First, import the libraries to support the basic functionality of PiCar-X. These
     from picarx import Picarx
     import time
 
-Then use the following function with the ``for`` loop to make PiCar-X move.
+The following function with the ``for`` loop is then used to make PiCar-X move forward, change directions, and move the camera's pan/tilt.
 
 .. code-block:: python
 
@@ -82,10 +85,10 @@ Then use the following function with the ``for`` loop to make PiCar-X move.
     px.set_camera_servo1_angle(angle)
     px.set_camera_servo2_angle(angle)
 
-* ``forward()``: Make PiCar-X go forward in ``speed``.
-* ``set_dir_servo_angle``: Turns the steering servo to ``angle``.
-* ``set_camera_servo1_angle``: Turns the Pan servo to ``angle``.
-* ``set_camera_servo2_angle``: Turns the Tilt servo to ``angle``.
+* ``forward()``: Orders the PiCar-X go forward at a given ``speed``.
+* ``set_dir_servo_angle``: Turns the Steering servo to a specific ``angle``.
+* ``set_camera_servo1_angle``: Turns the Pan servo to a specific ``angle``.
+* ``set_camera_servo2_angle``: Turns the Tilt servo to a specific ``angle``.
 
 .. image:: img/pan_tilt_servo.png
     :width: 400

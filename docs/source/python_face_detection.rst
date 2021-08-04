@@ -1,7 +1,8 @@
 Face Detection
 ==========================================
 
-Similarly, this project is based on :ref:`Computer Vision` with the addition of face detection algorithms.
+This project is also based on the :ref:`Computer Vision` project, with the addition of face detection algorithms.
+
 
 .. image:: img/block/face_detection.PNG
 
@@ -54,7 +55,8 @@ Similarly, this project is based on :ref:`Computer Vision` with the addition of 
 
 **How it works?**
 
-In the same path as this project (``picar-x/example/``) , we put a file ``haarcascade_frontalhuman face_default.xml``, which is a face detection model file trained in OpenCV.
+In the same path as this project (``picar-x/example/``) , put a file ``haarcascade_frontalhuman face_default.xml``. This file is a face detection model file trained in OpenCV.
+
 
 This file is called by **Cascade Classifier** of OpenCV.
 
@@ -64,10 +66,9 @@ This file is called by **Cascade Classifier** of OpenCV.
 
 Object Detection using Haar feature-based cascade classifiers is an effective object detection method proposed by Paul Viola and Michael Jones in their paper, "Rapid Object Detection using a Boosted Cascade of Simple Features" in 2001.
 
-It is a machine learning based approach where a cascade function is trained from a lot of positive and negative images. It is then used to detect objects in other images.
-Object Detection using Haar feature-based cascade classifiers is an effective object detection method proposed by Paul Viola and Michael Jones in their paper, "Rapid Object Detection using a Boosted Cascade of Simple Features" in 2001. It is a machine learning based approach where a cascade function is trained from a lot of positive and negative images. It is then used to detect objects in other images.
+This is a machine learning based approach, where a cascade function is trained from a large quantity of positive and negative images, and then used to detect objects in other images. 
 
-Here we will work with face detection. Initially, the algorithm needs a lot of positive images (images of faces) and negative images (images without faces) to train the classifier. Then we need to extract features from it. For this, Haar features shown in the below image are used. They are just like our convolutional kernel. Each feature is a single value obtained by subtracting sum of pixels under the white rectangle from sum of pixels under the black rectangle.
+When working with face detection, the algorithm will initially need a large quantity of positive images (images of faces) and negative images (images without faces) to train the classifier. From there, the facial features will then need to be extracted. For this, Haar features shown in the below image are used, similar to the convolutional kernel. Each feature is a single value obtained by subtracting the sum of pixels under the white rectangle, from the sum of pixels under the black rectangle.
 
 .. image:: img/haar_features.jpg
 
@@ -75,11 +76,11 @@ Here we will work with face detection. Initially, the algorithm needs a lot of p
 * `Cascade Classifier Training <https://docs.opencv.org/3.4/dc/d88/tutorial_traincascade.html>`_
 
 
-Next, let's focus on ``human_human face_detect()`` , which processes pictures in three steps:
+The ``human_human face_detect()`` function processes pictures in three steps:
 
 1. Convert picture to grayscale.
 2. Detect the human face on the grayscale image to obtain the bounding rectangle of the detected face.
-3. Draw a frame for the recognized object on the image.
+3. Draws a frame for the recognized object on the image.
 
 .. code-block:: python
 

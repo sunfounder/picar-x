@@ -1,17 +1,13 @@
 Play with Ezblock
 ===========================
 
-**Ezblock** is a development platform developed by SunFounder designed for beginners to lower the barriers to getting started with Raspberry Pi. 
-It has two programming languages: Graphical and Python, and available on almost all different types of devices.
-With Bluetooth and Wi-Fi support, you can download code, remote control a Raspberry Pi, on Ezblock Studio.
+**Ezblock** is a software development platform created by SunFounder for helping beginners and novices get started with programming on a Raspberry Pi platform. 
+Ezbock has two programming language environments: a Graphical User Interface environment, and a command-line Python environment. 
 
-Ezblock has been upgraded to the third version.
+Ezblock is available for nearly all types of devices, including Mac, PC, and Android. 
+Ezblock has recently been upgraded to version 3.0, which uses WebSocket to provide Bluetooth and Wi-Fi support.
 
-Compared with the Bluetooth communication of Ezblock 2, Ezblock 3 uses Websocket to communicate, which is much faster.
-
-To make it faster and easier to use, we have optimized the connection and usage process so that you can learn programming quickly with Ezblock Studio.
-
-So the rest of the content is done with Ezblock 3.
+Ezblock 3.0 has been engineered to optimize remote connections, provide an intuitive user-interface, and to remotely control a Raspberry Pi through Ezblock Studio.
 
 .. toctree::
   :maxdepth: 1

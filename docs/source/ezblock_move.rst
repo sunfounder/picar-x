@@ -1,10 +1,9 @@
 Move
 ============
 
-First we need to know how to make PiCar-X move. Here, we let it perform the five actions of "forward", "backward", "turn left", "turn right", and "stop" in order.
+This first project teaches how to program movement actions for the PiCar-X. In this project, the program will tell the PiCar-X to execute five actions in order: “forward”, “backward”, “turn left”, “turn right”, and “stop”.
 
-Before that, you can learn the basic usage of Ezblock Studio from here.
-
+To learn the basic usage of Ezblock Studio, please read through the following two sections:
 
 * `Quick User Guide for Ezblock 3 <https://docs.sunfounder.com/projects/ezblock3/en/latest/quick_user_guide_for_ezblock3.html>`_
 
@@ -17,19 +16,24 @@ Before that, you can learn the basic usage of Ezblock Studio from here.
 
 .. image:: img/block/sp210512_113300.png
 
-This block makes PiCar-X move at a certain speed, a percentage of power. Just like "50" is a half-speed.
+This block will make the PiCar-X move forward at a speed based on a percentage of available power. In the example below “50” is 50% of power, or half-speed.
 
 .. image:: img/block/sp210512_113418.png
 
-This block makes your PiCar-X back at a certain speed, which is also a percentage of power.
+This block will make the PiCar-X move backward at a speed based on a percentage of available power.
 
 .. image:: img/block/sp210512_113514.png
 
-This block can adjust the front wheels’ orientation. The range is "-45"~"45". Such as "-30" means wheels deviate 30° to the left.
+This block adjusts the orientation of the front wheels. The range is “-45” to ”45”. In the example below, “-30” means the wheels will turn 30° to the left.
+
+.. image:: img/block/BLK_Basic_delay.png
+    :width: 200
+
+This block will cause a timed break between commands, based on milliseconds. In the example below, the PiCar-X will wait for 1 second (1000 milliseconds) before executing the next command.
 
 .. image:: img/block/sp210512_113550.png
 
-Let PiCar-X stop.
+This block will bring the PiCar-X to a complete stop.
 
 **EXAMPLE**
 

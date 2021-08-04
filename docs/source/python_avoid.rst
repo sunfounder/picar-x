@@ -1,7 +1,7 @@
 Obstacle Avoidance
 =============================
 
-In this project, PiCar-X will detect obstacles in front of it with an ultrasonic module. When the distance of the detected obstacle is less than 25cm, PiCar-X will turn left, otherwise it will continue to move forward.
+In this project, the PiCar-X will detect obstacles that are directly in front of the built-in ultrasonic module. When the distance of an obstacle is detected to be less than 25cm (10 inches), the PiCar-X will turn to the left, otherwise it will continue to move forward.
 
 **Code**
 
@@ -37,13 +37,13 @@ In this project, PiCar-X will detect obstacles in front of it with an ultrasonic
 
 **How it works?**
 
-You can get the distance only by calling the Ultrasonic library.
+The distance function is established by importing the ``Ultrasonic`` library.
 
 .. code-block:: python
 
     from ultrasonic import Ultrasonic
 
-Then initialize the ultrasonic pins.
+Then the pins on the ultrasonic module are initialized.
 
 .. code-block:: python
 
@@ -51,7 +51,7 @@ Then initialize the ultrasonic pins.
     echo_pin = Pin("D3")
     sonar = Ultrasonic(trig_pin, echo_pin)    
 
-Read the distance value of ultrasonic detection, and set the judgment range: below 25cm, set the steering servo to -35° (turn left).
+The following code snippet reads the distance value reported by the ultrasonic module, and if the distance is below 25cm (10 inches) it will set the steering servo from 0° (straight) to -35° (turn left).
 
 .. code-block:: python
 

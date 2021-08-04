@@ -4,17 +4,17 @@ About Robot HAT
 .. image:: img/picar_x_pic7.png
 
 **RST Button**
-    * Short pressing RST Button causes program resetting.
-    * Long press RST Button till the LED lights up then release, and you will disconnect the Bluetooth.
+    * A short-press of the RST Button will cause any running programs to reset.
+    * A long-press of the RST Button until the LED lights up, and then releasing will disconnect the Robot HAT’s Bluetooth chip.
 
 **USR Button**
-    * The functions of USR Button can be set by your programming. (Pressing down leads to a input “0”; releasing produces a input “1”. ) 
+    * The functions of the USR Button can be configured through programming. (Pressing down leads to a input of “0”, and releasing produces a input of “1” )
 
 **LED**
-    * Set by your program. (Outputting 1 turns the LED on; Outputting 0 turns it off.)
+    * Configured through programming (Outputting ‘1’ turns the LED on, Outputting ‘0’ turns the LED off.)
 
 **Battery Indicator**
-    * The voltage ranging above 7.8V, two LEDs light up; ranging 6.7V~7.8V, one LED turns on; ranging below 6.7V, all LEDs turn off.
+    * Battery voltage above 7.8V will light up the two indicator LEDs. Battery voltage ranging from 6.7V to 7.8V will only light up one LED, voltage below 6.7V will turn both LEDs off.
 
 **Bluetooth Indicator**
-    * The Bluetooth indicator keeps turning on at a well Bluetooth connection, blink at a Bluetooth disconnection, blink fast at a signal transmission.    
+    * The Bluetooth indicator LED will stay on with a solid Bluetooth connection, and blink rapidly during a signal transmission. The LED will blink at 1-second intervals if the Bluetooth is disconnected.  

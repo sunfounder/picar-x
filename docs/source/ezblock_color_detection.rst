@@ -1,25 +1,24 @@
 Color Detection
 ===========================
 
-PiCar-X is a Self-driving car with Camera. Ezblock also provides some object detection functions. Here we try color detection. Prior to this, you must ensure that the Pi Camera 
-FFC cable is properly and securely connected.
+PiCar-X is a self-driving car with a built-in camera, which allows Ezblock programs to utilize object detection and color recognition code. In this section, Ezblock will be used to create a program for color detection. 
 
-The color detection process is as follows:
+.. note:: 
 
-First find out the HSV space range of the color to be detected, then use OpenCV to process the colors in the range with open operations to remove the noise, and finally box the matching color.
+    Before attempting this section, make sure that the Raspberry Pi Camera’s FFC cable is properly and securely connected. For detailed instructions on securely connecting the FCC cable, please reference: :ref:`Component List and Assembly Instructions`
 
-We trained 6 color models for PiCar-X, red, orange, yellow, green, blue and purple. You can print them yourself, but you need to make sure they are printed in color.
+In this program, Ezblock will first be told the Hue-Saturation-Value (HSV) space range of the color to be detected, then utilize OpenCV to process the colors in the HSV range to remove the background noise, and finally, box the matching color.
 
-* `Color Cards File <https://github.com/sunfounder/picar-x/blob/v2.0/printfile/Color%20Cards.pdf>`_
+Ezblock includes 6 color models for PiCar-X, “red”, “orange”, “yellow”, “green”, “blue”, and “purple”. Color cards have been prepared in the following PDF, and will need to be printed on a color printer.
+
+* :download:`[PDF]Color Cards <https://github.com/sunfounder/sf-pdf/raw/master/prop_card/object_detection/color-cards.pdf>`
 
 .. image:: img/block/color_card.png
     :width: 600
 
 .. note::
 
-    Please understand that the printed traffic sign cardboard may be a little different from the one we trained because of the color difference or material, which will lead to a less accurate recognition.
-
-* `How to Use the Video Function? <https://docs.sunfounder.com/projects/ezblock3/en/latest/use_video.html>`_
+    The printed colors may have a slightly different hue from the Ezblock color models due to printer toner differences, or the printed medium, such as a tan-colored paper. This can cause a less accurate color recognition.
 
 
 .. image:: img/block/ezblock_color_detect.PNG
@@ -28,15 +27,15 @@ We trained 6 color models for PiCar-X, red, orange, yellow, green, blue and purp
 
 .. image:: img/block/sp210512_121105.png
 
-Here we drag a Video widget from the remote Control page, and it will generate a monitor.
+Drag the Video widget from the remote Control page, and it will generate a video monitor. For more information on how to use the Video widget, please reference the tutorial on Ezblock video here: `How to Use the Video Function? <https://docs.sunfounder.com/projects/ezblock3/en/latest/use_video.html>`_.
 
 .. image:: img/block/sp210512_121125.png
 
-You need to enable the video monitor by setting above block to on. Setting it to **off** will close the monitor (but not object detection).
+Enable the video monitor by setting the **camera monitor** block to **on**. Note: Setting the **camera monitor** to **off** will close the monitor, but object detection will still be available.
 
 .. image:: img/block/sp210512_134133.png
 
-You can use this block to enable the color detection, only one color can be detected for one time.
+Use the **color detection** block to enable the color detection. Note: only one color can be detected at a time.
 
 **EXAMPLE**
 

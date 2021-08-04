@@ -1,7 +1,7 @@
 Video Car
 ==========================================
 
-Let's observe the world from the First Person View of PiCar-X! Use the O and P of the keyboard to adjust the speed, and WSAD to adjust the direction of movement.
+This program will provide a First Person View from the PiCar-X! Use the keyboards WSAD keys to control the direction of movement, and the O and P to adjust the speed.
 
 **code**
 
@@ -91,16 +91,14 @@ Let's observe the world from the First Person View of PiCar-X! Use the O and P o
 
 **How it works?** 
 
-Most of this code is described in :ref:`Computer Vision` and :ref:`Let PiCar-X Move`.
+Most of this code is described in :ref:`Computer Vision` and :ref:`Let PiCar-X Move`, with the addition of the OpenCV ``waitKey()`` function.
 
-You also need to learn about the following.
 
 .. code-block:: python
 
     k = cv2.waitKey(1) & 0xFF
 
-``waitKey()`` is a function of OpenCV waiting for key press events, and it is also the only way to get and process events in HighGUI. This function only works if at least one HighGUI window has been created and is active.
-
+The ``waitKey()`` is a function that waits for key-press events, and is also the only method to obtain and process events in HighGUI. This function will only work if at least one HighGUI window has been created and is active.
 
 * `High-level GUI <https://docs.opencv.org/3.4/d7/dfc/group__highgui.html>`_
 * `waitKey - OpenCV <https://docs.opencv.org/3.4/d7/dfc/group__highgui.html#ga5628525ad33f52eab17feebcfba38bd7>`_

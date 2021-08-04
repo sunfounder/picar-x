@@ -1,7 +1,7 @@
 Text to Speech
 ===========================
 
-Before using TTS functions, you must activate speaker so that it can make a sound.
+Before using the Text-to-Speech (TTS) functions, first activate the speaker so that it will be enabled and can make sounds.
 
 Run ``i2samp.sh`` in the **picar-x** folder, and this script will install everything needed to use i2s amplifier.
 
@@ -11,9 +11,9 @@ Run ``i2samp.sh`` in the **picar-x** folder, and this script will install everyt
 
 .. image:: img/tt_bash.png
 
-You will be prompted several times to confirm the request, all with **Y**. Finally, some changes made to your system require your computer to reboot to take effect.
+There will be several prompts asking to confirm the request. Respond to all prompts with a **Y**. After the changes have been made to the Raspberry Pi system, the computer will need to reboot for these changes to take effect.
 
-After rebooting, you can run the ``i2samp.sh`` script again, which will test the amplifier for you. If you hear the sound successfully, the configuration is complete. 
+After rebooting, run the ``i2samp.sh`` script again to test the amplifier. If a sound successfully plays from the speaker, the configuration is complete.
 
 **Code**
 
@@ -34,11 +34,13 @@ After rebooting, you can run the ``i2samp.sh`` script again, which will test the
 
 **How it works?** 
 
-We use `eSpeak <http://espeak.sourceforge.net/>`_ to implement the functions of tts.
+The `eSpeak <http://espeak.sourceforge.net/>`_ software is used to implement the functions of TTS.
 
-You can use ``lang("")`` to set the language and ``say("")`` to speak out the text.
+Use ``lang("")`` to set the language, and ``say("")`` for text audio.
 
-You can set the language by setting the parameters of ``lang("")`` with the following characters.
+.. note:: 
+
+    Set the language by setting the parameters of ``lang("")`` with the following characters.
 
 .. list-table:: Language
     :widths: 15 50

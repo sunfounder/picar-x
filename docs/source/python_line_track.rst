@@ -1,11 +1,7 @@
 Line Tracking
 ====================================
 
-Tape a track on a light colored ground (or table) with 1 cm black insulating tape.
-Run the program and you will see PiCar-X moving forward on the track.
-
-.. warning::
-    In sharp bend will cause derailment!
+This project will use the Grayscale module to make the PiCar-X move forward along a track. Use dark-colored tape to make a track on the ground as straight as possible, and not too curved. Some experimenting might be needed if the PiCar-X is derailed.
 
 **code**
 
@@ -48,16 +44,21 @@ Run the program and you will see PiCar-X moving forward on the track.
 
 **How it works?** 
 
-Here we call the ``Grayscale_Module`` library.
+To use the grayscale sensor module, import the ``Grayscale_Module`` library.
 
-This library has two methods:
+The ``Grayscale_Module`` library has two methods:
 
-* ``get_grayscale_data()``: It will directly output the readings of the three probes (from right to left), and usually, the brighter the area, the larger the value obtained.
+* ``get_grayscale_data()``: This method directly outputs the readings of the three sensors, from right to left. The brighter the area, the larger the value obtained.
 
-* ``get_line_status()``: It will generate the corresponding actions based on the values detected by the three probes. There are four types: ``forward`` , ``left`` , ``right`` , and ``stop``.
+* ``get_line_status()``: get_line_status(): This method will generate an action based on the values detected by the three probes. There are four types of actions: forward , left , right , and stop.
 
-The trigger conditions for these actions are as follows: when generating the object, we pass in a number as a threshold (e.g. ``gm = Grayscale_Module(500)`` is to generate a gm object with a threshold of 500).
-When the detection value of all three probes is greater than the threshold, it means that the probes are all white under the head and there are no black lines, ``get_line_status()`` generates the return value ``stop``.
+The trigger conditions for these actions are as follows: 
+when generating the object, a number is assigned as a threshold. 
+For example, ``gm = Grayscale_Module(500)`` will generate a ``gm`` object with a threshold of 500. 
+When the detection value of all three probes is greater than the threshold, 
+it means that the probes are sensing the color white, and no black line is detected, 
+which makes the ``get_line_status()`` to generate a return value of ``stop``.
+
 
 * If the right (and the first) probe detects a black line, ``right`` is returned; 
 * If the middle probe detects a black line, return ``forward``; 

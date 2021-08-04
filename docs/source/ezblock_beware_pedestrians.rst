@@ -1,15 +1,13 @@
 Beware of Pedestrians
 =============================
 
-This project demonstrates PiCar-X performing appropriate measures based on road conditions (pedestrians) while driving.
+This project will make the PiCar-X perform appropriate measures based on road conditions. While driving, the PiCar-X will come to a complete stop if a pedestrian is detected in its path.
 
-If you put a photo of a person in front of PiCar-X, you will see the face circled in the Video Monitor.
+Once the program is running, hold a photo of a person in front of the PiCar-X. The Video Monitor will detect the person's face, and the PiCar-X will automatically come to a stop.
 
-When PiCar-X detects a human face, we make it stop automatically.
+To simulate driving safety protocols, a judgment procedure is created that will send a **[count]** value to a **if do else** block. The judgement procedure will look for a human face 10 times, and if a face does appear it will increment **[count]** by +1. When **[count]** is larger than 3, the PiCar-X will stop moving.
 
-For driving safety, we wrote a judgment procedure: detecting a human face 10 times in a unit time, and if the face appears more than 3 times, it stops driving.
-
-* `How to Use the Video Function? <https://docs.sunfounder.com/projects/ezblock3/en/latest/use_video.html>`_
+* `How to Use the Video Function <https://docs.sunfounder.com/projects/ezblock3/en/latest/use_video.html>`_
 
 .. image:: img/block/face_detection.PNG
 

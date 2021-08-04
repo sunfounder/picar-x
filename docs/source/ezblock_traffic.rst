@@ -1,22 +1,22 @@
 Traffic Sign Detection
 ===============================
 
-In this project, you will use a new detection function, **traffic sign detection**. The traffic sign detection process is as follows: 
+This project uses an image detection function to look for traffic signs, 
+and make the PiCar-X follow the instructions on the sign. 
+The turn **traffic sign detection [on]** block will recognize 4 different traffic sign models included in the printable PDF below. 
+When the PiCar-X detects a **STOP** sign, it will come to a stop, 
+a **FORWARD** sign will make it drive forward, and the **LEFT** or **RIGHT** arrows will make it turn that direction. 
 
-First, the video frames are pre-processed by OpenCV and regions are selected on the image, then the regions are passed into the model that has been trained using TensorFlow. Finally, according to the type and accuracy returned by the model, the corresponding region on the image is framed and labeled with the type and accuracy.
-
-We have trained 4 traffic sign models for PiCar-X, which you can print yourself, but you need to be careful to make sure they are printed in color.
-
-
-* `Traffic Sign Cards File <https://github.com/sunfounder/picar-x/blob/v2.0/printfile/Traffic%20Sign%20Cards.pdf>`_
+* :download:`[PDF]Traffic Sign Cards <https://github.com/sunfounder/sf-pdf/raw/master/prop_card/object_detection/traffic-sign-cards.pdf>`
 
 .. image:: img/block/taffics_sign.png
 
 .. note::
 
-    Please understand that the printed traffic sign cardboard may be a little different from the one we trained because of the color difference or material, which will lead to a less accurate recognition.
+    The printed traffic sign colors may have a slightly different hue from the Ezblock color models due to printer toner differences, or the printed medium, such as a tan-colored paper. This can cause a less accurate color recognition.
 
-This project is based on :ref:`Minecart` with traffic sign detection, detecting a **STOP** sign will make it stop, and a **FORWARD** sign will make it drive forward. You can view the detection results via Video Monitor on Ezblock Studio.
+This project is based on :ref:`Minecart` , but instead of using the grayscale sensor, the PiCar-X uses an algorithm for traffic sign detection. The detection results can be viewed via the Video Monitor in Ezblock Studio.
+
 
 .. image:: img/block/traffic_detect.PNG
 

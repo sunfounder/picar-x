@@ -1,29 +1,30 @@
 Orienteering
 ==================
 
-Put PiCar-X on a scavenger hunt!
+This project uses the remote control function to guide the PiCar-X through a competitive scavenger hunt!
 
-Set up a scene with six markers (maze, square, room, race track) and place a color card in each of the six markers.
+First, set up either an obstacle course, or a maze, or even an empty room that the PiCar-X can drive through. Then, randomly place six markers along the route, and put a color-card at each of the six markers for the PiCar-X to find. 
 
+The six color models for PiCar-X are: red, orange, yellow, green, blue and purple, and are ready to print from a colored printer from the PDF below. 
 
-We trained 6 color models for PiCar-X, red, orange, yellow, green, blue and purple. You can print them yourself, but you need to make sure they are printed in color.
-
-* `Color Cards File <https://github.com/sunfounder/picar-x/blob/v2.0/printfile/Color%20Cards.pdf>`_
+* :download:`[PDF]Color Cards <https://github.com/sunfounder/sf-pdf/raw/master/prop_card/object_detection/color-cards.pdf>`
 
 .. image:: img/block/color_card.png
 
 .. note::
 
-    Please understand that the printed traffic sign cardboard may be a little different from the one we trained because of the color difference or material, which will lead to a less accurate recognition.
+    The printed colors may have a slightly different hue from the Ezblock color models due to printer toner differences, or the printed medium, such as a tan-colored paper. This can cause a less accurate color recognition.
 
-Place PiCar-X in the middle of the field and click the Button on the Remote Control page to start the game.
+The PiCar-X will be programmed to find three of the six colors in a random order, and will be using the TTS function to announce which color to look for next.
 
-PiCar-X will be given a task - to find the three colors in turn. At the same time, PiCar-X will tell you which color you are looking for using the voice function.
-Your task is to help it complete the task in as short a time as possible.
+The objective is to help the PiCar-X find each of the three colors in as short of a time as possible.
+
+Place PiCar-X in the middle of the field and click the Button on the Remote Control page to start the game. 
+
 
 .. image:: img/block/orienteering.png
 
-You can take turns playing this game with your friends to see who can help PiCar-X complete the task faster.
+Take turns playing this game with friends to see who can help PiCar-X complete the objective the fastest!
 
 **EXAMPLE**
 
