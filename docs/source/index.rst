@@ -29,6 +29,7 @@ For users who only want to learn programming in Python 3.0, also included is an 
    play_with_ezblock
    play_with_python
    faq
+   thank
 
 Copyright Notice
 --------------------------
