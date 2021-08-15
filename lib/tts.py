@@ -1,9 +1,7 @@
-from .basic import _Basic_class
-from .utils import mapping, is_installed
-from .music import Music
+from utils import mapping, is_installed, run_command
 from distutils.spawn import find_executable
 
-class TTS(_Basic_class):
+class TTS:
     _class_name = 'TTS'
     SUPPORTED_LANGUAUE = [
         'zh-CN', # 普通话(中国)
@@ -36,13 +34,8 @@ class TTS(_Basic_class):
         eval(f"self.{self.engine}(words)")
 
     def espeak(self, words):
-        self._debug('espeak:\n [%s]' % (words))
-        if not self._check_executable('espeak'):
-            self._debug('espeak is busy. Pass')
-
         cmd = 'espeak -a%d -s%d -g%d -p%d \"%s\" --stdout | aplay 2>/dev/null & ' % (self._amp, self._speed, self._gap, self._pitch, words)
-        self.run_command(cmd)
-        self._debug('command: %s' %cmd)
+        run_command(cmd)
 
     def lang(self, *value):     # 切换语言，可识别5种语言
         if len(value) == 0:
