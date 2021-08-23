@@ -28,6 +28,7 @@ For users who only want to learn programming in Python 3.0, also included is an 
    about_robot_hat 
    play_with_ezblock
    play_with_python
+   appendix
    faq
    thank
 

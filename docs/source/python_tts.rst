@@ -5,6 +5,10 @@ Before using the Text-to-Speech (TTS) functions, first activate the speaker so t
 
 Run ``i2samp.sh`` in the **picar-x** folder, and this script will install everything needed to use i2s amplifier.
 
+.. raw:: html
+
+    <run></run>
+
 .. code-block::
 
     sudo bash i2samp.sh 
@@ -15,7 +19,27 @@ There will be several prompts asking to confirm the request. Respond to all prom
 
 After rebooting, run the ``i2samp.sh`` script again to test the amplifier. If a sound successfully plays from the speaker, the configuration is complete.
 
+**Run the Code**
+
+.. raw:: html
+
+    <run></run>
+
+.. code-block::
+
+    cd /home/pi/picar-x/example
+    sudo python3 tts_example.py
+    
+After running the code, PiCar-X will say \"Hello\", \"Hi\", \"Good bye\", \"Nice to meet you\".
+
 **Code**
+
+.. note::
+    You can **Modify/Reset/Copy/Run/Stop** the code below. But before that, you need to go to  source code path like ``picar-x/example``. After modifying the code, you can run it directly to see the effect.
+
+.. raw:: html
+
+    <run></run>
 
 .. code-block:: python
 

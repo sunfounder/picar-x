@@ -42,8 +42,7 @@ if __name__ == "__main__":
         for angle in range(-35,0):
             px.set_camera_servo2_angle(angle)
             time.sleep(0.01)
-
-
+            
     finally:
         px.forward(0)
 

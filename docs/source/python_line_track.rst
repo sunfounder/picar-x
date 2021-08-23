@@ -1,9 +1,31 @@
 Line Tracking
 ====================================
 
-This project will use the Grayscale module to make the PiCar-X move forward along a track. Use dark-colored tape to make a track on the ground as straight as possible, and not too curved. Some experimenting might be needed if the PiCar-X is derailed.
+This project will use the Grayscale module to make the PiCar-X move forward along a line. 
+Use dark-colored tape to make a line as straight as possible, and not too curved. 
+Some experimenting might be needed if the PiCar-X is derailed.
 
-**code**
+**Run the Code**
+
+.. raw:: html
+
+    <run></run>
+
+.. code-block::
+
+    cd /home/pi/picar-x/example
+    sudo python3 minecart_plus.py
+    
+After running the code, PiCar-X will move forward along a line.
+
+**Code**
+
+.. note::
+    You can **Modify/Reset/Copy/Run/Stop** the code below. But before that, you need to go to  source code path like ``picar-x/example``. After modifying the code, you can run it directly to see the effect.
+
+.. raw:: html
+
+    <run></run>
 
 .. code-block:: python
 

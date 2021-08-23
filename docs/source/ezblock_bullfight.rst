@@ -28,3 +28,4 @@ If multiple targets are identified, the dimensions of the largest target will be
 **EXAMPLE**
 
 .. image:: img/block/sp210512_175519.png
+    :width: 800

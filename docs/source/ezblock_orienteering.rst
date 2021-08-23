@@ -29,7 +29,10 @@ Take turns playing this game with friends to see who can help PiCar-X complete t
 **EXAMPLE**
 
 .. image:: img/block/sp210513_154117.png
+    :width: 800
 
 .. image:: img/block/sp210513_154256.png
+    :width: 800
 
 .. image:: img/block/sp210513_154425.png
+    :width: 800

@@ -1,16 +1,29 @@
 Let PiCar-X Move
 ========================
 
-The basic functions of PiCar-X are in the ``picarx.py`` program file, 
-under the path ``/home/pi/picar-x/lib``. The ``picarx.py`` program is used for controlling the servo and wheels, 
-and will make the PiCar-X move forward, turn in an S-shape, and then stop and shake its head. 
+This is the first project, let’s test the basic movement of Picar-X.
 
-The code shows how to control driving the two motors and the three servos on the car body.
+**Run the Code**
 
-Open ``move.py`` in the folder of the ``example`` directory, or copy the code below directly to the Python IDE to run.
+.. raw:: html
 
+    <run></run>
+
+.. code-block::
+
+    cd /home/pi/picar-x/example
+    sudo python3 move.py
+
+After running the code, PiCar-X will move forward, turn in an S-shape, stop and shake its head. 
 
 **Code**
+
+.. note::
+    You can **Modify/Reset/Copy/Run/Stop** the code below. But before that, you need to go to  source code path like ``picar-x/example``. After modifying the code, you can run it directly to see the effect.
+
+.. raw:: html
+
+    <run></run>
 
 .. code-block:: python
 
@@ -63,7 +76,11 @@ Open ``move.py`` in the folder of the ``example`` directory, or copy the code be
 
 **How it works?**
 
-First, the libraries to support the basic functionality of PiCar-X are imported. These lines will appear in all the examples that involve PiCar-X movement.
+The basic functions of PiCar-X are in the ``picarx.py`` program file, 
+under the path ``/home/pi/picar-x/lib``. The ``picarx.py`` program is used for controlling the servo and wheels, 
+and will make the PiCar-X move forward, turn in an S-shape, or shake its head. 
+
+Now, the libraries to support the basic functionality of PiCar-X are imported. These lines will appear in all the examples that involve PiCar-X movement.
 
 .. code-block:: python
     :emphasize-lines: 0

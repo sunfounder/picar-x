@@ -1,9 +1,33 @@
 Obstacle Avoidance
 =============================
 
-In this project, the PiCar-X will detect obstacles that are directly in front of the built-in ultrasonic module. When the distance of an obstacle is detected to be less than 25cm (10 inches), the PiCar-X will turn to the left, otherwise it will continue to move forward.
+In this project, PiCar-X will detect obstacles in front of it while moving forward, and when the obstacles are too close, it will change the direction of moving forward.
+
+**Run the Code**
+
+.. raw:: html
+
+    <run></run>
+
+.. code-block::
+
+    cd /home/pi/picar-x/example
+    sudo python3 avoiding_obstacles.py
+    
+After running the code, PiCar-X will walk forward. 
+
+If it detects that the distance of the obstacle ahead is less than 25cm, it will turn left. 
+
+If there is no obstacle in the direction after turning left or the obstacle distance is greater than 25cm, it will continue to move forward.
 
 **Code**
+
+.. note::
+    You can **Modify/Reset/Copy/Run/Stop** the code below. But before that, you need to go to source code path like ``picar-x/example``. After modifying the code, you can run it directly to see the effect.
+
+.. raw:: html
+
+    <run></run>
 
 .. code-block:: python
 

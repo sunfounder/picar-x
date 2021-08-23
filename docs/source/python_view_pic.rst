@@ -3,7 +3,7 @@ Computer Vision
 
 This next project will officially enter the field of computer vision!
 
-To perform the next four experiments, make sure to have completed the :ref:`View RPi Desktop by VNC` project, and have an open terminal window for running the projects. A remote connection via SSH will not display the camera images.
+To perform the next four experiments, make sure to have completed the :ref:`Remote Desktop`. A remote connection via SSH will not display the camera images.
 
 **Code**
 
