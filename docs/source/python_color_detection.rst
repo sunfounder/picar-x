@@ -1,9 +1,9 @@
 Color Detection
 ==========================================
 
-This project will add a color detection algorithm to the previous :ref:`Computer Vision`project.
+This project will add a color detection algorithm to the previous :ref:`Computer Vision` project.
 
-* `[PDF]Color Cards <https://github.com/sunfounder/picar-x/blob/v2.0/printfile/Color%20Cards.pdf>`_
+* :download:`[PDF]Color Cards <https://github.com/sunfounder/sf-pdf/raw/master/prop_card/object_detection/color-cards.pdf>`
 
 .. note::
 
