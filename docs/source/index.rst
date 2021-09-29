@@ -21,7 +21,7 @@ For users who only want to learn programming in Python 3.0, also included is an 
 **Content**
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 3
 
    introduction
    list_and_assembly
