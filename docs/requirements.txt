@@ -2,7 +2,7 @@
 altgraph==0.17
 argh==0.26.2
 awscli==1.18.124
-Babel==2.7.0
+Babel==2.9.1
 beautifulsoup4==4.9.3
 bitstring==3.1.7
 boto3==1.14.34
