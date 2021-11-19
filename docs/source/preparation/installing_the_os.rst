@@ -41,17 +41,29 @@ Insert your SD card into the computer or laptop SD card slot.
 
 **Step 4**
 
-In the Raspberry Pi Imager, select the OS that you want to install and
-the SD card you would like to install it on.
+.. In the Raspberry Pi Imager, select the OS that you want to install and
+.. the SD card you would like to install it on.
 
-.. image:: media/image13.png
+.. .. image:: media/image13.png
+..     :align: center
+
+.. .. note:: 
+
+..     1) You will need to be connected to the internet the first time.
+
+..     2) That OS will then be stored for future offline use(lastdownload.cache, C:/Users/yourname/AppData/Local/Raspberry Pi/Imager/cache). So the next time you open the software, it will have the display "Released: date, cached on your computer".
+
+Download the `raspios_armhf-2020-05-28 <https://downloads.raspberrypi.org/raspios_armhf/images/raspios_armhf-2021-05-28/2021-05-07-raspios-buster-armhf.zip>`_ image and select it in Raspberry Pi Imager.
+
+.. image:: media/otherOS.png
     :align: center
 
-.. note:: 
+.. warning::
+    Raspberry Pi OS has major changes after the 2021-05-28 version, which may cause some functions to be unavailable. Please do not use the latest version for now.
 
-    1) You will need to be connected to the internet the first time.
 
-    2) That OS will then be stored for future offline use(lastdownload.cache, C:/Users/yourname/AppData/Local/Raspberry Pi/Imager/cache). So the next time you open the software, it will have the display "Released: date, cached on your computer".
+
+
 
 **Step 5**
 
