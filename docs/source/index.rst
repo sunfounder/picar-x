@@ -1,20 +1,37 @@
-.. SunFounder_PiCar-X documentation master file, created by
-   sphinx-quickstart on Thu May 20 13:52:09 2021.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
+欢迎来到帕克的文档!
+===================================
 
-Welcome to SunFounder_PiCar-X's documentation!
-==============================================
+感谢你选择我们的帕克智能小车。
+
+帕克是树莓派平台的人工智能驱动的自动驾驶机器人小车，以树莓派作为控制中心。
+帕克的两轴相机模块、超声波模块和线路跟踪模块可以提供颜色/脸部/交通标志的检测功能。
+自动避开障碍物、自动跟踪线路等功能。
+
+本教程包括组件清单、装配图、机器人拓展板介绍，以及基于图形化编程和Python语言的帕克编程教程。
+
+编程部分分为两章： :ref:`玩转Ezblock` 和 :ref:`玩转Python`。每个编程章节都允许用户从让帕克执行基本动作开始，一直到设计多人游戏，甚至更多的游戏!
+
+Ezblock Studio是SunFounder创建的一个软件开发平台，用于帮助初学者和新手开始在树莓派平台上进行编程。Ezbock Studio有两种编程语言环境：一种是图形用户界面环境，一种是命令行Python环境。
+
+Ezblock几乎可用于所有类型的设备，包括Mac、PC和Android。Ezblock最近已经升级到3.0版本，它使用WebSocket提供蓝牙和Wi-Fi支持。
+
+对于只想学习Python 3.0编程的用户，还包括树莓派操作系统的基础知识介绍，以及提供基本Python编程技能的教程。
+
+**目录**
 
 .. toctree::
-   :maxdepth: 2
-   :caption: Contents:
+   :maxdepth: 3
 
+   introduction
+   list_and_assembly
+   about_robot_hat 
+   play_with_ezblock
+   play_with_python
+   appendix
+   faq
+   thank
 
+版权声明
+--------------------------
 
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
+本手册中包括但不限于文字、图片、代码等所有内容均归SunFounder公司所有。 根据相关规定和版权法，您只能将其用于个人学习、调查、欣赏或其他非商业或非营利目的，不得侵犯作者和相关权利人的合法权利。 对于任何个人或组织未经许可将其用于商业利益，本公司保留采取法律行动的权利。
