@@ -3,7 +3,7 @@
 
 除了对帕克进行编程以播放音效或文字转语音 (TTS) 外，帕克还会播放背景音乐。 该项目还将使用 **滑条** 小部件来调整音乐音量。
 
-* `如何使用遥控功能？ <https://docs.sunfounder.com/projects/ezblock3/en/latest/remote.html>`_
+.. * `如何使用遥控功能？ <https://docs.sunfounder.com/projects/ezblock3/en/latest/remote.html>`_
 
 关于Ezblocks遥控功能的详细教程，请参考 :ref:`远程遥控` 教程。
 

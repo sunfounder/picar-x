@@ -7,7 +7,7 @@
 
 为了模拟驾驶安全协议，创建了一个判断程序，该程序将向 **如果-执行-否则** 块发送 **[count]** 值。 判断程序会寻找人脸 10 次，如果确实出现了人脸，则将 **[count]** 增加 +1。 当 **[count]** 大于 3 时，帕克将停止移动。
 
-* `如何使用视频功能 <https://docs.sunfounder.com/projects/ezblock3/en/latest/use_video.html>`_
+.. * `如何使用视频功能 <https://docs.sunfounder.com/projects/ezblock3/en/latest/use_video.html>`_
 
 .. image:: img/block/face_detection.PNG
 

@@ -11,7 +11,7 @@
 
 Ezblock 包括帕克的 6 种颜色模型，“红色”、“橙色”、“黄色”、“绿色”、“蓝色”和“紫色”。 色卡已在以下 PDF 中准备好，需可以下载下来打印。
 
-* :download:`[PDF]颜色卡 <https://github.com/sunfounder/sf-pdf/raw/master/prop_card/object_detection/color-cards.pdf>`
+* :download:`[PDF]颜色卡 <https://gitee.com/sunfounder/sf-pdf/raw/master/prop_card/object_detection/color-cards.pdf>`
 
 .. image:: img/block/color_card.png
     :width: 600

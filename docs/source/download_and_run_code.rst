@@ -22,7 +22,7 @@
 
 .. code-block:: 
 
-    git clone -b v2.0 https://github.com/sunfounder/picar-x.git
+    git clone -b v2.0 https://gitee.com/sunfounder/picar-x.git
 
 .. _run_install.py:
 

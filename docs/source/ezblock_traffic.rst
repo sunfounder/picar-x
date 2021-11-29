@@ -7,7 +7,7 @@
 当帕克检测到 **停止（STOP）** 标志时，它会停下来，
 **向前（FORWARD）** 标志将使其向前行驶，而 **向左（LEFT）** 或 **向右（RIGHT）** 箭头将使其转向该方向。
 
-* :download:`[PDF]交通标志卡 <https://github.com/sunfounder/sf-pdf/raw/master/prop_card/object_detection/traffic-sign-cards.pdf>`
+* :download:`[PDF]交通标志卡 <https://gitee.com/sunfounder/sf-pdf/raw/master/prop_card/object_detection/traffic-sign-cards.pdf>`
 
 .. image:: img/block/taffics_sign.png
 

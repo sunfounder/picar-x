@@ -1,9 +1,9 @@
 部件清单和装配说明
 ==========================================
 
-在组装帕克之前，请首先确认所有的部件和组件都已包括在内。如果有任何缺失或损坏的部件，请立即与SunFounder联系，cs@sunfounder.com，以尽快解决这个问题。
+在组装帕克之前，请首先确认所有的部件和组件都已包括在内。如果有任何缺失或损坏的部件，请立即与售后服务联系，以尽快解决这个问题。
 
-请按照以下PDF文件上的步骤进行组装说明： :download:`[PDF]帕克的部件列表和组装 <https://github.com/sunfounder/sf-pdf/raw/master/assembly_file/a0000710-picar-x.pdf>`.
+请按照以下PDF文件上的步骤进行组装说明： :download:`[PDF]帕克的部件列表和组装 <https://gitee.com/sunfounder/sf-pdf/raw/master/assembly_file/a0000710-picar-x.pdf>`.
 
 .. note::
 

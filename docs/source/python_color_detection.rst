@@ -3,7 +3,7 @@
 
 该项目将在之前的 :ref:`计算机视觉` 项目中添加颜色检测算法。
 
-* :download:`[PDF]颜色卡 <https://github.com/sunfounder/sf-pdf/raw/master/prop_card/object_detection/color-cards.pdf>`
+* :download:`[PDF]颜色卡 <https://gitee.com/sunfounder/sf-pdf/raw/master/prop_card/object_detection/color-cards.pdf>`
 
 .. note::
 
