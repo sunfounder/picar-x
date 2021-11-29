@@ -13,6 +13,19 @@ This project will add a color detection algorithm to the previous :ref:`Computer
 .. image:: img/block/color_card.png
     :width: 600
 
+
+**Run the Code**
+
+.. raw:: html
+
+    <run></run>
+
+.. code-block::
+
+    cd /home/pi/picar-x/example
+    sudo python3 color_detect.py
+
+
 **Code**
 
 .. code-block:: python

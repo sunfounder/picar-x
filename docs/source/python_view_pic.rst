@@ -5,6 +5,19 @@ This next project will officially enter the field of computer vision!
 
 To perform the next four experiments, make sure to have completed the :ref:`Remote Desktop`. A remote connection via SSH will not display the camera images.
 
+
+**Run the Code**
+
+.. raw:: html
+
+    <run></run>
+    
+.. code-block::
+
+    cd /home/pi/picar-x/example
+    sudo python3 python_view_pic.py
+
+
 **Code**
 
 .. code-block:: python

@@ -6,6 +6,21 @@ This project is also based on the :ref:`Computer Vision` project, with the addit
 
 .. image:: img/block/face_detection.PNG
 
+
+**Run the Code**
+
+
+.. raw:: html
+
+    <run></run>
+
+.. code-block::
+
+    cd /home/pi/picar-x/example
+    sudo python3 human_face_detect.py
+
+
+
 **Code**
 
 .. code-block:: python

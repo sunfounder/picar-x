@@ -3,6 +3,19 @@ Video Car
 
 This program will provide a First Person View from the PiCar-X! Use the keyboards WSAD keys to control the direction of movement, and the O and P to adjust the speed.
 
+**Run the Code**
+
+
+.. raw:: html
+
+    <run></run>
+
+.. code-block::
+
+    cd /home/pi/picar-x/example
+    sudo python3 video_car.py
+
+
 **code**
 
 .. code-block:: python

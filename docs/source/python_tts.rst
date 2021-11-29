@@ -11,6 +11,7 @@ Run ``i2samp.sh`` in the **picar-x** folder, and this script will install everyt
 
 .. code-block::
 
+    cd /home/pi/picar-x
     sudo bash i2samp.sh 
 
 .. image:: img/tt_bash.png
