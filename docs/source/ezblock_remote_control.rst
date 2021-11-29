@@ -4,7 +4,7 @@
 该项目将教授如何使用操纵杆小部件远程控制帕克。
 注意：从远程控制页面拖放操纵杆小部件后，使用“地图”功能校准操纵杆 X 轴和 Y 轴读数。 有关远程控制功能的更多信息，请参考以下链接：
 
-* `如何使用遥控功能？ <https://docs.sunfounder.com/projects/ezblock3/en/latest/remote.html>`_
+.. * `如何使用遥控功能？ <https://docs.sunfounder.com/projects/ezblock3/en/latest/remote.html>`_
 
 .. image:: img/block/remote_control23.png
 

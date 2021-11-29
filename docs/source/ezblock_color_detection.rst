@@ -27,7 +27,9 @@ Ezblock 包括帕克的 6 种颜色模型，“红色”、“橙色”、“黄
 
 .. image:: img/block/sp210512_121105.png
 
-从远程控制页面拖动视频小部件，它将生成一个视频监视器。 有关如何使用视频小部件的更多信息，请参阅此处的 Ezblock 视频教程： `如何使用视频功能？ <https://docs.sunfounder.com/projects/ezblock3/en/latest/use_video.html>`_
+从远程控制页面拖动视频小部件，它将生成一个视频监视器。 
+
+.. 有关如何使用视频小部件的更多信息，请参阅此处的 Ezblock 视频教程： `如何使用视频功能？ <https://docs.sunfounder.com/projects/ezblock3/en/latest/use_video.html>`_
 
 .. image:: img/block/sp210512_121125.png
 

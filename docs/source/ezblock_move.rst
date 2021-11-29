@@ -3,11 +3,11 @@
 
 第一个项目教授如何为帕克编程运动动作。 在这个项目中，程序会告诉帕克依次执行五个动作：“前进”、“后退”、“左转”、“右转”和“停止”。
 
-学习Ezblock Studio的基本使用，请通读以下两节：
+.. 学习Ezblock Studio的基本使用，请通读以下两节：
 
-* `Ezblock 快速用户指南 <https://docs.sunfounder.com/projects/ezblock3/en/latest/quick_user_guide_for_ezblock3.html>`_
+.. * `Ezblock 快速用户指南 <https://docs.sunfounder.com/projects/ezblock3/en/latest/quick_user_guide_for_ezblock3.html>`_
 
-* `如何创建一个新项目？ <https://docs.sunfounder.com/projects/ezblock3/en/latest/create_new.html>`_
+.. * `如何创建一个新项目？ <https://docs.sunfounder.com/projects/ezblock3/en/latest/create_new.html>`_
 
 
 .. image:: img/block/move.png
