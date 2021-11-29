@@ -5,6 +5,19 @@
 
 要执行接下来的四个实验，请确保已完成远程桌面。 通过 SSH 的远程连接不会显示摄像机图像。
 
+
+**运行代码**
+
+.. raw:: html
+
+    <run></run>
+    
+.. code-block::
+
+    cd /home/pi/picar-x/example
+    sudo python3 python_view_pic.py
+
+
 **代码**
 
 .. code-block:: python

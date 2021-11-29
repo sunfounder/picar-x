@@ -5,12 +5,15 @@
 
 在 **picar-x** 文件夹中运行 ``i2samp.sh``，此脚本将安装使用 i2s 放大器所需的一切。
 
+**运行代码**
+
 .. raw:: html
 
     <run></run>
 
 .. code-block::
 
+    cd /home/pi/picar-x
     sudo bash i2samp.sh 
 
 .. image:: img/tt_bash.png

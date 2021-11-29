@@ -3,6 +3,19 @@
 
 该程序将提供帕克的第一人称视角！ 使用键盘 WSAD 键控制移动方向，使用 O 和 P 调整速度。
 
+
+**运行代码**
+
+
+.. raw:: html
+
+    <run></run>
+
+.. code-block::
+
+    cd /home/pi/picar-x/example
+    sudo python3 video_car.py
+
 **代码**
 
 .. code-block:: python

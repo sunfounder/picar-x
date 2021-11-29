@@ -12,6 +12,18 @@
 .. image:: img/block/color_card.png
     :width: 600
 
+
+**运行代码**
+
+.. raw:: html
+
+    <run></run>
+
+.. code-block::
+
+    cd /home/pi/picar-x/example
+    sudo python3 color_detect.py
+
 **代码**
 
 .. code-block:: python
