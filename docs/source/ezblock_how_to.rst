@@ -50,7 +50,7 @@
 ..     .. image:: img/imgIMG_0392.PNG
 ..         :align: center
 
-.. #. 如果要查看和修改里面的代码，那么就需要点击 **编辑**。下图是编程页面。
+.. #. 如果要查看和修改里面的代码，那么就需要点击 **编辑** 进入编程页面。
 
 ..     .. image:: img/imgIMG_0393.PNG
 ..         :align: center
