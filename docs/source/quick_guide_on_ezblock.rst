@@ -1,17 +1,17 @@
-Ezblock 快速指南
+EzBlock 快速指南
 ============================
 
 这里有两个部分：
 
 * :ref:`组装帕克之前` 允许您将所有舵机保持在 0 度以完成正确和安全的装配（否则您可能会损坏舵机）。
-* :ref:`Ezblock 编程前` 将指导您下载 Ezblock Studio 与您的机器人一起玩。
+* :ref:`EzBlock 编程前` 将指导您下载 EzBlock Studio 与您的机器人一起玩。
 
 组装帕克之前
 --------------------------------
 
-在组装帕克之前，请按照此处有关如何在 Micro SD 卡上安装 Ezblock 的说明进行操作： 
+在组装帕克之前，请按照此处有关如何在 Micro SD 卡上安装 EzBlock 的说明进行操作： 
 
-.. `下载并安装 Ezblock <https://docs.sunfounder.com/projects/ezblock3/en/latest/quick_user_guide_for_ezblock3 .html#download-and-install-ezblock-os>`_.
+.. `下载并安装 EzBlock <https://docs.sunfounder.com/projects/ezblock3/en/latest/quick_user_guide_for_ezblock3 .html#download-and-install-ezblock-os>`_.
 
 **第1步**
 
@@ -38,11 +38,11 @@ Ezblock 快速指南
 
 **第4步**
 
-下载 `Ezblock 镜像 <https://1drv.ms/u/s!AqKAi6T8L7jzjBG4sb3luhQUhW_c?e=CCXYtt>`_ 。
+下载 `EzBlock 镜像 <https://1drv.ms/u/s!AqKAi6T8L7jzjBG4sb3luhQUhW_c?e=CCXYtt>`_ 。
 
 **第5步**
 
-在 Raspberry Pi Imager 中选择刚下载的 Ezblock 镜像。
+在 Raspberry Pi Imager 中选择刚下载的 EzBlock 镜像。
 
 .. image:: preparation/media/otherOS.png
     :align: center
@@ -78,7 +78,7 @@ Ezblock 快速指南
 
 
 
-在Micro SD卡上烧录Ezblock镜像后，你将可以设置Robot HAT上的P11口将舵机角度校准为0°角。 为确保舵机已正确设置为 0°，首先将摇臂轻轻插入舵机轴，然后将摇臂轻轻旋转到不同的角度。
+在Micro SD卡上烧录EzBlock镜像后，你将可以设置Robot HAT上的P11口将舵机角度校准为0°角。 为确保舵机已正确设置为 0°，首先将摇臂轻轻插入舵机轴，然后将摇臂轻轻旋转到不同的角度。
 
 .. image:: img/servo_arm.png
 
@@ -96,17 +96,19 @@ Ezblock 快速指南
 
 
 
-Ezblock 编程前
+EzBlock 编程前
 ---------------------
 
 
-扫描下方二维码，下载 Ezblock Studio APP。
+扫描下方二维码，下载 EzBlock Studio APP。
 
-.. image:: img/Ezblock_Studio_v3.0.1_App.png
+.. image:: img/EzBlock_Studio_v3.0.1_App.png
     :align: center
 
-.. note::
+.. .. note::
 
-    连接帕克后，会有一个校准步骤。 这是因为安装过程中可能存在偏差或舵机本身的限制，导致一些舵机角度略微倾斜，因此您可以在此步骤中对其进行校准。
+..     连接帕克后，会有一个校准步骤。 这是因为安装过程中可能存在偏差或舵机本身的限制，导致一些舵机角度略微倾斜，因此您可以在此步骤中对其进行校准。
     
-    但如果你认为组装很完美，不需要校准，你也可以跳过这一步。
+..     但如果你认为组装很完美，不需要校准，你也可以跳过这一步。
+
+或者使用 :ref:`网页版 EzBlock`

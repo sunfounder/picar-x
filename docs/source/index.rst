@@ -9,11 +9,11 @@
 
 本教程包括组件清单、装配图、机器人拓展板介绍，以及基于图形化编程和Python语言的帕克编程教程。
 
-编程部分分为两章： :ref:`玩转Ezblock` 和 :ref:`玩转Python`。每个编程章节都允许用户从让帕克执行基本动作开始，一直到设计多人游戏，甚至更多的游戏!
+编程部分分为两章： :ref:`玩转EzBlock` 和 :ref:`玩转Python`。每个编程章节都允许用户从让帕克执行基本动作开始，一直到设计多人游戏，甚至更多的游戏!
 
-Ezblock Studio是Emakefun创建的一个软件开发平台，用于帮助初学者和新手开始在树莓派平台上进行编程。Ezbock Studio有两种编程语言环境：一种是图形用户界面环境，一种是命令行Python环境。
+EzBlock Studio是Emakefun创建的一个软件开发平台，用于帮助初学者和新手开始在树莓派平台上进行编程。Ezbock Studio有两种编程语言环境：一种是图形用户界面环境，一种是命令行Python环境。
 
-Ezblock几乎可用于所有类型的设备，包括Mac、PC和Android。Ezblock最近已经升级到3.0版本，它使用WebSocket提供蓝牙和Wi-Fi支持。
+EzBlock几乎可用于所有类型的设备，包括Mac、PC和Android。EzBlock最近已经升级到3.0版本，它使用WebSocket提供蓝牙和Wi-Fi支持。
 
 对于只想学习Python 3.0编程的用户，还包括树莓派操作系统的基础知识介绍，以及提供基本Python编程技能的教程。
 

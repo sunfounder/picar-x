@@ -5,7 +5,7 @@
 
 .. * `如何使用遥控功能？ <https://docs.sunfounder.com/projects/ezblock3/en/latest/remote.html>`_
 
-关于Ezblocks遥控功能的详细教程，请参考 :ref:`远程遥控` 教程。
+关于 EzBlock 的遥控功能的详细教程，请参考 :ref:`远程遥控` 教程。
 
 **提示**
 

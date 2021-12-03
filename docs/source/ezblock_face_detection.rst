@@ -3,7 +3,7 @@
 
 除了颜色检测外，帕克还包含人脸检测功能。 在以下示例中，操纵杆小部件用于调整相机的方向，并且调试监视器中将显示面部数量。
 
-.. 有关如何使用视频小部件的更多信息，请在此处参考有关 Ezblock 视频的教程：
+.. 有关如何使用视频小部件的更多信息，请在此处参考有关 EzBlock 视频的教程：
 .. `如何使用视频功能？ <https://docs.sunfounder.com/projects/ezblock3/en/latest/use_video.html>`_
 
 .. image:: img/block/face_detection.PNG
