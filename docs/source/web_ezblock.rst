@@ -2,7 +2,7 @@
 ===========================================
 
 
-进入 `网页版 EzBlock <http://ezblock.com.cn/ezblock_studio/index.html?distributor=mammoth>`_ 。
+进入 `网页版 EzBlock <http://ezblock.com.cn/ezblock_studio/index.html?lang=zh-hans&distributor=mammoth>`_ 。
 
 .. note:: 建议使用Chrome浏览器。
 
