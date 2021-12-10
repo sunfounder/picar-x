@@ -56,7 +56,7 @@ VNC
 
 **第1步**
 
-你需要在个人电脑上下载并安装`VNC Viewer <https://www.realvnc.com/en/connect/download/viewer/>`_。安装完成后，打开它。
+你需要在个人电脑上下载并安装 `VNC Viewer <https://www.realvnc.com/en/connect/download/viewer/>`_。安装完成后，打开它。
 
 **第2步**
 

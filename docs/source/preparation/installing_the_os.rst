@@ -46,13 +46,29 @@
 ..     2) That OS will then be stored for future offline use(lastdownload.cache, C:/Users/yourname/AppData/Local/Raspberry Pi/Imager/cache). So the next time you open the software, it will have the display "Released: date, cached on your computer".
 
 
-下载 `raspios_armhf-2020-05-28 <https://downloads.raspberrypi.org/raspios_armhf/images/raspios_armhf-2021-05-28/2021-05-07-raspios-buster-armhf.zip>`_ 镜像 并在 Raspberry Pi Imager 中选择它。
+.. 下载 `raspios_armhf-2020-05-28 <https://downloads.raspberrypi.org/raspios_armhf/images/raspios_armhf-2021-05-28/2021-05-07-raspios-buster-armhf.zip>`_ 镜像 并在 Raspberry Pi Imager 中选择它。
 
-.. image:: media/otherOS.png
-    :align: center
+.. .. image:: media/otherOS.png
+..     :align: center
+
+.. .. warning::
+..     树莓派操作系统在2021-05-28版本后有较大变化，可能会导致部分功能不可用。 请暂时不要使用最新版本。
+
 
 .. warning::
-    树莓派操作系统在2021-05-28版本后有较大变化，可能会导致部分功能不可用。 请暂时不要使用最新版本。
+
+    Raspberry Pi OS升级到 **Debian Bullseye** 后，会导致有些功能不能使用，建议还是继续使用 **Debian Buster** 版本。
+
+在Raspberry Pi Imager中，点击 **CHOOSE OS** -》 **Raspberry Pi OS(other)**。
+
+.. image:: media/3d33.png
+    :align: center
+
+将新打开的页下拉到最后面，你会看到 **Raspberry Pi OS(Legacy)** 和 **Raspberry Pi OS Lite(Legacy)**，这2个是对Debian Buster安全更新，它们之间的区别是带不带桌面。
+建议安装 **Raspberry Pi OS(Legacy)**，这个带桌面的系统。
+
+.. image:: media/3d34.png
+    :align: center
 
 
 
