@@ -16,17 +16,17 @@
 1 \* 鼠标           1 \* 键盘
 ================== =========================
 
-1. 将您在 Raspberry Pi OS 上设置的 SD 卡插入到 Raspberry Pi 底部的 micro SD 卡插槽中。
+1. 将您在 Raspberry Pi OS 上设置的 SD 卡插入到树莓派底部的 micro SD 卡插槽中。
 
 #. 插入鼠标和键盘。
 
-#. 将屏幕连接到 Raspberry Pi 的 HDMI 端口，并确保您的屏幕已插入壁式插座并已打开。
+#. 将屏幕连接到树莓派的 HDMI 端口，并确保您的屏幕已插入壁式插座并已打开。
 
     .. note::
 
         如果您使用的是树莓派 4，则需要将屏幕连接到 HDMI0（最靠近电源输入端口）。
 
-#. 使用电源适配器为 Raspberry Pi 供电。 几秒钟后，将显示 Raspberry Pi OS 桌面。
+#. 使用电源适配器为树莓派供电。 几秒钟后，将显示 Raspberry Pi OS 桌面。
 
     .. image:: media/image20.png
         :align: center
@@ -92,7 +92,7 @@
 
 **第5步**
 
-我们现在已连接 Raspberry Pi，并准备进行下一步。
+我们现在已连接树莓派，并准备进行下一步。
 
 .. image:: media/image24.png
     :align: center
@@ -134,7 +134,7 @@
 
 **第 5 步**
 
-在这里，我们连接了 Raspberry Pi，是时候进行下一步了。
+在这里，我们连接了树莓派，是时候进行下一步了。
 
 
 

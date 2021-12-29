@@ -4,7 +4,7 @@
 通过在命令行中使用 ``git clone`` 下载PiCar-X文件。
 
 
-首先通过 `cd command <https://en.wikipedia.org/wiki/Cd_(command)>`_ 改变目录到 **/home/pi/**。
+首先通过 ``cd`` 改变目录到 ``/home/pi/``。
 
 .. raw:: html
 
@@ -14,7 +14,7 @@
 
     cd /home/pi/
 
-然后通过 `git clone command <https://github.com/git-guides/git-clone>`_ 从 github 克隆仓库。
+然后通过 ``git clone`` 命令从 github 克隆仓库。
 
 .. raw:: html
 
@@ -47,7 +47,7 @@
 
     sudo python3 install.py
 
-``install.py`` 文件将完成所需Python库的安装，并配置Raspberry PiCar-X操作。
+``install.py`` 文件将完成所需Python库的安装，并配置PiCar-X。
 
 .. image:: img/install_py.png
 
@@ -55,7 +55,7 @@
     
     ``install.py`` 程序可能会因为网络连接而遇到一些 **Error** 。如果出现错误提示，请检查网络并重新运行 ``install.py``，直到所有进程显示 **Done**，并在最后出现提示 **Done**。
 
-这个步骤可能需要几分钟。在文件完全执行并出现提示 **Done** 后，请重新启动Raspberry Pi。
+这个步骤可能需要几分钟。在文件完全执行并出现提示 **Done** 后，请重新启动树莓派。
 
 .. raw:: html
 
