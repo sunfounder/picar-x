@@ -10,4 +10,7 @@ from servo import Servo
 if __name__ == '__main__':
     P_11 = Servo(PWM('P11'))         
     P_11.angle(0)     
-
+    
+    for p in ['P0','P1','P2']:
+        P = Servo(PWM(p))
+        P.angle(0)
