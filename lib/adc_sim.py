@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-from i2c import I2C
+from i2c_sim import I2C
 
 class ADC(I2C):
     ADDR=0x14                   # 扩展板的地址为0x14

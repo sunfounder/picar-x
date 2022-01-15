@@ -43,9 +43,9 @@ class fileDB(object):
 			else:
 				return default_value
 		except FileNotFoundError:
-			conf = open(self.db,'w')
-			conf.write("")
-			conf.close()
+			# conf = open(self.db,'w')
+			# conf.write("")
+			# conf.close()
 			return default_value
 		except :
 			return default_value

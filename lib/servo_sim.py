@@ -33,7 +33,7 @@ class Servo(object):
         self.pwm.pulse_width(value)
 
 def test():
-    from ezblock import PWM
+    from pwm_sim import PWM
     print("Test")
     p = PWM("P0")
     s0 = Servo(p)

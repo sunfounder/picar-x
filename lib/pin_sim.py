@@ -1,14 +1,14 @@
 # from .basic import _Basic_class
-import RPi.GPIO as GPIO
+# import RPi.GPIO as GPIO
 
 class Pin(object):
-    OUT = GPIO.OUT
-    IN = GPIO.IN
-    IRQ_FALLING = GPIO.FALLING
-    IRQ_RISING = GPIO.RISING
-    IRQ_RISING_FALLING = GPIO.BOTH
-    PULL_UP = GPIO.PUD_UP
-    PULL_DOWN = GPIO.PUD_DOWN
+    # OUT = GPIO.OUT
+    # IN = GPIO.IN
+    # IRQ_FALLING = GPIO.FALLING
+    # IRQ_RISING = GPIO.RISING
+    # IRQ_RISING_FALLING = GPIO.BOTH
+    # PULL_UP = GPIO.PUD_UP
+    # PULL_DOWN = GPIO.PUD_DOWN
     PULL_NONE = None
 
     _dict = {
@@ -71,8 +71,8 @@ class Pin(object):
 
     def __init__(self, *value):
         super().__init__()
-        GPIO.setmode(GPIO.BCM)
-        GPIO.setwarnings(False)
+        # GPIO.setmode(GPIO.BCM)
+        # GPIO.setwarnings(False)
 
         self.check_board_type()
 
@@ -103,20 +103,20 @@ class Pin(object):
         
     def check_board_type(self):
         type_pin = self.dict()["BOARD_TYPE"]
-        GPIO.setup(type_pin, GPIO.IN)
-        if GPIO.input(type_pin) == 0:
-            self._dict = self._dict_1
-        else:
-            self._dict = self._dict_2
+        # GPIO.setup(type_pin, GPIO.IN)
+        # if GPIO.input(type_pin) == 0:
+        #     self._dict = self._dict_1
+        # else:
+        self._dict = self._dict_2
 
     def init(self, mode, pull=PULL_NONE):
         self._pull = pull
         self._mode = mode
-        if mode != None:
-            if pull != None:
-                GPIO.setup(self._pin, mode, pull_up_down=pull)
-            else:
-                GPIO.setup(self._pin, mode)
+        # if mode != None:
+        #     if pull != None:
+        #         GPIO.setup(self._pin, mode, pull_up_down=pull)
+        #     else:
+        #         GPIO.setup(self._pin, mode)
 
     def dict(self, *_dict):
         if len(_dict) == 0:
@@ -132,16 +132,17 @@ class Pin(object):
         return self.value(value)
 
     def value(self, *value):
-        if len(value) == 0:
-            self.mode(self.IN)
-            result = GPIO.input(self._pin)
-            # self._debug("read pin %s: %s" % (self._pin, result))
-            return result
-        else:
-            value = value[0]
-            self.mode(self.OUT)
-            GPIO.output(self._pin, value)
-            return value
+        return True
+        # if len(value) == 0:
+        #     self.mode(self.IN)
+        #     result = GPIO.input(self._pin)
+        #     # self._debug("read pin %s: %s" % (self._pin, result))
+        #     return result
+        # else:
+        #     value = value[0]
+        #     self.mode(self.OUT)
+        #     GPIO.output(self._pin, value)
+        #     return value
 
     def on(self):
         return self.value(1)
@@ -161,14 +162,14 @@ class Pin(object):
         else:
             mode = value[0]
             self._mode = mode
-            GPIO.setup(self._pin, mode)
+            # GPIO.setup(self._pin, mode)
 
     def pull(self, *value):
         return self._pull
 
     def irq(self, handler=None, trigger=None, bouncetime=200):
         self.mode(self.IN)
-        GPIO.add_event_detect(self._pin, trigger, callback=handler, bouncetime=bouncetime)
+        # GPIO.add_event_detect(self._pin, trigger, callback=handler, bouncetime=bouncetime)
 
     def name(self):
         return "GPIO%s"%self._pin
