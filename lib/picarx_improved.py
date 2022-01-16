@@ -1,5 +1,6 @@
 import time
 import atexit
+from os.path import realpath
 try:
     from servo import Servo
     from pwm import PWM
@@ -25,7 +26,8 @@ class Picarx(object):
         self.dir_servo_pin = Servo(PWM('P2'))
         self.camera_servo_pin1 = Servo(PWM('P0'))
         self.camera_servo_pin2 = Servo(PWM('P1'))
-        self.config_flie = fileDB('/home/egonzalez/.config')
+        config_dir = '/'.join(realpath(__file__).split('/')[:-1])
+        self.config_flie = fileDB(config_dir+'/.config')
         self.dir_cal_value = int(self.config_flie.get("picarx_dir_servo", default_value=0))
         self.cam_cal_value_1 = int(self.config_flie.get("picarx_cam1_servo", default_value=0))
         self.cam_cal_value_2 = int(self.config_flie.get("picarx_cam2_servo", default_value=0))
@@ -113,7 +115,7 @@ class Picarx(object):
         # global dir_cal_value
         self.dir_current_angle = value
         angle_value  = value + self.dir_cal_value
-        print("angle_value:",angle_value)
+        # print("angle_value:",angle_value)
         # print("set_dir_servo_angle_1:",angle_value)
         # print("set_dir_servo_angle_2:",dir_cal_value)
         self.dir_servo_pin.angle(angle_value)
@@ -162,8 +164,7 @@ class Picarx(object):
             # if abs_current_angle >= 0:
             if abs_current_angle > 40:
                 abs_current_angle = 40
-            power_scale = (100 - abs_current_angle) / 100.0 
-            print("power_scale:",power_scale)
+            power_scale = (100 - abs_current_angle) / 100.0
             if (current_angle / abs_current_angle) > 0:
                 self.set_motor_speed(1, -1*speed)
                 self.set_motor_speed(2, speed * power_scale)
@@ -181,8 +182,7 @@ class Picarx(object):
             # if abs_current_angle >= 0:
             if abs_current_angle > 40:
                 abs_current_angle = 40
-            power_scale = (100 - abs_current_angle) / 100.0 
-            print("power_scale:",power_scale)
+            power_scale = (100 - abs_current_angle) / 100.0
             if (current_angle / abs_current_angle) > 0:
                 self.set_motor_speed(1, speed)
                 self.set_motor_speed(2, -1*speed * power_scale)
@@ -225,7 +225,6 @@ class Picarx(object):
         return cm
 
     def shutdown(self):
-        print("Shutting down")
         self.stop()
 
 if __name__ == "__main__":
