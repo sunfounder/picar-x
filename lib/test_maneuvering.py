@@ -2,7 +2,7 @@ import unittest
 import time
 import logging
 from picarx_improved import Picarx
-from maneuvering import move
+from maneuvering import move, parallel_park, LEFT, RIGHT
 
 # Setup logging format
 logging_format = "%(asctime)s: %(message)s"
@@ -36,7 +36,10 @@ class TestManeuvering(unittest.TestCase):
         move(px, 2000, -200)
         logging.info("Move forward left with out of bounds values")
         time.sleep(5)
-
+    
+    def test_parking(self)->None:
+        px = Picarx()
+        parallel_park(px, LEFT)
 
 if __name__ == "__main__":
     unittest.main()

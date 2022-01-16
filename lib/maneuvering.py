@@ -2,11 +2,15 @@
 
 from picarx_improved import Picarx
 import logging
+from time import sleep
 
 # Setup logging format
 logging_format = "%(asctime)s: %(message)s"
 logging.basicConfig(format=logging_format, level=logging.INFO,
     datefmt="%H:%M:%S")
+
+LEFT = 1
+RIGHT = 2
 
 def move(px: Picarx, speed: int, angle: int)->None:
     # Enforce speed boundaries
@@ -33,3 +37,32 @@ def move(px: Picarx, speed: int, angle: int)->None:
         px.forward(speed)
     else:
         px.backward(abs(speed))
+
+def parallel_park(px: Picarx, dir: int)->None:
+    # Setup sign for LEFT or RIGHT
+    if dir == LEFT:
+        sign = 1
+    else:
+        sign = -1
+    # Set parking parameters
+    speed = 20
+    angle = 20
+    pause_duration = 2 # seconds
+    # Send robot commands for parking
+    # Left forward
+    move(px, speed, -angle)
+    sleep(pause_duration)
+    # Right forward
+    move(px, speed, angle)
+    sleep(pause_duration)
+    # Left backward
+    move(px, -speed, -angle)
+    sleep(pause_duration)
+    # Right backward
+    move(px, -speed, angle)
+    sleep(pause_duration)
+    # Straight forward
+    move(px, speed, 0)
+    sleep(pause_duration)
+    # Stop
+    move(px, 0, 0)
