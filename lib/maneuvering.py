@@ -61,8 +61,8 @@ def parallel_park(px: Picarx, dir: int)->None:
     # Right backward
     move(px, -speed, angle)
     sleep(pause_duration)
-    # Straight forward
-    move(px, speed, 0)
-    sleep(pause_duration)
+    # Straight backward
+    #move(px, -speed, 0)
+    #sleep(pause_duration*0.3)
     # Stop
     move(px, 0, 0)
