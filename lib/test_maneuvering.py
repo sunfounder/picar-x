@@ -2,7 +2,7 @@ import unittest
 import time
 import logging
 from picarx_improved import Picarx
-from maneuvering import move, parallel_park, LEFT, RIGHT
+from maneuvering import k_turn, move, parallel_park, LEFT, RIGHT
 
 # Setup logging format
 logging_format = "%(asctime)s: %(message)s"
@@ -50,6 +50,10 @@ class TestManeuvering(unittest.TestCase):
         parallel_park(px, LEFT)
         time.sleep(2)
         parallel_park(px, RIGHT)
+    
+    def test_k_turn_left(self)->None:
+        px = Picarx()
+        k_turn(px, LEFT)
 
 if __name__ == "__main__":
     unittest.main()

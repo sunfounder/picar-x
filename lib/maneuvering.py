@@ -49,6 +49,7 @@ def parallel_park(px: Picarx, dir: int)->None:
     angle = 20
     pause_duration = 2 # seconds
     # Send robot commands for parking
+    # Comments are for LEFT parking
     # Left forward
     move(px, speed, sign* -angle)
     sleep(pause_duration)
@@ -61,5 +62,32 @@ def parallel_park(px: Picarx, dir: int)->None:
     # Right backward
     move(px, -speed, sign * angle)
     sleep(pause_duration)
+    # Stop
+    move(px, 0, 0)
+
+def k_turn(px: Picarx, dir: int)->None:
+    # Setup sign for LEFT or RIGHT
+    if dir == LEFT:
+        sign = 1
+    else:
+        sign = -1
+    # Set turn parameters
+    speed = 20
+    angle = 30
+    pause_duration = 2 # seconds
+    # Send robot commands for turn
+    # Comments are for LEFT K-turn
+    # Left forward
+    move(px, speed, -angle)
+    sleep(pause_duration)
+    # Right backward
+    move(px, -speed, angle)
+    sleep(pause_duration/2)
+    # Left forward
+    move(px, speed, -angle)
+    sleep(pause_duration)
+    # Forward 
+    move(px, speed, 0)
+    sleep(pause_duration/2)
     # Stop
     move(px, 0, 0)
