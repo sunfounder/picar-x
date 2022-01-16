@@ -48,6 +48,7 @@ class TestManeuvering(unittest.TestCase):
     def test_parking_both(self)->None:
         px = Picarx()
         parallel_park(px, LEFT)
+        time.sleep(2)
         parallel_park(px, RIGHT)
 
 if __name__ == "__main__":
