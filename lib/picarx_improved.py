@@ -59,20 +59,28 @@ class Picarx(object):
     def set_motor_speed(self,motor,speed):
         # global cali_speed_value,cali_dir_value
         motor -= 1
-        if speed >= 0:
-            direction = 1 * self.cali_dir_value[motor]
-        elif speed < 0:
-            direction = -1 * self.cali_dir_value[motor]
-        speed = abs(speed)
-        if speed != 0:
-            speed = int(speed /2 ) + 50
-        speed = speed - self.cali_speed_value[motor]
-        if direction < 0:
+        # if speed >= 0:
+        #     direction = 1 * self.cali_dir_value[motor]
+        # elif speed < 0:
+        #     direction = -1 * self.cali_dir_value[motor]
+        # speed = abs(speed)
+        # if speed != 0:
+        #     speed = int(speed /2 ) + 50
+        # speed = speed - self.cali_speed_value[motor]
+        # if direction < 0:
+        #     self.motor_direction_pins[motor].high()
+        #     self.motor_speed_pins[motor].pulse_width_percent(speed)
+        # else:
+        #     self.motor_direction_pins[motor].low()
+        #     self.motor_speed_pins[motor].pulse_width_percent(speed)
+
+        # Set direction
+        if speed < 0:
             self.motor_direction_pins[motor].high()
-            self.motor_speed_pins[motor].pulse_width_percent(speed)
         else:
             self.motor_direction_pins[motor].low()
-            self.motor_speed_pins[motor].pulse_width_percent(speed)
+        # Set speed
+        self.motor_speed_pins[motor].pulse_width_percent(abs(speed))
 
     def motor_speed_calibration(self,value):
         # global cali_speed_value,cali_dir_value
@@ -217,6 +225,7 @@ class Picarx(object):
         return cm
 
     def shutdown(self):
+        print("Shutting down")
         self.stop()
 
 if __name__ == "__main__":
