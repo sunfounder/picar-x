@@ -28,8 +28,8 @@ def move(px: Picarx, speed: int, angle: int)->None:
         angle = -max_angle
 
     # Send movement commands to picar
+    px.set_dir_servo_angle(angle)
     if speed >= 0:
         px.forward(speed)
     else:
         px.backward(abs(speed))
-    px.set_dir_servo_angle(angle)
