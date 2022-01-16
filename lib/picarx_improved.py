@@ -1,4 +1,5 @@
 import time
+import atexit
 try:
     from servo import Servo
     from pwm import PWM
@@ -24,7 +25,7 @@ class Picarx(object):
         self.dir_servo_pin = Servo(PWM('P2'))
         self.camera_servo_pin1 = Servo(PWM('P0'))
         self.camera_servo_pin2 = Servo(PWM('P1'))
-        self.config_flie = fileDB('/home/pi/.config')
+        self.config_flie = fileDB('/home/egonzalez/.config')
         self.dir_cal_value = int(self.config_flie.get("picarx_dir_servo", default_value=0))
         self.cam_cal_value_1 = int(self.config_flie.get("picarx_cam1_servo", default_value=0))
         self.cam_cal_value_2 = int(self.config_flie.get("picarx_cam2_servo", default_value=0))
@@ -52,8 +53,8 @@ class Picarx(object):
         for pin in self.motor_speed_pins:
             pin.period(self.PERIOD)
             pin.prescaler(self.PRESCALER)
-
-
+        
+        atexit.register(self.shutdown)
 
     def set_motor_speed(self,motor,speed):
         # global cali_speed_value,cali_dir_value
@@ -215,6 +216,8 @@ class Picarx(object):
         #print(cm)
         return cm
 
+    def shutdown(self):
+        self.stop()
 
 if __name__ == "__main__":
     px = Picarx()
