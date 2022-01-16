@@ -50,19 +50,16 @@ def parallel_park(px: Picarx, dir: int)->None:
     pause_duration = 2 # seconds
     # Send robot commands for parking
     # Left forward
-    move(px, speed, -angle)
+    move(px, speed, sign* -angle)
     sleep(pause_duration)
     # Right forward
-    move(px, speed, angle)
+    move(px, speed, sign * angle)
     sleep(pause_duration)
     # Left backward
-    move(px, -speed, -angle)
+    move(px, -speed, sign * -angle)
     sleep(pause_duration)
     # Right backward
-    move(px, -speed, angle)
+    move(px, -speed, sign * angle)
     sleep(pause_duration)
-    # Straight backward
-    #move(px, -speed, 0)
-    #sleep(pause_duration*0.3)
     # Stop
     move(px, 0, 0)

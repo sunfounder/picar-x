@@ -37,9 +37,18 @@ class TestManeuvering(unittest.TestCase):
         logging.info("Move forward left with out of bounds values")
         time.sleep(5)
     
-    def test_parking(self)->None:
+    def test_parking_left(self)->None:
         px = Picarx()
         parallel_park(px, LEFT)
+    
+    def test_parking_right(self)->None:
+        px = Picarx()
+        parallel_park(px, RIGHT)
+
+    def test_parking_both(self)->None:
+        px = Picarx()
+        parallel_park(px, LEFT)
+        parallel_park(px, RIGHT)
 
 if __name__ == "__main__":
     unittest.main()
