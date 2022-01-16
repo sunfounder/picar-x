@@ -1,3 +1,5 @@
+""" Test functions for basic maneuvering"""
+
 import unittest
 import time
 import logging
@@ -54,6 +56,10 @@ class TestManeuvering(unittest.TestCase):
     def test_k_turn_left(self)->None:
         px = Picarx()
         k_turn(px, LEFT)
+    
+    def test_k_turn_right(self)->None:
+        px = Picarx()
+        k_turn(px, RIGHT)
 
 if __name__ == "__main__":
     unittest.main()
