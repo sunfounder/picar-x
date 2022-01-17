@@ -45,7 +45,7 @@ def parallel_park(px: Picarx, dir: int)->None:
     else:
         sign = -1
     # Set parking parameters
-    speed = 20
+    speed = 30
     angle = 20
     pause_duration = 2 # seconds
     # Send robot commands for parking
@@ -84,7 +84,7 @@ def k_turn(px: Picarx, dir: int)->None:
     move(px, -speed, sign*angle)
     sleep(pause_duration/2)
     # Left forward
-    move(px, speed, -angle*1.1)
+    move(px, speed, sign*-angle*1.1)
     sleep(pause_duration)
     # Forward 
     move(px, speed, 0)
