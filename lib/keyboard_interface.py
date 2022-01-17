@@ -56,6 +56,7 @@ def main()->None:
                 logging.info(f"Moving forward with angle {angle}")
             move(px, 50, angle)
             sleep(2)
+            move(px, 0, 0)
         elif user_input.split(" ")[0] == "backward" or user_input == "backward":
             angle = parse_angle(user_input)
             if angle == 0:
@@ -64,6 +65,7 @@ def main()->None:
                 logging.info(f"Moving backward with angle {angle}")
             move(px, -50, angle)
             sleep(2)
+            move(px, 0, 0)
         elif user_input == "shutdown":
             logging.info(f"Shutting down.")
         else:
