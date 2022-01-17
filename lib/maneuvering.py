@@ -72,9 +72,9 @@ def k_turn(px: Picarx, dir: int)->None:
     else:
         sign = -1
     # Set turn parameters
-    speed = 20
+    speed = 50
     angle = 30
-    pause_duration = 2 # seconds
+    pause_duration = 1.5 # seconds
     # Send robot commands for turn
     # Comments are for LEFT K-turn
     # Left forward
@@ -84,7 +84,7 @@ def k_turn(px: Picarx, dir: int)->None:
     move(px, -speed, sign*angle)
     sleep(pause_duration/2)
     # Left forward
-    move(px, speed, sign*-angle)
+    move(px, speed, -angle*1.1)
     sleep(pause_duration)
     # Forward 
     move(px, speed, 0)
