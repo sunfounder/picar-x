@@ -1,23 +1,14 @@
-import sys
-sys.path.append(r'/home/pi/picar-x/lib')
-from utils import reset_mcu
-reset_mcu()
-from grayscale_module import Grayscale_Module
 from picarx import Picarx
-
-
-
 
 
 if __name__=='__main__':
   try:
-    gm = Grayscale_Module(500)
     px = Picarx()
     px_power = 10
     while True:
-        gm_val_list = gm.get_grayscale_data()
+        gm_val_list = px.get_grayscale_data()
         print("gm_val_list:",gm_val_list)
-        gm_status = gm.get_line_status(gm_val_list)
+        gm_status = px.get_line_status(gm_val_list)
         print("gm_status:",gm_status)
 
         if gm_status == 'forward':
@@ -34,6 +25,5 @@ if __name__=='__main__':
         else:
             px.set_dir_servo_angle(0)
             px.stop()
-  
   finally:
       px.stop()
