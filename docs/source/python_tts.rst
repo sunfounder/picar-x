@@ -69,6 +69,8 @@
 
 创建一个字符串列表 ``words`` ，然后创建TTS()类的实例化对象 ``tts_robot`` ，最后用 ``tts_robot.say()`` 函数将列表中的文字用语音说出来。
 
+.. code-block::
+
     words = ["Hello", "Hi", "Good bye", "Nice to meet you"]
     tts_robot = TTS()
     for i in words:
