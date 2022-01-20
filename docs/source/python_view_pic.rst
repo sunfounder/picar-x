@@ -15,8 +15,7 @@
 .. code-block::
 
     cd /home/pi/picar-x/example
-    sudo python3 python_view_pic.py
-
+    sudo python3 computer_vision.py
 
 **代码**
 
