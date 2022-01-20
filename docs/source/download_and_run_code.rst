@@ -1,66 +1,79 @@
 下载并运行代码
 ============================
 
-通过在命令行中使用 ``git clone`` 下载PiCar-X文件。
+下载代码并安装3个模块
+--------------------------------------
+我们可以在终端用命令 ``git clone`` 来下载文件。
 
-
-首先通过 ``cd`` 改变目录到 ``/home/pi/``。
+首先安装 ``robot-hat`` 。
 
 .. raw:: html
 
     <run></run>
 
-.. code-block:: 
+.. code-block::
 
     cd /home/pi/
+    git clone https://github.com/sunfounder/robot-hat.git
+    cd robot-hat
+    sudo python3 setup.py install
 
-然后通过 ``git clone`` 命令从 github 克隆仓库。
+.. note::
+    运行 ``setup.py`` 会下载一些必要的组件。由于网络问题，您可能下载失败。此时您可能需要重新下载。
+    见到如下界面, 输入 ``Y`` 然后按下回车。
+	
+	.. image:: img/dowload_code.png
 
-.. raw:: html
-
-    <run></run>
-
-.. code-block:: 
-
-    git clone -b v2.0 https://gitee.com/sunfounder/picar-x.git
-
-.. _run_install.py:
-
-运行 install.py
------------------------------------
-
-输入以下两条命令，运行 ``picar-x`` 文件夹中的 ``install.py`` 文件。
+然后下载并安装 ``vilib`` 模块。
 
 .. raw:: html
 
     <run></run>
 
-.. code-block:: 
+.. code-block::
 
-    cd picar-x
-
-.. raw:: html
-
-    <run></run>
-
-.. code-block:: 
-
+    cd /home/pi/
+    git clone https://github.com/sunfounder/vilib.git
+    cd vilib
     sudo python3 install.py
 
-``install.py`` 文件将完成所需Python库的安装，并配置PiCar-X。
-
-.. image:: img/install_py.png
-
-.. warning::
-    
-    ``install.py`` 程序可能会因为网络连接而遇到一些 **Error** 。如果出现错误提示，请检查网络并重新运行 ``install.py``，直到所有进程显示 **Done**，并在最后出现提示 **Done**。
-
-这个步骤可能需要几分钟。在文件完全执行并出现提示 **Done** 后，请重新启动树莓派。
+然后下载并安装 ``picar-x`` 模块。
 
 .. raw:: html
 
     <run></run>
 
-.. code-block:: 
+.. code-block::
 
-    sudo reboot
+    cd /home/pi/
+    git clone -b v2.0 https://github.com/sunfounder/picar-x.git
+    cd picar-x
+    sudo python3 setup.py install
+
+这一步需要一点时间，所以请耐心等待。
+
+最后需要运行脚本 ``i2samp.sh`` 来安装i2s功放所需的组件，否则 picar-x 会没有声音。
+
+.. raw:: html
+
+    <run></run>
+
+.. code-block::
+
+    cd /home/pi/picar-x
+    sudo bash i2samp.sh
+	
+.. image:: img/i2s.png
+
+输入 ``y`` 并按下回车以继续运行脚本。
+
+.. image:: img/i2s2.png
+
+输入 ``y`` 并按下回车以在后台运行 ``/dev/zero`` 。
+
+.. image:: img/i2s3.png
+
+输入 ``y`` 并按下回车以重启机器。
+
+.. note::
+    如果重启后没有声音，可能需要多次运行 i2samp.sh 脚本。

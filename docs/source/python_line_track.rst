@@ -28,25 +28,20 @@
 
 .. code-block:: python
 
-    import sys
-    sys.path.append(r'/home/pi/picar-x/lib')
-    from utils import reset_mcu
-    reset_mcu()
-    from grayscale_module import Grayscale_Module
     from picarx import Picarx
 
     if __name__=='__main__':
     try:
-        gm = Grayscale_Module(500)
         px = Picarx()
         px_power = 10
         while True:
-            gm_val_list = gm.get_grayscale_data()
+            gm_val_list = px.get_grayscale_data()
             print("gm_val_list:",gm_val_list)
-            gm_status = gm.get_line_status(gm_val_list)
+            gm_status = px.get_line_status(gm_val_list)
             print("gm_status:",gm_status)
 
             if gm_status == 'forward':
+                print(1)
                 px.forward(px_power) 
 
             elif gm_status == 'left':
@@ -59,26 +54,24 @@
             else:
                 px.set_dir_servo_angle(0)
                 px.stop()
-    
     finally:
         px.stop()
 
 **这个怎么运作？**
 
-要使用灰度传感器模块，请导入 ``Grayscale_Module`` 库。
+picarx 模块中也导入了灰度传感器模块 grayscale_module ，我们可以用其中的一些方法来检测黑线。
 
-``Grayscale_Module`` 库有两种方法：
+检测黑线的函数如下所示：
 
-* ``get_grayscale_data()``：该方法直接输出三个传感器的读数，从右到左。区域越亮，获得的值越大。
+* ``get_grayscale_data()``：该函数直接输出三个传感器的读数，从右到左。区域越亮，获得的值越大。
 
-* ``get_line_status()``: 该方法将根据三个探测器检测到的值生成一个动作。有四种类型的动作： forward 、 left 、 right 和 stop 。
+* ``get_line_status()``: 该函数将根据三个探测器检测到的值生成一个动作。有四种类型的动作： forward 、 left 、 right 和 stop 。
 
 这些动作的触发条件如下：
-生成对象时，会分配一个数字作为阈值。
-例如， ``gm = Grayscale_Module(500)`` 将生成一个阈值为 500 的 ``gm`` 对象。
+模块中默认分配了一个数值作为检测到黑色还是白色的阈值。
 当三个探针的检测值均大于阈值时，
-表示探头感应到的是白色，没有检测到黑线，
-这使得 ``get_line_status()`` 生成 ``stop`` 的返回值。
+表示探头感应到的是白色，没有检测到则为黑线，
+检测到黑线会使 ``get_line_status()`` 返回一个 ``stop`` 参数。
 
 
 * 如果右侧（也是第一个）探针检测到黑线，则返回 ``right`` 。

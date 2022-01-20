@@ -32,24 +32,14 @@
 
 .. code-block:: python
 
-    import sys
-    sys.path.append(r'/home/pi/picar-x/lib')
-    from utils import reset_mcu
-    reset_mcu()
-
     from picarx import Picarx
-    from ultrasonic import Ultrasonic
-    from pin import Pin
 
-    if __name__ == "__main__":
+    def main():
         try:
-            trig_pin = Pin("D2") 
-            echo_pin = Pin("D3")
-            sonar = Ultrasonic(trig_pin, echo_pin)
             px = Picarx()
             px.forward(30)
             while True:
-                distance = sonar.read()
+                distance = px.ultrasonic.read()
                 print("distance: ",distance)
                 if distance > 0 and distance < 300:
                     if distance < 25:
@@ -60,31 +50,36 @@
             px.forward(0)
 
 
+    if __name__ == "__main__":
+        main()
+
+
 **这个怎么运作？**
 
-测距功能是通过导入 ``Ultrasonic`` 库建立的。
+picarx 模块中还导入了 ultrasonic 模块，我们可以用其封装的一些功能来检测距离。
 
 .. code-block:: python
 
-    from ultrasonic import Ultrasonic
+    from picarx import Picarx
 
-然后初始化连接超声波模块的引脚。
+因为 picarx 模块中导入了 ultrasonic 模块，我们可以直接用 px.ultrasonic.read() 来获取距离。
 
 .. code-block:: python
 
-    trig_pin = Pin("D2") 
-    echo_pin = Pin("D3")
-    sonar = Ultrasonic(trig_pin, echo_pin)  
+    px = Picarx()
+    px.forward(30)
+    while True:
+        distance = px.ultrasonic.read() 
 
 下面的代码片段读取超声波模块报告的距离值，如果距离低于 25 厘米（10 英寸），它将把转向伺服从 0°（直线）设置为 -35°（左转）。
 
 .. code-block:: python
 
     while True:
-    distance = sonar.read()
-    print("distance: ",distance)
-    if distance > 0 and distance < 300:
-        if distance < 25:
-            px.set_dir_servo_angle(-35)
-        else:
-            px.set_dir_servo_angle(0)
+        distance = px.ultrasonic.read()
+        print("distance: ",distance)
+        if distance > 0 and distance < 300:
+            if distance < 25:
+                px.set_dir_servo_angle(-35)
+            else:
+                px.set_dir_servo_angle(0)

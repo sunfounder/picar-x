@@ -46,14 +46,12 @@
 
 .. code-block:: python
 
-    import sys
-    sys.path.append(r'/home/pi/picar-x/lib')
-    from tts import TTS
+    from robot_hat import TTS
+
 
     if __name__ == "__main__":
         words = ["Hello", "Hi", "Good bye", "Nice to meet you"]
         tts_robot = TTS()
-        tts_robot.lang("en-US")
         for i in words:
             print(i)
             tts_robot.say(i)
@@ -63,26 +61,16 @@
 
 `eSpeak <http://espeak.sourceforge.net/>`_ 软件用于实现TTS的功能。
 
-使用 ``lang("")`` 设置语言，使用 ``say("")`` 设置文本音频。
+导入 robot_hat 中的 TTS 模块，其中封装了可以将文字转换成语音的函数。
 
-.. note:: 
+.. code-block::
 
-    通过使用以下字符设置 ``lang("")`` 的参数来设置语言。
+    from robot_hat import TTS
 
-.. list-table:: Language
-    :widths: 15 50
+创建一个字符串列表 ``words`` ，然后创建TTS()类的实例化对象 ``tts_robot`` ，最后用 ``tts_robot.say()`` 函数将列表中的文字用语音说出来。
 
-    *   - zh-CN 
-        - 中文
-    *   - en-US 
-        - English-United States
-    *   - en-GB     
-        - English-United Kingdom
-    *   - de-DE     
-        - Germany-Deutsch
-    *   - es-ES     
-        - España-Español
-    *   - fr-FR  
-        - France-Le français
-    *   - it-IT  
-        - Italia-lingua italiana
+    words = ["Hello", "Hi", "Good bye", "Nice to meet you"]
+    tts_robot = TTS()
+    for i in words:
+        print(i)
+        tts_robot.say(i)

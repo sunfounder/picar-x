@@ -27,11 +27,6 @@
 
 .. code-block:: python
 
-    import sys
-    sys.path.append(r'/home/pi/picar-x/lib')
-    from utils import reset_mcu
-    reset_mcu()
-
     from picarx import Picarx
     import time
 
@@ -76,19 +71,14 @@
 
 **这个怎么运作？**
 
-帕克的基本功能在 ``picarx.py`` 程序文件中，
-在路径 ``/home/pi/picar-x/lib`` 下。 ``picarx.py`` 程序用于控制舵机和车轮，
+帕克的基本功能在 ``picarx`` 模块中，
+可以用来控制舵机和车轮，
 并使帕克向前移动、S 形转弯或摇头。
 
 现在，导入了支持帕克基本功能的库。 这些线条将出现在所有涉及帕克运动的示例中。
 
 .. code-block:: python
     :emphasize-lines: 0
-
-    import sys
-    sys.path.append(r'/home/pi/picar-x/lib')
-    from utils import reset_mcu
-    reset_mcu()
 
     from picarx import Picarx
     import time
