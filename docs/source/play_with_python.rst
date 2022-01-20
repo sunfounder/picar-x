@@ -14,6 +14,7 @@ After the PiCar-X assembly is completed, try running the projects below:
 
 .. toctree::
 
+    python_calibrate
     python_move
     python_avoid
     python_line_track

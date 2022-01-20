@@ -31,24 +31,14 @@ If there is no obstacle in the direction after turning left or the obstacle dist
 
 .. code-block:: python
 
-    import sys
-    sys.path.append(r'/home/pi/picar-x/lib')
-    from utils import reset_mcu
-    reset_mcu()
-
     from picarx import Picarx
-    from ultrasonic import Ultrasonic
-    from pin import Pin
 
-    if __name__ == "__main__":
+    def main():
         try:
-            trig_pin = Pin("D2") 
-            echo_pin = Pin("D3")
-            sonar = Ultrasonic(trig_pin, echo_pin)
             px = Picarx()
             px.forward(30)
             while True:
-                distance = sonar.read()
+                distance = px.ultrasonic.read()
                 print("distance: ",distance)
                 if distance > 0 and distance < 300:
                     if distance < 25:
@@ -59,31 +49,36 @@ If there is no obstacle in the direction after turning left or the obstacle dist
             px.forward(0)
 
 
+    if __name__ == "__main__":
+        main()
+
+
 **How it works?**
 
-The distance function is established by importing the ``Ultrasonic`` library.
+The ultrasonic module is also imported in the picarx module, and we can use some of its encapsulated functions to detect distance.
 
 .. code-block:: python
 
-    from ultrasonic import Ultrasonic
+    from picarx import Picarx
 
-Then the pins on the ultrasonic module are initialized.
+Because the ultrasonic module is imported into the picarx module, we can directly use px.ultrasonic.read() to get the distance.
 
 .. code-block:: python
 
-    trig_pin = Pin("D2") 
-    echo_pin = Pin("D3")
-    sonar = Ultrasonic(trig_pin, echo_pin)    
+    px = Picarx()
+    px.forward(30)
+    while True:
+        distance = px.ultrasonic.read() 
 
 The following code snippet reads the distance value reported by the ultrasonic module, and if the distance is below 25cm (10 inches) it will set the steering servo from 0° (straight) to -35° (turn left).
 
 .. code-block:: python
 
     while True:
-    distance = sonar.read()
-    print("distance: ",distance)
-    if distance > 0 and distance < 300:
-        if distance < 25:
-            px.set_dir_servo_angle(-35)
-        else:
-            px.set_dir_servo_angle(0)
+        distance = px.ultrasonic.read()
+        print("distance: ",distance)
+        if distance > 0 and distance < 300:
+            if distance < 25:
+                px.set_dir_servo_angle(-35)
+            else:
+                px.set_dir_servo_angle(0)

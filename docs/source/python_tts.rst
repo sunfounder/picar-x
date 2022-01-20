@@ -44,14 +44,12 @@ After running the code, PiCar-X will say \"Hello\", \"Hi\", \"Good bye\", \"Nice
 
 .. code-block:: python
 
-    import sys
-    sys.path.append(r'/home/pi/picar-x/lib')
-    from tts import TTS
+    from robot_hat import TTS
+
 
     if __name__ == "__main__":
         words = ["Hello", "Hi", "Good bye", "Nice to meet you"]
         tts_robot = TTS()
-        tts_robot.lang("en-US")
         for i in words:
             print(i)
             tts_robot.say(i)
@@ -61,26 +59,18 @@ After running the code, PiCar-X will say \"Hello\", \"Hi\", \"Good bye\", \"Nice
 
 The `eSpeak <http://espeak.sourceforge.net/>`_ software is used to implement the functions of TTS.
 
-Use ``lang("")`` to set the language, and ``say("")`` for text audio.
+Import the TTS module in robot_hat, which encapsulates functions that convert text to speech.
 
-.. note:: 
+.. code-block::
 
-    Set the language by setting the parameters of ``lang("")`` with the following characters.
+    from robot_hat import TTS
 
-.. list-table:: Language
-    :widths: 15 50
+Create a string list ``words`` , then create an instantiated object of the TTS() class ``tts_robot`` , and finally use the ``tts_robot.say()`` function to speak the words in the list in speech.
 
-    *   - zh-CN 
-        - Mandarin (Chinese)
-    *   - en-US 
-        - English-United States
-    *   - en-GB     
-        - English-United Kingdom
-    *   - de-DE     
-        - Germany-Deutsch
-    *   - es-ES     
-        - España-Español
-    *   - fr-FR  
-        - France-Le français
-    *   - it-IT  
-        - Italia-lingua italiana
+.. code-block::
+
+    words = ["Hello", "Hi", "Good bye", "Nice to meet you"]
+    tts_robot = TTS()
+    for i in words:
+        print(i)
+        tts_robot.say(i)

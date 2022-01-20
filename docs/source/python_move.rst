@@ -27,11 +27,6 @@ After running the code, PiCar-X will move forward, turn in an S-shape, stop and 
 
 .. code-block:: python
 
-    import sys
-    sys.path.append(r'/home/pi/picar-x/lib')
-    from utils import reset_mcu
-    reset_mcu()
-
     from picarx import Picarx
     import time
 
@@ -76,19 +71,14 @@ After running the code, PiCar-X will move forward, turn in an S-shape, stop and 
 
 **How it works?**
 
-The basic functions of PiCar-X are in the ``picarx.py`` program file, 
-under the path ``/home/pi/picar-x/lib``. The ``picarx.py`` program is used for controlling the servo and wheels, 
+The basic functionality of Parker is in the ``picarx`` module,
+Can be used to control steering gear and wheels,
 and will make the PiCar-X move forward, turn in an S-shape, or shake its head. 
 
 Now, the libraries to support the basic functionality of PiCar-X are imported. These lines will appear in all the examples that involve PiCar-X movement.
 
 .. code-block:: python
     :emphasize-lines: 0
-
-    import sys
-    sys.path.append(r'/home/pi/picar-x/lib')
-    from utils import reset_mcu
-    reset_mcu()
 
     from picarx import Picarx
     import time
