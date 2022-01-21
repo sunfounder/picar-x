@@ -6,6 +6,7 @@ class DriveTrain(object):
         self.config_file = config_file
         # Setup steering servo
         self.steer_cal_value = int(self.config_file.get("picarx_steer_servo", default_value=0))
+        logging.info(f"self.steer_cal_value: {self.steer_cal_value}")
         # Setup variables for tracking angle and speed
         self.steer_current_angle = 0
         self.current_speed = 0
