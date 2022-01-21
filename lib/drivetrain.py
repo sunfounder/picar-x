@@ -64,14 +64,14 @@ class DriveTrain(object):
                 abs_current_angle = 40
             power_scale = (100 - abs_current_angle) / 100.0
             if (current_angle / abs_current_angle) > 0:
-                self.set_motor_speed(1, -1*speed)
-                self.set_motor_speed(2, speed * power_scale)
+                self._set_motor_speed(1, -1*speed)
+                self._set_motor_speed(2, speed * power_scale)
             else:
-                self.set_motor_speed(1, -1*speed * power_scale)
-                self.set_motor_speed(2, speed )
+                self._set_motor_speed(1, -1*speed * power_scale)
+                self._set_motor_speed(2, speed )
         else:
-            self.set_motor_speed(1, -1*speed)
-            self.set_motor_speed(2, speed)
+            self._set_motor_speed(1, -1*speed)
+            self._set_motor_speed(2, speed)
 
     def _forward(self, speed):
         """ Set rear wheels speed in forward direction with
@@ -84,14 +84,14 @@ class DriveTrain(object):
                 abs_current_angle = 40
             power_scale = (100 - abs_current_angle) / 100.0
             if (current_angle / abs_current_angle) > 0:
-                self.set_motor_speed(1, speed)
-                self.set_motor_speed(2, -1*speed * power_scale)
+                self._set_motor_speed(1, speed)
+                self._set_motor_speed(2, -1*speed * power_scale)
             else:
-                self.set_motor_speed(1, speed * power_scale)
-                self.set_motor_speed(2, -1*speed )
+                self._set_motor_speed(1, speed * power_scale)
+                self._set_motor_speed(2, -1*speed )
         else:
-            self.set_motor_speed(1, speed)
-            self.set_motor_speed(2, -1*speed)
+            self._set_motor_speed(1, speed)
+            self._set_motor_speed(2, -1*speed)
 
     def write_motor_dir_calibration(self, motor: int, value: int)->None:
         """ Write new motor calibration value out to config file
@@ -113,8 +113,8 @@ class DriveTrain(object):
     def stop(self)->None:
         """ Stop the rear motors
         """
-        self.set_motor_speed(1, 0)
-        self.set_motor_speed(2, 0)
+        self._set_motor_speed(1, 0)
+        self._set_motor_speed(2, 0)
 
     def set_angle(self, angle: int)->None:
         """ Set angle for steering servo
