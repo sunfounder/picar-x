@@ -16,7 +16,7 @@ def on_raspi()->bool:
     and False if running on workstation
     """
     installed_libraries = {pkg.key for pkg in pkg_resources.working_set}
-    if 'RPi' in installed_libraries:
+    if 'rpi.gpio' in installed_libraries:
         return True
     else:
         return False
