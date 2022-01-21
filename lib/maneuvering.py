@@ -13,30 +13,9 @@ LEFT = 1
 RIGHT = 2
 
 def move(px: Picarx, speed: int, angle: int)->None:
-    # Enforce speed boundaries
-    max_speed = 100
-    if speed > max_speed:
-        logging.warning(f"Requested forwards speed ({speed}) higher than max speed. Set speed to max forwards speed ({max_speed}).")
-        speed = max_speed
-    elif speed < -max_speed:
-        logging.warning(f"Requsted backwards speed ({speed}) higher than max speed. Set speed to max backwards speed ({-max_speed}).")
-        speed = -max_speed
-    
-    # Enforce angle boundaries
-    max_angle = 30
-    if angle > max_angle:
-        logging.warning(f"Requested right-steering angle ({angle}) greater than max angle. Set angle to max angle right ({max_angle}).")
-        angle = max_angle
-    elif angle < -max_angle:
-        logging.warning(f"Requested left-steering angle ({angle}) greater than max angle. Set angle to max angle left ({-max_angle}).")
-        angle = -max_angle
-
     # Send movement commands to picar
-    px.set_dir_servo_angle(angle)
-    if speed >= 0:
-        px.forward(speed)
-    else:
-        px.backward(abs(speed))
+    px.drivetrain.set_angle(angle)
+    px.drivetrain.set_speed(speed)
 
 def parallel_park(px: Picarx, dir: int)->None:
     # Setup sign for LEFT or RIGHT
@@ -86,7 +65,7 @@ def k_turn(px: Picarx, dir: int)->None:
     # Left forward
     move(px, speed, sign*-angle*1.1)
     sleep(pause_duration)
-    # Forward 
+    # Forward
     move(px, speed, 0)
     sleep(pause_duration/2)
     # Stop
