@@ -63,7 +63,7 @@ def k_turn(px: Picarx, dir: int)->None:
     move(px, -speed, sign*angle)
     sleep(pause_duration/2)
     # Left forward
-    move(px, speed, sign*-angle*1.1)
+    move(px, speed, sign*-angle)
     sleep(pause_duration)
     # Forward
     move(px, speed, 0)
