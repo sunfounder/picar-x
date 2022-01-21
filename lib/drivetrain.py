@@ -13,6 +13,7 @@ class DriveTrain(object):
 
         # Setup steering servo
         self.steer_cal_value = int(self.config_file.get("picarx_steer_servo", default_value=0))
+        logging.info(f"self.steer_cal_value: {self.steer_cal_value}")
         self.steer_servo_pin = Servo(PWM('P2'))
         self.steer_servo_pin.angle(self.steer_cal_value)
 
