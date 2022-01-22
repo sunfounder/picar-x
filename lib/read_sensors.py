@@ -1,8 +1,8 @@
 import numpy as np
 from picarx_improved import Picarx
 
+px = Picarx()
 while True:
-    px = Picarx()
     raw_reading = np.asarray(px.ir_sensors.read())
     print(raw_reading)
     # state = np.average(np.diff(raw_reading))
