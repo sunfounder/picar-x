@@ -4,4 +4,5 @@ class IRSensors(object):
         pass
 
     def read(self)->List[int]:
-        return [0,0,0]
+        # return [0,0,0]
+        return [2,2,0]
