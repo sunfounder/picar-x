@@ -1,3 +1,4 @@
+from curses import raw
 import numpy as np
 from picarx_improved import Picarx
 
@@ -7,8 +8,10 @@ while True:
     # print(raw_reading)
     state = np.average(np.diff(raw_reading))
     if state < 0:
-        print("LEFT")
+        command = "LEFT"
     elif state > 0:
-        print("RIGHT")
+        command = "RIGHT"
     else:
-        print("FORWARD")
+        command = "STRAIGHT"
+
+    print(command + " : " + str(raw_reading))
