@@ -14,4 +14,4 @@ while True:
     else:
         command = "STRAIGHT"
 
-    print(command + " : " + str(raw_reading))
+    print(command + " : " + str(raw_reading) + " : " + str(state))
