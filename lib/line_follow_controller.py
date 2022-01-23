@@ -10,7 +10,7 @@ class LineFollowController(object):
         # State is bounded input from [-1,1]
         # negative indicates line is to the left
         # positive indicates line is to the right
-        if abs(state) > 0.5:
+        if abs(state) > 0.7:
             return - self.high_kp * state
         else:
             return - self.low_kp * state
