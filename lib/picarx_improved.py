@@ -5,7 +5,6 @@ import pkg_resources
 import logging
 from sys import exit
 from filedb import fileDB
-# from interpreter import Interpreter
 
 # Setup logging format
 logging_format = "%(asctime)s [%(levelname)s] %(funcName)s(): %(message)s"
@@ -59,12 +58,8 @@ class Picarx(object):
         # Setup drivetrain
         self.drivetrain = DriveTrain(self.config_file)
 
-        # Setup interpreter for line following
-
         # Register exit command
         atexit.register(self.cleanup)
-
-    # def follow_line(self):
 
     def cleanup(self):
         self.drivetrain.stop()
