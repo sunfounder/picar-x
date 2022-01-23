@@ -19,7 +19,7 @@ def main():
     # Setup picar and line following classes
     px = Picarx()
     interpreter = LineInterpreter(sensitivity_threshold=40, polarity=DARKLINE)
-    controller = LineFollowController(kp=10.0)
+    controller = LineFollowController(low_kp=10.0, high_kp=50.0)
 
     # Start moving forward
     px.drivetrain.set_speed(30)
