@@ -3,6 +3,8 @@ import cv2
 from picamera.array import PiRGBArray
 from picamera import PiCamera
 import numpy as np
+import os
+os.environ['DISPLAY'] = ':0'
 
 color_dict = {'red':[0,4],'orange':[5,18],'yellow':[22,37],'green':[42,85],'blue':[92,110],'purple':[115,165],'red_2':[165,180]}  #Here is the range of H in the HSV color space represented by the color
 
@@ -46,19 +48,25 @@ def color_detect(img,color_name):
 #init camera
 print("start color detect")
 camera = PiCamera()
+print(1)
 camera.resolution = (640,480)
+print(2)
 camera.framerate = 24
+print(3)
 rawCapture = PiRGBArray(camera, size=camera.resolution)  
-
+print("finish setup")
 
 for frame in camera.capture_continuous(rawCapture, format="bgr",use_video_port=True):# use_video_port=True
     img = frame.array
     img,img_2,img_3 =  color_detect(img,'red')  # Color detection function
+    print("about to call imshow:")
     cv2.imshow("video", img)    # OpenCV image show
+    print(1)
     cv2.imshow("mask", img_2)    # OpenCV image show
+    print(2)
     cv2.imshow("morphologyEx_img", img_3)    # OpenCV image show
     rawCapture.truncate(0)   # Release cache
-   
+    print("successfully called imshow 3 times")
     k = cv2.waitKey(1) & 0xFF
     # 27 is the ESC key, which means that if you press the ESC key to exit
     if k == 27:
