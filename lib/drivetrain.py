@@ -53,6 +53,7 @@ class DriveTrain(object):
         self.steer_current_angle = value
         angle_value  = value + self.steer_cal_value
         self.steer_servo_pin.angle(angle_value)
+        logging.info(f"Set steering angle to {value}. (True steering angle: {angle_value})")
 
     def _backward(self, speed):
         """ Set rear wheels speed in backward direction with

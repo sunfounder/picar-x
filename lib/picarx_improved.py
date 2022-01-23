@@ -8,7 +8,7 @@ from filedb import fileDB
 
 # Setup logging format
 logging_format = "%(asctime)s [%(levelname)s] %(funcName)s(): %(message)s"
-logging.basicConfig(format=logging_format, level=logging.WARN,
+logging.basicConfig(format=logging_format, level=logging.INFO,
     datefmt="%H:%M:%S")
 
 def on_raspi()->bool:

@@ -1,3 +1,4 @@
+import logging
 import numpy as np
 from typing import List
 
@@ -21,4 +22,5 @@ class LineInterpreter(object):
             state = 1.0
         elif state < -1:
             state = -1.0
+        logging.info(f"Line interpreter state: {state}")
         return state
