@@ -18,11 +18,11 @@ def main():
 
     # Setup picar and line following classes
     px = Picarx()
-    interpreter = LineInterpreter(sensitivity_threshold=20, polarity=DARKLINE)
-    controller = LineFollowController(kp=2.0)
+    interpreter = LineInterpreter(sensitivity_threshold=40, polarity=DARKLINE)
+    controller = LineFollowController(kp=10.0)
 
     # Start moving forward
-    px.drivetrain.set_speed(40)
+    px.drivetrain.set_speed(30)
 
     # Line follow until a shutdown command is recieved
     shutdown = False
