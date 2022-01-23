@@ -26,8 +26,9 @@ class Camera(object):
         self.cam_cal_value_2 = value
         self.config_file.set("picarx_cam_tilt_servo", "%s"%value)
 
-    def set_camera_pan_angle(self,value):
+    def set_pan_angle(self,value):
         self.camera_servo_pin1.angle(-1*(value + -1*self.cam_cal_value_1))
 
-    def set_camera_tilt_angle(self,value):
+    def set_tilt_angle(self,value):
         self.camera_servo_pin2.angle(-1*(value + -1*self.cam_cal_value_2))
+

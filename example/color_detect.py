@@ -17,26 +17,26 @@ def color_detect(img,color_name):
     resize_img = cv2.resize(img, (160,120), interpolation=cv2.INTER_LINEAR)  # In order to reduce the amount of calculation, the size of the picture is reduced to (160,120)
     hsv = cv2.cvtColor(resize_img, cv2.COLOR_BGR2HSV)              # Convert from BGR to HSV
     color_type = color_name
-    
+
     mask = cv2.inRange(hsv,np.array([min(color_dict[color_type]), 60, 60]), np.array([max(color_dict[color_type]), 255, 255]) )           # inRange()：Make the ones between lower/upper white, and the rest black
     if color_type == 'red':
-            mask_2 = cv2.inRange(hsv, (color_dict['red_2'][0],0,0), (color_dict['red_2'][1],255,255)) 
+            mask_2 = cv2.inRange(hsv, (color_dict['red_2'][0],0,0), (color_dict['red_2'][1],255,255))
             mask = cv2.bitwise_or(mask, mask_2)
 
-    morphologyEx_img = cv2.morphologyEx(mask, cv2.MORPH_OPEN, kernel_5,iterations=1)              # Perform an open operation on the image 
+    morphologyEx_img = cv2.morphologyEx(mask, cv2.MORPH_OPEN, kernel_5,iterations=1)              # Perform an open operation on the image
 
     contours, hierarchy = cv2.findContours(morphologyEx_img,cv2.RETR_EXTERNAL,cv2.CHAIN_APPROX_SIMPLE)          # Find the contour in morphologyEx_img, and the contours are arranged according to the area from small to large
 
     color_area_num = len(contours) # Count the number of contours
 
-    if color_area_num > 0: 
+    if color_area_num > 0:
         for i in contours:    # Traverse all contours
             x,y,w,h = cv2.boundingRect(i)      # Decompose the contour into the coordinates of the upper left corner and the width and height of the recognition object
 
             # Draw a rectangle on the image (picture, upper left corner coordinate, lower right corner coordinate, color, line width)
             if w >= 8 and h >= 8: # Because the picture is reduced to a quarter of the original size, if you want to draw a rectangle on the original picture to circle the target, you have to multiply x, y, w, h by 4.
                 x = x * 4
-                y = y * 4 
+                y = y * 4
                 w = w * 4
                 h = h * 4
                 cv2.rectangle(img,(x,y),(x+w,y+h),(0,255,0),2)  # Draw a rectangular frame
@@ -53,7 +53,7 @@ camera.resolution = (640,480)
 print(2)
 camera.framerate = 24
 print(3)
-rawCapture = PiRGBArray(camera, size=camera.resolution)  
+rawCapture = PiRGBArray(camera, size=camera.resolution)
 print("finish setup")
 
 for frame in camera.capture_continuous(rawCapture, format="bgr",use_video_port=True):# use_video_port=True
@@ -73,4 +73,4 @@ for frame in camera.capture_continuous(rawCapture, format="bgr",use_video_port=T
         camera.close()
         break
 
-        
+
