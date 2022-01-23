@@ -18,7 +18,7 @@ def main():
 
     # Setup picar and line following classes
     px = Picarx()
-    interpreter = LineInterpreter(sensitivity_threshold=120, polarity=DARKLINE)
+    interpreter = LineInterpreter(sensitivity_threshold=20, polarity=DARKLINE)
     controller = LineFollowController(kp=2.0)
 
     # Start moving forward

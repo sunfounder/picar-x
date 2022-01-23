@@ -6,7 +6,7 @@ DARKLINE = 0
 LIGHTLINE = 1
 
 class LineInterpreter(object):
-    def __init__(self, sensitivity_threshold: int = 100, polarity: int = DARKLINE ) -> None:
+    def __init__(self, sensitivity_threshold: int = 10, polarity: int = DARKLINE ) -> None:
         # Sensitivity threshold indicates the max difference between two sensor
         # readings that indicates that the robot is off the line
         self.sensitivity_threshold = sensitivity_threshold
