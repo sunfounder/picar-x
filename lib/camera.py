@@ -8,7 +8,7 @@ from servo import Servo
 from pwm import PWM
 
 # Setup display variable so cv2.imshow doesn't throw errors
-os.environ['DISPLAY'] = 0
+os.environ['DISPLAY'] = ':0'
 
 class Camera(object):
     def __init__(self, config_file) -> None:
@@ -33,7 +33,7 @@ class Camera(object):
         self.camera.framerate = 24
         self.raw_capture = PiRGBArray(self.camera, size=self.camera.resolution)
 
-        atexit.register(self.cleanup())
+        atexit.register(self.cleanup)
 
     def write_camera_servo1_angle_calibration(self,value):
         self.cam_cal_value_1 = value
@@ -58,19 +58,15 @@ class Camera(object):
         for frame in self.camera.capture_continuous(self.raw_capture, format="bgr", use_video_port=True):
             img = frame.array
             if display_img:
-                cv2.imshow(img)
-            if control_func():
+                cv2.imshow("Raw Image", img)
+                _ = cv2.waitKey(1)
+            if control_func(img):
                 break
-
-    def get_camera_img(self)->np.array:
-        # Grab latest frame from continuous camera stream
-        *_, img = self.camera.capture_continuous(self.raw_capture, format="bgr", use_video_port=True)
-        # Release cache (not actually sure why this is necessary)
-        self.raw_capture.truncate(0)
-        return img
+            self.raw_capture.truncate(0)
 
     def display(self, img: np.array)->None:
         cv2.imshow("Display", img)
+        k = cv2.waitKey(1)
 
     def cleanup(self)->None:
         self.camera.close()

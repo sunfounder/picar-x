@@ -22,7 +22,7 @@ def main():
     px.drivetrain.set_speed(30)
 
     # Line follow until a shutdown command is recieved
-    px.camera.control_based_on_camera(controller.control_func)
+    px.camera.control_based_on_camera(controller.control_func, display_img=True)
 
 if __name__ == "__main__":
     main()

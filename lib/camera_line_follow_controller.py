@@ -31,7 +31,7 @@ class CameraLineFollowController(LineFollowController):
 
     def control_func(self, raw_reading: np.array):
         # Turn the raw reading into some useful state we can control
-        state = self.interpreter(raw_reading)
+        state = self.interpreter.build_state(raw_reading)
         # Calculate a steering angle based on that state
         steer_angle = self.calculate_steering_angle(state)
         # Send steering angle to motors
@@ -39,7 +39,7 @@ class CameraLineFollowController(LineFollowController):
         # Check for any terminal input indicating a requested shutdown
         return self._isData()
 
-    def _isData():
+    def _isData(self):
         # https://stackoverflow.com/questions/2408560/non-blocking-console-input
         return select.select([sys.stdin], [], [], 0) == ([sys.stdin], [], [])
 
