@@ -49,6 +49,19 @@ class Camera(object):
     def set_tilt_angle(self,value):
         self.camera_servo_pin2.angle(-1*(value + -1*self.cam_cal_value_2))
 
+    def control_based_on_camera(self, control_func, display_img: bool = False)->None:
+        # control_func is the control function that will take in np array of current image
+        # and somehow control the steering angle based on just that np array as input
+        # All parameters must be contained within the control_func
+        # Control func must return a boolean value where True indicates that
+        # it's time for the control loop to be shutdown
+        for frame in self.camera.capture_continuous(self.raw_capture, format="bgr", use_video_port=True):
+            img = frame.array
+            if display_img:
+                cv2.imshow(img)
+            if control_func():
+                break
+
     def get_camera_img(self)->np.array:
         # Grab latest frame from continuous camera stream
         *_, img = self.camera.capture_continuous(self.raw_capture, format="bgr", use_video_port=True)
