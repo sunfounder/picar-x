@@ -1,7 +1,12 @@
 # import logging
 import logging
+from typing import Tuple, List
 import numpy as np
 import cv2
+import warnings
+
+# Ignore irrelevant warning from polyfit
+warnings.simplefilter('ignore', np.RankWarning)
 
 class CameraLineInterpreter(object):
     def __init__(self) -> None:
@@ -14,8 +19,8 @@ class CameraLineInterpreter(object):
         self.rho = 1                        # distance precision in pixels
         self.angular_precision = np.pi/180  # radians
         self.min_threshold = 10             # minimum number of votes
-        # Paramter for cropping
-        self.crop_num = 200
+        # Paramter for cropping (how many top pixels to remove height-wise)
+        self.crop_num = 280
         pass
 
     def build_state(self, img: np.array, display: bool)->float:
@@ -38,10 +43,15 @@ class CameraLineInterpreter(object):
         line_segments = np.copy(line_segments_h)
         line_segments[:, 0, 1] += self.crop_num
         line_segments[:, 0, 3] += self.crop_num
+        # Project line segments so end points are at the ends of the cropped image
+        projected_lines = self.project_line_segments(line_segments)
+        # Calculate average line from end points
+        average_line = np.average(projected_lines, 0).astype('int32')
+        print(average_line)
+        # import sys; sys.exit()
+
         # Calculate average line
-        avg_line = self.calculate_avg_line(line_segments)
-        print("i:",img.shape)
-        line_points = self.make_points(frame=img, line=avg_line)
+        # avg_line = self.average_slope_intercept(img, line_segments)
 
 
         # Display images at different points
@@ -55,70 +65,71 @@ class CameraLineInterpreter(object):
             line_img = np.copy(img)
             for line_seg in line_segments:
                 cv2.line(line_img, line_seg[0][0:2], line_seg[0][2:4], (0, 0, 255), 2)
-            # print(line_segments[0][0][0:2])
-            # print(type(line_segments[0][0][0:2][1]))
-            # import sys; sys.exit()
-            cv2.line(line_img, line_points[0][0:2], line_points[0][2:4], (0, 255, 0), 5)
             cv2.imshow("Lines", line_img)
-
-
+            # Render projected line segments onto an image for display
+            p_line_img = np.copy(img)
+            for p_line_seg in projected_lines:
+                cv2.line(p_line_img, p_line_seg[0][0:2], p_line_seg[0][2:4], (0, 0, 255), 1)
+            cv2.imshow("Projected Lines", p_line_img)
+            # Render final average line onto image for display
+            a_line_img = np.copy(img)
+            cv2.line(a_line_img, average_line[0][0:2], average_line[0][2:4], (0,255,0), 5)
+            cv2.imshow("Final Line", a_line_img)
+            # Call waitkey. The program freezes without this call
             _ = cv2.waitKey(1)
 
         state = 0
         return state
 
-    def calculate_avg_line(self, line_segments: np.array):
-        # Average lines along endpoints
-        avg_line_segment = np.average(line_segments, axis=0)
-        avg_line_segment = avg_line_segment.astype('int')
+    def project_line_segments(self, line_segments)->List[np.ndarray]:
+        endpts_list = []
+        for line_segment in line_segments:
+            # Grab initial end points
+            x1i, y1i, x2i, y2i = line_segment[0]
+            # Find slope and intercept of line segment
+            slope, intercept = np.polyfit((x1i, x2i), (y1i, y2i), 1)
+            # Find the endpoints of the line projected out to the edges of the frame
+            x1p, y1p, x2p, y2p = self.make_points(slope, intercept)[0]
+            endpts_list.append([[x1p, y1p, x2p, y2p]])
+        return endpts_list
 
-        # Unpack line
-        x1, y1, x2, y2 = avg_line_segment[0]
-        print("Average line segment")
-        print(x1, y1, x2, y2)
+        # return [[x1, y1, x2, y2]]
 
-        # Make average line endpoints align with the overall detected line
-        if x1 == x2:
-            logging.info("x1 == x2 | Manually generating average line.")
-            # avg_line = np.array([[x1, self.crop_num, x2, 640]])
-        else:
-            logging.info("x1 != x2 | Generating line through polyfit.")
-            slope, intercept = np.polyfit((x1, x2), (y1, y2), 1)
-            # avg_line = self.make_points(slope, intercept)
-        return slope, intercept
+    def average_slope_intercept(self, line_segments):
+        # Slope and intercept are with x as a function y
+        # AKA: Width as a function of height
+        # This keeps the average from diverging from a stable line
+        # and makes it possible to keep lines going straight up in the image
+        if line_segments is None:
+            logging.error('No line_segment segments detected')
+            slope, intercept = 0, self.frame_shape[0]/2
+            return slope, intercept
 
-    # def make_points(self, slope, intercept):
-    #     width, height = self.frame_shape
-    #     y1 = height  # bottom of the frame
-    #     y2 = self.crop_num  # make points from crop of the frame down
-    #     # print(slope, intercept)
-    #     # import sys; sys.exit(0)
+        # height, width, _ = frame.shape
+        # line_fit = []
 
-    #     print("-intercepts", intercept)
-    #     print(y1 - intercept)
-    #     print(y2 - intercept)
+        # for line_segment in line_segments[:3]:
+        #     for x1, y1, x2, y2 in line_segment:
+        #         if x1 == x2:
+        #             logging.info('skipping vertical line segment (slope=inf): %s' % line_segment)
+        #             continue
+        #         slope, intercept = np.polyfit((x1, x2), (y1, y2), 1)
+        #         line_fit.append((slope, intercept))
 
-    #     print('/slope', slope)
-    #     print((y1-intercept)/slope)
-    #     print((y2-intercept)/slope)
+        # fit_average = np.average(line_fit, axis=0)
+        # avg_line = self.make_points(frame, fit_average)
+        # return avg_line
 
-    #     # bound the coordinates within the frame
-    #     x1 = np.int32((y1 - intercept)/slope)
-    #     x2 = np.int32((y2 - intercept)/slope)
-    #     # y1 = max(-width, min(2 * width, int((x1 - intercept) / slope)))
-    #     # y2 = max(-width, min(2 * width, int((x2 - intercept) / slope)))
-    #     print("avg", x1, x2, y1, y2)
-    #     # import sys; sys.exit()
-    #     return [[x1, y1, x2, y2]]
-
-    def make_points(self, frame, line):
-        print(frame.shape)
-        height, width, _ = frame.shape
-        slope, intercept = line
+    def make_points(self, slope, intercept):
+        width, height = self.frame_shape
         y1 = height  # bottom of the frame
-        y2 = int(y1 * 1 / 2)  # make points from middle of the frame down
+        y2 = self.crop_num # int(y1 * 1 / 2)  # make points from crop num down
 
         # bound the coordinates within the frame
         x1 = max(-width, min(2 * width, int((y1 - intercept) / slope)))
         x2 = max(-width, min(2 * width, int((y2 - intercept) / slope)))
         return [[x1, y1, x2, y2]]
+
+    def make_points2(self, slope, intercept):
+        # Slope and intercept are with x as a function of y
+        pass
