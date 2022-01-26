@@ -47,12 +47,12 @@ class CameraLineInterpreter(object):
         projected_lines = self.project_line_segments(line_segments)
         # Calculate average line from end points
         average_line = np.average(projected_lines, 0).astype('int32')
-        print(average_line)
-        # import sys; sys.exit()
-
-        # Calculate average line
-        # avg_line = self.average_slope_intercept(img, line_segments)
-
+        # Generate the state based on how far the x value of the top end point
+        # of the average line is from the center of the frame
+        top_x = average_line[0][2]
+        displacement_from_center = top_x - self.frame_shape[0]/2
+        # Normalize so output is always bounded [-1,1]
+        state = displacement_from_center / (self.frame_shape[0]/2)
 
         # Display images at different points
         if display:
@@ -78,7 +78,6 @@ class CameraLineInterpreter(object):
             # Call waitkey. The program freezes without this call
             _ = cv2.waitKey(1)
 
-        state = 0
         return state
 
     def project_line_segments(self, line_segments)->List[np.ndarray]:
