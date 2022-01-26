@@ -1,4 +1,3 @@
-from lib2to3.pgen2 import driver
 from typing import Optional
 import numpy as np
 import sys
@@ -9,7 +8,13 @@ import atexit
 
 from line_follow_controller import LineFollowController
 from camera_line_interpreter import CameraLineInterpreter
-from drivetrain import DriveTrain
+from picarx_improved import on_raspi
+if on_raspi():
+    from drivetrain import DriveTrain
+else:
+    from drivetrain_sim import DriveTrain
+
+
 
 class CameraLineFollowController(LineFollowController):
     def __init__(self, interpreter: CameraLineInterpreter, drivetrain: DriveTrain, low_kp: Optional[float] = None, high_kp: Optional[float] = None) -> None:
@@ -29,9 +34,9 @@ class CameraLineFollowController(LineFollowController):
         tty.setcbreak(sys.stdin.fileno())
         atexit.register(self._cleanup)
 
-    def control_func(self, raw_reading: np.array):
+    def control_func(self, raw_reading: np.array, display: bool):
         # Turn the raw reading into some useful state we can control
-        state = self.interpreter.build_state(raw_reading)
+        state = self.interpreter.build_state(raw_reading, display)
         # Calculate a steering angle based on that state
         steer_angle = self.calculate_steering_angle(state)
         # Send steering angle to motors
