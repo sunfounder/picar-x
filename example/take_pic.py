@@ -18,7 +18,7 @@ for frame in camera.capture_continuous(rawCapture, format="bgr",use_video_port=T
     img = frame.array
     cv2.imshow("video", img)  # OpenCV image show
     rawCapture.truncate(0)  # Release cache
-    cv2.imwrite('/home/egonzalez/picar-x/test_images/img2.jpg', img) # Save image
+    cv2.imwrite('/home/egonzalez/picar-x/test_images/img3.jpg', img) # Save image
 
     # click ESC key to exit.
     k = cv2.waitKey(1) & 0xFF
