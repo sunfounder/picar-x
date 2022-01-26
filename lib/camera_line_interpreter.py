@@ -29,6 +29,7 @@ class CameraLineInterpreter(object):
         # Output is bounded from [-1,1]
 
         no_line_segments_found = False
+        no_projected_lines = False
 
         # Change to hsv color space
         hsv_img = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
@@ -52,36 +53,42 @@ class CameraLineInterpreter(object):
             line_segments[:, 0, 3] += self.crop_num
             # Project line segments so end points are at the ends of the cropped image
             projected_lines = self.project_line_segments(line_segments)
-            # Calculate average line from end points
-            average_line = np.average(projected_lines, 0).astype('int32')
-            # Generate the state based on how far the x value of the top end point
-            # of the average line is from the center of the frame
-            top_x = average_line[0][2]
-            displacement_from_center = top_x - self.frame_shape[0]/2
-            # Normalize so output is always bounded [-1,1]
-            state = displacement_from_center / (self.frame_shape[0]/2)
+            if len(projected_lines) == 0:
+                logging.error("Line segments could not be projected. Must all have slope of 0. Returning 0 for state.")
+                no_projected_lines = True
+                state = 0
+            else:
+                # Calculate average line from end points
+                average_line = np.average(projected_lines, 0).astype('int32')
+                # Generate the state based on how far the x value of the top end point
+                # of the average line is from the center of the frame
+                top_x = average_line[0][2]
+                displacement_from_center = top_x - self.frame_shape[0]/2
+                # Normalize so output is always bounded [-1,1]
+                state = - displacement_from_center / (self.frame_shape[0]/2)
 
         # Display images at different points
         if display:
             cv2.imshow("Raw Image", img)
             cv2.imshow("HSV Image", hsv_img)
             cv2.imshow("Mask Image", mask)
-            if not no_line_segments_found:
+            if not no_line_segments_found and not no_projected_lines:
                 cv2.imshow("Edges", edges)
                 cv2.imshow("Cropped", cropped)
                 # Render line segments onto an image for display
                 line_img = np.copy(img)
+                print(tuple(line_segments[0][0][0:2]))
                 for line_seg in line_segments:
-                    cv2.line(line_img, line_seg[0][0:2], line_seg[0][2:4], (0, 0, 255), 2)
+                    cv2.line(line_img, tuple(line_seg[0][0:2]), tuple(line_seg[0][2:4]), (0, 0, 255), 2)
                 cv2.imshow("Lines", line_img)
                 # Render projected line segments onto an image for display
                 p_line_img = np.copy(img)
                 for p_line_seg in projected_lines:
-                    cv2.line(p_line_img, p_line_seg[0][0:2], p_line_seg[0][2:4], (0, 0, 255), 1)
+                    cv2.line(p_line_img, tuple(p_line_seg[0][0:2]), tuple(p_line_seg[0][2:4]), (0, 0, 255), 1)
                 cv2.imshow("Projected Lines", p_line_img)
                 # Render final average line onto image for display
                 a_line_img = np.copy(img)
-                cv2.line(a_line_img, average_line[0][0:2], average_line[0][2:4], (0,255,0), 5)
+                cv2.line(a_line_img, tuple(average_line[0][0:2]), tuple(average_line[0][2:4]), (0,255,0), 5)
                 cv2.imshow("Final Line", a_line_img)
             # Call waitkey. The program freezes without this call
             _ = cv2.waitKey(1)
@@ -94,10 +101,13 @@ class CameraLineInterpreter(object):
             # Grab initial end points
             x1i, y1i, x2i, y2i = line_segment[0]
             # Find slope and intercept of line segment
-            slope, intercept = np.polyfit((x1i, x2i), (y1i, y2i), 1)
-            # Find the endpoints of the line projected out to the edges of the frame
-            x1p, y1p, x2p, y2p = self.make_points(slope, intercept)[0]
-            endpts_list.append([[x1p, y1p, x2p, y2p]])
+            if x1i == x2i:
+                logging.info("x1i == x2i. Skipping point")
+            else:
+                slope, intercept = np.polyfit((x1i, x2i), (y1i, y2i), 1)
+                # Find the endpoints of the line projected out to the edges of the frame
+                x1p, y1p, x2p, y2p = self.make_points(slope, intercept)[0]
+                endpts_list.append(np.array([[x1p, y1p, x2p, y2p]], dtype=np.int32))
         return endpts_list
 
         # return [[x1, y1, x2, y2]]
@@ -133,8 +143,12 @@ class CameraLineInterpreter(object):
         y2 = self.crop_num # int(y1 * 1 / 2)  # make points from crop num down
 
         # bound the coordinates within the frame
-        x1 = max(-width, min(2 * width, int((y1 - intercept) / slope)))
-        x2 = max(-width, min(2 * width, int((y2 - intercept) / slope)))
+        if slope == 0:
+            x1 = self.frame_shape[0]/2
+            x2 = self.frame_shape[0]/2
+        else:
+            x1 = max(-width, min(2 * width, int((y1 - intercept) / slope)))
+            x2 = max(-width, min(2 * width, int((y2 - intercept) / slope)))
         return [[x1, y1, x2, y2]]
 
     def make_points2(self, slope, intercept):

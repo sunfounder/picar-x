@@ -16,10 +16,13 @@ def main():
     # Setup picar and line following classes
     px = Picarx()
     interpreter = CameraLineInterpreter()
-    controller = CameraLineFollowController(interpreter=interpreter, drivetrain=px.drivetrain, low_kp=10.0, high_kp=50.0)
+    controller = CameraLineFollowController(interpreter=interpreter, drivetrain=px.drivetrain, low_kp=30.0, high_kp=50.0)
 
     # Start moving forward
     px.drivetrain.set_speed(30)
+
+    # Look at the ground
+    px.camera.set_tilt_angle(-30)
 
     # Line follow until a shutdown command is recieved
     px.camera.control_based_on_camera(controller.control_func, display=True)
