@@ -19,6 +19,6 @@ class Camera(object):
     def control_based_on_camera(self, control_func, display: bool)->None:
         control_break = False
         while not control_break:
-            img = cv2.imread(self.image_dirs[2])
+            img = cv2.imread(self.image_dirs[3])
             control_break = control_func(img, display)
         return None
