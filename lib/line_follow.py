@@ -28,9 +28,9 @@ def main():
     shutdown = False
     while not shutdown:
         # Calculate steering angle through control loop
-        ir_reading = px.ir_sensors.read()
-        state = interpreter.build_state(ir_reading)
-        steer_angle = controller.calculate_steering_angle(state)
+        ir_reading = px.ir_sensors._read()
+        state = interpreter._build_state(ir_reading)
+        steer_angle = controller._calculate_steering_angle(state)
 
         # Send commands to motors
         px.drivetrain.set_angle(steer_angle)
