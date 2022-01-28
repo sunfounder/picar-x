@@ -15,7 +15,7 @@ class TerminalMonitor():
         # Setup cleanup command to restore terminal upon shutdown
         atexit.register(self._cleanup)
 
-    def _isData():
+    def _isData(self):
         # https://stackoverflow.com/questions/2408560/non-blocking-console-input
         return select.select([sys.stdin], [], [], 0) == ([sys.stdin], [], [])
 

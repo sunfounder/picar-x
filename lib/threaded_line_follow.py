@@ -4,6 +4,7 @@ import tty
 import termios
 from time import sleep
 import concurrent.futures
+import logging
 
 from picarx_improved import Picarx
 from line_interpreter import DARKLINE, LineInterpreter
@@ -29,37 +30,25 @@ def main():
     sensor_delay = 0.1
     interpreter_delay = 0.1
     shutdown_delay = 0.1
+    controller_delay = 0.1
 
     # Start up processes to line follow until a shutdown command is recieved
-    with concurrent.futures.ThreadPoolExecutor(max_workers=3) as executor:
+    logging.info("Starting threads.")
+    with concurrent.futures.ThreadPoolExecutor(max_workers=4) as executor:
         eShutdown = executor.submit(terminal.continuous_monitor_shutdown, shutdown_bus, shutdown_delay)
         eSensor = executor.submit(px.ir_sensors.continuous_write_to_bus, sensor_values_bus, shutdown_bus, sensor_delay)
-        eInterpreter = executor.submit(interpreter.continuous_bus_read_write, sensor_values_bus, state_value_bus, interpreter_delay)
+        eInterpreter = executor.submit(interpreter.continuous_bus_read_write, sensor_values_bus, state_value_bus, shutdown_bus, interpreter_delay)
+        eController = executor.submit(controller.continuous_bus_control, px.drivetrain, state_value_bus, shutdown_bus, controller_delay)
 
-    print("hello")
-    # Start moving forward
-    # px.drivetrain.set_speed(30)
-
-
-
-    # # Line follow until a shutdown command is recieved
-    # shutdown = False
-    # while not shutdown:
-    #     # Calculate steering angle through control loop
-    #     ir_reading = px.ir_sensors.read()
-    #     state = interpreter.build_state(ir_reading)
-    #     steer_angle = controller.calculate_steering_angle(state)
-
-    #     # Send commands to motors
-    #     px.drivetrain.set_angle(steer_angle)
-
-    #     # Shutdown with any keyboard input
-    #     if isData():
-    #         shutdown = True
-
-    # # Restore terminal
-    # termios.tcsetattr(sys.stdin, termios.TCSADRAIN, old_settings)
-
+    # Notification of shutdown
+    logging.info("Shutting down.")
+    
+    # Display any exceptions
+    eShutdown.result()
+    eSensor.result()
+    eInterpreter.result()
+    eController.result()
+ 
 
 if __name__ == "__main__":
     main()
