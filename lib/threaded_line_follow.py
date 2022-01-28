@@ -1,8 +1,3 @@
-import sys
-import select
-import tty
-import termios
-from time import sleep
 import concurrent.futures
 import logging
 
@@ -42,13 +37,13 @@ def main():
 
     # Notification of shutdown
     logging.info("Shutting down.")
-    
+
     # Display any exceptions
     eShutdown.result()
     eSensor.result()
     eInterpreter.result()
     eController.result()
- 
+
 
 if __name__ == "__main__":
     main()
