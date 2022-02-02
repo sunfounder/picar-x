@@ -1,0 +1,3 @@
+[submodule "RossROS"]
+	path = RossROS
+	url = git@github.com:rlhatton/RossROS.git

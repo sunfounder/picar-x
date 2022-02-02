@@ -4,6 +4,7 @@ import tty
 import termios
 import atexit
 from time import sleep
+import logging
 
 from bus import Bus
 
@@ -30,3 +31,8 @@ class TerminalMonitor():
             if self._isData():
                 shutdown = True
         shutdown_bus.write(shutdown)
+
+    def __call__(self):
+        d = self._isData()
+        logging.debug(f"TerminalMonitor returned {d} for termination.")
+        return d
