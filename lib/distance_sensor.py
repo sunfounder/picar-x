@@ -1,13 +1,13 @@
 from pin import Pin
 import time
 
-class RangeFinder(object):
+class DistanceSensor(object):
     def __init__(self) -> None:
         self.timeout = 0.01
         self.trigger_pin = Pin('D8')
         self.echo_pin = Pin('D9')
 
-    def get_distance(self)->float:
+    def _read(self)->float:
         self.trigger_pin.low()
         time.sleep(0.01)
         self.trigger_pin.high()
@@ -27,3 +27,6 @@ class RangeFinder(object):
         during = pulse_end - pulse_start
         cm = round(during * 340 / 2 * 100, 2)
         return cm
+
+    def __call__(self) -> float:
+        return self._read()

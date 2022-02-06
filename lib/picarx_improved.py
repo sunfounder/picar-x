@@ -26,7 +26,7 @@ if on_raspi():
     try:
         from drivetrain import DriveTrain
         from ir_sensors import IRSensors
-        from range_finder import RangeFinder
+        from distance_sensor import DistanceSensor
         from camera import Camera
         from utils import reset_mcu
         reset_mcu()
@@ -41,7 +41,7 @@ else:
         "substitue functions.")
     from drivetrain_sim import DriveTrain
     from ir_sensors_sim import IRSensors
-    from range_finder_sim import RangeFinder
+    from distance_sensor_sim import DistanceSensor
     from camera_sim import Camera
 
 class Picarx(object):
@@ -54,7 +54,7 @@ class Picarx(object):
 
         # Setup sensors
         self.ir_sensors = IRSensors()
-        self.range_finder = RangeFinder()
+        self.distance_sensor = DistanceSensor()
         self.camera = Camera(self.config_file)
 
         # Setup drivetrain
