@@ -36,7 +36,7 @@ def main():
     distance_controller_delay = 0.15
 
     # Setup timeout for script
-    timeout = 20 # seconds
+    timeout = 0 # seconds
 
     # Setup consumers, producers, and consumer-producers
     # Setup Timer
