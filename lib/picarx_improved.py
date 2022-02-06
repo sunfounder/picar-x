@@ -28,6 +28,8 @@ if on_raspi():
         from ir_sensors import IRSensors
         from range_finder import RangeFinder
         from camera import Camera
+        from utils import reset_mcu
+        reset_mcu()
     except ImportError:
         logging.error("Found RPi library, implying this computer is a" \
             "PiCar-X system. However, failed to import picarx" \

@@ -42,3 +42,6 @@ class LineInterpreter(object):
             self.state = self._build_state(ir_values)
             state_bus.write(self.state)
             sleep(time_delay)
+
+    def __call__(self, ir_sensor_values):
+        return self._build_state(ir_sensor_values)
