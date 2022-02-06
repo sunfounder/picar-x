@@ -1,4 +1,3 @@
-from typing import Optional
 from time import sleep
 from bus import Bus # custom Bus class, not from rossros
 from drivetrain_sim import DriveTrain
