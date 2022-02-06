@@ -32,3 +32,7 @@ class IRSensors(object):
             self.values = self._read()
             ir_sensor_bus.write(self.values)
             sleep(time_delay)
+   
+    def __call__(self):
+        return self._read()
+
