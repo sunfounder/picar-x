@@ -4,6 +4,7 @@ from picarx import Picarx
 def main():
     try:
         px = Picarx()
+        # px = Picarx(ultrasonic_pins=['D2','D3']) # tring, echo
         px.forward(30)
         while True:
             distance = px.ultrasonic.read()
