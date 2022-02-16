@@ -3,6 +3,10 @@ Video Car
 
 This program will provide a First Person View from the PiCar-X! Use the keyboards WSAD keys to control the direction of movement, and the O and P to adjust the speed.
 
+.. note::
+
+    To run this project, you must first complete :ref:`Remote Desktop`
+
 **Run the Code**
 
 

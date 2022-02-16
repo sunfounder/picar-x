@@ -13,7 +13,7 @@ Run the calibration program ``calibration.py``.
 
 .. code-block::
 
-    cd /home/pi/picar-x/examples/calibration
+    cd /home/pi/picar-x/example/calibration
     sudo python3 calibration.py
 
 After running the above code, you will see the following interface displayed in the terminal.

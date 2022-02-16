@@ -3,6 +3,10 @@ Color Detection
 
 This project will add a color detection algorithm to the previous :ref:`Computer Vision` project.
 
+.. note::
+
+    To run this project, you must first complete :ref:`Remote Desktop`
+
 * :download:`[PDF]Color Cards <https://github.com/sunfounder/sf-pdf/raw/master/prop_card/object_detection/color-cards.pdf>`
 
 .. note::

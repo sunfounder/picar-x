@@ -3,6 +3,9 @@ Face Detection
 
 This project is also based on the :ref:`Computer Vision` project, with the addition of face detection algorithms.
 
+.. note::
+
+    To run this project, you must first complete :ref:`Remote Desktop`
 
 .. image:: img/block/face_detection.PNG
 
