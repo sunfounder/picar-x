@@ -1,6 +1,4 @@
-import sys
-sys.path.append(r'/home/pi/picar-x/lib')
-from tts import TTS
+from robot_hat import TTS
 
 
 if __name__ == "__main__":

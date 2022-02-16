@@ -1,90 +1,127 @@
-# coding=utf-8
-import sys
-sys.path.append(r'/home/pi/picar-x/lib')
+# #!/usr/bin/env python3
 
 print('Please run under desktop environment (eg: vnc) to display the image window')
 
 from utils import reset_mcu
 reset_mcu()
 from picarx import Picarx
-from utils import run_command
-import datetime
+from vilib import Vilib
+from time import sleep, time, strftime, localtime
+import readchar
 
-import cv2
-from picamera.array import PiRGBArray
-from picamera import PiCamera
-import numpy as np
+manual = '''
+Press key to call the function(non-case sensitive)：
 
-camera = PiCamera()
-camera.resolution = (640,480)
-camera.framerate = 24
-camera.image_effect = "none"  #"none","negative","solarize","emboss","posterise","cartoon",
-rawCapture = PiRGBArray(camera, size=camera.resolution)  
+    O: speed up
+    P: speed down
+    W: forward  
+    S: backward
+    A: turn left
+    D：turn right
+    F: stop
+    T: take photo
 
-power_val = 0
+    ESC / Ctrl+C: quit
+'''
+
+
 px = Picarx()
 
+def take_photo():
+    _time = strftime('%Y-%m-%d-%H-%M-%S',localtime(time()))
+    name = 'photo_%s'%_time
+    path = "/home/pi/Pictures/picar-x/"
+    Vilib.take_photo(name, path)
+    print('\nphoto save as %s%s.jpg'%(path,name))
 
-try:
+
+def move(operate:str, speed):
+
+    if operate == 'stop':
+        px.stop()  
+    else:
+        if operate == 'forward':
+            px.set_dir_servo_angle(0)
+            px.forward(speed)
+        elif operate == 'backward':
+            px.set_dir_servo_angle(0)
+            px.backward(speed)
+        elif operate == 'turn left':
+            px.set_dir_servo_angle(-30)
+            px.forward(speed)
+        elif operate == 'turn right':
+            px.set_dir_servo_angle(30)
+            px.forward(speed)
+        
+
+
+def main():
+    speed = 0
+    status = 'stop'
+
+    Vilib.camera_start(vflip=False,hflip=False)
+    Vilib.display(local=True,web=True)
+    sleep(2)  # wait for startup
+    print(manual)
+    
     while True:
-        for frame in camera.capture_continuous(rawCapture, format="bgr",use_video_port=True):# use_video_port=True
-            img = frame.array
-            cv2.imshow("video", img)    
-        
-            k = cv2.waitKey(1) & 0xFF
-            # 27 is ESC key
-            if k == 27:
-                camera.close()
-                continue
-            elif k == ord('o'):
-                if power_val <=90:
-                    power_val += 10
-                    print("power_val:",power_val)  # motor power up
-            elif k == ord('p'):
-                if power_val >=10:
-                    power_val -= 10
-                    print("power_val:",power_val)  # motor power up down
-            elif k == ord('w'):
-                px.set_dir_servo_angle(0) # go forward
-                px.forward(power_val) 
-            elif k == ord('a'):
-                px.set_dir_servo_angle(-30) # go left
-                px.forward(power_val)
-            elif k == ord('s'):
-                px.set_dir_servo_angle(0) # go back
-                px.backward(power_val)
-            elif k == ord('d'):
-                px.set_dir_servo_angle(30) # go right
-                px.forward(power_val)
-            elif k == ord('f'):    
-                px.stop()  # stop
+        print("\rstatus: %s , speed: %s    "%(status, speed), end='', flush=True)
+        # readkey
+        key = readchar.readkey().lower()
+        # operation 
+        if key in ('wsadfop'):
+            # throttle
+            if key == 'o':
+                if speed <=90:
+                    speed += 10           
+            elif key == 'p':
+                if speed >=10:
+                    speed -= 10
+                if speed == 0:
+                    status = 'stop'
+            # direction
+            elif key in ('wsad'):
+                if speed == 0:
+                    speed = 10
+                if key == 'w':
+                    # Speed limit when reversing,avoid instantaneous current too large
+                    if status != 'forward' and speed > 60:  
+                        speed = 60
+                    status = 'forward'
+                elif key == 'a':
+                    status = 'turn left'
+                elif key == 's':
+                    if status != 'backward' and speed > 60: # Speed limit when reversing
+                        speed = 60
+                    status = 'backward'
+                elif key == 'd':
+                    status = 'turn right' 
+            # stop
+            elif key == 'f':
+                status = 'stop'
+            # move 
+            move(status, speed)  
+        # take photo
+        elif key == 't':
+            take_photo()
+        # quit
+        elif key == readchar.key.CTRL_C or key in readchar.key.ESCAPE_SEQUENCES:
+            print('\nquit ...')
+            px.stop()
+            Vilib.camera_close()
+            break 
 
-        
-            elif k == ord('t'):   # shoot
-                camera.close()
-                break
-            rawCapture.truncate(0)
-
-        print("take a photo wait...")
-        picture_time = datetime.datetime.now().strftime('%Y-%m-%d_%H-%M-%S')
-        picture_path = '/home/pi/Pictures/' + picture_time + '.jpg'
-
-        a_t = "sudo raspistill -t 250  -w 2592 -h 1944 " + " -o " + picture_path
-
-        print(a_t)
-        run_command(a_t)
-
-        # Vilib.shuttle_button() 
-        camera = PiCamera()
-        camera.resolution = (640,480)
-        camera.framerate = 24
-        camera.image_effect = "none"  #"none","negative","solarize","emboss","posterise","cartoon",
-        rawCapture = PiRGBArray(camera, size=camera.resolution)  
-finally:
-    px.stop()
-    camera.close()
+        sleep(0.1)
 
 
+if __name__ == "__main__":
+    try:
+        main()
+    except Exception as e:
+        print("error:%s"%e)
+    finally:
+        px.stop()
+        Vilib.camera_close()
 
 
         

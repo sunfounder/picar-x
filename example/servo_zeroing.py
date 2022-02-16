@@ -1,11 +1,10 @@
-import sys
-sys.path.append(r'/home/pi/picar-x/lib')
-from utils import reset_mcu
+
+from robot_hat import PWM, Servo
+from robot_hat.utils import reset_mcu
+from time import sleep
+
 reset_mcu()
-
-from pwm import PWM
-from servo import Servo
-
+sleep(0.2)
 
 if __name__ == '__main__':
     P_11 = Servo(PWM('P11'))         
