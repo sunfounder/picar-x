@@ -4,6 +4,8 @@ from picamera.array import PiRGBArray
 from picamera import PiCamera
 import time
 
+print('Please run under desktop environment (eg: vnc) to display the image window')
+
 #init camera
 camera = PiCamera()
 camera.resolution = (640,480)

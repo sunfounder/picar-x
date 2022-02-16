@@ -4,6 +4,8 @@ from picamera.array import PiRGBArray
 from picamera import PiCamera
 import numpy as np
 
+print('Please run under desktop environment (eg: vnc) to display the image window')
+
 color_dict = {'red':[0,4],'orange':[5,18],'yellow':[22,37],'green':[42,85],'blue':[92,110],'purple':[115,165],'red_2':[165,180]}  #Here is the range of H in the HSV color space represented by the color
 
 kernel_5 = np.ones((5,5),np.uint8) #Define a 5×5 convolution kernel with element values of all 1.

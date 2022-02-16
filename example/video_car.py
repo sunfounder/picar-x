@@ -2,6 +2,8 @@
 import sys
 sys.path.append(r'/home/pi/picar-x/lib')
 
+print('Please run under desktop environment (eg: vnc) to display the image window')
+
 from utils import reset_mcu
 reset_mcu()
 from picarx import Picarx
