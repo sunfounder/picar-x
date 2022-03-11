@@ -33,6 +33,8 @@ After rebooting, run the ``i2samp.sh`` script again to test the amplifier. If a 
     
 After running the code, PiCar-X will say \"Hello\", \"Hi\", \"Good bye\", \"Nice to meet you\".
 
+.. image:: img/block/how_are_you.jpg
+
 **Code**
 
 .. note::

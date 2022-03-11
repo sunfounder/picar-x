@@ -33,9 +33,11 @@ If there is no obstacle in the direction after turning left or the obstacle dist
 
     from picarx import Picarx
 
+
     def main():
         try:
             px = Picarx()
+            # px = Picarx(ultrasonic_pins=['D2','D3']) # tring, echo
             px.forward(30)
             while True:
                 distance = px.ultrasonic.read()
@@ -61,7 +63,7 @@ The ultrasonic module is also imported in the picarx module, and we can use some
 
     from picarx import Picarx
 
-Because the ultrasonic module is imported into the picarx module, we can directly use px.ultrasonic.read() to get the distance.
+Because the ultrasonic module is imported into the picarx module, we can directly use ``px.ultrasonic.read()`` to get the distance.
 
 .. code-block:: python
 

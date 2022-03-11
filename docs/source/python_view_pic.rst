@@ -8,41 +8,47 @@ To perform the next four experiments, make sure to have completed the :ref:`Remo
 
 **Run the Code**
 
-.. raw:: html
+.. note::
 
-    <run></run>
-    
+    * This project requires access to the Raspberry Pi desktop to view the footage taken by the camera module.
+    * You can connect a screen to the PiCar-X or refer to the tutorial :ref:`Remote Desktop` to access it with VNC or XRDP.
+    * Once inside the Raspberry Pi desktop, open Terminal and type the following command to run it, or just open and run it with a Python editor.
+
 .. code-block::
 
     cd /home/pi/picar-x/example
     sudo python3 computer_vision.py
 
+After the code is run, you will see a window open on your desktop showing the shot.
 
 **Code**
 
 .. code-block:: python
 
-    # coding=utf-8
     import cv2
     from picamera.array import PiRGBArray
     from picamera import PiCamera
+    import time
 
-    #init camera
-    camera = PiCamera()
-    camera.resolution = (640,480)
-    camera.framerate = 24
-    rawCapture = PiRGBArray(camera, size=camera.resolution)  
 
-    for frame in camera.capture_continuous(rawCapture, format="bgr",use_video_port=True): # use_video_port=True
-        img = frame.array
-        cv2.imshow("video", img)  # OpenCV image show
-        rawCapture.truncate(0)  # Release cache
-    
-        # click ESC key to exit.
-        k = cv2.waitKey(1) & 0xFF
-        if k == 27:
-            camera.close()
-            break
+    with PiCamera() as camera:
+        camera.resolution = (640, 480)  
+        camera.framerate = 24
+        rawCapture = PiRGBArray(camera, size=camera.resolution)  
+        time.sleep(2)
+
+        for frame in camera.capture_continuous(rawCapture, format="bgr",use_video_port=True): # use_video_port=True
+            img = frame.array
+            cv2.imshow("video", img)  # OpenCV image show
+            rawCapture.truncate(0)  # Release cache
+            
+            k = cv2.waitKey(1) & 0xFF
+            if k == 27:
+                break
+
+        print('quit ...') 
+        cv2.destroyAllWindows()
+        camera.close()  
 
 
 **How it works?** 
@@ -58,12 +64,12 @@ Capturing an image to a file only requires specifying the name of the file to th
     from time import sleep
     from picamera import PiCamera
 
-    camera = PiCamera()
-    camera.resolution = (640, 480)
-    camera.start_preview()
-    # Camera warm-up time
-    sleep(2)
-    camera.capture('foo.jpg')
+    with PiCamera() as camera:
+        camera.resolution = (640, 480)
+        camera.start_preview()
+        # Camera warm-up time
+        sleep(2)
+        camera.capture('foo.jpg')
 
 This project uses the **capturing timelapse sequences** method. This method enables OpenCV to acquire sequential frames.
 
@@ -75,14 +81,14 @@ With this method, the camera captures images continually until it is told to sto
     from time import sleep
     from picamera import PiCamera
 
-    camera = PiCamera()
-    camera.resolution = (640, 480)
-    camera.start_preview()
-    sleep(2)    
+    with PiCamera() as camera:
+        camera.resolution = (640, 480)
+        camera.start_preview()
+        sleep(2)    
 
-    for filename in camera.capture_continuous('img{counter:03d}.jpg'):
-        print('Captured %s' % filename)
-        sleep(10) #  capture images with a 10s delay between each shot
+        for filename in camera.capture_continuous('img{counter:03d}.jpg'):
+            print('Captured %s' % filename)
+            sleep(10) #  capture images with a 10s delay between each shot
 
 In order to capture OpenCV objects, an image will be captured to Python’s in-memory stream class: ``BytesIO`` . The BytesIO will convert the stream to a ``numpy`` array, and the program will read the array with OpenCV:
 
@@ -141,21 +147,21 @@ Combined with the method of capturing timelapse sequences, these 3-dimensional R
     from picamera import PiCamera
 
     #init camera
-    camera = PiCamera()
-    camera.resolution = (640,480)
-    camera.framerate = 24
-    rawCapture = PiRGBArray(camera, size=camera.resolution)  
+    with PiCamera() as camera:
+        camera.resolution = (640,480)
+        camera.framerate = 24
+        rawCapture = PiRGBArray(camera, size=camera.resolution)  
 
-    for frame in camera.capture_continuous(rawCapture, format="bgr",use_video_port=True): # use_video_port=True
-        img = frame.array
-        cv2.imshow("video", img)  # OpenCV image show
-        rawCapture.truncate(0)  # Release cache
+        for frame in camera.capture_continuous(rawCapture, format="bgr",use_video_port=True): # use_video_port=True
+            img = frame.array
+            cv2.imshow("video", img)  # OpenCV image show
+            rawCapture.truncate(0)  # Release cache
 
-        # click ESC key to exit.
-        k = cv2.waitKey(1) & 0xFF
-        if k == 27:
-            camera.close()
-            break
+            # click ESC key to exit.
+            k = cv2.waitKey(1) & 0xFF
+            if k == 27:
+                camera.close()
+                break
 
 There are many other ways to read video streams with OpenCV. The ones used in these examples are better suited for the next four PiCar-X tasks, such as :ref:`Color Detection` and :ref:`Face Detection`.
 

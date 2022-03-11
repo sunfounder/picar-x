@@ -30,6 +30,7 @@ After running the code, PiCar-X will move forward, turn in an S-shape, stop and 
     from picarx import Picarx
     import time
 
+
     if __name__ == "__main__":
         try:
             px = Picarx()
@@ -65,7 +66,7 @@ After running the code, PiCar-X will move forward, turn in an S-shape, stop and 
             for angle in range(-35,0):
                 px.set_camera_servo2_angle(angle)
                 time.sleep(0.01)
-
+                
         finally:
             px.forward(0)
 

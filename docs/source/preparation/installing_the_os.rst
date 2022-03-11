@@ -87,7 +87,7 @@ Select the SD card you are using.
 
 **Step 6**
 
-Press **Ctrl+Shift+X** to open the **Advanced options** page to enable
+Press **Ctrl+Shift+X** or click the **setting ** button to open the **Advanced options** page to enable
 SSH and configure wifi, these 2 items must be set, the others depend on
 your choice . You can choose to always use this image customization
 options.
@@ -99,8 +99,7 @@ Then scroll down to complete the wifi configuration and click **SAVE**.
 
 .. note::
 
-    **wifi country** should be set the two-letter `ISO/IEC alpha2
-    code <https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2#Officially_assigned_code_elements>`__ for
+    **wifi country** should be set the two-letter `ISO/IEC alpha2 code <https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2#Officially_assigned_code_elements>`_ for
     the country in which you are using your Raspberry Pi, please refer to
     the following link: https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2#Officially_assigned_code_elements
 

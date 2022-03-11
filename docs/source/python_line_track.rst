@@ -31,9 +31,11 @@ After running the code, PiCar-X will move forward along a line.
 
     from picarx import Picarx
 
+
     if __name__=='__main__':
         try:
             px = Picarx()
+            # px = Picarx(grayscale_pins=['A0', 'A1', 'A2']) 
             px_power = 10
             while True:
                 gm_val_list = px.get_grayscale_data()
