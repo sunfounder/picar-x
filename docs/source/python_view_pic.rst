@@ -8,40 +8,48 @@
 
 **运行代码**
 
-.. raw:: html
+.. note::
 
-    <run></run>
+    * 这个项目需要访问树莓派的桌面来查看相机模块拍摄的画面。
+    * 你可以将屏幕连接到PiCar-X上，或者参考教程 :ref:`remote_desktop`，用VNC或XRDP访问它。
+    * 一旦进入树莓派的桌面，打开Terminal并输入以下命令来运行它，或者直接用Python编辑器打开并运行它。
+
     
 .. code-block::
 
     cd /home/pi/picar-x/example
     sudo python3 computer_vision.py
 
+代码运行后，你将在窗口上看到摄像头模块拍摄的画面。
+
 **代码**
 
 .. code-block:: python
 
-    # coding=utf-8
     import cv2
     from picamera.array import PiRGBArray
     from picamera import PiCamera
+    import time
 
-    #init camera
-    camera = PiCamera()
-    camera.resolution = (640,480)
-    camera.framerate = 24
-    rawCapture = PiRGBArray(camera, size=camera.resolution)  
 
-    for frame in camera.capture_continuous(rawCapture, format="bgr",use_video_port=True): # use_video_port=True
-        img = frame.array
-        cv2.imshow("video", img)  # OpenCV image show
-        rawCapture.truncate(0)  # Release cache
-    
-        # click ESC key to exit.
-        k = cv2.waitKey(1) & 0xFF
-        if k == 27:
-            camera.close()
-            break
+    with PiCamera() as camera:
+        camera.resolution = (640, 480)  
+        camera.framerate = 24
+        rawCapture = PiRGBArray(camera, size=camera.resolution)  
+        time.sleep(2)
+
+        for frame in camera.capture_continuous(rawCapture, format="bgr",use_video_port=True): # use_video_port=True
+            img = frame.array
+            cv2.imshow("video", img)  # OpenCV image show
+            rawCapture.truncate(0)  # Release cache
+            
+            k = cv2.waitKey(1) & 0xFF
+            if k == 27:
+                break
+
+        print('quit ...') 
+        cv2.destroyAllWindows()
+        camera.close()  
 
 
 **这个怎么运作？**
@@ -57,12 +65,12 @@
     from time import sleep
     from picamera import PiCamera
 
-    camera = PiCamera()
-    camera.resolution = (640, 480)
-    camera.start_preview()
-    # Camera warm-up time
-    sleep(2)
-    camera.capture('foo.jpg')
+    with PiCamera() as camera:
+        camera.resolution = (640, 480)
+        camera.start_preview()
+        # Camera warm-up time
+        sleep(2)
+        camera.capture('foo.jpg')
 
 该项目使用 **capturing timelapse sequences** 函数。这种方法使 OpenCV 能够获取连续帧。
 
@@ -73,14 +81,14 @@
     from time import sleep
     from picamera import PiCamera
 
-    camera = PiCamera()
-    camera.resolution = (640, 480)
-    camera.start_preview()
-    sleep(2)    
+    with PiCamera() as camera:
+        camera.resolution = (640, 480)
+        camera.start_preview()
+        sleep(2)    
 
-    for filename in camera.capture_continuous('img{counter:03d}.jpg'):
-        print('Captured %s' % filename)
-        sleep(10) #  capture images with a 10s delay between each shot
+        for filename in camera.capture_continuous('img{counter:03d}.jpg'):
+            print('Captured %s' % filename)
+            sleep(10) #  capture images with a 10s delay between each shot
 
 为了捕获 OpenCV 对象，图像将被捕获到 Python 的内存流类： ``BytesIO``。 BytesIO 会将流转换为 ``numpy`` 数组，程序将使用 OpenCV 读取该数组：
 
@@ -138,21 +146,21 @@
     from picamera import PiCamera
 
     #init camera
-    camera = PiCamera()
-    camera.resolution = (640,480)
-    camera.framerate = 24
-    rawCapture = PiRGBArray(camera, size=camera.resolution)  
+    with PiCamera() as camera:
+        camera.resolution = (640,480)
+        camera.framerate = 24
+        rawCapture = PiRGBArray(camera, size=camera.resolution)  
 
-    for frame in camera.capture_continuous(rawCapture, format="bgr",use_video_port=True): # use_video_port=True
-        img = frame.array
-        cv2.imshow("video", img)  # OpenCV image show
-        rawCapture.truncate(0)  # Release cache
+        for frame in camera.capture_continuous(rawCapture, format="bgr",use_video_port=True): # use_video_port=True
+            img = frame.array
+            cv2.imshow("video", img)  # OpenCV image show
+            rawCapture.truncate(0)  # Release cache
 
-        # click ESC key to exit.
-        k = cv2.waitKey(1) & 0xFF
-        if k == 27:
-            camera.close()
-            break
+            # click ESC key to exit.
+            k = cv2.waitKey(1) & 0xFF
+            if k == 27:
+                camera.close()
+                break
 
 还有许多其他方法可以使用 OpenCV 读取视频流。 这些示例中使用的那些更适合接下来的四个 PiCar-X 任务，例如 :ref:`颜色检测 - Python` 和 :ref:`人脸检测 - Python`。
 

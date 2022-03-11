@@ -9,15 +9,18 @@
 
 **运行代码**
 
+.. note::
 
-.. raw:: html
-
-    <run></run>
+    * 这个项目需要访问树莓派的桌面来查看相机模块拍摄的画面。
+    * 你可以将屏幕连接到PiCar-X上，或者参考教程 :ref:`remote_desktop`，用VNC或XRDP访问它。
+    * 一旦进入树莓派的桌面，打开Terminal并输入以下命令来运行它，或者直接用Python编辑器打开并运行它。
 
 .. code-block::
 
     cd /home/pi/picar-x/example
     sudo python3 human_face_detect.py
+
+代码运行后，检测到的人脸将在屏幕中框选出。
 
 **代码**
 
@@ -27,43 +30,47 @@
     import cv2
     from picamera.array import PiRGBArray
     from picamera import PiCamera
+    import time
 
-    face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml') 
 
     def human_face_detect(img):
-        resize_img = cv2.resize(img, (320,240), interpolation=cv2.INTER_LINEAR)    
-        gray = cv2.cvtColor(resize_img, cv2.COLOR_BGR2GRAY) 
-        faces = face_cascade.detectMultiScale(gray, 1.3, 2)   
-
-        face_num = len(faces)  
-        max_area = 0
+        resize_img = cv2.resize(img, (320,240), interpolation=cv2.INTER_LINEAR)         # In order to reduce the amount of calculation, resize the image to 320 x 240 size
+        gray = cv2.cvtColor(resize_img, cv2.COLOR_BGR2GRAY)    # Convert to grayscale
+        faces = face_cascade.detectMultiScale(gray, 1.3, 2)    # Detect faces on grayscale images
+        face_num = len(faces)   # Number of detected faces
         if face_num  > 0:
             for (x,y,w,h) in faces:
-                x = x*2  
+                
+                x = x*2   # Because the image is reduced to one-half of the original size, the x, y, w, and h must be multiplied by 2.
                 y = y*2
                 w = w*2
                 h = h*2
-                cv2.rectangle(img,(x,y),(x+w,y+h),(255,0,0),2) 
+                cv2.rectangle(img,(x,y),(x+w,y+h),(255,0,0),2)  # Draw a rectangle on the face
         
         return img
 
-    #init camera
-    print("start human face detect")
-    camera = PiCamera()
-    camera.resolution = (640,480)
-    camera.framerate = 24
-    rawCapture = PiRGBArray(camera, size=camera.resolution)  
 
-    for frame in camera.capture_continuous(rawCapture, format="bgr",use_video_port=True): 
-        img = frame.array
-        img =  human_face_detect(img) 
-        cv2.imshow("video", img)  
-        rawCapture.truncate(0) 
-    
-        k = cv2.waitKey(1) & 0xFF
-        if k == 27:
-            camera.close()
-            break
+    with PiCamera() as camera:
+        print("start human face detect")
+        camera.resolution = (640,480)
+        camera.framerate = 24
+        rawCapture = PiRGBArray(camera, size=camera.resolution)  
+        time.sleep(2)
+
+        for frame in camera.capture_continuous(rawCapture, format="bgr",use_video_port=True): # use_video_port=True
+            img = frame.array
+            img =  human_face_detect(img) 
+            cv2.imshow("video", img)  #OpenCV image show
+            rawCapture.truncate(0)  # Release cache
+        
+            k = cv2.waitKey(1) & 0xFF
+            # 27 is the ESC key, which means that if you press the ESC key to exit
+            if k == 27:
+                break
+
+        print('quit ...') 
+        cv2.destroyAllWindows()
+        camera.close() 
 
 
 **这个怎么运作？**
@@ -98,19 +105,18 @@
 .. code-block:: python
 
     def human_face_detect(img):
-        resize_img = cv2.resize(img, (320,240), interpolation=cv2.INTER_LINEAR)  # To reduce the amount of calculation, the image size is reduced.
-        gray = cv2.cvtColor(resize_img, cv2.COLOR_BGR2GRAY)    # Convert picture to grayscale.
-        faces = face_cascade.detectMultiScale(gray, 1.3, 2)    # Obtain the bounding rectangle of the detected face.
-        
-        face_num = len(faces)   
-        max_area = 0
+        resize_img = cv2.resize(img, (320,240), interpolation=cv2.INTER_LINEAR)         # In order to reduce the amount of calculation, resize the image to 320 x 240 size
+        gray = cv2.cvtColor(resize_img, cv2.COLOR_BGR2GRAY)    # Convert to grayscale
+        faces = face_cascade.detectMultiScale(gray, 1.3, 2)    # Detect faces on grayscale images
+        face_num = len(faces)   # Number of detected faces
         if face_num  > 0:
-            for (x,y,w,h) in faces: # Because the picture is reduced during operation, the increase now go back.
-                x = x*2   
+            for (x,y,w,h) in faces:
+                
+                x = x*2   # Because the image is reduced to one-half of the original size, the x, y, w, and h must be multiplied by 2.
                 y = y*2
                 w = w*2
                 h = h*2
-                cv2.rectangle(img,(x,y),(x+w,y+h),(255,0,0),2)  # Draw a frame for the recognized object on the image.
+                cv2.rectangle(img,(x,y),(x+w,y+h),(255,0,0),2)  # Draw a rectangle on the face
         
         return img
 

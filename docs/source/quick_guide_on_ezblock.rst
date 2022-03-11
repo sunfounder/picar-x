@@ -13,70 +13,83 @@ EzBlock 快速指南
 
 .. `下载并安装 EzBlock <https://docs.sunfounder.com/projects/ezblock3/en/latest/quick_user_guide_for_ezblock3 .html#download-and-install-ezblock-os>`_.
 
-**第1步**
+**安装Ezblock系统**
 
-树莓派开发了一个图形 SD 卡写入工具，适用于 Mac OS、Ubuntu 18.04 和 Windows，对于大多数用户来说是最简单的选择，因为它会下载映像并将其自动安装到 SD 卡。
+#. 树莓派开发了一个图形 SD 卡写入工具，适用于 Mac OS、Ubuntu 18.04 和 Windows，对于大多数用户来说是最简单的选择，因为它会下载映像并将其自动安装到 SD 卡。访问下载页面：https://www.raspberrypi.org/software/。 单击与您的操作系统匹配的 Raspberry Pi Imager 链接，下载完成后，单击它以启动安装程序。
 
-访问下载页面：https://www.raspberrypi.org/software/。 单击与您的操作系统匹配的 Raspberry Pi Imager 链接，下载完成后，单击它以启动安装程序。
-
-.. image:: preparation/media/image11.png
-    :align: center
+    .. image:: preparation/media/image11.png
+        :align: center
 
 
-**第2步**
 
-当您启动安装程序时，您的操作系统可能会尝试阻止您运行它。 例如，在 Windows 上，我收到以下消息：
+#. 当您启动安装程序时，您的操作系统可能会尝试阻止您运行它。 例如，在 Windows 上，我收到以下消息： 如果出现此消息，请点击 **更多信息** ，然后点击 **仍然运行** ，然后按照说明安装 Raspberry Pi Imager。
 
-如果出现此消息，请点击 **更多信息** ，然后点击 **仍然运行** ，然后按照说明安装 Raspberry Pi Imager。
+    .. image:: preparation/media/image12.png
+        :align: center
 
-.. image:: preparation/media/image12.png
-    :align: center
-
-**第3步**
-
-将 SD 卡插入计算机或笔记本电脑的 SD 卡插槽。
-
-**第4步**
-
-下载 `EzBlock 镜像 <https://1drv.ms/u/s!AqKAi6T8L7jzjBG4sb3luhQUhW_c?e=CCXYtt>`_ 。
-
-**第5步**
-
-在 Raspberry Pi Imager 中选择刚下载的 EzBlock 镜像。
-
-.. image:: preparation/media/otherOS.png
-    :align: center
+#. 将 SD 卡插入计算机或笔记本电脑的 SD 卡插槽。
 
 
-**第6步**
 
-选择您正在使用的 SD 卡。
+#. 下载 EzBlock 镜像
+ 
+  * 天翼网盘：链接：https://cloud.189.cn/t/QNrEJnEjYNRz
+  * 百度网盘：链接：https://pan.baidu.com/s/1ku1VoukCebChq9-OzkHf_g?pwd=ezbl，提取码：ezbl。
+  * 由于文件超过1G，需要在电脑上下载客户端之后才能下载文件。
 
-.. image:: preparation/media/image14.png
-    :align: center
+#. 在 Raspberry Pi Imager 中选择刚下载的 EzBlock 镜像。
 
-**第7步**
+    .. image:: preparation/media/otherOS.png
+        :align: center
 
-单击 **WRITE** 按钮。
+
+#. 按下 **Ctrl+Shift+X** 或者点击 **设置** 按钮来打开 **Advanced options** 页面来设置 ``hostname`` 和启动 ``SSH``。你可以选择 “always use this image customization options”（始终使用该定制选项）。
+
+    .. note::
+
+        ``hostname`` 是让你在使用 :ref:`web_ezblock`, 可以用它来连接到你的产品，你也可以不设置。
+
+    .. image:: img/configure.png
+        :align: center
+
+#. 下拉到底完成 WiFi配置，然后点击 **SAVE**。
+
+    .. note::
+
+        **wifi country** 选择 **CN**
+    .. image:: img/image16.png
+        :align: center
+
+
+
+#. 选择您正在使用的 SD 卡。
+
+    .. image:: preparation/media/image14.png
+        :align: center
+
+
+
+#. 单击 **WRITE** 按钮。
 
 .. image:: preparation/media/image17.png
     :align: center
 
-**第8步**
-
-如果您的 SD 卡上当前有任何文件，您可能希望先备份这些文件以防止永久丢失它们。 如果没有要备份的文件，请单击 **YES**。
-
-.. image:: preparation/media/image18.png
-    :align: center
-
-**第9步**
-
-等待一段时间后，会出现如下窗口，代表写入完成。
-
-.. image:: preparation/media/image19.png
-    :align: center
 
 
+#. 如果您的 SD 卡上当前有任何文件，您可能希望先备份这些文件以防止永久丢失它们。 如果没有要备份的文件，请单击 **YES**。
+
+    .. image:: preparation/media/image18.png
+        :align: center
+
+
+
+#. 等待一段时间后，会出现如下窗口，代表写入完成。
+
+    .. image:: preparation/media/image19.png
+        :align: center
+
+
+**舵机调零**
 
 在Micro SD卡上烧录EzBlock镜像后，你将可以设置Robot HAT上的P11口将舵机角度校准为0°角。 为确保舵机已正确设置为 0°，首先将摇臂轻轻插入舵机轴，然后将摇臂轻轻旋转到不同的角度。
 
@@ -105,10 +118,5 @@ EzBlock 编程前
 .. image:: img/Ezblock_Studio_v3.0.1_App.png
     :align: center
 
-.. .. note::
 
-..     连接帕克后，会有一个校准步骤。 这是因为安装过程中可能存在偏差或舵机本身的限制，导致一些舵机角度略微倾斜，因此您可以在此步骤中对其进行校准。
-    
-..     但如果你认为组装很完美，不需要校准，你也可以跳过这一步。
-
-或者使用 :ref:`网页版 EzBlock`
+或者使用 :ref:`web_ezblock`

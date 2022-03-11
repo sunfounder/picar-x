@@ -91,7 +91,7 @@
 
 .. note::
 
-    为你使用的树莓派设置 **wifi country** ，它应为两位字母的 `ISO/IEC alpha2 代码 <https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2#Officially_assigned_code_elements>`_ 。
+    **wifi country** 设置为 **CN**
 
 .. image:: media/image16.png
     :align: center

@@ -34,9 +34,11 @@
 
     from picarx import Picarx
 
+
     def main():
         try:
             px = Picarx()
+            # px = Picarx(ultrasonic_pins=['D2','D3']) # tring, echo
             px.forward(30)
             while True:
                 distance = px.ultrasonic.read()
@@ -62,7 +64,7 @@ picarx 模块中还导入了 ultrasonic 模块，我们可以用其封装的一�
 
     from picarx import Picarx
 
-因为 picarx 模块中导入了 ultrasonic 模块，我们可以直接用 px.ultrasonic.read() 来获取距离。
+因为 picarx 模块中导入了 ultrasonic 模块，我们可以直接用 ``px.ultrasonic.read()`` 来获取距离。
 
 .. code-block:: python
 
