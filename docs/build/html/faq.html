@@ -1,0 +1,305 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>疑难解答 &mdash; Emakefun 帕克智能小车  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="https://ezblock.cc/readDocFile/topHead.css" type="text/css" />
+  <link rel="stylesheet" href="https://ezblock.cc/readDocFile/readTheDoc/src/css/index.css" type="text/css" />
+  <link rel="stylesheet" href="https://ezblock.cc/readDocFile/readTheDoc/src/css/xterm.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="https://ezblock.cc/readDocFile/topHead.js"></script>
+        <script src="https://ezblock.cc/readDocFile/readTheDoc/src/js/ace.js"></script>
+        <script src="https://ezblock.cc/readDocFile/readTheDoc/src/js/ext-language_tools.js"></script>
+        <script src="https://ezblock.cc/readDocFile/readTheDoc/src/js/theme-chrome.js"></script>
+        <script src="https://ezblock.cc/readDocFile/readTheDoc/src/js/mode-python.js"></script>
+        <script src="https://ezblock.cc/readDocFile/readTheDoc/src/js/mode-sh.js"></script>
+        <script src="https://ezblock.cc/readDocFile/readTheDoc/src/js/monokai.js"></script>
+        <script src="https://ezblock.cc/readDocFile/readTheDoc/src/js/xterm.js"></script>
+        <script src="https://ezblock.cc/readDocFile/readTheDoc/src/js/FitAddon.js"></script>
+        <script src="https://ezblock.cc/readDocFile/readTheDoc/src/js/readTheDocIndex.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="关于电池" href="appendix/battery.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Emakefun 帕克智能小车
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">介绍</a></li>
+<li class="toctree-l1"><a class="reference internal" href="list_and_assembly.html">部件清单和装配说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="about_robot_hat.html">关于 Robot HAT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ezblock/play_with_ezblock.html">玩转EzBlock</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python/play_with_python.html">玩转Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix/appendix.html">附录</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">疑难解答</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#vnc">当使用VNC时，我被提示桌面暂时无法显示？</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#ezblock-0">安装EzBlock操作系统后，舵机不能转到0°？</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#ezblock">如何在EzBlock重新校准机器人</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id2">EzBlock无法连接蓝牙？</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#app">APP搜索到蓝牙，但无法连接</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#wifiapp">配置WIFI后APP无法连接</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">为什么伺服机有时会无缘无故地返回到中间位置？</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Emakefun 帕克智能小车</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>疑难解答</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/faq.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1>疑难解答<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="vnc">
+<h2>当使用VNC时，我被提示桌面暂时无法显示？<a class="headerlink" href="#vnc" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>在终端，输入 <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">raspi-config</span></code> 来改变分辨率。</p>
+</div></blockquote>
+</div>
+<div class="section" id="ezblock-0">
+<h2>安装EzBlock操作系统后，舵机不能转到0°？<a class="headerlink" href="#ezblock-0" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li><p>检查伺服电缆是否正确连接，Robot HAT的电源是否打开。</p></li>
+<li><p>按下复位按钮。</p></li>
+<li><p>如果您已经在EzBlock Studio中运行了程序，那么P11的自定义程序就不再可用。您可以参考下图，在EzBlock Studio中手动编写程序，将伺服角度设置为0。</p></li>
+</ul>
+<img alt="_images/faq_servo.png" src="_images/faq_servo.png" />
+</div></blockquote>
+</div>
+<div class="section" id="ezblock">
+<h2>如何在EzBlock重新校准机器人<a class="headerlink" href="#ezblock" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>在首页，点击左上角的产品连接图标。</p>
+<img alt="_images/faq_cali1.png" src="_images/faq_cali1.png" />
+<p>进入到产品页面之后，点击 <strong>设置</strong> 按钮。</p>
+<img alt="_images/faq_cali2.png" src="_images/faq_cali2.png" />
+<p>进入设置页面后，点击 <strong>校准</strong> 按钮就能进入到校准页面，然后按照提示来校准。</p>
+<img alt="_images/faq_cali3.png" src="_images/faq_cali3.png" />
+</div></blockquote>
+</div>
+<div class="section" id="id2">
+<h2>EzBlock无法连接蓝牙？<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li><p>先检查是否有给你的SD卡烧录 <a class="reference internal" href="ezblock/ezb_start/ezblock_image.html#ezb-image"><span class="std std-ref">安装EzBlock镜像</span></a>。</p></li>
+<li><p>打开产品的电源开关后，等蓝牙指示灯变得更亮并且出现”zi~”声后，代表树莓派成功启动，此时再去连接。</p></li>
+<li><p>检查您的移动设备的蓝牙是否打开。</p></li>
+<li><p>检查EzBlock是否被允许访问设备的位置。</p></li>
+<li><p>有些移动设备还需要打开位置服务。</p></li>
+<li><p>检查电池电量。如果两个电源指示灯都关闭，或者只有一个指示灯在闪烁；电源电量低，请给电池充电。</p></li>
+<li><p>如果以上方法都试过了，请尝试按下RST按钮，或重新启动产品和APP。</p></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="app">
+<h2>APP搜索到蓝牙，但无法连接<a class="headerlink" href="#app" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li><p>先检查是否有给你的SD卡烧录 <a class="reference internal" href="ezblock/ezb_start/ezblock_image.html#ezb-image"><span class="std std-ref">安装EzBlock镜像</span></a>。</p></li>
+<li><p>打开产品的电源开关后，等蓝牙指示灯变得更亮并且出现”zi~”声后，代表树莓派成功启动，此时再去连接。</p></li>
+<li><p>检查ROBOT HAT上的BLE或USR灯是否一直亮着（这意味着产品被其他设备连接），如果是，请断开其他设备的连接或重新启动产品。</p></li>
+<li><p>如果以上方法都试过了，请尝试按下RST按钮，或者重新启动产品和APP。</p></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="wifiapp">
+<h2>配置WIFI后APP无法连接<a class="headerlink" href="#wifiapp" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li><p>检查国家、账号和密码是否正确。</p></li>
+<li><p>检查该WIFI的网络状态。</p></li>
+<li><p>检查电源电量。如果两个电源指示灯都熄灭或只有一个电源指示灯闪烁，则说明电源电量不足，请给电池充电。</p></li>
+<li><p>检查配置的WiFi和移动设备连接的WiFi是否相同。</p></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="id3">
+<h2>为什么伺服机有时会无缘无故地返回到中间位置？<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>当舵机被结构物或其他物体挡住，无法到达预定位置时，舵机会进入断电保护模式，以防止舵机被过大的电流烧坏。</p>
+<p>断电一段时间后，如果没有给伺服机提供PWM信号，伺服机将自动恢复到原来的位置。</p>
+</div></blockquote>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="appendix/battery.html" class="btn btn-neutral float-left" title="关于电池" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, Emakefun.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,315 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>让帕克动起来 &mdash; Emakefun 帕克智能小车  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="https://ezblock.cc/readDocFile/topHead.css" type="text/css" />
+  <link rel="stylesheet" href="https://ezblock.cc/readDocFile/readTheDoc/src/css/index.css" type="text/css" />
+  <link rel="stylesheet" href="https://ezblock.cc/readDocFile/readTheDoc/src/css/xterm.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="https://ezblock.cc/readDocFile/topHead.js"></script>
+        <script src="https://ezblock.cc/readDocFile/readTheDoc/src/js/ace.js"></script>
+        <script src="https://ezblock.cc/readDocFile/readTheDoc/src/js/ext-language_tools.js"></script>
+        <script src="https://ezblock.cc/readDocFile/readTheDoc/src/js/theme-chrome.js"></script>
+        <script src="https://ezblock.cc/readDocFile/readTheDoc/src/js/mode-python.js"></script>
+        <script src="https://ezblock.cc/readDocFile/readTheDoc/src/js/mode-sh.js"></script>
+        <script src="https://ezblock.cc/readDocFile/readTheDoc/src/js/monokai.js"></script>
+        <script src="https://ezblock.cc/readDocFile/readTheDoc/src/js/xterm.js"></script>
+        <script src="https://ezblock.cc/readDocFile/readTheDoc/src/js/FitAddon.js"></script>
+        <script src="https://ezblock.cc/readDocFile/readTheDoc/src/js/readTheDocIndex.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="避障" href="python_avoid.html" />
+    <link rel="prev" title="校准 PiCar-X" href="python_calibrate.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Emakefun 帕克智能小车
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html">介绍</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../list_and_assembly.html">部件清单和装配说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about_robot_hat.html">关于 Robot HAT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ezblock/play_with_ezblock.html">玩转EzBlock</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="play_with_python.html">玩转Python</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="python_start/quick_guide_on_python.html">Python 快速指南</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_calibrate.html">校准 PiCar-X</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">让帕克动起来</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_avoid.html">避障</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_line_track.html">线路跟踪</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_tts.html">文字转语音</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_view_pic.html">计算机视觉</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_color_detection.html">颜色检测</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_face_detection.html">人脸检测</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_video_car.html">视频车</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../appendix/appendix.html">附录</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq.html">疑难解答</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Emakefun 帕克智能小车</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="play_with_python.html">玩转Python</a> &raquo;</li>
+        
+      <li>让帕克动起来</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/python/python_move.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1>让帕克动起来<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<p>这是第一个项目，让我们测试一下帕克的基本运动。</p>
+<p><strong>运行代码</strong></p>
+<run></run><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">pi</span><span class="o">/</span><span class="n">picar</span><span class="o">-</span><span class="n">x</span><span class="o">/</span><span class="n">example</span>
+<span class="n">sudo</span> <span class="n">python3</span> <span class="n">move</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+<p>运行代码后，帕克会向前移动，S形转弯，停下来摇头。</p>
+<p><strong>代码</strong></p>
+<run></run><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">picarx</span> <span class="kn">import</span> <span class="n">Picarx</span>
+<span class="kn">import</span> <span class="nn">time</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">px</span> <span class="o">=</span> <span class="n">Picarx</span><span class="p">()</span>
+        <span class="n">px</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span>
+        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">angle</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">35</span><span class="p">):</span>
+            <span class="n">px</span><span class="o">.</span><span class="n">set_dir_servo_angle</span><span class="p">(</span><span class="n">angle</span><span class="p">)</span>
+            <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.01</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">angle</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">35</span><span class="p">,</span><span class="o">-</span><span class="mi">35</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+            <span class="n">px</span><span class="o">.</span><span class="n">set_dir_servo_angle</span><span class="p">(</span><span class="n">angle</span><span class="p">)</span>
+            <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.01</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">angle</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="o">-</span><span class="mi">35</span><span class="p">,</span><span class="mi">0</span><span class="p">):</span>
+            <span class="n">px</span><span class="o">.</span><span class="n">set_dir_servo_angle</span><span class="p">(</span><span class="n">angle</span><span class="p">)</span>
+            <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.01</span><span class="p">)</span>
+        <span class="n">px</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">angle</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">35</span><span class="p">):</span>
+            <span class="n">px</span><span class="o">.</span><span class="n">set_camera_servo1_angle</span><span class="p">(</span><span class="n">angle</span><span class="p">)</span>
+            <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.01</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">angle</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">35</span><span class="p">,</span><span class="o">-</span><span class="mi">35</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+            <span class="n">px</span><span class="o">.</span><span class="n">set_camera_servo1_angle</span><span class="p">(</span><span class="n">angle</span><span class="p">)</span>
+            <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.01</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">angle</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="o">-</span><span class="mi">35</span><span class="p">,</span><span class="mi">0</span><span class="p">):</span>
+            <span class="n">px</span><span class="o">.</span><span class="n">set_camera_servo1_angle</span><span class="p">(</span><span class="n">angle</span><span class="p">)</span>
+            <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.01</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">angle</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">35</span><span class="p">):</span>
+            <span class="n">px</span><span class="o">.</span><span class="n">set_camera_servo2_angle</span><span class="p">(</span><span class="n">angle</span><span class="p">)</span>
+            <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.01</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">angle</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">35</span><span class="p">,</span><span class="o">-</span><span class="mi">35</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+            <span class="n">px</span><span class="o">.</span><span class="n">set_camera_servo2_angle</span><span class="p">(</span><span class="n">angle</span><span class="p">)</span>
+            <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.01</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">angle</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="o">-</span><span class="mi">35</span><span class="p">,</span><span class="mi">0</span><span class="p">):</span>
+            <span class="n">px</span><span class="o">.</span><span class="n">set_camera_servo2_angle</span><span class="p">(</span><span class="n">angle</span><span class="p">)</span>
+            <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.01</span><span class="p">)</span>
+
+    <span class="k">finally</span><span class="p">:</span>
+        <span class="n">px</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>这个怎么运作？</strong></p>
+<p>帕克的基本功能在 <code class="docutils literal notranslate"><span class="pre">picarx</span></code> 模块中，
+可以用来控制舵机和车轮，
+并使帕克向前移动、S 形转弯或摇头。</p>
+<p>现在，导入了支持帕克基本功能的库。 这些线条将出现在所有涉及帕克运动的示例中。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">picarx</span> <span class="kn">import</span> <span class="n">Picarx</span>
+<span class="kn">import</span> <span class="nn">time</span>
+</pre></div>
+</div>
+<p>然后使用带有 <code class="docutils literal notranslate"><span class="pre">for</span></code> 循环的以下函数使帕克向前移动、改变方向和移动相机的平移/倾斜。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">px</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="n">speed</span><span class="p">)</span>
+<span class="n">px</span><span class="o">.</span><span class="n">set_dir_servo_angle</span><span class="p">(</span><span class="n">angle</span><span class="p">)</span>
+<span class="n">px</span><span class="o">.</span><span class="n">set_camera_servo1_angle</span><span class="p">(</span><span class="n">angle</span><span class="p">)</span>
+<span class="n">px</span><span class="o">.</span><span class="n">set_camera_servo2_angle</span><span class="p">(</span><span class="n">angle</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">forward()</span></code>：命令帕克以给定的速度前进。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">set_dir_servo_angle()</span></code>：将转向舵机转向特定的角度。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">set_camera_servo1_angle()</span></code>：将平移伺服器转到特定的角度。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">set_camera_servo2_angle()</span></code>：将倾斜伺服转向特定的角度。</p></li>
+</ul>
+<a class="reference internal image-reference" href="../_images/pan_tilt_servo.png"><img alt="../_images/pan_tilt_servo.png" src="../_images/pan_tilt_servo.png" style="width: 300px;" /></a>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="python_avoid.html" class="btn btn-neutral float-right" title="避障" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="python_calibrate.html" class="btn btn-neutral float-left" title="校准 PiCar-X" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, Emakefun.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

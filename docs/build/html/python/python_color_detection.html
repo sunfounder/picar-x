@@ -1,0 +1,397 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>颜色检测 &mdash; Emakefun 帕克智能小车  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="https://ezblock.cc/readDocFile/topHead.css" type="text/css" />
+  <link rel="stylesheet" href="https://ezblock.cc/readDocFile/readTheDoc/src/css/index.css" type="text/css" />
+  <link rel="stylesheet" href="https://ezblock.cc/readDocFile/readTheDoc/src/css/xterm.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="https://ezblock.cc/readDocFile/topHead.js"></script>
+        <script src="https://ezblock.cc/readDocFile/readTheDoc/src/js/ace.js"></script>
+        <script src="https://ezblock.cc/readDocFile/readTheDoc/src/js/ext-language_tools.js"></script>
+        <script src="https://ezblock.cc/readDocFile/readTheDoc/src/js/theme-chrome.js"></script>
+        <script src="https://ezblock.cc/readDocFile/readTheDoc/src/js/mode-python.js"></script>
+        <script src="https://ezblock.cc/readDocFile/readTheDoc/src/js/mode-sh.js"></script>
+        <script src="https://ezblock.cc/readDocFile/readTheDoc/src/js/monokai.js"></script>
+        <script src="https://ezblock.cc/readDocFile/readTheDoc/src/js/xterm.js"></script>
+        <script src="https://ezblock.cc/readDocFile/readTheDoc/src/js/FitAddon.js"></script>
+        <script src="https://ezblock.cc/readDocFile/readTheDoc/src/js/readTheDocIndex.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="人脸检测" href="python_face_detection.html" />
+    <link rel="prev" title="计算机视觉" href="python_view_pic.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Emakefun 帕克智能小车
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html">介绍</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../list_and_assembly.html">部件清单和装配说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about_robot_hat.html">关于 Robot HAT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ezblock/play_with_ezblock.html">玩转EzBlock</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="play_with_python.html">玩转Python</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="python_start/quick_guide_on_python.html">Python 快速指南</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_calibrate.html">校准 PiCar-X</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_move.html">让帕克动起来</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_avoid.html">避障</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_line_track.html">线路跟踪</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_tts.html">文字转语音</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_view_pic.html">计算机视觉</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">颜色检测</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_face_detection.html">人脸检测</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_video_car.html">视频车</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../appendix/appendix.html">附录</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq.html">疑难解答</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Emakefun 帕克智能小车</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="play_with_python.html">玩转Python</a> &raquo;</li>
+        
+      <li>颜色检测</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/python/python_color_detection.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="color-dectect-py">
+<span id="id1"></span><h1>颜色检测<a class="headerlink" href="#color-dectect-py" title="Permalink to this headline">¶</a></h1>
+<p>该项目将在之前的 <a class="reference internal" href="python_view_pic.html#id1"><span class="std std-ref">计算机视觉</span></a> 项目中添加颜色检测算法。</p>
+<ul class="simple">
+<li><p><a class="reference download external" download="" href="https://gitee.com/sunfounder/sf-pdf/raw/master/%E5%8D%A1%E7%89%87/%E7%9B%AE%E6%A0%87%E8%AF%86%E5%88%AB/%E9%A2%9C%E8%89%B2%E5%8D%A1.pdf"><code class="xref download docutils literal notranslate"><span class="pre">[PDF]颜色卡</span></code></a></p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>由于打印机碳粉或打印介质（如棕褐色纸）的差异，打印的颜色可能与 Python 颜色模型的色调略有不同。 这会导致不太准确的颜色识别。</p>
+</div>
+<a class="reference internal image-reference" href="../_images/color_card1.png"><img alt="../_images/color_card1.png" src="../_images/color_card1.png" style="width: 600px;" /></a>
+<p><strong>运行代码</strong></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>这个项目需要访问树莓派的桌面来查看相机模块拍摄的画面。</p></li>
+<li><p>你可以将屏幕连接到PiCar-X上，或者参考教程 <a class="reference internal" href="../appendix/remote_desktop.html#remote-desktop"><span class="std std-ref">远程桌面</span></a>，用VNC或XRDP访问它。</p></li>
+<li><p>一旦进入树莓派的桌面，打开Terminal并输入以下命令来运行它，或者直接用Python编辑器打开并运行它。</p></li>
+</ul>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">pi</span><span class="o">/</span><span class="n">picar</span><span class="o">-</span><span class="n">x</span><span class="o">/</span><span class="n">example</span>
+<span class="n">sudo</span> <span class="n">python3</span> <span class="n">color_detect</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+<p>当代码运行时，如果 PiCar-X 捕捉到一个红色物体，它会将其框出来。您还可以 <code class="docutils literal notranslate"><span class="pre">'red'</span></code> 将代码中的 更改为另一种颜色以进行检测。</p>
+<p><strong>代码</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cv2</span>
+<span class="kn">from</span> <span class="nn">picamera.array</span> <span class="kn">import</span> <span class="n">PiRGBArray</span>
+<span class="kn">from</span> <span class="nn">picamera</span> <span class="kn">import</span> <span class="n">PiCamera</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">time</span>
+
+<span class="n">color_dict</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;red&#39;</span><span class="p">:[</span><span class="mi">0</span><span class="p">,</span><span class="mi">4</span><span class="p">],</span><span class="s1">&#39;orange&#39;</span><span class="p">:[</span><span class="mi">5</span><span class="p">,</span><span class="mi">18</span><span class="p">],</span><span class="s1">&#39;yellow&#39;</span><span class="p">:[</span><span class="mi">22</span><span class="p">,</span><span class="mi">37</span><span class="p">],</span><span class="s1">&#39;green&#39;</span><span class="p">:[</span><span class="mi">42</span><span class="p">,</span><span class="mi">85</span><span class="p">],</span><span class="s1">&#39;blue&#39;</span><span class="p">:[</span><span class="mi">92</span><span class="p">,</span><span class="mi">110</span><span class="p">],</span><span class="s1">&#39;purple&#39;</span><span class="p">:[</span><span class="mi">115</span><span class="p">,</span><span class="mi">165</span><span class="p">],</span><span class="s1">&#39;red_2&#39;</span><span class="p">:[</span><span class="mi">165</span><span class="p">,</span><span class="mi">180</span><span class="p">]}</span>  <span class="c1">#Here is the range of H in the HSV color space represented by the color</span>
+
+<span class="n">kernel_5</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">),</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span> <span class="c1">#Define a 5×5 convolution kernel with element values of all 1.</span>
+
+<span class="k">def</span> <span class="nf">color_detect</span><span class="p">(</span><span class="n">img</span><span class="p">,</span><span class="n">color_name</span><span class="p">):</span>
+
+    <span class="c1"># The blue range will be different under different lighting conditions and can be adjusted flexibly.  H: chroma, S: saturation v: lightness</span>
+    <span class="n">resize_img</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">resize</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="p">(</span><span class="mi">160</span><span class="p">,</span><span class="mi">120</span><span class="p">),</span> <span class="n">interpolation</span><span class="o">=</span><span class="n">cv2</span><span class="o">.</span><span class="n">INTER_LINEAR</span><span class="p">)</span>  <span class="c1"># In order to reduce the amount of calculation, the size of the picture is reduced to (160,120)</span>
+    <span class="n">hsv</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">cvtColor</span><span class="p">(</span><span class="n">resize_img</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">COLOR_BGR2HSV</span><span class="p">)</span>              <span class="c1"># Convert from BGR to HSV</span>
+    <span class="n">color_type</span> <span class="o">=</span> <span class="n">color_name</span>
+
+    <span class="n">mask</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">inRange</span><span class="p">(</span><span class="n">hsv</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="nb">min</span><span class="p">(</span><span class="n">color_dict</span><span class="p">[</span><span class="n">color_type</span><span class="p">]),</span> <span class="mi">60</span><span class="p">,</span> <span class="mi">60</span><span class="p">]),</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="nb">max</span><span class="p">(</span><span class="n">color_dict</span><span class="p">[</span><span class="n">color_type</span><span class="p">]),</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">])</span> <span class="p">)</span>           <span class="c1"># inRange()：Make the ones between lower/upper white, and the rest black</span>
+    <span class="k">if</span> <span class="n">color_type</span> <span class="o">==</span> <span class="s1">&#39;red&#39;</span><span class="p">:</span>
+            <span class="n">mask_2</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">inRange</span><span class="p">(</span><span class="n">hsv</span><span class="p">,</span> <span class="p">(</span><span class="n">color_dict</span><span class="p">[</span><span class="s1">&#39;red_2&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="n">color_dict</span><span class="p">[</span><span class="s1">&#39;red_2&#39;</span><span class="p">][</span><span class="mi">1</span><span class="p">],</span><span class="mi">255</span><span class="p">,</span><span class="mi">255</span><span class="p">))</span>
+            <span class="n">mask</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">bitwise_or</span><span class="p">(</span><span class="n">mask</span><span class="p">,</span> <span class="n">mask_2</span><span class="p">)</span>
+
+    <span class="n">morphologyEx_img</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">morphologyEx</span><span class="p">(</span><span class="n">mask</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">MORPH_OPEN</span><span class="p">,</span> <span class="n">kernel_5</span><span class="p">,</span><span class="n">iterations</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>              <span class="c1"># Perform an open operation on the image</span>
+
+    <span class="c1"># Find the contour in morphologyEx_img, and the contours are arranged according to the area from small to large.</span>
+    <span class="n">_tuple</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">findContours</span><span class="p">(</span><span class="n">morphologyEx_img</span><span class="p">,</span><span class="n">cv2</span><span class="o">.</span><span class="n">RETR_EXTERNAL</span><span class="p">,</span><span class="n">cv2</span><span class="o">.</span><span class="n">CHAIN_APPROX_SIMPLE</span><span class="p">)</span>
+    <span class="c1"># compatible with opencv3.x and openc4.x</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">_tuple</span><span class="p">)</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+        <span class="n">_</span><span class="p">,</span> <span class="n">contours</span><span class="p">,</span> <span class="n">hierarchy</span> <span class="o">=</span> <span class="n">_tuple</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">contours</span><span class="p">,</span> <span class="n">hierarchy</span> <span class="o">=</span> <span class="n">_tuple</span>
+
+    <span class="n">color_area_num</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">contours</span><span class="p">)</span> <span class="c1"># Count the number of contours</span>
+
+    <span class="k">if</span> <span class="n">color_area_num</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">contours</span><span class="p">:</span>    <span class="c1"># Traverse all contours</span>
+            <span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">w</span><span class="p">,</span><span class="n">h</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">boundingRect</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>      <span class="c1"># Decompose the contour into the coordinates of the upper left corner and the width and height of the recognition object</span>
+
+            <span class="c1"># Draw a rectangle on the image (picture, upper left corner coordinate, lower right corner coordinate, color, line width)</span>
+            <span class="k">if</span> <span class="n">w</span> <span class="o">&gt;=</span> <span class="mi">8</span> <span class="ow">and</span> <span class="n">h</span> <span class="o">&gt;=</span> <span class="mi">8</span><span class="p">:</span> <span class="c1"># Because the picture is reduced to a quarter of the original size, if you want to draw a rectangle on the original picture to circle the target, you have to multiply x, y, w, h by 4.</span>
+                <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">*</span> <span class="mi">4</span>
+                <span class="n">y</span> <span class="o">=</span> <span class="n">y</span> <span class="o">*</span> <span class="mi">4</span>
+                <span class="n">w</span> <span class="o">=</span> <span class="n">w</span> <span class="o">*</span> <span class="mi">4</span>
+                <span class="n">h</span> <span class="o">=</span> <span class="n">h</span> <span class="o">*</span> <span class="mi">4</span>
+                <span class="n">cv2</span><span class="o">.</span><span class="n">rectangle</span><span class="p">(</span><span class="n">img</span><span class="p">,(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">),(</span><span class="n">x</span><span class="o">+</span><span class="n">w</span><span class="p">,</span><span class="n">y</span><span class="o">+</span><span class="n">h</span><span class="p">),(</span><span class="mi">0</span><span class="p">,</span><span class="mi">255</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span><span class="mi">2</span><span class="p">)</span>  <span class="c1"># Draw a rectangular frame</span>
+                <span class="n">cv2</span><span class="o">.</span><span class="n">putText</span><span class="p">(</span><span class="n">img</span><span class="p">,</span><span class="n">color_type</span><span class="p">,(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">),</span> <span class="n">cv2</span><span class="o">.</span><span class="n">FONT_HERSHEY_SIMPLEX</span><span class="p">,</span> <span class="mi">1</span><span class="p">,(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">255</span><span class="p">),</span><span class="mi">2</span><span class="p">)</span><span class="c1"># Add character description</span>
+
+    <span class="k">return</span> <span class="n">img</span><span class="p">,</span><span class="n">mask</span><span class="p">,</span><span class="n">morphologyEx_img</span>
+
+<span class="k">with</span> <span class="n">PiCamera</span><span class="p">()</span> <span class="k">as</span> <span class="n">camera</span><span class="p">:</span>
+<span class="hll">    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;start color detect&quot;</span><span class="p">)</span>
+</span>    <span class="n">camera</span><span class="o">.</span><span class="n">resolution</span> <span class="o">=</span> <span class="p">(</span><span class="mi">640</span><span class="p">,</span><span class="mi">480</span><span class="p">)</span>
+    <span class="n">camera</span><span class="o">.</span><span class="n">framerate</span> <span class="o">=</span> <span class="mi">24</span>
+    <span class="n">rawCapture</span> <span class="o">=</span> <span class="n">PiRGBArray</span><span class="p">(</span><span class="n">camera</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">camera</span><span class="o">.</span><span class="n">resolution</span><span class="p">)</span>
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">frame</span> <span class="ow">in</span> <span class="n">camera</span><span class="o">.</span><span class="n">capture_continuous</span><span class="p">(</span><span class="n">rawCapture</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;bgr&quot;</span><span class="p">,</span><span class="n">use_video_port</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span><span class="c1"># use_video_port=True</span>
+        <span class="n">img</span> <span class="o">=</span> <span class="n">frame</span><span class="o">.</span><span class="n">array</span>
+        <span class="n">img</span><span class="p">,</span><span class="n">img_2</span><span class="p">,</span><span class="n">img_3</span> <span class="o">=</span>  <span class="n">color_detect</span><span class="p">(</span><span class="n">img</span><span class="p">,</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>  <span class="c1"># Color detection function</span>
+        <span class="n">cv2</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="s2">&quot;video&quot;</span><span class="p">,</span> <span class="n">img</span><span class="p">)</span>    <span class="c1"># OpenCV image show</span>
+        <span class="n">cv2</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="s2">&quot;mask&quot;</span><span class="p">,</span> <span class="n">img_2</span><span class="p">)</span>    <span class="c1"># OpenCV image show</span>
+        <span class="n">cv2</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="s2">&quot;morphologyEx_img&quot;</span><span class="p">,</span> <span class="n">img_3</span><span class="p">)</span>    <span class="c1"># OpenCV image show</span>
+        <span class="n">rawCapture</span><span class="o">.</span><span class="n">truncate</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>   <span class="c1"># Release cache</span>
+
+        <span class="n">k</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">waitKey</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">&amp;</span> <span class="mh">0xFF</span>
+        <span class="c1"># 27 is the ESC key, which means that if you press the ESC key to exit</span>
+        <span class="k">if</span> <span class="n">k</span> <span class="o">==</span> <span class="mi">27</span><span class="p">:</span>
+            <span class="k">break</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;quit ...&#39;</span><span class="p">)</span>
+    <span class="n">cv2</span><span class="o">.</span><span class="n">destroyAllWindows</span><span class="p">()</span>
+    <span class="n">camera</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+<p><strong>这个怎么运作？</strong></p>
+<p>首先将 <a class="reference external" href="https://en.wikipedia.org/wiki/HSL_and_HSV">HSV颜色空间</a> 中H的范围定义为字典，方便后面的颜色判断算法：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">color_dict</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;red&#39;</span><span class="p">:[</span><span class="mi">0</span><span class="p">,</span><span class="mi">4</span><span class="p">],</span><span class="s1">&#39;orange&#39;</span><span class="p">:[</span><span class="mi">5</span><span class="p">,</span><span class="mi">18</span><span class="p">],</span><span class="s1">&#39;yellow&#39;</span><span class="p">:[</span><span class="mi">22</span><span class="p">,</span><span class="mi">37</span><span class="p">],</span><span class="s1">&#39;green&#39;</span><span class="p">:[</span><span class="mi">42</span><span class="p">,</span><span class="mi">85</span><span class="p">],</span><span class="s1">&#39;blue&#39;</span><span class="p">:[</span><span class="mi">92</span><span class="p">,</span><span class="mi">110</span><span class="p">],</span><span class="s1">&#39;purple&#39;</span><span class="p">:[</span><span class="mi">115</span><span class="p">,</span><span class="mi">165</span><span class="p">],</span><span class="s1">&#39;red_2&#39;</span><span class="p">:[</span><span class="mi">165</span><span class="p">,</span><span class="mi">180</span><span class="p">]}</span>
+</pre></div>
+</div>
+<p>然后，定义大小为 5x5 的 <a class="reference external" href="https://en.wikipedia.org/wiki/Kernel_(image_processing)">卷积核</a> ，将用于形态学操作，如过滤。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">kernel_5</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">),</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>接下来， <code class="docutils literal notranslate"><span class="pre">color_detect()</span></code> 函数将分四步处理图片：</p>
+<ol class="arabic simple">
+<li><p>提取目标颜色的数据作为新的二值图像（数组）。</p></li>
+<li><p>执行高级形态变换。</p></li>
+<li><p>在二值图像中寻找轮廓。</p></li>
+<li><p>在图像上为识别的对象绘制一个框架。</p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">color_detect</span><span class="p">(</span><span class="n">img</span><span class="p">,</span><span class="n">color_name</span><span class="p">):</span>
+
+    <span class="c1"># The blue range will be different under different lighting conditions and can be adjusted flexibly.  H: chroma, S: saturation v: lightness</span>
+    <span class="n">resize_img</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">resize</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="p">(</span><span class="mi">160</span><span class="p">,</span><span class="mi">120</span><span class="p">),</span> <span class="n">interpolation</span><span class="o">=</span><span class="n">cv2</span><span class="o">.</span><span class="n">INTER_LINEAR</span><span class="p">)</span>  <span class="c1"># In order to reduce the amount of calculation, the size of the picture is reduced to (160,120)</span>
+    <span class="n">hsv</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">cvtColor</span><span class="p">(</span><span class="n">resize_img</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">COLOR_BGR2HSV</span><span class="p">)</span>              <span class="c1"># Convert from BGR to HSV</span>
+    <span class="n">color_type</span> <span class="o">=</span> <span class="n">color_name</span>
+
+    <span class="n">mask</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">inRange</span><span class="p">(</span><span class="n">hsv</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="nb">min</span><span class="p">(</span><span class="n">color_dict</span><span class="p">[</span><span class="n">color_type</span><span class="p">]),</span> <span class="mi">60</span><span class="p">,</span> <span class="mi">60</span><span class="p">]),</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="nb">max</span><span class="p">(</span><span class="n">color_dict</span><span class="p">[</span><span class="n">color_type</span><span class="p">]),</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">])</span> <span class="p">)</span>           <span class="c1"># inRange()：Make the ones between lower/upper white, and the rest black</span>
+    <span class="k">if</span> <span class="n">color_type</span> <span class="o">==</span> <span class="s1">&#39;red&#39;</span><span class="p">:</span>
+            <span class="n">mask_2</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">inRange</span><span class="p">(</span><span class="n">hsv</span><span class="p">,</span> <span class="p">(</span><span class="n">color_dict</span><span class="p">[</span><span class="s1">&#39;red_2&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="n">color_dict</span><span class="p">[</span><span class="s1">&#39;red_2&#39;</span><span class="p">][</span><span class="mi">1</span><span class="p">],</span><span class="mi">255</span><span class="p">,</span><span class="mi">255</span><span class="p">))</span>
+            <span class="n">mask</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">bitwise_or</span><span class="p">(</span><span class="n">mask</span><span class="p">,</span> <span class="n">mask_2</span><span class="p">)</span>
+
+    <span class="n">morphologyEx_img</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">morphologyEx</span><span class="p">(</span><span class="n">mask</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">MORPH_OPEN</span><span class="p">,</span> <span class="n">kernel_5</span><span class="p">,</span><span class="n">iterations</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>              <span class="c1"># Perform an open operation on the image</span>
+
+    <span class="c1"># Find the contour in morphologyEx_img, and the contours are arranged according to the area from small to large.</span>
+    <span class="n">_tuple</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">findContours</span><span class="p">(</span><span class="n">morphologyEx_img</span><span class="p">,</span><span class="n">cv2</span><span class="o">.</span><span class="n">RETR_EXTERNAL</span><span class="p">,</span><span class="n">cv2</span><span class="o">.</span><span class="n">CHAIN_APPROX_SIMPLE</span><span class="p">)</span>
+    <span class="c1"># compatible with opencv3.x and openc4.x</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">_tuple</span><span class="p">)</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+        <span class="n">_</span><span class="p">,</span> <span class="n">contours</span><span class="p">,</span> <span class="n">hierarchy</span> <span class="o">=</span> <span class="n">_tuple</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">contours</span><span class="p">,</span> <span class="n">hierarchy</span> <span class="o">=</span> <span class="n">_tuple</span>
+
+    <span class="n">color_area_num</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">contours</span><span class="p">)</span> <span class="c1"># Count the number of contours</span>
+
+    <span class="k">if</span> <span class="n">color_area_num</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">contours</span><span class="p">:</span>    <span class="c1"># Traverse all contours</span>
+            <span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">w</span><span class="p">,</span><span class="n">h</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">boundingRect</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>      <span class="c1"># Decompose the contour into the coordinates of the upper left corner and the width and height of the recognition object</span>
+
+            <span class="c1"># Draw a rectangle on the image (picture, upper left corner coordinate, lower right corner coordinate, color, line width)</span>
+            <span class="k">if</span> <span class="n">w</span> <span class="o">&gt;=</span> <span class="mi">8</span> <span class="ow">and</span> <span class="n">h</span> <span class="o">&gt;=</span> <span class="mi">8</span><span class="p">:</span> <span class="c1"># Because the picture is reduced to a quarter of the original size, if you want to draw a rectangle on the original picture to circle the target, you have to multiply x, y, w, h by 4.</span>
+                <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">*</span> <span class="mi">4</span>
+                <span class="n">y</span> <span class="o">=</span> <span class="n">y</span> <span class="o">*</span> <span class="mi">4</span>
+                <span class="n">w</span> <span class="o">=</span> <span class="n">w</span> <span class="o">*</span> <span class="mi">4</span>
+                <span class="n">h</span> <span class="o">=</span> <span class="n">h</span> <span class="o">*</span> <span class="mi">4</span>
+                <span class="n">cv2</span><span class="o">.</span><span class="n">rectangle</span><span class="p">(</span><span class="n">img</span><span class="p">,(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">),(</span><span class="n">x</span><span class="o">+</span><span class="n">w</span><span class="p">,</span><span class="n">y</span><span class="o">+</span><span class="n">h</span><span class="p">),(</span><span class="mi">0</span><span class="p">,</span><span class="mi">255</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span><span class="mi">2</span><span class="p">)</span>  <span class="c1"># Draw a rectangular frame</span>
+                <span class="n">cv2</span><span class="o">.</span><span class="n">putText</span><span class="p">(</span><span class="n">img</span><span class="p">,</span><span class="n">color_type</span><span class="p">,(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">),</span> <span class="n">cv2</span><span class="o">.</span><span class="n">FONT_HERSHEY_SIMPLEX</span><span class="p">,</span> <span class="mi">1</span><span class="p">,(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">255</span><span class="p">),</span><span class="mi">2</span><span class="p">)</span><span class="c1"># Add character description</span>
+
+    <span class="k">return</span> <span class="n">img</span><span class="p">,</span><span class="n">mask</span><span class="p">,</span><span class="n">morphologyEx_img</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">img</span></code> , <code class="docutils literal notranslate"><span class="pre">mask</span></code> , <code class="docutils literal notranslate"><span class="pre">morphologyEx_img</span></code> 显示在三个窗口中，可以直接观察每一步的处理结果。</p>
+<img alt="../_images/color_detect.png" src="../_images/color_detect.png" />
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="python_face_detection.html" class="btn btn-neutral float-right" title="人脸检测" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="python_view_pic.html" class="btn btn-neutral float-left" title="计算机视觉" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, Emakefun.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

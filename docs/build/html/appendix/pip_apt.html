@@ -1,0 +1,298 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>apt 和pip更换国内源 &mdash; Emakefun 帕克智能小车  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="https://ezblock.cc/readDocFile/topHead.css" type="text/css" />
+  <link rel="stylesheet" href="https://ezblock.cc/readDocFile/readTheDoc/src/css/index.css" type="text/css" />
+  <link rel="stylesheet" href="https://ezblock.cc/readDocFile/readTheDoc/src/css/xterm.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="https://ezblock.cc/readDocFile/topHead.js"></script>
+        <script src="https://ezblock.cc/readDocFile/readTheDoc/src/js/ace.js"></script>
+        <script src="https://ezblock.cc/readDocFile/readTheDoc/src/js/ext-language_tools.js"></script>
+        <script src="https://ezblock.cc/readDocFile/readTheDoc/src/js/theme-chrome.js"></script>
+        <script src="https://ezblock.cc/readDocFile/readTheDoc/src/js/mode-python.js"></script>
+        <script src="https://ezblock.cc/readDocFile/readTheDoc/src/js/mode-sh.js"></script>
+        <script src="https://ezblock.cc/readDocFile/readTheDoc/src/js/monokai.js"></script>
+        <script src="https://ezblock.cc/readDocFile/readTheDoc/src/js/xterm.js"></script>
+        <script src="https://ezblock.cc/readDocFile/readTheDoc/src/js/FitAddon.js"></script>
+        <script src="https://ezblock.cc/readDocFile/readTheDoc/src/js/readTheDocIndex.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Filezilla 软件" href="filezilla.html" />
+    <link rel="prev" title="网页版 EzBlock" href="web_ezblock.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Emakefun 帕克智能小车
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html">介绍</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../list_and_assembly.html">部件清单和装配说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about_robot_hat.html">关于 Robot HAT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ezblock/play_with_ezblock.html">玩转EzBlock</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/play_with_python.html">玩转Python</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="appendix.html">附录</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="web_ezblock.html">网页版 EzBlock</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">apt 和pip更换国内源</a></li>
+<li class="toctree-l2"><a class="reference internal" href="filezilla.html">Filezilla 软件</a></li>
+<li class="toctree-l2"><a class="reference internal" href="i2c_configuration.html">I2C 配置</a></li>
+<li class="toctree-l2"><a class="reference internal" href="remote_desktop.html">远程桌面</a></li>
+<li class="toctree-l2"><a class="reference internal" href="battery.html">关于电池</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../faq.html">疑难解答</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Emakefun 帕克智能小车</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="appendix.html">附录</a> &raquo;</li>
+        
+      <li>apt 和pip更换国内源</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/appendix/pip_apt.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="apt-pip">
+<span id="pip-apt-change"></span><h1>apt 和pip更换国内源<a class="headerlink" href="#apt-pip" title="Permalink to this headline">¶</a></h1>
+<p>树莓派系统默认的apt源和pip源都是国外的服务器，使用国内网络访问可能会发生超时（ReadTimeoutErro），或被拒绝访问的情况，如果是这样我们可以将apt和pip更改为国内的源，步骤如下所示：</p>
+<p><strong>1.apt更换国内源</strong></p>
+<p>1）访问链接：<a class="reference external" href="https://mirrors.tuna.tsinghua.edu.cn/help/raspbian/">https://mirrors.tuna.tsinghua.edu.cn/help/raspbian/</a> 以了解配置文件修改详情。</p>
+<p>2）不同的树莓派系统版本修改不同，先选择对应的版本，比如我的是Debian 10 （buster），如果你的树莓派系统是bullseye则选择对应版本，若没有符合的版本则请重新安装buster及以下版本的系统。</p>
+<img alt="../_images/apt_ch.png" src="../_images/apt_ch.png" />
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>一般不删除原内容，可以将其用 <code class="docutils literal notranslate"><span class="pre">#</span></code> 注释掉。</p>
+</div>
+<p>3）我们这里以raspbian buster版本为例，用 nano命令打开 <code class="docutils literal notranslate"><span class="pre">/etc/apt/sources.list</span></code> 文件。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">nano</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">apt</span><span class="o">/</span><span class="n">sources</span><span class="o">.</span><span class="n">list</span>
+</pre></div>
+</div>
+<p>4）然后用 <code class="docutils literal notranslate"><span class="pre">#</span></code> 将原本的内容注释掉，在最后面附上下面的代码。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># deb http://raspbian.raspberrypi.org/raspbian/ buster main contrib non-free rpi</span>
+<span class="c1"># Uncomment line below then &#39;apt-get update&#39; to enable &#39;apt-get source&#39;</span>
+<span class="c1">#deb-src http://raspbian.raspberrypi.org/raspbian/ buster main contrib non-free rpi</span>
+
+<span class="n">deb</span> <span class="p">[</span><span class="n">arch</span><span class="o">=</span><span class="n">armhf</span><span class="p">]</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">mirrors</span><span class="o">.</span><span class="n">tuna</span><span class="o">.</span><span class="n">tsinghua</span><span class="o">.</span><span class="n">edu</span><span class="o">.</span><span class="n">cn</span><span class="o">/</span><span class="n">raspbian</span><span class="o">/</span><span class="n">raspbian</span><span class="o">/</span> <span class="n">buster</span> <span class="n">main</span> <span class="n">non</span><span class="o">-</span><span class="n">free</span> <span class="n">contrib</span> <span class="n">rpi</span>
+<span class="n">deb</span><span class="o">-</span><span class="n">src</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">mirrors</span><span class="o">.</span><span class="n">tuna</span><span class="o">.</span><span class="n">tsinghua</span><span class="o">.</span><span class="n">edu</span><span class="o">.</span><span class="n">cn</span><span class="o">/</span><span class="n">raspbian</span><span class="o">/</span><span class="n">raspbian</span><span class="o">/</span> <span class="n">buster</span> <span class="n">main</span> <span class="n">non</span><span class="o">-</span><span class="n">free</span> <span class="n">contrib</span> <span class="n">rpi</span>
+</pre></div>
+</div>
+<p>5）按下 <code class="docutils literal notranslate"><span class="pre">Ctrl+O</span></code> 保存，按下 <code class="docutils literal notranslate"><span class="pre">Ctrl+X</span></code> 和 <code class="docutils literal notranslate"><span class="pre">Y</span></code> 退出。</p>
+<p>6）用 nano 命令打开 <code class="docutils literal notranslate"><span class="pre">etc/apt/sources.list.d/raspi.list</span></code> 文件。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">nano</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">apt</span><span class="o">/</span><span class="n">sources</span><span class="o">.</span><span class="n">list</span><span class="o">.</span><span class="n">d</span><span class="o">/</span><span class="n">raspi</span><span class="o">.</span><span class="n">list</span>
+</pre></div>
+</div>
+<p>7）然后用#将原本的内容注释掉，在最后面附上deb…代码。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># deb http://archive.raspberrypi.org/debian/ buster main</span>
+<span class="c1"># Uncomment line below then &#39;apt-get update&#39; to enable &#39;apt-get source&#39;</span>
+<span class="c1">#deb-src http://archive.raspberrypi.org/debian/ buster main</span>
+
+<span class="n">deb</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">mirrors</span><span class="o">.</span><span class="n">tuna</span><span class="o">.</span><span class="n">tsinghua</span><span class="o">.</span><span class="n">edu</span><span class="o">.</span><span class="n">cn</span><span class="o">/</span><span class="n">raspberrypi</span><span class="o">/</span> <span class="n">buster</span> <span class="n">main</span> <span class="n">ui</span>
+</pre></div>
+</div>
+<p>8）按下 <code class="docutils literal notranslate"><span class="pre">Ctrl+O</span></code> 保存，按下 <code class="docutils literal notranslate"><span class="pre">Ctrl+X</span></code> 和 <code class="docutils literal notranslate"><span class="pre">Y</span></code> 退出。</p>
+<p>9）用以下命令更新软件列表：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span> <span class="n">update</span>
+</pre></div>
+</div>
+<p><strong>2.(Pypi) pip更换国内源</strong></p>
+<p>可以参考链接 <a class="reference external" href="https://mirrors.tuna.tsinghua.edu.cn/help/pypi/">https://mirrors.tuna.tsinghua.edu.cn/help/pypi/</a> 了解详情。</p>
+<p>有两种方法修改配置文件。</p>
+<p>方法一：使用pip指令设置</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip3</span> <span class="n">config</span> <span class="nb">set</span> <span class="k">global</span><span class="o">.</span><span class="n">index</span><span class="o">-</span><span class="n">url</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">pypi</span><span class="o">.</span><span class="n">tuna</span><span class="o">.</span><span class="n">tsinghua</span><span class="o">.</span><span class="n">edu</span><span class="o">.</span><span class="n">cn</span><span class="o">/</span><span class="n">simple</span>
+</pre></div>
+</div>
+<p>方法二：手动编辑文件</p>
+<p>Linux/Mac os 环境中，配置文件位置在 ~/.pip/pip.conf（如果不存在则手动创建该目录和文件）。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">mkdir</span> <span class="o">-</span><span class="n">p</span> <span class="o">~/.</span><span class="n">pip</span>
+<span class="n">sudo</span> <span class="n">nano</span> <span class="o">~/.</span><span class="n">pip</span><span class="o">/</span><span class="n">pip</span><span class="o">.</span><span class="n">conf</span>
+</pre></div>
+</div>
+<p>然后按如下编辑文件内容</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="k">global</span><span class="p">]</span>
+<span class="n">index</span><span class="o">-</span><span class="n">url</span> <span class="o">=</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">pypi</span><span class="o">.</span><span class="n">tuna</span><span class="o">.</span><span class="n">tsinghua</span><span class="o">.</span><span class="n">edu</span><span class="o">.</span><span class="n">cn</span><span class="o">/</span><span class="n">simple</span>
+<span class="p">[</span><span class="n">install</span><span class="p">]</span>
+<span class="n">trusted</span><span class="o">-</span><span class="n">host</span> <span class="o">=</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">pypi</span><span class="o">.</span><span class="n">tuna</span><span class="o">.</span><span class="n">tsinghua</span><span class="o">.</span><span class="n">edu</span><span class="o">.</span><span class="n">cn</span>
+</pre></div>
+</div>
+<p>最后apt和pip都已经更换了国内下载源，这样下载速度就会提高很快不会导致下载失败了。</p>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="filezilla.html" class="btn btn-neutral float-right" title="Filezilla 软件" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="web_ezblock.html" class="btn btn-neutral float-left" title="网页版 EzBlock" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, Emakefun.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

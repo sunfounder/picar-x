@@ -1,0 +1,274 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>移动 &mdash; Emakefun 帕克智能小车  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="https://ezblock.cc/readDocFile/topHead.css" type="text/css" />
+  <link rel="stylesheet" href="https://ezblock.cc/readDocFile/readTheDoc/src/css/index.css" type="text/css" />
+  <link rel="stylesheet" href="https://ezblock.cc/readDocFile/readTheDoc/src/css/xterm.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="https://ezblock.cc/readDocFile/topHead.js"></script>
+        <script src="https://ezblock.cc/readDocFile/readTheDoc/src/js/ace.js"></script>
+        <script src="https://ezblock.cc/readDocFile/readTheDoc/src/js/ext-language_tools.js"></script>
+        <script src="https://ezblock.cc/readDocFile/readTheDoc/src/js/theme-chrome.js"></script>
+        <script src="https://ezblock.cc/readDocFile/readTheDoc/src/js/mode-python.js"></script>
+        <script src="https://ezblock.cc/readDocFile/readTheDoc/src/js/mode-sh.js"></script>
+        <script src="https://ezblock.cc/readDocFile/readTheDoc/src/js/monokai.js"></script>
+        <script src="https://ezblock.cc/readDocFile/readTheDoc/src/js/xterm.js"></script>
+        <script src="https://ezblock.cc/readDocFile/readTheDoc/src/js/FitAddon.js"></script>
+        <script src="https://ezblock.cc/readDocFile/readTheDoc/src/js/readTheDocIndex.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="远程遥控" href="ezblock_remote_control.html" />
+    <link rel="prev" title="打开或新建项目" href="ezb_start/open_run_project.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Emakefun 帕克智能小车
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html">介绍</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../list_and_assembly.html">部件清单和装配说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about_robot_hat.html">关于 Robot HAT</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="play_with_ezblock.html">玩转EzBlock</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="ezb_start/quick_guide_on_ezblock.html">EzBlock 快速指南</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">移动</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ezblock_remote_control.html">远程遥控</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ezblock_ultrasonic.html">测试超声波模块</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ezblock_grayscale.html">测试灰度模块</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ezblock_color_detection.html">颜色检测</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ezblock_face_detection.html">人脸检测</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ezblock_sound_effect.html">音效</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ezblock_background_music.html">背景音乐</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ezblock_say_hello.html">问好</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ezblock_music_car.html">音乐车</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ezblock_cliff_detection.html">悬崖检测</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ezblock_minecart.html">矿车</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ezblock_minecart_plus.html">矿车+</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ezblock_bullfight.html">斗牛</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ezblock_beware_pedestrians.html">礼让行人</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ezblock_traffic.html">交通标志检测</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ezblock_orienteering.html">定向越野</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../python/play_with_python.html">玩转Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../appendix/appendix.html">附录</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq.html">疑难解答</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Emakefun 帕克智能小车</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="play_with_ezblock.html">玩转EzBlock</a> &raquo;</li>
+        
+      <li>移动</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/ezblock/ezblock_move.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1>移动<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>在首页，点击 <strong>示例</strong>，进入示例页面，可以直接打开预设好的示例。 如果您只需要简单地测试这些示例，您只需点击 <strong>运行</strong> 即可让您的产品工作。</p>
+<img alt="../_images/examples231.png" src="../_images/examples231.png" />
+</div>
+<p>第一个项目教授如何为帕克编程运动动作。 在这个项目中，程序会告诉帕克依次执行五个动作：“前进”、“后退”、“左转”、“右转”和“停止”。</p>
+<img alt="../_images/move.png" src="../_images/move.png" />
+<p><strong>提示</strong></p>
+<img alt="../_images/sp210512_113300.png" src="../_images/sp210512_113300.png" />
+<p>该模块将使帕克以基于可用功率百分比的速度前进。在下面的示例中，“50”是功率的 50%，或者说是半速。</p>
+<img alt="../_images/sp210512_113418.png" src="../_images/sp210512_113418.png" />
+<p>该模块将使帕克以基于可用功率百分比的速度向后移动。</p>
+<img alt="../_images/sp210512_113514.png" src="../_images/sp210512_113514.png" />
+<p>该块调整前轮的方向。 范围是“-45”到“45”。 在下面的示例中，“-30”表示车轮将向左转 30°。</p>
+<a class="reference internal image-reference" href="../_images/BLK_Basic_delay.png"><img alt="../_images/BLK_Basic_delay.png" src="../_images/BLK_Basic_delay.png" style="width: 200px;" /></a>
+<p>此块将导致命令之间的定时中断，基于毫秒。 在下面的示例中，帕克在执行下一个命令之前将等待 1 秒（1000 毫秒）。</p>
+<img alt="../_images/sp210512_113550.png" src="../_images/sp210512_113550.png" />
+<p>该块将使帕克完全停止。</p>
+<p><strong>示例</strong></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>代码完成后，点击右下角的“下载&amp;运行”按键，让帕克动起来。</p>
+<img alt="../_images/sp211203_1008171.png" src="../_images/sp211203_1008171.png" />
+</div>
+<img alt="../_images/sp210512_113827.png" src="../_images/sp210512_113827.png" />
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="ezblock_remote_control.html" class="btn btn-neutral float-right" title="远程遥控" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="ezb_start/open_run_project.html" class="btn btn-neutral float-left" title="打开或新建项目" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, Emakefun.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

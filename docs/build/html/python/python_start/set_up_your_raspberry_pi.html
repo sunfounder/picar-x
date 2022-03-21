@@ -1,0 +1,361 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>设置你的树莓派 &mdash; Emakefun 帕克智能小车  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="https://ezblock.cc/readDocFile/topHead.css" type="text/css" />
+  <link rel="stylesheet" href="https://ezblock.cc/readDocFile/readTheDoc/src/css/index.css" type="text/css" />
+  <link rel="stylesheet" href="https://ezblock.cc/readDocFile/readTheDoc/src/css/xterm.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="https://ezblock.cc/readDocFile/topHead.js"></script>
+        <script src="https://ezblock.cc/readDocFile/readTheDoc/src/js/ace.js"></script>
+        <script src="https://ezblock.cc/readDocFile/readTheDoc/src/js/ext-language_tools.js"></script>
+        <script src="https://ezblock.cc/readDocFile/readTheDoc/src/js/theme-chrome.js"></script>
+        <script src="https://ezblock.cc/readDocFile/readTheDoc/src/js/mode-python.js"></script>
+        <script src="https://ezblock.cc/readDocFile/readTheDoc/src/js/mode-sh.js"></script>
+        <script src="https://ezblock.cc/readDocFile/readTheDoc/src/js/monokai.js"></script>
+        <script src="https://ezblock.cc/readDocFile/readTheDoc/src/js/xterm.js"></script>
+        <script src="https://ezblock.cc/readDocFile/readTheDoc/src/js/FitAddon.js"></script>
+        <script src="https://ezblock.cc/readDocFile/readTheDoc/src/js/readTheDocIndex.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="下载并运行代码" href="download_the_code.html" />
+    <link rel="prev" title="安装操作系统" href="installing_the_os.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Emakefun 帕克智能小车
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../introduction.html">介绍</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../list_and_assembly.html">部件清单和装配说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../about_robot_hat.html">关于 Robot HAT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ezblock/play_with_ezblock.html">玩转EzBlock</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../play_with_python.html">玩转Python</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="quick_guide_on_python.html">Python 快速指南</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="what_do_we_need.html">我们需要什么？</a></li>
+<li class="toctree-l3"><a class="reference internal" href="installing_the_os.html">安装操作系统</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">设置你的树莓派</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id2">如果你有屏幕</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id3">如果你没有屏幕</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="download_the_code.html">下载并运行代码</a></li>
+<li class="toctree-l3"><a class="reference internal" href="py_servo_adjust.html">舵机调零</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../python_calibrate.html">校准 PiCar-X</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_move.html">让帕克动起来</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_avoid.html">避障</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_line_track.html">线路跟踪</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_tts.html">文字转语音</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_view_pic.html">计算机视觉</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_color_detection.html">颜色检测</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_face_detection.html">人脸检测</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_video_car.html">视频车</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../appendix/appendix.html">附录</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../faq.html">疑难解答</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Emakefun 帕克智能小车</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../play_with_python.html">玩转Python</a> &raquo;</li>
+        
+          <li><a href="quick_guide_on_python.html">Python 快速指南</a> &raquo;</li>
+        
+      <li>设置你的树莓派</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../_sources/python/python_start/set_up_your_raspberry_pi.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1>设置你的树莓派<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id2">
+<h2>如果你有屏幕<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>如果你有一个屏幕，你会很容易在屏幕上操作
+树莓派。</p>
+<p><strong>必需组件</strong></p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 42%" />
+<col style="width: 58%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>任意 树莓派</p></td>
+<td><p>1 * 电源适配器</p></td>
+</tr>
+<tr class="row-even"><td><p>1 * Micro SD 卡</p></td>
+<td><p>1 * 屏幕电源适配器</p></td>
+</tr>
+<tr class="row-odd"><td><p>1 * HDMI 线</p></td>
+<td><p>1 * 屏幕</p></td>
+</tr>
+<tr class="row-even"><td><p>1 * 鼠标</p></td>
+<td><p>1 * 键盘</p></td>
+</tr>
+</tbody>
+</table>
+<ol class="arabic">
+<li><p>将您在 Raspberry Pi OS 上设置的 SD 卡插入到树莓派底部的 micro SD 卡插槽中。</p></li>
+<li><p>插入鼠标和键盘。</p></li>
+<li><p>将屏幕连接到树莓派的 HDMI 端口，并确保您的屏幕已插入壁式插座并已打开。</p>
+<blockquote>
+<div><div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>如果您使用的是树莓派 4，则需要将屏幕连接到 HDMI0（最靠近电源输入端口）。</p>
+</div>
+</div></blockquote>
+</li>
+<li><p>使用电源适配器为树莓派供电。 几秒钟后，将显示 Raspberry Pi OS 桌面。</p>
+<blockquote>
+<div><img alt="../../_images/image201.png" class="align-center" src="../../_images/image201.png" />
+</div></blockquote>
+</li>
+</ol>
+</div>
+<div class="section" id="id3">
+<h2>如果你没有屏幕<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<p>如果没有显示器，可以远程登录树莓派，但在此之前，您需要获取树莓派的IP。</p>
+<div class="section" id="ip">
+<h3>获取 IP 地址<a class="headerlink" href="#ip" title="Permalink to this headline">¶</a></h3>
+<p>树莓派连接WIFI后，我们需要获取它的IP地址。 知道IP地址的方法有很多种，下面列出了其中的两种。</p>
+<p><strong>1. 通过路由器检查</strong></p>
+<p>如果您有权限登录路由器（如家庭网络），您可以在路由器的管理界面查看分配给树莓派的地址。</p>
+<p>树莓派操作系统的默认主机名是 <strong>raspberrypi</strong>，你需要找到它。 （如果你使用的是 ArchLinuxARM 系统，请找 alarmpi。）</p>
+<p><strong>2. 网段扫描</strong></p>
+<p>您还可以使用网络扫描来查找树莓派的 IP 地址。 您可以应用软件， <strong>Advanced IP scanner</strong> 等。</p>
+<p>扫描设置的 IP 范围，将显示所有已连接设备的名称。 同样，树莓派操作系统的默认主机名是 <strong>raspberrypi</strong>，如果你没有修改过的话。</p>
+</div>
+<div class="section" id="ssh">
+<h3>使用 SSH 远程控制<a class="headerlink" href="#ssh" title="Permalink to this headline">¶</a></h3>
+<p>我们可以通过应用SSH打开树莓派的Bash Shell。 Bash 是 Linux 的标准默认 shell。 Shell 本身是一个用 C 编写的程序，它是连接客户和 Unix/Linux 的桥梁。 此外，它可以帮助完成大部分所需的工作。</p>
+<p><strong>适用于 Linux 或/Mac OS X 用户</strong></p>
+<p><strong>第1步</strong></p>
+<p>进入 <strong>Applications</strong> -&gt; <strong>Utilities</strong>，找到 <strong>Terminal</strong>，然后打开它。</p>
+<img alt="../../_images/image21.png" class="align-center" src="../../_images/image21.png" />
+<p><strong>第2步</strong></p>
+<p>输入 <strong>ssh pi&#64;ip_address</strong> 。 &quot;pi&quot; 是您的用户名，&quot;ip_address&quot; 是您的 IP 地址。 例如：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ssh</span> <span class="n">pi</span><span class="o">@</span><span class="mf">192.168.18.197</span>
+</pre></div>
+</div>
+<p><strong>第3步</strong></p>
+<p>输入 &quot;yes&quot;.</p>
+<img alt="../../_images/image22.png" class="align-center" src="../../_images/image22.png" />
+<p><strong>第4步</strong></p>
+<p>输入密码，默认密码为 <strong>raspberry</strong>。</p>
+<img alt="../../_images/image23.png" class="align-center" src="../../_images/image23.png" />
+<p><strong>第5步</strong></p>
+<p>我们现在已连接树莓派，并准备进行下一步。</p>
+<img alt="../../_images/image24.png" class="align-center" src="../../_images/image24.png" />
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>当您输入密码时，字符不会相应显示在窗口中，这是正常的。 您只需要输入正确的密码即可。</p>
+</div>
+<p><strong>对于 Windows 用户</strong></p>
+<p>如果您是 Windows 用户，则可以通过某些软件的应用程序使用 SSH。 在这里，我们推荐 <strong>PuTTY</strong>。</p>
+<p><strong>第1步</strong></p>
+<p>下载 <strong>PuTTY</strong>。</p>
+<p><strong>第2步</strong></p>
+<p>打开 PuTTY 并单击左侧树状结构上的 <strong>Session</strong>。 在 <strong>Host Name (or IP address)</strong> 下的文本框中输入RPi的IP地址， <strong>端口</strong> 下输入 <strong>22</strong> （默认为22）。</p>
+<img alt="../../_images/image25.png" class="align-center" src="../../_images/image25.png" />
+<p><strong>第3步</strong></p>
+<p>点击 <strong>Open</strong>。 注意第一次用IP地址登录树莓派时，会提示安全提示。 只需单击 <strong>Yes</strong>。</p>
+<p><strong>第四步</strong></p>
+<p>当PuTTY窗口提示 <strong>login as:</strong> 时，输入&quot;pi&quot;（树莓派的用户名）。提示 <strong>password:</strong> 时候，输入 &quot;raspberry&quot; ( 默认密码）。</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>当您输入密码时，字符不会相应显示在窗口中，这是正常的。您只需要输入正确的密码即可。</p>
+<p>如果 PuTTY 旁边出现 inactive，则表示连接已断开，需要重新连接。</p>
+</div>
+<img alt="../../_images/image26.png" class="align-center" src="../../_images/image26.png" />
+<p><strong>第 5 步</strong></p>
+<p>在这里，我们连接了树莓派，是时候进行下一步了。</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>如果您对使用命令窗口控制树莓派不满意，还可以使用远程桌面功能，它可以帮助我们轻松管理树莓派中的文件。</p>
+<p>有关如何执行此操作的详细信息，请参阅 <a class="reference internal" href="../../appendix/remote_desktop.html#remote-desktop"><span class="std std-ref">远程桌面</span></a>。</p>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="download_the_code.html" class="btn btn-neutral float-right" title="下载并运行代码" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="installing_the_os.html" class="btn btn-neutral float-left" title="安装操作系统" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, Emakefun.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

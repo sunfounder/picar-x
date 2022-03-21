@@ -1,0 +1,267 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>人脸检测 &mdash; Emakefun 帕克智能小车  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="https://ezblock.cc/readDocFile/topHead.css" type="text/css" />
+  <link rel="stylesheet" href="https://ezblock.cc/readDocFile/readTheDoc/src/css/index.css" type="text/css" />
+  <link rel="stylesheet" href="https://ezblock.cc/readDocFile/readTheDoc/src/css/xterm.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="https://ezblock.cc/readDocFile/topHead.js"></script>
+        <script src="https://ezblock.cc/readDocFile/readTheDoc/src/js/ace.js"></script>
+        <script src="https://ezblock.cc/readDocFile/readTheDoc/src/js/ext-language_tools.js"></script>
+        <script src="https://ezblock.cc/readDocFile/readTheDoc/src/js/theme-chrome.js"></script>
+        <script src="https://ezblock.cc/readDocFile/readTheDoc/src/js/mode-python.js"></script>
+        <script src="https://ezblock.cc/readDocFile/readTheDoc/src/js/mode-sh.js"></script>
+        <script src="https://ezblock.cc/readDocFile/readTheDoc/src/js/monokai.js"></script>
+        <script src="https://ezblock.cc/readDocFile/readTheDoc/src/js/xterm.js"></script>
+        <script src="https://ezblock.cc/readDocFile/readTheDoc/src/js/FitAddon.js"></script>
+        <script src="https://ezblock.cc/readDocFile/readTheDoc/src/js/readTheDocIndex.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="音效" href="ezblock_sound_effect.html" />
+    <link rel="prev" title="颜色检测" href="ezblock_color_detection.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Emakefun 帕克智能小车
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html">介绍</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../list_and_assembly.html">部件清单和装配说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about_robot_hat.html">关于 Robot HAT</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="play_with_ezblock.html">玩转EzBlock</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="ezb_start/quick_guide_on_ezblock.html">EzBlock 快速指南</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ezblock_move.html">移动</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ezblock_remote_control.html">远程遥控</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ezblock_ultrasonic.html">测试超声波模块</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ezblock_grayscale.html">测试灰度模块</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ezblock_color_detection.html">颜色检测</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">人脸检测</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ezblock_sound_effect.html">音效</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ezblock_background_music.html">背景音乐</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ezblock_say_hello.html">问好</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ezblock_music_car.html">音乐车</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ezblock_cliff_detection.html">悬崖检测</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ezblock_minecart.html">矿车</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ezblock_minecart_plus.html">矿车+</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ezblock_bullfight.html">斗牛</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ezblock_beware_pedestrians.html">礼让行人</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ezblock_traffic.html">交通标志检测</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ezblock_orienteering.html">定向越野</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../python/play_with_python.html">玩转Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../appendix/appendix.html">附录</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq.html">疑难解答</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Emakefun 帕克智能小车</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="play_with_ezblock.html">玩转EzBlock</a> &raquo;</li>
+        
+      <li>人脸检测</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/ezblock/ezblock_face_detection.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1>人脸检测<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<p>除了颜色检测外，帕克还包含人脸检测功能。 在以下示例中，操纵杆小部件用于调整相机的方向，并且调试监视器中将显示面部数量。</p>
+<img alt="../_images/face_detection.PNG" src="../_images/face_detection.PNG" />
+<p><strong>提示</strong></p>
+<img alt="../_images/sp210512_141947.png" src="../_images/sp210512_141947.png" />
+<p>将 <strong>人脸检测</strong> 设置为 <strong>开</strong> 以启用面部检测。</p>
+<img alt="../_images/sp210512_142327.png" src="../_images/sp210512_142327.png" />
+<p>这两个块用于调整云台相机的方向，类似于 <a class="reference internal" href="ezblock_remote_control.html#id1"><span class="std std-ref">远程遥控</span></a> 教程中的驾驶帕克。 随着值的增加，相机将向右或向上旋转，减小的值将向右或向下旋转相机。</p>
+<img alt="../_images/sp210512_142407.png" src="../_images/sp210512_142407.png" />
+<p>图像检测结果通过 <strong>检测人脸</strong> 块给出。 使用下拉菜单选项在从图像检测功能读取坐标、大小或结果数量之间进行选择。</p>
+<img alt="../_images/sp210512_142616.png" src="../_images/sp210512_142616.png" />
+<p>使用 <strong>建立字串使用</strong> 块来打印 <strong>文本</strong> 和 <strong>检测人脸</strong> 数据的组合。</p>
+<p><strong>示例</strong></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>你可以直接打开我们提供的示例或者是按照下图来编写程序，详细教程请参考 <a class="reference internal" href="ezb_start/open_run_project.html#open-create"><span class="std std-ref">打开或新建项目</span></a>.</p>
+</div>
+<img alt="../_images/sp210512_142830.png" src="../_images/sp210512_142830.png" />
+<p>代码运行后，你将看到摄像头拍摄的画面；若PiCar-X拍摄到人，它将框选出来。</p>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="ezblock_sound_effect.html" class="btn btn-neutral float-right" title="音效" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="ezblock_color_detection.html" class="btn btn-neutral float-left" title="颜色检测" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, Emakefun.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
