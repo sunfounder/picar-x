@@ -12,7 +12,7 @@ automatic obstacle avoidance, automatic line tracking, etc.
 
 Included in this tutorial are a component list, an assembly diagram, an introduction to SunFounders Robot HAT, and programming tutorials for the PiCar-X in both Blockly-based and Python languages.
 
-The programming sections are divided into two chapters: :ref:`Play with Ezblock` and :ref:`Play with Python`. Each programming chapter allows users to get started by making the PiCar-X perform basic movements, and proceed up to designing multiplayer games and beyond!
+The programming sections are divided into two chapters: :ref:`play_ezblock` and :ref:`play_python`. Each programming chapter allows users to get started by making the PiCar-X perform basic movements, and proceed up to designing multiplayer games and beyond!
 
 Ezblock Studio is a software development platform created by SunFounder for helping beginners and novices get started with programming on a Raspberry Pi platform. Ezbock Studio has two programming language environments: a Graphical User Interface environment, and a command-line Python environment.
 
@@ -24,16 +24,16 @@ For users who only want to learn programming in Python 3.0, also included is an 
 **Content**
 
 .. toctree::
-   :maxdepth: 3
+    :maxdepth: 3
 
-   introduction
-   list_and_assembly
-   about_robot_hat 
-   play_with_ezblock
-   play_with_python
-   appendix
-   faq
-   thank
+    introduction
+    list_and_assembly
+    about_robot_hat 
+    ezblock/play_with_ezblock
+    python/play_with_python
+    appendix/appendix
+    faq
+    thank
 
 Copyright Notice
 --------------------------
