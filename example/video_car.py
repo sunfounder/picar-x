@@ -2,12 +2,14 @@
 
 print('Please run under desktop environment (eg: vnc) to display the image window')
 
-from utils import reset_mcu
-reset_mcu()
+from robot_hat.utils import reset_mcu
 from picarx import Picarx
 from vilib import Vilib
 from time import sleep, time, strftime, localtime
 import readchar
+
+reset_mcu()
+sleep(0.2)
 
 manual = '''
 Press key to call the function(non-case sensitive)：
