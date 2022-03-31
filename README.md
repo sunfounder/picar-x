@@ -31,7 +31,7 @@ PiCar-X is the car that is built based on the Raspberry Pi, with the functions, 
 Download this repository to your Raspberry Pi:
 
 ```shell
-git clone https://github.com/sunfounder/picar-x.git
+git clone https://gitee.com/sunfounder/picar-x.git
 ```
 
 ## Usage

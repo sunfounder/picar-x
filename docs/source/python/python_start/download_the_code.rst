@@ -16,7 +16,7 @@
 .. code-block::
 
     cd /home/pi/
-    git clone https://github.com/sunfounder/robot-hat.git
+    git clone https://gitee.com/sunfounder/robot-hat.git
     cd robot-hat
     sudo python3 setup.py install
 
@@ -35,7 +35,7 @@
 .. code-block::
 
     cd /home/pi/
-    git clone https://github.com/sunfounder/vilib.git
+    git clone https://gitee.com/sunfounder/vilib.git
     cd vilib
     sudo python3 install.py
 
@@ -48,7 +48,7 @@
 .. code-block::
 
     cd /home/pi/
-    git clone -b v2.0 https://github.com/sunfounder/picar-x.git
+    git clone -b v2.0 https://gitee.com/sunfounder/picar-x.git
     cd picar-x
     sudo python3 setup.py install
 
@@ -71,7 +71,7 @@
 
 .. image:: img/i2s2.png
 
-输入 ``y`` 并按下回车以在后台运行 ``/dev/zero`` 。
+输入 ``y`` 并按下回车以在后台运行 ``/dev/zero``。
 
 .. image:: img/i2s3.png
 
