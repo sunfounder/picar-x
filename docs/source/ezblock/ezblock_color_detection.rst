@@ -27,7 +27,7 @@ Ezblock includes 6 color models for PiCar-X, “red”, “orange”, “yellow�
 
 .. image:: img/sp210512_121105.png
 
-Drag the Video widget from the remote Control page, and it will generate a video monitor. For more information on how to use the Video widget, please reference the tutorial on Ezblock video here: `How to Use the Video Function? <https://docs.sunfounder.com/projects/ezblock3/en/latest/use_video.html>`_
+Drag the Video widget from the remote Control page, and it will generate a video monitor. For more information on how to use the Video widget, please reference the tutorial on Ezblock video here: :ref:`ezblock:video_latest`.
 
 .. image:: img/sp210512_121125.png
 
@@ -41,7 +41,7 @@ Use the **color detection** block to enable the color detection. Note: only one 
 
 .. note::
 
-    * You can write the program according to the following picture, please refer to the tutorial: `How to Create a New Project? <https://docs.sunfounder.com/projects/ezblock3/en/latest/create_new.html>`_
+    * You can write the program according to the following picture, please refer to the tutorial: :ref:`ezblock:create_project_latest`.
     * Or find the code with the same name on the **Examples** page of the EzBlock Studio and click **Run** or **Edit** directly.
 
 .. image:: img/sp210512_134636.png

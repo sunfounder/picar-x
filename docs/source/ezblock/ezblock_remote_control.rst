@@ -7,7 +7,8 @@ This project will teach how to remotely control the PiCar-X with the Joystick wi
 Note: After dragging and dropping the Joystick widget from the Remote Control page, use the “Map” function to calibrate the Joysticks X-axis and Y-axis readings. For more information on the Remote Control function, please reference the following link:
 
 
-* `How to Use the Remote Control Function? <https://docs.sunfounder.com/projects/ezblock3/en/latest/remote.html>`_
+* :ref:`ezblock:remote_control_latest`
+
 
 .. image:: img/remote_control23.png
 
@@ -34,7 +35,7 @@ The map value block can remap a number from one range to another. If the range i
 
 .. note::
 
-    * You can write the program according to the following picture, please refer to the tutorial: `How to Create a New Project? <https://docs.sunfounder.com/projects/ezblock3/en/latest/create_new.html>`_
+    * You can write the program according to the following picture, please refer to the tutorial: :ref:`ezblock:create_project_latest`.
     * Or find the code with the same name on the **Examples** page of the EzBlock Studio and click **Run** or **Edit** directly.
 
 

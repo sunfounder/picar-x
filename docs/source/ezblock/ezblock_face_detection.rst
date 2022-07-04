@@ -3,8 +3,7 @@ Face Detection
 
 In addition to color detection, PiCar-X also includes a face detection function. In the following example the Joystick widget is used to adjust the direction of the camera, and the number of faces will be displayed in the debug monitor.
 
-For more information on how to use the Video widget, please reference the tutorial on Ezblock video here: 
-`How to Use the Video Function? <https://docs.sunfounder.com/projects/ezblock3/en/latest/use_video.html>`_
+For more information on how to use the Video widget, please reference the tutorial on Ezblock video here: :ref:`ezblock:video_latest`.
 
 .. image:: img/face_detection.PNG
 
@@ -31,7 +30,7 @@ Use the **create text with** block to print the combination of **text** and of *
 
 .. note::
 
-    * You can write the program according to the following picture, please refer to the tutorial: `How to Create a New Project? <https://docs.sunfounder.com/projects/ezblock3/en/latest/create_new.html>`_
+    * You can write the program according to the following picture, please refer to the tutorial: :ref:`ezblock:create_project_latest`.
     * Or find the code with the same name on the **Examples** page of the EzBlock Studio and click **Run** or **Edit** directly.
 
 .. image:: img/sp210512_142830.png

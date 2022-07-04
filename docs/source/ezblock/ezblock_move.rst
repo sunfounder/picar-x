@@ -5,9 +5,7 @@ This first project teaches how to program movement actions for the PiCar-X. In t
 
 To learn the basic usage of Ezblock Studio, please read through the following two sections:
 
-* `Quick User Guide for Ezblock 3 <https://docs.sunfounder.com/projects/ezblock3/en/latest/quick_user_guide_for_ezblock3.html>`_
-
-* `How to Create a New Project? <https://docs.sunfounder.com/projects/ezblock3/en/latest/create_new.html>`_
+* :ref:`ezblock:create_project_latest`
 
 
 .. image:: img/move.png
@@ -39,7 +37,7 @@ This block will bring the PiCar-X to a complete stop.
 
 .. note::
 
-    * You can write the program according to the following picture, please refer to the tutorial: `How to Create a New Project? <https://docs.sunfounder.com/projects/ezblock3/en/latest/create_new.html>`_
+    * You can write the program according to the following picture, please refer to the tutorial: :ref:`ezblock:create_project_latest`.
     * Or find the code with the same name on the **Examples** page of the EzBlock Studio and click **Run** or **Edit** directly.
 
 
