@@ -24,7 +24,7 @@ class Picarx(object):
     # motor_pins: left_swicth, right_swicth, left_pwm, right_pwm
     # grayscale_pins: 3 adc channels
     # ultrasonic_pins: tring, echo
-    # config： path of config file
+    # config: path of config file
     def __init__(self, 
                 servo_pins:list=['P0', 'P1', 'P2'], 
                 motor_pins:list=['D4', 'D5', 'P12', 'P13'],
@@ -167,14 +167,16 @@ class Picarx(object):
             # if abs_current_angle >= 0:
             if abs_current_angle > 40:
                 abs_current_angle = 40
-            power_scale = (100 - abs_current_angle) / 100.0 
+            power_scale = (100 - abs_current_angle) / 100.0
             # print("power_scale:",power_scale)
             if (current_angle / abs_current_angle) > 0:
+                self.set_motor_speed(1, 1*speed * power_scale)
+                self.set_motor_speed(2, -speed) 
+                # print("current_speed: %s %s"%(1*speed * power_scale, -speed))
+            else:
                 self.set_motor_speed(1, speed)
                 self.set_motor_speed(2, -1*speed * power_scale)
-            else:
-                self.set_motor_speed(1, speed * power_scale)
-                self.set_motor_speed(2, -1*speed )
+                # print("current_speed: %s %s"%(speed, -1*speed * power_scale))
         else:
             self.set_motor_speed(1, speed)
             self.set_motor_speed(2, -1*speed)                  
@@ -186,6 +188,9 @@ class Picarx(object):
     def get_distance(self):
         return self.ultrasonic.read()
 
+    def set_grayscale_reference(self, value):
+        self.get_grayscale_reference = value
+        
     def get_grayscale_data(self):
         return list.copy(self.grayscale.get_grayscale_data())
 
