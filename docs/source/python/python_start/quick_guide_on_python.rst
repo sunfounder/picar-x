@@ -13,6 +13,6 @@ If you are familiar with Raspberry Pi and can open the command line successfully
     what_do_we_need
     installing_the_os
     set_up_your_raspberry_pi    
-    download_and_run_code
+    install_all_modules
     py_servo_adjust
 

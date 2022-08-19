@@ -72,7 +72,7 @@ In the Raspberry Pi Imager, click **CHOOSE OS** -> **Raspberry Pi OS(other)**.
     :align: center
 
 Scroll down to the end of the newly opened page and you will see **Raspberry Pi OS(Legacy)** and **Raspberry Pi OS Lite(Legacy)**, these are security updates for Debian Buster, the difference between them is with or without the desktop.
-It is recommended to install **Raspberry Pi OS(Legacy)**, the system with the desktop.
+It is recommended to install **Raspberry Pi OS(Legacy)**, this will allow you to go to the Raspberry Pi desktop to view the footage taken by the camera..
 
 .. image:: img/3d34.png
     :align: center
@@ -87,7 +87,7 @@ Select the SD card you are using.
 
 **Step 6**
 
-Press **Ctrl+Shift+X** or click the **setting ** button to open the **Advanced options** page to enable
+Press **Ctrl+Shift+X** or click the **setting** button to open the **Advanced options** page to enable
 SSH and configure wifi, these 2 items must be set, the others depend on
 your choice . You can choose to always use this image customization
 options.

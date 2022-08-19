@@ -21,7 +21,8 @@ After the PiCar-X assembly is completed, try running the projects below:
     python_avoid
     python_line_track
     python_tts
-    python_view_pic
+    python_computer_vision
     python_color_detection
     python_face_detection
     python_video_car
+    control_by_app

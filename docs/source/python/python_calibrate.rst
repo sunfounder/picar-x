@@ -1,5 +1,7 @@
-Calibrating PiCar-X
-======================
+.. _py_calibrate:
+
+Calibrating the PiCar-X
+==========================
 
 Some servo angles may be slightly tilted due to possible deviations during PiCar-X installation or limitations of the servos themselves, so you can calibrate them.
 
