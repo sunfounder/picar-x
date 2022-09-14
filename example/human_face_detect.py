@@ -42,6 +42,7 @@ from picamera.array import PiRGBArray
 from picamera import PiCamera
 import time
 
+face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml') 
 
 def human_face_detect(img):
     resize_img = cv2.resize(img, (320,240), interpolation=cv2.INTER_LINEAR)         # In order to reduce the amount of calculation, resize the image to 320 x 240 size
