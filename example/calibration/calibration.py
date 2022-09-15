@@ -150,7 +150,7 @@ def cali_helper():
                     break   
                 sleep(0.01) 
         # quit
-        elif key == readchar.key.CTRL_C or key in readchar.key.ESCAPE_SEQUENCES:
+        elif key == readchar.key.CTRL_C or key in readchar.key.ESC:
             print('quit')
             break 
         sleep(0.01)
