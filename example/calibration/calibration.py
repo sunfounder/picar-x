@@ -3,8 +3,6 @@ from picarx import Picarx
 from time import sleep
 import readchar 
 
-#         ┌  ┐ └  ┘ ┌┐  ├    ┤    
-
 manual = '''
 ----- Picar-X Calibration Helper -------      
                       
@@ -19,7 +17,7 @@ manual = '''
     E: motors run/stop
     R: servos test 
     SPACE: confirm calibration
-    Esc/Crtl+C: quit
+    Crtl+C: quit
 '''    
 
 px = Picarx()
@@ -149,15 +147,13 @@ def cali_helper():
                     show_info()
                     break   
                 sleep(0.01) 
-        # quit
-        elif key == readchar.key.CTRL_C or key in readchar.key.ESCAPE_SEQUENCES:
-            print('quit')
-            break 
         sleep(0.01)
 
 
 if __name__ == "__main__":
     try:
         cali_helper()
+    except KeyboardInterrupt:
+        print('quit')
     except Exception as e:
         print(e)
