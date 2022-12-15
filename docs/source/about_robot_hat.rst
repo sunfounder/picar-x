@@ -1,24 +1,47 @@
 About Robot HAT
 ========================
 
-.. image:: img/picar_x_pic7.png
+.. image:: img/robot_hat_no_bluetooth.png
 
-**RST Button**
-    * A short-press of the RST Button will cause any running programs to reset.
-    * A long-press of the RST Button until the LED lights up, and then releasing will disconnect the Robot HAT’s Bluetooth chip.
+**Left/Right Motor Port**
+    * 2-channel XH2.54 motor ports.
+    * The left port is connected to GPIO 4 and the right port is connected to GPIO 5.
 
-**USR Button**
-    * The functions of the USR Button can be configured through programming. (Pressing down leads to a input of “0”, and releasing produces a input of “1” )
+**I2C Pin**
+    * 2-channel I2C pins from Raspberry Pi.
 
-**LED**
-    * Configured through programming (Outputting ‘1’ turns the LED on, Outputting ‘0’ turns the LED off.)
+**PWM Pin**
+    * 12-channel PWM pins, P0-P12.
+
+**ADC Pin**
+    * 4-channel ADC pins, A0-A3.
+
+**Digital Pin**
+    * 4-channel digital pins, D0-D3.
+    * API: :ref:`class_pin`
 
 **Battery Indicator**
-    * Battery voltage above 7.8V will light up the two indicator LEDs. Battery voltage ranging from 6.7V to 7.8V will only light up one LED, voltage below 6.7V will turn both LEDs off.
+    * Two LEDs light up when the voltage is higher than 7.8V.
+    * One LED lights up in the 6.7V to 7.8V range. 
+    * Below 6.7V, both LEDs turn off.
 
-**Bluetooth Indicator**
-    * The Bluetooth indicator LED will stay on with a solid Bluetooth connection, and blink rapidly during a signal transmission. The LED will blink at 1-second intervals if the Bluetooth is disconnected.  
+**USR LED**
+    * Set by your program. (Outputting 1 turns the LED on; Outputting 0 turns it off.)
+
+**RST Button**
+    * Short pressing RST Button causes program resetting.
+    * Long press RST Button till the LED lights up then release, and you will disconnect the Bluetooth.
+
+**USR Button**
+    * The functions of USR Button can be set by your programming. (Pressing down leads to a input “0”; releasing produces a input “1”. ) 
+
+**Power Switch**
+    * Turn on/off the power of the robot HAT.
+    * When you connect power to the power port, the Raspberry Pi will boot up. However, you will need to switch the power switch to ON to enable Robot HAT.
+
+**Power Port**
+    * 7-12V PH2.0 2pin power input.
+    * Powering the Raspberry Pi and Robot HAT at the same time.
 
 .. note::
     You can see more details in the `Robot HAT Documentation <https://robot-hat.readthedocs.io/en/latest/index.html>`_.
-
