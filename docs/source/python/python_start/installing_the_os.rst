@@ -87,21 +87,29 @@ Select the SD card you are using.
 
 **Step 6**
 
-Press **Ctrl+Shift+X** or click the **setting** button to open the **Advanced options** page to enable
-SSH and configure wifi, these 2 items must be set, the others depend on
-your choice . You can choose to always use this image customization
-options.
+Press **Ctrl+Shift+X** or click the **setting** button to open the **Advanced options** page to **Enable SSH** and **Configure Wifi**, these 2 items must be set, the others depend on
+your choice.
+
+* You can do what I did and set the **hostname** to ``raspberrypi``. This is the default hostname commonly used by Raspberry Pi.
+
+* You can choose ``to always use`` this image customization options. This will make it much easier to burn the image next time.
+
+* ``Enable SSH`` and select ``Use password authentication``.
 
 .. image:: img/image15.png
     :align: center
 
-Then scroll down to complete the wifi configuration and click **SAVE**.
+* Then scroll down to complete the **Username** and **Password**. You can follow the tradition like me and set them as ``pi`` and ``raspberry``.
+
+.. image:: img/image15.5.png
+    :align: center
+
+* Then scroll down to **Configure Wireless LAN Configuration**.
 
 .. note::
 
     **wifi country** should be set the two-letter `ISO/IEC alpha2 code <https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2#Officially_assigned_code_elements>`_ for
-    the country in which you are using your Raspberry Pi, please refer to
-    the following link: https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2#Officially_assigned_code_elements
+    the country in which you are using your Raspberry Pi.
 
 .. image:: img/image16.png
     :align: center

@@ -61,7 +61,7 @@ Let's customize a PiCar-X controller using this app.
 
     .. image:: img/app3.PNG
 
-    In the **A** area, add an **Speedometer         ** widget to display the car's speed.
+    In the **A** area, add an **Speedometer** widget to display the car's speed.
 
     .. image:: img/app4.PNG
     

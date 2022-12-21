@@ -18,7 +18,6 @@ About Robot HAT
 
 **Digital Pin**
     * 4-channel digital pins, D0-D3.
-    * API: :ref:`class_pin`
 
 **Battery Indicator**
     * Two LEDs light up when the voltage is higher than 7.8V.

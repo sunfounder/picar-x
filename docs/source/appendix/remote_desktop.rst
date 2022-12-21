@@ -70,7 +70,7 @@ Then select \"**New connection**\".
 
 **Step 3**
 
-Input IP address of Raspberry Pi and any **Name**.
+Input ``<Hostname>.local`` or ``<IP address>`` of Raspberry Pi and any **Name**.
 
 .. image:: img/image291.png
    :align: center
@@ -150,7 +150,7 @@ difference between the two. The next example is Windows remote desktop.
 **Step 2**
 
 Type in \"**mstsc**\" in Run (WIN+R) to open the Remote Desktop
-Connection, and input the IP address of Raspberry Pi, then click on
+Connection, and input the ``<Hostname>.local`` or ``<IP address>`` of Raspberry Pi, then click on
 \"Connect\".
 
 .. image:: img/image296.png
