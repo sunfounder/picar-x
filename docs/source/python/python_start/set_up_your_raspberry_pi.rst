@@ -9,12 +9,14 @@ Raspberry Pi.
 
 **Required Components**
 
-================== =========================
-Any Raspberry Pi   1 \* Power Adapter
-1 \* Micro SD card 1 \* Screen Power Adapter
-1 \* HDMI cable    1 \* Screen
-1 \* Mouse         1 \* Keyboard
-================== =========================
+* Any Raspberry Pi   
+* 1 * Power Adapter
+* 1 * Micro SD card
+* 1 * Screen Power Adapter
+* 1 * HDMI cable
+* 1 * Screen
+* 1 * Mouse
+* 1 * Keyboard
 
 1. Insert the SD card you’ve set up with Raspberry Pi OS into the micro SD card slot on the underside of your Raspberry Pi.
 

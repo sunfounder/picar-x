@@ -35,8 +35,7 @@ Input the following command:
 
 **Step 2**
 
-Choose **3** **Interfacing Options** by press the down arrow key on your
-keyboard, then press the **Enter** key.
+Choose **3** **Interfacing Options** by press the down arrow key on your keyboard, then press the **Enter** key.
 
 .. image:: img/image282.png
    :align: center
@@ -63,7 +62,7 @@ You need to download and install the `VNC Viewer <https://www.realvnc.com/en/con
 
 **Step 2**
 
-Then select \"**New connection**\".
+Then select **New connection**.
 
 .. image:: img/image290.png
    :align: center
@@ -84,7 +83,7 @@ Double click the **connection** just created:
 
 **Step 5**
 
-Enter Username (**pi**) and Password (**raspberry** by default).
+Enter Username and Password.
 
 .. image:: img/image293.png
    :align: center
@@ -128,15 +127,14 @@ Input the following instructions to install XRDP.
 
 Later, the installation starts.
 
-Enter \"Y\", press key \"Enter\" to confirm.
+Enter ``Y``, press key ``Enter`` to confirm.
 
 .. image:: img/image295.png
    :align: center
 
 **Step 4**
 
-Finished the installation, you should login to your Raspberry Pi by
-using Windows remote desktop applications.
+Finished the installation, you should login to your Raspberry Pi by using Windows remote desktop applications.
 
 **Login to XRDP**
 
@@ -149,9 +147,8 @@ difference between the two. The next example is Windows remote desktop.
 
 **Step 2**
 
-Type in \"**mstsc**\" in Run (WIN+R) to open the Remote Desktop
-Connection, and input the ``<Hostname>.local`` or ``<IP address>`` of Raspberry Pi, then click on
-\"Connect\".
+Type in ``mstsc`` in Run (``WIN+R``) to open the Remote Desktop
+Connection, and input the ``<Hostname>.local`` or ``<IP address>`` of Raspberry Pi, then click on **Connect**.
 
 .. image:: img/image296.png
    :align: center
@@ -159,8 +156,7 @@ Connection, and input the ``<Hostname>.local`` or ``<IP address>`` of Raspberry 
 **Step 3**
 
 Then the xrdp login page pops out. Please type in your username and
-password. After that, please click \"OK\". At the first time you log in,
-your username is \"pi\" and the password is \"raspberry\".
+password. After that, please click **OK**.
 
 .. image:: img/image297.png
    :align: center
