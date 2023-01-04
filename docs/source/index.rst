@@ -1,20 +1,78 @@
-.. picar-x documentation master file, created by
-   sphinx-quickstart on Wed Jan  4 10:40:25 2023.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
-
-Welcome to picar-x's documentation!
+PiCar-Xにようこそ!
 ===================================
 
+私どものPiCar-Xをお選びいただき誠にありがとうございます。
+
+.. image:: img/picar-x.jpg
+    :align: center
+    :width: 400
+
+PiCar-X は、Raspberry Piプラットフォーム用のAI駆動の自動運転ロボットカーで、Raspberry Piがコントロール センターとして機能します。
+PiCar-X の2軸カメラ モジュール、超音波モジュール、およびライン トラッキング モジュールは、色/顔/交通標識検出の機能を利用できます。
+また自動障害物回避、自動ライントレースなども試せます。
+
+PiCar-X には「Blockly（ビジュアルプログラミング）」と「Python」の2つのプログラミング言語が利用可能です。 プログラミングの言語に関係なく、Raspberry Piの構成から関連するサンプル コードの実行まで、すべてを説明する詳細な手順をご用意しました。
+プログラム経験のない方は手始めに「Blockly」でプログラムの基礎を学び、その後に本格的な「Python」を学ぶための基礎づくりができます。
+「Python」は最近注目を集めているプログラミング言語で特にAI関連のモジュールが充実していると言われております。
+小学校高学年から社会人でプログラミングやAIに興味のある方まで幅広く、楽しく学ぶことができると信じております。
+
+* :ref:`play_python`
+
+    * この章は、Pythonでのプログラミングを楽しむ人、またはPython言語を学びたい人向けです。
+    * Picar-X を正しく動作させるには最初にいくつかのライブラリをインストールする必要があります。
+    * この章では、PiCar-XのRaspberry Piの構成とサンプル コードを提供しています。
+    * アプリ - SunFounderコントローラーも提供しておりスマホやタブレットでPiCar-Xをリモートコントロールすることもできます。
+
+
+* :ref:`play_ezblock`
+
+    * このセクションでは、ビジュアルプログラミングのアプリであるEzblock Studioを使用します。Ezblock Studio は、小学校で習うScratchと同様にブロックをドラッグ・アンド・ドロップしてPicar-Xを動かすことができます。
+    * プログラミングの前にEzblock環境で提供されるオペレーティングシステムをSDカードにインストールする必要があります。 このセクションでは新品または現在は使用していないSDカードを使用することをお勧めします。
+    * Ezblock Studioは、Mac、PC、Android などほぼすべてのタイプのデバイスで利用できます。
+    * Ezblock Studioは、6歳から12歳（あるいはそれ以上の）プログラミング スキルがない人でもPicar-Xで簡単に遊びたい（学びたい）人に適しています。
+
+
+
+**表示言語について**
+
+日本語、英語に加えてこのコースでは他の言語にも取り組んでいます。 支援に関心がある場合は、service@sunfounder.com までご連絡ください。無料の製品を差し上げます。
+それまでの間、Google 翻訳を使用して自国語を表示したい言語に変換することをお勧めします。
+
+手順は次のとおりです。
+
+* このコース ページで、右クリックして **Translate to xx** を選択します。 現在の言語が好みの言語でない場合は後で変更できます。
+
+.. image:: img/translate1.png
+    :align: center
+
+* 右上隅に言語ポップアップが表示されます。 **別の言語を選択** するにはメニュー ボタンをクリックします。
+
+.. image:: img/translate2.png
+    :align: center
+
+* 逆三角形のボックスから言語を選択し **完了** をクリックします。
+
+.. image:: img/translate3.png
+    :align: center
+
+
+**Content**
+
 .. toctree::
-   :maxdepth: 2
-   :caption: Contents:
+    :maxdepth: 3
+
+    introduction
+    list_and_assembly
+    about_robot_hat
+    python/play_with_python
+    ezblock/play_with_ezblock
+    appendix/appendix
+    faq
+    thank
+
+Copyright Notice
+--------------------------
+
+このマニュアルのすべての内容（テキスト、画像、コードを含むがこれらに限定されない）はSunFounder Companyが所有しています。 著者および関連する権利所有者の法的権利を侵害することなく、関連する規制および著作権法の下で、個人的な研究、調査、娯楽、またはその他の非営利または非営利の目的でのみ使用する必要があります。 これらを許可なく営利目的で使用する個人または組織については当社は法的措置を取る権利を留保します。
 
 
-
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
