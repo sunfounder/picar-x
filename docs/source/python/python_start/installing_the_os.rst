@@ -53,6 +53,7 @@ Insert your SD card into the computer or laptop SD card slot.
 
 ..     2) That OS will then be stored for future offline use(lastdownload.cache, C:/Users/yourname/AppData/Local/Raspberry Pi/Imager/cache). So the next time you open the software, it will have the display "Released: date, cached on your computer".
 
+
 .. Download the `raspios_armhf-2020-05-28 <https://downloads.raspberrypi.org/raspios_armhf/images/raspios_armhf-2021-05-28/2021-05-07-raspios-buster-armhf.zip>`_ image and select it in Raspberry Pi Imager.
 
 .. .. image:: img/otherOS.png
@@ -72,7 +73,7 @@ In the Raspberry Pi Imager, click **CHOOSE OS** -> **Raspberry Pi OS(other)**.
     :align: center
 
 Scroll down to the end of the newly opened page and you will see **Raspberry Pi OS(Legacy)** and **Raspberry Pi OS Lite(Legacy)**, these are security updates for Debian Buster, the difference between them is with or without the desktop.
-It is recommended to install **Raspberry Pi OS(Legacy)**, this will allow you to go to the Raspberry Pi desktop to view the footage taken by the camera..
+It is recommended to install **Raspberry Pi OS(Legacy)**, the system with the desktop.
 
 .. image:: img/3d34.png
     :align: center
@@ -87,29 +88,20 @@ Select the SD card you are using.
 
 **Step 6**
 
-Press **Ctrl+Shift+X** or click the **setting** button to open the **Advanced options** page to **Enable SSH** and **Configure Wifi**, these 2 items must be set, the others depend on
-your choice.
+To open the advanced options page, click the setting button (appears after selecting operating system) or press Ctrl+Shift+X. 
+Enable ssh and set the username and name. You can choose to always use this image customization options.
 
-* You can do what I did and set the **hostname** to ``raspberrypi``. This is the default hostname commonly used by Raspberry Pi.
-
-* You can choose ``to always use`` this image customization options. This will make it much easier to burn the image next time.
-
-* ``Enable SSH`` and select ``Use password authentication``.
+.. note::
+    When the Set hostname box is not checked, the default hostname will still be ``raspberrypi``, and we will use this hostname to access the Raspberry Pi remotely.
 
 .. image:: img/image15.png
     :align: center
 
-* Then scroll down to complete the **Username** and **Password**. You can follow the tradition like me and set them as ``pi`` and ``raspberry``.
-
-.. image:: img/image15.5.png
-    :align: center
-
-* Then scroll down to **Configure Wireless LAN Configuration**.
+Then scroll down to complete the wifi configuration and click **SAVE**.
 
 .. note::
 
-    **wifi country** should be set the two-letter `ISO/IEC alpha2 code <https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2#Officially_assigned_code_elements>`_ for
-    the country in which you are using your Raspberry Pi.
+    **wifi country** should be set the two-letter `ISO/IEC alpha2 code <https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2#Officially_assigned_code_elements>`_ for the country in which you are using your Raspberry Pi, please refer to the following link: https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2#Officially_assigned_code_elements
 
 .. image:: img/image16.png
     :align: center

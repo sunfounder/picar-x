@@ -14,9 +14,7 @@ Python.
 
 
 .. image:: img/image10.jpeg
-   :alt: RPi2
-   :width: 5.61806in
-   :height: 4.76875in
+
 
 **Power Adapter**
 

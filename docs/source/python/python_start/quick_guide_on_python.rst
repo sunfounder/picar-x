@@ -1,3 +1,5 @@
+.. _quick_guide_python:
+
 Quick Guide on Python
 ==========================
 
@@ -12,7 +14,10 @@ If you are familiar with Raspberry Pi and can open the command line successfully
 
     what_do_we_need
     installing_the_os
-    set_up_your_raspberry_pi    
+    set_up_your_raspberry_pi
     install_all_modules
+    enable_i2c_camera
     py_servo_adjust
+    
+
 
