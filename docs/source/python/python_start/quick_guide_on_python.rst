@@ -14,4 +14,5 @@ Raspberry Piに慣れていてコマンド・ラインを使うことができ�
     installing_the_os
     set_up_your_raspberry_pi    
     install_all_modules
+    enable_i2c_camera
     py_servo_adjust
