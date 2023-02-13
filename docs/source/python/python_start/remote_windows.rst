@@ -11,7 +11,7 @@ If you are using win10, you can use follow way to login Raspberry Pi remotely.
     .. image:: img/powershell_ssh.png
         :align: center
 
-#. Then, check the IP address of your Raspberry Pi by type in ``ping -4 <hostname>.local``. 
+#. Then, check the IP address of your Raspberry Pi by typing in ``ping -4 <hostname>.local``. 
 
     .. code-block::
 
@@ -33,7 +33,7 @@ If you are using win10, you can use follow way to login Raspberry Pi remotely.
 
         ssh pi@raspberrypi.local
 
-    .. note::
+    .. warning::
 
         If a prompt appears ``The term 'ssh' is not recognized as the name of a cmdlet...``.
         
