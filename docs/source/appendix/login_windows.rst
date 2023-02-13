@@ -3,7 +3,7 @@
 PuTTY
 =========================
 
-If you are a Windows user, you can use some applications of SSH. Here, we recommend **PuTTY**.
+If you are a Windows user, you can use some applications of SSH. Here, we recommend `PuTTY <https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html>`_.
 
 **Step 1**
 
