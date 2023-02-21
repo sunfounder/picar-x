@@ -1,27 +1,24 @@
 Traffic Sign Detection
 ===============================
 
-This project uses an image detection function to look for traffic signs, 
-and make the PiCar-X follow the instructions on the sign. 
-The turn **traffic sign detection [on]** block will recognize 4 different traffic sign models included in the printable PDF below. 
-When the PiCar-X detects a **STOP** sign, it will come to a stop, 
-a **FORWARD** sign will make it drive forward, and the **LEFT** or **RIGHT** arrows will make it turn that direction. 
+In addition to color, face detection, PiCar-X can also do traffic sign detection.
 
-* :download:`[PDF]Traffic Sign Cards <https://github.com/sunfounder/sf-pdf/raw/master/prop_card/object_detection/traffic-sign-cards.pdf>`
-
-.. image:: img/taffics_sign.png
-
-.. note::
-
-    The printed traffic sign colors may have a slightly different hue from the Ezblock color models due to printer toner differences, or the printed medium, such as a tan-colored paper. This can cause a less accurate color recognition.
-
-This project is based on :ref:`ezb_minecart`, but instead of using the grayscale sensor, the PiCar-X uses an algorithm for traffic sign detection. The detection results can be viewed via the Video Monitor in Ezblock Studio.
-
-
-.. image:: img/traffic_detect.PNG
+Now let's combine this traffic sign detection with the line following function. Let PiCar-X track the line, and when you put the Stop sign in front of it, it will stop. When you place a Forward sign in front of it, it will continue to move forward.
 
 
 **TIPS**
+
+#. PiCar will recognize 4 different traffic sign models included in the printable PDF below. 
+
+    .. image:: img/taffics_sign.png
+
+    * :download:`[PDF]Traffic Sign Cards <https://github.com/sunfounder/sf-pdf/raw/master/prop_card/object_detection/traffic-sign-cards.pdf>`
+
+#. **Set ref to ()** block is used to set the grayscale threshold, you need to modify it according to the actual situation. You can go ahead and run :ref:`test_grayscale` to see the values of the grayscale module on the white and black surfaces, and fill in their middle values in this block.
+
+
+
+**EXAMPLE**
 
 .. note::
 

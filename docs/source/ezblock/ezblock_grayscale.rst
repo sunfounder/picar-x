@@ -1,3 +1,5 @@
+.. _test_grayscale:
+
 Test Grayscale Module
 ==============================
 

@@ -8,10 +8,12 @@ In this project, derailment recovery has been added to the :ref:`ezb_minecart` p
 
 **TIPS**
 
-.. image:: img/sp210512_171727.png
+#. Use another **to do something** block to allow the PiCar-X to back up and recover from a sharp curve. Note that the new **to do something** function does not return any values, but is used just for reorienting the PiCar-X.
 
-Use another **to do something** block to allow the PiCar-X to back up and recover from a sharp curve. 
-Note that the new **to do something** function does not return any values, but is used just for reorienting the PiCar-X.
+    .. image:: img/sp210512_171727.png
+
+#. **Set ref to ()** block is used to set the grayscale threshold, you need to modify it according to the actual situation. You can go ahead and run :ref:`test_grayscale` to see the values of the grayscale module on the white and black surfaces, and fill in their middle values in this block.
+
 
 **EXAMPLE**
 
