@@ -1,4 +1,4 @@
-﻿alabaster==0.7.12
+alabaster==0.7.12
 altgraph==0.17
 argh==0.26.2
 awscli==1.18.124
@@ -60,7 +60,7 @@ PyYAML==5.1.2
 recommonmark==0.6.0
 reedsolo==1.5.4
 regex==2020.10.23
-requests==2.21.0
+requests==2.31.0
 rsa==4.5
 s3cmd==2.0.2
 s3transfer==0.3.3
