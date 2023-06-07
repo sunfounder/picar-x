@@ -60,7 +60,7 @@ The steps are as follows.
 
     introduction
     list_and_assembly
-    about_robot_hat
+    adjust_servo
     python/play_with_python
     ezblock/play_with_ezblock
     appendix/appendix

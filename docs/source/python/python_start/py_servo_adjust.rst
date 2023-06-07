@@ -13,9 +13,9 @@ But if the deviation angle is too big, you still have to go back to this section
 
     .. image:: img/servo_arm.png
 
-#. Follow the instructions on the assembly foldout, insert the battery holder cable and turn the power switch to the ON. Wait for 1-2 minutes, there will be a sound to indicate that the Raspberry Pi boots successfully.
+#. Follow the instructions on the assembly foldout, insert the battery cable and turn the power switch to the ON. Then plug in a powered USB-C cable to activate the battery. Wait for 1-2 minutes, there will be a sound to indicate that the Raspberry Pi boots successfully.
 
-    .. image:: img/slide_to_power.png
+    .. image:: img/Z_BTR.JPG
 
 #. Now, run ``servo_zeroing.py`` in the ``example/`` folder.
 
@@ -30,7 +30,7 @@ But if the deviation angle is too big, you still have to go back to this section
 
 #. Next, plug the servo cable into the P11 port as follows.
 
-    .. image:: img/pin11_connect.png
+    .. image:: img/Z_P11.JPG
 
 #. At this point you will see the servo arm rotate to a specific position (0°). If the servo arm does not return to 0°, press the **RST** button to restart the Robot HAT.
 
