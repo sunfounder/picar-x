@@ -32,9 +32,9 @@ But if the deviation angle is too big, you still have to go back to this section
 
 #. Next, plug the servo cable into the P11 port as follows.
 
-    .. image:: img/z_p11.JPG
+    .. image:: img/Z_P11.JPG
 
-#. At this point you will see the servo arm rotate to a specific position (0°). If the servo arm does not return to 0°, press the RST button to restart the Robot HAT.
+#. At this point you will see the servo arm rotate to a specific position (0°). If the servo arm does not return to 0°, hold down the USR button and press the RST button to restart the Robot HAT.
 
 #. Now you can continue the installation as instructed on the assembly foldout.
 
