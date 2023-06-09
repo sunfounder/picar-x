@@ -21,7 +21,7 @@ manual = '''
 '''    
 
 px = Picarx()
-px_power = 10
+px_power = 30
 
 servo_num = 0
 motor_num = 0
