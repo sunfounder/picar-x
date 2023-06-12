@@ -12,6 +12,8 @@ potentially damaging the servo or the mechanical system it is connected to.
 Therefore, setting the angle to zero is an important step to ensure the 
 safe and normal operation of the servo motor.
 
+.. image:: img/IMG_9897.png
+
 
 **For Python User**
 
