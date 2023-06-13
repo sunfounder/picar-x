@@ -14,7 +14,6 @@ Please follow the steps on the following PDF for assembly instructions:
     If the servos has been powered on through the Robot HAT after assembly, do not manually force the steering gear, as this could cause damage to the servo.
 
 
-.. note::
 
-    #. Before assembling, you need to buy 2 18650 batteries and fully charge them, refer to :ref:`battery`.
-    #. Robot HAT cannot charge the battery, so you need to buy a battery charger at the same time.
+..     #. Before assembling, you need to buy 2 18650 batteries and fully charge them, refer to :ref:`battery`.
+..     #. Robot HAT cannot charge the battery, so you need to buy a battery charger at the same time.
