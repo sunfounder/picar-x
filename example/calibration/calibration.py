@@ -38,7 +38,19 @@ def servos_test():
     px.set_dir_servo_angle(30)
     sleep(0.5)
     px.set_dir_servo_angle(0)
-    sleep(0.5)   
+    sleep(0.5)
+    px.set_camera_servo1_angle(-30)
+    sleep(0.5)
+    px.set_camera_servo1_angle(30)
+    sleep(0.5)
+    px.set_camera_servo1_angle(0)
+    sleep(0.5)
+    px.set_camera_servo2_angle(-30)
+    sleep(0.5)
+    px.set_camera_servo2_angle(30)
+    sleep(0.5)
+    px.set_camera_servo2_angle(0)
+    sleep(0.5)
 
 def servos_move(servo_num, value):
     if servo_num == 0:
