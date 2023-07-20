@@ -1,4 +1,4 @@
-﻿alabaster==0.7.12
+alabaster==0.7.12
 altgraph==0.17
 argh==0.26.2
 awscli==1.18.124
@@ -45,7 +45,7 @@ port-for==0.3.1
 pyasn1==0.4.8
 pycparser==2.20
 pygame==1.9.6
-Pygments==2.4.2
+Pygments==2.15.0
 PyInstaller==3.6
 PyMySQL==0.9.3
 pyparsing==2.4.2
