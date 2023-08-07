@@ -1,26 +1,37 @@
-from robot_hat import Pin, PWM, Servo, fileDB
+from robot_hat import Pin, ADC, PWM, Servo, fileDB
 from robot_hat import Grayscale_Module, Ultrasonic
-from robot_hat.utils import reset_mcu
+from robot_hat.utils import reset_mcu, run_command
 import time
 import os
 
+# reset robot_hat
 reset_mcu()
 time.sleep(0.2)
 
-# user and User home directory
-User = os.popen('echo ${SUDO_USER:-$LOGNAME}').readline().strip()
-UserHome = os.popen('getent passwd %s | cut -d: -f 6'%User).readline().strip()
-# print(User)  # pi
-# print(UserHome) # /home/pi
-config_file = '%s/.config/picar-x/picar-x.conf'%UserHome
-
+def constrain(x, min_val, max_val):
+    '''
+    Constrains value to be within a range.
+    '''
+    return max(min_val, min(max_val, x))
 
 class Picarx(object):
+    CONFIG = '/opt/picar-x/picar-x.conf'
+
+    DEFAULT_LINE_REF = [1000, 1000, 1000]
+    DEFAULT_CLIFF_REF = [500, 500, 500]
+
+    DIR_MIN = -35
+    DIR_MAX = 35
+    CAM_PAN_MIN = -35
+    CAM_PAN_MAX = 90
+    CAM_TILT_MIN = -90
+    CAM_TILT_MAX = 90
+
     PERIOD = 4095
     PRESCALER = 10
     TIMEOUT = 0.02
 
-    # servo_pins: direction_servo, camera_servo_1, camera_servo_2 
+    # servo_pins: direction_servo, camera_pan_servo, camera_tilt_servo 
     # motor_pins: left_swicth, right_swicth, left_pwm, right_pwm
     # grayscale_pins: 3 adc channels
     # ultrasonic_pins: tring, echo
@@ -30,47 +41,65 @@ class Picarx(object):
                 motor_pins:list=['D4', 'D5', 'P12', 'P13'],
                 grayscale_pins:list=['A0', 'A1', 'A2'],
                 ultrasonic_pins:list=['D2','D3'],
-                config:str=config_file,
+                config:str=CONFIG,
                 ):
 
-        # config_flie
-        self.config_flie = fileDB(config, 774, User)
-        # servos init 
-        self.camera_servo_pin1 = Servo(PWM(servo_pins[0]))
-        self.camera_servo_pin2 = Servo(PWM(servo_pins[1]))   
-        self.dir_servo_pin = Servo(PWM(servo_pins[2])) 
-        self.dir_cal_value = int(self.config_flie.get("picarx_dir_servo", default_value=0))
-        self.cam_cal_value_1 = int(self.config_flie.get("picarx_cam_servo1", default_value=0))
-        self.cam_cal_value_2 = int(self.config_flie.get("picarx_cam_servo2", default_value=0))
-        self.dir_servo_pin.angle(self.dir_cal_value)
-        self.camera_servo_pin1.angle(self.cam_cal_value_1)
-        self.camera_servo_pin2.angle(self.cam_cal_value_2)
-        # motors init
+        # --------- config_flie ---------
+        self.config_flie = fileDB(config, 774, os.getlogin())
+
+        # --------- servos init ---------
+        self.cam_pan = Servo(servo_pins[0])
+        self.cam_tilt = Servo(servo_pins[1])   
+        self.dir_servo_pin = Servo(servo_pins[2])
+        # get calibration values
+        self.dir_cali_val = float(self.config_flie.get("picarx_dir_servo", default_value=0))
+        self.cam_pan_cali_val = float(self.config_flie.get("picarx_cam_pan_servo", default_value=0))
+        self.cam_tilt_cali_val = float(self.config_flie.get("picarx_cam_tilt_servo", default_value=0))
+        # set servos to init angle
+        self.dir_servo_pin.angle(self.dir_cali_val)
+        self.cam_pan.angle(self.cam_pan_cali_val)
+        self.cam_tilt.angle(self.cam_tilt_cali_val)
+
+        # --------- motors init ---------
         self.left_rear_dir_pin = Pin(motor_pins[0])
         self.right_rear_dir_pin = Pin(motor_pins[1])
         self.left_rear_pwm_pin = PWM(motor_pins[2])
         self.right_rear_pwm_pin = PWM(motor_pins[3])
         self.motor_direction_pins = [self.left_rear_dir_pin, self.right_rear_dir_pin]
         self.motor_speed_pins = [self.left_rear_pwm_pin, self.right_rear_pwm_pin]
-        self.cali_dir_value = self.config_flie.get("picarx_dir_motor", default_value="[1,1]")
-        self.cali_dir_value = [int(i.strip()) for i in self.cali_dir_value.strip("[]").split(",")]
+        # get calibration values
+        self.cali_dir_value = self.config_flie.get("picarx_dir_motor", default_value="[1, 1]")
+        self.cali_dir_value = [int(i.strip()) for i in self.cali_dir_value.strip().strip("[]").split(",")]
         self.cali_speed_value = [0, 0]
         self.dir_current_angle = 0
+        # init pwm
         for pin in self.motor_speed_pins:
             pin.period(self.PERIOD)
             pin.prescaler(self.PRESCALER)
-        # grayscale module init
-        # usage: self.grayscale.get_grayscale_data()
-        adc0, adc1, adc2 = grayscale_pins
-        self.grayscale = Grayscale_Module(adc0, adc1, adc2, reference=1000)
-        # ultrasonic init
-        # usage: distance = self.ultrasonic.read()
+
+        # --------- grayscale module init ---------
+        adc0, adc1, adc2 = [ADC(pin) for pin in grayscale_pins]
+        self.grayscale = Grayscale_Module(adc0, adc1, adc2, reference=None)
+        # get reference
+        self.line_reference = self.config_flie.get("line_reference", default_value=str(self.DEFAULT_LINE_REF))
+        self.line_reference = [float(i) for i in self.line_reference.strip().strip('[]').split(',')]
+        self.cliff_reference = self.config_flie.get("cliff_reference", default_value=str(self.DEFAULT_CLIFF_REF))
+        self.cliff_reference = [float(i) for i in self.cliff_reference.strip().strip('[]').split(',')]
+        # transfer reference
+        self.grayscale.reference(self.line_reference)
+
+        # --------- ultrasonic init ---------
         tring, echo= ultrasonic_pins
         self.ultrasonic = Ultrasonic(Pin(tring), Pin(echo))
         
-
-    def set_motor_speed(self,motor,speed):
-        # global cali_speed_value,cali_dir_value
+    def set_motor_speed(self, motor, speed):
+        ''' set motor speed
+        
+        param motor: motor index, 1 means left motor, 2 means right motor
+        type motor: int
+        param speed: speed
+        type speed: int      
+        '''
         motor -= 1
         if speed >= 0:
             direction = 1 * self.cali_dir_value[motor]
@@ -87,8 +116,7 @@ class Picarx(object):
             self.motor_direction_pins[motor].low()
             self.motor_speed_pins[motor].pulse_width_percent(speed)
 
-    def motor_speed_calibration(self,value):
-        # global cali_speed_value,cali_dir_value
+    def motor_speed_calibration(self, value):
         self.cali_speed_value = value
         if value < 0:
             self.cali_speed_value[0] = 0
@@ -97,59 +125,60 @@ class Picarx(object):
             self.cali_speed_value[0] = abs(self.cali_speed_value)
             self.cali_speed_value[1] = 0
 
-    def motor_direction_calibration(self,motor, value):
-        # 1: positive direction
-        # -1:negative direction
+    def motor_direction_calibrate(self, motor, value):
+        ''' set motor direction calibration value
+        
+        param motor: motor index, 1 means left motor, 2 means right motor
+        type motor: int
+        param value: speed
+        type value: int
+        '''      
         motor -= 1
-        # if value == 1:
-        #     self.cali_dir_value[motor] = -1 * self.cali_dir_value[motor]
-        # self.config_flie.set("picarx_dir_motor", self.cali_dir_value)
         if value == 1:
             self.cali_dir_value[motor] = 1
         elif value == -1:
             self.cali_dir_value[motor] = -1
         self.config_flie.set("picarx_dir_motor", self.cali_dir_value)
 
-    def dir_servo_angle_calibration(self,value):
-        self.dir_cal_value = value
+    def dir_servo_calibrate(self, value):
+        self.dir_cali_val = value
         self.config_flie.set("picarx_dir_servo", "%s"%value)
         self.dir_servo_pin.angle(value)
 
-    def set_dir_servo_angle(self,value):
-        self.dir_current_angle = value
-        angle_value  = value + self.dir_cal_value
+    def set_dir_servo_angle(self, value):
+        self.dir_current_angle = constrain(value, self.DIR_MIN, self.DIR_MAX)
+        angle_value  = value + self.dir_cali_val
         self.dir_servo_pin.angle(angle_value)
 
-    def camera_servo1_angle_calibration(self,value):
-        self.cam_cal_value_1 = value
-        self.config_flie.set("picarx_cam_servo1", "%s"%value)
-        self.camera_servo_pin1.angle(value)
+    def cam_pan_servo_calibrate(self, value):
+        self.cam_pan_cali_val = value
+        self.config_flie.set("picarx_cam_pan_servo", "%s"%value)
+        self.cam_pan.angle(value)
 
-    def camera_servo2_angle_calibration(self,value):
-        self.cam_cal_value_2 = value
-        self.config_flie.set("picarx_cam_servo2", "%s"%value)
-        self.camera_servo_pin2.angle(value)
+    def cam_tilt_servo_calibrate(self, value):
+        self.cam_tilt_cali_val = value
+        self.config_flie.set("picarx_cam_tilt_servo", "%s"%value)
+        self.cam_tilt.angle(value)
 
-    def set_camera_servo1_angle(self,value):
-        self.camera_servo_pin1.angle(-1*(value + -1*self.cam_cal_value_1))
+    def set_cam_pan_angle(self, value):
+        value = constrain(value, self.CAM_PAN_MIN, self.CAM_PAN_MAX)
+        self.cam_pan.angle(-1*(value + -1*self.cam_pan_cali_val))
 
-    def set_camera_servo2_angle(self,value):
-        self.camera_servo_pin2.angle(-1*(value + -1*self.cam_cal_value_2))
+    def set_camera_tilt_angle(self,value):
+        value = constrain(value, self.CAM_TILT_MIN, self.CAM_TILT_MAX)
+        self.cam_tilt.angle(-1*(value + -1*self.cam_tilt_cali_val))
 
-
-    def set_power(self,speed):
+    def set_power(self, speed):
         self.set_motor_speed(1, speed)
         self.set_motor_speed(2, speed) 
 
-    def backward(self,speed):
+    def backward(self, speed):
         current_angle = self.dir_current_angle
         if current_angle != 0:
             abs_current_angle = abs(current_angle)
-            # if abs_current_angle >= 0:
             if abs_current_angle > 40:
                 abs_current_angle = 40
             power_scale = (100 - abs_current_angle) / 100.0 
-            # print("power_scale:",power_scale)
             if (current_angle / abs_current_angle) > 0:
                 self.set_motor_speed(1, -1*speed)
                 self.set_motor_speed(2, speed * power_scale)
@@ -160,23 +189,19 @@ class Picarx(object):
             self.set_motor_speed(1, -1*speed)
             self.set_motor_speed(2, speed)  
 
-    def forward(self,speed):
+    def forward(self, speed):
         current_angle = self.dir_current_angle
         if current_angle != 0:
             abs_current_angle = abs(current_angle)
-            # if abs_current_angle >= 0:
             if abs_current_angle > 40:
                 abs_current_angle = 40
             power_scale = (100 - abs_current_angle) / 100.0
-            # print("power_scale:",power_scale)
             if (current_angle / abs_current_angle) > 0:
                 self.set_motor_speed(1, 1*speed * power_scale)
                 self.set_motor_speed(2, -speed) 
-                # print("current_speed: %s %s"%(1*speed * power_scale, -speed))
             else:
                 self.set_motor_speed(1, speed)
                 self.set_motor_speed(2, -1*speed * power_scale)
-                # print("current_speed: %s %s"%(speed, -1*speed * power_scale))
         else:
             self.set_motor_speed(1, speed)
             self.set_motor_speed(2, -1*speed)                  
@@ -189,14 +214,28 @@ class Picarx(object):
         return self.ultrasonic.read()
 
     def set_grayscale_reference(self, value):
-        self.get_grayscale_reference = value
-        
+        if isinstance(value, list) and len(value) == 3:
+            self.line_reference = value
+            self.grayscale.reference(self.line_reference)
+            self.config_flie.set("line_reference", self.line_reference)
+        else:
+            raise ValueError("grayscale reference must be a 1*3 list")
+
     def get_grayscale_data(self):
-        return list.copy(self.grayscale.get_grayscale_data())
+        return list.copy(self.grayscale.read())
 
     def get_line_status(self,gm_val_list):
-        return str(self.grayscale.get_line_status(gm_val_list))
+        return str(self.grayscale.read_status(gm_val_list))
 
+    def set_line_reference(self, value):
+        self.set_grayscale_reference(value)
+
+    def set_cliff_reference(self, value):
+        if isinstance(value, list) and len(value) == 3:
+            self.cliff_reference = value
+            self.config_flie.set("cliff_reference", self.cliff_reference)
+        else:
+            raise ValueError("grayscale reference must be a 1*3 list")
 
 if __name__ == "__main__":
     px = Picarx()
