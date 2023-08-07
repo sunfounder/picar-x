@@ -13,7 +13,7 @@ from time import sleep
 
 px = Picarx()
 # px = Picarx(grayscale_pins=['A0', 'A1', 'A2']) 
-px.set_grayscale_reference(1400)  
+px.set_grayscale_reference([1400, 1400, 1400])  
 # px.grayscale.reference = 1400  
 last_state = None
 current_state = None
