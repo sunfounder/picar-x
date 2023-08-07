@@ -2,20 +2,23 @@
     Line Following program for Picar-X:
 
     Pay attention to modify the reference value of the grayscale module 
-    according to the practical usage scenarios.Use the following: 
-        px.grayscale.reference = 1400 
-    or
-        px.set_grayscale_reference(1400)  
+    according to the practical usage scenarios.
+    Auto calibrate grayscale values:
+        Please run ./calibration/grayscale_calibration.py
+    Manual modification:
+        Use the following: 
+            px.set_line_reference([1400, 1400, 1400])
+        The reference value be close to the middle of the line gray value
+        and the background gray value.
 
 '''
 from picarx import Picarx
 from time import sleep
 
 px = Picarx()
-# px = Picarx(grayscale_pins=['A0', 'A1', 'A2']) 
-px.set_grayscale_reference([1400, 1400, 1400])  
-# px.grayscale.reference = 1400  
-last_state = None
+# px = Picarx(grayscale_pins=['A0', 'A1', 'A2'])
+# manual modify reference value
+# px.set_line_reference([1400, 1400, 1400])
 current_state = None
 px_power = 10
 offset = 20
