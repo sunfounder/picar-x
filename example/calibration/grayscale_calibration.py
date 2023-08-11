@@ -4,7 +4,6 @@ import threading
 import readchar 
 import os
 
-os.environ('PYGAME_DETECT_AVX2', '1')
 px = Picarx()
 config_path = px.CONFIG
 
