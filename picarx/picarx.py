@@ -31,7 +31,7 @@ class Picarx(object):
     PRESCALER = 10
     TIMEOUT = 0.02
 
-    # servo_pins: direction_servo, camera_pan_servo, camera_tilt_servo 
+    # servo_pins: camera_pan_servo, camera_tilt_servo, direction_servo
     # motor_pins: left_swicth, right_swicth, left_pwm, right_pwm
     # grayscale_pins: 3 adc channels
     # ultrasonic_pins: tring, echo
