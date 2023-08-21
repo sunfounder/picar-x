@@ -30,7 +30,7 @@ thresholds = [
     [4096, 0],
 ]
 run_flag = False
-is_cali = False
+cali_status = 'none' # none, work, done
 _lock = threading.Lock()
 key = ''
 
@@ -63,7 +63,7 @@ time.sleep(0.5)
 # read grayscale value thread
 # ==========================================
 def read_data_loop():
-    global current_grayscale_value, thresholds, run_flag
+    global current_grayscale_value, thresholds, run_flag, cali_status
 
     while run_flag:
         try:
@@ -75,9 +75,17 @@ def read_data_loop():
                     thresholds[i][1] = current_grayscale_value[i]
 
             # calculate the reference
-            if is_cali == True:
+            if cali_status == 'work':
                 for i in range(3):
-                    line_reference[i] = (thresholds[i][0] + thresholds[i][1])/2
+                    line_reference[i] = int((thresholds[i][0] + thresholds[i][1])/2)
+                # adjust cliff reference
+            if cali_status == 'done':
+                if (cliff_reference[0] < line_reference[0]) and (cliff_reference[1] < line_reference[1]) and (cliff_reference[2] < line_reference[2]):
+                    cliff_reference[0] = int((cliff_reference[0] + line_reference[0]) / 2)
+                    cliff_reference[1] = int((cliff_reference[1] + line_reference[1]) / 2)
+                    cliff_reference[2] = int((cliff_reference[2] + line_reference[2]) / 2)
+                cali_status = 'none'
+
         except Exception as e:
             run_flag = False
             print(f'\033[31mread_data_loop error: {e}\033[m')
@@ -97,7 +105,7 @@ def read_key_loop():
 #
 def update_info(isback=True):
     if isback:
-        print("\033[5A", end='\r') # moves cursor up 5 lines
+        print("\033[6A", end='\r') # moves cursor up 6 lines
 
     if current_mode == None:
         clear_line_and_print(' ---------- ', color='32' )
@@ -112,18 +120,30 @@ def update_info(isback=True):
     elif current_mode == 'saved':
         clear_line_and_print("The reference values has been saved.", color='32')
 
+    _is_val_error = False
+    if cali_status == 'none':
+        for i in range(3):
+            if line_reference[i] < cliff_reference[i]:
+                _is_val_error = True
+                break
+    if _is_val_error:
+        clear_line_and_print("Note that cliff reference values shou be less than line reference values.", color='31')
+    else:
+        clear_line_and_print("")
+
     clear_line_and_print(f'current value: {current_grayscale_value}')
     clear_line_and_print(f'thresholds: {thresholds}')
     clear_line_and_print(f'line reference: {line_reference}')
     clear_line_and_print(f'cliff reference: {cliff_reference}')
 
+
 # line reference calibration
 # =================================================================
 def start_line_calibrate():
     def line_calibrate_work():
-        global current_mode, is_cali, thresholds
+        global current_mode, cali_status, thresholds
         current_mode = 'line_cali'
-        is_cali = True
+        cali_status = 'work'
         # reset thresholds
         thresholds = [
             [4096, 0], # min, max
@@ -155,7 +175,7 @@ def start_line_calibrate():
         px.stop()
         time.sleep(0.2)
         current_mode = 'line_cali_done'
-        is_cali = False
+        cali_status = 'done'
     line_calibrate_thread = threading.Thread(target=line_calibrate_work)
     line_calibrate_thread.daemon = True
     line_calibrate_thread.start()
@@ -174,7 +194,7 @@ def start_cliff_calibrate():
             _left_val += current_grayscale_value[0]
             _mid_val += current_grayscale_value[1]
             _right_val += current_grayscale_value[2]
-            if count > 10:
+            if count >= 10:
                 break
             else:
                 count += 1
@@ -183,7 +203,12 @@ def start_cliff_calibrate():
         _left_val /= 10
         _mid_val /= 10
         _right_val /= 10
-        cliff_reference = [_left_val, _mid_val, _right_val]
+
+        if _left_val < line_reference[0] and _mid_val < line_reference[1] and _right_val < line_reference[2]:
+            _left_val = int((_left_val + line_reference[0]) / 2)
+            _mid_val = int((_mid_val + line_reference[1]) / 2)
+            _right_val = int((_right_val + line_reference[2]) / 2)
+        cliff_reference = [int(_left_val), int(_mid_val), int(_right_val)]
         current_mode = 'cliff_cali_done'
 
     cliff_calibrate_thread = threading.Thread(target=cliff_calibrate_work)
@@ -218,7 +243,6 @@ def main():
         elif key == readchar.key.SPACE:
             print('\033[32mConfirm save ?(y/n)\033[m')
             while True:
-                key = readchar.readkey()
                 key = key.lower()
                 if key == 'y':
                     px.set_line_reference(line_reference)
