@@ -7,6 +7,12 @@ reset_mcu()
 sleep(0.2)
 
 if __name__ == '__main__':
-    P_11 = Servo(PWM('P11'))         
-    P_11.angle(0)     
-
+    servos_pin = ['P0', 'P1', 'P2']
+    for pin in servos_pin:
+        print(f"Servo {pin} set to zero")
+        Servo(pin).angle(10)
+        sleep(0.1)
+        Servo(pin).angle(0)
+        sleep(0.1)
+    while True:
+        sleep(1)

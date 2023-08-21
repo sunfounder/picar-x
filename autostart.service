@@ -1,0 +1,12 @@
+# https://www.freedesktop.org/software/systemd/man/systemd.service.html
+[Unit]
+Description=picarx service
+After=multi-user.target
+
+[Service]
+Type=forking
+WorkingDirectory=/home/pi/picar-x/
+ExecStart=python3 /home/pi/picar-x/examples/minecart_plus.py &&
+
+[Install]
+WantedBy=multi-user.target

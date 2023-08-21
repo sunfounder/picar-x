@@ -3,6 +3,10 @@ from setuptools import setup, find_packages
 # To use a consistent encoding
 from codecs import open
 from os import path
+import sys
+
+sys.path.append('./picarx')
+from version import __version__
 
 here = path.abspath(path.dirname(__file__))
 
@@ -16,7 +20,7 @@ setup(
     # Versions should comply with PEP440.  For a discussion on single-sourcing
     # the version across setup.py and the project code, see
     # https://packaging.python.org/en/latest/single_source_version.html
-    version="0.0.1",
+    version=__version__,
 
     description='Picarx gait Library for Raspberry Pi',
     long_description=long_description,
