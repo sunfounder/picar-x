@@ -46,19 +46,19 @@ if __name__=='__main__':
     try:
         while True:
             gm_val_list = px.get_grayscale_data()
-            gm_state = px.get_line_status(gm_val_list)
+            gm_state = px.get_line_status(gm_val_list)  # [bool, bool, bool], 0 means line, 1 means background
             print("gm_val_list: %s, %s"%(gm_val_list, gm_state))
 
-            if gm_state != "stop":
+            if gm_state == [0, 0, 0]:
                 last_state = gm_state
 
-            if gm_state == 'forward':
+            if gm_state[1] == 0:
                 px.set_dir_servo_angle(0)
                 px.forward(px_power) 
-            elif gm_state == 'left':
+            elif gm_state[2] == 0:
                 px.set_dir_servo_angle(offset)
                 px.forward(px_power) 
-            elif gm_state == 'right':
+            elif gm_state[0] == 0:
                 px.set_dir_servo_angle(-offset)
                 px.forward(px_power) 
             else:
