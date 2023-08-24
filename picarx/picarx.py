@@ -225,7 +225,7 @@ class Picarx(object):
         return list.copy(self.grayscale.read())
 
     def get_line_status(self,gm_val_list):
-        return str(self.grayscale.read_status(gm_val_list))
+        return self.grayscale.read_status(gm_val_list)
 
     def set_line_reference(self, value):
         self.set_grayscale_reference(value)
