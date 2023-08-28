@@ -11,7 +11,7 @@ In this project, PiCar-X will detect obstacles in front of it while moving forwa
 
 .. code-block::
 
-    cd /home/pi/picar-x/example
+    cd ~/picar-x/example
     sudo python3 avoiding_obstacles.py
     
 After running the code, PiCar-X will walk forward. 

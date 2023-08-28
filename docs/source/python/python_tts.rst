@@ -11,7 +11,7 @@ Run ``i2samp.sh`` in the **picar-x** folder, and this script will install everyt
 
 .. code-block::
 
-    cd /home/pi/picar-x
+    cd ~/picar-x
     sudo bash i2samp.sh 
 
 .. image:: img/tt_bash.png
@@ -28,7 +28,7 @@ After rebooting, run the ``i2samp.sh`` script again to test the amplifier. If a 
 
 .. code-block::
 
-    cd /home/pi/picar-x/example
+    cd ~/picar-x/example
     sudo python3 tts_example.py
     
 After running the code, PiCar-X will say \"Hello\", \"Hi\", \"Good bye\", \"Nice to meet you\".

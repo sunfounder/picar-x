@@ -30,7 +30,7 @@ This project will add a color detection algorithm to the previous :ref:`py_compu
 
 .. code-block::
 
-    cd /home/pi/picar-x/example
+    cd ~/picar-x/example
     sudo python3 color_detect.py
 
 When the code is run, if PiCar-X captures a red object, it will frame it out. You can also change the ``'red'`` in the code to another color for detection.

@@ -13,7 +13,7 @@ Some experimenting might be needed if the PiCar-X is derailed.
 
 .. code-block::
 
-    cd /home/pi/picar-x/example
+    cd ~/picar-x/example
     sudo python3 minecart_plus.py
     
 After running the code, PiCar-X will move forward along a line.

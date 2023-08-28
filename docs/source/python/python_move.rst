@@ -11,7 +11,7 @@ This is the first project, let’s test the basic movement of Picar-X.
 
 .. code-block::
 
-    cd /home/pi/picar-x/example
+    cd ~/picar-x/example
     sudo python3 move.py
 
 After running the code, PiCar-X will move forward, turn in an S-shape, stop and shake its head. 

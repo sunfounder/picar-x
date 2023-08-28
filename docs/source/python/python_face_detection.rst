@@ -22,7 +22,7 @@ This project is also based on the :ref:`py_computer_vision` project, with the ad
 
 .. code-block::
 
-    cd /home/pi/picar-x/example
+    cd ~/picar-x/example
     sudo python3 human_face_detect.py
 
 After the code is run, the face will be checked out in the screen.

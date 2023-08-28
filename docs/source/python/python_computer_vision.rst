@@ -18,7 +18,7 @@ To perform the next four experiments, make sure to have completed the :ref:`remo
 
 .. code-block::
 
-    cd /home/pi/picar-x/example
+    cd ~/picar-x/example
     sudo python3 computer_vision.py
 
 After the code is run, you will see a window open on your desktop showing the shot.

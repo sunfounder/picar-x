@@ -17,7 +17,7 @@ This program will provide a First Person View from the PiCar-X! Use the keyboard
 
 .. code-block::
 
-    cd /home/pi/picar-x/example
+    cd ~/picar-x/example
     sudo python3 video_car.py
 
 Once the code is running, you can see what PiCar-X is shooting and control it by pressing the following keys.
@@ -66,7 +66,7 @@ Once the code is running, you can see what PiCar-X is shooting and control it by
     def take_photo():
         _time = strftime('%Y-%m-%d-%H-%M-%S',localtime(time()))
         name = 'photo_%s'%_time
-        path = "/home/pi/Pictures/picar-x/"
+        path = "~/Pictures/picar-x/"
         Vilib.take_photo(name, path)
         print('\nphoto save as %s%s.jpg'%(path,name))
 

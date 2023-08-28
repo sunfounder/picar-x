@@ -4,6 +4,9 @@ Set up Your Raspberry Pi
 If You Have a Screen
 -------------------------
 
+.. note:: The Raspberry Pi ZERO installed on the Robot is not easy to connect to the screen, please use the method without a screen to set it up.
+
+
 If you have a screen, it will be easy for you to operate on the
 Raspberry Pi.
 

@@ -66,7 +66,6 @@ The steps are as follows.
     appendix/appendix
     faq
     thank
-    jp_online_tutorial
 
 Copyright Notice
 --------------------------
