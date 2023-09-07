@@ -1,4 +1,4 @@
-SunFounder PiCar-X Kit!
+SunFounder PiCar-X Kit
 ============================================
 
 Thanks for choosing our PiCar-X.
