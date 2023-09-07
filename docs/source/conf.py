@@ -19,7 +19,7 @@
 import sphinx_rtd_theme
 import time
 
-project = 'SunFounder picar-x'
+project = 'SunFounder PiCar-X Kit'
 copyright = f'{time.localtime().tm_year}, SunFounder'
 author = 'www.sunfounder.com'
 
@@ -85,6 +85,7 @@ html_js_files = [
     'https://ezblock.cc/readDocFile/readTheDoc/src/js/xterm.js',
     'https://ezblock.cc/readDocFile/readTheDoc/src/js/FitAddon.js',
     'https://ezblock.cc/readDocFile/readTheDoc/src/js/readTheDocIndex.js',
+    './lang.js', # new
 
 ]
 html_css_files = [
