@@ -1,36 +1,35 @@
-Face Detection
+顔検出
 ======================
 
-In addition to color detection, PiCar-X also includes a face detection function. In the following example the Joystick widget is used to adjust the direction of the camera, and the number of faces will be displayed in the debug monitor.
+カラー検出に加えて、PiCar-Xには顔検出機能も含まれています。以下の例では、ジョイスティックウィジェットを使用してカメラの方向を調整し、デバッグモニタには検出された顔の数が表示されます。
 
-For more information on how to use the Video widget, please reference the tutorial on Ezblock video here: :ref:`ezblock:video_latest`.
+ビデオウィジェットの使用方法の詳細については、こちらのEzblockビデオのチュートリアルを参照してください: :ref:`ezblock:video_latest`。
 
 .. image:: img/face_detection.PNG
-
 
 **TIPS**
 
 .. image:: img/sp210512_141947.png
 
-Set the **face detection** widget to **on** to enable facial detection.
+**顔検出** ウィジェットを **オン** に設定して、顔の検出を有効にします。
 
 .. image:: img/sp210512_142327.png
 
-These two blocks are used to adjust the orientation of the pan-tilt camera, similar to driving the PiCar-X in the :ref:`ezb_remote_control` tutorial. As the value increases, the camera will rotate to the right, or upwards, a decreasing value will rotate the camera right, or downwards.
+これらの2つのブロックは、 :ref:`ezb_remote_control` のチュートリアルでのPiCar-Xの運転と同様に、パン・チルトカメラの方向を調整するために使用されます。値が増加すると、カメラは右または上に回転し、値が減少すると、カメラは右または下に回転します。
 
 .. image:: img/sp210512_142407.png
 
-The image detection results are given through the of **detected face** block. Use the drop-down menu options to choose between reading the coordinates, size, or number of results from the image detection function.
+画像検出の結果は、 **detected face** ブロックを通じて提供されます。ドロップダウンメニューオプションを使用して、画像検出機能からの座標、サイズ、または結果の数の間で選択します。
 
 .. image:: img/sp210512_142616.png
 
-Use the **create text with** block to print the combination of **text** and of **detected face** data.
+**create text with** ブロックを使用して、 **text** と **detected face** データの組み合わせを印刷します。
 
-**EXAMPLE**
+**例**
 
 .. note::
 
-    * You can write the program according to the following picture, please refer to the tutorial: :ref:`ezblock:create_project_latest`.
-    * Or find the code with the same name on the **Examples** page of the EzBlock Studio and click **Run** or **Edit** directly.
+    * 以下の画像に従ってプログラムを書くことができます。チュートリアルを参照してください: :ref:`ezblock:create_project_latest`。
+    * EzBlock Studioの **Examples** ページで同じ名前のコードを見つけ、 **Run** または **Edit** を直接クリックしてください。
 
 .. image:: img/sp210512_142830.png

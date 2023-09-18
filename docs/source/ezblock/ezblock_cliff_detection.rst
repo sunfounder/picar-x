@@ -1,20 +1,20 @@
-Cliff Detection
+断崖検出
 ===========================
 
-This project will use the **grayscale module** to prevent the PiCar-X from falling off a cliff while it is moving freely around your home. This is an essential project for houses with staircases.
+このプロジェクトでは、 **grayscale module** を使用して、PiCar-Xが家の中を自由に移動している間に断崖から落ちないようにします。階段のある家には必須のプロジェクトです。
 
-**TIPS**
+**ヒント**
 
 .. image:: img/sp210512_164544.png
 
-The **grayscale module** will be performing the same operation multiple times. To simplify the program, this project introduces a **function** that will return a **list** variable to the **do forever** block.
+**grayscale module** は、同じ操作を複数回実行します。プログラムを単純化するため、このプロジェクトでは **do forever** ブロックに **list** 変数を返す **function** を紹介しています。
 
-**EXAMPLE**
+**例**
 
 .. note::
 
-    * You can write the program according to the following picture, please refer to the tutorial: :ref:`ezblock:create_project_latest`.
-    * Or find the code with the same name on the **Examples** page of the EzBlock Studio and click **Run** or **Edit** directly.
+    * 以下の画像に従ってプログラムを書くことができます。チュートリアルを参照してください: :ref:`ezblock:create_project_latest`。
+    * EzBlock Studioの **Examples** ページで同じ名前のコードを見つけ、 **Run** または **Edit** を直接クリックしてください。
 
 .. image:: img/sp210512_164755.png
 

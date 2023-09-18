@@ -1,9 +1,10 @@
-Obstacle Avoidance
+
+障害物回避
 =============================
 
-In this project, PiCar-X will detect obstacles in front of it while moving forward, and when the obstacles are too close, it will change the direction of moving forward.
+このプロジェクトでは、PiCar-Xは前進しながら前方の障害物を検出し、障害物が近すぎる場合は前進の方向を変えます。
 
-**Run the Code**
+**コードを実行する**
 
 .. raw:: html
 
@@ -14,16 +15,16 @@ In this project, PiCar-X will detect obstacles in front of it while moving forwa
     cd ~/picar-x/example
     sudo python3 avoiding_obstacles.py
     
-After running the code, PiCar-X will walk forward. 
+コードを実行すると、PiCar-Xは前進します。
 
-If it detects that the distance of the obstacle ahead is less than 25cm, it will turn left. 
+障害物との距離が25cm未満であることを検出すると、左に曲がります。
 
-If there is no obstacle in the direction after turning left or the obstacle distance is greater than 25cm, it will continue to move forward.
+左に曲がった後の方向に障害物がないか、または障害物との距離が25cmより大きい場合、前進を続けます。
 
-**Code**
+**コード**
 
 .. note::
-    You can **Modify/Reset/Copy/Run/Stop** the code below. But before that, you need to go to source code path like ``picar-x/example``. After modifying the code, you can run it directly to see the effect.
+    下のコードはv **変更/リセット/コピー/実行/停止** ができます。しかし、それをする前に、 ``picar-x/example`` のようなソースコードのパスに移動する必要があります。コードを変更した後、その効果を直接見るために実行することができます。
 
 .. raw:: html
 
@@ -55,15 +56,15 @@ If there is no obstacle in the direction after turning left or the obstacle dist
         main()
 
 
-**How it works?**
+**どのように動作するのか？**
 
-The ultrasonic module is also imported in the picarx module, and we can use some of its encapsulated functions to detect distance.
+超音波モジュールもpicarxモジュールにインポートされており、距離を検出するための一部のカプセル化された関数を使用することができます。
 
 .. code-block:: python
 
     from picarx import Picarx
 
-Because the ultrasonic module is imported into the picarx module, we can directly use ``px.ultrasonic.read()`` to get the distance.
+超音波モジュールがpicarxモジュールにインポートされているので、 ``px.ultrasonic.read()`` を直接使用して距離を取得することができます。
 
 .. code-block:: python
 
@@ -72,7 +73,7 @@ Because the ultrasonic module is imported into the picarx module, we can directl
     while True:
         distance = px.ultrasonic.read() 
 
-The following code snippet reads the distance value reported by the ultrasonic module, and if the distance is below 25cm (10 inches) it will set the steering servo from 0° (straight) to -35° (turn left).
+以下のコードスニペットは、超音波モジュールによって報告された距離の値を読み取り、距離が25cm（10インチ）未満の場合、操舵サーボを0°（直進）から-35°（左に曲がる）に設定します。
 
 .. code-block:: python
 

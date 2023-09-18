@@ -1,10 +1,10 @@
 .. _install_all_modules:
 
 
-Install All the Modules
-============================
+すべてのモジュールをインストールする
+============================================
 
-Make sure you are connected to the Internet and update your system:
+インターネットに接続されていることを確認し、システムを更新してください:
 
 .. raw:: html
 
@@ -17,18 +17,17 @@ Make sure you are connected to the Internet and update your system:
 
 .. note::
 
-    Python3 related packages must be installed if you are installing the Lite version OS.
+    LiteバージョンのOSをインストールしている場合、Python3関連のパッケージをインストールする必要があります。
 
     .. raw:: html
 
         <run></run>
 
     .. code-block::
-    
+
         sudo apt install git python3-pip python3-setuptools python3-smbus
 
-
-Install ``robot-hat``.
+``robot-hat`` をインストールしてください。
 
 .. raw:: html
 
@@ -42,12 +41,12 @@ Install ``robot-hat``.
     sudo python3 setup.py install
 
 .. note::
-    Running ``setup.py`` will download some necessary components. Your download may have failed due to network issues. You may need to download again at this point.
-    See the following interface, type ``Y`` and press Enter.
+    ``setup.py`` を実行すると、必要なコンポーネントがダウンロードされます。ネットワークの問題でダウンロードが失敗した場合、この時点で再ダウンロードする必要があります。
+    次のインターフェースを参照し、 ``Y`` を入力し、Enterキーを押してください。
 	
 	.. image:: img/dowload_code.png
 
-Then download and install the ``vilib`` module.
+次に、 ``vilib`` モジュールをダウンロードしてインストールします。
 
 .. raw:: html
 
@@ -56,11 +55,11 @@ Then download and install the ``vilib`` module.
 .. code-block::
 
     cd ~/
-    git clone https://github.com/sunfounder/vilib.git
+    git clone -b picamera2 https://github.com/sunfounder/vilib.git
     cd vilib
     sudo python3 install.py
 
-Download and install the ``picar-x`` module.
+``picar-x`` モジュールをダウンロードしてインストールします。
 
 .. raw:: html
 
@@ -73,9 +72,9 @@ Download and install the ``picar-x`` module.
     cd picar-x
     sudo python3 setup.py install
 
-This step will take a little while, so please be patient.
+このステップは少し時間がかかるので、お待ちください。
 
-Finally, you need to run the script ``i2samp.sh`` to install the components required by the i2s amplifier, otherwise the picar-x will have no sound.
+最後に、i2sアンプに必要なコンポーネントをインストールするために、スクリプト ``i2samp.sh`` を実行する必要があります。そうしないと、picar-xに音が出ません。
 
 .. raw:: html
 
@@ -88,15 +87,15 @@ Finally, you need to run the script ``i2samp.sh`` to install the components requ
 	
 .. image:: img/i2s.png
 
-Type ``y`` and press enter to continue running the script.
+``y`` を入力して、Enterキーを押し、スクリプトの実行を続行します。
 
 .. image:: img/i2s2.png
 
-Type ``y`` and press enter to run ``/dev/zero`` in the background.
+``y`` を入力して、Enterキーを押し、 ``/dev/zero`` をバックグラウンドで実行します。
 
 .. image:: img/i2s3.png
 
-Type ``y`` and press enter to restart the Picar-X.
+``y`` を入力して、Enterキーを押し、Picar-Xを再起動します。
 
 .. note::
-    If there is no sound after restarting, you may need to run the i2samp.sh script several times.
+    再起動後に音が出ない場合、i2samp.shスクリプトを数回実行する必要があるかもしれません。

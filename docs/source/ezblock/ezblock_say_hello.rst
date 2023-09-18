@@ -1,7 +1,7 @@
-Say Hello
+Hello
 ===================
 
-This project will combine several functions from the preceding projects. The PiCar-X movement will be remotely controlled, and the PiCar’s camera will be remotely controlled by using two joystick controllers. When PiCar recognizes someone's face, it will nod politely and then say “Hello!”.
+このプロジェクトでは、前述のプロジェクトからいくつかの機能を組み合わせます。PiCar-Xの動きはリモートで制御され、PiCarのカメラも2つのジョイスティックコントローラを使用してリモートで制御されます。PiCarが誰かの顔を認識すると、礼儀正しく頷き、そして「Hello」と言います。
 
 * :ref:`ezblock:video_latest`
 * :ref:`ezblock:remote_control_latest`
@@ -9,22 +9,21 @@ This project will combine several functions from the preceding projects. The PiC
 .. image:: img/how_are_you.jpg
 
 
-**TIPS**
+**ヒント**
 
 .. image:: img/sp210512_161525.png
 
-The **if do** block is used to nod politely once the conditional judgment of “if” is true.
+**if do** ブロックは、”if”の条件判断が真の場合に礼儀正しく頷くために使用されます。
 
 .. image:: img/sp210512_161749.png
 
-The **conditional statements** block is used in conjunction with the **if do** block. The conditions can be “=”, “>”, “<”, ” ≥ “, ” ≤ “, or ” ≠ “.
+**conditional statements** ブロックは、 **if do** ブロックと組み合わせて使用されます。条件は、”=”、”>”、”<”、” ≥ “、” ≤ “、または ” ≠ “のいずれかであることができます。
 
-**EXAMPLE**
+**例**
 
 .. note::
 
-    * You can write the program according to the following picture, please refer to the tutorial: :ref:`ezblock:create_project_latest`.
-    * Or find the code with the same name on the **Examples** page of the EzBlock Studio and click **Run** or **Edit** directly.
-
+    * 以下の画像に従ってプログラムを書くことができます。チュートリアルを参照してください: :ref:`ezblock:create_project_latest`。
+    * EzBlock Studioの **Examples** ページで同じ名前のコードを見つけ、 **Run** または **Edit** を直接クリックしてください。
 
 .. image:: img/sp210512_162305.png

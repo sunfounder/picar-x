@@ -1,26 +1,23 @@
 .. _ezb_minecart:
 
-Minecart
+マインカート
 =====================
 
-Let’s make a minecart project! This project will use the Grayscale module to make the PiCar-X move forward along a track. 
-Use dark-colored tape to make a track on the ground as straight as possible, and not too curved. Some experimenting might be needed if the PiCar-X becomes derailed. 
+マインカートプロジェクトを作成しましょう！このプロジェクトでは、グレースケールモジュールを使用して、PiCar-Xをトラックに沿って前進させます。
+できるだけ直線的に、そしてあまり曲がっていないトラックを作るために、暗い色のテープを使って地面にトラックを作ります。PiCar-Xが脱線する場合、実験が必要になるかもしれません。
 
-When moving along the track, the probes on the left and right sides of the Grayscale module will detect light-colored ground, and the middle probe will detect the track. If the track has an arc, the probe on the left or right side of the sensor will detect the dark-colored tape, and turn the wheels in that direction. If the minecart reaches the end of the track or derails, the Grayscale module will no longer detect the dark-colored tape track, and the PiCar-X will come to a stop.
+トラックを移動するとき、グレースケールモジュールの左右のプローブは、明るい色の地面を検出し、中央のプローブはトラックを検出します。トラックに弧がある場合、センサーの左右のプローブは暗色のテープを検出し、その方向に車輪を回します。マインカートがトラックの端に達するか脱線すると、グレースケールモジュールは暗色のテープトラックを検出しなくなり、PiCar-Xは停止します。
 
+**ヒント**
 
-**TIPS**
+* **Set ref to ()** ブロックは、グレースケールのしきい値を設定するために使用されます。実際の状況に応じて変更する必要があります。白と黒の表面でのグレースケールモジュールの値を確認するために、 :ref:`test_grayscale` を実行してみてください。このブロックにその中間値を記入します。
 
-* **Set ref to ()** block is used to set the grayscale threshold, you need to modify it according to the actual situation. You can go ahead and run :ref:`test_grayscale` to see the values of the grayscale module on the white and black surfaces, and fill in their middle values in this block.
-
-
-**EXAMPLE**
+**例**
 
 .. note::
 
-    * You can write the program according to the following picture, please refer to the tutorial: :ref:`ezblock:create_project_latest`.
-    * Or find the code with the same name on the **Examples** page of the EzBlock Studio and click **Run** or **Edit** directly.
-
+    * 以下の画像に従ってプログラムを書くことができます。チュートリアルを参照してください: :ref:`ezblock:create_project_latest`。
+    * EzBlock Studioの **Examples** ページで同じ名前のコードを見つけ、 **Run** または **Edit** を直接クリックしてください。
 
 .. image:: img/sp210512_170342.png
 

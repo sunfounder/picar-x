@@ -3,41 +3,37 @@
 PuTTY
 =========================
 
-If you are a Windows user, you can use some applications of SSH. Here, we recommend `PuTTY <https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html>`_.
+Windowsユーザーの場合、SSHのいくつかのアプリケーションを使用できます。ここでは、 `PuTTY <https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html>`_ をおすすめします。
 
-**Step 1**
+**ステップ1**
 
-Download PuTTY.
+PuTTYをダウンロードします。
 
-**Step 2**
+**ステップ2**
 
-Open PuTTY and click **Session** on the left tree-alike structure. Enter
-the IP address of the RPi in the text box under **Host Name (or IP
-address)** and **22** under **Port** (by default it is 22).
+PuTTYを開き、左のツリー構造で **Session** をクリックします。 **Host Name（またはIPアドレス）** のテキストボックスにRPiのIPアドレスを入力し、 **Port** に **22** を入力します（デフォルトでは22）。
 
 .. image:: img/image25.png
     :align: center
 
-**Step 3**
+**ステップ3**
 
-Click **Open**. Note that when you first log in to the Raspberry Pi with
-the IP address, there prompts a security reminder. Just click **Yes**.
+**Open** をクリックします。IPアドレスでRaspberry Piに初めてログインすると、セキュリティのリマインダが表示されます。 **Yes** をクリックしてください。
 
-**Step 4**
+**ステップ4**
 
-When the PuTTY window prompts \"**login as:**\", type in
-\"**pi**\" (the user name of the RPi), and **password**: \"raspberry\"
-(the default one, if you haven't changed it).
+PuTTYのウィンドウで「login as:」と表示されたら、
+「pi」（RPiのユーザー名）を入力し、 **password** に「raspberry」を入力します（変更していない場合はデフォルト）。
 
 .. note::
 
-    When you input the password, the characters do not display on window accordingly, which is normal. What you need is to input the correct password.
+    パスワードを入力すると、キャラクタはウィンドウには表示されませんが、これは正常です。正しいパスワードを入力する必要があります。
     
-    If inactive appears next to PuTTY, it means that the connection has been broken and needs to be reconnected.
+    PuTTYの横に非アクティブが表示される場合、接続が切断されて再接続が必要であることを意味します。
     
 .. image:: img/image26.png
     :align: center
 
-**Step 5**
+**ステップ5**
 
-Here, we get the Raspberry Pi connected and it is time to conduct the next steps.
+ここで、Raspberry Piに接続したので、次の手順を実行する準備が整いました。

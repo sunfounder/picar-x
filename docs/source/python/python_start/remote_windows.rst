@@ -1,17 +1,17 @@
-Windows Users
+Windowsユーザー
 =======================
 
-Login Raspberry Pi Remotely
------------------------------
+Raspberry Piへのリモートログイン
+-------------------------------------------------
 
-If you are using win10, you can use follow way to login Raspberry Pi remotely.
+Windows10を使用している場合、以下の方法でRaspberry Piにリモートログインすることができます。
 
-#. Type ``powershell`` in the search box of your Windows desktop, right click on the ``Windows PowerShell``, and select ``Run as administrator`` from the menu that appears.
+#. Windowsのデスクトップの検索ボックスに ``powershell`` と入力し、表示される ``Windows PowerShell`` を右クリックして、メニューから ``管理者として実行`` を選択します。
 
     .. image:: img/powershell_ssh.png
         :align: center
 
-#. Then, check the IP address of your Raspberry Pi by typing in ``ping -4 <hostname>.local``. 
+#. 次に、 ``ping -4 <hostname>.local`` と入力して、Raspberry PiのIPアドレスを確認します。
 
     .. code-block::
 
@@ -21,13 +21,12 @@ If you are using win10, you can use follow way to login Raspberry Pi remotely.
         :width: 550
         :align: center
 
-    As shown above, you can see the Raspberry Pi's IP address after it has been connected to the network.
+    上記のように、Raspberry Piがネットワークに接続された後のIPアドレスを確認できます。
 
-    * If terminal prompts ``Ping request could not find host pi.local. Please check the name and try again.``. Please follow the prompts to make sure the hostname you fill in is correct.
-    * Still can't get the IP? Check your network or WiFi configuration on the Raspberry Pi.
+    * もし、ターミナルに ``Ping request could not find host pi.local. Please check the name and try again.`` と表示された場合は、ホスト名が正しいか確認してください。
+    * IPアドレスが取得できない場合は、Raspberry PiのネットワークまたはWiFiの設定を確認してください。
 
-
-#. At this point you will be able to log in to your Raspberry Pi using the ``ssh <username>@<hostname>.local`` (or ``ssh <username>@<IP address>``).
+#. この時点で、 ``ssh <username>@<hostname>.local`` （または ``ssh <username>@<IP address>`` ）を使用して、Raspberry Piにログインできるようになります。
 
     .. code-block::
 
@@ -35,14 +34,13 @@ If you are using win10, you can use follow way to login Raspberry Pi remotely.
 
     .. warning::
 
-        If a prompt appears ``The term 'ssh' is not recognized as the name of a cmdlet...``.
+        ``The term 'ssh' is not recognized as the name of a cmdlet...`` というプロンプトが表示された場合、
         
-        It means your system is too old and does not have ssh tools pre-installed, you need to manually :ref:`openssh_powershell`.
+        システムが古く、SSHツールが事前にインストールされていないことを意味します。手動で :ref:`openssh_powershell` をインストールする必要があります。
         
-        Or use a third party tool like :ref:`login_windows`.
+        または、 :ref:`login_windows` のようなサードパーティツールを使用することができます。
 
-
-#. The following message will be displayed only when you log in for the first time, so enter ``yes``.
+#. 初めてログインする際には以下のメッセージが表示されるので、 ``yes`` と入力します。
 
     .. code-block::
 
@@ -51,33 +49,30 @@ If you are using win10, you can use follow way to login Raspberry Pi remotely.
         This key is not known by any other names
         Are you sure you want to continue connecting (yes/no/[fingerprint])?
 
-
-#. Input the password you set before. (Mine is ``raspberry``.)
+#. 以前設定したパスワードを入力します。(私の場合は ``raspberry`` です。)
 
     .. note::
-        When you input the password, the characters do not display on
-        window accordingly, which is normal. What you need is to input the
-        correct password.
+        パスワードを入力する際、文字はウィンドウ上に表示されませんが、これは正常です。
+        正しいパスワードを入力するだけで大丈夫です。
 
-#. We now get the Raspberry Pi connected and are ready to go to the next step.
+#. Raspberry Piに接続が完了したので、次のステップに進む準備ができました。
 
     .. image:: img/sp221221_140628.png
         :width: 550
         :align: center
 
-Remote Desktop
-------------------
+リモートデスクトップ
+-------------------------------------------
 
-If you're not satisfied with using the command window to access your Raspberry Pi, you can also use the remote desktop feature to easily manage files on your Raspberry Pi using a GUI.
+コマンドウィンドウを使用してRaspberry Piにアクセスするだけでは満足できない場合、リモートデスクトップ機能を使用して、GUIを使用してRaspberry Pi上のファイルを簡単に管理することができます。
 
-Here we use `VNC® Viewer <https://www.realvnc.com/en/connect/download/viewer/>`_.
+ここでは、 `VNC® Viewer <https://www.realvnc.com/en/connect/download/viewer/>`_ を使用します。
 
-**Enable VNC service**
+**VNCサービスの有効化**
 
-The VNC service has been installed in the system. By default, VNC is
-disabled. You need to enable it in config.
+VNCサービスはシステムにインストールされています。デフォルトではVNCは無効になっています。それを設定で有効にする必要があります。
 
-#. Input the following command:
+#. 以下のコマンドを入力します:
 
     .. raw:: html
 
@@ -90,36 +85,36 @@ disabled. You need to enable it in config.
     .. image:: img/image287.png
         :align: center
 
-#. Choose **3** **Interfacing Options** by press the down arrow key on your keyboard, then press the **Enter** key.
+#. キーボードの矢印キーを使用して **3 Interfacing Options** を選択し、 **Enter** キーを押します。
 
     .. image:: img/image282.png
         :align: center
 
-#. Then **P3 VNC**. 
+#. 次に、 **P3 VNC** を選択します。
 
     .. image:: img/image288.png
         :align: center
 
-#. Use the arrow keys on the keyboard to select **<Yes>** -> **<OK>** -> **<Finish>** to complete the setup.
+#. キーボードの矢印キーを使用して、 **<Yes>** -> **<OK>** -> **<Finish>** を選択し、設定を完了します。
 
     .. image:: img/mac_vnc8.png
         :align: center
 
-**Login to VNC**
+**VNCへのログイン**
 
-#. You need to download and install the `VNC Viewer <https://www.realvnc.com/en/connect/download/viewer/>`_ on personal computer.
+#. まず、個人のコンピューターに `VNC Viewer <https://www.realvnc.com/en/connect/download/viewer/>`_ をダウンロードしてインストールする必要があります。
 
-#.  Open it once the installation is complete. Then, enter the host name or IP address and press Enter.
+#. インストールが完了したら、ホスト名またはIPアドレスを入力してEnterキーを押します。
 
     .. image:: img/vnc_viewer1.png
         :align: center
 
-#. After entering your Raspberry Pi name and password, click **OK**.
+#. Raspberry Piの名前とパスワードを入力した後、 **OK** をクリックします。
 
     .. image:: img/vnc_viewer2.png
         :align: center
 
-#. Now you can see the desktop of the Raspberry Pi.
+#. Raspberry Piのデスクトップが表示されます。
 
     .. image:: img/image294.png
         :align: center

@@ -1,44 +1,34 @@
-Enable I2C and Camera Interface
+I2Cインターフェースを有効にする
 ========================================
 
-Here we are using the Raspberry Pi's I2C and Camera interfaces, but by default they are disabled, so we need to enable them first.
+Raspberry Pi の I2C インターフェイスを使用していますが、デフォルトでは無効になっているため、最初に有効にする必要があります。
 
-#. Input the following command:
+#. 以下のコマンドを入力してください:
 
     .. raw:: html
 
         <run></run>
 
-    .. code-block:: 
+    .. code-block::
 
         sudo raspi-config
 
-#. Choose **3** **Interfacing Options** by press the down arrow key on your keyboard, then press the **Enter** key.
+#. キーボードの下矢印キーを押して **3 Interfacing Options** を選択し、 **Enter** キーを押します。
 
     .. image:: img/image282.png
         :align: center
 
-#. Then **P5 I2C**.
+#. 次に、 **P5 I2C** を選択します。
 
     .. image:: img/image283.png
         :align: center
 
-#. Use the arrow keys on the keyboard to select **<Yes>** -> **<OK>** to complete the setup of the I2C.
+#. キーボードの矢印キーを使用して、 **<Yes>** -> **<OK>** を選択し、I2Cのセットアップを完了します。
 
     .. image:: img/image284.png
         :align: center
 
-#. Go to **3 Interfacing Options** again and select **P1 Camera**.
-
-    .. image:: img/camera_enable.png
-        :align: center
-
-#. Again select **<Yes>** -> **<OK>** to complete the setup.
-
-    .. image:: img/camera_enable1.png
-        :align: center
-
-#. After you select **<Finish>**, a pop-up will remind you that you need to reboot for the settings to take effect, select **<Yes>**.
+#. **<Finish>** を選択すると、設定が有効になるために再起動する必要があることをポップアップでお知らせします。 **<Yes>** を選択してください。
 
     .. image:: img/camera_enable2.png
         :align: center

@@ -1,24 +1,23 @@
 .. _control_by_app:
 
-Controlled by the APP
+アプリによる制御
 =======================
 
-The SunFounder controller is used to control Raspberry Pi/Pico based robots.
+SunFounderのコントローラーは、Raspberry Pi/Picoベースのロボットを制御するために使用されます。
 
-The APP integrates Button, Switch, Joystick, D-pad, Slider and Throttle Slider widgets; Digital Display, Ultrasonic Radar, Grayscale Detection and Speedometer input widgets.
+このアプリには、ボタン、スイッチ、ジョイスティック、D-pad、スライダー、スロットルスライダーウィジェット、デジタルディスプレイ、超音波レーダー、グレースケール検出、速度計入力ウィジェットが統合されています。
 
-There are 17 areas A-Q , where you can place different widgets to customize your own controller.
+A-Qの17のエリアがあり、異なるウィジェットを配置して独自のコントローラーをカスタマイズできます。
 
-In addition, this application provides a live video streaming service.
+さらに、このアプリはライブビデオストリーミングサービスも提供しています。
 
-Let's customize a PiCar-X controller using this app.
+このアプリを使用して、PiCar-Xのコントローラーをカスタマイズしてみましょう。
 
-**How to do?**
+**やり方は？**
 
-#. Install the ``sunfounder-controller`` module.
+#. ``sunfounder-controller`` モジュールをインストールします。
 
-    The ``robot-hat``, ``vilib``, and ``picar-x`` modules need to be installed first, for details see: :ref:`install_all_modules`.
-
+    まず、``robot-hat``, ``vilib``, ``picar-x`` モジュールをインストールする必要があります。詳細は :ref:`install_all_modules` を参照してください。
 
     .. raw:: html
 
@@ -31,7 +30,7 @@ Let's customize a PiCar-X controller using this app.
         cd ~/sunfounder-controller
         sudo python3 setup.py install
 
-#. Run the code.
+#. コードを実行します。
 
     .. raw:: html
 
@@ -42,81 +41,78 @@ Let's customize a PiCar-X controller using this app.
         cd ~/picar-x/example
         sudo python3 app_control.py
 
-#. Install `SunFounder Controller <https://docs.sunfounder.com/projects/sf-controller/en/latest/>`_ from **APP Store(iOS)** or **Google Play(Android)**.
+#. **APP Store(iOS)** または **Google Play(Android)** から `SunFounder Controller <https://docs.sunfounder.com/projects/sf-controller/en/latest/>`_ をインストールします。
 
+#. 新しいコントローラーを開き、作成します。
 
-#. Open and create a new controller.
-
-    Create a new controller by clicking on the + sign in the SunFounder Controller APP.
+    SunFounder Controller APPで+記号をクリックして新しいコントローラーを作成します。
 
     .. image:: img/app1.PNG
 
-    Give it a name and select the Controller type. There are preset controllers for some products in the Preset section, which you can use as needed. You can also customize your own controller by following the steps below.
+    名前を付け、コントローラーのタイプを選択します。Presetセクションには、一部の製品用のプリセットコントローラーがあり、必要に応じて使用できます。以下の手順に従って、独自のコントローラーもカスタマイズできます。
 
     .. image:: img/app2.PNG
 
-#. Add different widgets to this controller.
+#. このコントローラに異なるウィジェットを追加します。
 
-    You can add different types and shapes of widgets to the **A-Q** 17 small areas inside this controller.
+    このコントローラの中の**A-Q** 17の小エリアに、異なるタイプと形のウィジェットを追加できます。
 
     .. image:: img/app3.PNG
 
-    In the **A** area, add an **Speedometer** widget to display the car's speed.
+    **A** エリアに、車の速度を表示するための **Speedometer** ウィジェットを追加します。
 
     .. image:: img/app4.PNG
-    
+
     .. note::
     
-        You can delete the widget you have selected by clicking on it, swiping left to find the **Delete** button, and clicking on it.
+        選択したウィジェットを削除するには、それをクリックし、左にスワイプして **Delete** ボタンを見つけ、それをクリックします。
 
         .. image:: img/app5.PNG
 
-    Set the name, maximum and minimum values and units by clicking the **Settings** icon in the upper right corner.
+    右上の **Settings** アイコンをクリックして、名前、最大値、最小値、単位を設定します。
 
     .. image:: img/app6.PNG
 
-    Set your current environment's ``Line_Ref`` and ``Cliff_Ref`` for the **Grayscale Detection** widget in the **D** area.
+    **D** エリアの **Grayscale Detection** ウィジェットのために、現在の環境の ``Line_Ref`` および ``Cliff_Ref`` を設定します。
 
     .. image:: img/app7.PNG
 
-    Lastly, add the remaining widgets and click the top right button to save.
+    最後に、残りのウィジェットを追加し、右上のボタンをクリックして保存します。
 
     .. image:: img/app8.PNG
 
-#. Connect to PiCar-x.
+#. PiCar-xに接続します。
 
-    When you click the **Connect** button, it will automatically search for robots nearby. Its name is defined in ``picarx_control.py`` and it must be running at all times.
+    **Connect** ボタンをクリックすると、近くのロボットが自動的に検索されます。その名前は ``picarx_control.py`` で定義されており、常に実行されている必要があります。
 
     .. image:: img/app9.PNG
-    
-    Once you click on the product name, the message "Connected Successfully" will appear and the product name will appear in the upper right corner.
+
+    製品名をクリックすると、「接続に成功しました」というメッセージが表示され、製品名が右上隅に表示されます。
 
     .. image:: img/app10.PNG
 
     .. note::
 
-        * You need to make sure that your mobile device is connected to the same LAN as PiCar-X.
-        * If it doesn't search automatically, you can also manually enter the IP to connect.
+        * PiCar-Xと同じLANにモバイルデバイスが接続されていることを確認する必要があります。
+        * 自動的に検索されない場合、IPを手動で入力して接続することもできます。
 
         .. image:: img/app11.PNG
 
-#. Run this controller.
+#. このコントローラを実行します。
 
-    Click the **Run** button to start the controller, you will see the footage of the car shooting, and now you can control your PiCar-X with these widgets.
+    **Run** ボタンをクリックしてコントローラを起動すると、車の撮影映像が表示され、これらのウィジェットでPiCar-Xを制御できるようになります。
 
     .. image:: img/app12.PNG
-    
-    Here are the functions of the widgets.
 
-    * **A**: Show the current speed of the car.
-    * **D**: Show the data of the three sensors on the grayscale module, which have three states: **black block**: black line detected; **white**: white detected; **exclamation point**: cliff detected.
-    * **E**: turn on the obstacle avoidance function.
-    * **I**: turn on the line following function.
-    * **J**: voice recognition, press and hold this widget to start speaking, and it will show the recognized voice when you release it. We have set ``forward``, ``backard``, ``left`` and ``right`` 4 commands in the code to control the car.
-    * **K**: Control forward, backward, left, and right motions of the car.
-    * **Q**: turn the head(Camera) up, down, left and right.
-    * **N**: Turn on the color recognition function.
-    * **O**: Turn on the face recognition function.
-    * **P**: Turn on the object recognition function, it can recognize nearly 90 kinds of objects, for the list of models, please refer to: https://github.com/sunfounder/vilib/blob/master/workspace/coco_labels.txt.
+    ウィジェットの機能は以下の通りです。
 
-
+    * **A**: 車の現在の速度を表示します。
+    * **D**: グレースケールモジュール上の三つのセンサーのデータを表示します。三つの状態があります： **黒ブロック** : 黒線検出; **白** : 白検出; **感嘆符** : 崖検出。
+    * **E**: 障害物回避機能をオンにします。
+    * **I**: ライン追従機能をオンにします。
+    * **J**: 音声認識、このウィジェットを押して話し始めると、放すと認識した音声を表示します。コードで ``forward`` 、 ``backard`` 、 ``left`` 、 ``right`` の4つのコマンドを設定しています。
+    * **K**: 車の前、後ろ、左、右の動きを制御します。
+    * **Q**: 頭（カメラ）を上、下、左、右に動かします。
+    * **N**: カラー認識機能をオンにします。
+    * **O**: 顔認識機能をオンにします。
+    * **P**: オブジェクト認識機能をオンにします。それは約90種類のオブジェクトを認識することができます。モデルのリストについては、次のリンクを参照してください：https://github.com/sunfounder/vilib/blob/master/workspace/coco_labels.txt。

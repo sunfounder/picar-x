@@ -1,131 +1,92 @@
-Installing the OS
+OSのインストール
 =======================
 
-**Required Components**
+**必要な部品**
 
 ================== ======================
-Any Raspberry Pi   1 \* Personal Computer
-1 \* Micro SD card 
+Raspberry Pi        パーソナルコンピュータ
+Micro SDカード 
 ================== ======================
 
-**Step 1**
+**ステップ1**
 
-Raspberry Pi have developed a graphical SD card writing tool that works
-on Mac OS, Ubuntu 18.04 and Windows, and is the easiest option for most
-users as it will download the image and install it automatically to the
-SD card.
+Raspberry Piは、Mac OS、Ubuntu 18.04、Windowsで動作するグラフィカルなSDカード書き込みツールを開発しています。これは、イメージをダウンロードしてSDカードに自動的にインストールするため、ほとんどのユーザーにとって最も簡単なオプションです。
 
-Visit the download page: https://www.raspberrypi.org/software/. Click on
-the link for the Raspberry Pi Imager that matches your operating system,
-when the download finishes, click it to launch the installer.
+ダウンロードページを訪れます: https://www.raspberrypi.org/software/. あなたのオペレーティングシステムに合わせたRaspberry Pi Imagerのリンクをクリックし、ダウンロードが完了したらインストーラを起動します。
 
 .. image:: img/image11.png
     :align: center
 
+**ステップ2**
 
-**Step 2**
+インストーラを起動すると、オペレーティングシステムがそれを実行するのをブロックしようとする場合があります。例えば、Windowsでは以下のメッセージが表示されます:
 
-When you launch the installer, your operating system may try to block
-you from running it. For example, on Windows I receive the following
-message:
-
-If this pops up, click on **More info** and then **Run anyway**, then
-follow the instructions to install the Raspberry Pi Imager.
+このポップアップが表示されたら、 **詳細情報** をクリックしてから **とにかく実行** をクリックし、Raspberry Pi Imagerをインストールする手順に従います。
 
 .. image:: img/image12.png
     :align: center
 
-**Step 3**
+**ステップ3**
 
-Insert your SD card into the computer or laptop SD card slot.
+SDカードをコンピュータまたはラップトップのSDカードスロットに挿入します。
 
-**Step 4**
+**ステップ4**
 
-In the Raspberry Pi Imager, select the OS that you want to install and
-the SD card you would like to install it on.
+Raspberry Pi Imagerで、インストールしたいOSとそれをインストールしたいSDカードを選択します。
 
 .. image:: img/sp230607_161330.png
     :align: center
 
-.. note:: 
+.. note:: 
 
-    1) You will need to be connected to the internet the first time.
+    1) 初回はインターネットに接続する必要があります。
 
-    2) That OS will then be stored for future offline use(lastdownload.cache, C:/Users/yourname/AppData/Local/Raspberry Pi/Imager/cache). So the next time you open the software, it will have the display "Released: date, cached on your computer".
+    2) そのOSは将来のオフライン使用のために保存されます(lastdownload.cache, C:/Users/yourname/AppData/Local/Raspberry Pi/Imager/cache)。したがって、次回ソフトウェアを開くときに再びダウンロードする必要はありません。
 
+**ステップ5**
 
-.. Download the `raspios_armhf-2020-05-28 <https://downloads.raspberrypi.org/raspios_armhf/images/raspios_armhf-2021-05-28/2021-05-07-raspios-buster-armhf.zip>`_ image and select it in Raspberry Pi Imager.
-
-.. .. image:: img/otherOS.png
-..     :align: center
-
-.. .. warning::
-..     Raspberry Pi OS has major changes after the 2021-05-28 version, which may cause some functions to be unavailable. Please do not use the latest version for now.
-
-
-.. .. warning::
-
-..     Upgrading the Raspberry Pi OS to **Debian Bullseye** will cause some features to not work, so it is recommended to continue using the **Debian Buster** version.
-
-.. In the Raspberry Pi Imager, click **CHOOSE OS** -> **Raspberry Pi OS(other)**.
-
-.. .. image:: img/3d33.png
-..     :align: center
-
-.. Scroll down to the end of the newly opened page and you will see **Raspberry Pi OS(Legacy)** and **Raspberry Pi OS Lite(Legacy)**, these are security updates for Debian Buster, the difference between them is with or without the desktop.
-.. It is recommended to install **Raspberry Pi OS(Legacy)**, the system with the desktop.
-
-.. .. image:: img/3d34.png
-..     :align: center
-
-
-**Step 5**
-
-Select the SD card you are using.
+使用するSDカードを選択してください。
 
 .. image:: img/image14.png
     :align: center
 
-**Step 6**
+**ステップ6**
 
-To open the advanced options page, click the setting button (appears after selecting operating system) or press Ctrl+Shift+X. 
-Enable ssh and set the username and name. You can choose to always use this image customization options.
+高度なオプションページを開くには、OSを選択後に表示される設定ボタンをクリックするか、Ctrl+Shift+Xを押してください。
+SSHを有効にし、ユーザー名と名前を設定してください。この画像のカスタマイズオプションを常に使用することも選択できます。
 
 .. note::
-    When the Set hostname box is not checked, the default hostname will still be ``raspberrypi``, and we will use this hostname to access the Raspberry Pi remotely.
+    「ホスト名の設定」のボックスがチェックされていない場合、デフォルトのホスト名は引き続き ``raspberrypi`` となります。このホスト名を使ってRaspberry Piにリモートでアクセスします。
 
 .. image:: img/image15.png
     :align: center
 
-Then scroll down to complete the wifi configuration and click **SAVE**.
+その後、wifiの設定を完了させるために下にスクロールし、 **保存** をクリックします。
 
 .. note::
 
-    **wifi country** should be set the two-letter `ISO/IEC alpha2 code <https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2#Officially_assigned_code_elements>`_ for the country in which you are using your Raspberry Pi, please refer to the following link: https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2#Officially_assigned_code_elements
+    **wifiの国** は、Raspberry Piを使用している国の2文字の `ISO/IEC alpha2コード <https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2#Officially_assigned_code_elements>`_ に設定する必要があります。以下のリンクを参照してください: https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2#Officially_assigned_code_elements
 
 .. image:: img/image16.png
     :align: center
 
-**Step 7**
+**ステップ7**
 
-Click the **WRITE** button.
+**書き込み** ボタンをクリックしてください。
 
 .. image:: img/image17.png
     :align: center
 
-**Step 8**
+**ステップ8**
 
-If your SD card currently has any files on it, you may wish to back up
-these files first to prevent you from permanently losing them. If there
-is no file to be backed up, click **Yes**.
+現在、SDカードにファイルがある場合は、それらのファイルを永久に失うことなくバックアップすることを検討したいかもしれません。バックアップするファイルがない場合は、 **はい** をクリックしてください。
 
 .. image:: img/image18.png
     :align: center
 
-**Step 9**
+**ステップ9**
 
-After waiting for a period of time, the following window will appear to
-represent the completion of writing.
+一定の時間を待った後、書き込みの完了を示す次のウィンドウが表示されます。
 
 .. image:: img/image19.png
     :align: center

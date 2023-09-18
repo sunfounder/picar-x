@@ -1,12 +1,11 @@
-Move
+移動
 ============
 
-This first project teaches how to program movement actions for the PiCar-X. In this project, the program will tell the PiCar-X to execute five actions in order: “forward”, “backward”, “turn left”, “turn right”, and “stop”.
+この初めてのプロジェクトでは、PiCar-Xの動作をプログラムする方法を学びます。このプロジェクトでは、プログラムがPiCar-Xに順番に「前進」「後退」「左折」「右折」「停止」の5つのアクションを実行するよう指示します。
 
-To learn the basic usage of Ezblock Studio, please read through the following two sections:
+Ezblock Studioの基本的な使い方を学ぶには、以下の2つのセクションを読み進めてください：
 
 * :ref:`ezblock:create_project_latest`
-
 
 .. image:: img/move.png
 
@@ -14,32 +13,30 @@ To learn the basic usage of Ezblock Studio, please read through the following tw
 
 .. image:: img/sp210512_113300.png
 
-This block will make the PiCar-X move forward at a speed based on a percentage of available power. In the example below “50” is 50% of power, or half-speed.
+このブロックを使うと、PiCar-Xが利用可能なパワーのパーセンテージに基づいて前進します。以下の例では「50」はパワーの50％、つまり半速を意味します。
 
 .. image:: img/sp210512_113418.png
 
-This block will make the PiCar-X move backward at a speed based on a percentage of available power.
+このブロックは、PiCar-Xが利用可能なパワーのパーセンテージに基づいて後退します。
 
 .. image:: img/sp210512_113514.png
 
-This block adjusts the orientation of the front wheels. The range is “-45” to ”45”. In the example below, “-30” means the wheels will turn 30° to the left.
+このブロックで前輪の向きを調整します。範囲は「-45」から「45」です。下の例の「-30」は、車輪が左に30°回転することを意味します。
 
 .. image:: img/BLK_Basic_delay.png
     :width: 200
 
-This block will cause a timed break between commands, based on milliseconds. In the example below, the PiCar-X will wait for 1 second (1000 milliseconds) before executing the next command.
+このブロックは、ミリ秒を基にコマンド間の時間的なブレークを引き起こします。以下の例では、PiCar-Xは次のコマンドを実行する前に1秒（1000ミリ秒）待機します。
 
 .. image:: img/sp210512_113550.png
 
-This block will bring the PiCar-X to a complete stop.
+このブロックでPiCar-Xを完全に停止させます。
 
-**EXAMPLE**
+**例**
 
 .. note::
 
-    * You can write the program according to the following picture, please refer to the tutorial: :ref:`ezblock:create_project_latest`.
-    * Or find the code with the same name on the **Examples** page of the EzBlock Studio and click **Run** or **Edit** directly.
-
+    * 以下の画像に従ってプログラムを書くことができます。チュートリアルを参照してください: :ref:`ezblock:create_project_latest`。
+    * EzBlock Studioの **Examples** ページで同じ名前のコードを見つけ、 **Run** または **Edit** を直接クリックしてください。
 
 .. image:: img/sp210512_113827.png
-

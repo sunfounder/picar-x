@@ -1,30 +1,27 @@
-Traffic Sign Detection
+交通標識の検出
 ===============================
 
-In addition to color, face detection, PiCar-X can also do traffic sign detection.
+色や顔の検出に加えて、PiCar-Xは交通標識の検出も行うことができます。
 
-Now let's combine this traffic sign detection with the line following function. Let PiCar-X track the line, and when you put the Stop sign in front of it, it will stop. When you place a Forward sign in front of it, it will continue to move forward.
+今回は、この交通標識の検出機能とライン追従機能を組み合わせてみましょう。
+PiCar-Xにラインを追跡させ、その前にStopサインを置くと、それは停止します。Forwardサインを前に置くと、前進し続けます。
 
+**ヒント**
 
-**TIPS**
-
-#. PiCar will recognize 4 different traffic sign models included in the printable PDF below. 
+#. PiCarは、以下のPDFに含まれる4つの異なる交通標識モデルを認識します。
 
     .. image:: img/taffics_sign.png
 
-    * :download:`[PDF]Traffic Sign Cards <https://github.com/sunfounder/sf-pdf/raw/master/prop_card/object_detection/traffic-sign-cards.pdf>`
+    * :download:`[PDF]交通標識カード <https://github.com/sunfounder/sf-pdf/raw/master/prop_card/object_detection/traffic-sign-cards.pdf>`
 
-#. **Set ref to ()** block is used to set the grayscale threshold, you need to modify it according to the actual situation. You can go ahead and run :ref:`test_grayscale` to see the values of the grayscale module on the white and black surfaces, and fill in their middle values in this block.
+#. **Set ref to ()** ブロックは、グレースケールのしきい値を設定するために使用されます。実際の状況に応じてそれを変更する必要があります。:ref:`test_grayscale` を実行して、白と黒の表面でのグレースケールモジュールの値を見ることができます。そして、その中間の値をこのブロックに入力します。
 
-
-
-**EXAMPLE**
+**例**
 
 .. note::
 
-    * You can write the program according to the following picture, please refer to the tutorial: :ref:`ezblock:create_project_latest`.
-    * Or find the code with the same name on the **Examples** page of the EzBlock Studio and click **Run** or **Edit** directly.
-
+    * 以下の画像に従ってプログラムを書くことができます。チュートリアルを参照してください: :ref:`ezblock:create_project_latest`。
+    * EzBlock Studioの **Examples** ページで同じ名前のコードを見つけ、 **Run** または **Edit** を直接クリックしてください。
 
 .. image:: img/sp210513_101526.png
 

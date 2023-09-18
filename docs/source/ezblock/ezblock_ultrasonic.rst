@@ -1,36 +1,36 @@
-Test Ultrasonic Module
+超音波モジュールのテスト
 ==============================
 
-PiCar-X has a built-in Ultrasonic Sensor module that can be used for obstacle avoidance and automatic object-following experiments. In this lesson the module will read a distance in centimeters (24 cm = 1 inch), and **Print** the results in a **Debug** window.
+PiCar-Xには、障害物回避や自動的な物体追尾の実験に使用できる組み込みの超音波センサーモジュールがあります。
+このレッスンでは、モジュールがセンチメートルでの距離（24 cm = 1 inch）を読み取り、結果を **Debug** ウィンドウで **Print** します。
 
 **TIPS**
 
 .. image:: img/sp210512_114549.png 
 
-The **Ultrasonic get distance** block will read the distance from the PiCar-X to an obstacle directly ahead.
+**Ultrasonic get distance** ブロックは、PiCar-Xから直前の障害物までの距離を読み取ります。
 
 .. image:: img/sp210512_114830.png
 
-This program is simplified with a **Variable**. For example, when there are multiple functions in a program that each need to use the distance to an obstacle, a **Variable** can be used to report the same distance value to each function, instead of each function reading the same value separately.
+このプログラムは **Variable** を使用して簡略化されています。例えば、プログラム内に複数の関数があり、それぞれが障害物までの距離を使用する必要がある場合、各関数が別々に同じ値を読み取るのではなく、 **Variable** を使用して各関数に同じ距離値を報告することができます。
 
 .. image:: img/sp210512_114916.png
 
-Click the **Create variable...** button on the **Variables** category, and use the drop-down arrow to select the variable named “distance”.
+**Variables** カテゴリの **Create variable...** ボタンをクリックし、ドロップダウン矢印を使用して“distance”という名前の変数を選択します。
 
 .. image:: img/sp210512_114945.png
 
-The **Print** function can print data such as variables and text for easy debugging.
+**Print** 関数は、デバッグのために変数やテキストなどのデータを印刷することができます。
 
 .. image:: img/debug_monitor.png
 
-Once the code is running, enable the debug monitor by clicking the **Debug** icon in the bottom left corner.
+コードが実行中の場合、左下の角にある**Debug**アイコンをクリックしてデバッグモニターを有効にします。
 
-**EXAMPLE**
+**例**
 
 .. note::
 
-    * You can write the program according to the following picture, please refer to the tutorial: :ref:`ezblock:create_project_latest`.
-    * Or find the code with the same name on the **Examples** page of the EzBlock Studio and click **Run** or **Edit** directly.
-
+    * 以下の画像に従ってプログラムを書くことができます。チュートリアルを参照してください: :ref:`ezblock:create_project_latest`。
+    * EzBlock Studioの **Examples** ページで同じ名前のコードを見つけ、 **Run** または **Edit** を直接クリックしてください。
 
 .. image:: img/sp210512_115125.png

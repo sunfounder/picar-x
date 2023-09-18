@@ -1,35 +1,35 @@
-Background Music
-======================
+バックグラウンドミュージック
+======================================================
 
-In addition to programming the PiCar-X to play sound effects or text-to-speech (TTS), the PiCar-X will also play background music. This project will also use a **Slider** widget for adjusting the music volume. 
+PiCar-Xをプログラムして音効果やテキスト-音声(TTS)を再生するだけでなく、PiCar-Xはバックグラウンドミュージックも再生します。このプロジェクトでは、音楽の音量を調整するための **Slider** ウィジェットも使用します。
 
 * :ref:`ezblock:remote_control_latest`
 
-For a detailed tutorial on Ezblocks remote control functions, please reference the :ref:`ezb_remote_control` tutorial.
+Ezblocksのリモートコントロール機能の詳細なチュートリアルは、:ref:`ezb_remote_control` チュートリアルを参照してください。
 
 **TIPS**
 
 .. image:: img/sp210512_152803.png
 
-The **play background music** block will need to be added to the **Start** function. Use the drop-down menu to choose different background music for the PiCar-X to play.
+**play background music** ブロックは **Start** 機能に追加する必要があります。ドロップダウンメニューを使用して、PiCar-Xが再生する異なるバックグラウンドミュージックを選択します。
 
 .. image:: img/sp210512_153123.png
 
-The block **set background music volume to** will adjust the volume between the range of 0 to 100.
+**set background music volume to** ブロックは、0から100の範囲で音量を調整します。
 
 .. image:: img/sp210512_154708.png
 
-Drag a **Slider** bar from the **Remote Control** page to adjust music volume.
+**Remote Control** ページから **Slider** バーをドラッグして、音楽の音量を調整します。
 
 .. image:: img/sp210512_154259.png
 
-The **slider [A] get value** block will read the slider value. The example above has slider ‘A’ selected. If there are multiple sliders, use the drop-down menu to select the appropriate one.
+**slider [A] get value** ブロックはスライダーの値を読み取ります。上の例では、スライダー 'A' が選択されています。複数のスライダーがある場合、ドロップダウンメニューを使用して適切なものを選択します。
 
-**EXAMPLE**
+**例**
 
 .. note::
 
-    * You can write the program according to the following picture, please refer to the tutorial: :ref:`ezblock:create_project_latest`.
-    * Or find the code with the same name on the **Examples** page of the EzBlock Studio and click **Run** or **Edit** directly.
+    * 以下の画像に従ってプログラムを書くことができます。チュートリアルを参照してください: :ref:`ezblock:create_project_latest`。
+    * EzBlock Studioの **Examples** ページで同じ名前のコードを見つけ、 **Run** または **Edit** を直接クリックしてください。
 
 .. image:: img/sp210512_155406.png

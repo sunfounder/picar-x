@@ -1,26 +1,24 @@
-Minecart Plus
+マインカートプラス
 =======================
 
-In this project, derailment recovery has been added to the :ref:`ezb_minecart` project to let the PiCar-X adapt and recover from a more severe curve.
+このプロジェクトでは、:ref:`ezb_minecart` プロジェクトに脱線復旧が追加され、PiCar-Xがさらに厳しいカーブから適応して復旧することができます。
 
 .. image:: img/minec.png
 
+**ヒント**
 
-**TIPS**
-
-#. Use another **to do something** block to allow the PiCar-X to back up and recover from a sharp curve. Note that the new **to do something** function does not return any values, but is used just for reorienting the PiCar-X.
+#. もう一つの **to do something** ブロックを使用して、PiCar-Xが鋭いカーブからバックアップして復旧できるようにします。新しい **to do something** 関数は値を返さないことに注意してください。この関数はPiCar-Xの方向を再設定するためだけに使用されます。
 
     .. image:: img/sp210512_171727.png
 
-#. **Set ref to ()** block is used to set the grayscale threshold, you need to modify it according to the actual situation. You can go ahead and run :ref:`test_grayscale` to see the values of the grayscale module on the white and black surfaces, and fill in their middle values in this block.
+#. **Set ref to ()** ブロックは、グレースケールのしきい値を設定するために使用されます。実際の状況に応じて変更する必要があります。白と黒の表面でのグレースケールモジュールの値を確認するために、 :ref:`test_grayscale` を実行してみてください。このブロックにその中間値を記入します。
 
-
-**EXAMPLE**
+**例**
 
 .. note::
 
-    * You can write the program according to the following picture, please refer to the tutorial: :ref:`ezblock:create_project_latest`.
-    * Or find the code with the same name on the **Examples** page of the EzBlock Studio and click **Run** or **Edit** directly.
+    * 以下の画像に従ってプログラムを書くことができます。チュートリアルを参照してください: :ref:`ezblock:create_project_latest`。
+    * EzBlock Studioの **Examples** ページで同じ名前のコードを見つけ、 **Run** または **Edit** を直接クリックしてください。
 
 .. image:: img/sp210512_171914.png
 

@@ -1,14 +1,12 @@
 .. _ezb_remote_control:
 
-Remote Control
+リモートコントロール
 =======================
 
-This project will teach how to remotely control the PiCar-X with the Joystick widget. 
-Note: After dragging and dropping the Joystick widget from the Remote Control page, use the “Map” function to calibrate the Joysticks X-axis and Y-axis readings. For more information on the Remote Control function, please reference the following link:
-
+このプロジェクトでは、ジョイスティックウィジェットを使用してPiCar-Xをリモートで制御する方法を学びます。
+注意: リモートコントロールページからジョイスティックウィジェットをドラッグアンドドロップした後、"Map"機能を使用してジョイスティックのX軸とY軸の読み取りをキャリブレーションします。リモートコントロール機能の詳細については、以下のリンクを参照してください：
 
 * :ref:`ezblock:remote_control_latest`
-
 
 .. image:: img/remote_control23.png
 
@@ -16,28 +14,33 @@ Note: After dragging and dropping the Joystick widget from the Remote Control pa
 
 .. image:: img/sp210512_114004.png
 
-To use the remote control function, open the Remote Control page from the left side of the main page.
+リモートコントロール機能を使用するには、メインページの左側からリモートコントロールページを開きます。
 
 .. image:: img/sp210512_114042.png
 
-Drag a Joystick to the central area of the Remote Control page. Toggling the white point in the center, and gently dragging in any direction will produce an (X,Y) coordinate. The range of the X-axis or Y-axis is defaulted to “-100” to “100”. Toggling the white point and dragging it directly to the far left of the Joystick will result in an X value of “-100” and a Y value of “0”.
+ジョイスティックをリモートコントロールページの中央領域にドラッグします。
+中央の白い点をトグルして、任意の方向にゆっくりとドラッグすると、(X,Y)座標が生成されます。
+X軸またはY軸の範囲はデフォルトで"-100"から"100"に設定されています。
+ジョイスティックの最も左側に直接白い点をドラッグすると、Xの値が"-100"、Yの値が"0"となります。
 
 .. image:: img/sp210512_114136.png
 
-After dragging and dropping a widget on the remote control page, a new category-Remote with the above block will appear.
-This block reads the Joystick value in the Remote Control page. You can click the drop-down menu to switch to the Y-axis reading.
+リモートコントロールページにウィジェットをドラッグアンドドロップすると、
+上記のブロックを持つ新しいカテゴリ-リモートが表示されます。
+このブロックは、リモートコントロールページでのジョイスティック値を読み取ります。
+ドロップダウンメニューをクリックして、Y軸の読み取りに切り替えることができます。
 
 .. image:: img/sp210512_114235.png
 
-The map value block can remap a number from one range to another. If the range is set to 0 to 100, and the map value number is 50, then it is at a 50% position of the range, or “50”. If the range is set to 0 to 255 and the map value number is 50, then it is at a 50% position of the range, or “127.5”.
+マップ値ブロックは、ある範囲から別の範囲に数字をリマップすることができます。
+範囲が0から100に設定されており、マップ値が50の場合、それは範囲の50%の位置、すなわち"50"です。
+範囲が0から255に設定されており、マップ値が50の場合、それは範囲の50%の位置、すなわち"127.5"です。
 
-**EXAMPLE**
+**例**
 
 .. note::
 
-    * You can write the program according to the following picture, please refer to the tutorial: :ref:`ezblock:create_project_latest`.
-    * Or find the code with the same name on the **Examples** page of the EzBlock Studio and click **Run** or **Edit** directly.
-
+    * 以下の画像に従ってプログラムを書くことができます。チュートリアルを参照してください: :ref:`ezblock:create_project_latest`。
+    * EzBlock Studioの **Examples** ページで同じ名前のコードを見つけ、 **Run** または **Edit** を直接クリックしてください。
 
 .. image:: img/sp210512_114416.png
-

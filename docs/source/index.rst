@@ -1,50 +1,46 @@
-SunFounder PiCar-X Kit!
+
+SunFounder PiCar-X キット
 ============================================
 
-Thanks for choosing our PiCar-X.
+SunFounder PiCar-Xをお選びいただき、ありがとうございます。
 
 .. .. image:: img/picar-x.jpg
 ..     :align: center
 ..     :width: 400
 
-The PiCar-X is an AI-driven self-driving robot car for the Raspberry Pi platform, upon which the Raspberry Pi acts as the control center. 
-The PiCar-X’s 2-axis camera module, ultrasonic module, and line tracking modules can provide the functions of color/face/traffic-signs detection, 
-automatic obstacle avoidance, automatic line tracking, etc.
+PiCar-Xは、Raspberry Piを制御センターとして使用するAI駆動の自動運転ロボットカーです。
+PiCar-Xには2軸のカメラモジュール、超音波モジュール、ライン追跡モジュールが備わっており、色・顔・交通標識の検出、
+自動障害物回避、自動ライン追跡などの機能を提供できます。
 
-PiCar-X has two programming languages: Blockly and Python. No matter what language you program in, you'll find detailed steps to teach you everything from configuring the Raspberry Pi to running the relevant example code.
+PiCar-Xは、BlocklyとPythonの2つのプログラム言語をサポートしています。どちらの言語でプログラムしても、Raspberry Piの設定から関連するサンプルコードの実行までの詳細な手順が記載されています。
 
 * :ref:`play_python`
 
-    * This chapter is for those who enjoy programming in Python or want to learn the Python language.
-    * To get Picar-X working properly, you must install some libraries first.
-    * The Raspberry Pi configuration and samples code for the PiCar-X are provided in this chapter.
-    * An APP - SunFounder Controller is also provided to allow you to remotely control the PiCar-X on your mobile device.
-
+    * Pythonでのプログラミングを楽しむ方や、Python言語を学びたい方のための章です。
+    * PiCar-Xを適切に動作させるためには、いくつかのライブラリを先にインストールする必要があります。
+    * この章では、PiCar-XのためのRaspberry Pi設定とサンプルコードを提供しています。
+    * APP - SunFounder Controllerも提供されており、モバイルデバイスでPiCar-Xをリモート制御することができます。
 
 * :ref:`play_ezblock`
 
-    * In this section, you will use a Blockly based APP, Ezblock Studio, which, like Scratch, allows you to drag and drop blocks to make Picar-X move.
-    * It is required to reinstall the SD card with the operating system we provide with pre-installed Ezblock environment before programming. It is recommended to use a new or unused TF card for this section.
-    * Ezblock Studio is available for nearly all types of devices, including Macs, PCs, and Androids.
-    * Ezblock Studio is a good choice if you are 6-12 years old, or don't have programming skills, or want to test Picar-X quickly.
+    * このセクションでは、ScratchのようなBlocklyベースのAPP、Ezblock Studioを使用します。これを使用して、ブロックをドラッグ&ドロップしてPicar-Xを動かすことができます。
+    * プログラミングする前に、提供されたオペレーティングシステムをプリインストールしたEzblock環境でSDカードを再インストールする必要があります。このセクションには、新しいもしくは未使用のTFカードの使用を推奨します。
+    * Ezblock Studioは、Mac、PC、Androidを含むほぼすべてのデバイスで利用可能です。
+    * 6歳から12歳、プログラムのスキルがない、またはPicar-Xを迅速にテストしたい方には、Ezblock Studioがおすすめです。
 
+**表示言語について**
 
-**About the display language**
-
-About the display language
-
-This document is available in other languages as well. To switch the display language, kindly click on the Read the Docs icon located in the lower left corner of the page.
+このドキュメントは他の言語でも利用できます。表示言語を変更するには、ページの左下隅にあるRead the Docsアイコンをクリックしてください。
 
 .. image:: img/translation.png
     :align: center
 
-
-
-**Content**
+**目次**
 
 .. toctree::
     :maxdepth: 3
 
+    このキットについて <self>
     introduction
     list_and_assembly
     adjust_servo
@@ -54,9 +50,8 @@ This document is available in other languages as well. To switch the display lan
     faq
     thank
 
-Copyright Notice
+著作権通知
 --------------------------
 
-All contents including but not limited to texts, images, and code in this manual are owned by the SunFounder Company. You should only use it for personal study,investigation, enjoyment, or other non-commercial or nonprofit purposes, under therelated regulations and copyrights laws, without infringing the legal rights of the author and relevant right holders. For any individual or organization that uses these for commercial profit without permission, the Company reserves the right to take legal action.
-
+このマニュアルに含まれるテキスト、画像、コードなどの全内容はSunFounder社に所有されています。これは個人の学習、調査、楽しみ、またはその他の非営利目的や非商用目的のためのみ使用すべきであり、著作権に関連する規定や法律を遵守し、著者と関連する権利者の法的権利を侵害しないようにすべきです。許可なくこれらを商業的な利益のために使用する個人や組織に対して、会社は法的手段をとる権利を留保しています。
 

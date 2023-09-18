@@ -1,38 +1,34 @@
 Video Car
 ==========================================
 
-This program will provide a First Person View from the PiCar-X! Use the keyboards WSAD keys to control the direction of movement, and the O and P to adjust the speed.
+このプログラムでは、PiCar-Xからの第一人称視点が提供されます！キーボードのWSADキーを使用して動きの方向を制御し、OとPキーでスピードを調整してください。
 
-
-**Run the Code**
-
+**コードの実行**
 
 .. note::
 
-    * This project requires access to the Raspberry Pi desktop to view the footage taken by the camera module.
-    * You can connect a screen to the PiCar-X or refer to the tutorial :ref:`remote_desktop` to access it with VNC or XRDP.
-    * Once inside the Raspberry Pi desktop, open Terminal and type the following command to run it, or just open and run it with a Python editor.
-
-
+    * このプロジェクトは、カメラモジュールで撮影した映像を見るためにRaspberry Piのデスクトップへのアクセスが必要です。
+    * PiCar-Xにスクリーンを接続するか、 :ref:`remote_desktop` のチュートリアルを参照してVNCやXRDPでアクセスしてください。
+    * Raspberry Piのデスクトップに入ったら、ターミナルを開いて以下のコマンドを入力するか、Pythonエディタで開いて実行してください。
 
 .. code-block::
 
     cd ~/picar-x/example
     sudo python3 video_car.py
 
-Once the code is running, you can see what PiCar-X is shooting and control it by pressing the following keys.
+コードが実行されると、PiCar-Xが撮影している内容を確認し、以下のキーを押して制御することができます。
 
-* O: speed up
-* P: speed down
-* W: forward  
-* S: backward
-* A: turn left
-* D：turn right
-* F: stop
-* T: take photo
-* ESC / Ctrl+C: quit
+* O: スピードアップ
+* P: スピードダウン
+* W: 前進
+* S: 後進
+* A: 左へ旋回
+* D: 右へ旋回
+* F: 停止
+* T: 写真を撮る
+* ESC / Ctrl+C: 終了
 
-**code**
+**コード**
 
 .. code-block:: python
     

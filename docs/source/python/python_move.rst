@@ -1,9 +1,11 @@
-Let PiCar-X Move
+
+
+PiCar-Xを動かす
 ========================
 
-This is the first project, let’s test the basic movement of Picar-X.
+これは初めてのプロジェクトです。まず、PiCar-Xの基本的な動きをテストしましょう。
 
-**Run the Code**
+**コードを実行する**
 
 .. raw:: html
 
@@ -14,12 +16,12 @@ This is the first project, let’s test the basic movement of Picar-X.
     cd ~/picar-x/example
     sudo python3 move.py
 
-After running the code, PiCar-X will move forward, turn in an S-shape, stop and shake its head. 
+このコードを実行すると、PiCar-Xは前進し、S字カーブで曲がり、停止してから頭を振ります。
 
-**Code**
+**コード**
 
 .. note::
-    You can **Modify/Reset/Copy/Run/Stop** the code below. But before that, you need to go to  source code path like ``picar-x/example``. After modifying the code, you can run it directly to see the effect.
+    下のコードは **変更/リセット/コピー/実行/停止** ができます。しかし、それをする前に、 ``picar-x/example`` のようなソースコードのパスに移動する必要があります。コードを変更した後、その効果を直接見るために実行することができます。
 
 .. raw:: html
 
@@ -70,13 +72,13 @@ After running the code, PiCar-X will move forward, turn in an S-shape, stop and 
         finally:
             px.forward(0)
 
-**How it works?**
+**どのように動作するのか？**
 
-The basic functionality of Parker is in the ``picarx`` module,
-Can be used to control steering gear and wheels,
-and will make the PiCar-X move forward, turn in an S-shape, or shake its head. 
+Parkerの基本機能は ``picarx`` モジュールにあり、
+操舵装置やホイールを制御するために使用できます。
+そして、PiCar-Xを前進させたり、S字カーブで曲げたり、頭を振らせることができます。
 
-Now, the libraries to support the basic functionality of PiCar-X are imported. These lines will appear in all the examples that involve PiCar-X movement.
+現在、PiCar-Xの基本機能をサポートするライブラリがインポートされています。これらの行は、PiCar-Xの動きに関連するすべての例に表示されます。
 
 .. code-block:: python
     :emphasize-lines: 0
@@ -84,7 +86,7 @@ Now, the libraries to support the basic functionality of PiCar-X are imported. T
     from picarx import Picarx
     import time
 
-The following function with the ``for`` loop is then used to make PiCar-X move forward, change directions, and move the camera's pan/tilt.
+次に、 ``for`` ループを使用した以下の関数は、PiCar-Xを前進させ、方向を変え、カメラのパン/チルトを動かすために使用されます。
 
 .. code-block:: python
 
@@ -93,10 +95,10 @@ The following function with the ``for`` loop is then used to make PiCar-X move f
     px.set_camera_servo1_angle(angle)
     px.set_camera_servo2_angle(angle)
 
-* ``forward()``: Orders the PiCar-X go forward at a given ``speed``.
-* ``set_dir_servo_angle``: Turns the Steering servo to a specific ``angle``.
-* ``set_camera_servo1_angle``: Turns the Pan servo to a specific ``angle``.
-* ``set_camera_servo2_angle``: Turns the Tilt servo to a specific ``angle``.
+* ``forward()``: PiCar-Xに指定した ``speed`` で前進するように命令します。
+* ``set_dir_servo_angle``: 指定した ``angle`` で操舵サーボを回転させます。
+* ``set_camera_servo1_angle``: 指定した ``angle`` でパンサーボを回転させます。
+* ``set_camera_servo2_angle``: 指定した ``angle`` でチルトサーボを回転させます。
 
 .. image:: img/pan_tilt_servo.png
     :width: 400

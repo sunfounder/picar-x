@@ -1,9 +1,10 @@
-Text to Speech
+
+テキストから音声へ
 ===========================
 
-Before using the Text-to-Speech (TTS) functions, first activate the speaker so that it will be enabled and can make sounds.
+テキストから音声（TTS）の機能を使用する前に、スピーカーをアクティブにして、音を出せるように設定してください。
 
-Run ``i2samp.sh`` in the **picar-x** folder, and this script will install everything needed to use i2s amplifier.
+**picar-x** フォルダ内の ``i2samp.sh`` を実行し、i2sアンプを使用するために必要なすべてをインストールします。
 
 .. raw:: html
 
@@ -16,11 +17,11 @@ Run ``i2samp.sh`` in the **picar-x** folder, and this script will install everyt
 
 .. image:: img/tt_bash.png
 
-There will be several prompts asking to confirm the request. Respond to all prompts with a **Y**. After the changes have been made to the Raspberry Pi system, the computer will need to reboot for these changes to take effect.
+いくつかのプロンプトが表示され、リクエストの確認を求められます。すべてのプロンプトに **Y** で返答してください。Raspberry Piのシステムに変更が加えられた後、これらの変更を有効にするためにコンピュータを再起動する必要があります。
 
-After rebooting, run the ``i2samp.sh`` script again to test the amplifier. If a sound successfully plays from the speaker, the configuration is complete.
+再起動後、アンプをテストするために ``i2samp.sh`` スクリプトを再度実行してください。スピーカーから音が正常に再生されれば、設定は完了です。
 
-**Run the Code**
+**コードを実行する**
 
 .. raw:: html
 
@@ -31,14 +32,14 @@ After rebooting, run the ``i2samp.sh`` script again to test the amplifier. If a 
     cd ~/picar-x/example
     sudo python3 tts_example.py
     
-After running the code, PiCar-X will say \"Hello\", \"Hi\", \"Good bye\", \"Nice to meet you\".
+コードを実行すると、PiCar-Xは「Hello」、「Hi」、「Good bye」、「Nice to meet you」と言います。
 
 .. image:: img/how_are_you.jpg
 
-**Code**
+**コード**
 
 .. note::
-    You can **Modify/Reset/Copy/Run/Stop** the code below. But before that, you need to go to  source code path like ``picar-x/example``. After modifying the code, you can run it directly to see the effect.
+    下のコードは **変更/リセット/コピー/実行/停止** ができます。しかし、それをする前に、 ``picar-x/example`` のようなソースコードのパスに移動する必要があります。コードを変更した後、その効果を直接見るために実行することができます。
 
 .. raw:: html
 
@@ -57,17 +58,17 @@ After running the code, PiCar-X will say \"Hello\", \"Hi\", \"Good bye\", \"Nice
             tts_robot.say(i)
 
 
-**How it works?** 
+**どのように動作するのか？** 
 
-The `eSpeak <http://espeak.sourceforge.net/>`_ software is used to implement the functions of TTS.
+`eSpeak <http://espeak.sourceforge.net/>`_ ソフトウェアは、TTSの機能を実装するために使用されます。
 
-Import the TTS module in robot_hat, which encapsulates functions that convert text to speech.
+robot_hatの中のTTSモジュールをインポートし、テキストを音声に変換する機能をカプセル化します。
 
 .. code-block::
 
     from robot_hat import TTS
 
-Create a string list ``words`` , then create an instantiated object of the TTS() class ``tts_robot`` , and finally use the ``tts_robot.say()`` function to speak the words in the list in speech.
+文字列リスト ``words`` を作成し、 ``TTS()`` クラスのインスタンス化されたオブジェクト ``tts_robot`` を作成し、最終的に ``tts_robot.say()`` 関数を使用して、リスト内の単語を音声で話します。
 
 .. code-block::
 

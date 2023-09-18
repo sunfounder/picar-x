@@ -1,20 +1,20 @@
-FAQ
+FAQ（よくある質問）
 ===========================
 
-**Q1: After installing Ezblock OS, the servo can't turn to 0°?**
+**Q1: Ezblock OSをインストールした後、サーボが0°に回らないのはなぜですか？**
 
-1) Check if the servo cable is properly connected and if the Robot HAT power is on.
-2) Press Reset button.
-3) If you have already run the program in Ezblock Studio, the custom program for P11 is no longer available. You can refer to the picture below to manually write a program in Ezblock Studio to set the servo angle to 0.
+1) サーボのケーブルが適切に接続されているか、Robot HATの電源がオンになっているかを確認してください。
+2) リセットボタンを押してください。
+3) すでにEzblock Studioでプログラムを実行している場合、P11のカスタムプログラムは使用できません。下の画像を参考に、Ezblock Studioで手動でプログラムを書いて、サーボの角度を0に設定してください。
 
 .. image:: img/faq_servo.png
 
-**Q2: When using VNC, I am prompted that the desktop cannot be displayed at the moment?**
+**Q2: VNCを使用していると、デスクトップが現時点で表示されないというプロンプトが表示されるのはなぜですか？**
 
-In Terminal, type ``sudo raspi-config`` to change the resolution.
+ターミナルで ``sudo raspi-config`` と入力して、解像度を変更してください。
 
-**Q3: Why does the servo sometimes return to the middle position for no reason?**
+**Q3: なぜサーボが突然、中央位置に戻ることがあるのですか？**
 
-When the servo is blocked by a structure or other object and cannot reach its intended position, the servo will enter the power-off protection mode in order to prevent the servo from being burned out by too much current.
+サーボが構造や他のオブジェクトによってブロックされ、意図した位置に到達できない場合、サーボは、電流が多すぎてサーボが焼けるのを防ぐために、電源オフ保護モードに入ります。
 
-After a period of power failure, if no PWM signal is given to the servo，the servo will automatically return to its original position.
+一定の電源断が経過した後、サーボにPWM信号が与えられない場合、サーボは自動的に元の位置に戻ります。

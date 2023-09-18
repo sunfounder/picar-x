@@ -1,10 +1,10 @@
 .. _play_python:
 
-Play with Python
+Pythonを楽しむ
 ====================
 
-For novices and beginners wishing to program in Python, some basic Python programming skills and knowledge of the Raspberry Pi OS are needed. 
-To start configuring the Raspberry Pi, please reference Quick Guide on Python:
+Pythonでプログラムをしたい初心者やビギナーのためには、基本的なPythonのプログラミングスキルとRaspberry Pi OSに関する知識が必要です。
+Raspberry Piの設定を開始するには、Pythonに関するクイックガイドを参照してください:
 
 .. toctree:: 
     :maxdepth: 2
@@ -12,7 +12,7 @@ To start configuring the Raspberry Pi, please reference Quick Guide on Python:
     python_start/quick_guide_on_python
 
 
-After the PiCar-X assembly is completed, try running the projects below:
+PiCar-Xの組み立てが完了したら、以下のプロジェクトを実行してみてください。
 
 .. toctree::
 

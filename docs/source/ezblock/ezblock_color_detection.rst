@@ -1,25 +1,24 @@
-Color Detection
+カラー検出
 ===========================
 
-PiCar-X is a self-driving car with a built-in camera, which allows Ezblock programs to utilize object detection and color recognition code. In this section, Ezblock will be used to create a program for color detection. 
+PiCar-Xは、内蔵カメラを備えた自動運転車であり、Ezblockプログラムが物体検出および色認識コードを利用できるようになっています。このセクションでは、Ezblockを使用してカラー検出のプログラムを作成します。
 
 .. note:: 
 
-    Before attempting this section, make sure that the Raspberry Pi Camera’s FFC cable is properly and securely connected. For detailed instructions on securely connecting the FCC cable, please reference: :ref:`assembly_instructions`.
+    このセクションを試みる前に、Raspberry PiカメラのFFCケーブルが正しく、しっかりと接続されていることを確認してください。FCCケーブルを確実に接続する方法の詳細な指示については、こちらを参照してください: :ref:`assembly_instructions`。
 
-In this program, Ezblock will first be told the Hue-Saturation-Value (HSV) space range of the color to be detected, then utilize OpenCV to process the colors in the HSV range to remove the background noise, and finally, box the matching color.
+このプログラムでは、最初にEzblockに検出される色の色相-彩度-明度（HSV）範囲を指定し、次にOpenCVを使用してHSV範囲内の色を処理して背景ノイズを除去し、最後に一致する色をボックス化します。
 
-Ezblock includes 6 color models for PiCar-X, “red”, “orange”, “yellow”, “green”, “blue”, and “purple”. Color cards have been prepared in the following PDF, and will need to be printed on a color printer.
+EzblockにはPiCar-X用の6つのカラーモデルが含まれており、それらは「赤」「オレンジ」「黄」「緑」「青」「紫」となっています。次のPDFにはカラーカードが用意されており、カラープリンタで印刷する必要があります。
 
-* :download:`[PDF]Color Cards <https://github.com/sunfounder/sf-pdf/raw/master/prop_card/object_detection/color-cards.pdf>`
+* :download:`[PDF]カラーカード <https://github.com/sunfounder/sf-pdf/raw/master/prop_card/object_detection/color-cards.pdf>`
 
 .. image:: img/color_card.png
     :width: 600
 
 .. note::
 
-    The printed colors may have a slightly different hue from the Ezblock color models due to printer toner differences, or the printed medium, such as a tan-colored paper. This can cause a less accurate color recognition.
-
+    印刷された色は、プリンターのトナーの違いや、たとえば褐色の紙といった印刷媒体のため、Ezblockのカラーモデルとは若干異なる色合いになる場合があります。これにより、色の認識精度が低下する可能性があります。
 
 .. image:: img/ezblock_color_detect.PNG
 
@@ -27,21 +26,25 @@ Ezblock includes 6 color models for PiCar-X, “red”, “orange”, “yellow�
 
 .. image:: img/sp210512_121105.png
 
-Drag the Video widget from the remote Control page, and it will generate a video monitor. For more information on how to use the Video widget, please reference the tutorial on Ezblock video here: :ref:`ezblock:video_latest`.
+リモートコントロールページからビデオウィジェットをドラッグすると、
+ビデオモニタが生成されます。ビデオウィジェットの使用方法の詳細については、
+こちらのEzblockビデオのチュートリアルを参照してください: :ref:`ezblock:video_latest`。
 
 .. image:: img/sp210512_121125.png
 
-Enable the video monitor by setting the **camera monitor** block to **on**. Note: Setting the **camera monitor** to **off** will close the monitor, but object detection will still be available.
+**カメラモニタ** ブロックを **オン** に設定してビデオモニタを有効にします。
+注: **カメラモニタ** を **オフ** に設定すると、モニタは閉じますが、物体検出は利用可能です。
 
 .. image:: img/sp210512_134133.png
 
-Use the **color detection** block to enable the color detection. Note: only one color can be detected at a time.
+**カラー検出** ブロックを使用してカラー検出を有効にします。
+注: 一度に1色のみを検出することができます。
 
-**EXAMPLE**
+**例**
 
 .. note::
 
-    * You can write the program according to the following picture, please refer to the tutorial: :ref:`ezblock:create_project_latest`.
-    * Or find the code with the same name on the **Examples** page of the EzBlock Studio and click **Run** or **Edit** directly.
+    * 以下の画像に従ってプログラムを書くことができます。チュートリアルを参照してください: :ref:`ezblock:create_project_latest`。
+    * EzBlock Studioの **Examples** ページで同じ名前のコードを見つけ、 **Run** または **Edit** を直接クリックしてください。
 
 .. image:: img/sp210512_134636.png

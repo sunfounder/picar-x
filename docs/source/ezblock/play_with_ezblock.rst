@@ -1,13 +1,14 @@
 .. _play_ezblock:
 
-Play with Ezblock
+
+Ezblockを楽しむ
 ===========================
 
-For beginners and novices, EzBlock is a software development platform offered by SunFounder for Raspberry Pi. Ezbock offers two programming environments: a graphical environment and a Python environment.
+初心者やビギナーのために、EzBlockはSunFounderがRaspberry Pi用に提供しているソフトウェア開発プラットフォームです。EzBlockは、グラフィカル環境とPython環境の2つのプログラミング環境を提供しています。
 
-It is available for almost all types of devices, including Mac, PC, and Android.
+ほとんど全てのデバイスタイプ、Mac、PC、Androidを含む、で利用可能です。
 
-Here is a tutorial to help you complete EzBlock installation, download, and use.
+EzBlockのインストール、ダウンロード、使用を完了するためのチュートリアルは以下です。
 
 .. toctree::
   :maxdepth: 1
@@ -16,22 +17,20 @@ Here is a tutorial to help you complete EzBlock installation, download, and use.
   calibrate_the_car
 
 
+**プロジェクト**
 
-**Projects**
+このセクションは、PiCar-Xの基本的なプログラミング機能から始まり、Ezblock Studioでより高度なプログラムを作成するまで続きます。
+各チュートリアルには新しい関数を紹介するTIPSが含まれており、ユーザーは対応するプログラムを記述することができます。
+例のセクションには、直接使用できる完全な参照コードもあります。
+例のセクションのコードを使用せずにプログラミングを試み、チャレンジを克服する楽しさを味わってください！
 
+Ezblockのプロジェクトは全てEzblock Studioの例ページにアップロードされています。例のページから、ユーザーはプログラムを直接実行することも、例を編集してユーザーの「My Projects」フォルダに保存することもできます。
 
-This section begins with basic programming functions for the PiCar-X, and continues through to creating more advanced programs in Ezblock Studio. 
-Each tutorial contains TIPS that introduce new functions, allowing users to write the corresponding program. 
-There is also a complete reference code in the Example section that can be directly used. 
-We suggest attempting the programming without using the code in the Example sections, and enjoy the fun experience of overcoming the challenges!
-
-All of the Ezblock projects have been uploaded to Ezblock Studio’s Examples page. From the Examples page, users can run the programs directly, or edit the examples and save them into the users My Projects folder.
-
-The Examples page allows users to choose between Block or Python language. The projects in this section only explain Block language, for an explanation of the Python code, please review this `file <https://github.com/sunfounder/picar-x/blob/v2.0/docs/(EN)%20picarmini.md>`_ to help you understand the Python code.
+例ページでは、Block言語とPython言語のどちらを選択するかをユーザーに選ばせます。このセクションのプロジェクトはBlock言語のみを説明していますので、Pythonコードの説明については、この `ファイル <https://github.com/sunfounder/picar-x/blob/v2.0/docs/(EN)%20picarmini.md>`_ を参照して、Pythonコードを理解してください。
 
 .. image:: img/examples23.png
 
-**Basic**
+**基本**
 
 .. toctree::
 

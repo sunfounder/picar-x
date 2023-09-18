@@ -1,28 +1,25 @@
-Adjust Servo for Assembly
-==========================
+サーボの組み立てのための調整
+===============================================================
 
-Before assembling the servo, 
-the angle needs to be set to zero. 
-This is because the servo motor has a limited range of motion, 
-setting the angle to zero degrees ensures that the servo is in its 
-initial position and does not exceed its range of motion when the servo is powered on. 
-If the servo is not set to zero degrees prior to assembly, 
-it may attempt to exceed its range of motion when powered, 
-potentially damaging the servo or the mechanical system it is connected to. 
-Therefore, setting the angle to zero is an important step to ensure the 
-safe and normal operation of the servo motor.
+サーボを組み立てる前に、
+角度はゼロに設定する必要があります。
+これはサーボモーターの動作範囲が限られているためで、
+角度をゼロ度に設定することで、サーボが電源投入時にその動作範囲を超えないように初期位置にあることを保証します。
+組み立て前にサーボがゼロ度に設定されていない場合、
+電源投入時にその動作範囲を超える可能性があり、サーボや接続されている機械システムにダメージを与える恐れがあります。
+したがって、角度をゼロに設定することは、サーボモーターの
+安全で正常な動作を保証するための重要な手順です。
 
 .. image:: img/IMG_9897.png
 
 
-**For Python User**
+**Pythonのユーザーへ**
 
-Please refer to :ref:`quick_guide_python` to complete the 
-installation of the Raspberry Pi OS and adjust the angle of the servos.
+Raspberry Pi OSのインストールとサーボの角度調整の完了には、:ref:`quick_guide_python` を参照してください。
 
 
-**For Ezblock User**
+**Ezblockのユーザーへ**
 
-After you have installed the ezblock system, 
-the P11 pin can be used to adjust the servo. 
-Please refer to :ref:`ezb_servo_adjust` for details.
+ezblockシステムをインストールした後、
+P11ピンを使用してサーボの角度を調整することができます。
+詳細は :ref:`ezb_servo_adjust` を参照してください。

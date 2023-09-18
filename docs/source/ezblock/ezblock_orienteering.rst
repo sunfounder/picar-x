@@ -1,38 +1,36 @@
-Orienteering
-==================
+オリエンティアリング
+============================
 
-This project uses the remote control function to guide the PiCar-X through a competitive scavenger hunt!
+このプロジェクトは、リモートコントロール機能を使用して、PiCar-Xを競技的なサバンジャーハントを通してガイドします！
 
-First, set up either an obstacle course, or a maze, or even an empty room that the PiCar-X can drive through. Then, randomly place six markers along the route, and put a color-card at each of the six markers for the PiCar-X to find. 
+まず、PiCar-Xが通過できる障害物コース、迷路、または空の部屋を設置します。次に、ルートに沿ってランダムに6つのマーカーを配置し、PiCar-Xが見つけるための各6つのマーカーにカラーカードを置きます。
 
-The six color models for PiCar-X are: red, orange, yellow, green, blue and purple, and are ready to print from a colored printer from the PDF below. 
+PiCar-Xの6つのカラーモデルは、赤、オレンジ、黄、緑、青、紫であり、下のPDFからカラープリンタで印刷する準備ができています。
 
-* :download:`[PDF]Color Cards <https://github.com/sunfounder/sf-pdf/raw/master/prop_card/object_detection/color-cards.pdf>`
+* :download:`[PDF]カラーカード <https://github.com/sunfounder/sf-pdf/raw/master/prop_card/object_detection/color-cards.pdf>`
 
 .. image:: img/color_card.png
 
 .. note::
 
-    The printed colors may have a slightly different hue from the Ezblock color models due to printer toner differences, or the printed medium, such as a tan-colored paper. This can cause a less accurate color recognition.
+    印刷された色は、プリンタートナーの違いや、たとえばベージュ色の紙などの印刷媒体のため、Ezblockカラーモデルからわずかに異なる色合いを持つことがあります。これにより、色の認識があまり正確ではなくなる可能性があります。
 
-The PiCar-X will be programmed to find three of the six colors in a random order, and will be using the TTS function to announce which color to look for next.
+PiCar-Xは、ランダムな順序で6色のうち3色を見つけるようにプログラムされ、次に探す色をアナウンスするためにTTS機能を使用します。
 
-The objective is to help the PiCar-X find each of the three colors in as short of a time as possible.
+目的は、PiCar-Xができるだけ短時間で3色のうちのそれぞれを見つけるのを助けることです。
 
-Place PiCar-X in the middle of the field and click the Button on the Remote Control page to start the game. 
-
+フィールドの中央にPiCar-Xを置き、リモートコントロールページのボタンをクリックしてゲームを開始します。
 
 .. image:: img/orienteering.png
 
-Take turns playing this game with friends to see who can help PiCar-X complete the objective the fastest!
+友達と交代でこのゲームをプレイして、PiCar-Xが目的を最も速く達成するのを助けることができるのは誰かを見てみてください！
 
-**EXAMPLE**
+**例**
 
 .. note::
 
-    * You can write the program according to the following picture, please refer to the tutorial: :ref:`ezblock:create_project_latest`.
-    * Or find the code with the same name on the **Examples** page of the EzBlock Studio and click **Run** or **Edit** directly.
-
+    * 以下の画像に従ってプログラムを書くことができます。チュートリアルを参照してください: :ref:`ezblock:create_project_latest`。
+    * EzBlock Studioの **Examples** ページで同じ名前のコードを見つけ、 **Run** または **Edit** を直接クリックしてください。
 
 .. image:: img/sp210513_154117.png
     :width: 800

@@ -1,36 +1,35 @@
-Sound Effect
+音効果
 ===============================
 
-PiCar-X has a built-in speaker that can be used for audio experiments. Ezblock allows users to enter text to make the PiCar-X speak, or make specific sound effects. In this tutorial, the PiCar-X will make the sound of a gun firing after a 3-second countdown, using a do/while function.
+PiCar-Xには音声実験に使用できる組み込みスピーカーがあります。Ezblockを使用すると、ユーザーはテキストを入力してPiCar-Xに話させるか、特定の音効果を出すことができます。このチュートリアルでは、do/while機能を使用して、3秒間のカウントダウンの後に銃が発砲する音をPiCar-Xが出します。
 
 **TIPS**
 
 .. image:: img/sp210512_144106.png
 
-Use the **say** block with a **text** block to write a sentence for the PiCar-X to say. The **say** block can be used with text or numbers.
+PiCar-Xに文章を言わせるために、 **say** ブロックと **text** ブロックを使用します。 **say** ブロックはテキストや数字と一緒に使用することができます。
 
 .. image:: img/sp210512_144150.png
 
-The **number** block.
+**number** ブロック。
 
 .. image:: img/sp210512_144216.png
 
-Using the **repeat** block will repeatedly execute the same statement, which reduces the size of the code.
+**repeat** ブロックを使用すると、同じ文を繰り返し実行することができ、コードのサイズを縮小できます。
 
 .. image:: img/sp210512_144418.png
 
-The **mathematical operation** block can perform typical mathematical functions, such as ”+”, “-”, “x”, and “÷ “.
+**mathematical operation** ブロックは、”+”、”-”、”x”、”÷” などの一般的な数学的な操作を実行することができます。
 
 .. image:: img/sp210512_144530.png
 
-The play **sound effects - with volume - %** block has preset sound effects, such as a siren sound, a gun sound, and others. The range of the volume can be set from 0 to 100.
+play **sound effects - with volume - %** ブロックには、サイレンの音、銃の音など、プリセットの音効果があります。音量の範囲は0から100まで設定することができます。
 
-**EXAMPLE**
+**例**
 
 .. note::
 
-    * You can write the program according to the following picture, please refer to the tutorial: :ref:`ezblock:create_project_latest`.
-    * Or find the code with the same name on the **Examples** page of the EzBlock Studio and click **Run** or **Edit** directly.
-
+    * 以下の画像に従ってプログラムを書くことができます。チュートリアルを参照してください: :ref:`ezblock:create_project_latest`。
+    * EzBlock Studioの **Examples** ページで同じ名前のコードを見つけ、 **Run** または **Edit** を直接クリックしてください。
 
 .. image:: img/sp210512_144944.png

@@ -1,28 +1,27 @@
 .. _test_grayscale:
 
-Test Grayscale Module
-==============================
+グレースケールモジュールのテスト
+=====================================================
 
-PiCar-X includes a Grayscale module for implementing line-following, cliff detection, and other fun experiments. The Grayscale module has three detection sensors that will each report a value according to the shade of color detected by the sensor. For example, a sensor reading the shade of pure black will return a value of “0”.
+PiCar-Xには、ラインフォロー、崖検出、および他の楽しい実験を実装するためのグレースケールモジュールが含まれています。グレースケールモジュールには、センサーが検出した色の濃度に応じて値を報告する3つの検出センサーがあります。例えば、純粋な黒の濃度を読み取るセンサーは“0”の値を返します。
 
 **TIPS**
 
 .. image:: img/sp210512_115406.png
 
-Use the **Grayscale module** block to read the value of one of the sensors. In the example above, the “A0” sensor is the sensor on the far left of the PiCar-X. Use the drop-down arrow to change the sensor to “A1” (center sensor), or “A2” (far right sensor).
+**Grayscale module** ブロックを使用して、センサーの値を読み取ります。上の例では、”A0”センサーはPiCar-Xの最も左側のセンサーです。ドロップダウン矢印を使用して、センサーを“A1”（中央のセンサー）または“A2”（最も右側のセンサー）に変更します。
 
 .. image:: img/sp210512_120023.png
 
-The program is simplified with a **create list with** block. 
-A **List** is used in the same way as a single **Variable**, 
-but in this case a **List** is more efficient than a single **Variable** because the **Grayscale module** will be reporting more than one sensor value.
-The **create list with** block will create separate **Variables** for each sensor, and put them into a List.
+プログラムは、 **create list with** ブロックで簡略化されています。
+**List** は単一の **Variable** と同じように使用されますが、この場合、 **Grayscale module** が1つ以上のセンサー値を報告するため、 **List** は単一の **Variable** よりも効率的です。
+**create list with** ブロックは、各センサーのための別々の **Variables** を作成し、それらをListに入れます。
 
-**EXAMPLE**
+**例**
 
 .. note::
 
-    * You can write the program according to the following picture, please refer to the tutorial: :ref:`ezblock:create_project_latest`.
-    * Or find the code with the same name on the **Examples** page of the EzBlock Studio and click **Run** or **Edit** directly.
+    * 以下の画像に従ってプログラムを書くことができます。チュートリアルを参照してください: :ref:`ezblock:create_project_latest`。
+    * EzBlock Studioの **Examples** ページで同じ名前のコードを見つけ、 **Run** または **Edit** を直接クリックしてください。
 
 .. image:: img/sp210512_120508.png

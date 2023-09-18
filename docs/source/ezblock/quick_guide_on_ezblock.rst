@@ -1,64 +1,62 @@
-Quick Guide on EzBlock
+EzBlockの簡単なガイド
 ===========================
 
-There are 2 parts here:
+こちらには2つのパートがあります：
 
-* :ref:`ezb_servo_adjust` allows you to keep all the servos at 0 degrees to complete a proper and safe assembly (otherwise you will probably damage the servos).
-* :ref:`install_ezblock` will guide you to download EzBlock Studio to play with your robot.
+* :ref:`ezb_servo_adjust` はサーボを0度に保持して、正確かつ安全な組み立てを完了させるためのものです（そうしないと、サーボを損傷する可能性があります）。
+* :ref:`install_ezblock` はEzBlock Studioをダウンロードして、ロボットで遊ぶためのガイドです。
 
 .. _ezb_servo_adjust:
 
-Servo Adjust
+サーボ調整
 --------------------------------
 
-The angle range of the servo is -90~90, but the angle set at the factory is random, maybe 0°, maybe 45°; if we assemble it with such an angle directly, it will lead to a chaotic state after the robot runs the code, or worse, it will cause the servo to block and burn out.
+サーボの角度の範囲は-90〜90度ですが、工場での設定角度はランダムで、0°かもしれないし、45°かもしれません。このような角度で直接組み立てると、ロボットがコードを実行した後にカオスな状態になったり、最悪の場合、サーボがブロックして焼き切れてしまいます。
 
-So here we need to set all the servo angles to 0° and then install them, so that the servo angle is in the middle, no matter which direction to turn.
+そこで、すべてのサーボ角度を0°に設定してから取り付ける必要があります。これにより、サーボ角度は中央になり、どちらの方向にも回転することができます。
 
-It is recommended that you follow the intructions on the APP to calibrate the picar-x after assembling it. The servo angle will be tilted due to possible deviations during assembly or limitations of the servo itself, so you can get the servo to a perfect state by calibrating it, usually the calibration angle is -5~5°.
+組み立てた後に、APPの指示に従ってPiCar-Xをキャリブレーションすることをおすすめします。組み立て中の偏差やサーボ自体の制限により、サーボ角度が傾くことがあるため、キャリブレーションを行うことで、サーボを完璧な状態にすることができます。通常、キャリブレーション角度は-5〜5°です。
 
-But if the deviation angle is too big, you still have to go back to this section to set the servo angle to 0°, and then follow the instructions to reassemble the car.
+しかし、偏差角度が大きすぎる場合は、このセクションに戻ってサーボ角度を0°に設定し、指示に従って車を再組み立てする必要があります。
 
+#. まず、:ref:`ezblock:install_ezblock_os_latest`をMicro SDカードにインストールします。インストールが完了したら、Raspberry Piに挿入します。
 
-#. Firstly, :ref:`ezblock:install_ezblock_os_latest` onto a Micro SD card, once the installation is complete, insert it into the Raspberry Pi.
-
-#. To ensure that the servo has been properly set to 0°, first insert the rocker arm into the servo shaft and then gently rotate the rocker arm to a different angle.
+#. サーボが正確に0°に設定されていることを確認するため、ロッカーアームをサーボ軸に挿入し、ロッカーアームを別の角度にゆっくりと回転させます。
 
     .. image:: img/servo_arm.png
 
-#. Follow the instructions on the assembly foldout, insert the battery cable and turn the power switch to the ON. Then plug in a powered USB-C cable to activate the battery. Wait for 1-2 minutes, there will be a sound to indicate that the Raspberry Pi boots successfully.
+#. 組み立て説明書の指示に従って、バッテリーケーブルを挿入し、電源スイッチをONにします。次に、電源の入ったUSB-Cケーブルを差し込み、バッテリーをアクティベートします。1-2分待つと、Raspberry Piが正常に起動したことを示す音がします。
 
     .. image:: img/Z_BTR.JPG
 
-#. Next, plug the servo cable into the P11 port as follows.
+#. 次に、サーボケーブルを以下のようにP11ポートに接続します。
 
     .. image:: img/Z_P11.JPG
 
-#. At this point you will see the servo arm rotate to a specific position (0°). If the servo arm does not return to 0°, hold down the USR button and press the RST button to restart the Robot HAT.
+#. この時点で、サーボアームが特定の位置（0°）に回転するのを見ることができます。サーボアームが0°に戻らない場合は、USRボタンを押し続け、RSTボタンを押してRobot HATを再起動します。
 
-#. Now you can continue the installation as instructed on the assembly foldout.
+#. これで、組み立て説明書の指示に従って、インストールを続行できます。
 
 .. note::
 
-    * Do not unplug this servo cable before fastening this servo with the servo screw, you can unplug it after fastening.
-    * Do not turn the servo while it is powered on to avoid damage; if the servo shaft is inserted at the wrong angle, pull out the servo and reinsert it.
-    * Before assembling each servo, you need to plug the servo cable into P11 and turn on the power to set its angle to 0°.
-    * This zeroing function will be disabled if you download a program to the robot later with the EzBlock APP.
-
+    * このサーボケーブルをサーボスクリューで固定する前には抜かないでください。固定した後であれば、抜くことができます。
+    * 電源が入っている状態でサーボを回転させないでください。サーボ軸が間違った角度で挿入されている場合は、サーボを引き抜き、再挿入してください。
+    * 各サーボを組み立てる前に、サーボケーブルをP11に接続し、電源をオンにして、角度を0°に設定する必要があります。
+    * このゼロ点設定機能は、後でEzBlock APPを使用してロボットにプログラムをダウンロードすると無効になります。
 
 .. _install_ezblock:
 
-Install and Configure EzBlock Studio
+EzBlock Studioのインストールと設定
 ----------------------------------------
 
-As soon as the robot is assembled, you will need to carry out some basic operations.
+ロボットが組み立てられたら、基本的な操作を行う必要があります。
 
-* :ref:`ezblock:install_ezblock_app_latest`: Download and install EzBlock Studio on your device or use the web-based version.
-* :ref:`ezblock:connect_product_ezblock_latest`: Configure Wi-Fi, Bluetooth and calibrate before use.
-* :ref:`ezblock:open_run_latest`: View or run the related example directly.
+* :ref:`ezblock:install_ezblock_app_latest`：デバイスにEzBlock Studioをダウンロードしてインストールするか、Webベースのバージョンを使用します。
+* :ref:`ezblock:connect_product_ezblock_latest`：Wi-Fi、Bluetoothを設定し、使用前にキャリブレーションを行います。
+* :ref:`ezblock:open_run_latest`：関連する例を直接表示または実行します。
 
 .. note::
 
-    After you connect the Picar-x, there will be a calibration step. This is because of possible deviations in the installation process or limitations of the servos themselves, making some servo angles slightly tilted, so you can calibrate them in this step.
-    
-    But if you think the assembly is perfect and no calibration is needed, you can also skip this step.
+    PiCar-Xに接続すると、キャリブレーションステップがあります。これは、取り付けプロセスの可能な偏差やサーボ自体の制限により、一部のサーボ角度がわずかに傾くことがあるためです。そのため、このステップでそれらをキャリブレーションできます。
+
+    しかし、組み立てが完璧でキャリブレーションが不要だと思う場合、このステップをスキップすることもできます。

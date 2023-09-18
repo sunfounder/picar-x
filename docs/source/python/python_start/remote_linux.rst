@@ -1,14 +1,12 @@
-Linux /Unix Users
+Linux /Unix ユーザー
 ==========================
 
-
-#. Go to **Applications**->\ **Utilities**, find the **Terminal**, and open
-it.
+#. **Applications** -> **Utilities** へ移動し、 **Terminal** を探して開きます。
 
     .. image:: img/image21.png
         :align: center
 
-#. Check if your Raspberry Pi is on the same network by type in ``ping <hostname>.local``. 
+#. Raspberry Piが同じネットワーク上にあるかどうかを確認するために、 ``ping <hostname>.local`` を入力します。
 
     .. code-block::
 
@@ -18,13 +16,12 @@ it.
         :width: 550
         :align: center
 
-    As shown above, you can see the Raspberry Pi's IP address after it has been connected to the network.
+    上記の通り、Raspberry Piがネットワークに接続された後のIPアドレスを確認できます。
 
-    * If terminal prompts ``Ping request could not find host pi.local. Please check the name and try again.``. Please follow the prompts to make sure the hostname you fill in is correct.
-    * Still can't get the IP? Check your network or WiFi configuration on the Raspberry Pi.
+    * もしターミナルに ``Ping request could not find host pi.local. Please check the name and try again.`` と表示された場合、入力したホスト名が正しいか確認してください。
+    * IPアドレスを取得できない場合は、Raspberry PiのネットワークまたはWiFiの設定を確認してください。
 
-
-#. Type in ``ssh <username>@<hostname>.local`` (or ``ssh <username>@<IP address>``).
+#. ``ssh <username>@<hostname>.local`` （もしくは ``ssh <username>@<IP address>`` ）を入力します。
 
     .. code-block::
 
@@ -32,14 +29,13 @@ it.
 
     .. note::
 
-        If a prompt appears ``The term 'ssh' is not recognized as the name of a cmdlet...``.
+        もし ``The term 'ssh' is not recognized as the name of a cmdlet...`` というメッセージが表示された場合、
         
-        It means your system is too old and does not have ssh tools pre-installed, you need to manually :ref:`openssh_powershell`.
+        あなたのシステムが古く、SSHツールが事前にインストールされていないことを意味します。手動で :ref:`openssh_powershell` をインストールする必要があります。
         
-        Or use a third party tool like :ref:`login_windows`.
+        または、 :ref:`login_windows` のようなサードパーティのツールを使用することもできます。
 
-
-#. The following message will be displayed only when you log in for the first time, so enter ``yes``.
+#. 初めてログインする際、以下のメッセージが表示されるので、 ``yes`` と入力します。
 
     .. code-block::
 
@@ -48,18 +44,12 @@ it.
         This key is not known by any other names
         Are you sure you want to continue connecting (yes/no/[fingerprint])?
 
-
-#. Input the password you set before. (Mine is ``raspberry``.)
-
+#. 以前に設定したパスワードを入力します。(私の場合は ``raspberry`` です。)
 
     .. note::
-        When you input the password, the characters do not display on
-        window accordingly, which is normal. What you need is to input the
-        correct password.
+        パスワードを入力する際、文字は画面上には表示されませんが、これは正常です。正しいパスワードを入力するだけで問題ありません。
 
-
-
-#. We now get the Raspberry Pi connected and are ready to go to the nextstep.
+#. Raspberry Piとの接続が完了したので、次のステップに進む準備ができました。
 
     .. image:: img/mac-ssh-terminal.png
         :width: 550

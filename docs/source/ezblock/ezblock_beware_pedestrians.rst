@@ -1,22 +1,23 @@
-Beware of Pedestrians
+歩行者に注意
 =============================
 
-This project will make the PiCar-X perform appropriate measures based on road conditions. While driving, the PiCar-X will come to a complete stop if a pedestrian is detected in its path.
+このプロジェクトでは、PiCar-Xが道路の状況に基づいて適切な措置を実行するようにします。運転中、PiCar-Xの進行方向に歩行者が検出された場合、完全に停止します。
 
-Once the program is running, hold a photo of a person in front of the PiCar-X. The Video Monitor will detect the person's face, and the PiCar-X will automatically come to a stop.
+プログラムを実行している間、PiCar-Xの前に人物の写真を持ってください。ビデオモニターが人物の顔を検出し、PiCar-Xが自動的に停止します。
 
-To simulate driving safety protocols, a judgment procedure is created that will send a **[count]** value to a **if do else** block. The judgement procedure will look for a human face 10 times, and if a face does appear it will increment **[count]** by +1. When **[count]** is larger than 3, the PiCar-X will stop moving.
+運転安全プロトコルをシミュレートするために、 **[count]** の値を **if do else** ブロックに送信する判定手続きが作成されます。判定手続きは、人の顔を10回探します。
+顔が表示されると、 **[count]** は+1増加します。 **[count]** が3より大きい場合、PiCar-Xは動きを停止します。
 
 * :ref:`ezblock:remote_control_latest`
 
 .. image:: img/face_detection.PNG
 
 
-**EXAMPLE**
+**例**
 
 .. note::
 
-    * You can write the program according to the following picture, please refer to the tutorial: :ref:`ezblock:create_project_latest`.
-    * Or find the code with the same name on the **Examples** page of the EzBlock Studio and click **Run** or **Edit** directly.
+    * 以下の画像に従ってプログラムを書くことができます。チュートリアルを参照してください: :ref:`ezblock:create_project_latest`。
+    * EzBlock Studioの **Examples** ページで同じ名前のコードを見つけ、 **Run** または **Edit** を直接クリックしてください。
 
 .. image:: img/sp210512_185509.png

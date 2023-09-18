@@ -1,12 +1,11 @@
 .. _quick_guide_python:
 
-Quick Guide on Python
+Pythonのクイックガイド
 ==========================
 
-This section is to teach you how to install Raspberry Pi OS, configure wifi to Raspberry Pi, remote access to Raspberry Pi to run the corresponding code.
+このセクションでは、Raspberry Pi OSのインストール、Raspberry Piへのwifi設定、Raspberry Piへのリモートアクセス、対応するコードの実行方法について説明します。
 
-If you are familiar with Raspberry Pi and can open the command line successfully, then you can skip the first 3 parts and then complete the last part. 
-
+Raspberry Piに精通しており、コマンドラインを正常に開くことができる場合、最初の3部分をスキップして、最後の部分を完了できます。
 
 
 .. toctree::

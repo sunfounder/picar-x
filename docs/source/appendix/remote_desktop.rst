@@ -1,26 +1,26 @@
 .. _remote_desktop:
 
 
-Remote Desktop 
-=====================
+リモートデスクトップ 
+===============================
 
-There are two ways to control the desktop of the Raspberry Pi remotely:
+Raspberry Piのデスクトップをリモートで制御する方法は2つあります:
 
-**VNC** and **XRDP**, you can use any of them.
+**VNC** と **XRDP** 、どちらかを使用できます。
 
 VNC 
 --------------
 
-You can use the function of remote desktop through VNC.
+VNCを使用してリモートデスクトップの機能を使用できます。
 
-**Enable VNC service**
+**VNCサービスの有効化**
 
-The VNC service has been installed in the system. By default, VNC is
-disabled. You need to enable it in config.
+VNCサービスはシステムにインストールされています。デフォルトでは、
+VNCは無効になっています。設定で有効にする必要があります。
 
-**Step 1**
+**ステップ 1**
 
-Input the following command:
+以下のコマンドを入力します:
 
 .. raw:: html
 
@@ -33,86 +33,87 @@ Input the following command:
 .. image:: img/image287.png
    :align: center
 
-**Step 2**
+**ステップ 2**
 
-Choose **3** **Interfacing Options** by press the down arrow key on your keyboard, then press the **Enter** key.
+キーボードの下矢印キーを押して **3 Interfacing Options** を選択し、 **Enter** キーを押します。
 
 .. image:: img/image282.png
    :align: center
 
-**Step 3**
+**ステップ 3**
 
 **P3 VNC**
 
 .. image:: img/image288.png
    :align: center
 
-**Step 4**
+**ステップ 4**
 
-Select **Yes -> OK -> Finish** to exit the configuration.
+**Yes -> OK -> Finish** を選択して設定を終了します。
 
 .. image:: img/image289.png
    :align: center
 
-**Login to VNC**
+**VNCへのログイン**
 
-**Step 1**
+**ステップ 1**
 
-You need to download and install the `VNC Viewer <https://www.realvnc.com/en/connect/download/viewer/>`_ on personal computer. After the installation is done, open it.
+パーソナルコンピュータに `VNC Viewer <https://www.realvnc.com/en/connect/download/viewer/>`_ をダウンロードしてインストールする必要があります。
+インストールが完了したら、それを開きます。
 
-**Step 2**
+**ステップ 2**
 
-Then select **New connection**.
+次に、 **新しい接続** を選択します。
 
 .. image:: img/image290.png
    :align: center
 
-**Step 3**
+**ステップ 3**
 
-Input ``<Hostname>.local`` or ``<IP address>`` of Raspberry Pi and any **Name**.
+Raspberry Piの ``<Hostname>.local`` または ``<IP address>`` と任意の **名前** を入力します。
 
 .. image:: img/image291.png
    :align: center
 
-**Step 4**
+**ステップ 4**
 
-Double click the **connection** just created:
+作成した接続をダブルクリックします:
 
 .. image:: img/image292.png
    :align: center
 
-**Step 5**
+**ステップ 5**
 
-Enter Username and Password.
+ユーザー名とパスワードを入力します。
 
 .. image:: img/image293.png
    :align: center
 
-**Step 6**
+**ステップ 6**
 
-Now you can see the desktop of the Raspberry Pi:
+これでRaspberry Piのデスクトップが表示されます:
 
 .. image:: img/image294.png
    :align: center
 
-That's the end of the VNC part.
+VNCの部分はここまでです。
 
 
 XRDP
 -----------------------
 
-Another method of remote desktop is XRDP, it provides a graphical login to remote machines using RDP (Microsoft
-Remote Desktop Protocol).
+もう1つのリモートデスクトップの方法はXRDPで、
+RDP（Microsoft Remote Desktop Protocol）を使用してリモートマシンにグラフィカルにログインする機能を提供します。
 
-**Install XRDP**
+**XRDPのインストール**
 
-**Step 1**
+**ステップ 1**
 
-Login to Raspberry Pi by using SSH.
+SSHを使用してRaspberry Piにログインします。
 
-**Step 2**
+**ステップ 2**
 
-Input the following instructions to install XRDP.
+XRDPをインストールするための以下の指示を入力します。
 
 .. raw:: html
 
@@ -123,49 +124,47 @@ Input the following instructions to install XRDP.
    sudo apt-get update
    sudo apt-get install xrdp
 
-**Step 3**
+**ステップ 3**
 
-Later, the installation starts.
+その後、インストールが開始されます。
 
-Enter ``Y``, press key ``Enter`` to confirm.
+``Y`` を入力し、 ``Enter`` キーを押して確認します。
 
 .. image:: img/image295.png
    :align: center
 
-**Step 4**
+**ステップ 4**
 
-Finished the installation, you should login to your Raspberry Pi by using Windows remote desktop applications.
+インストールが完了したら、Windowsのリモートデスクトップアプリケーションを
+使用してRaspberry Piにログインする必要があります。
 
-**Login to XRDP**
+**XRDPへのログイン**
 
-**Step 1**
+**ステップ 1**
 
-If you are a Windows user, you can use the Remote Desktop feature that
-comes with Windows. If you are a Mac user, you can download and use
-Microsoft Remote Desktop from the APP Store, and there is not much
-difference between the two. The next example is Windows remote desktop.
+Windowsユーザーの場合、Windowsに付属するリモートデスクトップ機能を使用できます。
+Macユーザーの場合、APP StoreからMicrosoft Remote Desktopをダウンロードして使用できます。
+両方の違いはあまりありません。次の例はWindowsのリモートデスクトップです。
 
-**Step 2**
+**ステップ 2**
 
-Type in ``mstsc`` in Run (``WIN+R``) to open the Remote Desktop
-Connection, and input the ``<Hostname>.local`` or ``<IP address>`` of Raspberry Pi, then click on **Connect**.
+Run（ ``WIN+R`` ）に ``mstsc`` と入力して、リモートデスクトップ接続を開き、
+Raspberry Piの ``<Hostname>.local`` または ``<IP address>`` を入力し、 **接続** をクリックします。
 
 .. image:: img/image296.png
    :align: center
 
-**Step 3**
+**ステップ 3**
 
-Then the xrdp login page pops out. Please type in your username and
-password. After that, please click **OK**.
+次に、xrdpのログインページが表示されます。ユーザー名とパスワードを入力してください。
+その後、 **OK** をクリックしてください。
 
 .. image:: img/image297.png
    :align: center
 
-**Step 4**
+**ステップ 4**
 
-Here, you successfully login to RPi by using the remote desktop.
+ここで、リモートデスクトップを使用してRPiに正常にログインしました。
 
 .. image:: img/image20.png
    :align: center
-
-

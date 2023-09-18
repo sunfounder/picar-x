@@ -1,17 +1,16 @@
 .. _py_calibrate:
 
-Calibrating the PiCar-X
+PiCar-Xのキャリブレーション
 ==========================
 
-Calibrate Motors & Servo
----------------------------
+モーターとサーボのキャリブレーション
+-----------------------------------
 
-Some servo angles may be slightly tilted due to possible deviations during PiCar-X 
-installation or limitations of the servos themselves, so you can calibrate them.
+PiCar-Xのインストール時やサーボの限界により、一部のサーボ角度がわずかに傾いている場合がありますので、それをキャリブレーションできます。
 
-Of course, you can skip this chapter if you think the assembly is perfect and doesn't require calibration.
+もちろん、組み立てが完璧でキャリブレーションが不要と思う場合、この章はスキップしても構いません。
 
-#. Run the ``calibration.py``.
+#. ``calibration.py`` を実行します。
 
     .. raw:: html
 
@@ -22,45 +21,41 @@ Of course, you can skip this chapter if you think the assembly is perfect and do
         cd ~/picar-x/example/calibration
         sudo python3 calibration.py
 
-#. After running the code, you will see the following interface displayed in the terminal.
+#. コードを実行すると、ターミナルに以下のインターフェースが表示されます。
 
     .. image:: img/calibrate1.png
 
-#. The ``R`` key is used to test whether the servo that controls the direction of the front wheel can work normally and is not damaged.
+#. ``R`` キーは、前輪の方向を制御するサーボが正常に動作し、損傷していないかどうかをテストするために使用します。
 
-#. Press the number key ``1`` to select the front wheel servo, and then press the ``W/S`` key to let the front wheel looks as forward as possible without skewing left and right.
+#. 数字キー ``1`` を押して前輪のサーボを選択し、 ``W/S`` キーを押して前輪が左右に傾かず、できるだけ前を向くようにします。
 
     .. image:: img/calibrate2.png
 
-#. Press the number key ``2`` to select the **Pan servo**, then press the ``W/S`` key to make the pan/tilt platform look straight ahead and not tilt left or right.
+#. 数字キー ``2`` を押して **Panサーボ** を選択し、 ``W/S`` キーを押して、パン/チルトプラットフォームが直前を向き、左右に傾かないようにします。
 
     .. image:: img/calibrate3.png
 
-#. Press the number key ``3`` to select the **tilt servo**, then press the ``W/S`` key to make the pan/tilt platform look straight ahead and not tilt up and down.
+#. 数字キー ``3`` を押して **tiltサーボ** を選択し、 ``W/S`` キーを押して、パン/チルトプラットフォームが直前を向き、上下に傾かないようにします。
 
     .. image:: img/calibrate4.png
 
-#. Since the wiring of the motors may be reversed during installation, you can press ``E`` to test whether the car can move forward normally. If not, use the number keys ``4`` and ``5`` to select the left and right motors, then press the ``Q`` key to calibrate the rotation direction.
+#. インストール中にモーターの配線が逆になる可能性があるため、 ``E`` キーを押して車が正常に前進できるかどうかをテストします。そうでない場合、数字キー ``4`` および ``5`` を使用して左および右のモーターを選択し、 ``Q`` キーを押して回転方向をキャリブレーションします。
 
     .. image:: img/calibrate6.png
 
-#. When the calibration is completed, press the ``Spacebar`` to save the calibration parameters. There will be a prompt to enter ``y`` to confirm, and then press ``esc`` to exit the program to complete the calibration.
+#. キャリブレーションが完了したら、 ``Spacebar`` を押してキャリブレーションパラメータを保存します。 ``y`` を入力して確認するプロンプトが表示され、 ``esc`` キーを押してプログラムを終了し、キャリブレーションを完了します。
 
     .. image:: img/calibrate5.png
 
 
-Calibrate Grayscale Module
----------------------------
+グレースケールモジュールのキャリブレーション
+------------------------------------------
 
-Due to varying environmental conditions and lighting situations, 
-the preset parameters for the greyscale module might not be optimal. 
-You can fine-tune these settings through this program to achieve better results.
+環境条件や照明状況の違いにより、グレースケールモジュールのプリセットパラメータが最適でない場合があります。このプログラムを通じてこれらの設定を微調整して、より良い結果を得ることができます。
 
+#. 明るい色の床に約15cmの黒い電気テープの縞を置きます。PiCar-Xをテープの上に中央に配置します。このセットアップでは、グレースケールモジュールの中央のセンサーがテープの真上にあり、両側のセンサーが明るい表面の上に浮かび上がるべきです。
 
-#. Lay down a strip of black electrical tape, about 15cm long, on a light-colored floor. Center your PiCar-X so that it straddles the tape. In this setup, the middle sensor of the greyscale module should be directly above the tape, while the two flanking sensors should hover over the lighter surface.
-
-
-#. Run the ``grayscale_calibration.py``.
+#. ``grayscale_calibration.py`` を実行します。
 
     .. raw:: html
 
@@ -71,19 +66,18 @@ You can fine-tune these settings through this program to achieve better results.
         cd ~/picar-x/example/calibration
         sudo python3 Grayscale.py
 
-#. After running the code, you will see the following interface displayed in the terminal.
+#. コードを実行すると、ターミナルに以下のインターフェースが表示されます。
 
     .. image:: img/calibrate_g1.png
 
-#. Press the "Q" key to initiate the greyscale calibration. You'll then observe the PiCar-X make minor movements to both the left and the right. During this process, each of the three sensors should sweep across the electrical tape at least once.
+#. "Q"キーを押してグレースケールのキャリブレーションを開始します。その後、PiCar-Xが左右にわずかな動きをするのを観察します。このプロセス中に、3つのセンサーのそれぞれが電気テープを少なくとも一度は掃除する必要があります。
 
-
-#. Additionally, you will notice three pairs of significantly different values appearing in the "threshold value" section, while the "line reference" will display two intermediate values, each representing the average of one of these pairs.
+#. さらに、"閾値"セクションには大幅に異なる値の3組が表示され、"ライン参照"にはこれらのペアのそれぞれの平均を表す2つの中間値が表示されます。
 
     .. image:: img/calibrate_g2.png
 
-#. Next, suspend the PiCar-X in mid-air (or position it over a cliff edge) and press the "E" key. You'll observe that the "cliff reference" values are also updated accordingly.
+#. 次に、PiCar-Xを宙に浮かせて（または崖の端に配置して）"E"キーを押します。"cliff reference"の値もそれに応じて更新されることを観察します。
 
     .. image:: img/calibrate_g3.png
 
-#. Once you've verified that all the values are accurate, press the "space" key to save the data. You can then exit the program by pressing Ctrl+C.
+#. すべての値が正確であることを確認したら、"space"キーを押してデータを保存します。その後、Ctrl+Cを押してプログラムを終了できます。
