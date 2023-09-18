@@ -1,47 +1,46 @@
-Color Detection
+Farberkennung
 ===========================
 
-PiCar-X is a self-driving car with a built-in camera, which allows Ezblock programs to utilize object detection and color recognition code. In this section, Ezblock will be used to create a program for color detection. 
+Der PiCar-X ist ein selbstfahrendes Auto mit einer integrierten Kamera, die es ermöglicht, Ezblock-Programme für Objekterkennung und Farberkennung zu nutzen. In diesem Abschnitt wird Ezblock verwendet, um ein Programm für die Farberkennung zu erstellen.
 
-.. note:: 
+.. note::
 
-    Before attempting this section, make sure that the Raspberry Pi Camera’s FFC cable is properly and securely connected. For detailed instructions on securely connecting the FCC cable, please reference: :ref:`assembly_instructions`.
+    Stellen Sie sicher, dass das Flachbandkabel der Raspberry Pi-Kamera ordnungsgemäß und sicher angeschlossen ist, bevor Sie diesen Abschnitt beginnen. Für detaillierte Anweisungen zum sicheren Anschluss des FFC-Kabels siehe: :ref:`assembly_instructions`.
 
-In this program, Ezblock will first be told the Hue-Saturation-Value (HSV) space range of the color to be detected, then utilize OpenCV to process the colors in the HSV range to remove the background noise, and finally, box the matching color.
+In diesem Programm wird Ezblock zunächst der Farbraum Hue-Saturation-Value (HSV) der zu erkennenden Farbe mitgeteilt. Anschließend wird OpenCV verwendet, um die Farben im HSV-Bereich zu verarbeiten, den Hintergrundrauschen zu entfernen und schließlich die passende Farbe einzurahmen.
 
-Ezblock includes 6 color models for PiCar-X, “red”, “orange”, “yellow”, “green”, “blue”, and “purple”. Color cards have been prepared in the following PDF, and will need to be printed on a color printer.
+Für den PiCar-X bietet Ezblock sechs Farbmodelle: “red”, “orange”, “yellow”, “green”, “blue”, “purple” („rot“, „orange“, „gelb“, „grün“, „blau“ und „lila“) . Farbkarten sind im folgenden PDF vorbereitet und müssen mit einem Farbdrucker ausgedruckt werden.
 
-* :download:`[PDF]Color Cards <https://github.com/sunfounder/sf-pdf/raw/master/prop_card/object_detection/color-cards.pdf>`
+* :download:`[PDF]Farbkarten <https://github.com/sunfounder/sf-pdf/raw/master/prop_card/object_detection/color-cards.pdf>`
 
 .. image:: img/color_card.png
     :width: 600
 
 .. note::
 
-    The printed colors may have a slightly different hue from the Ezblock color models due to printer toner differences, or the printed medium, such as a tan-colored paper. This can cause a less accurate color recognition.
-
+    Aufgrund von Unterschieden im Druckertoner oder dem bedruckten Medium, wie zum Beispiel sandfarbenem Papier, können die ausgedruckten Farben einen leicht abweichenden Farbton im Vergleich zu den Ezblock-Farbmodellen aufweisen. Dies kann zu einer weniger genauen Farberkennung führen.
 
 .. image:: img/ezblock_color_detect.PNG
 
-**TIPS**
+**TIPPS**
 
 .. image:: img/sp210512_121105.png
 
-Drag the Video widget from the remote Control page, and it will generate a video monitor. For more information on how to use the Video widget, please reference the tutorial on Ezblock video here: :ref:`ezblock:video_latest`.
+Ziehen Sie das Video-Widget von der Fernsteuerungsseite, um einen Videomonitor zu erzeugen. Für weitere Informationen zur Verwendung des Video-Widgets siehe das Tutorial zu Ezblock-Video hier: :ref:`ezblock:video_latest`.
 
 .. image:: img/sp210512_121125.png
 
-Enable the video monitor by setting the **camera monitor** block to **on**. Note: Setting the **camera monitor** to **off** will close the monitor, but object detection will still be available.
+Aktivieren Sie den Videomonitor, indem Sie den Block **Kameramonitor** auf **ein** setzen. Hinweis: Wenn Sie den **Kameramonitor** auf **aus** setzen, wird der Monitor geschlossen, aber die Objekterkennung bleibt weiterhin verfügbar.
 
 .. image:: img/sp210512_134133.png
 
-Use the **color detection** block to enable the color detection. Note: only one color can be detected at a time.
+Verwenden Sie den Block **Farberkennung**, um die Farberkennung zu aktivieren. Hinweis: Es kann immer nur eine Farbe gleichzeitig erkannt werden.
 
-**EXAMPLE**
+**BEISPIEL**
 
 .. note::
 
-    * You can write the program according to the following picture, please refer to the tutorial: :ref:`ezblock:create_project_latest`.
-    * Or find the code with the same name on the **Examples** page of the EzBlock Studio and click **Run** or **Edit** directly.
+    * Sie können das Programm gemäß dem folgenden Bild erstellen. Bitte beziehen Sie sich auf das Tutorial: :ref:`ezblock:create_project_latest`.
+    * Oder suchen Sie den Code mit dem gleichen Namen auf der **Beispiele**-Seite des EzBlock Studios und klicken Sie direkt auf **Ausführen** oder **Bearbeiten**.
 
 .. image:: img/sp210512_134636.png

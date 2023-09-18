@@ -3,25 +3,24 @@
 Computer Vision
 ==========================================
 
-This next project will officially enter the field of computer vision!
+Mit diesem nächsten Projekt steigen wir offiziell in den Bereich der Computer Vision ein!
 
-To perform the next four experiments, make sure to have completed the :ref:`remote_desktop`. A remote connection via SSH will not display the camera images.
+Um die nächsten vier Experimente durchzuführen, stellen Sie sicher, dass Sie die :ref:`remote_desktop` Anleitung abgeschlossen haben. Eine Remote-Verbindung via SSH reicht nicht aus, um die Kamerabilder anzuzeigen.
 
-
-**Run the Code**
+**Code ausführen**
 
 .. note::
 
-    * This project requires access to the Raspberry Pi desktop to view the footage taken by the camera module.
-    * You can connect a screen to the PiCar-X or refer to the tutorial :ref:`remote_desktop` to access it with VNC or XRDP.
-    * Once inside the Raspberry Pi desktop, open Terminal and type the following command to run it, or just open and run it with a Python editor.
+    * Dieses Projekt erfordert Zugang zum Raspberry Pi Desktop, um die Aufnahmen des Kameramoduls zu sehen.
+    * Sie können einen Bildschirm an den PiCar-X anschließen oder die Anleitung :ref:`remote_desktop` befolgen, um via VNC oder XRDP darauf zuzugreifen.
+    * Nachdem Sie den Raspberry Pi Desktop geöffnet haben, öffnen Sie das Terminal und führen Sie den folgenden Befehl aus oder starten Sie ihn direkt über einen Python-Editor.
 
 .. code-block::
 
     cd ~/picar-x/example
     sudo python3 computer_vision.py
 
-After the code is run, you will see a window open on your desktop showing the shot.
+Nachdem der Code ausgeführt wurde, wird ein Fenster auf Ihrem Desktop geöffnet, in dem die Aufnahme zu sehen ist.
 
 **Code**
 
@@ -32,34 +31,32 @@ After the code is run, you will see a window open on your desktop showing the sh
     from picamera import PiCamera
     import time
 
-
     with PiCamera() as camera:
         camera.resolution = (640, 480)  
         camera.framerate = 24
         rawCapture = PiRGBArray(camera, size=camera.resolution)  
         time.sleep(2)
 
-        for frame in camera.capture_continuous(rawCapture, format="bgr",use_video_port=True): # use_video_port=True
+        for frame in camera.capture_continuous(rawCapture, format="bgr",use_video_port=True):  
             img = frame.array
-            cv2.imshow("video", img)  # OpenCV image show
-            rawCapture.truncate(0)  # Release cache
-            
+            cv2.imshow("video", img)  
+            rawCapture.truncate(0)  
+
             k = cv2.waitKey(1) & 0xFF
             if k == 27:
                 break
 
-        print('quit ...') 
+        print('quit ...')  
         cv2.destroyAllWindows()
         camera.close()  
 
+**Wie funktioniert das?**
 
-**How it works?** 
+Fotos werden mit ``PiCamera`` gemacht. Dieses Paket stellt eine rein Python-basierte Schnittstelle zur Raspberry Pi Kamera zur Verfügung.
 
-Photos are obtained with ``PiCamera``. This package provides a pure Python interface to the Raspberry Pi camera.
+* `PiCamera Dokumentation <https://picamera.readthedocs.io/en/latest/index.html>`_
 
-* `PiCamera Docs <https://picamera.readthedocs.io/en/latest/index.html>`_
-
-Capturing an image to a file only requires specifying the name of the file to the output of whatever ``capture()`` method was required.
+Das Speichern eines Bildes in einer Datei erfordert nur die Angabe des Dateinamens als Ausgabe für die entsprechende ``capture()`` Methode.
 
 .. code-block:: python
 
@@ -69,14 +66,10 @@ Capturing an image to a file only requires specifying the name of the file to th
     with PiCamera() as camera:
         camera.resolution = (640, 480)
         camera.start_preview()
-        # Camera warm-up time
         sleep(2)
         camera.capture('foo.jpg')
 
-This project uses the **capturing timelapse sequences** method. This method enables OpenCV to acquire sequential frames.
-
-
-With this method, the camera captures images continually until it is told to stop. Images are automatically given unique names. The ``sleep(x)`` function controls the delay between captures.
+In diesem Projekt wird die Methode zur **Zeitrafferaufnahme** verwendet. Diese Methode ermöglicht es OpenCV, sequenzielle Frames zu erfassen.
 
 .. code-block:: python
 
@@ -90,11 +83,11 @@ With this method, the camera captures images continually until it is told to sto
 
         for filename in camera.capture_continuous('img{counter:03d}.jpg'):
             print('Captured %s' % filename)
-            sleep(10) #  capture images with a 10s delay between each shot
+            sleep(10)  
 
-In order to capture OpenCV objects, an image will be captured to Python’s in-memory stream class: ``BytesIO`` . The BytesIO will convert the stream to a ``numpy`` array, and the program will read the array with OpenCV:
+Um OpenCV-Objekte zu erfassen, wird ein Bild in Pythons im Speicher liegende Stream-Klasse ``BytesIO`` erfasst. BytesIO wird den Stream in ein ``numpy``-Array umwandeln, und das Programm wird das Array mit OpenCV lesen:
 
-* `What is Numpy? <https://numpy.org/doc/stable/user/whatisnumpy.html>`_
+* `Was ist Numpy? <https://numpy.org/doc/stable/user/whatisnumpy.html>`_
 
 .. code-block:: python
 
@@ -104,23 +97,18 @@ In order to capture OpenCV objects, an image will be captured to Python’s in-m
     import cv2
     import numpy as np
 
-    # Create the in-memory stream
     stream = io.BytesIO()
     with picamera.PiCamera() as camera:
         camera.start_preview()
         time.sleep(2)
         camera.capture(stream, format='jpeg')
-    # Construct a numpy array from the stream
     data = np.fromstring(stream.getvalue(), dtype=np.uint8)
-    # "Decode" the image from the array, preserving colour
     image = cv2.imdecode(data, 1)
-    # OpenCV returns an array with data in BGR order. If you want RGB instead
-    # use the following...
     image = image[:, :, ::-1]
 
-To avoid the losses with JPEG encoding and decoding, use the classes in the ``picamera.array`` module. This will also potentially increase the speed of image processing.
+Um die Verluste bei JPEG-Kodierung und -Dekodierung zu vermeiden, verwenden Sie die Klassen im ``picamera.array`` Modul. Dadurch könnte auch die Bildverarbeitungsgeschwindigkeit erhöht werden.
 
-As OpenCV images are simply ``numpy`` arrays arranged in BGR order, the ``PiRGBArray`` class, and simply capture with the ``‘bgr’`` format. Note: RGB data and BGR data are the same size and configuration, but have reversed color planes.
+Da OpenCV-Bilder einfach ``numpy`` -Arrays sind, die in BGR-Reihenfolge angeordnet sind, wird die Klasse ``PiRGBArray`` verwendet und einfach im ``'bgr'`` -Format erfasst. Hinweis: RGB-Daten und BGR-Daten haben die gleiche Größe und Konfiguration, weisen jedoch umgekehrte Farbebenen auf.
 
 * `PiRGBArray <https://picamera.readthedocs.io/en/release-1.13/api_array.html#pirgbarray>`_
 
@@ -136,11 +124,9 @@ As OpenCV images are simply ``numpy`` arrays arranged in BGR order, the ``PiRGBA
         time.sleep(2)
         with picamera.array.PiRGBArray(camera) as stream:
             camera.capture(stream, format='bgr')
-            # At this point the image is available as stream.array
             image = stream.array
 
-
-Combined with the method of capturing timelapse sequences, these 3-dimensional RGB arrays are shown by OpenCV.
+In Kombination mit der Methode zur Zeitrafferaufnahme werden diese 3-dimensionalen RGB-Arrays von OpenCV angezeigt.
 
 .. code-block:: python
 
@@ -148,25 +134,22 @@ Combined with the method of capturing timelapse sequences, these 3-dimensional R
     from picamera.array import PiRGBArray
     from picamera import PiCamera
 
-    #init camera
     with PiCamera() as camera:
         camera.resolution = (640,480)
         camera.framerate = 24
         rawCapture = PiRGBArray(camera, size=camera.resolution)  
 
-        for frame in camera.capture_continuous(rawCapture, format="bgr",use_video_port=True): # use_video_port=True
+        for frame in camera.capture_continuous(rawCapture, format="bgr",use_video_port=True):  
             img = frame.array
-            cv2.imshow("video", img)  # OpenCV image show
-            rawCapture.truncate(0)  # Release cache
+            cv2.imshow("video", img)  
+            rawCapture.truncate(0)  
 
-            # click ESC key to exit.
             k = cv2.waitKey(1) & 0xFF
             if k == 27:
                 camera.close()
                 break
 
-There are many other ways to read video streams with OpenCV. The ones used in these examples are better suited for the next four PiCar-X tasks, such as :ref:`py_color_detection` and :ref:`py_face_detection`.
+Es gibt viele weitere Möglichkeiten, Videostreams mit OpenCV zu lesen. Die in diesen Beispielen verwendeten sind besonders gut geeignet für die nächsten vier PiCar-X Aufgaben, wie z.B. :ref:`py_color_detection` und :ref:`py_face_detection`.
 
-For more ways to use video streams, please reference:  `OpenCV-Python Tutorials <https://docs.opencv.org/4.0.0/d6/d00/tutorial_py_root.html>`_.
-
+Für weitere Möglichkeiten zur Verwendung von Videostreams siehe: `OpenCV-Python Tutorials <https://docs.opencv.org/4.0.0/d6/d00/tutorial_py_root.html>`_.
 

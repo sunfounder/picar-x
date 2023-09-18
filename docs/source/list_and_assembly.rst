@@ -1,19 +1,13 @@
 .. _assembly_instructions:
 
-
-Component List and Assembly Instructions
+Komponentenliste und Montageanleitung
 ==========================================
 
-Before assembling the PiCar-X, please first verify that all parts and components have been included. If there are any missing or damaged components, please contact SunFounder immediately at service@sunfounder.com to resolve the issue as soon as possible.
+Bevor Sie den PiCar-X zusammenbauen, stellen Sie bitte sicher, dass alle Teile und Komponenten enthalten sind. Falls Teile fehlen oder beschädigt sind, kontaktieren Sie bitte sofort SunFounder unter service@sunfounder.com, um das Problem schnellstmöglich zu klären.
 
-Please follow the steps on the following PDF for assembly instructions: 
+Bitte folgen Sie den Anweisungen im folgenden PDF für die Montage:
 
-:download:`[PDF]Component List and Assembly of PiCar-X <https://github.com/sunfounder/sf-pdf/raw/master/assembly_file/z0104V31-a0001013-picar-x.pdf>`.
+:download:`[PDF]Komponentenliste und Montage des PiCar-X <https://github.com/sunfounder/sf-pdf/raw/master/assembly_file/z0104V31-a0001013-picar-x.pdf>`.
 
 .. note::
-    If the servos has been powered on through the Robot HAT after assembly, do not manually force the steering gear, as this could cause damage to the servo.
-
-
-
-..     #. Before assembling, you need to buy 2 18650 batteries and fully charge them, refer to :ref:`battery`.
-..     #. Robot HAT cannot charge the battery, so you need to buy a battery charger at the same time.
+    Wenn die Servos über den Robot HAT nach der Montage mit Strom versorgt wurden, versuchen Sie nicht, das Lenkgetriebe manuell zu zwingen, da dies Schäden am Servo verursachen könnte.

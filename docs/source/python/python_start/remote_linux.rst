@@ -1,14 +1,12 @@
-Linux /Unix Users
+Linux/Unix-Benutzer
 ==========================
 
-
-#. Go to **Applications**->\ **Utilities**, find the **Terminal**, and open
-it.
+#. Navigieren Sie zu **Anwendungen** -> **Dienstprogramme**, suchen Sie das **Terminal** und öffnen Sie es.
 
     .. image:: img/image21.png
         :align: center
 
-#. Check if your Raspberry Pi is on the same network by type in ``ping <hostname>.local``. 
+#. Überprüfen Sie, ob Ihr Raspberry Pi im selben Netzwerk ist, indem Sie ``ping <hostname>.local`` eingeben.
 
     .. code-block::
 
@@ -18,13 +16,12 @@ it.
         :width: 550
         :align: center
 
-    As shown above, you can see the Raspberry Pi's IP address after it has been connected to the network.
+    Wie oben gezeigt, können Sie die IP-Adresse des Raspberry Pi sehen, nachdem er mit dem Netzwerk verbunden wurde.
 
-    * If terminal prompts ``Ping request could not find host pi.local. Please check the name and try again.``. Please follow the prompts to make sure the hostname you fill in is correct.
-    * Still can't get the IP? Check your network or WiFi configuration on the Raspberry Pi.
+    * Wenn das Terminal den Hinweis ``Ping-Anforderung konnte Host pi.local nicht finden. Bitte überprüfen Sie den Namen und versuchen Sie es erneut.`` gibt, folgen Sie den Anweisungen und stellen Sie sicher, dass der von Ihnen eingegebene Hostname korrekt ist.
+    * Sie erhalten die IP nicht? Überprüfen Sie Ihre Netzwerk- oder WLAN-Konfiguration auf dem Raspberry Pi.
 
-
-#. Type in ``ssh <username>@<hostname>.local`` (or ``ssh <username>@<IP address>``).
+#. Geben Sie ``ssh <username>@<hostname>.local`` (oder ``ssh <username>@<IP-Adresse>``) ein.
 
     .. code-block::
 
@@ -32,14 +29,13 @@ it.
 
     .. note::
 
-        If a prompt appears ``The term 'ssh' is not recognized as the name of a cmdlet...``.
+        Wenn die Meldung ``Der Begriff 'ssh' wird nicht als Name eines Cmdlet erkannt...`` erscheint,
         
-        It means your system is too old and does not have ssh tools pre-installed, you need to manually :ref:`openssh_powershell`.
+        bedeutet das, dass Ihr System veraltet ist und keine vorinstallierten SSH-Tools hat. Sie müssen manuell :ref:`openssh_powershell` installieren.
         
-        Or use a third party tool like :ref:`login_windows`.
+        Oder verwenden Sie ein Drittanbieter-Tool wie :ref:`login_windows`.
 
-
-#. The following message will be displayed only when you log in for the first time, so enter ``yes``.
+#. Die folgende Nachricht wird nur angezeigt, wenn Sie sich zum ersten Mal anmelden. Geben Sie also ``ja`` ein.
 
     .. code-block::
 
@@ -48,18 +44,13 @@ it.
         This key is not known by any other names
         Are you sure you want to continue connecting (yes/no/[fingerprint])?
 
-
-#. Input the password you set before. (Mine is ``raspberry``.)
-
+#. Geben Sie das Passwort ein, das Sie zuvor festgelegt haben. (Meins ist ``raspberry``.)
 
     .. note::
-        When you input the password, the characters do not display on
-        window accordingly, which is normal. What you need is to input the
-        correct password.
+        Beim Eingeben des Passworts werden die Zeichen im Fenster nicht angezeigt, 
+        was normal ist. Es ist wichtig, dass Sie das korrekte Passwort eingeben.
 
-
-
-#. We now get the Raspberry Pi connected and are ready to go to the nextstep.
+#. Nun haben wir den Raspberry Pi verbunden und sind bereit, zum nächsten Schritt überzugehen.
 
     .. image:: img/mac-ssh-terminal.png
         :width: 550

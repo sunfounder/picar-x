@@ -1,9 +1,9 @@
-Obstacle Avoidance
-=============================
+Hindernisvermeidung
+====================
 
-In this project, PiCar-X will detect obstacles in front of it while moving forward, and when the obstacles are too close, it will change the direction of moving forward.
+In diesem Projekt wird PiCar-X Hindernisse vor sich erkennen, während es vorwärts fährt. Bei zu großer Annäherung wird die Fahrtrichtung geändert.
 
-**Run the Code**
+**Den Code ausführen**
 
 .. raw:: html
 
@@ -13,17 +13,17 @@ In this project, PiCar-X will detect obstacles in front of it while moving forwa
 
     cd ~/picar-x/example
     sudo python3 avoiding_obstacles.py
-    
-After running the code, PiCar-X will walk forward. 
 
-If it detects that the distance of the obstacle ahead is less than 25cm, it will turn left. 
+Nach dem Ausführen des Codes wird der PiCar-X vorwärts fahren.
 
-If there is no obstacle in the direction after turning left or the obstacle distance is greater than 25cm, it will continue to move forward.
+Erkennt das Auto, dass der Abstand zum Hindernis vor ihm weniger als 25 cm beträgt, wird es nach links abbiegen.
+
+Ist nach dem Abbiegen nach links kein Hindernis im Weg oder liegt die Hindernisdistanz bei mehr als 25 cm, wird die Vorwärtsfahrt fortgesetzt.
 
 **Code**
 
 .. note::
-    You can **Modify/Reset/Copy/Run/Stop** the code below. But before that, you need to go to source code path like ``picar-x/example``. After modifying the code, you can run it directly to see the effect.
+    Sie können den untenstehenden Code **ändern/zurücksetzen/kopieren/ausführen/stoppen**. Zuvor müssen Sie jedoch zum Quellcodepfad, etwa ``picar-x/example``, navigieren. Nach der Modifikation können Sie den Code direkt ausführen, um die Auswirkungen zu sehen.
 
 .. raw:: html
 
@@ -32,7 +32,6 @@ If there is no obstacle in the direction after turning left or the obstacle dist
 .. code-block:: python
 
     from picarx import Picarx
-
 
     def main():
         try:
@@ -50,29 +49,27 @@ If there is no obstacle in the direction after turning left or the obstacle dist
         finally:
             px.forward(0)
 
-
     if __name__ == "__main__":
         main()
 
+**Wie funktioniert das?**
 
-**How it works?**
-
-The ultrasonic module is also imported in the picarx module, and we can use some of its encapsulated functions to detect distance.
+Das Ultraschallmodul ist ebenfalls im picarx-Modul importiert, und wir können einige seiner integrierten Funktionen zur Distanzerkennung verwenden.
 
 .. code-block:: python
 
     from picarx import Picarx
 
-Because the ultrasonic module is imported into the picarx module, we can directly use ``px.ultrasonic.read()`` to get the distance.
+Da das Ultraschallmodul ins picarx-Modul importiert ist, können wir direkt ``px.ultrasonic.read()`` verwenden, um die Distanz zu erhalten.
 
 .. code-block:: python
 
     px = Picarx()
     px.forward(30)
     while True:
-        distance = px.ultrasonic.read() 
+        distance = px.ultrasonic.read()
 
-The following code snippet reads the distance value reported by the ultrasonic module, and if the distance is below 25cm (10 inches) it will set the steering servo from 0° (straight) to -35° (turn left).
+Im folgenden Codesegment wird der vom Ultraschallmodul gemeldete Abstandswert ausgelesen. Wenn dieser unter 25 cm (10 Zoll) liegt, wird das Lenkservo von 0° (geradeaus) auf -35° (nach links abbiegen) eingestellt.
 
 .. code-block:: python
 

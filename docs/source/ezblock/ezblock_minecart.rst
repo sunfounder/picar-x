@@ -1,25 +1,25 @@
 .. _ezb_minecart:
 
-Minecart
+Minenwagen
 =====================
 
-Let’s make a minecart project! This project will use the Grayscale module to make the PiCar-X move forward along a track. 
-Use dark-colored tape to make a track on the ground as straight as possible, and not too curved. Some experimenting might be needed if the PiCar-X becomes derailed. 
+Lass uns ein Minenwagen-Projekt machen! In diesem Projekt verwenden wir das Grayscale-Modul, um den PiCar-X entlang einer Strecke vorwärts zu bewegen. 
+Verwende dunkel gefärbtes Klebeband, um eine möglichst gerade und nicht zu kurvig verlaufende Strecke auf dem Boden zu markieren. Es kann sein, dass einige Experimente erforderlich sind, falls der PiCar-X entgleist.
 
-When moving along the track, the probes on the left and right sides of the Grayscale module will detect light-colored ground, and the middle probe will detect the track. If the track has an arc, the probe on the left or right side of the sensor will detect the dark-colored tape, and turn the wheels in that direction. If the minecart reaches the end of the track or derails, the Grayscale module will no longer detect the dark-colored tape track, and the PiCar-X will come to a stop.
-
-
-**TIPS**
-
-* **Set ref to ()** block is used to set the grayscale threshold, you need to modify it according to the actual situation. You can go ahead and run :ref:`test_grayscale` to see the values of the grayscale module on the white and black surfaces, and fill in their middle values in this block.
+Beim Fahren entlang der Strecke werden die Sonden auf der linken und rechten Seite des Grayscale-Moduls helle Bodenflächen erkennen, während die mittlere Sonde die Strecke erkennt. Wenn die Strecke einen Bogen hat, wird die Sonde auf der linken oder rechten Seite des Sensors das dunkel gefärbte Klebeband erkennen und die Räder in diese Richtung lenken. Wenn der Minenwagen das Ende der Strecke erreicht oder entgleist, erkennt das Grayscale-Modul das dunkel gefärbte Klebeband der Strecke nicht mehr und der PiCar-X bleibt stehen.
 
 
-**EXAMPLE**
+**TIPPS**
+
+* Der Block **Set ref to ()**  wird verwendet, um den Graustufen-Schwellenwert einzustellen. Du musst ihn entsprechend der tatsächlichen Situation anpassen. Du kannst :ref:`test_grayscale` ausführen, um die Werte des Graustufen-Moduls auf weißen und schwarzen Flächen zu sehen, und deren Mittelwerte in diesem Block eintragen.
+
+
+**BEISPIEL**
 
 .. note::
 
-    * You can write the program according to the following picture, please refer to the tutorial: :ref:`ezblock:create_project_latest`.
-    * Or find the code with the same name on the **Examples** page of the EzBlock Studio and click **Run** or **Edit** directly.
+    * Du kannst das Programm entsprechend dem folgenden Bild schreiben. Bitte beachte das Tutorial: :ref:`ezblock:create_project_latest`.
+    * Oder finde den Code mit demselben Namen auf der **Examples**-Seite des EzBlock Studio und klicke direkt auf **Run** oder **Edit**.
 
 
 .. image:: img/sp210512_170342.png

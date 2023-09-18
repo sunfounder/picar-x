@@ -1,28 +1,26 @@
-Adjust Servo for Assembly
-==========================
+Servo für die Montage einstellen
+=======================================================
 
-Before assembling the servo, 
-the angle needs to be set to zero. 
-This is because the servo motor has a limited range of motion, 
-setting the angle to zero degrees ensures that the servo is in its 
-initial position and does not exceed its range of motion when the servo is powered on. 
-If the servo is not set to zero degrees prior to assembly, 
-it may attempt to exceed its range of motion when powered, 
-potentially damaging the servo or the mechanical system it is connected to. 
-Therefore, setting the angle to zero is an important step to ensure the 
-safe and normal operation of the servo motor.
+Vor der Montage des Servos 
+muss der Winkel auf null Grad eingestellt werden. 
+Dies liegt daran, dass der Servomotor einen begrenzten Bewegungsumfang hat. 
+Indem man den Winkel auf null Grad einstellt, stellt man sicher, dass der Servo in seiner 
+Ausgangsposition ist und seinen Bewegungsbereich nicht überschreitet, wenn er eingeschaltet wird. 
+Wenn der Servo vor der Montage nicht auf null Grad eingestellt ist, 
+könnte er versuchen, seinen Bewegungsbereich zu überschreiten, wenn er eingeschaltet wird, 
+was den Servo oder das mechanische System, an das er angeschlossen ist, beschädigen könnte. 
+Daher ist es wichtig, den Winkel auf null Grad einzustellen, um einen 
+sicheren und normalen Betrieb des Servomotors zu gewährleisten.
 
 .. image:: img/IMG_9897.png
 
+**Für Python-Nutzer**
 
-**For Python User**
+Bitte beziehen Sie sich auf :ref:`quick_guide_python`, um die 
+Installation des Raspberry Pi OS abzuschließen und den Winkel der Servos anzupassen.
 
-Please refer to :ref:`quick_guide_python` to complete the 
-installation of the Raspberry Pi OS and adjust the angle of the servos.
+**Für Ezblock-Nutzer**
 
-
-**For Ezblock User**
-
-After you have installed the ezblock system, 
-the P11 pin can be used to adjust the servo. 
-Please refer to :ref:`ezb_servo_adjust` for details.
+Nachdem Sie das Ezblock-System installiert haben, 
+kann der P11-Pin verwendet werden, um den Servo anzupassen. 
+Weitere Informationen finden Sie unter :ref:`ezb_servo_adjust`.

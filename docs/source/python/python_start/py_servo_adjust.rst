@@ -1,23 +1,23 @@
-Servo Adjust
-===============
+Servo-Einstellung
+==================
 
-The angle range of the servo is -90~90, but the angle set at the factory is random, maybe 0°, maybe 45°; if we assemble it with such an angle directly, it will lead to a chaotic state after the robot runs the code, or worse, it will cause the servo to block and burn out.
+Der Winkelbereich des Servos liegt zwischen -90 und 90 Grad, aber der im Werk eingestellte Winkel ist zufällig, vielleicht 0°, vielleicht 45°. Würden wir ihn in diesem Zustand direkt montieren, würde dies nach dem Ausführen des Codes zu einem chaotischen Zustand führen. Im schlimmsten Fall könnte der Servo blockieren und durchbrennen.
 
-So here we need to set all the servo angles to 0° and then install them, so that the servo angle is in the middle, no matter which direction to turn.
+Deshalb sollten alle Servowinkel auf 0° eingestellt und dann montiert werden, sodass der Servowinkel mittig ist, egal in welche Richtung gedreht wird.
 
-It is recommended that you :ref:`py_calibrate` after assembling it. The servo angle will be tilted due to possible deviations during assembly or limitations of the servo itself, so you can get the servo to a perfect state by calibrating it, usually the calibration angle is -5~5°.
+Es wird empfohlen, nach der Montage die :ref:`py_calibrate` durchzuführen. Aufgrund möglicher Abweichungen bei der Montage oder Einschränkungen des Servos selbst kann der Servowinkel schief sein. Durch die Kalibrierung können Sie den Servo in einen optimalen Zustand versetzen; der Kalibrierungswinkel liegt üblicherweise zwischen -5 und 5 Grad.
 
-But if the deviation angle is too big, you still have to go back to this section to set the servo angle to 0°, and then follow the instructions to reassemble the car.
+Wenn der Abweichungswinkel jedoch zu groß ist, müssen Sie in diesem Abschnitt zurückkehren, den Servowinkel wieder auf 0° einstellen und den Anweisungen folgen, um das Auto erneut zusammenzubauen.
 
-#. To ensure that the servo has been properly set to 0°, first insert the servo arm into the servo shaft and then gently rotate to a different angle.
+#. Um sicherzustellen, dass der Servo korrekt auf 0° eingestellt ist, stecken Sie zuerst den Servoarm in die Servowelle und drehen Sie ihn dann vorsichtig in einen anderen Winkel.
 
     .. image:: img/servo_arm.png
 
-#. Follow the instructions on the assembly foldout, insert the battery cable and turn the power switch to the ON. Then plug in a powered USB-C cable to activate the battery. Wait for 1-2 minutes, there will be a sound to indicate that the Raspberry Pi boots successfully.
+#. Befolgen Sie die Anweisungen auf dem Montageblatt, stecken Sie das Batteriekabel ein und schalten Sie den Netzschalter auf ON. Stecken Sie dann ein mit Strom versorgtes USB-C-Kabel ein, um den Akku zu aktivieren. Warten Sie 1-2 Minuten; ein Ton signalisiert, dass der Raspberry Pi erfolgreich hochgefahren ist.
 
     .. image:: img/Z_BTR.JPG
 
-#. Now, run ``servo_zeroing.py`` in the ``example/`` folder.
+#. Führen Sie nun ``servo_zeroing.py`` im Ordner ``example/`` aus.
 
     .. raw:: html
 
@@ -28,17 +28,16 @@ But if the deviation angle is too big, you still have to go back to this section
         cd /home/pi/picar-x/example
         sudo python3 servo_zeroing.py
 
-#. Next, plug the servo cable into the P11 port as follows.
+#. Stecken Sie als Nächstes das Servokabel wie folgt in den P11-Port.
 
     .. image:: img/Z_P11.JPG
 
-#. At this point you will see the servo arm rotate to a specific position (0°). If the servo arm does not return to 0°, press the **RST** button to restart the Robot HAT.
+#. Zu diesem Zeitpunkt wird der Servoarm in eine bestimmte Position (0°) rotieren. Wenn der Servoarm nicht auf 0° zurückkehrt, drücken Sie die **RST**-Taste, um die Robotermütze neu zu starten.
 
-Now you can continue the installation as instructed on the assembly foldout.
+Nun können Sie die Montage gemäß den Anweisungen auf dem Montageblatt fortsetzen.
 
 .. note::
 
-    * Do not unplug this servo cable before fixing it with the servo screw, you can unplug it after fixing it.
-    * Do not rotate the servo while it is powered on to avoid damage; if the servo shaft is not inserted at the right angle, pull the servo out and reinsert it.
-    * Before assembling each servo, you need to plug the servo cable into P11 and turn on the power to set its angle to 0°.
-
+    * Ziehen Sie das Servokabel nicht ab, bevor Sie es mit der Servoschraube fixiert haben; Sie können es nach der Fixierung abziehen.
+    * Drehen Sie den Servo nicht, während er eingeschaltet ist, um Schäden zu vermeiden; wenn die Servowelle nicht im richtigen Winkel eingesetzt ist, ziehen Sie den Servo heraus und setzen Sie ihn erneut ein.
+    * Bevor Sie jeden Servo montieren, müssen Sie das Servokabel in den P11-Port stecken und die Stromversorgung einschalten, um den Winkel auf 0° einzustellen.

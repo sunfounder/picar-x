@@ -1,36 +1,35 @@
-Test Ultrasonic Module
+Test des Ultraschallmoduls
 ==============================
 
-PiCar-X has a built-in Ultrasonic Sensor module that can be used for obstacle avoidance and automatic object-following experiments. In this lesson the module will read a distance in centimeters (24 cm = 1 inch), and **Print** the results in a **Debug** window.
+Der PiCar-X verfügt über ein integriertes Ultraschall-Sensormodul, das für Hindernisvermeidung und automatische Objektverfolgungsexperimente verwendet werden kann. In dieser Lektion wird das Modul eine Entfernung in Zentimetern messen (24 cm = 1 Zoll) und die Ergebnisse in einem **Debug**-Fenster **ausgeben**.
 
-**TIPS**
+**TIPPS**
 
 .. image:: img/sp210512_114549.png 
 
-The **Ultrasonic get distance** block will read the distance from the PiCar-X to an obstacle directly ahead.
+Der Block **Ultraschall Entfernung ablesen** ermittelt die Entfernung von PiCar-X zu einem direkt vorausliegenden Hindernis.
 
 .. image:: img/sp210512_114830.png
 
-This program is simplified with a **Variable**. For example, when there are multiple functions in a program that each need to use the distance to an obstacle, a **Variable** can be used to report the same distance value to each function, instead of each function reading the same value separately.
+Dieses Programm wird durch eine **Variable** vereinfacht. Wenn beispielsweise mehrere Funktionen in einem Programm jeweils die Entfernung zu einem Hindernis nutzen müssen, kann eine **Variable** verwendet werden, um den gleichen Entfernungswert an jede Funktion zu übermitteln, statt dass jede Funktion den Wert separat ausliest.
 
 .. image:: img/sp210512_114916.png
 
-Click the **Create variable...** button on the **Variables** category, and use the drop-down arrow to select the variable named “distance”.
+Klicken Sie auf die Schaltfläche **Variable erstellen...** in der Kategorie **Variablen** und verwenden Sie den Dropdown-Pfeil, um die Variable mit dem Namen „Entfernung“ auszuwählen.
 
 .. image:: img/sp210512_114945.png
 
-The **Print** function can print data such as variables and text for easy debugging.
+Die **Ausgabefunktion** kann Daten wie Variablen und Text zur einfachen Fehlersuche ausgeben.
 
 .. image:: img/debug_monitor.png
 
-Once the code is running, enable the debug monitor by clicking the **Debug** icon in the bottom left corner.
+Sobald der Code läuft, aktivieren Sie den Debug-Monitor, indem Sie auf das **Debug**-Symbol in der unteren linken Ecke klicken.
 
-**EXAMPLE**
+**BEISPIEL**
 
 .. note::
 
-    * You can write the program according to the following picture, please refer to the tutorial: :ref:`ezblock:create_project_latest`.
-    * Or find the code with the same name on the **Examples** page of the EzBlock Studio and click **Run** or **Edit** directly.
-
+    * Sie können das Programm gemäß dem folgenden Bild erstellen. Bitte beziehen Sie sich auf das Tutorial: :ref:`ezblock:create_project_latest`.
+    * Oder finden Sie den Code mit dem gleichen Namen auf der **Beispiele**-Seite des EzBlock Studios und klicken Sie direkt auf **Ausführen** oder **Bearbeiten**.
 
 .. image:: img/sp210512_115125.png

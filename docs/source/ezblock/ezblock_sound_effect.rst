@@ -1,36 +1,35 @@
-Sound Effect
+Soundeffekte
 ===============================
 
-PiCar-X has a built-in speaker that can be used for audio experiments. Ezblock allows users to enter text to make the PiCar-X speak, or make specific sound effects. In this tutorial, the PiCar-X will make the sound of a gun firing after a 3-second countdown, using a do/while function.
+Der PiCar-X verfügt über einen integrierten Lautsprecher, der für Audio-Experimente genutzt werden kann. Mit Ezblock können Nutzer Text eingeben, um den PiCar-X sprechen zu lassen oder bestimmte Soundeffekte zu erzeugen. In diesem Tutorial wird der PiCar-X nach einem 3-Sekunden-Countdown das Geräusch eines Schussabfeuers mittels einer do/while-Funktion erzeugen.
 
-**TIPS**
+**TIPPS**
 
 .. image:: img/sp210512_144106.png
 
-Use the **say** block with a **text** block to write a sentence for the PiCar-X to say. The **say** block can be used with text or numbers.
+Verwenden Sie den **sagen**-Block zusammen mit einem **Text**-Block, um einen Satz für den PiCar-X zu formulieren. Der **sagen**-Block kann sowohl für Text als auch für Zahlen verwendet werden.
 
 .. image:: img/sp210512_144150.png
 
-The **number** block.
+Der **Zahlen**-Block.
 
 .. image:: img/sp210512_144216.png
 
-Using the **repeat** block will repeatedly execute the same statement, which reduces the size of the code.
+Mit dem **wiederholen**-Block wird dieselbe Anweisung wiederholt ausgeführt, was den Code verkürzt.
 
 .. image:: img/sp210512_144418.png
 
-The **mathematical operation** block can perform typical mathematical functions, such as ”+”, “-”, “x”, and “÷ “.
+Der **mathematische Operationen**-Block kann übliche mathematische Funktionen ausführen, wie „+“, „-“, „x“ und „÷“.
 
 .. image:: img/sp210512_144530.png
 
-The play **sound effects - with volume - %** block has preset sound effects, such as a siren sound, a gun sound, and others. The range of the volume can be set from 0 to 100.
+Der Block **Soundeffekte abspielen - mit Lautstärke - %** bietet voreingestellte Soundeffekte wie etwa ein Sirenengeräusch, ein Schussgeräusch und andere. Der Lautstärkebereich kann von 0 bis 100 eingestellt werden.
 
-**EXAMPLE**
+**BEISPIEL**
 
 .. note::
 
-    * You can write the program according to the following picture, please refer to the tutorial: :ref:`ezblock:create_project_latest`.
-    * Or find the code with the same name on the **Examples** page of the EzBlock Studio and click **Run** or **Edit** directly.
-
+    * Sie können das Programm gemäß dem folgenden Bild schreiben. Bitte beziehen Sie sich auf das Tutorial: :ref:`ezblock:create_project_latest`.
+    * Oder finden Sie den Code mit dem gleichen Namen auf der **Beispiele**-Seite des EzBlock Studios und klicken Sie direkt auf **Ausführen** oder **Bearbeiten**.
 
 .. image:: img/sp210512_144944.png

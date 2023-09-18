@@ -1,9 +1,11 @@
-Let PiCar-X Move
-========================
 
-This is the first project, let’s test the basic movement of Picar-X.
 
-**Run the Code**
+PiCar-X in Bewegung setzen
+==========================
+
+Dies ist das erste Projekt, in dem wir die grundlegende Bewegung des PiCar-X testen.
+
+**Den Code ausführen**
 
 .. raw:: html
 
@@ -14,12 +16,12 @@ This is the first project, let’s test the basic movement of Picar-X.
     cd ~/picar-x/example
     sudo python3 move.py
 
-After running the code, PiCar-X will move forward, turn in an S-shape, stop and shake its head. 
+Nach dem Ausführen des Codes wird der PiCar-X vorwärts fahren, eine S-förmige Kurve machen, anhalten und den Kopf schütteln.
 
 **Code**
 
 .. note::
-    You can **Modify/Reset/Copy/Run/Stop** the code below. But before that, you need to go to  source code path like ``picar-x/example``. After modifying the code, you can run it directly to see the effect.
+    Sie können den untenstehenden Code **ändern/zurücksetzen/kopieren/ausführen/stoppen**. Bevor Sie dies tun, navigieren Sie zum Quellcodepfad, beispielsweise ``picar-x/example``. Nach der Änderung können Sie den Code direkt ausführen, um die Auswirkungen zu sehen.
 
 .. raw:: html
 
@@ -29,7 +31,6 @@ After running the code, PiCar-X will move forward, turn in an S-shape, stop and 
 
     from picarx import Picarx
     import time
-
 
     if __name__ == "__main__":
         try:
@@ -70,13 +71,13 @@ After running the code, PiCar-X will move forward, turn in an S-shape, stop and 
         finally:
             px.forward(0)
 
-**How it works?**
+**Wie funktioniert das?**
 
-The basic functionality of Parker is in the ``picarx`` module,
-Can be used to control steering gear and wheels,
-and will make the PiCar-X move forward, turn in an S-shape, or shake its head. 
+Die Grundfunktionalitäten von PiCar-X sind im ``picarx`` Modul hinterlegt.
+Damit lassen sich Lenkgetriebe und Räder steuern,
+und der PiCar-X wird vorwärts fahren, eine S-förmige Kurve machen oder den Kopf schütteln.
 
-Now, the libraries to support the basic functionality of PiCar-X are imported. These lines will appear in all the examples that involve PiCar-X movement.
+Nun sind die Bibliotheken für die grundlegende Funktionalität des PiCar-X importiert. Diese Zeilen werden in allen Beispielen auftauchen, die die Bewegung des PiCar-X betreffen.
 
 .. code-block:: python
     :emphasize-lines: 0
@@ -84,7 +85,7 @@ Now, the libraries to support the basic functionality of PiCar-X are imported. T
     from picarx import Picarx
     import time
 
-The following function with the ``for`` loop is then used to make PiCar-X move forward, change directions, and move the camera's pan/tilt.
+Die nachfolgende Funktion mit der ``for``-Schleife wird dann genutzt, um den PiCar-X vorwärts fahren zu lassen, die Richtung zu ändern und die Neigung/Schwenkung der Kamera zu steuern.
 
 .. code-block:: python
 
@@ -93,10 +94,10 @@ The following function with the ``for`` loop is then used to make PiCar-X move f
     px.set_camera_servo1_angle(angle)
     px.set_camera_servo2_angle(angle)
 
-* ``forward()``: Orders the PiCar-X go forward at a given ``speed``.
-* ``set_dir_servo_angle``: Turns the Steering servo to a specific ``angle``.
-* ``set_camera_servo1_angle``: Turns the Pan servo to a specific ``angle``.
-* ``set_camera_servo2_angle``: Turns the Tilt servo to a specific ``angle``.
+* ``forward()``: Veranlasst den PiCar-X, mit einer gegebenen ``Geschwindigkeit`` vorwärts zu fahren.
+* ``set_dir_servo_angle``: Dreht das Lenkservo auf einen bestimmten ``Winkel``.
+* ``set_camera_servo1_angle``: Dreht das Pan-Servo auf einen spezifischen ``Winkel``.
+* ``set_camera_servo2_angle``: Dreht das Tilt-Servo auf einen spezifischen ``Winkel``.
 
 .. image:: img/pan_tilt_servo.png
     :width: 400

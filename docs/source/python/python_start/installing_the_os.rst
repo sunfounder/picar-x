@@ -1,131 +1,101 @@
-Installing the OS
+OS Installation
 =======================
 
-**Required Components**
+**Benötigte Komponenten**
 
 ================== ======================
-Any Raspberry Pi   1 \* Personal Computer
-1 \* Micro SD card 
+Raspberry Pi        Personal Computer
+Micro SD-Karte 
 ================== ======================
 
-**Step 1**
+**Schritt 1**
 
-Raspberry Pi have developed a graphical SD card writing tool that works
-on Mac OS, Ubuntu 18.04 and Windows, and is the easiest option for most
-users as it will download the image and install it automatically to the
-SD card.
+Raspberry Pi hat ein grafisches SD-Kartenschreibtool entwickelt, das
+auf Mac OS, Ubuntu 18.04 und Windows funktioniert. Es ist die einfachste Option für die meisten
+Benutzer, da es das Image herunterlädt und automatisch auf die
+SD-Karte installiert.
 
-Visit the download page: https://www.raspberrypi.org/software/. Click on
-the link for the Raspberry Pi Imager that matches your operating system,
-when the download finishes, click it to launch the installer.
+Besuchen Sie die Download-Seite: https://www.raspberrypi.org/software/. Klicken Sie auf
+den Link für den Raspberry Pi Imager, der zu Ihrem Betriebssystem passt. Nachdem der Download abgeschlossen ist, klicken Sie darauf, um den Installer zu starten.
 
 .. image:: img/image11.png
     :align: center
 
+**Schritt 2**
 
-**Step 2**
+Wenn Sie den Installer starten, versucht Ihr Betriebssystem möglicherweise, 
+die Ausführung zu blockieren. Zum Beispiel erhalte ich unter Windows folgende
+Meldung:
 
-When you launch the installer, your operating system may try to block
-you from running it. For example, on Windows I receive the following
-message:
-
-If this pops up, click on **More info** and then **Run anyway**, then
-follow the instructions to install the Raspberry Pi Imager.
+Wenn dies erscheint, klicken Sie auf **Mehr Infos** und dann auf **Trotzdem ausführen** und
+folgen Sie den Anweisungen, um den Raspberry Pi Imager zu installieren.
 
 .. image:: img/image12.png
     :align: center
 
-**Step 3**
+**Schritt 3**
 
-Insert your SD card into the computer or laptop SD card slot.
+Stecken Sie Ihre SD-Karte in den SD-Karten-Slot Ihres Computers oder Laptops.
 
-**Step 4**
+**Schritt 4**
 
-In the Raspberry Pi Imager, select the OS that you want to install and
-the SD card you would like to install it on.
+Wählen Sie im Raspberry Pi Imager das Betriebssystem aus, das Sie installieren möchten, und
+die SD-Karte, auf die es installiert werden soll.
 
 .. image:: img/sp230607_161330.png
     :align: center
 
-.. note:: 
+.. note::
 
-    1) You will need to be connected to the internet the first time.
+    1) Sie müssen beim ersten Mal mit dem Internet verbunden sein.
 
-    2) That OS will then be stored for future offline use(lastdownload.cache, C:/Users/yourname/AppData/Local/Raspberry Pi/Imager/cache). So the next time you open the software, it will have the display "Released: date, cached on your computer".
+    2) Das Betriebssystem wird dann für die spätere Offline-Nutzung gespeichert (lastdownload.cache, C:/Users/IhrName/AppData/Local/Raspberry Pi/Imager/cache). Das nächste Mal, wenn Sie die Software öffnen, wird angezeigt "Veröffentlicht: Datum, im Cache auf Ihrem Computer".
 
+**Schritt 5**
 
-.. Download the `raspios_armhf-2020-05-28 <https://downloads.raspberrypi.org/raspios_armhf/images/raspios_armhf-2021-05-28/2021-05-07-raspios-buster-armhf.zip>`_ image and select it in Raspberry Pi Imager.
-
-.. .. image:: img/otherOS.png
-..     :align: center
-
-.. .. warning::
-..     Raspberry Pi OS has major changes after the 2021-05-28 version, which may cause some functions to be unavailable. Please do not use the latest version for now.
-
-
-.. .. warning::
-
-..     Upgrading the Raspberry Pi OS to **Debian Bullseye** will cause some features to not work, so it is recommended to continue using the **Debian Buster** version.
-
-.. In the Raspberry Pi Imager, click **CHOOSE OS** -> **Raspberry Pi OS(other)**.
-
-.. .. image:: img/3d33.png
-..     :align: center
-
-.. Scroll down to the end of the newly opened page and you will see **Raspberry Pi OS(Legacy)** and **Raspberry Pi OS Lite(Legacy)**, these are security updates for Debian Buster, the difference between them is with or without the desktop.
-.. It is recommended to install **Raspberry Pi OS(Legacy)**, the system with the desktop.
-
-.. .. image:: img/3d34.png
-..     :align: center
-
-
-**Step 5**
-
-Select the SD card you are using.
+Wählen Sie die von Ihnen verwendete SD-Karte aus.
 
 .. image:: img/image14.png
     :align: center
 
-**Step 6**
+**Schritt 6**
 
-To open the advanced options page, click the setting button (appears after selecting operating system) or press Ctrl+Shift+X. 
-Enable ssh and set the username and name. You can choose to always use this image customization options.
+Um zur Seite für erweiterte Optionen zu gelangen, klicken Sie auf die Einstellungsschaltfläche (erscheint nach Auswahl des Betriebssystems) oder drücken Sie Strg+Shift+X. 
+Aktivieren Sie SSH und legen Sie den Benutzernamen und Namen fest. Sie können wählen, diese Bildanpassungsoptionen immer zu verwenden.
 
 .. note::
-    When the Set hostname box is not checked, the default hostname will still be ``raspberrypi``, and we will use this hostname to access the Raspberry Pi remotely.
+
+    Wenn das Kontrollkästchen "Hostname festlegen" nicht aktiviert ist, wird der Standard-Hostname weiterhin ``raspberrypi`` sein. Wir werden diesen Hostnamen verwenden, um auf den Raspberry Pi aus der Ferne zuzugreifen.
 
 .. image:: img/image15.png
     :align: center
 
-Then scroll down to complete the wifi configuration and click **SAVE**.
+Scrollen Sie anschließend nach unten, um die WLAN-Konfiguration abzuschließen, und klicken Sie auf **SPEICHERN**.
 
 .. note::
 
-    **wifi country** should be set the two-letter `ISO/IEC alpha2 code <https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2#Officially_assigned_code_elements>`_ for the country in which you are using your Raspberry Pi, please refer to the following link: https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2#Officially_assigned_code_elements
+    **WLAN-Land** sollte den zweibuchstabigen `ISO/IEC alpha2 code <https://de.wikipedia.org/wiki/ISO_3166-1_alpha-2>`_ für das Land, in dem Sie Ihren Raspberry Pi verwenden, festlegen. Bitte verweisen Sie auf den folgenden Link: https://de.wikipedia.org/wiki/ISO_3166-1_alpha-2
 
 .. image:: img/image16.png
     :align: center
 
-**Step 7**
+**Schritt 7**
 
-Click the **WRITE** button.
+Klicken Sie auf die Schaltfläche **SCHREIBEN**.
 
 .. image:: img/image17.png
     :align: center
 
-**Step 8**
+**Schritt 8**
 
-If your SD card currently has any files on it, you may wish to back up
-these files first to prevent you from permanently losing them. If there
-is no file to be backed up, click **Yes**.
+Wenn sich derzeit Dateien auf Ihrer SD-Karte befinden, möchten Sie diese Dateien möglicherweise zuerst sichern, um einen dauerhaften Verlust zu verhindern. Wenn keine Datei gesichert werden muss, klicken Sie auf **Ja**.
 
 .. image:: img/image18.png
     :align: center
 
-**Step 9**
+**Schritt 9**
 
-After waiting for a period of time, the following window will appear to
-represent the completion of writing.
+Nach einer gewissen Wartezeit erscheint das folgende Fenster, das das erfolgreiche Schreiben anzeigt.
 
 .. image:: img/image19.png
     :align: center

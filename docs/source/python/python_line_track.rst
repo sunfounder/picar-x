@@ -1,11 +1,9 @@
-Line Tracking
-====================================
+Linienverfolgung
+=======================
 
-This project will use the Grayscale module to make the PiCar-X move forward along a line. 
-Use dark-colored tape to make a line as straight as possible, and not too curved. 
-Some experimenting might be needed if the PiCar-X is derailed.
+Dieses Projekt verwendet das Graustufen-Modul, um den PiCar-X entlang einer Linie vorwärts fahren zu lassen. Verwenden Sie ein dunkelfarbiges Klebeband, um eine möglichst gerade Linie zu ziehen, die nicht allzu stark gekrümmt ist. Einige Tests könnten erforderlich sein, falls der PiCar-X von der Spur abkommt.
 
-**Run the Code**
+**Code ausführen**
 
 .. raw:: html
 
@@ -15,13 +13,13 @@ Some experimenting might be needed if the PiCar-X is derailed.
 
     cd ~/picar-x/example
     sudo python3 minecart_plus.py
-    
-After running the code, PiCar-X will move forward along a line.
+
+Nach dem Ausführen des Codes wird der PiCar-X entlang einer Linie vorwärts fahren.
 
 **Code**
 
 .. note::
-    You can **Modify/Reset/Copy/Run/Stop** the code below. But before that, you need to go to  source code path like ``picar-x/example``. After modifying the code, you can run it directly to see the effect.
+    Sie können den folgenden Code **modifizieren/zurücksetzen/kopieren/ausführen/stoppen**. Bevor Sie das tun, navigieren Sie jedoch zum Quellcodepfad, beispielsweise ``picar-x/example``. Nachdem Sie den Code geändert haben, können Sie ihn direkt ausführen, um die Ergebnisse zu sehen.
 
 .. raw:: html
 
@@ -30,7 +28,6 @@ After running the code, PiCar-X will move forward along a line.
 .. code-block:: python
 
     from picarx import Picarx
-
 
     if __name__=='__main__':
         try:
@@ -45,38 +42,35 @@ After running the code, PiCar-X will move forward along a line.
 
                 if gm_status == 'forward':
                     print(1)
-                    px.forward(px_power) 
+                    px.forward(px_power)
 
                 elif gm_status == 'left':
                     px.set_dir_servo_angle(12)
-                    px.forward(px_power) 
+                    px.forward(px_power)
 
                 elif gm_status == 'right':
                     px.set_dir_servo_angle(-12)
-                    px.forward(px_power) 
+                    px.forward(px_power)
                 else:
                     px.set_dir_servo_angle(0)
                     px.stop()
         finally:
             px.stop()
 
-**How it works?** 
+**Wie funktioniert es?**
 
-The grayscale sensor module ``grayscale_module`` is also imported in the picarx module, and we can use some of these methods to detect black lines.
+Das Graustufen-Sensormodul ``grayscale_module`` ist ebenfalls im picarx-Modul integriert, und wir können einige dieser Methoden verwenden, um schwarze Linien zu erkennen.
 
-The function to detect the black line looks like this:
+Die Funktion zur Erkennung der schwarzen Linie sieht wie folgt aus:
 
-* ``get_grayscale_data()``: This method directly outputs the readings of the three sensors, from right to left. The brighter the area, the larger the value obtained.
+* ``get_grayscale_data()``: Diese Methode gibt direkt die Messwerte der drei Sensoren von rechts nach links aus. Je heller die Fläche, desto größer der erhaltene Wert.
 
-* ``get_line_status()``: get_line_status(): This method will generate an action based on the values detected by the three probes. There are four types of actions: forward , left , right , and stop.
+* ``get_line_status()``: Diese Methode generiert eine Aktion basierend auf den von den drei Sonden erkannten Werten. Es gibt vier Arten von Aktionen: vorwärts, links, rechts und stoppen.
 
-The trigger conditions for these actions are as follows: 
-A value is assigned by default in the module as the threshold for detecting black or white.
-When the detection values of the three probes are all greater than the threshold,
-it means that the probes are sensing the color white, and no black line is detected, 
-which makes the ``get_line_status()`` to generate a return value of ``stop``.
+Die Auslösebedingungen für diese Aktionen sind wie folgt:
+Ein Wert wird im Modul standardmäßig als Schwellenwert für die Erkennung von Schwarz oder Weiß festgelegt.
+Wenn die Detektionswerte der drei Sonden alle größer als der Schwellenwert sind, bedeutet das, dass die Sonden die Farbe Weiß erfassen und keine schwarze Linie erkennen, was dazu führt, dass ``get_line_status()`` einen Rückgabewert von ``stop`` erzeugt.
 
-
-* If the right (and the first) probe detects a black line, ``right`` is returned; 
-* If the middle probe detects a black line, return ``forward``; 
-* If the left probe detects a black line, ``left`` is returned.
+* Wird von der rechten (und ersten) Sonde eine schwarze Linie erkannt, wird ``right`` zurückgegeben.
+* Erkennt die mittlere Sonde eine schwarze Linie, wird ``forward`` zurückgegeben.
+* Wird von der linken Sonde eine schwarze Linie erkannt, wird ``left`` zurückgegeben.

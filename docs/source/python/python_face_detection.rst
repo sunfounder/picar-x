@@ -1,23 +1,23 @@
 .. _py_face_detection:
 
-Face Detection
+Gesichtserkennung
 ==========================================
 
-This project is also based on the :ref:`py_computer_vision` project, with the addition of face detection algorithms.
+Dieses Projekt basiert ebenfalls auf dem :ref:`py_computer_vision` Projekt und wurde um Algorithmen zur Gesichtserkennung erweitert.
 
 .. note::
 
-    To run this project, you must first complete :ref:`remote_desktop`.
+    Um dieses Projekt auszuführen, müssen Sie zunächst :ref:`remote_desktop` abschließen.
 
 
-**Run the Code**
+**Code ausführen**
 
 
 .. note::
 
-    * This project requires access to the Raspberry Pi desktop to view the footage taken by the camera module.
-    * You can connect a screen to the PiCar-X or refer to the tutorial :ref:`remote_desktop` to access it with VNC or XRDP.
-    * Once inside the Raspberry Pi desktop, open Terminal and type the following command to run it, or just open and run it with a Python editor.
+    * Dieses Projekt erfordert Zugriff auf den Raspberry Pi Desktop, um das Filmmaterial des Kameramoduls anzuzeigen.
+    * Sie können einen Bildschirm an den PiCar-X anschließen oder sich die Anleitung :ref:`remote_desktop` ansehen, um per VNC oder XRDP darauf zuzugreifen.
+    * Sobald Sie sich auf dem Raspberry Pi Desktop befinden, öffnen Sie das Terminal und geben den folgenden Befehl ein, um ihn auszuführen, oder öffnen und führen Sie ihn mit einem Python-Editor aus.
 
 
 .. code-block::
@@ -25,7 +25,7 @@ This project is also based on the :ref:`py_computer_vision` project, with the ad
     cd ~/picar-x/example
     sudo python3 human_face_detect.py
 
-After the code is run, the face will be checked out in the screen.
+Nachdem der Code ausgeführt wurde, wird das Gesicht auf dem Bildschirm überprüft.
 
 **Code**
 
@@ -78,22 +78,21 @@ After the code is run, the face will be checked out in the screen.
         camera.close() 
 
 
-**How it works?**
+**Wie funktioniert es?**
 
-In the same path as this project (``picar-x/example/``) , put a file ``haarcascade_frontalhuman face_default.xml``. This file is a face detection model file trained in OpenCV.
+Im selben Pfad wie dieses Projekt (``picar-x/example/``) legen Sie eine Datei ``haarcascade_frontalhuman face_default.xml`` ab. Diese Datei ist eine in OpenCV trainierte Modell-Datei zur Gesichtserkennung.
 
-
-This file is called by **Cascade Classifier** of OpenCV.
+Diese Datei wird vom **Kaskaden-Klassifikator** von OpenCV aufgerufen.
 
 .. code-block:: python
 
     face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')  
 
-Object Detection using Haar feature-based cascade classifiers is an effective object detection method proposed by Paul Viola and Michael Jones in their paper, "Rapid Object Detection using a Boosted Cascade of Simple Features" in 2001.
+Die Objekterkennung mit Haar-Feature-basierten Kaskadenklassifikatoren ist eine effektive Methode zur Objekterkennung, die 2001 von Paul Viola und Michael Jones in ihrem Artikel "Rapid Object Detection using a Boosted Cascade of Simple Features" vorgestellt wurde.
 
-This is a machine learning based approach, where a cascade function is trained from a large quantity of positive and negative images, and then used to detect objects in other images. 
+Dies ist ein Ansatz, der auf maschinellem Lernen basiert. Dabei wird eine Kaskadenfunktion aus einer großen Menge positiver und negativer Bilder trainiert und dann zur Erkennung von Objekten in anderen Bildern verwendet.
 
-When working with face detection, the algorithm will initially need a large quantity of positive images (images of faces) and negative images (images without faces) to train the classifier. From there, the facial features will then need to be extracted. For this, Haar features shown in the below image are used, similar to the convolutional kernel. Each feature is a single value obtained by subtracting the sum of pixels under the white rectangle, from the sum of pixels under the black rectangle.
+Bei der Arbeit mit Gesichtserkennung wird der Algorithmus zunächst eine große Menge positiver Bilder (Bilder von Gesichtern) und negativer Bilder (Bilder ohne Gesichter) benötigen, um den Klassifikator zu trainieren. Danach müssen die Gesichtsmerkmale extrahiert werden. Hierfür werden Haar-Features verwendet, ähnlich dem Faltungskern. Jedes Feature ist ein einzelner Wert, der durch Subtraktion der Summe der Pixel unter dem weißen Rechteck von der Summe der Pixel unter dem schwarzen Rechteck ermittelt wird.
 
 .. image:: img/haar_features.jpg
 
@@ -101,11 +100,11 @@ When working with face detection, the algorithm will initially need a large quan
 * `Cascade Classifier Training <https://docs.opencv.org/3.4/dc/d88/tutorial_traincascade.html>`_
 
 
-The ``human_human face_detect()`` function processes pictures in three steps:
+Die Funktion ``human_face_detect()`` verarbeitet Bilder in drei Schritten:
 
-1. Convert picture to grayscale.
-2. Detect the human face on the grayscale image to obtain the bounding rectangle of the detected face.
-3. Draws a frame for the recognized object on the image.
+1. Umwandlung des Bildes in Graustufen.
+2. Erkennung des menschlichen Gesichts im Graustufenbild, um das Begrenzungsrechteck des erkannten Gesichts zu erhalten.
+3. Zeichnung eines Rahmens um das erkannte Objekt im Bild.
 
 .. code-block:: python
 

@@ -3,41 +3,36 @@
 PuTTY
 =========================
 
-If you are a Windows user, you can use some applications of SSH. Here, we recommend `PuTTY <https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html>`_.
+Wenn Sie ein Windows-Benutzer sind, können Sie einige SSH-Anwendungen verwenden. Hier empfehlen wir `PuTTY <https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html>`_.
 
-**Step 1**
+**Schritt 1**
 
-Download PuTTY.
+Laden Sie PuTTY herunter.
 
-**Step 2**
+**Schritt 2**
 
-Open PuTTY and click **Session** on the left tree-alike structure. Enter
-the IP address of the RPi in the text box under **Host Name (or IP
-address)** and **22** under **Port** (by default it is 22).
+Öffnen Sie PuTTY und klicken Sie auf **Sitzung** in der linken baumartigen Struktur. Geben Sie die IP-Adresse des RPi in das Textfeld unter **Host Name (oder IP-Adresse)** ein und **22** unter **Port** (standardmäßig ist es 22).
 
 .. image:: img/image25.png
     :align: center
 
-**Step 3**
+**Schritt 3**
 
-Click **Open**. Note that when you first log in to the Raspberry Pi with
-the IP address, there prompts a security reminder. Just click **Yes**.
+Klicken Sie auf **Öffnen**. Beachten Sie, dass beim ersten Anmelden am Raspberry Pi mit der IP-Adresse eine Sicherheitserinnerung angezeigt wird. Klicken Sie einfach auf **Ja**.
 
-**Step 4**
+**Schritt 4**
 
-When the PuTTY window prompts \"**login as:**\", type in
-\"**pi**\" (the user name of the RPi), and **password**: \"raspberry\"
-(the default one, if you haven't changed it).
+Wenn das PuTTY-Fenster "**login as:**" anzeigt, geben Sie "**pi**" (den Benutzernamen des RPi) und das Passwort "**raspberry**" ein (das Standardpasswort, wenn Sie es nicht geändert haben).
 
 .. note::
 
-    When you input the password, the characters do not display on window accordingly, which is normal. What you need is to input the correct password.
+    Bei der Eingabe des Passworts werden die Zeichen nicht entsprechend im Fenster angezeigt, was normal ist. Sie müssen das korrekte Passwort eingeben.
     
-    If inactive appears next to PuTTY, it means that the connection has been broken and needs to be reconnected.
+    Wenn neben PuTTY "inactive" angezeigt wird, bedeutet dies, dass die Verbindung unterbrochen wurde und erneut hergestellt werden muss.
     
 .. image:: img/image26.png
     :align: center
 
-**Step 5**
+**Schritt 5**
 
-Here, we get the Raspberry Pi connected and it is time to conduct the next steps.
+Jetzt haben wir eine Verbindung zum Raspberry Pi hergestellt und es ist Zeit, mit den nächsten Schritten fortzufahren.

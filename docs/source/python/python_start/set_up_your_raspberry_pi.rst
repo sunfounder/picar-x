@@ -1,51 +1,50 @@
-Set up Your Raspberry Pi
-============================
+Einrichten Ihres Raspberry Pi
+=======================================
 
-If You Have a Screen
--------------------------
+Wenn Sie einen Bildschirm haben
+-------------------------------------------
 
-.. note:: The Raspberry Pi ZERO installed on the Robot is not easy to connect to the screen, please use the method without a screen to set it up.
+.. note:: Das auf dem Roboter installierte Raspberry Pi ZERO lässt sich nicht einfach mit einem Bildschirm verbinden. Bitte nutzen Sie die Methode ohne Bildschirm zur Einrichtung.
 
+Falls Sie einen Bildschirm haben, wird es für Sie einfacher sein, auf dem Raspberry Pi zu arbeiten.
 
-If you have a screen, it will be easy for you to operate on the
-Raspberry Pi.
+**Benötigte Komponenten**
 
-**Required Components**
+* Ein beliebiges Raspberry Pi   
+* 1 * Netzteil
+* 1 * Micro SD-Karte
+* 1 * Bildschirm-Netzteil
+* 1 * HDMI-Kabel
+* 1 * Bildschirm
+* 1 * Maus
+* 1 * Tastatur
 
-* Any Raspberry Pi   
-* 1 * Power Adapter
-* 1 * Micro SD card
-* 1 * Screen Power Adapter
-* 1 * HDMI cable
-* 1 * Screen
-* 1 * Mouse
-* 1 * Keyboard
+1. Stecken Sie die mit dem Raspberry Pi OS eingerichtete SD-Karte in den Micro SD-Karten-Slot auf der Unterseite Ihres Raspberry Pi.
 
-1. Insert the SD card you’ve set up with Raspberry Pi OS into the micro SD card slot on the underside of your Raspberry Pi.
+#. Schließen Sie Maus und Tastatur an.
 
-#. Plug in the Mouse and Keyboard.
-
-#. Connect the screen to Raspberry Pi’s HDMI port and make sure your screen is plugged into a wall socket and switched on.
+#. Verbinden Sie den Bildschirm über den HDMI-Anschluss des Raspberry Pi und stellen Sie sicher, dass Ihr Bildschirm an eine Steckdose angeschlossen und eingeschaltet ist.
 
     .. note::
 
-        If you use a Raspberry Pi 4, you need to connect the screen to the HDMI0 (nearest the power in port).
+        Wenn Sie ein Raspberry Pi 4 verwenden, müssen Sie den Bildschirm mit dem HDMI0-Port verbinden (am nächsten zum Stromanschluss).
 
-#. Use the power adapter to power the Raspberry Pi. After a few seconds, the Raspberry Pi OS desktop will be displayed.
+#. Verwenden Sie das Netzteil, um den Raspberry Pi mit Strom zu versorgen. Nach einigen Sekunden wird der Raspberry Pi OS Desktop angezeigt.
 
     .. image:: img/image20.png
         :align: center
 
-If You Have No Screen
---------------------------
+Wenn Sie keinen Bildschirm haben
+-------------------------------------------
 
-If you don't have a monitor, you can remotely log into your Raspberry Pi.
+Falls Sie keinen Monitor besitzen, können Sie sich aus der Ferne in Ihren Raspberry Pi einloggen.
 
-You can apply the SSH command to open the Raspberry Pi's Bash shell. Bash is the standard default shell for Linux. The shell itself is a command (instruction) when the user uses Unix/Linux. Most of what you need to do can be done through the shell.
+Sie können den SSH-Befehl nutzen, um die Bash-Shell des Raspberry Pi zu öffnen. Bash ist die standardmäßige Shell für Linux. Die Shell selbst ist ein Befehl (Anweisung), wenn der Benutzer Unix/Linux verwendet. Das Meiste von dem, was Sie tun müssen, kann über die Shell erfolgen.
 
-If you're not satisfied with using the command window to access your Raspberry Pi, you can also use the remote desktop feature to easily manage files on your Raspberry Pi using a GUI.
+Wenn Sie nicht zufrieden damit sind, Ihr Raspberry Pi nur über das Befehlsfenster zu bedienen, können Sie auch die Remote-Desktop-Funktion nutzen, um Dateien auf Ihrem Raspberry Pi mithilfe einer grafischen Benutzeroberfläche zu verwalten.
 
-See below for detailed tutorials for each system.
+Siehe unten detaillierte Anleitungen für jedes System.
+
 
 
 .. toctree::

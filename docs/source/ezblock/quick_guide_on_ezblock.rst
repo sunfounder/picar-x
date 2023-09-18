@@ -1,64 +1,62 @@
-Quick Guide on EzBlock
-===========================
+Schnelle Anleitung zu EzBlock
+======================================
 
-There are 2 parts here:
+Dieser Abschnitt ist zweigeteilt:
 
-* :ref:`ezb_servo_adjust` allows you to keep all the servos at 0 degrees to complete a proper and safe assembly (otherwise you will probably damage the servos).
-* :ref:`install_ezblock` will guide you to download EzBlock Studio to play with your robot.
+* :ref:`ezb_servo_adjust` ermöglicht Ihnen, alle Servos auf 0 Grad auszurichten, um eine ordnungsgemäße und sichere Montage zu gewährleisten (andernfalls könnten die Servos beschädigt werden).
+* :ref:`install_ezblock` führt Sie durch den Download von EzBlock Studio, um mit Ihrem Roboter zu spielen.
 
 .. _ezb_servo_adjust:
 
-Servo Adjust
---------------------------------
+Servo-Einstellung
+--------------------------
 
-The angle range of the servo is -90~90, but the angle set at the factory is random, maybe 0°, maybe 45°; if we assemble it with such an angle directly, it will lead to a chaotic state after the robot runs the code, or worse, it will cause the servo to block and burn out.
+Der Winkelbereich des Servos liegt zwischen -90 und 90 Grad. Der in der Fabrik eingestellte Winkel ist jedoch zufällig, möglicherweise 0°, vielleicht 45°. Eine Montage in diesem Zustand könnte zu chaotischem Verhalten nach dem Code-Lauf führen oder schlimmer noch, das Servo blockieren und durchbrennen lassen.
 
-So here we need to set all the servo angles to 0° and then install them, so that the servo angle is in the middle, no matter which direction to turn.
+Deshalb sollten alle Servo-Winkel auf 0° eingestellt und dann montiert werden. So steht der Servo-Winkel mittig, egal in welche Richtung er sich dreht.
 
-It is recommended that you follow the intructions on the APP to calibrate the picar-x after assembling it. The servo angle will be tilted due to possible deviations during assembly or limitations of the servo itself, so you can get the servo to a perfect state by calibrating it, usually the calibration angle is -5~5°.
+Es wird empfohlen, die Picar-x nach der Montage über die App zu kalibrieren. Aufgrund möglicher Abweichungen während der Montage oder Einschränkungen des Servos selbst kann der Servo-Winkel abweichen; üblicherweise beträgt der Kalibrierungswinkel -5~5°.
 
-But if the deviation angle is too big, you still have to go back to this section to set the servo angle to 0°, and then follow the instructions to reassemble the car.
+Ist der Abweichungswinkel jedoch zu groß, müssen Sie zurück zu diesem Abschnitt und den Servo-Winkel erneut auf 0° setzen. Anschließend folgen Sie den Anweisungen zur erneuten Montage des Fahrzeugs.
 
+#. Laden Sie zuerst :ref:`ezblock:install_ezblock_os_latest` auf eine Micro-SD-Karte. Nach Abschluss der Installation stecken Sie diese in den Raspberry Pi.
 
-#. Firstly, :ref:`ezblock:install_ezblock_os_latest` onto a Micro SD card, once the installation is complete, insert it into the Raspberry Pi.
-
-#. To ensure that the servo has been properly set to 0°, first insert the rocker arm into the servo shaft and then gently rotate the rocker arm to a different angle.
+#. Um sicherzustellen, dass der Servo richtig auf 0° eingestellt ist, stecken Sie zuerst den Schalthebel in die Servo-Welle und drehen ihn dann vorsichtig auf einen anderen Winkel.
 
     .. image:: img/servo_arm.png
 
-#. Follow the instructions on the assembly foldout, insert the battery cable and turn the power switch to the ON. Then plug in a powered USB-C cable to activate the battery. Wait for 1-2 minutes, there will be a sound to indicate that the Raspberry Pi boots successfully.
+#. Befolgen Sie die Anweisungen auf dem Montageblatt, stecken Sie das Batteriekabel ein und schalten Sie den Netzschalter auf ON. Dann schließen Sie ein angeschlossenes USB-C-Kabel an, um den Akku zu aktivieren. Warten Sie 1-2 Minuten; ein Ton signalisiert den erfolgreichen Start des Raspberry Pi.
 
     .. image:: img/Z_BTR.JPG
 
-#. Next, plug the servo cable into the P11 port as follows.
+#. Schließen Sie als Nächstes das Servokabel wie folgt an den P11-Port an.
 
     .. image:: img/Z_P11.JPG
 
-#. At this point you will see the servo arm rotate to a specific position (0°). If the servo arm does not return to 0°, hold down the USR button and press the RST button to restart the Robot HAT.
+#. Jetzt sollten Sie sehen, dass der Servoarm auf eine bestimmte Position (0°) rotiert. Sollte der Servoarm nicht auf 0° zurückkehren, halten Sie die USR-Taste gedrückt und drücken Sie die RST-Taste, um den Robot HAT neu zu starten.
 
-#. Now you can continue the installation as instructed on the assembly foldout.
+#. Nun können Sie mit der Montage gemäß den Anweisungen auf dem Montageblatt fortfahren.
 
 .. note::
 
-    * Do not unplug this servo cable before fastening this servo with the servo screw, you can unplug it after fastening.
-    * Do not turn the servo while it is powered on to avoid damage; if the servo shaft is inserted at the wrong angle, pull out the servo and reinsert it.
-    * Before assembling each servo, you need to plug the servo cable into P11 and turn on the power to set its angle to 0°.
-    * This zeroing function will be disabled if you download a program to the robot later with the EzBlock APP.
-
+    * Ziehen Sie dieses Servokabel nicht ab, bevor Sie den Servo mit der Servoschraube befestigt haben. Danach können Sie es abziehen.
+    * Drehen Sie den Servo nicht, während er eingeschaltet ist, um Schäden zu vermeiden; falls die Servowelle in einem falschen Winkel eingesetzt ist, ziehen Sie den Servo heraus und setzen ihn erneut ein.
+    * Bevor Sie jeden Servo montieren, müssen Sie das Servokabel in P11 einstecken und die Stromversorgung einschalten, um seinen Winkel auf 0° einzustellen.
+    * Diese Nullstellfunktion wird deaktiviert, wenn Sie später mit der EzBlock APP ein Programm auf den Roboter laden.
 
 .. _install_ezblock:
 
-Install and Configure EzBlock Studio
-----------------------------------------
+Installation und Konfiguration von EzBlock Studio
+--------------------------------------------------------
 
-As soon as the robot is assembled, you will need to carry out some basic operations.
+Sobald der Roboter montiert ist, sind einige grundlegende Schritte erforderlich.
 
-* :ref:`ezblock:install_ezblock_app_latest`: Download and install EzBlock Studio on your device or use the web-based version.
-* :ref:`ezblock:connect_product_ezblock_latest`: Configure Wi-Fi, Bluetooth and calibrate before use.
-* :ref:`ezblock:open_run_latest`: View or run the related example directly.
+* :ref:`ezblock:install_ezblock_app_latest`: Laden Sie EzBlock Studio auf Ihr Gerät herunter und installieren Sie es oder nutzen Sie die webbasierte Version.
+* :ref:`ezblock:connect_product_ezblock_latest`: Konfigurieren Sie Wi-Fi, Bluetooth und kalibrieren Sie vor der Benutzung.
+* :ref:`ezblock:open_run_latest`: Sehen Sie sich das zugehörige Beispiel direkt an oder führen Sie es aus.
 
 .. note::
 
-    After you connect the Picar-x, there will be a calibration step. This is because of possible deviations in the installation process or limitations of the servos themselves, making some servo angles slightly tilted, so you can calibrate them in this step.
-    
-    But if you think the assembly is perfect and no calibration is needed, you can also skip this step.
+    Nachdem Sie die Picar-x verbunden haben, gibt es einen Kalibrierungsschritt. Dies ist aufgrund möglicher Abweichungen im Montageprozess oder Einschränkungen der Servos selbst notwendig, die dazu führen könnten, dass einige Servowinkel leicht abweichen. Sie können diese in diesem Schritt kalibrieren.
+
+    Wenn Sie jedoch der Meinung sind, dass die Montage perfekt ist und keine Kalibrierung erforderlich ist, können Sie diesen Schritt auch überspringen.

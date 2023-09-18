@@ -1,51 +1,51 @@
 SunFounder PiCar-X Kit
 ============================================
 
-Thanks for choosing our PiCar-X.
+Danke, dass Sie sich für unser PiCar-X entschieden haben.
 
 .. .. image:: img/picar-x.jpg
 ..     :align: center
 ..     :width: 400
 
-The PiCar-X is an AI-driven self-driving robot car for the Raspberry Pi platform, upon which the Raspberry Pi acts as the control center. 
-The PiCar-X’s 2-axis camera module, ultrasonic module, and line tracking modules can provide the functions of color/face/traffic-signs detection, 
-automatic obstacle avoidance, automatic line tracking, etc.
+Das PiCar-X ist ein von KI angetriebenes autonomes Roboter-Auto für die Raspberry Pi-Plattform, bei dem der Raspberry Pi als Steuerzentrale fungiert. 
+Das 2-Achsen-Kamera-Modul, das Ultraschall-Modul und die Linienverfolgungs-Module des PiCar-X ermöglichen Funktionen wie Farb-/Gesichts-/Verkehrsschilder-Erkennung, 
+automatische Hindernisvermeidung und automatische Linienverfolgung.
 
-PiCar-X has two programming languages: Blockly and Python. No matter what language you program in, you'll find detailed steps to teach you everything from configuring the Raspberry Pi to running the relevant example code.
+Das PiCar-X unterstützt zwei Programmiersprachen: Blockly und Python. Unabhängig davon, in welcher Sprache Sie programmieren, finden Sie detaillierte Schritte, die Ihnen alles von der Konfiguration des Raspberry Pi bis zum Ausführen des relevanten Beispielcodes beibringen.
 
 * :ref:`play_python`
 
-    * This chapter is for those who enjoy programming in Python or want to learn the Python language.
-    * To get Picar-X working properly, you must install some libraries first.
-    * The Raspberry Pi configuration and samples code for the PiCar-X are provided in this chapter.
-    * An APP - SunFounder Controller is also provided to allow you to remotely control the PiCar-X on your mobile device.
+    * Dieses Kapitel richtet sich an diejenigen, die gerne in Python programmieren oder die Python-Sprache erlernen möchten.
+    * Um das PiCar-X ordnungsgemäß zu betreiben, müssen Sie zuerst einige Bibliotheken installieren.
+    * In diesem Kapitel werden die Raspberry Pi-Konfiguration und Beispielcodes für das PiCar-X bereitgestellt.
+    * Eine APP - SunFounder Controller wird ebenfalls bereitgestellt, damit Sie das PiCar-X über Ihr mobiles Gerät fernsteuern können.
 
 
 * :ref:`play_ezblock`
 
-    * In this section, you will use a Blockly based APP, Ezblock Studio, which, like Scratch, allows you to drag and drop blocks to make Picar-X move.
-    * It is required to reinstall the SD card with the operating system we provide with pre-installed Ezblock environment before programming. It is recommended to use a new or unused TF card for this section.
-    * Ezblock Studio is available for nearly all types of devices, including Macs, PCs, and Androids.
-    * Ezblock Studio is a good choice if you are 6-12 years old, or don't have programming skills, or want to test Picar-X quickly.
+    * In diesem Abschnitt verwenden Sie die auf Blockly basierende APP Ezblock Studio, die es Ihnen ähnlich wie Scratch ermöglicht, Bausteine zu ziehen und abzulegen, um das PiCar-X zu bewegen.
+    * Es ist notwendig, die SD-Karte mit dem von uns bereitgestellten Betriebssystem neu zu installieren, das bereits mit der Ezblock-Umgebung ausgestattet ist, bevor Sie mit der Programmierung beginnen. Für diesen Abschnitt empfehlen wir die Verwendung einer neuen oder unbenutzten TF-Karte.
+    * Ezblock Studio ist für fast alle Gerätetypen verfügbar, einschließlich Macs, PCs und Android-Geräten.
+    * Ezblock Studio ist eine gute Wahl, wenn Sie zwischen 6 und 12 Jahre alt sind, keine Programmierkenntnisse haben oder das PiCar-X schnell testen möchten.
 
 
-**About the display language**
+**Zur Anzeigesprache**
 
-About the display language
+Über die Anzeigesprache
 
-This document is available in other languages as well. To switch the display language, kindly click on the Read the Docs icon located in the lower left corner of the page.
+Dieses Dokument ist auch in anderen Sprachen verfügbar. Um die Anzeigesprache zu wechseln, klicken Sie bitte auf das Read the Docs-Symbol, das sich in der unteren linken Ecke der Seite befindet.
 
 .. image:: img/translation.png
     :align: center
 
 
 
-**Content**
+**Inhalt**
 
 .. toctree::
     :maxdepth: 3
 
-    About This Kit <self>
+    Über dieses Kit <self>
     introduction
     list_and_assembly
     adjust_servo
@@ -55,9 +55,8 @@ This document is available in other languages as well. To switch the display lan
     faq
     thank
 
-Copyright Notice
+
+Urheberrechtshinweis
 --------------------------
 
-All contents including but not limited to texts, images, and code in this manual are owned by the SunFounder Company. You should only use it for personal study,investigation, enjoyment, or other non-commercial or nonprofit purposes, under therelated regulations and copyrights laws, without infringing the legal rights of the author and relevant right holders. For any individual or organization that uses these for commercial profit without permission, the Company reserves the right to take legal action.
-
-
+Alle Inhalte dieses Handbuchs, einschließlich aber nicht beschränkt auf Texte, Bilder und Code, sind Eigentum der SunFounder Company. Sie dürfen diese nur für persönliches Studium, Forschung, Freude oder andere nicht-kommerzielle oder gemeinnützige Zwecke verwenden, gemäß den einschlägigen Vorschriften und Urheberrechtsgesetzen, ohne die rechtlichen Rechte des Autors und der betreffenden Rechteinhaber zu verletzen. Für jede Einzelperson oder Organisation, die diese ohne Genehmigung für kommerzielle Gewinne verwendet, behält sich das Unternehmen das Recht vor, rechtliche Schritte einzuleiten.

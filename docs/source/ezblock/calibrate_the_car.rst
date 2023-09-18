@@ -1,39 +1,38 @@
-Calibrate the Car
-============================
+Kalibrierung des Fahrzeugs
+===========================
 
-After you connect the PiCar-X, there will be a calibration step. This is because of possible deviations in the installation process or limitations of the servos themselves, making some servo angles slightly tilted, so you can calibrate them in this step.
+Nachdem Sie die PiCar-X verbunden haben, folgt ein Kalibrierungsschritt. Dies ist notwendig, da es während der Montage zu möglichen Abweichungen oder durch die Begrenzungen der Servos selbst zu leicht schrägen Servo-Winkeln kommen kann. Diese können Sie im nächsten Schritt kalibrieren.
 
-But if you think the assembly is perfect and no calibration is needed, you can also skip this step.
-
+Falls Sie jedoch der Meinung sind, dass die Montage fehlerfrei ist und keine Kalibrierung erforderlich ist, können Sie diesen Schritt auch überspringen.
 
 .. note::
-    If you want to recalibrate the robot during use, please follow the steps below.
-    
-    #. You can open the product detail page by clicking the connect icon in the upper left corner.
+    Wenn Sie den Roboter während des Betriebs neu kalibrieren möchten, befolgen Sie bitte die unten aufgeführten Schritte.
+
+    #. Öffnen Sie die Produktinformationsseite, indem Sie das Verbindungssymbol in der oberen linken Ecke anklicken.
 
         .. image:: img/calibrate0.png
 
-    #. Click the **Settings** button.
+    #. Klicken Sie auf den **Einstellungen**-Button.
 
         .. image:: img/calibrate1.png
 
-    #. On this page, you can change the product name, product type, view the app version or calibrate the robot. Once you click on **Calibrate** you can go to the calibration page.
+    #. Auf dieser Seite können Sie den Produktnamen ändern, den Produkttyp auswählen, die App-Version einsehen oder den Roboter kalibrieren. Klicken Sie auf **Kalibrieren**, um zur Kalibrierungsseite zu gelangen.
 
         .. image:: img/calibrate2.png
 
-The calibration steps are as follows:
+Die Kalibrierungsschritte lauten wie folgt:
 
-#. Once you get to the calibration page, there will be two prompt points telling you where to calibrate.
+#. Sobald Sie auf der Kalibrierungsseite sind, gibt es zwei Hinweispunkte, die Ihnen zeigen, wo kalibriert werden soll.
 
     .. note::
-        Calibrating is a micro-adjustment process. It is recommended to take the part off and reassemble it if you click a button to the limit and the part is still off.
+        Die Kalibrierung ist ein Prozess der Feineinstellung. Wenn Sie eine Taste bis zum Anschlag drücken und das Teil immer noch nicht passt, wird empfohlen, es abzunehmen und erneut zu montieren.
 
     .. image:: img/calibrate3.png
 
-#. Click on the left prompt point to calibrate the PiCar-X's Pan-Tilt(the camera part). By using the two sets of buttons on the right, you can slowly adjust the Pan-Tilt's orientation, as well as view their angles. When the adjustment is complete, click on **Confirm**.
+#. Klicken Sie auf den linken Hinweispunkt, um die Schwenk-Neige-Funktion (den Kamerabereich) der PiCar-X zu kalibrieren. Mit den beiden Tastensätzen auf der rechten Seite können Sie die Ausrichtung des Schwenk-Neige-Systems langsam anpassen und deren Winkel einsehen. Wenn die Einstellung abgeschlossen ist, klicken Sie auf **Bestätigen**.
 
     .. image:: img/calibrate4.png
 
-#. To calibrate the front wheel orientation, click on the right prompt point. Use the two buttons on the right to get the front wheel facing straight ahead. When the adjustment is done, click on **Confirm**.
+#. Um die Ausrichtung des Vorderrads zu kalibrieren, klicken Sie auf den rechten Hinweispunkt. Verwenden Sie die beiden Tasten auf der rechten Seite, um das Vorderrad geradeaus auszurichten. Ist die Einstellung abgeschlossen, klicken Sie auf **Bestätigen**.
 
-    .. image:: img/calibrate5.png    
+    .. image:: img/calibrate5.png

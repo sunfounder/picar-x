@@ -1,45 +1,42 @@
-Move
+Bewegung
 ============
 
-This first project teaches how to program movement actions for the PiCar-X. In this project, the program will tell the PiCar-X to execute five actions in order: “forward”, “backward”, “turn left”, “turn right”, and “stop”.
+Dieses erste Projekt zeigt Ihnen, wie Sie Bewegungsabläufe für die PiCar-X programmieren können. In diesem Projekt wird das Programm die PiCar-X anweisen, fünf Aktionen in folgender Reihenfolge auszuführen: „Vorwärts“, „Rückwärts“, „Links abbiegen“, „Rechts abbiegen“ und „Stoppen“.
 
-To learn the basic usage of Ezblock Studio, please read through the following two sections:
+Um die grundlegende Bedienung von Ezblock Studio zu erlernen, lesen Sie bitte die folgenden beiden Abschnitte:
 
 * :ref:`ezblock:create_project_latest`
 
-
 .. image:: img/move.png
 
-**TIPS**
+**TIPPS**
 
 .. image:: img/sp210512_113300.png
 
-This block will make the PiCar-X move forward at a speed based on a percentage of available power. In the example below “50” is 50% of power, or half-speed.
+Dieser Block veranlasst die PiCar-X, mit einer Geschwindigkeit vorwärts zu fahren, die sich an einem Prozentsatz der verfügbaren Leistung orientiert. Im untenstehenden Beispiel bedeutet „50“, dass die Geschwindigkeit bei 50 % der Leistung oder Halbgeschwindigkeit liegt.
 
 .. image:: img/sp210512_113418.png
 
-This block will make the PiCar-X move backward at a speed based on a percentage of available power.
+Dieser Block veranlasst die PiCar-X, mit einer an einem Prozentsatz der verfügbaren Leistung orientierten Geschwindigkeit rückwärts zu fahren.
 
 .. image:: img/sp210512_113514.png
 
-This block adjusts the orientation of the front wheels. The range is “-45” to ”45”. In the example below, “-30” means the wheels will turn 30° to the left.
+Dieser Block passt die Ausrichtung der Vorderräder an. Der Bereich liegt bei „-45“ bis „45“. Im untenstehenden Beispiel bedeutet „-30“, dass die Räder um 30° nach links drehen werden.
 
 .. image:: img/BLK_Basic_delay.png
     :width: 200
 
-This block will cause a timed break between commands, based on milliseconds. In the example below, the PiCar-X will wait for 1 second (1000 milliseconds) before executing the next command.
+Dieser Block bewirkt eine zeitliche Verzögerung zwischen den Befehlen, basierend auf Millisekunden. Im untenstehenden Beispiel wartet die PiCar-X 1 Sekunde (1000 Millisekunden) bevor der nächste Befehl ausgeführt wird.
 
 .. image:: img/sp210512_113550.png
 
-This block will bring the PiCar-X to a complete stop.
+Dieser Block bringt die PiCar-X zum vollständigen Anhalten.
 
-**EXAMPLE**
+**BEISPIEL**
 
 .. note::
 
-    * You can write the program according to the following picture, please refer to the tutorial: :ref:`ezblock:create_project_latest`.
-    * Or find the code with the same name on the **Examples** page of the EzBlock Studio and click **Run** or **Edit** directly.
-
+    * Sie können das Programm entsprechend dem folgenden Bild schreiben. Bitte beachten Sie das Tutorial: :ref:`ezblock:create_project_latest`.
+    * Oder suchen Sie den Code mit dem gleichen Namen auf der **Beispiele**-Seite von EzBlock Studio und klicken Sie direkt auf **Ausführen** oder **Bearbeiten**.
 
 .. image:: img/sp210512_113827.png
-

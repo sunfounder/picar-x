@@ -1,17 +1,17 @@
-Thank You
+Danke
 ====================
 
-Thanks to the evaluators who evaluated our products, the veterans who provided suggestions for the tutorial, and the users who have been following and supporting us.
-Your valuable suggestions to us are our motivation to provide better products!
+Vielen Dank an die Gutachter, die unsere Produkte bewertet haben, an die Veteranen, die Vorschläge für das Tutorial gemacht haben, und an die Benutzer, die uns stets begleiten und unterstützen.
+Ihre wertvollen Vorschläge sind unsere Motivation, bessere Produkte anzubieten!
 
-**Particular Thanks**
+**Besonderer Dank**
 
 * Len Davisson
 * Kalen Daniel
 * Juan Delacosta
   
     
-Now, could you spare a little time to fill out this questionnaire?
+Könnten Sie nun etwas Zeit opfern, um diesen Fragebogen auszufüllen?
 
 .. raw:: html
     
@@ -20,5 +20,4 @@ Now, could you spare a little time to fill out this questionnaire?
 
 .. note:: 
 
-    After submitting the questionnaire, please go back to the top to view the results.
-
+    Bitte kehren Sie nach dem Ausfüllen des Fragebogens nach oben zurück, um die Ergebnisse anzusehen.

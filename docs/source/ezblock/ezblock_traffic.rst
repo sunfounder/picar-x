@@ -1,30 +1,29 @@
-Traffic Sign Detection
+Verkehrsschilderkennung
 ===============================
 
-In addition to color, face detection, PiCar-X can also do traffic sign detection.
+Neben der Farberkennung und der Gesichtserkennung kann der PiCar-X auch Verkehrsschilder erkennen.
 
-Now let's combine this traffic sign detection with the line following function. Let PiCar-X track the line, and when you put the Stop sign in front of it, it will stop. When you place a Forward sign in front of it, it will continue to move forward.
+Lassen Sie uns nun diese Verkehrsschilderkennung mit der Linienverfolgungsfunktion kombinieren. Der PiCar-X wird der Linie folgen, und wenn Sie das Stoppschild davor platzieren, wird er anhalten. Wenn Sie ein Vorwärtsschild davor platzieren, wird er weiterhin vorwärts fahren.
 
 
-**TIPS**
+**TIPPS**
 
-#. PiCar will recognize 4 different traffic sign models included in the printable PDF below. 
+#. Der PiCar erkennt 4 verschiedene Verkehrsschildmodelle, die im druckbaren PDF unten enthalten sind. 
 
     .. image:: img/taffics_sign.png
 
-    * :download:`[PDF]Traffic Sign Cards <https://github.com/sunfounder/sf-pdf/raw/master/prop_card/object_detection/traffic-sign-cards.pdf>`
+    * :download:`[PDF]Verkehrsschildkarten <https://github.com/sunfounder/sf-pdf/raw/master/prop_card/object_detection/traffic-sign-cards.pdf>`
 
-#. **Set ref to ()** block is used to set the grayscale threshold, you need to modify it according to the actual situation. You can go ahead and run :ref:`test_grayscale` to see the values of the grayscale module on the white and black surfaces, and fill in their middle values in this block.
+#. Der Block **Set ref to ()** wird verwendet, um den Grauwert-Schwellenwert festzulegen. Sie müssen ihn entsprechend der tatsächlichen Situation anpassen. Sie können den Befehl :ref:`test_grayscale` ausführen, um die Werte des Grauwertmoduls auf weißen und schwarzen Oberflächen zu sehen, und deren mittlere Werte in diesem Block eintragen.
 
 
 
-**EXAMPLE**
+**BEISPIEL**
 
 .. note::
 
-    * You can write the program according to the following picture, please refer to the tutorial: :ref:`ezblock:create_project_latest`.
-    * Or find the code with the same name on the **Examples** page of the EzBlock Studio and click **Run** or **Edit** directly.
-
+    * Sie können das Programm gemäß der folgenden Abbildung schreiben. Bitte beachten Sie das Tutorial: :ref:`ezblock:create_project_latest`.
+    * Oder finden Sie den Code mit demselben Namen auf der **Examples** -Seite des EzBlock Studios und klicken Sie direkt auf **Run** oder **Edit**.
 
 .. image:: img/sp210513_101526.png
 

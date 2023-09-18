@@ -1,10 +1,10 @@
 .. _install_all_modules:
 
 
-Install All the Modules
+Alle Module installieren
 ============================
 
-Make sure you are connected to the Internet and update your system:
+Stellen Sie sicher, dass Sie mit dem Internet verbunden sind und aktualisieren Sie Ihr System:
 
 .. raw:: html
 
@@ -17,7 +17,7 @@ Make sure you are connected to the Internet and update your system:
 
 .. note::
 
-    Python3 related packages must be installed if you are installing the Lite version OS.
+    Python3-bezogene Pakete müssen installiert sein, wenn Sie die Lite-Version des Betriebssystems installieren.
 
     .. raw:: html
 
@@ -28,7 +28,7 @@ Make sure you are connected to the Internet and update your system:
         sudo apt install git python3-pip python3-setuptools python3-smbus
 
 
-Install ``robot-hat``.
+Installieren Sie das Modul ``robot-hat``.
 
 .. raw:: html
 
@@ -42,12 +42,12 @@ Install ``robot-hat``.
     sudo python3 setup.py install
 
 .. note::
-    Running ``setup.py`` will download some necessary components. Your download may have failed due to network issues. You may need to download again at this point.
-    See the following interface, type ``Y`` and press Enter.
+    Durch das Ausführen von ``setup.py`` werden einige erforderliche Komponenten heruntergeladen. Ihr Download ist möglicherweise aufgrund von Netzwerkproblemen fehlgeschlagen. Möglicherweise müssen Sie an dieser Stelle erneut herunterladen.
+    Geben Sie den folgenden Befehl ein, geben Sie ``Y`` ein und drücken Sie Enter.
 	
 	.. image:: img/dowload_code.png
 
-Then download and install the ``vilib`` module.
+Laden Sie dann das Modul ``vilib`` herunter und installieren Sie es.
 
 .. raw:: html
 
@@ -60,7 +60,7 @@ Then download and install the ``vilib`` module.
     cd vilib
     sudo python3 install.py
 
-Download and install the ``picar-x`` module.
+Laden Sie das Modul ``picar-x`` herunter und installieren Sie es.
 
 .. raw:: html
 
@@ -73,9 +73,9 @@ Download and install the ``picar-x`` module.
     cd picar-x
     sudo python3 setup.py install
 
-This step will take a little while, so please be patient.
+Dieser Schritt dauert eine Weile, bitte haben Sie Geduld.
 
-Finally, you need to run the script ``i2samp.sh`` to install the components required by the i2s amplifier, otherwise the picar-x will have no sound.
+Schließlich müssen Sie das Skript ``i2samp.sh`` ausführen, um die für den i2s-Verstärker erforderlichen Komponenten zu installieren. Andernfalls hat der Picar-X keinen Ton.
 
 .. raw:: html
 
@@ -88,15 +88,15 @@ Finally, you need to run the script ``i2samp.sh`` to install the components requ
 	
 .. image:: img/i2s.png
 
-Type ``y`` and press enter to continue running the script.
+Geben Sie "y" ein und drücken Sie die Eingabetaste, um das Skript fortzusetzen.
 
 .. image:: img/i2s2.png
 
-Type ``y`` and press enter to run ``/dev/zero`` in the background.
+Geben Sie "y" ein und drücken Sie die Eingabetaste, um ``/dev/zero`` im Hintergrund auszuführen.
 
 .. image:: img/i2s3.png
 
-Type ``y`` and press enter to restart the Picar-X.
+Geben Sie "y" ein und drücken Sie die Eingabetaste, um den Picar-X neu zu starten.
 
 .. note::
-    If there is no sound after restarting, you may need to run the i2samp.sh script several times.
+    Wenn nach dem Neustart kein Ton vorhanden ist, müssen Sie das i2samp.sh-Skript möglicherweise mehrmals ausführen.

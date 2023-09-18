@@ -1,26 +1,22 @@
 .. _remote_desktop:
 
-
 Remote Desktop 
 =====================
 
-There are two ways to control the desktop of the Raspberry Pi remotely:
-
-**VNC** and **XRDP**, you can use any of them.
+Es gibt zwei Möglichkeiten, den Desktop des Raspberry Pi remote zu steuern: **VNC** und **XRDP**. Sie können eine beliebige Methode verwenden.
 
 VNC 
 --------------
 
-You can use the function of remote desktop through VNC.
+Sie können die Funktion des Remote-Desktops über VNC nutzen.
 
-**Enable VNC service**
+**VNC-Dienst aktivieren**
 
-The VNC service has been installed in the system. By default, VNC is
-disabled. You need to enable it in config.
+Der VNC-Dienst ist im System installiert, ist jedoch standardmäßig deaktiviert. Sie müssen ihn in der Konfiguration aktivieren.
 
-**Step 1**
+**Schritt 1**
 
-Input the following command:
+Geben Sie den folgenden Befehl ein:
 
 .. raw:: html
 
@@ -33,86 +29,84 @@ Input the following command:
 .. image:: img/image287.png
    :align: center
 
-**Step 2**
+**Schritt 2**
 
-Choose **3** **Interfacing Options** by press the down arrow key on your keyboard, then press the **Enter** key.
+Wählen Sie **3** **Interfacing Options**, indem Sie die Pfeiltaste nach unten auf Ihrer Tastatur drücken, und drücken Sie dann die **Enter**-Taste.
 
 .. image:: img/image282.png
    :align: center
 
-**Step 3**
+**Schritt 3**
 
 **P3 VNC**
 
 .. image:: img/image288.png
    :align: center
 
-**Step 4**
+**Schritt 4**
 
-Select **Yes -> OK -> Finish** to exit the configuration.
+Wählen Sie  **Yes -> OK -> Finish**, um die Konfiguration zu verlassen.
 
 .. image:: img/image289.png
    :align: center
 
-**Login to VNC**
+**Anmeldung bei VNC**
 
-**Step 1**
+**Schritt 1**
 
-You need to download and install the `VNC Viewer <https://www.realvnc.com/en/connect/download/viewer/>`_ on personal computer. After the installation is done, open it.
+Laden Sie den `VNC Viewer <https://www.realvnc.com/en/connect/download/viewer/>`_ auf Ihren Computer herunter und installieren Sie ihn. Öffnen Sie ihn nach Abschluss der Installation.
 
-**Step 2**
+**Schritt 2**
 
-Then select **New connection**.
+Wählen Sie dann **Neue Verbindung**.
 
 .. image:: img/image290.png
    :align: center
 
-**Step 3**
+**Schritt 3**
 
-Input ``<Hostname>.local`` or ``<IP address>`` of Raspberry Pi and any **Name**.
+Geben Sie ``<Hostname>.local`` oder ``<IP address>`` des Raspberry Pi und einen beliebigen **Namen** ein.
 
 .. image:: img/image291.png
    :align: center
 
-**Step 4**
+**Schritt 4**
 
-Double click the **connection** just created:
+Doppelklicken Sie auf die gerade erstellte **Verbindung**:
 
 .. image:: img/image292.png
    :align: center
 
-**Step 5**
+**Schritt 5**
 
-Enter Username and Password.
+Geben Sie Benutzername und Passwort ein.
 
 .. image:: img/image293.png
    :align: center
 
-**Step 6**
+**Schritt 6**
 
-Now you can see the desktop of the Raspberry Pi:
+Jetzt sehen Sie den Desktop des Raspberry Pi:
 
 .. image:: img/image294.png
    :align: center
 
-That's the end of the VNC part.
-
+Das ist das Ende des VNC-Teils.
 
 XRDP
 -----------------------
 
-Another method of remote desktop is XRDP, it provides a graphical login to remote machines using RDP (Microsoft
-Remote Desktop Protocol).
+Eine weitere Methode für den Remote-Desktop ist XRDP. Es bietet eine grafische Anmeldung bei entfernten Maschinen über das RDP-Protokoll (Microsoft Remote Desktop Protocol).
 
-**Install XRDP**
+**XRDP installieren**
 
-**Step 1**
+**Schritt 1**
 
-Login to Raspberry Pi by using SSH.
+Melden Sie sich über SSH am Raspberry Pi an.
 
-**Step 2**
+**Schritt 2**
 
-Input the following instructions to install XRDP.
+Geben Sie die folgenden Anweisungen ein, um XRDP zu installieren.
 
 .. raw:: html
 
@@ -123,49 +117,42 @@ Input the following instructions to install XRDP.
    sudo apt-get update
    sudo apt-get install xrdp
 
-**Step 3**
+**Schritt 3**
 
-Later, the installation starts.
+Die Installation wird gestartet.
 
-Enter ``Y``, press key ``Enter`` to confirm.
+Geben Sie ``Y`` ein und drücken Sie die Eingabetaste, um zu bestätigen.
 
 .. image:: img/image295.png
    :align: center
 
-**Step 4**
+**Schritt 4**
 
-Finished the installation, you should login to your Raspberry Pi by using Windows remote desktop applications.
+Nach Abschluss der Installation sollten Sie sich über Anwendungen für die Windows-Remotedesktopverbindung bei Ihrem Raspberry Pi anmelden können.
 
-**Login to XRDP**
+**Anmeldung bei XRDP**
 
-**Step 1**
+**Schritt 1**
 
-If you are a Windows user, you can use the Remote Desktop feature that
-comes with Windows. If you are a Mac user, you can download and use
-Microsoft Remote Desktop from the APP Store, and there is not much
-difference between the two. The next example is Windows remote desktop.
+Wenn Sie Windows verwenden, können Sie die Remotedesktop-Funktion von Windows nutzen. Wenn Sie ein Mac-Benutzer sind, können Sie Microsoft Remote Desktop aus dem App Store herunterladen und verwenden. Der Unterschied zwischen den beiden ist nicht groß. Das folgende Beispiel zeigt die Verwendung von Windows Remotedesktop.
 
-**Step 2**
+**Schritt 2**
 
-Type in ``mstsc`` in Run (``WIN+R``) to open the Remote Desktop
-Connection, and input the ``<Hostname>.local`` or ``<IP address>`` of Raspberry Pi, then click on **Connect**.
+Geben Sie in der Ausführen-Box (``WIN+R``) "mstsc" ein, um die Remotedesktopverbindung zu öffnen, und geben Sie die ``<Hostname>.local`` oder ``<IP-Adresse>`` des Raspberry Pi ein. Klicken Sie dann auf **Verbinden**.
 
 .. image:: img/image296.png
    :align: center
 
-**Step 3**
+**Schritt 3**
 
-Then the xrdp login page pops out. Please type in your username and
-password. After that, please click **OK**.
+Dann wird die Anmeldeseite von XRDP angezeigt. Geben Sie Ihren Benutzernamen und Ihr Passwort ein. Klicken Sie anschließend auf **OK**.
 
 .. image:: img/image297.png
    :align: center
 
-**Step 4**
+**Schritt 4**
 
-Here, you successfully login to RPi by using the remote desktop.
+Hier haben Sie sich erfolgreich über den Remote-Desktop bei Ihrem Raspberry Pi angemeldet.
 
 .. image:: img/image20.png
    :align: center
-
-

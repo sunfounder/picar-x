@@ -1,23 +1,23 @@
 .. _control_by_app:
 
-Controlled by the APP
+Steuerung durch die App
 =======================
 
-The SunFounder controller is used to control Raspberry Pi/Pico based robots.
+Der SunFounder-Controller dient zur Steuerung von Robotern, die auf Raspberry Pi/Pico basieren.
 
-The APP integrates Button, Switch, Joystick, D-pad, Slider and Throttle Slider widgets; Digital Display, Ultrasonic Radar, Grayscale Detection and Speedometer input widgets.
+Die App bietet verschiedene Widgets wie Tasten, Schalter, Joystick, Steuerkreuz, Schieberegler und Gashebel; Digitale Anzeigen, Ultraschallradar, Graustufen-Erkennung und Tachometer sind als Eingabewidgets verfügbar.
 
-There are 17 areas A-Q , where you can place different widgets to customize your own controller.
+Es gibt 17 Bereiche von A-Q, in denen unterschiedliche Widgets für die individuelle Gestaltung des Controllers platziert werden können.
 
-In addition, this application provides a live video streaming service.
+Zusätzlich bietet diese Anwendung einen Live-Videostreaming-Service.
 
-Let's customize a PiCar-X controller using this app.
+Lassen Sie uns einen PiCar-X-Controller mit dieser App anpassen.
 
-**How to do?**
+**Wie macht man das?**
 
-#. Install the ``sunfounder-controller`` module.
+#. Installieren Sie das ``sunfounder-controller`` Modul.
 
-    The ``robot-hat``, ``vilib``, and ``picar-x`` modules need to be installed first, for details see: :ref:`install_all_modules`.
+    Zuerst müssen die Module ``robot-hat``, ``vilib`` und ``picar-x`` installiert werden. Einzelheiten finden Sie unter: :ref:`install_all_modules`.
 
 
     .. raw:: html
@@ -31,7 +31,7 @@ Let's customize a PiCar-X controller using this app.
         cd ~/sunfounder-controller
         sudo python3 setup.py install
 
-#. Run the code.
+#. Starten Sie den Code.
 
     .. raw:: html
 
@@ -42,22 +42,22 @@ Let's customize a PiCar-X controller using this app.
         cd ~/picar-x/example
         sudo python3 app_control.py
 
-#. Install `SunFounder Controller <https://docs.sunfounder.com/projects/sf-controller/en/latest/>`_ from **APP Store(iOS)** or **Google Play(Android)**.
+#. Installieren Sie den `SunFounder Controller <https://docs.sunfounder.com/projects/sf-controller/en/latest/>`_ aus dem **APP Store(iOS)** oder **Google Play(Android)**.
 
 
-#. Open and create a new controller.
+#. Erstellen Sie einen neuen Controller.
 
-    Create a new controller by clicking on the + sign in the SunFounder Controller APP.
+    Erstellen Sie einen neuen Controller, indem Sie im SunFounder Controller APP auf das Pluszeichen klicken.
 
     .. image:: img/app1.PNG
 
-    Give it a name and select the Controller type. There are preset controllers for some products in the Preset section, which you can use as needed. You can also customize your own controller by following the steps below.
+    Benennen Sie ihn und wählen Sie den Controllertyp aus. Im Bereich "Voreinstellungen" finden Sie vorkonfigurierte Controller für einige Produkte, die Sie bei Bedarf nutzen können. Sie können Ihren Controller auch individuell anpassen, indem Sie die folgenden Schritte befolgen.
 
     .. image:: img/app2.PNG
 
-#. Add different widgets to this controller.
+#. Fügen Sie diesem Controller verschiedene Widgets hinzu.
 
-    You can add different types and shapes of widgets to the **A-Q** 17 small areas inside this controller.
+    Sie können verschiedene Arten und Formen von Widgets in den **A-Q** 17 kleinen Bereichen innerhalb dieses Controllers hinzufügen.
 
     .. image:: img/app3.PNG
 
@@ -67,56 +67,55 @@ Let's customize a PiCar-X controller using this app.
     
     .. note::
     
-        You can delete the widget you have selected by clicking on it, swiping left to find the **Delete** button, and clicking on it.
+        Ein ausgewähltes Widget kann gelöscht werden, indem man es anklickt, nach links wischt, um die Schaltfläche **Delete** zu finden, und darauf klickt.
 
         .. image:: img/app5.PNG
 
-    Set the name, maximum and minimum values and units by clicking the **Settings** icon in the upper right corner.
+    Legen Sie den Namen, die Maximal- und Minimalwerte sowie die Einheiten fest, indem Sie auf das **Settings** -Symbol in der oberen rechten Ecke klicken.
 
     .. image:: img/app6.PNG
 
-    Set your current environment's ``Line_Ref`` and ``Cliff_Ref`` for the **Grayscale Detection** widget in the **D** area.
+    Legen Sie für das **Grayscale Detection**-Widget im Bereich **D** die ``Line_Ref`` und ``Cliff_Ref`` Ihrer aktuellen Umgebung fest.
 
     .. image:: img/app7.PNG
 
-    Lastly, add the remaining widgets and click the top right button to save.
+    Fügen Sie schließlich die verbleibenden Widgets hinzu und klicken Sie auf die Schaltfläche oben rechts, um zu speichern.
 
     .. image:: img/app8.PNG
 
-#. Connect to PiCar-x.
+#. Verbinden Sie sich mit PiCar-X.
 
-    When you click the **Connect** button, it will automatically search for robots nearby. Its name is defined in ``picarx_control.py`` and it must be running at all times.
+    Wenn Sie auf die Schaltfläche **Connect** klicken, wird automatisch nach in der Nähe befindlichen Robotern gesucht. Der Name ist in ``picarx_control.py`` definiert und muss ständig laufen.
 
     .. image:: img/app9.PNG
     
-    Once you click on the product name, the message "Connected Successfully" will appear and the product name will appear in the upper right corner.
+    Sobald Sie auf den Produktnamen klicken, erscheint die Meldung "Erfolgreich verbunden", und der Produktname wird in der oberen rechten Ecke angezeigt.
 
     .. image:: img/app10.PNG
 
     .. note::
 
-        * You need to make sure that your mobile device is connected to the same LAN as PiCar-X.
-        * If it doesn't search automatically, you can also manually enter the IP to connect.
+        * Stellen Sie sicher, dass Ihr mobiles Gerät mit demselben LAN wie PiCar-X verbunden ist.
+        * Falls die automatische Suche nicht funktioniert, können Sie auch manuell die IP eingeben, um die Verbindung herzustellen.
 
         .. image:: img/app11.PNG
 
-#. Run this controller.
+#. Starten Sie diesen Controller.
 
-    Click the **Run** button to start the controller, you will see the footage of the car shooting, and now you can control your PiCar-X with these widgets.
+    Klicken Sie auf die Schaltfläche **Run**, um den Controller zu starten. Sie sehen das aufgenommene Videomaterial des Autos, und nun können Sie Ihr PiCar-X mit diesen Widgets steuern.
 
     .. image:: img/app12.PNG
     
-    Here are the functions of the widgets.
+    Hier sind die Funktionen der Widgets.
 
-    * **A**: Show the current speed of the car.
-    * **D**: Show the data of the three sensors on the grayscale module, which have three states: **black block**: black line detected; **white**: white detected; **exclamation point**: cliff detected.
-    * **E**: turn on the obstacle avoidance function.
-    * **I**: turn on the line following function.
-    * **J**: voice recognition, press and hold this widget to start speaking, and it will show the recognized voice when you release it. We have set ``forward``, ``backard``, ``left`` and ``right`` 4 commands in the code to control the car.
-    * **K**: Control forward, backward, left, and right motions of the car.
-    * **Q**: turn the head(Camera) up, down, left and right.
-    * **N**: Turn on the color recognition function.
-    * **O**: Turn on the face recognition function.
-    * **P**: Turn on the object recognition function, it can recognize nearly 90 kinds of objects, for the list of models, please refer to: https://github.com/sunfounder/vilib/blob/master/workspace/coco_labels.txt.
-
+    * **A**: Zeigt die aktuelle Geschwindigkeit des Autos an.
+    * **D**: Zeigt die Daten der drei Sensoren im Graustufenmodul an, die drei Zustände haben: **schwarzer Block**: schwarze Linie erkannt; **weiß**: weiß erkannt; **Ausrufezeichen**: Abgrund erkannt.
+    * **E**: Aktiviert die Hindernisvermeidungsfunktion.
+    * **I**: Aktiviert die Linienverfolgungsfunktion.
+    * **J**: Spracherkennung; halten Sie dieses Widget gedrückt, um zu sprechen, und es zeigt die erkannte Stimme an, wenn Sie es loslassen. Im Code haben wir die vier Befehle ``vorwärts``, ``rückwärts``, ``links`` und ``rechts`` zur Steuerung des Autos festgelegt.
+    * **K**: Steuert die Vorwärts-, Rückwärts-, Links- und Rechtsbewegungen des Autos.
+    * **Q**: Bewegt den Kopf (Kamera) nach oben, unten, links und rechts.
+    * **N**: Aktiviert die Farberkennungsfunktion.
+    * **O**: Aktiviert die Gesichtserkennungsfunktion.
+    * **P**: Aktiviert die Objekterkennungsfunktion, die fast 90 verschiedene Objekte erkennen kann. Für eine Liste der Modelle verweisen wir auf: https://github.com/sunfounder/vilib/blob/master/workspace/coco_labels.txt.
 

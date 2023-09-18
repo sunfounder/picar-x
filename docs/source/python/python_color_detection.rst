@@ -1,39 +1,34 @@
+
 .. _py_color_detection:
 
-Color Detection
+Farberkennung
 ==========================================
 
-This project will add a color detection algorithm to the previous :ref:`py_computer_vision` project.
+Dieses Projekt ergänzt das vorherige Projekt :ref:`py_computer_vision` um einen Algorithmus zur Farberkennung.
 
-
-
-* :download:`[PDF]Color Cards <https://github.com/sunfounder/sf-pdf/raw/master/prop_card/object_detection/color-cards.pdf>`
+* :download:`[PDF] Farbkarten <https://github.com/sunfounder/sf-pdf/raw/master/prop_card/object_detection/color-cards.pdf>`
 
 .. note::
 
-    The printed colors may have a slightly different hue from the Python color models due to printer toner differences, or the printed medium, such as a tan-colored paper. This can cause a less accurate color recognition.
-
+    Aufgrund von Unterschieden im Druckertoner oder dem Druckmedium, wie etwa einem beigefarbenen Papier, kann die gedruckte Farbe geringfügig vom Python-Farbmodell abweichen. Dies kann zu einer weniger präzisen Farberkennung führen.
 
 .. image:: img/color_card.png
     :width: 600
 
-
-**Run the Code**
-
+**Code ausführen**
 
 .. note::
 
-    * This project requires access to the Raspberry Pi desktop to view the footage taken by the camera module.
-    * You can connect a screen to the PiCar-X or refer to the tutorial :ref:`remote_desktop` to access it with VNC or XRDP.
-    * Once inside the Raspberry Pi desktop, open Terminal and type the following command to run it, or just open and run it with a Python editor.
-
+    * Für dieses Projekt ist ein Zugriff auf den Raspberry Pi-Desktop erforderlich, um das von der Kameramodul aufgenommene Material zu betrachten.
+    * Sie können einen Bildschirm an den PiCar-X anschließen oder die Anleitung :ref:`remote_desktop` konsultieren, um per VNC oder XRDP darauf zuzugreifen.
+    * Sobald Sie sich im Raspberry Pi-Desktop befinden, öffnen Sie das Terminal und geben den folgenden Befehl ein, um es auszuführen, oder öffnen und führen Sie es mit einem Python-Editor aus.
 
 .. code-block::
 
     cd ~/picar-x/example
     sudo python3 color_detect.py
 
-When the code is run, if PiCar-X captures a red object, it will frame it out. You can also change the ``'red'`` in the code to another color for detection.
+Wird der Code ausgeführt und PiCar-X erfasst ein rotes Objekt, wird dieses umrahmt. Sie können das ``'red'``
 
 .. image:: img/color_detect.png
 
@@ -116,28 +111,27 @@ When the code is run, if PiCar-X captures a red object, it will frame it out. Yo
         camera.close()  
 
 
-**How it works?**
+**Wie funktioniert es?**
 
-First, the range of H in the `HSV color space <https://en.wikipedia.org/wiki/HSL_and_HSV>`_ is defined as a dictionary, which is convenient for the following color judgment algorithm:
+Zunächst wird der Bereich von H im `HSV-Farbraum <https://de.wikipedia.org/wiki/HSV-Farbraum>`_ als Wörterbuch definiert, was für den folgenden Algorithmus zur Farberkennung praktisch ist:
 
 .. code-block:: python
 
     color_dict = {'red':[0,4],'orange':[5,18],'yellow':[22,37],'green':[42,85],'blue':[92,110],'purple':[115,165],'red_2':[165,180]} 
 
-Then, a `convolution kernel <https://en.wikipedia.org/wiki/Kernel_(image_processing)>`_ of size 5x5 is defined, which will be used for morphological operations, like filtering.
-
+Anschließend wird ein `Faltungskern <https://de.wikipedia.org/wiki/Faltungskern>`_ der Größe 5x5 definiert, der für morphologische Operationen wie Filterung eingesetzt wird.
 
 .. code-block:: python
 
     kernel_5 = np.ones((5,5),np.uint8)
 
+Als nächstes führt die Funktion ``color_detect()`` die Bildverarbeitung in vier Schritten durch:
 
-Next, the ``color_detect()`` function will processes pictures in four steps:
+1. Extrahiert die Daten der Ziel-Farbe als neues Binärbild (Array).
+2. Führt erweiterte morphologische Transformationen durch.
+3. Findet Konturen in einem Binärbild.
+4. Zeichnet einen Rahmen um das erkannte Objekt im Bild.
 
-1. Extract the data of the target color as a new binary image (array).
-2. Performs advanced morphological transformations. 
-3. Finds contours in a binary image.
-4. Draws a frame for the recognized object on the image.
 
 .. code-block:: python
 
@@ -180,13 +174,13 @@ Next, the ``color_detect()`` function will processes pictures in four steps:
 
         return img,mask,morphologyEx_img
 
-The ``img`` , ``mask`` , and ``morphologyEx_img`` are displayed in three windows to directly observe the processing results of each step.
+Die ``img``, ``mask`` und ``morphologyEx_img`` werden in drei Fenstern angezeigt, um die Verarbeitungsergebnisse jedes Schritts direkt zu beobachten.
 
 .. image:: img/color_detect.png
 
-For more information on morphology and contouring, please reference the following resources:
+Für weitere Informationen zu Morphologie und Konturerkennung können Sie die folgenden Ressourcen konsultieren:
 
-* `Opening operation - Wikipedia <https://en.wikipedia.org/wiki/Opening_(morphology)>`_ 
+* `Öffnungsoperation – Wikipedia <https://de.wikipedia.org/wiki/%C3%96ffnungsoperation_(Bildverarbeitung)>`_
 * `morphologyEx - OpenCV <https://docs.opencv.org/4.0.0/d4/d86/group__imgproc__filter.html#ga67493776e3ad1a3df63883829375201f>`_
 * `findContours - OpenCV <https://docs.opencv.org/4.0.0/d3/dc0/group__imgproc__shape.html#gadf1ad6a0b82947fa1fe3c3d497f260e0>`_
-* `Contour Features - OpenCV <https://docs.opencv.org/3.4/dd/d49/tutorial_py_contour_features.html>`_
+* `Konturmerkmale - OpenCV <https://docs.opencv.org/3.4/dd/d49/tutorial_py_contour_features.html>`_

@@ -1,12 +1,11 @@
 .. _quick_guide_python:
 
-Quick Guide on Python
+Schnellanleitung zu Python
 ==========================
 
-This section is to teach you how to install Raspberry Pi OS, configure wifi to Raspberry Pi, remote access to Raspberry Pi to run the corresponding code.
+Dieser Abschnitt erklärt, wie Sie das Raspberry Pi OS installieren, das WLAN für den Raspberry Pi konfigurieren und aus der Ferne auf den Raspberry Pi zugreifen, um den entsprechenden Code auszuführen.
 
-If you are familiar with Raspberry Pi and can open the command line successfully, then you can skip the first 3 parts and then complete the last part. 
-
+Wenn Sie mit dem Raspberry Pi vertraut sind und die Befehlszeile erfolgreich öffnen können, können Sie die ersten drei Teile überspringen und dann den letzten Teil abschließen.
 
 
 .. toctree::

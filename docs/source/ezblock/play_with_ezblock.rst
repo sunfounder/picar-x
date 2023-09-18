@@ -1,13 +1,13 @@
 .. _play_ezblock:
 
-Play with Ezblock
+Mit Ezblock spielen
 ===========================
 
-For beginners and novices, EzBlock is a software development platform offered by SunFounder for Raspberry Pi. Ezbock offers two programming environments: a graphical environment and a Python environment.
+Für Anfänger ist EzBlock eine Softwareentwicklungsplattform, die von SunFounder für den Raspberry Pi angeboten wird. EzBlock bietet zwei Programmierumgebungen: eine grafische Umgebung und eine Python-Umgebung.
 
-It is available for almost all types of devices, including Mac, PC, and Android.
+Sie ist für fast alle Arten von Geräten verfügbar, einschließlich Mac, PC und Android.
 
-Here is a tutorial to help you complete EzBlock installation, download, and use.
+Hier ist ein Tutorial, das Ihnen hilft, die Installation, den Download und die Nutzung von EzBlock abzuschließen.
 
 .. toctree::
   :maxdepth: 1
@@ -17,21 +17,22 @@ Here is a tutorial to help you complete EzBlock installation, download, and use.
 
 
 
-**Projects**
 
 
-This section begins with basic programming functions for the PiCar-X, and continues through to creating more advanced programs in Ezblock Studio. 
-Each tutorial contains TIPS that introduce new functions, allowing users to write the corresponding program. 
-There is also a complete reference code in the Example section that can be directly used. 
-We suggest attempting the programming without using the code in the Example sections, and enjoy the fun experience of overcoming the challenges!
+**Projekte**
 
-All of the Ezblock projects have been uploaded to Ezblock Studio’s Examples page. From the Examples page, users can run the programs directly, or edit the examples and save them into the users My Projects folder.
+Dieser Abschnitt beginnt mit grundlegenden Programmierfunktionen für den PiCar-X und führt weiter zur Erstellung fortgeschrittenerer Programme im Ezblock Studio. 
+Jedes Tutorial enthält TIPPS, die neue Funktionen vorstellen, sodass Benutzer das entsprechende Programm schreiben können. 
+Es gibt auch einen vollständigen Referenzcode im Beispielbereich, der direkt verwendet werden kann. 
+Wir empfehlen, die Programmierung ohne den Code aus den Beispielabschnitten zu versuchen und den Spaß am Lösen von Herausforderungen zu genießen!
 
-The Examples page allows users to choose between Block or Python language. The projects in this section only explain Block language, for an explanation of the Python code, please review this `file <https://github.com/sunfounder/picar-x/blob/v2.0/docs/(EN)%20picarmini.md>`_ to help you understand the Python code.
+Alle Ezblock-Projekte wurden auf die Beispielseite von Ezblock Studio hochgeladen. Von der Beispielseite aus können Benutzer die Programme direkt ausführen oder die Beispiele bearbeiten und sie im Ordner "Meine Projekte" des Benutzers speichern.
+
+Die Beispielseite ermöglicht es den Benutzern, zwischen Block- oder Python-Sprache zu wählen. Die Projekte in diesem Abschnitt erklären nur die Block-Sprache. Für eine Erklärung des Python-Codes überprüfen Sie diese `Datei <https://github.com/sunfounder/picar-x/blob/v2.0/docs/(EN)%20picarmini.md>`_, um den Python-Code zu verstehen.
 
 .. image:: img/examples23.png
 
-**Basic**
+**Grundlagen**
 
 .. toctree::
 

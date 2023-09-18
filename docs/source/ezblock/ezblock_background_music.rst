@@ -1,35 +1,35 @@
-Background Music
+Hintergrundmusik
 ======================
 
-In addition to programming the PiCar-X to play sound effects or text-to-speech (TTS), the PiCar-X will also play background music. This project will also use a **Slider** widget for adjusting the music volume. 
+Neben der Programmierung des PiCar-X, um Soundeffekte oder Text-to-Speech (TTS) abzuspielen, kann der PiCar-X auch Hintergrundmusik wiedergeben. In diesem Projekt wird außerdem ein **Schieberegler**-Widget zur Anpassung der Musiklautstärke verwendet.
 
 * :ref:`ezblock:remote_control_latest`
 
-For a detailed tutorial on Ezblocks remote control functions, please reference the :ref:`ezb_remote_control` tutorial.
+Für ein detailliertes Tutorial zu den Fernsteuerungsfunktionen von Ezblock verweisen wir auf das :ref:`ezb_remote_control` Tutorial.
 
-**TIPS**
+**TIPPS**
 
 .. image:: img/sp210512_152803.png
 
-The **play background music** block will need to be added to the **Start** function. Use the drop-down menu to choose different background music for the PiCar-X to play.
+Der **Hintergrundmusik abspielen**-Block muss der **Start**-Funktion hinzugefügt werden. Verwenden Sie das Dropdown-Menü, um unterschiedliche Hintergrundmusiken für den PiCar-X auszuwählen.
 
 .. image:: img/sp210512_153123.png
 
-The block **set background music volume to** will adjust the volume between the range of 0 to 100.
+Mit dem Block **Hintergrundmusik-Lautstärke einstellen auf** wird die Lautstärke im Bereich von 0 bis 100 angepasst.
 
 .. image:: img/sp210512_154708.png
 
-Drag a **Slider** bar from the **Remote Control** page to adjust music volume.
+Ziehen Sie eine **Schieberegler**-Leiste von der **Fernsteuerung**-Seite, um die Musiklautstärke anzupassen.
 
 .. image:: img/sp210512_154259.png
 
-The **slider [A] get value** block will read the slider value. The example above has slider ‘A’ selected. If there are multiple sliders, use the drop-down menu to select the appropriate one.
+Der **Schieberegler [A] Wert abrufen**-Block liest den Wert des Schiebereglers aus. Im obigen Beispiel ist Schieberegler 'A' ausgewählt. Wenn es mehrere Schieberegler gibt, verwenden Sie das Dropdown-Menü, um den entsprechenden auszuwählen.
 
-**EXAMPLE**
+**BEISPIEL**
 
 .. note::
 
-    * You can write the program according to the following picture, please refer to the tutorial: :ref:`ezblock:create_project_latest`.
-    * Or find the code with the same name on the **Examples** page of the EzBlock Studio and click **Run** or **Edit** directly.
+    * Sie können das Programm gemäß dem folgenden Bild schreiben. Bitte beziehen Sie sich auf das Tutorial: :ref:`ezblock:create_project_latest`.
+    * Oder finden Sie den Code mit dem gleichen Namen auf der **Beispiele**-Seite des EzBlock Studios und klicken Sie direkt auf **Ausführen** oder **Bearbeiten**.
 
 .. image:: img/sp210512_155406.png

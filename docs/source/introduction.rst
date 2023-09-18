@@ -1,76 +1,73 @@
-Introduction 
+Einführung
 ====================
 
-
-The History of Self-driving Cars
+Die Geschichte der selbstfahrenden Autos
 ----------------------------------------
 
-Experiments have been conducted on self-driving cars since at least the 1920’s. 
-Promising trials took place in the 1950’s, and work has proceeded forward ever since. 
-The first self-sufficient and truly autonomous cars appeared in the 1980’s, 
-with Carnegie Mellon University’s Navlab and ALV projects in 1984, 
-and Mercedes-Benz and Bundeswehr University Munich’s Eureka Prometheus Project in 1987. Since the late 1980’s, 
-numerous research organizations and major automakers have developed working autonomous vehicles, 
-including: Mercedes-Benz, General Motors, Continental Automotive Systems, Autoliv Inc., Bosch, Nissan, Toyota, 
-Audi, Volvo, Vislab from University of Parma, Oxford University, and Google. 
-In July 2013, Vislab demonstrated BRAiVE, a vehicle that moved autonomously on a mixed traffic route open to the public. 
-As of 2019, twenty-nine U.S. states have already passed laws permitting autonomous cars on public roadways.
+Schon seit den 1920er Jahren wurden Experimente mit selbstfahrenden Autos durchgeführt. 
+In den 1950er Jahren gab es vielversprechende Versuche, und seitdem hat die Arbeit kontinuierlich Fortschritte gemacht.
+Die ersten selbständigen und wirklich autonomen Fahrzeuge tauchten in den 1980er Jahren auf, 
+darunter das Navlab und ALV-Projekt der Carnegie Mellon University von 1984 
+sowie das Eureka Prometheus Projekt von Mercedes-Benz und der Universität der Bundeswehr München von 1987. 
+Seit den späten 1980er Jahren haben zahlreiche Forschungseinrichtungen und große Automobilhersteller, 
+darunter Mercedes-Benz, General Motors, Continental Automotive Systems, Autoliv Inc., Bosch, Nissan, Toyota, 
+Audi, Volvo, Vislab der Universität Parma, die Universität Oxford und Google, funktionierende autonome Fahrzeuge entwickelt. 
+Im Juli 2013 demonstrierte Vislab BRAiVE, ein Fahrzeug, das autonom auf einer für den öffentlichen Verkehr freigegebenen Strecke fuhr. 
+Bis 2019 hatten bereits 29 US-Bundesstaaten Gesetze verabschiedet, die autonome Autos auf öffentlichen Straßen erlauben.
 
-Some UNECE members and EU members, including the UK, 
-have enacted rules and regulations related to automated and fully automated cars. 
-In Europe, cities in Belgium, France, Italy, and the UK have plans in place to operate transport systems for driverless cars, 
-and Germany, the Netherlands, and Spain have already allowed the testing of robotic cars in public traffic. 
-In 2020, the UK, the EU, and Japan are already on track to regulate automated cars.
+Einige Mitglieder der UNECE und der EU, einschließlich des Vereinigten Königreichs, 
+haben Vorschriften und Regelungen für automatisierte und vollautomatisierte Autos erlassen. 
+In Europa haben Städte in Belgien, Frankreich, Italien und dem Vereinigten Königreich Pläne 
+zum Betrieb von Transportsystemen für fahrerlose Autos, 
+während Deutschland, die Niederlande und Spanien bereits Tests mit Roboterautos im öffentlichen Verkehr erlaubt haben. 
+Im Jahr 2020 sind das Vereinigte Königreich, die EU und Japan bereits auf dem Weg, 
+automatisierte Autos zu regulieren.
 
-* Reference: `History of self-driving cars - Wikipedia <https://en.wikipedia.org/wiki/History_of_self-driving_cars>`_
+* Quelle: `Geschichte der selbstfahrenden Autos - Wikipedia <https://en.wikipedia.org/wiki/History_of_self-driving_cars>`_
 
+Heute sind selbstfahrende Autos die nächstgelegene technologische Revolution. Einige Experten prognostizieren, dass bis 2025 Fahrzeuge der Stufe 4 auf den Markt kommen werden. Diese Autos der Stufe 4 werden es den Fahrern ermöglichen, ihre Aufmerksamkeit komplett abzulenken und sich nicht mehr auf den Verkehr zu konzentrieren, solange das System ordnungsgemäß funktioniert.
 
-Today, self-driving cars are the closest technological revolution at hand. Some experts predict that by 2025, Level 4 cars are likely to enter the market. The Level 4 cars will allow drivers to divert their attention to something else entirely, eliminating the need to pay attention to traffic conditions as long as the system is functioning properly.
+Referenz für Stufe 4:
 
-Level 4 reference:
-
-* `SAE Levels of Driving Automation™  <https://www.sae.org/blog/sae-j3016-update>`_
-* `ABI Research Forecasts 8 Million Vehicles to Ship with SAE Level 3, 4 and 5 Autonomous Technology in 2025 <https://www.abiresearch.com/press/abi-research-forecasts-8-million-vehicles-ship-sae-level-3-4-and-5-autonomous-technology-2025/>`_
+* `SAE Stufen der Fahrzeugautomatisierung™  <https://www.sae.org/blog/sae-j3016-update>`_
+* `ABI Research prognostiziert 8 Millionen Fahrzeuge mit SAE Stufe 3, 4 und 5 autonomen Technologie im Jahr 2025 <https://www.abiresearch.com/press/abi-research-forecasts-8-million-vehicles-ship-sae-level-3-4-and-5-autonomous-technology-2025/>`_
 
 .. image:: img/self_driving_car.jpeg
 
-Recent rapid advances in software (Artificial Intelligence, Machine Learning), hardware (GPUs, FPGAs, accelerometers, etc.), and cloud computing are driving this technological revolution forward.
+Die jüngsten raschen Fortschritte in Software (Künstliche Intelligenz, Maschinelles Lernen), Hardware (GPUs, FPGAs, Beschleunigungssensoren usw.) und Cloud-Computing treiben diese technologische Revolution voran.
 
-* In October 2010, a driverless truck designed by the Italian technology company **Vislab** took three months to `travel from Italy to China <http://edition.cnn.com/2010/TECH/innovation/10/27/driverless.car/>`_, with a total distance of 8, 077 miles.
-* In April 2015, a car designed by **Delphi Automotive** traveled from `San Francisco to New York <https://money.cnn.com/2015/04/03/autos/delphi-driverless-car-cross-country- trip/>`_ , traversing 3,400 miles, completing 99 percent of that distance under computer control. 
-* In December 2018, **Alphabet**'s **Waymo** launched a `level 4 self-driving taxi service in Arizona <https://www.reuters.com/article/us-waymo-selfdriving-focus/waymo-unveils-self- driving-taxi-service-in-arizona-for-paying-customers-idUSKBN1O41M2>`_ , where they had already been testing driverless cars since 2008. With no one in the driver's seat, the vehicles operated for more than a year and traveled over 10 million miles.
-* In October 2020, **Baidu** fully opened its `Apollo Robotaxi self-driving cab service <http://autonews.gasgoo.com/icv/70017615.html>`_ in Beijing. The driving routes cover local residential, commercial, leisure, and industrial parks areas, and offer a fully autonomous driving system.
+* Im Oktober 2010 benötigte ein fahrerloser LKW des italienischen Technologieunternehmens **Vislab** drei Monate für die `Reise von Italien nach China <http://edition.cnn.com/2010/TECH/innovation/10/27/driverless.car/>`_, insgesamt 8.077 Meilen.
+* Im April 2015 fuhr ein von **Delphi Automotive** entworfenes Auto von `San Francisco nach New York <https://money.cnn.com/2015/04/03/autos/delphi-driverless-car-cross-country-trip/>`_ über 3.400 Meilen, wobei 99 Prozent dieser Strecke unter Computerkontrolle zurückgelegt wurden.
+* Im Dezember 2018 startete **Alphabet**'s **Waymo** einen `Taxi-Service der Stufe 4 in Arizona <https://www.reuters.com/article/us-waymo-selfdriving-focus/waymo-unveils-self-driving-taxi-service-in-arizona-for-paying-customers-idUSKBN1O41M2>`_, wo sie seit 2008 fahrerlose Autos testeten. Ohne jemanden auf dem Fahrersitz legten die Fahrzeuge mehr als ein Jahr lang über 10 Millionen Meilen zurück.
+* Im Oktober 2020 eröffnete **Baidu** seinen `Apollo Robotaxi selbstfahrenden Taxi-Service <http://autonews.gasgoo.com/icv/70017615.html>`_ in Peking vollständig. Die Fahrrouten umfassen lokale Wohngebiete, Gewerbegebiete, Freizeit- und Industrieparks und bieten ein vollautomatisches Fahrsystem.
 
-However, despite the massive amounts of data collected every day, including training data from real driving records and simulated scenarios, the complexity of AI models for self-driving cars has not been fully met.
+Jedoch, trotz der riesigen Mengen an täglich gesammelten Daten, einschließlich Trainingsdaten aus realen Fahrten und simulierten Szenarien, wurde die Komplexität der KI-Modelle für selbstfahrende Autos noch nicht vollständig erfüllt.
 
-According to `RAND's report <https://www.rand.org/pubs/research_reports/RR1478.html>`_ , reaching the appropriate level of autonomous learning requires training data from hundreds of millions, or even hundreds of billions of miles to establish a level of reliability.
+Laut dem `RAND-Bericht <https://www.rand.org/pubs/research_reports/RR1478.html>`_ erfordert das Erreichen des geeigneten Niveaus des autonomen Lernens Trainingsdaten aus hunderten von Millionen oder sogar hunderten von Milliarden von Meilen, um ein Maß an Zuverlässigkeit festzulegen.
 
-So, while the future of self-driving cars is promising and exciting, there are still many more years of development to go before the technology has matured enough to become fully accessible to the self-driving car market.
+Die Zukunft der selbstfahrenden Autos sieht also vielversprechend und spannend aus, doch es stehen noch viele Entwicklungsjahre bevor, bis die Technologie ausgereift genug ist, um auf dem Markt für selbstfahrende Autos vollständig verfügbar zu sein.
 
-The proven way to allow an emerging technology to quickly mature is to make it easily accessible to everyone by minimizing the market-entry requirements. 
-This is SunFounders motivation for launching PiCar-X.
+Der bewährte Weg, um eine aufkommende Technologie schnell reifen zu lassen, besteht darin, sie durch Minimierung der Markteintrittsanforderungen jedem leicht zugänglich zu machen. Dies ist SunFounders Motivation für den Start von PiCar-X.
 
-SunFounders goal is to help beginners, novices, and those who simply just want to learn about autonomous driving, to understand the development process, the technology, and the latest innovations in self-driving vehicles.
+SunFounders Ziel ist es, Anfängern und Neulingen, sowie all jenen, die einfach mehr über autonomes Fahren lernen möchten, den Entwicklungsprozess, die Technologie und die neuesten Innovationen im Bereich selbstfahrender Fahrzeuge näherzubringen.
 
-
-About PiCar-X
+Über PiCar-X
 -------------------
 
 .. .. image:: img/picar-x.jpg
 
-The PiCar-X is an AI-controlled self-driving robot car for the Raspberry Pi platform, upon which the Raspberry Pi acts as the control center. The PiCar-X’s 2-axis camera module, ultrasonic module, and line tracking modules can provide the functions of color/face/traffic signs detection, automatic obstacle avoidance, automatic line tracking, etc.
+Der PiCar-X ist ein KI-gesteuertes selbstfahrendes Roboter-Auto für die Raspberry Pi-Plattform, wobei der Raspberry Pi als Steuerzentrum dient. Mit der 2-Achsen-Kamera, dem Ultraschallmodul und den Linienverfolgungsmodulen des PiCar-X können Funktionen wie Farb-/Gesichts-/Verkehrsschilder-Erkennung, automatische Hindernisvermeidung und automatisches Linienverfolgen realisiert werden.
 
-With the SunFounder-designed Robot HAT board, the PiCar-X integrates left/right driving motors, servo motors for steering and the camera’s pan/tilt functions, and pre-sets the Robot HAT’s ADC, PWM, and Digital I2C pins to allow for extensions to the standard functionality of the Raspberry Pi. Both a speaker and a bluetooth chip have been engineered into the Robot HAT for remote control of Text-to-Speech, sound effects, or even background music functionality.
+Mit der von SunFounder entworfenen Robot HAT-Platine integriert der PiCar-X Links-/Rechtsantriebsmotoren, Servomotoren für Lenkung und die Schwenk-/Neigefunktionen der Kamera und setzt die ADC, PWM und Digital I2C Pins des Robot HAT vor, um Erweiterungen der Standardfunktionen des Raspberry Pi zu ermöglichen. Ein Lautsprecher und ein Bluetooth-Chip sind in den Robot HAT integriert, um Text-zu-Sprache, Soundeffekte oder sogar Hintergrundmusikfunktionen fernzusteuern.
 
-All of the PiCar-X functions, including GPIO control, computer vision, and deep learning, are implemented through the open sourced Python programming language, OpenCV’s Computer Vision Library software, and Google’s TensorFlow for deep learning frameworks. Other software has been included to optimize the PiCar-X capabilities, allowing the user a near-limitless learning environment.
+Alle Funktionen des PiCar-X, einschließlich GPIO-Steuerung, Computer Vision und Deep Learning, werden über die Open-Source-Programmiersprache Python, OpenCV's Computer Vision Library-Software und Googles TensorFlow für Deep Learning-Frameworks implementiert. Weitere Software wurde hinzugefügt, um die Fähigkeiten des PiCar-X zu optimieren und dem Benutzer eine nahezu grenzenlose Lernumgebung zu bieten.
 
-
-Deep Learning and Neural Networks
+Deep Learning und neuronale Netze
 -------------------------------------------------
-To learn more about deep learning and Neural Networks, SunFounder recommends the following resources:
+Um mehr über Deep Learning und neuronale Netze zu erfahren, empfiehlt SunFounder die folgenden Ressourcen:
 
-`Machine Learning - Andrew Ng <https://www.coursera.org/learn/machine-learning>`_ : This course provides a broad introduction to machine learning, datamining, and statistical pattern recognition. 
+`Maschinelles Lernen - Andrew Ng <https://www.coursera.org/learn/machine-learning>`_ : Dieser Kurs bietet eine umfassende Einführung in maschinelles Lernen, Datenabbau und statistische Mustererkennung.
 
-`Neural Networks and Deep Learning <http://neuralnetworksanddeeplearning.com/>`_ : This E-book covers both Neural Networks, a biologically-inspired programming paradigm that enables a computer to learn from observational data, and Deep learning, a powerful set of techniques for machine learning in neural networks.
+`Neuronale Netze und Deep Learning <http://neuralnetworksanddeeplearning.com/>`_ : Dieses E-Book behandelt sowohl neuronale Netze, ein biologisch inspiriertes Programmierparadigma, das es einem Computer ermöglicht, aus Beobachtungsdaten zu lernen, als auch Deep Learning, ein leistungsfähiges Set von Techniken für maschinelles Lernen in neuronalen Netzen.
 
-`Rethinking the Inception Architecture for Computer Vision <https://arxiv.org/abs/1512.00567>`_ : This high-level white-paper explores the methods users can scale up networks by utilizing added computations as efficiently as possible through factorized convolutions and aggressive regularization.
+`Neudenken der Inception-Architektur für Computer Vision <https://arxiv.org/abs/1512.00567>`_ : Dieses hochrangige Whitepaper untersucht, wie Benutzer Netzwerke durch den effizientesten Einsatz zusätzlicher Berechnungen über faktorisierte Faltungen und aggressive Regularisierung skalieren können.

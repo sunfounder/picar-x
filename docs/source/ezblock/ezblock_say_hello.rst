@@ -1,30 +1,28 @@
-Say Hello
+Sag Hallo
 ===================
 
-This project will combine several functions from the preceding projects. The PiCar-X movement will be remotely controlled, and the PiCar’s camera will be remotely controlled by using two joystick controllers. When PiCar recognizes someone's face, it will nod politely and then say “Hello!”.
+Dieses Projekt kombiniert mehrere Funktionen aus den vorangegangenen Projekten. Die Bewegung des PiCar-X wird ferngesteuert, und die Kamera des PiCar wird ebenfalls durch zwei Joystick-Controller ferngesteuert. Erkennt das PiCar das Gesicht einer Person, wird es höflich nicken und „Hallo!“ sagen.
 
 * :ref:`ezblock:video_latest`
 * :ref:`ezblock:remote_control_latest`
 
 .. image:: img/how_are_you.jpg
 
-
-**TIPS**
+**TIPPS**
 
 .. image:: img/sp210512_161525.png
 
-The **if do** block is used to nod politely once the conditional judgment of “if” is true.
+Der **if do**-Block wird verwendet, um einmal höflich zu nicken, sobald die bedingte Überprüfung von „if“ wahr ist.
 
 .. image:: img/sp210512_161749.png
 
-The **conditional statements** block is used in conjunction with the **if do** block. The conditions can be “=”, “>”, “<”, ” ≥ “, ” ≤ “, or ” ≠ “.
+Der **Bedingungen**-Block wird zusammen mit dem **if do**-Block verwendet. Die Bedingungen können „=“, „>“, „<“, „≥“, „≤“ oder „≠“ sein.
 
-**EXAMPLE**
+**BEISPIEL**
 
 .. note::
 
-    * You can write the program according to the following picture, please refer to the tutorial: :ref:`ezblock:create_project_latest`.
-    * Or find the code with the same name on the **Examples** page of the EzBlock Studio and click **Run** or **Edit** directly.
-
+    * Sie können das Programm gemäß dem folgenden Bild erstellen, bitte beziehen Sie sich dazu auf das Tutorial: :ref:`ezblock:create_project_latest`.
+    * Oder finden Sie den Code mit dem gleichen Namen auf der **Beispiele**-Seite des EzBlock Studios und klicken Sie direkt auf **Ausführen** oder **Bearbeiten**.
 
 .. image:: img/sp210512_162305.png

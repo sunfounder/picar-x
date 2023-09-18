@@ -1,46 +1,46 @@
-About Robot HAT
+Über das Robot HAT
 ========================
 
 .. image:: img/robot_hat_no_bluetooth.png
 
-**Left/Right Motor Port**
-    * 2-channel XH2.54 motor ports.
-    * The left port is connected to GPIO 4 and the right port is connected to GPIO 5.
+**Linker/Rechter Motor-Port**
+    * 2-Kanal XH2.54 Motor-Ports.
+    * Der linke Port ist mit GPIO 4 verbunden und der rechte Port ist mit GPIO 5 verbunden.
 
-**I2C Pin**
-    * 2-channel I2C pins from Raspberry Pi.
+**I2C-Pin**
+    * 2-Kanal I2C-Pins vom Raspberry Pi.
 
-**PWM Pin**
-    * 12-channel PWM pins, P0-P12.
+**PWM-Pin**
+    * 12-Kanal PWM-Pins, P0-P12.
 
-**ADC Pin**
-    * 4-channel ADC pins, A0-A3.
+**ADC-Pin**
+    * 4-Kanal ADC-Pins, A0-A3.
 
-**Digital Pin**
-    * 4-channel digital pins, D0-D3.
+**Digitaler Pin**
+    * 4-Kanal digitaler Pins, D0-D3.
 
-**Battery Indicator**
-    * Two LEDs light up when the voltage is higher than 7.8V.
-    * One LED lights up in the 6.7V to 7.8V range. 
-    * Below 6.7V, both LEDs turn off.
+**Batterieanzeige**
+    * Zwei LEDs leuchten auf, wenn die Spannung höher als 7,8V ist.
+    * Eine LED leuchtet im Bereich von 6,7V bis 7,8V.
+    * Unterhalb von 6,7V werden beide LEDs ausgeschaltet.
 
-**USR LED**
-    * Set by your program. (Outputting 1 turns the LED on; Outputting 0 turns it off.)
+**USR-LED**
+    * Von Ihrem Programm festgelegt. (Eine Ausgabe von 1 schaltet die LED ein; eine Ausgabe von 0 schaltet sie aus.)
 
-**RST Button**
-    * Short pressing RST Button causes program resetting.
-    * Long press RST Button till the LED lights up then release, and you will disconnect the Bluetooth.
+**RST-Taste**
+    * Kurzes Drücken der RST-Taste führt zum Zurücksetzen des Programms.
+    * Lange drücken Sie die RST-Taste, bis die LED aufleuchtet, dann lassen Sie los, und Sie trennen die Bluetooth-Verbindung.
 
-**USR Button**
-    * The functions of USR Button can be set by your programming. (Pressing down leads to a input “0”; releasing produces a input “1”. ) 
+**USR-Taste**
+    * Die Funktionen der USR-Taste können von Ihrem Programm festgelegt werden. (Drücken erzeugt eine Eingabe "0"; Loslassen erzeugt eine Eingabe "1".)
 
-**Power Switch**
-    * Turn on/off the power of the robot HAT.
-    * When you connect power to the power port, the Raspberry Pi will boot up. However, you will need to switch the power switch to ON to enable Robot HAT.
+**Ein-/Ausschalter**
+    * Ein- und Ausschalten der Stromversorgung des Robot HAT.
+    * Wenn Sie die Stromversorgung an den Stromanschluss anschließen, startet der Raspberry Pi. Sie müssen jedoch den Ein-/Ausschalter auf EIN schalten, um den Robot HAT zu aktivieren.
 
-**Power Port**
-    * 7-12V PH2.0 2pin power input.
-    * Powering the Raspberry Pi and Robot HAT at the same time.
+**Stromanschluss**
+    * 7-12V PH2.0 2-poliger Stromeingang.
+    * Versorgt gleichzeitig den Raspberry Pi und den Robot HAT mit Strom.
 
 .. note::
-    You can see more details in the `Robot HAT Documentation <https://robot-hat.readthedocs.io/en/latest/index.html>`_.
+    Weitere Details finden Sie in der `Robot HAT-Dokumentation <https://robot-hat.readthedocs.io/en/latest/index.html>`_.

@@ -1,36 +1,32 @@
-Bullfight
+Stierkampf
 ==============
 
-Turn PiCar-X into an angry bull! Prepare a red cloth, such as a handkerchief, and become a Bullfighter. When the PiCar-X chases after the red cloth, be careful not to get hit! 
+Verwandeln Sie den PiCar-X in einen wütenden Stier! Bereiten Sie ein rotes Tuch, wie ein Taschentuch, vor und werden Sie ein Stierkämpfer. Achten Sie darauf, nicht getroffen zu werden, wenn der PiCar-X dem roten Tuch hinterherjagt!
 
 .. note::
 
-    This project is more advanced than the preceding projects. The PiCar-X will need to use the color detection function to keep the camera facing towards the red cloth, then the body orientation will need to automatically adjust in response to the direction that the camera is facing.
+    Dieses Projekt ist anspruchsvoller als die vorhergehenden Projekte. Der PiCar-X wird die Farberkennungsfunktion nutzen müssen, um die Kamera auf das rote Tuch auszurichten. Die Körperausrichtung muss sich automatisch an die Richtung anpassen, in die die Kamera zeigt.
 
-**TIPS**
+**TIPPS**
 
 .. image:: img/sp210512_174650.png
 
-Begin with adding the **color detection [red]** block to the **Start** widget to make the PiCar-X look for a red-colored object. In the forever loop, add the **[width] of detected color** block to transform the input into an “object detection” grid. 
+Beginnen Sie damit, den Block **color detection [red]** zum **Start**-Widget hinzuzufügen, um den PiCar-X nach einem roten Objekt suchen zu lassen. In der Dauerschleife fügen Sie den Block **[Breite] der erkannten Farbe** hinzu, um die Eingabe in ein "Objekterkennungs"-Raster zu transformieren.
 
 .. image:: img/sp210512_174807.png
 
-The “object detection” will output the detected coordinates in (x, y) values, 
-based on the center point of the camera image. 
-The screen is divided into a 3x3 grid, as shown below, 
-so if the red cloth is kept in the top left of the cameras’ image, the (x, y) coordinates will be (-1, 1).
+Die "Objekterkennung" gibt die erkannten Koordinaten in (x, y)-Werten aus, basierend auf dem Mittelpunkt des Kamerabildes. Der Bildschirm ist in ein 3x3-Raster unterteilt, wie unten dargestellt. Wenn sich das rote Tuch oben links im Kamerabild befindet, lauten die (x, y)-Koordinaten (-1, 1).
 
 .. image:: img/sp210512_174956.png
 
-The “object detection” will detect the Width and Height of the graphic. 
-If multiple targets are identified, the dimensions of the largest target will be recorded.
+Die "Objekterkennung" erkennt die Breite und Höhe der Grafik. Wenn mehrere Ziele identifiziert werden, werden die Abmessungen des größten Ziels erfasst.
 
-**EXAMPLE**
+**BEISPIEL**
 
 .. note::
 
-    * You can write the program according to the following picture, please refer to the tutorial: :ref:`ezblock:create_project_latest`.
-    * Or find the code with the same name on the **Examples** page of the EzBlock Studio and click **Run** or **Edit** directly.
+    * Sie können das Programm gemäß der folgenden Abbildung schreiben. Bitte beachten Sie das Tutorial: :ref:`ezblock:create_project_latest`.
+    * Oder finden Sie den Code mit demselben Namen auf der **Examples** -Seite des EzBlock Studios und klicken Sie direkt auf **Run** oder **Edit**.
 
 .. image:: img/sp210512_175519.png
     :width: 800

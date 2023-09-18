@@ -1,17 +1,16 @@
-Video Car
+Video-Auto
 ==========================================
 
-This program will provide a First Person View from the PiCar-X! Use the keyboards WSAD keys to control the direction of movement, and the O and P to adjust the speed.
+Mit diesem Programm erhalten Sie eine Ego-Perspektive von Ihrem PiCar-X! Verwenden Sie die Tasten WSAD Ihrer Tastatur, um die Fahrtrichtung zu steuern, und die Tasten O und P, um die Geschwindigkeit anzupassen.
 
-
-**Run the Code**
+**Code ausführen**
 
 
 .. note::
 
-    * This project requires access to the Raspberry Pi desktop to view the footage taken by the camera module.
-    * You can connect a screen to the PiCar-X or refer to the tutorial :ref:`remote_desktop` to access it with VNC or XRDP.
-    * Once inside the Raspberry Pi desktop, open Terminal and type the following command to run it, or just open and run it with a Python editor.
+    * Für dieses Projekt ist der Zugriff auf den Raspberry Pi-Desktop erforderlich, um die von der Kameramodul erfassten Aufnahmen sehen zu können.
+    * Sie können einen Bildschirm am PiCar-X anschließen oder sich anhand des Tutorials :ref:`remote_desktop` informieren, wie Sie per VNC oder XRDP darauf zugreifen können.
+    * Sobald Sie sich auf dem Raspberry Pi-Desktop befinden, öffnen Sie das Terminal und geben Sie den folgenden Befehl ein, um das Programm zu starten. Alternativ können Sie den Code auch in einem Python-Editor öffnen und ausführen.
 
 
 
@@ -20,19 +19,20 @@ This program will provide a First Person View from the PiCar-X! Use the keyboard
     cd ~/picar-x/example
     sudo python3 video_car.py
 
-Once the code is running, you can see what PiCar-X is shooting and control it by pressing the following keys.
+Nach dem Start des Codes können Sie sehen, was das PiCar-X filmt, und es durch Drücken der folgenden Tasten steuern:
 
-* O: speed up
-* P: speed down
-* W: forward  
-* S: backward
-* A: turn left
-* D：turn right
-* F: stop
-* T: take photo
-* ESC / Ctrl+C: quit
+* O: Geschwindigkeit erhöhen
+* P: Geschwindigkeit verringern
+* W: vorwärts  
+* S: rückwärts
+* A: nach links abbiegen
+* D: nach rechts abbiegen
+* F: anhalten
+* T: Foto aufnehmen
+* ESC / Ctrl+C: beenden
 
-**code**
+**Code**
+
 
 .. code-block:: python
     

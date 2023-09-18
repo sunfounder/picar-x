@@ -1,20 +1,20 @@
 FAQ
 ===========================
 
-**Q1: After installing Ezblock OS, the servo can't turn to 0°?**
+**Q1: Nach der Installation von Ezblock OS kann sich der Servo nicht auf 0° drehen?**
 
-1) Check if the servo cable is properly connected and if the Robot HAT power is on.
-2) Press Reset button.
-3) If you have already run the program in Ezblock Studio, the custom program for P11 is no longer available. You can refer to the picture below to manually write a program in Ezblock Studio to set the servo angle to 0.
+1) Überprüfen Sie, ob das Servokabel ordnungsgemäß angeschlossen ist und ob die Stromversorgung des Robot HAT eingeschaltet ist.
+2) Drücken Sie die Reset-Taste.
+3) Wenn Sie das Programm bereits in Ezblock Studio ausgeführt haben, ist das benutzerdefinierte Programm für P11 nicht mehr verfügbar. Sie können sich das Bild unten ansehen und manuell ein Programm in Ezblock Studio schreiben, um den Servowinkel auf 0 einzustellen.
 
 .. image:: img/faq_servo.png
 
-**Q2: When using VNC, I am prompted that the desktop cannot be displayed at the moment?**
+**Q2: Bei Verwendung von VNC wird mir angezeigt, dass der Desktop momentan nicht angezeigt werden kann?**
 
-In Terminal, type ``sudo raspi-config`` to change the resolution.
+Geben Sie im Terminal ``sudo raspi-config`` ein, um die Auflösung zu ändern.
 
-**Q3: Why does the servo sometimes return to the middle position for no reason?**
+**Q3: Warum kehrt der Servo manchmal ohne Grund in die mittlere Position zurück?**
 
-When the servo is blocked by a structure or other object and cannot reach its intended position, the servo will enter the power-off protection mode in order to prevent the servo from being burned out by too much current.
+Wenn der Servo durch eine Struktur oder ein anderes Objekt blockiert ist und seine beabsichtigte Position nicht erreichen kann, wechselt der Servo in den Abschaltmodus, um zu verhindern, dass der Servo durch zu viel Strom ausgebrannt wird.
 
-After a period of power failure, if no PWM signal is given to the servo，the servo will automatically return to its original position.
+Nach einem Stromausfall kehrt der Servo automatisch in seine Ausgangsposition zurück, wenn kein PWM-Signal an den Servo gesendet wird.

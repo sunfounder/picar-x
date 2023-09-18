@@ -1,26 +1,26 @@
-Minecart Plus
+Minenwagen Plus
 =======================
 
-In this project, derailment recovery has been added to the :ref:`ezb_minecart` project to let the PiCar-X adapt and recover from a more severe curve.
+In diesem Projekt wurde dem :ref:`ezb_minecart`-Projekt eine Entgleisungswiederherstellung hinzugefügt, um dem PiCar-X die Anpassung und Wiederherstellung bei stärkeren Kurven zu ermöglichen.
 
 .. image:: img/minec.png
 
 
-**TIPS**
+**TIPPS**
 
-#. Use another **to do something** block to allow the PiCar-X to back up and recover from a sharp curve. Note that the new **to do something** function does not return any values, but is used just for reorienting the PiCar-X.
+#. Verwende einen weiteren **to do something** -Block, um dem PiCar-X das Zurücksetzen und die Wiederherstellung nach einer scharfen Kurve zu ermöglichen. Beachte, dass die neue **to do something** -Funktion keine Werte zurückgibt, sondern ausschließlich zur Neuausrichtung des PiCar-X verwendet wird.
 
     .. image:: img/sp210512_171727.png
 
-#. **Set ref to ()** block is used to set the grayscale threshold, you need to modify it according to the actual situation. You can go ahead and run :ref:`test_grayscale` to see the values of the grayscale module on the white and black surfaces, and fill in their middle values in this block.
+#. Der Block **Set ref to ()** wird verwendet, um den Graustufen-Schwellenwert festzulegen. Du musst ihn entsprechend der tatsächlichen Situation anpassen. Du kannst :ref:`test_grayscale` ausführen, um die Werte des Graustufen-Moduls auf weißen und schwarzen Oberflächen zu sehen und ihre mittleren Werte in diesem Block einzutragen.
 
 
-**EXAMPLE**
+**BEISPIEL**
 
 .. note::
 
-    * You can write the program according to the following picture, please refer to the tutorial: :ref:`ezblock:create_project_latest`.
-    * Or find the code with the same name on the **Examples** page of the EzBlock Studio and click **Run** or **Edit** directly.
+    * Du kannst das Programm gemäß der folgenden Abbildung schreiben. Bitte beachte das Tutorial: :ref:`ezblock:create_project_latest`.
+    * Oder finde den Code mit demselben Namen auf der **Examples**-Seite des EzBlock Studios und klicke direkt auf **Run** oder **Edit**.
 
 .. image:: img/sp210512_171914.png
 

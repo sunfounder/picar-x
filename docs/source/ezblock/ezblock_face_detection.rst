@@ -1,36 +1,35 @@
-Face Detection
+Gesichtserkennung
 ======================
 
-In addition to color detection, PiCar-X also includes a face detection function. In the following example the Joystick widget is used to adjust the direction of the camera, and the number of faces will be displayed in the debug monitor.
+Neben der Farberkennung bietet der PiCar-X auch eine Funktion zur Gesichtserkennung. Im folgenden Beispiel wird das Joystick-Widget zur Steuerung der Kamerarichtung verwendet, und die Anzahl der erkannten Gesichter wird im Debug-Monitor angezeigt.
 
-For more information on how to use the Video widget, please reference the tutorial on Ezblock video here: :ref:`ezblock:video_latest`.
+Für weitere Informationen zur Verwendung des Video-Widgets verweisen wir auf das Tutorial zu Ezblock-Video: :ref:`ezblock:video_latest`.
 
 .. image:: img/face_detection.PNG
 
-
-**TIPS**
+**TIPPS**
 
 .. image:: img/sp210512_141947.png
 
-Set the **face detection** widget to **on** to enable facial detection.
+Aktivieren Sie das **Gesichtserkennung**-Widget, um die Gesichtserkennungsfunktion zu nutzen.
 
 .. image:: img/sp210512_142327.png
 
-These two blocks are used to adjust the orientation of the pan-tilt camera, similar to driving the PiCar-X in the :ref:`ezb_remote_control` tutorial. As the value increases, the camera will rotate to the right, or upwards, a decreasing value will rotate the camera right, or downwards.
+Diese beiden Blöcke dienen zur Anpassung der Ausrichtung der Schwenk-Neige-Kamera, ähnlich wie bei der Steuerung des PiCar-X im Tutorial :ref:`ezb_remote_control`. Ein steigender Wert lässt die Kamera nach rechts oder oben schwenken, ein sinkender Wert nach rechts oder unten.
 
 .. image:: img/sp210512_142407.png
 
-The image detection results are given through the of **detected face** block. Use the drop-down menu options to choose between reading the coordinates, size, or number of results from the image detection function.
+Die Ergebnisse der Bilderkennung werden über den **detected face**-Block zurückgegeben. Verwenden Sie die Dropdown-Menüoptionen, um zwischen der Ausgabe der Koordinaten, der Größe oder der Anzahl der Ergebnisse aus der Bilderkennungsfunktion zu wählen.
 
 .. image:: img/sp210512_142616.png
 
-Use the **create text with** block to print the combination of **text** and of **detected face** data.
+Verwenden Sie den **create text with**-Block, um die Kombination aus **Text** und **detected face**-Daten auszugeben.
 
-**EXAMPLE**
+**BEISPIEL**
 
 .. note::
 
-    * You can write the program according to the following picture, please refer to the tutorial: :ref:`ezblock:create_project_latest`.
-    * Or find the code with the same name on the **Examples** page of the EzBlock Studio and click **Run** or **Edit** directly.
+    * Das Programm kann gemäß dem folgenden Bild erstellt werden. Bitte beziehen Sie sich auf das Tutorial: :ref:`ezblock:create_project_latest`.
+    * Oder finden Sie den Code mit dem gleichen Namen auf der **Beispiele**-Seite des EzBlock Studios und klicken Sie direkt auf **Ausführen** oder **Bearbeiten**.
 
 .. image:: img/sp210512_142830.png
