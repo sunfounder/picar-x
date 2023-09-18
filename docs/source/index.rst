@@ -45,6 +45,7 @@ This document is available in other languages as well. To switch the display lan
 .. toctree::
     :maxdepth: 3
 
+    About This Kit <self>
     introduction
     list_and_assembly
     adjust_servo
