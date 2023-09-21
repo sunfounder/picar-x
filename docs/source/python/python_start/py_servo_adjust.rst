@@ -25,7 +25,7 @@ But if the deviation angle is too big, you still have to go back to this section
 
     .. code-block::
 
-        cd /home/pi/picar-x/example
+        cd ~/picar-x/example
         sudo python3 servo_zeroing.py
 
 #. Next, plug the servo cable into the P11 port as follows.
