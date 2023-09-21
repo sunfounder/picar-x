@@ -29,6 +29,12 @@ thresholds = [
     [4096, 0],
     [4096, 0],
 ]
+line_min = [
+    4096,
+    4096,
+    4096,
+]
+
 run_flag = False
 cali_status = 'none' # none, work, done
 _lock = threading.Lock()
@@ -68,17 +74,15 @@ def read_data_loop():
     while run_flag:
         try:
             current_grayscale_value = px.get_grayscale_data()
-            for i in range(3):
-                if current_grayscale_value[i] < thresholds[i][0]:
-                    thresholds[i][0] = current_grayscale_value[i]
-                if current_grayscale_value[i] > thresholds[i][1]:
-                    thresholds[i][1] = current_grayscale_value[i]
 
             # calculate the reference
             if cali_status == 'work':
                 for i in range(3):
+                    if current_grayscale_value[i] < thresholds[i][0]:
+                        thresholds[i][0] = current_grayscale_value[i]
+                    if current_grayscale_value[i] > thresholds[i][1]:
+                        thresholds[i][1] = current_grayscale_value[i]
                     line_reference[i] = int((thresholds[i][0] + thresholds[i][1])/2)
-                # adjust cliff reference
             if cali_status == 'done':
                 if (cliff_reference[0] < line_reference[0]) and (cliff_reference[1] < line_reference[1]) and (cliff_reference[2] < line_reference[2]):
                     cliff_reference[0] = int((cliff_reference[0] + line_reference[0]) / 2)
@@ -183,7 +187,7 @@ def start_line_calibrate():
 # cliff reference calibration
 def start_cliff_calibrate():
     def cliff_calibrate_work():
-        global current_mode, cliff_reference
+        global current_mode, cliff_reference, thresholds
         current_mode = 'cliff_cali'
         count = 0
         _left_val = 0
@@ -204,10 +208,10 @@ def start_cliff_calibrate():
         _mid_val /= 10
         _right_val /= 10
 
-        if _left_val < line_reference[0] and _mid_val < line_reference[1] and _right_val < line_reference[2]:
-            _left_val = int((_left_val + line_reference[0]) / 2)
-            _mid_val = int((_mid_val + line_reference[1]) / 2)
-            _right_val = int((_right_val + line_reference[2]) / 2)
+        if _left_val < thresholds[0][0] and _mid_val < thresholds[1][0] and _right_val < thresholds[2][0]:
+            _left_val = int((_left_val + thresholds[0][0]) / 2)
+            _mid_val = int((_mid_val + thresholds[1][0]) / 2)
+            _right_val = int((_right_val + thresholds[2][0]) / 2)
         cliff_reference = [int(_left_val), int(_mid_val), int(_right_val)]
         current_mode = 'cliff_cali_done'
 
