@@ -8,8 +8,9 @@ sleep(0.2)
 
 if __name__ == '__main__':
     servos_pin = ['P0', 'P1', 'P2']
+    print(f"Servo set to zero")
     for pin in servos_pin:
-        print(f"Servo {pin} set to zero")
+        # print(f"Servo {pin} set to zero")
         Servo(pin).angle(10)
         sleep(0.1)
         Servo(pin).angle(0)
