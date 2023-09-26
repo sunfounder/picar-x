@@ -36,6 +36,8 @@ But if the deviation angle is too big, you still have to go back to this section
 
 #. At this point you will see the servo arm rotate to a specific position (0°). If the servo arm does not return to 0°, hold down the USR button and press the RST button to restart the Robot HAT.
 
+    .. image:: img/Z_P11_BT.png
+
 #. Now you can continue the installation as instructed on the assembly foldout.
 
 .. note::
