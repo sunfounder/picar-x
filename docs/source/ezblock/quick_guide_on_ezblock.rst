@@ -35,6 +35,8 @@ Ist der Abweichungswinkel jedoch zu groß, müssen Sie zurück zu diesem Abschni
 
 #. Jetzt sollten Sie sehen, dass der Servoarm auf eine bestimmte Position (0°) rotiert. Sollte der Servoarm nicht auf 0° zurückkehren, halten Sie die USR-Taste gedrückt und drücken Sie die RST-Taste, um den Robot HAT neu zu starten.
 
+    .. image:: img/Z_P11_BT.png
+
 #. Nun können Sie mit der Montage gemäß den Anweisungen auf dem Montageblatt fortfahren.
 
 .. note::
