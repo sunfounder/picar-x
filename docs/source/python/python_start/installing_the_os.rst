@@ -33,19 +33,18 @@
 
 **第4步**
 
-.. In the Raspberry Pi Imager, select the OS that you want to install and
-.. the SD card you would like to install it on.
+在 Raspberry Pi Imager 中，选择要安装的操作系统以及要安装的 SD 卡。
 
-.. .. image:: img/image13.png
-..     :align: center
+.. image:: img/image13.png
+    :align: center
 
-.. .. note:: 
+.. note:: 
 
-..     1) You will need to be connected to the internet the first time.
+    1) 您第一次需要连接到互联网。
 
-..     2) That OS will then be stored for future offline use(lastdownload.cache, C:/Users/yourname/AppData/Local/Raspberry Pi/Imager/cache). So the next time you open the software, it will have the display "Released: date, cached on your computer".
-
-
+    2) 该操作系统将被存储以供将来离线使用（lastdownload.cache，C：/Users/yourname/AppData/Local/Raspberry Pi/Imager/cache）。 这样下次打开该软件时，就会显示“发布：日期，缓存在您的计算机上”。 
+    
+    
 .. 下载 `raspios_armhf-2020-05-28 <https://downloads.raspberrypi.org/raspios_armhf/images/raspios_armhf-2021-05-28/2021-05-07-raspios-buster-armhf.zip>`_ 镜像 并在 Raspberry Pi Imager 中选择它。
 
 .. .. image:: img/otherOS.png
@@ -55,20 +54,20 @@
 ..     树莓派操作系统在2021-05-28版本后有较大变化，可能会导致部分功能不可用。 请暂时不要使用最新版本。
 
 
-.. warning::
+.. .. warning::
 
-    Raspberry Pi OS升级到 **Debian Bullseye** 后，会导致有些功能不能使用，建议还是继续使用 **Debian Buster** 版本。
+..     Raspberry Pi OS升级到 **Debian Bullseye** 后，会导致有些功能不能使用，建议还是继续使用 **Debian Buster** 版本。
 
-在Raspberry Pi Imager中，点击 **CHOOSE OS** -》 **Raspberry Pi OS(other)**。
+.. 在Raspberry Pi Imager中，点击 **CHOOSE OS** -》 **Raspberry Pi OS(other)**。
 
-.. image:: img/3d33.png
-    :align: center
+.. .. image:: img/3d33.png
+..     :align: center
 
-将新打开的页下拉到最后面，你会看到 **Raspberry Pi OS(Legacy)** 和 **Raspberry Pi OS Lite(Legacy)**，这2个是对Debian Buster安全更新，它们之间的区别是带不带桌面。
-建议安装 **Raspberry Pi OS(Legacy)**，这个带桌面的系统。
+.. 将新打开的页下拉到最后面，你会看到 **Raspberry Pi OS(Legacy)** 和 **Raspberry Pi OS Lite(Legacy)**，这2个是对Debian Buster安全更新，它们之间的区别是带不带桌面。
+.. 建议安装 **Raspberry Pi OS(Legacy)**，这个带桌面的系统。
 
-.. image:: img/3d34.png
-    :align: center
+.. .. image:: img/3d34.png
+..     :align: center
 
 
 

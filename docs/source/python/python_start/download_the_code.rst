@@ -15,8 +15,8 @@
 
 .. code-block::
 
-    cd /home/pi/
-    git clone https://gitee.com/sunfounder/robot-hat.git
+    cd ~/
+    git clone -b v2.0 https://github.com/sunfounder/robot-hat.git
     cd robot-hat
     sudo python3 setup.py install
 
@@ -34,8 +34,8 @@
 
 .. code-block::
 
-    cd /home/pi/
-    git clone https://gitee.com/sunfounder/vilib.git
+    cd ~/
+    git clone -b picamera2 https://github.com/sunfounder/vilib.git
     cd vilib
     sudo python3 install.py
 
@@ -47,8 +47,8 @@
 
 .. code-block::
 
-    cd /home/pi/
-    git clone -b v2.0 https://gitee.com/sunfounder/picar-x.git
+    cd ~/
+    git clone -b v2.0 https://github.com/sunfounder/picar-x.git
     cd picar-x
     sudo python3 setup.py install
 
@@ -62,7 +62,7 @@
 
 .. code-block::
 
-    cd /home/pi/picar-x
+    cd ~/picar-x
     sudo bash i2samp.sh
 	
 .. image:: img/i2s.png

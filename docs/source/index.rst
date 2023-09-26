@@ -26,6 +26,7 @@ EzBlock几乎可用于所有类型的设备，包括Mac、PC和Android。EzBlock
 .. toctree::
    :maxdepth: 2
 
+   关于帕克 <self>
    introduction
    list_and_assembly
    about_robot_hat 
