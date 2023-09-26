@@ -4,7 +4,8 @@ Appendix
 
 .. toctree::
     
-    get_ip_address
+    login_windows
+    install_openssh_powershell
     battery
 
 

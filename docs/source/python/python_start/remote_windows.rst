@@ -1,45 +1,56 @@
 Windows Users
 =======================
 
+Login Raspberry Pi Remotely
+-----------------------------
 
-If you're a Windows user, you can use Windows PowerShell to login Raspberry Pi remotely.
+If you are using win10, you can use follow way to login Raspberry Pi remotely.
 
-#. Press the ``windows`` + ``R`` shortcut key in your keyboard to open the **Run** program. Then type **powershell** in the input box. 
+#. Type ``powershell`` in the search box of your Windows desktop, right click on the ``Windows PowerShell``, and select ``Run as administrator`` from the menu that appears.
 
-    .. image:: img/sp221221_135900.png
+    .. image:: img/powershell_ssh.png
         :align: center
 
-#. Check if your Raspberry Pi is on the same network by type in ``ping <hostname>.local``. 
+#. Then, check the IP address of your Raspberry Pi by typing in ``ping -4 <hostname>.local``. 
 
     .. code-block::
 
-        ping raspberrypi.local
+        ping -4 raspberrypi.local
 
     .. image:: img/sp221221_145225.png
         :width: 550
         :align: center
 
-    * If terminal prompts ``Ping request could not find host <hostname>.local``, it is possible that the Raspberry Pi failed to connect to the network.lease check the network.
-    * If you really can't ping ``<hostname>.local``, try to :ref:`get_ip`  and ``ping <IP address>`` instead. (e.g., ``ping 192.168.6.116``)
-    * If multiple prompts like "Reply from <IP address>: bytes=32 time<1ms TTL=64" appear, it means your computer can access the Raspberry Pi.
+    As shown above, you can see the Raspberry Pi's IP address after it has been connected to the network.
+
+    * If terminal prompts ``Ping request could not find host pi.local. Please check the name and try again.``. Please follow the prompts to make sure the hostname you fill in is correct.
+    * Still can't get the IP? Check your network or WiFi configuration on the Raspberry Pi.
 
 
-#. Type in ``ssh <username>@<hostname>.local`` (or ``ssh <username>@<IP address>``).
+#. At this point you will be able to log in to your Raspberry Pi using the ``ssh <username>@<hostname>.local`` (or ``ssh <username>@<IP address>``).
 
     .. code-block::
 
         ssh pi@raspberrypi.local
 
+    .. warning::
 
-#. The following message may appear.
+        If a prompt appears ``The term 'ssh' is not recognized as the name of a cmdlet...``.
+        
+        It means your system is too old and does not have ssh tools pre-installed, you need to manually :ref:`openssh_powershell`.
+        
+        Or use a third party tool like :ref:`login_windows`.
+
+
+#. The following message will be displayed only when you log in for the first time, so enter ``yes``.
 
     .. code-block::
 
-        The authenticity of host 'raspberrypi.local (192.168.6.116)' can't be established.
-        ECDSA key fingerprint is SHA256:7ggckKZ2EEgS76a557cddfxFNDOBBuzcJsgaqA/igz4.
-        Are you sure you want to continue connecting (yes/no/[fingerprint])? 
+        The authenticity of host 'raspberrypi.local (2400:2410:2101:5800:635b:f0b6:2662:8cba)' can't be established.
+        ED25519 key fingerprint is SHA256:oo7x3ZSgAo032wD1tE8eW0fFM/kmewIvRwkBys6XRwg.
+        This key is not known by any other names
+        Are you sure you want to continue connecting (yes/no/[fingerprint])?
 
-    Input \"yes\".
 
 #. Input the password you set before. (Mine is ``raspberry``.)
 

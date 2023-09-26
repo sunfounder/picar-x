@@ -101,3 +101,13 @@ language = 'en' # Before running make html, set the language.
 locale_dirs = ['locale/'] # .po files for other languages are placed in the locale/ folder.
 
 gettext_compact = False # Support for generating the contents of the folders inside source/ into other languages.
+
+# links
+
+rst_epilog = """
+
+.. |link_japanese| raw:: html
+
+    <a href="https://docs.sunfounder.com/projects/picar-x/ja/latest/" target="_blank">Japanese On-line Tutorials</a>
+
+"""
