@@ -37,41 +37,17 @@ SDカードのフォーマットなどのメニュー画面が表示された場
 
 **ステップ4**
 
-.. Raspberry Pi ImagerでインストールするＯＳを選択します。
-.. インストール先のSDカードを選択します。
+Raspberry Pi Imagerで、インストールしたいOSとそれをインストールしたいSDカードを選択します。
 
-.. .. image:: img/image13.png
-..     :align: center
-
-.. .. note:: 
-
-..     1) 作業を行っているパソコンがインターネットに接続されていることを確認してください。
-
-..     2) その選択されたOSは将来オフラインで使用するために保存されます (lastdownload.cache、C:/Users/yourname/AppData/Local/Raspberry Pi/Imager/cache)。そのため、次にソフトウェアを開くと、「リリース日: コンピューターにキャッシュされた日付」と表示されます。
-
-.. ダウンロードされたRaspberry pi OS `raspios_armhf-2020-05-28 <https://downloads.raspberrypi.org/raspios_armhf/images/raspios_armhf-2021-05-28/2021-05-07-raspios-buster-armhf.zip>`_ のイメージファイルをRaspberry Pi Imagerで選択します。
-
-.. .. image:: img/otherOS.png
-..     :align: center
-
-.. .. warning::
-..     Raspberry Pi OS は 2021-05-28 バージョン以降に大きな変更があり、一部の機能が利用できなくなる可能性があります。 現時点では最新バージョンを使用しないでください。
-
-
-.. warning::
-
-    Raspberry Pi OS を **Debian Bullseye** にアップグレードすると、一部の機能が動作しなくなるため、**Debian Buster** バージョンを引き続き使用することをお勧めします。
-
-Raspberry Pi Imagerで、 **CHOOSE OS** から **Raspberry Pi OS(other)** を選択してクリックします。
-
-.. image:: img/3d33.png
+.. image:: img/sp230607_161330.png
     :align: center
 
-新しく開いたページの最後までスクロールすると **Raspberry Pi OS(Legacy)** と **Raspberry Pi OS Lite(Legacy)** が表示されます。これらの違いはデスクトップ（GUI環境：普段から馴染みのあるマウスで操作できる画面）の有る／無しの違いです。
-**Raspberry Pi OS(Legacy)** をインストールすることをお勧めします。これによりRaspberry Piデスクトップにアクセスしてカメラで捉えている映像をリアルタイムで見ることができるようになります。
+.. note:: 
 
-.. image:: img/3d34.png
-    :align: center
+    1) 初回はインターネットに接続する必要があります。
+
+    2) そのOSは将来のオフライン使用のために保存されます(lastdownload.cache, C:/Users/yourname/AppData/Local/Raspberry Pi/Imager/cache)。したがって、次回ソフトウェアを開くときに再びダウンロードする必要はありません。
+
 
 **ステップ5**
 
