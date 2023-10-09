@@ -40,12 +40,6 @@
     cd robot-hat
     sudo python3 setup.py install
 
-.. note::
-    ``setup.py`` を実行すると、必要なコンポーネントがダウンロードされます。ネットワークの問題でダウンロードが失敗した場合、この時点で再ダウンロードする必要があります。
-    次のインターフェースを参照し、 ``Y`` を入力し、Enterキーを押してください。
-	
-	.. image:: img/dowload_code.png
-
 次に、 ``vilib`` モジュールをダウンロードしてインストールします。
 
 .. raw:: html

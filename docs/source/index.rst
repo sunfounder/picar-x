@@ -4,9 +4,9 @@ SunFounder PiCar-X キット
 
 SunFounder PiCar-Xをお選びいただき、ありがとうございます。
 
-.. .. image:: img/picar-x.jpg
-..     :align: center
-..     :width: 400
+.. image:: img/picar-x_v2.png
+    :align: center
+    :width: 500
 
 PiCar-Xは、Raspberry Piを制御センターとして使用するAI駆動の自動運転ロボットカーです。
 PiCar-Xには2軸のカメラモジュール、超音波モジュール、ライン追跡モジュールが備わっており、色・顔・交通標識の検出、
