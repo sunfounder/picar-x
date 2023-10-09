@@ -107,8 +107,9 @@ gettext_compact = False # Support for generating the contents of the folders ins
 
 rst_epilog = """
 
-.. |link_japanese| raw:: html
+.. |link_robot_hat| raw:: html
 
-    <a href="https://docs.sunfounder.com/projects/picar-x/ja/latest/" target="_blank">Japanese On-line Tutorials</a>
+    <a href="https://docs.sunfounder.com/projects/robot-hat-v4/en/latest/hardware_introduction.html" target="_blank">SunFounder Robot HAT</a>
+
 
 """

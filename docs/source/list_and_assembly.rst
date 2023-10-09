@@ -1,7 +1,7 @@
 .. _assembly_instructions:
 
 
-Component List and Assembly Instructions
+Assembly Instructions
 ==========================================
 
 Before assembling the PiCar-X, please first verify that all parts and components have been included. If there are any missing or damaged components, please contact SunFounder immediately at service@sunfounder.com to resolve the issue as soon as possible.
@@ -10,10 +10,20 @@ Please follow the steps on the following PDF for assembly instructions:
 
 :download:`[PDF]Component List and Assembly of PiCar-X <https://github.com/sunfounder/sf-pdf/raw/master/assembly_file/z0104V31-a0001013-picar-x.pdf>`.
 
-.. note::
-    If the servos has been powered on through the Robot HAT after assembly, do not manually force the steering gear, as this could cause damage to the servo.
+**Assembly Tutorial Video**
 
+This video will walk you through the process of assembling your robot from scratch.
 
+In this tutorial, you will learn:
 
-..     #. Before assembling, you need to buy 2 18650 batteries and fully charge them, refer to :ref:`battery`.
-..     #. Robot HAT cannot charge the battery, so you need to buy a battery charger at the same time.
+* **Preparation**: We'll introduce you to all the tools and parts needed, ensuring you're fully equipped before starting the assembly.
+
+* **Assembly Steps**: We'll demonstrate each assembly step in a systematic manner.
+
+* **Tips and Considerations**: Throughout the process, we'll share essential tips and tricks to help you avoid common mistakes and ensure your car operates smoothly.
+
+* **Zeroing a Servo**: Before fixing each servo, it needs to be zeroed first. The steps for zeroing are to first install the Raspberry Pi OS, then install the required modules, and then run a script (set the angle of all PWM pins to 0). After that, plug in the servo wire to zero the servo.
+
+.. raw:: html
+
+    <iframe width="600" height="400" src="https://www.youtube.com/embed/i5FpY3FAcyA?si=2WlfchM0ryLU3yi1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>

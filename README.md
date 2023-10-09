@@ -22,6 +22,10 @@ automatic obstacle avoidance, automatic line tracking, etc.
 
 <a id="update"></a>
 
+2023-10-09:
+ - Add assembly video link.
+ - Modify some issues.
+
 2023-09-07:
  - New Release
 

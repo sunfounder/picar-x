@@ -65,6 +65,8 @@ If you are using win10, you can use follow way to login Raspberry Pi remotely.
         :width: 550
         :align: center
 
+.. _remote_desktop:
+
 Remote Desktop
 ------------------
 
