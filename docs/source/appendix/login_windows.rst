@@ -7,32 +7,34 @@ Wenn Sie ein Windows-Benutzer sind, können Sie einige SSH-Anwendungen verwenden
 
 **Schritt 1**
 
-Laden Sie PuTTY herunter.
+PuTTY herunterladen.
 
 **Schritt 2**
 
-Öffnen Sie PuTTY und klicken Sie auf **Sitzung** in der linken baumartigen Struktur. Geben Sie die IP-Adresse des RPi in das Textfeld unter **Host Name (oder IP-Adresse)** ein und **22** unter **Port** (standardmäßig ist es 22).
+Öffnen Sie PuTTY und klicken Sie im baumähnlichen Menü links auf **Session**. Geben Sie die IP-Adresse des RPi in das Feld unter **Host Name (oder IP-Adresse)** und **22** unter **Port** ein (standardmäßig ist es 22).
 
 .. image:: img/image25.png
     :align: center
 
 **Schritt 3**
 
-Klicken Sie auf **Öffnen**. Beachten Sie, dass beim ersten Anmelden am Raspberry Pi mit der IP-Adresse eine Sicherheitserinnerung angezeigt wird. Klicken Sie einfach auf **Ja**.
+Klicken Sie auf **Open**. Beachten Sie, dass bei der ersten Anmeldung am Raspberry Pi mit der IP-Adresse eine Sicherheitserinnerung erscheint. Klicken Sie einfach auf **Ja**.
 
 **Schritt 4**
 
-Wenn das PuTTY-Fenster "**login as:**" anzeigt, geben Sie "**pi**" (den Benutzernamen des RPi) und das Passwort "**raspberry**" ein (das Standardpasswort, wenn Sie es nicht geändert haben).
+Wenn im PuTTY-Fenster "**login as:**" angezeigt wird, geben Sie
+"**pi**" ein (der Benutzername des RPi) und als **Passwort**: "raspberry"
+(das Standardpasswort, sofern Sie es nicht geändert haben).
 
 .. note::
 
-    Bei der Eingabe des Passworts werden die Zeichen nicht entsprechend im Fenster angezeigt, was normal ist. Sie müssen das korrekte Passwort eingeben.
+    Wenn Sie das Passwort eingeben, werden die Zeichen nicht im Fenster angezeigt, was normal ist. Wichtig ist nur, dass Sie das richtige Passwort eingeben.
     
-    Wenn neben PuTTY "inactive" angezeigt wird, bedeutet dies, dass die Verbindung unterbrochen wurde und erneut hergestellt werden muss.
+    Wenn neben PuTTY "inaktiv" angezeigt wird, bedeutet dies, dass die Verbindung unterbrochen wurde und erneut hergestellt werden muss.
     
 .. image:: img/image26.png
     :align: center
 
 **Schritt 5**
 
-Jetzt haben wir eine Verbindung zum Raspberry Pi hergestellt und es ist Zeit, mit den nächsten Schritten fortzufahren.
+Jetzt haben wir eine Verbindung zum Raspberry Pi hergestellt und es ist Zeit für die nächsten Schritte.

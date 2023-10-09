@@ -64,6 +64,8 @@ Wenn Sie Windows 10 verwenden, können Sie die folgende Methode nutzen, um sich 
         :width: 550
         :align: center
 
+.. _remote_desktop:
+
 Remote-Desktop
 ------------------
 

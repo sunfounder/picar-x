@@ -41,12 +41,6 @@ Installieren Sie das Modul ``robot-hat``.
     cd robot-hat
     sudo python3 setup.py install
 
-.. note::
-    Durch das Ausführen von ``setup.py`` werden einige erforderliche Komponenten heruntergeladen. Ihr Download ist möglicherweise aufgrund von Netzwerkproblemen fehlgeschlagen. Möglicherweise müssen Sie an dieser Stelle erneut herunterladen.
-    Geben Sie den folgenden Befehl ein, geben Sie ``Y`` ein und drücken Sie Enter.
-	
-	.. image:: img/dowload_code.png
-
 Laden Sie dann das Modul ``vilib`` herunter und installieren Sie es.
 
 .. raw:: html

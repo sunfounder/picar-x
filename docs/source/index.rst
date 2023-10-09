@@ -3,9 +3,9 @@ SunFounder PiCar-X Kit
 
 Danke, dass Sie sich für unser PiCar-X entschieden haben.
 
-.. .. image:: img/picar-x.jpg
-..     :align: center
-..     :width: 400
+.. image:: img/picar-x_v2.png
+    :align: center
+    :width: 500
 
 Das PiCar-X ist ein von KI angetriebenes autonomes Roboter-Auto für die Raspberry Pi-Plattform, bei dem der Raspberry Pi als Steuerzentrale fungiert. 
 Das 2-Achsen-Kamera-Modul, das Ultraschall-Modul und die Linienverfolgungs-Module des PiCar-X ermöglichen Funktionen wie Farb-/Gesichts-/Verkehrsschilder-Erkennung, 
