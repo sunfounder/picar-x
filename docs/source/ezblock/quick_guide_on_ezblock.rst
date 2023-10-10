@@ -28,6 +28,8 @@ Ist der Abweichungswinkel jedoch zu groß, müssen Sie zurück zu diesem Abschni
 #. Befolgen Sie die Anweisungen auf dem Montageblatt, stecken Sie das Batteriekabel ein und schalten Sie den Netzschalter auf ON. Dann schließen Sie ein angeschlossenes USB-C-Kabel an, um den Akku zu aktivieren. Warten Sie 1-2 Minuten; ein Ton signalisiert den erfolgreichen Start des Raspberry Pi.
 
     .. image:: img/Z_BTR.JPG
+        :width: 800
+        :align: center
 
 #. Schließen Sie als Nächstes das Servokabel wie folgt an den P11-Port an.
 
@@ -36,6 +38,8 @@ Ist der Abweichungswinkel jedoch zu groß, müssen Sie zurück zu diesem Abschni
 #. Jetzt sollten Sie sehen, dass der Servoarm auf eine bestimmte Position (0°) rotiert. Sollte der Servoarm nicht auf 0° zurückkehren, halten Sie die USR-Taste gedrückt und drücken Sie die RST-Taste, um den Robot HAT neu zu starten.
 
     .. image:: img/Z_P11_BT.png
+        :width: 400
+        :align: center
 
 #. Nun können Sie mit der Montage gemäß den Anweisungen auf dem Montageblatt fortfahren.
 

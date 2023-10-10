@@ -111,4 +111,17 @@ rst_epilog = """
 
     <a href="https://docs.sunfounder.com/projects/robot-hat-v4/en/latest/hardware_introduction.html" target="_blank">SunFounder Robot HAT</a>
 
+.. |link_german_tutorials| raw:: html
+
+    <a href="https://docs.sunfounder.com/projects/picar-x-v20/de/latest/index.html" target="_blank">Deutsch Online-Kurs</a>
+
+.. |link_jp_tutorials| raw:: html
+
+    <a href="https://docs.sunfounder.com/projects/picar-x-v20/ja/latest/" target="_blank">日本語オンライン教材</a>
+
+.. |link_en_tutorials| raw:: html
+
+    <a href="https://docs.sunfounder.com/projects/picar-x-v20/en/latest/" target="_blank">English Online-tutorials</a>
+
+
 """

@@ -1,5 +1,5 @@
-Servo-Einstellung
-==================
+Servo-Einstellung (Wichtig)
+=====================================
 
 Der Winkelbereich des Servos liegt zwischen -90 und 90 Grad, aber der im Werk eingestellte Winkel ist zufällig, vielleicht 0°, vielleicht 45°. Würden wir ihn in diesem Zustand direkt montieren, würde dies nach dem Ausführen des Codes zu einem chaotischen Zustand führen. Im schlimmsten Fall könnte der Servo blockieren und durchbrennen.
 
@@ -12,10 +12,6 @@ Wenn der Abweichungswinkel jedoch zu groß ist, müssen Sie in diesem Abschnitt 
 #. Um sicherzustellen, dass der Servo korrekt auf 0° eingestellt ist, stecken Sie zuerst den Servoarm in die Servowelle und drehen Sie ihn dann vorsichtig in einen anderen Winkel.
 
     .. image:: img/servo_arm.png
-
-#. Befolgen Sie die Anweisungen auf dem Montageblatt, stecken Sie das Batteriekabel ein und schalten Sie den Netzschalter auf ON. Stecken Sie dann ein mit Strom versorgtes USB-C-Kabel ein, um den Akku zu aktivieren. Warten Sie 1-2 Minuten; ein Ton signalisiert, dass der Raspberry Pi erfolgreich hochgefahren ist.
-
-    .. image:: img/Z_BTR.JPG
 
 #. Führen Sie nun ``servo_zeroing.py`` im Ordner ``example/`` aus.
 
@@ -32,7 +28,7 @@ Wenn der Abweichungswinkel jedoch zu groß ist, müssen Sie in diesem Abschnitt 
 
     .. image:: img/Z_P11.JPG
 
-#. Zu diesem Zeitpunkt wird der Servoarm in eine bestimmte Position (0°) rotieren. Wenn der Servoarm nicht auf 0° zurückkehrt, drücken Sie die **RST**-Taste, um die Robotermütze neu zu starten.
+#. Zu diesem Zeitpunkt wird der Servoarm in eine bestimmte Position (0°) rotieren.
 
 Nun können Sie die Montage gemäß den Anweisungen auf dem Montageblatt fortsetzen.
 

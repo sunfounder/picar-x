@@ -1,4 +1,4 @@
-I2C-Schnittstelle aktivieren
+I2C-Schnittstelle aktivieren (Wichtig)
 ========================================
 
 Hier verwenden wir die I2C-Schnittstellen des Raspberry Pi, aber standardmäßig sind sie deaktiviert, daher müssen wir sie zuerst aktivieren.

@@ -1,6 +1,27 @@
 Einrichten Ihres Raspberry Pi
 =======================================
 
+Stromversorgung für Raspberry Pi (Wichtig)
+----------------------------------------------
+
+#. Stecken Sie die mit Raspberry Pi OS eingerichtete SD-Karte in den microSD-Kartensteckplatz auf der Unterseite des Raspberry Pi.
+
+    .. image:: img/insert_sd_card.png
+        :width: 500
+        :align: center
+
+#. Befolgen Sie die Montageanweisungen, stecken Sie das Batteriekabel ein und schalten Sie den Netzschalter ein. Stecken Sie dann das USB-C-Kabel ein, um die Batterie mit Strom zu versorgen. Warten Sie 1-2 Minuten, und Sie werden einen Ton hören, der anzeigt, dass der Raspberry Pi erfolgreich gestartet ist.
+
+    .. image:: img/Z_BTR.JPG
+        :width: 800
+        :align: center
+
+.. note::
+
+    Es wird empfohlen, das USB-C-Kabel eingesteckt zu lassen, da der anschließende Software-Setup-Prozess einige Zeit in Anspruch nehmen kann."
+
+
+
 Wenn Sie einen Bildschirm haben
 -------------------------------------------
 
@@ -19,7 +40,6 @@ Falls Sie einen Bildschirm haben, wird es für Sie einfacher sein, auf dem Raspb
 * 1 * Maus
 * 1 * Tastatur
 
-1. Stecken Sie die mit dem Raspberry Pi OS eingerichtete SD-Karte in den Micro SD-Karten-Slot auf der Unterseite Ihres Raspberry Pi.
 
 #. Schließen Sie Maus und Tastatur an.
 
