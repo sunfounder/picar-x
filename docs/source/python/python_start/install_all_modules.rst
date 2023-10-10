@@ -1,8 +1,8 @@
 .. _install_all_modules:
 
 
-Install All the Modules
-============================
+Install All the Modules(Important)
+========================================
 
 Make sure you are connected to the Internet and update your system:
 

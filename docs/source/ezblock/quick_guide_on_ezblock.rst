@@ -29,6 +29,8 @@ But if the deviation angle is too big, you still have to go back to this section
 #. Follow the instructions on the assembly foldout, insert the battery cable and turn the power switch to the ON. Then plug in a powered USB-C cable to activate the battery. Wait for 1-2 minutes, there will be a sound to indicate that the Raspberry Pi boots successfully.
 
     .. image:: img/Z_BTR.JPG
+        :width: 800
+        :align: center
 
 #. Next, plug the servo cable into the P11 port as follows.
 
@@ -37,7 +39,8 @@ But if the deviation angle is too big, you still have to go back to this section
 #. At this point you will see the servo arm rotate to a specific position (0°). If the servo arm does not return to 0°, hold down the USR button and press the RST button to restart the Robot HAT.
 
     .. image:: img/Z_P11_BT.png
-
+        :width: 400
+        :align: center
 #. Now you can continue the installation as instructed on the assembly foldout.
 
 .. note::

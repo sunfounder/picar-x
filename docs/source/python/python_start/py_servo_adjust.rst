@@ -1,5 +1,5 @@
-Servo Adjust
-===============
+Servo Adjust(Important)
+============================
 
 The angle range of the servo is -90~90, but the angle set at the factory is random, maybe 0°, maybe 45°; if we assemble it with such an angle directly, it will lead to a chaotic state after the robot runs the code, or worse, it will cause the servo to block and burn out.
 
@@ -12,10 +12,6 @@ But if the deviation angle is too big, you still have to go back to this section
 #. To ensure that the servo has been properly set to 0°, first insert the servo arm into the servo shaft and then gently rotate to a different angle.
 
     .. image:: img/servo_arm.png
-
-#. Follow the instructions on the assembly foldout, insert the battery cable and turn the power switch to the ON. Then plug in a powered USB-C cable to activate the battery. Wait for 1-2 minutes, there will be a sound to indicate that the Raspberry Pi boots successfully.
-
-    .. image:: img/Z_BTR.JPG
 
 #. Now, run ``servo_zeroing.py`` in the ``example/`` folder.
 
@@ -32,7 +28,7 @@ But if the deviation angle is too big, you still have to go back to this section
 
     .. image:: img/Z_P11.JPG
 
-#. At this point you will see the servo arm rotate to a specific position (0°). If the servo arm does not return to 0°, press the **RST** button to restart the Robot HAT.
+#. At this point you will see the servo arm rotate to a specific position (0°).
 
 Now you can continue the installation as instructed on the assembly foldout.
 

@@ -1,4 +1,4 @@
-Enable I2C Interface
+Enable I2C Interface(Important)
 ========================================
 
 Here we are using the Raspberry Pi's I2C interfaces, but by default they are disabled, so we need to enable them first.
