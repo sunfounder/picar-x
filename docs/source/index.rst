@@ -4,6 +4,15 @@ SunFounder PiCar-X キット
 
 SunFounder PiCar-Xをお選びいただき、ありがとうございます。
 
+.. note::
+    このドキュメントは以下の言語で利用可能です。
+
+        * |link_german_tutorials|
+        * |link_jp_tutorials|
+        * |link_en_tutorials|
+
+    ご希望の言語でドキュメントにアクセスするために、それぞれのリンクをクリックしてください。
+
 .. image:: img/picar-x_v2.png
     :align: center
     :width: 500
@@ -27,13 +36,6 @@ PiCar-Xは、BlocklyとPythonの2つのプログラム言語をサポートし�
     * プログラミングする前に、提供されたオペレーティングシステムをプリインストールしたEzblock環境でSDカードを再インストールする必要があります。このセクションには、新しいもしくは未使用のTFカードの使用を推奨します。
     * Ezblock Studioは、Mac、PC、Androidを含むほぼすべてのデバイスで利用可能です。
     * 6歳から12歳、プログラムのスキルがない、またはPicar-Xを迅速にテストしたい方には、Ezblock Studioがおすすめです。
-
-**表示言語について**
-
-このドキュメントは他の言語でも利用できます。表示言語を変更するには、ページの左下隅にあるRead the Docsアイコンをクリックしてください。
-
-.. image:: img/translation.png
-    :align: center
 
 **目次**
 
