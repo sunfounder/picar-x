@@ -9,7 +9,17 @@ Befolgen Sie die Schritte in der folgenden PDF für Montageanleitungen:
 
 :download:`[PDF]Teileliste und Montage des PiCar-X <https://github.com/sunfounder/sf-pdf/raw/master/assembly_file/z0104V31-a0001013-picar-x.pdf>`.
 
-**Montage-Tutorial-Video**
+**Montieren Sie den Raspberry Pi Zero W auf dem PiCar-X**
+
+Wenn Ihr Hauptplatine ein Raspberry Pi Zero W ist, finden Sie hier die Schritte zur Installation auf dem PiCar-X.
+
+.. raw:: html
+
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/akHr9L9iQy0?si=gRY8d7seVVVG2czJ" title="YouTube-Videoplayer" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+Danach können Sie die Anweisungen im Video unten ab 1:45 fortsetzen, um es zusammenzubauen.
+
+**Montage-Anleitungsvideo (Raspberry Pi 4/3/1 Modell)**
 
 Dieses Video führt Sie Schritt für Schritt durch den Prozess des Zusammenbaus Ihres Roboters.
 

@@ -13,12 +13,12 @@ Hier verwenden wir die I2C-Schnittstellen des Raspberry Pi, aber standardmäßig
 
         sudo raspi-config
 
-#. Wählen Sie **3** **Interfacing Options** mit der Abwärtspfeiltaste Ihrer Tastatur und drücken Sie dann die **Enter**-Taste.
+#. Wählen Sie **Interfacing Options** mit der Abwärtspfeiltaste Ihrer Tastatur und drücken Sie dann die **Enter**-Taste.
 
     .. image:: img/image282.png
         :align: center
 
-#. Anschließend **P5 I2C**.
+#. Anschließend **I2C**.
 
     .. image:: img/image283.png
         :align: center
@@ -28,7 +28,3 @@ Hier verwenden wir die I2C-Schnittstellen des Raspberry Pi, aber standardmäßig
     .. image:: img/image284.png
         :align: center
 
-#. Nachdem Sie **<Finish>** ausgewählt haben, wird ein Pop-up erscheinen, das Sie daran erinnert, dass Sie neu starten müssen, damit die Einstellungen wirksam werden. Wählen Sie **<Yes>**.
-
-    .. image:: img/camera_enable2.png
-        :align: center
