@@ -9,7 +9,18 @@ PiCar-Xを組み立てる前に、すべての部品とコンポーネントが�
 
 :download:`[PDF]PiCar-Xの部品リストと組み立て <https://github.com/sunfounder/sf-pdf/raw/master/assembly_file/z0104V31-a0001013-picar-x.pdf>`。
 
-**組み立てチュートリアルビデオ**
+**Raspberry Pi Zero WをPiCar-Xに取り付ける**
+
+もしあなたのメインボードがRaspberry Pi Zero Wである場合、以下はPiCar-Xに取り付ける手順です。
+
+.. raw:: html
+
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/akHr9L9iQy0?si=gRY8d7seVVVG2czJ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+その後、 **1:45** からのビデオ内の指示に従って組み立てを続けることができます。
+
+**組み立てチュートリアルビデオ（Raspberry Pi 4/3/1モデル）**
+
 
 このビデオは、ロボットの組み立て手順を詳しく説明しています。
 
