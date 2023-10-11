@@ -10,7 +10,19 @@ Please follow the steps on the following PDF for assembly instructions:
 
 :download:`[PDF]Component List and Assembly of PiCar-X <https://github.com/sunfounder/sf-pdf/raw/master/assembly_file/z0104V31-a0001013-picar-x.pdf>`.
 
-**Assembly Tutorial Video**
+**Mount Raspberry Pi Zero W on PiCar-X**
+
+If your mainboard is a Raspberry Pi Zero W, here are the steps to install it on the PiCar-X. 
+
+.. raw:: html
+
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/akHr9L9iQy0?si=gRY8d7seVVVG2czJ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+
+Afterward, you can continue following the instructions in the video below from **1:45** onwards to assemble it.
+
+
+**Assembly Tutorial Video(Raspberry Pi 4/3/1 Model)**
 
 This video will walk you through the process of assembling your robot from scratch.
 
@@ -27,3 +39,5 @@ In this tutorial, you will learn:
 .. raw:: html
 
     <iframe width="600" height="400" src="https://www.youtube.com/embed/i5FpY3FAcyA?si=2WlfchM0ryLU3yi1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+
