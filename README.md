@@ -1,4 +1,6 @@
-
+# PiCar-X x Google Coral Dev Board
+02-12-21: This repository contains an adapted version of the Picar-X software for the [Google Coral Dev Board](https://coral.ai/docs/dev-board/get-started/). 
+This repository will be updated over time. Currently this software is not compatible yet. 
 # PiCar-X Examples
 
 PiCar-X examples
