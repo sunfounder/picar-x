@@ -1,6 +1,20 @@
 Set up Your Raspberry Pi
 ============================
 
+Power Supply for Raspberry Pi (Important)
+--------------------------------------------------
+
+#. Insert the SD card set up with Raspberry Pi OS into the microSD card slot located on the underside of the Raspberry Pi.
+
+    .. image:: img/insert_sd_card.jpg
+        :width: 500
+        :align: center
+    
+#. Follow the instructions on the assembly foldout, insert the battery holder cable and turn the power switch to the ON.
+
+    .. image:: img/slide_to_power.png
+
+
 If You Have a Screen
 -------------------------
 

@@ -61,6 +61,8 @@ intersphinx_mapping = {
 }
 
 
+html_static_path = ['_static']
+
 
 
 # SunFounder logo
@@ -76,6 +78,7 @@ intersphinx_mapping = {
 
 html_js_files = [
     'https://ezblock.cc/readDocFile/custom.js',
+    'custom.js', #new
     'https://ezblock.cc/readDocFile/readTheDoc/src/js/ace.js',
     'https://ezblock.cc/readDocFile/readTheDoc/src/js/ext-language_tools.js',
     'https://ezblock.cc/readDocFile/readTheDoc/src/js/theme-chrome.js',
@@ -106,8 +109,21 @@ gettext_compact = False # Support for generating the contents of the folders ins
 
 rst_epilog = """
 
-.. |link_japanese| raw:: html
 
-    <a href="https://docs.sunfounder.com/projects/picar-x/ja/latest/" target="_blank">Japanese On-line Tutorials</a>
+.. |link_zh_tutorials| raw:: html
+
+    <a href="https://docs.sunfounder.com/projects/picar-x/zh/latest/" target="_blank">中文在线教程</a>
+
+.. |link_jp_tutorials| raw:: html
+
+    <a href="https://docs.sunfounder.com/projects/picar-x/ja/latest/" target="_blank">日本語オンライン教材</a>
+
+.. |link_en_tutorials| raw:: html
+
+    <a href="https://docs.sunfounder.com/projects/picar-x/en/latest/" target="_blank">English Online-tutorials</a>
+
+.. |link_picarx_v2| raw:: html
+
+    <a href="https://docs.sunfounder.com/projects/picar-x-v20/en/latest/" target="_blank">PiCar-X v2.0</a>
 
 """

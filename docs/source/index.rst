@@ -3,6 +3,28 @@ Welcome to PiCar-X's Documentation!
 
 Thanks for choosing our PiCar-X.
 
+.. note::
+    This document is available in the following languages.
+
+        * |link_zh_tutorials|
+        * |link_jp_tutorials|
+        * |link_en_tutorials|
+    
+    Please click on the respective links to access the document in your preferred language.
+
+.. warning::
+
+    We offer two versions of PiCar-X. It's crucial to note that the scripts in each version's online tutorial are not interchangeable. 
+    
+    To ensure the proper setup, you'll need to identify your version using the short link provided in your instruction sheet:
+
+    * If the link is "picar-x.rtfd.io", continue with this tutorial.
+    * If the link displays "picar-x-v20.rtfd.io", kindly follow the tutorial at |link_picarx_v2|.
+
+    .. image:: img/short_link.jpg
+        :width: 500
+        :align: center
+
 .. image:: img/picar-x.jpg
     :align: center
     :width: 400
@@ -27,17 +49,6 @@ PiCar-X has two programming languages: Blockly and Python. No matter what langua
     * It is required to reinstall the SD card with the operating system we provide with pre-installed Ezblock environment before programming. It is recommended to use a new or unused TF card for this section.
     * Ezblock Studio is available for nearly all types of devices, including Macs, PCs, and Androids.
     * Ezblock Studio is a good choice if you are 6-12 years old, or don't have programming skills, or want to test Picar-X quickly.
-
-
-
-**About the display language**
-
-About the display language
-
-This document is available in other languages as well. To switch the display language, kindly click on the Read the Docs icon located in the lower left corner of the page.
-
-.. image:: img/translation.png
-    :align: center
 
 
 **Content**
