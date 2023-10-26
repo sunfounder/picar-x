@@ -60,7 +60,7 @@ intersphinx_mapping = {
     'ezblock': ('https://docs.sunfounder.com/projects/ezblock3/en/latest/', None),
 }
 
-
+html_static_path = ['_static']
 
 
 # SunFounder logo
@@ -76,6 +76,7 @@ intersphinx_mapping = {
 
 html_js_files = [
     'https://ezblock.cc/readDocFile/custom.js',
+    'custom.js', #new
     'https://ezblock.cc/readDocFile/readTheDoc/src/js/ace.js',
     'https://ezblock.cc/readDocFile/readTheDoc/src/js/ext-language_tools.js',
     'https://ezblock.cc/readDocFile/readTheDoc/src/js/theme-chrome.js',
@@ -101,3 +102,26 @@ language = 'en' # Before running make html, set the language.
 locale_dirs = ['locale/'] # .po files for other languages are placed in the locale/ folder.
 
 gettext_compact = False # Support for generating the contents of the folders inside source/ into other languages.
+
+# links
+
+rst_epilog = """
+
+
+.. |link_zh_tutorials| raw:: html
+
+    <a href="https://docs.sunfounder.com/projects/picar-x/zh/latest/" target="_blank">中文在线教程</a>
+
+.. |link_jp_tutorials| raw:: html
+
+    <a href="https://docs.sunfounder.com/projects/picar-x/ja/latest/" target="_blank">日本語オンライン教材</a>
+
+.. |link_en_tutorials| raw:: html
+
+    <a href="https://docs.sunfounder.com/projects/picar-x/en/latest/" target="_blank">English Online-tutorials</a>
+
+.. |link_picarx_v2| raw:: html
+
+    <a href="https://docs.sunfounder.com/projects/picar-x-v20/en/latest/" target="_blank">PiCar-X v2.0</a>
+
+"""

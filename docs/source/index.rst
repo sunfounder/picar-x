@@ -3,6 +3,31 @@ PiCar-Xにようこそ!
 
 私どものPiCar-Xをお選びいただき誠にありがとうございます。
 
+PiCar-Xをお選びいただき、ありがとうございます。
+
+.. note::
+    このドキュメントは以下の言語で利用可能です。
+
+        * |link_zh_tutorials|
+        * |link_jp_tutorials|
+        * |link_en_tutorials|
+
+    ご希望の言語でドキュメントにアクセスするには、該当のリンクをクリックしてください。
+
+.. warning::
+
+    PiCar-Xには2つのバージョンがございます。各バージョンのオンラインチュートリアルのスクリプトは互換性がありませんので、ご注意ください。
+
+    適切なセットアップを確保するため、取扱説明書に記載されている短縮リンクを使用してバージョンを特定してください：
+
+    * リンクが"picar-x.rtfd.io"の場合は、このチュートリアルを続行してください。
+    * リンクが"picar-x-v20.rtfd.io"の場合は、|link_picarx_v2| のチュートリアルをご参照ください。
+
+    .. image:: img/short_link.jpg
+        :width: 500
+        :align: center
+
+
 .. image:: img/picar-x.jpg
     :align: center
     :width: 400
@@ -32,35 +57,12 @@ PiCar-X には「Blockly（ビジュアルプログラミング）」と「Pytho
     * Ezblock Studioは、6歳から12歳（あるいはそれ以上の）プログラミング スキルがない人でもPicar-Xで簡単に遊びたい（学びたい）人に適しています。
 
 
-
-**表示言語について**
-
-日本語、英語に加えてこのコースでは他の言語にも取り組んでいます。 支援に関心がある場合は、service@sunfounder.com までご連絡ください。無料の製品を差し上げます。
-それまでの間、Google 翻訳を使用して自国語を表示したい言語に変換することをお勧めします。
-
-手順は次のとおりです。
-
-* このコース ページで、右クリックして **Translate to xx** を選択します。 現在の言語が好みの言語でない場合は後で変更できます。
-
-.. image:: img/translate1.png
-    :align: center
-
-* 右上隅に言語ポップアップが表示されます。 **別の言語を選択** するにはメニュー ボタンをクリックします。
-
-.. image:: img/translate2.png
-    :align: center
-
-* 逆三角形のボックスから言語を選択し **完了** をクリックします。
-
-.. image:: img/translate3.png
-    :align: center
-
-
 **Content**
 
 .. toctree::
     :maxdepth: 3
 
+    About This Kit <self>
     introduction
     list_and_assembly
     about_robot_hat

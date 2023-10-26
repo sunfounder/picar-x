@@ -13,6 +13,7 @@ Mac PC、Windows PC、Android、iPadなど、ほぼすべてのタイプのデ�
     :maxdepth: 1
 
     quick_guide_on_ezblock
+    get_start_app
     calibrate_the_car
 
 

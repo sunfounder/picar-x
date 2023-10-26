@@ -22,6 +22,9 @@ automatic obstacle avoidance, automatic line tracking, etc.
 
 <a id="update"></a>
 
+2023-10-25
+- Optimized some operational steps and images.
+
 2023-09-26:
  - Fix Bug
 2023-09-07:

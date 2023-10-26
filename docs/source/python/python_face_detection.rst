@@ -7,7 +7,8 @@
 
 .. note::
 
-    To run this project, you must first complete :ref:`remote_desktop`.
+    このプロジェクトを実行するには、まず :ref:`remote_desktop` を完了させる必要があります。
+
 
 
 **コードの実行**
