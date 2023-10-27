@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>画像解析 &mdash; SunFounder picar-x  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="https://ezblock.cc/readDocFile/custom.css" type="text/css" />
+      <link rel="stylesheet" href="https://ezblock.cc/readDocFile/readTheDoc/src/css/index.css" type="text/css" />
+      <link rel="stylesheet" href="https://ezblock.cc/readDocFile/readTheDoc/src/css/xterm.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+        <script src="https://ezblock.cc/readDocFile/custom.js"></script>
+        <script src="../_static/custom.js"></script>
+        <script src="https://ezblock.cc/readDocFile/readTheDoc/src/js/ace.js"></script>
+        <script src="https://ezblock.cc/readDocFile/readTheDoc/src/js/ext-language_tools.js"></script>
+        <script src="https://ezblock.cc/readDocFile/readTheDoc/src/js/theme-chrome.js"></script>
+        <script src="https://ezblock.cc/readDocFile/readTheDoc/src/js/mode-python.js"></script>
+        <script src="https://ezblock.cc/readDocFile/readTheDoc/src/js/mode-sh.js"></script>
+        <script src="https://ezblock.cc/readDocFile/readTheDoc/src/js/monokai.js"></script>
+        <script src="https://ezblock.cc/readDocFile/readTheDoc/src/js/xterm.js"></script>
+        <script src="https://ezblock.cc/readDocFile/readTheDoc/src/js/FitAddon.js"></script>
+        <script src="https://ezblock.cc/readDocFile/readTheDoc/src/js/readTheDocIndex.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="色検出" href="python_color_detection.html" />
+    <link rel="prev" title="文書読み上げ" href="python_tts.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+<nav id="nav-bar">
+  <ul class="nav-bar-items" id="nav-bar-items">
+    <li class="nav-bar-logo">
+      <a href="https://sunfounder.com">
+        <img class="logo-img" src="https://ezblock.cc/readDocFile/sunfounder_LOGO_160x@2x.png"/>
+      </a>
+    </li>
+  </ul>
+</nav>
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            SunFounder picar-x
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">About This Kit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html">序章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../list_and_assembly.html">部品リストと組み立て説明書</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about_robot_hat.html">Robot HATについて</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="play_with_python.html">Pythonによるプログラミング</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="python_start/quick_guide_on_python.html">Pythonプログラミング・クイックガイド</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_calibrate.html">PiCar-Xのキャリブレーション</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_move.html">ムーブ（PiCar-Xを動かしてみよう）</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_avoid.html">障害物回避</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_line_track.html">ライントレース</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_tts.html">文書読み上げ</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">画像解析</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_color_detection.html">色検出</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_face_detection.html">顔検出</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_video_car.html">ビデオ・カー</a></li>
+<li class="toctree-l2"><a class="reference internal" href="control_by_app.html">アプリからのコントロール</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../ezblock/play_with_ezblock.html">Ezblockの利用に関して</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../appendix/appendix.html">付録</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq.html">FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../thank.html">謝辞</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">SunFounder picar-x</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="play_with_python.html">Pythonによるプログラミング</a></li>
+      <li class="breadcrumb-item active">画像解析</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/python/python_computer_vision.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="py-computer-vision">
+<span id="id1"></span><h1>画像解析<a class="headerlink" href="#py-computer-vision" title="Permalink to this heading">¶</a></h1>
+<p>この次のプロジェクトは画像解析（コンピュータ ビジョン）の分野に正式に参入します。</p>
+<p>次の4つの実験を実行するには <a class="reference internal" href="python_start/remote_windows.html#remote-desktop"><span class="std std-ref">リモート・デスクトップ</span></a> の設定が完了していることを確認してください。 SSH経由のリモート接続ではカメラの画像は表示できません。</p>
+<p><strong>コードの実行</strong></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>このプロジェクトではカメラで撮影した映像を表示するためにRaspberry Piのデスクトップにアクセスする必要があります。</p></li>
+<li><p>モニターをPiCar-Xに直接接続するかチュートリアル <a class="reference internal" href="python_start/remote_windows.html#remote-desktop"><span class="std std-ref">リモート・デスクトップ</span></a> を参照してVNCまたはXRDPでアクセスできます。</p></li>
+<li><p>Raspberry Piのデスクトップに入ったらターミナルを開き次のコマンドを入力して実行するか、Pythonエディターで開いて実行します。</p></li>
+</ul>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">pi</span><span class="o">/</span><span class="n">picar</span><span class="o">-</span><span class="n">x</span><span class="o">/</span><span class="n">example</span>
+<span class="n">sudo</span> <span class="n">python3</span> <span class="n">computer_vision</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+<p>コードが実行されるとデスクトップにウィンドウが開きカメラが捉えた映像が表示されます。</p>
+<p><strong>コード</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cv2</span>
+<span class="kn">from</span> <span class="nn">picamera.array</span> <span class="kn">import</span> <span class="n">PiRGBArray</span>
+<span class="kn">from</span> <span class="nn">picamera</span> <span class="kn">import</span> <span class="n">PiCamera</span>
+<span class="kn">import</span> <span class="nn">time</span>
+
+
+<span class="k">with</span> <span class="n">PiCamera</span><span class="p">()</span> <span class="k">as</span> <span class="n">camera</span><span class="p">:</span>
+    <span class="n">camera</span><span class="o">.</span><span class="n">resolution</span> <span class="o">=</span> <span class="p">(</span><span class="mi">640</span><span class="p">,</span> <span class="mi">480</span><span class="p">)</span>
+    <span class="n">camera</span><span class="o">.</span><span class="n">framerate</span> <span class="o">=</span> <span class="mi">24</span>
+    <span class="n">rawCapture</span> <span class="o">=</span> <span class="n">PiRGBArray</span><span class="p">(</span><span class="n">camera</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">camera</span><span class="o">.</span><span class="n">resolution</span><span class="p">)</span>
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">frame</span> <span class="ow">in</span> <span class="n">camera</span><span class="o">.</span><span class="n">capture_continuous</span><span class="p">(</span><span class="n">rawCapture</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;bgr&quot;</span><span class="p">,</span><span class="n">use_video_port</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span> <span class="c1"># use_video_port=True</span>
+        <span class="n">img</span> <span class="o">=</span> <span class="n">frame</span><span class="o">.</span><span class="n">array</span>
+        <span class="n">cv2</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="s2">&quot;video&quot;</span><span class="p">,</span> <span class="n">img</span><span class="p">)</span>  <span class="c1"># OpenCV image show</span>
+        <span class="n">rawCapture</span><span class="o">.</span><span class="n">truncate</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>  <span class="c1"># Release cache</span>
+
+        <span class="n">k</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">waitKey</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">&amp;</span> <span class="mh">0xFF</span>
+        <span class="k">if</span> <span class="n">k</span> <span class="o">==</span> <span class="mi">27</span><span class="p">:</span>
+            <span class="k">break</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;quit ...&#39;</span><span class="p">)</span>
+    <span class="n">cv2</span><span class="o">.</span><span class="n">destroyAllWindows</span><span class="p">()</span>
+    <span class="n">camera</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+<p><strong>どんな動きをするの？</strong></p>
+<p>写真は <code class="docutils literal notranslate"><span class="pre">PiCamera</span></code> で取得します。 このパッケージはRaspberry PiのカメラへのPythonインターフェイスを提供します。</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://picamera.readthedocs.io/en/latest/index.html">PiCameraの説明</a></p></li>
+</ul>
+<p>画像をファイルにキャプチャするには、必要な <code class="docutils literal notranslate"><span class="pre">capture()</span></code> メソッドの出力にファイルの名前を指定するだけです。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">sleep</span>
+<span class="kn">from</span> <span class="nn">picamera</span> <span class="kn">import</span> <span class="n">PiCamera</span>
+
+<span class="k">with</span> <span class="n">PiCamera</span><span class="p">()</span> <span class="k">as</span> <span class="n">camera</span><span class="p">:</span>
+    <span class="n">camera</span><span class="o">.</span><span class="n">resolution</span> <span class="o">=</span> <span class="p">(</span><span class="mi">640</span><span class="p">,</span> <span class="mi">480</span><span class="p">)</span>
+    <span class="n">camera</span><span class="o">.</span><span class="n">start_preview</span><span class="p">()</span>
+    <span class="c1"># Camera warm-up time</span>
+    <span class="n">sleep</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">camera</span><span class="o">.</span><span class="n">capture</span><span class="p">(</span><span class="s1">&#39;foo.jpg&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>このプロジェクトでは <strong>capturing timelapse sequences</strong> メソッドを使用します。 このメソッドによりOpenCVは連続フレームを取得できます。</p>
+<p>このメソッドではカメラは停止するように指示されるまで連続して画像を取得し続けています。 画像には自動的に一意の名前が付けられます。 <code class="docutils literal notranslate"><span class="pre">sleep(x)</span></code> 関数はキャプチャ間の遅延を制御します。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">sleep</span>
+<span class="kn">from</span> <span class="nn">picamera</span> <span class="kn">import</span> <span class="n">PiCamera</span>
+
+<span class="k">with</span> <span class="n">PiCamera</span><span class="p">()</span> <span class="k">as</span> <span class="n">camera</span><span class="p">:</span>
+    <span class="n">camera</span><span class="o">.</span><span class="n">resolution</span> <span class="o">=</span> <span class="p">(</span><span class="mi">640</span><span class="p">,</span> <span class="mi">480</span><span class="p">)</span>
+    <span class="n">camera</span><span class="o">.</span><span class="n">start_preview</span><span class="p">()</span>
+    <span class="n">sleep</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">filename</span> <span class="ow">in</span> <span class="n">camera</span><span class="o">.</span><span class="n">capture_continuous</span><span class="p">(</span><span class="s1">&#39;img</span><span class="si">{counter:03d}</span><span class="s1">.jpg&#39;</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Captured </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">filename</span><span class="p">)</span>
+        <span class="n">sleep</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="c1">#  capture images with a 10s delay between each shot</span>
+</pre></div>
+</div>
+<p>OpenCV オブジェクトをキャプチャするために画像は Python のメモリ内ストリーム クラス <code class="docutils literal notranslate"><span class="pre">BytesIO</span></code> にキャプチャされます。 BytesIOはストリームを <code class="docutils literal notranslate"><span class="pre">numpy</span></code> 配列に変換し、プログラムはOpenCVで配列を読み取ります。</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://numpy.org/doc/stable/user/whatisnumpy.html">Numpyとは?</a></p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">io</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">picamera</span>
+<span class="kn">import</span> <span class="nn">cv2</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="c1"># Create the in-memory stream</span>
+<span class="n">stream</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">BytesIO</span><span class="p">()</span>
+<span class="k">with</span> <span class="n">picamera</span><span class="o">.</span><span class="n">PiCamera</span><span class="p">()</span> <span class="k">as</span> <span class="n">camera</span><span class="p">:</span>
+    <span class="n">camera</span><span class="o">.</span><span class="n">start_preview</span><span class="p">()</span>
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">camera</span><span class="o">.</span><span class="n">capture</span><span class="p">(</span><span class="n">stream</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;jpeg&#39;</span><span class="p">)</span>
+<span class="c1"># Construct a numpy array from the stream</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fromstring</span><span class="p">(</span><span class="n">stream</span><span class="o">.</span><span class="n">getvalue</span><span class="p">(),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>
+<span class="c1"># &quot;Decode&quot; the image from the array, preserving colour</span>
+<span class="n">image</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">imdecode</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="c1"># OpenCV returns an array with data in BGR order. If you want RGB instead</span>
+<span class="c1"># use the following...</span>
+<span class="n">image</span> <span class="o">=</span> <span class="n">image</span><span class="p">[:,</span> <span class="p">:,</span> <span class="p">::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>JPEG のエンコードとデコードによる損失を回避するには <code class="docutils literal notranslate"><span class="pre">picamera.array</span></code> モジュールのクラスを使用します。 これにより、画像処理の速度も向上する可能性があります。</p>
+<p>OpenCV 画像は単純に``numpy`` 配列をBGR順に並べたものなので <code class="docutils literal notranslate"><span class="pre">PiRGBArray</span></code> クラスを単純に``‘bgr’`` f形式でキャプチャします。 注: RGB データと BGR データは同じサイズと構成ですが、カラー プレーンが逆になっています。</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://picamera.readthedocs.io/en/release-1.13/api_array.html#pirgbarray">PiRGBArray</a></p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">picamera</span>
+<span class="kn">import</span> <span class="nn">picamera.array</span>
+<span class="kn">import</span> <span class="nn">cv2</span>
+
+<span class="k">with</span> <span class="n">picamera</span><span class="o">.</span><span class="n">PiCamera</span><span class="p">()</span> <span class="k">as</span> <span class="n">camera</span><span class="p">:</span>
+    <span class="n">camera</span><span class="o">.</span><span class="n">start_preview</span><span class="p">()</span>
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+    <span class="k">with</span> <span class="n">picamera</span><span class="o">.</span><span class="n">array</span><span class="o">.</span><span class="n">PiRGBArray</span><span class="p">(</span><span class="n">camera</span><span class="p">)</span> <span class="k">as</span> <span class="n">stream</span><span class="p">:</span>
+        <span class="n">camera</span><span class="o">.</span><span class="n">capture</span><span class="p">(</span><span class="n">stream</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;bgr&#39;</span><span class="p">)</span>
+        <span class="c1"># At this point the image is available as stream.array</span>
+        <span class="n">image</span> <span class="o">=</span> <span class="n">stream</span><span class="o">.</span><span class="n">array</span>
+</pre></div>
+</div>
+<p>タイムラプス・シーケンスをキャプチャする方法と組み合わせて、これらの3次元RGB配列をOpenCVで表示します。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cv2</span>
+<span class="kn">from</span> <span class="nn">picamera.array</span> <span class="kn">import</span> <span class="n">PiRGBArray</span>
+<span class="kn">from</span> <span class="nn">picamera</span> <span class="kn">import</span> <span class="n">PiCamera</span>
+
+<span class="c1">#init camera</span>
+<span class="k">with</span> <span class="n">PiCamera</span><span class="p">()</span> <span class="k">as</span> <span class="n">camera</span><span class="p">:</span>
+    <span class="n">camera</span><span class="o">.</span><span class="n">resolution</span> <span class="o">=</span> <span class="p">(</span><span class="mi">640</span><span class="p">,</span><span class="mi">480</span><span class="p">)</span>
+    <span class="n">camera</span><span class="o">.</span><span class="n">framerate</span> <span class="o">=</span> <span class="mi">24</span>
+    <span class="n">rawCapture</span> <span class="o">=</span> <span class="n">PiRGBArray</span><span class="p">(</span><span class="n">camera</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">camera</span><span class="o">.</span><span class="n">resolution</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">frame</span> <span class="ow">in</span> <span class="n">camera</span><span class="o">.</span><span class="n">capture_continuous</span><span class="p">(</span><span class="n">rawCapture</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;bgr&quot;</span><span class="p">,</span><span class="n">use_video_port</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span> <span class="c1"># use_video_port=True</span>
+        <span class="n">img</span> <span class="o">=</span> <span class="n">frame</span><span class="o">.</span><span class="n">array</span>
+        <span class="n">cv2</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="s2">&quot;video&quot;</span><span class="p">,</span> <span class="n">img</span><span class="p">)</span>  <span class="c1"># OpenCV image show</span>
+        <span class="n">rawCapture</span><span class="o">.</span><span class="n">truncate</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>  <span class="c1"># Release cache</span>
+
+        <span class="c1"># click ESC key to exit.</span>
+        <span class="n">k</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">waitKey</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">&amp;</span> <span class="mh">0xFF</span>
+        <span class="k">if</span> <span class="n">k</span> <span class="o">==</span> <span class="mi">27</span><span class="p">:</span>
+            <span class="n">camera</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+            <span class="k">break</span>
+</pre></div>
+</div>
+<p>OpenCVでビデオ ストリームを読み取る方法は他にもたくさんあります。 これらの例で使用されているものは、次の 4 つの PiCar-X タスク (<a class="reference internal" href="python_color_detection.html#py-color-detection"><span class="std std-ref">色検出</span></a> や <a class="reference internal" href="python_face_detection.html#py-face-detection"><span class="std std-ref">顔検出</span></a> など) により適しています。</p>
+<p>ビデオ ストリームを使用するその他の方法については <a class="reference external" href="https://docs.opencv.org/4.0.0/d6/d00/tutorial_py_root.html">OpenCV-Python Tutorials</a> を参照してください。</p>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="python_tts.html" class="btn btn-neutral float-left" title="文書読み上げ" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="python_color_detection.html" class="btn btn-neutral float-right" title="色検出" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, SunFounder.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

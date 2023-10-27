@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>何が必要？ &mdash; SunFounder picar-x  documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="https://ezblock.cc/readDocFile/custom.css" type="text/css" />
+      <link rel="stylesheet" href="https://ezblock.cc/readDocFile/readTheDoc/src/css/index.css" type="text/css" />
+      <link rel="stylesheet" href="https://ezblock.cc/readDocFile/readTheDoc/src/css/xterm.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+        <script src="https://ezblock.cc/readDocFile/custom.js"></script>
+        <script src="../../_static/custom.js"></script>
+        <script src="https://ezblock.cc/readDocFile/readTheDoc/src/js/ace.js"></script>
+        <script src="https://ezblock.cc/readDocFile/readTheDoc/src/js/ext-language_tools.js"></script>
+        <script src="https://ezblock.cc/readDocFile/readTheDoc/src/js/theme-chrome.js"></script>
+        <script src="https://ezblock.cc/readDocFile/readTheDoc/src/js/mode-python.js"></script>
+        <script src="https://ezblock.cc/readDocFile/readTheDoc/src/js/mode-sh.js"></script>
+        <script src="https://ezblock.cc/readDocFile/readTheDoc/src/js/monokai.js"></script>
+        <script src="https://ezblock.cc/readDocFile/readTheDoc/src/js/xterm.js"></script>
+        <script src="https://ezblock.cc/readDocFile/readTheDoc/src/js/FitAddon.js"></script>
+        <script src="https://ezblock.cc/readDocFile/readTheDoc/src/js/readTheDocIndex.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Raspberry pi OSのインストール" href="installing_the_os.html" />
+    <link rel="prev" title="Pythonプログラミング・クイックガイド" href="quick_guide_on_python.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+<nav id="nav-bar">
+  <ul class="nav-bar-items" id="nav-bar-items">
+    <li class="nav-bar-logo">
+      <a href="https://sunfounder.com">
+        <img class="logo-img" src="https://ezblock.cc/readDocFile/sunfounder_LOGO_160x@2x.png"/>
+      </a>
+    </li>
+  </ul>
+</nav>
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            SunFounder picar-x
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../index.html">About This Kit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction.html">序章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../list_and_assembly.html">部品リストと組み立て説明書</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../about_robot_hat.html">Robot HATについて</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../play_with_python.html">Pythonによるプログラミング</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="quick_guide_on_python.html">Pythonプログラミング・クイックガイド</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">何が必要？</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id2">必要なものなど</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id3">その他</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="installing_the_os.html">Raspberry pi OSのインストール</a></li>
+<li class="toctree-l3"><a class="reference internal" href="set_up_your_raspberry_pi.html">Raspberry Piの設定</a></li>
+<li class="toctree-l3"><a class="reference internal" href="install_all_modules.html">全てのモジュールをインストールする（重要）</a></li>
+<li class="toctree-l3"><a class="reference internal" href="enable_i2c_camera.html">I2Cインターフェースを有効にする（重要）</a></li>
+<li class="toctree-l3"><a class="reference internal" href="py_servo_adjust.html">サーボ調整（重要）</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../python_calibrate.html">PiCar-Xのキャリブレーション</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_move.html">ムーブ（PiCar-Xを動かしてみよう）</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_avoid.html">障害物回避</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_line_track.html">ライントレース</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_tts.html">文書読み上げ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_computer_vision.html">画像解析</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_color_detection.html">色検出</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_face_detection.html">顔検出</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_video_car.html">ビデオ・カー</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../control_by_app.html">アプリからのコントロール</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../ezblock/play_with_ezblock.html">Ezblockの利用に関して</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../appendix/appendix.html">付録</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../faq.html">FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../thank.html">謝辞</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">SunFounder picar-x</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../play_with_python.html">Pythonによるプログラミング</a></li>
+          <li class="breadcrumb-item"><a href="quick_guide_on_python.html">Pythonプログラミング・クイックガイド</a></li>
+      <li class="breadcrumb-item active">何が必要？</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/python/python_start/what_do_we_need.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="id1">
+<h1>何が必要？<a class="headerlink" href="#id1" title="Permalink to this heading">¶</a></h1>
+<section id="id2">
+<h2>必要なものなど<a class="headerlink" href="#id2" title="Permalink to this heading">¶</a></h2>
+<p><strong>Raspberry Pi</strong></p>
+<p>Raspberry Piは低価格のクレジットカード　サイズのコンピューターで、コンピューターのモニターまたはテレビに接続し、標準のキーボードとマウスを使用します。
+Raspberry Piはあらゆる年齢の人々がコンピュータを利用し、Scratch や Python などの言語でプログラミングする方法を学ぶことを可能にする、有能な小さなデバイスです。</p>
+<img alt="../../_images/image10.jpeg" src="../../_images/image10.jpeg" />
+<p><strong>電源アダプター</strong></p>
+<p>電源コンセントに接続するためにRaspberry Piには(スマホなどと同じ)マイクロUSBポートがあります。 電源容量は少なくとも2.5A/h以上の製品が必要です。</p>
+<p><strong>マイクロSDカード</strong></p>
+<p>Raspberry PiではRaspberry Pi OSとユーザーのデータを保存するためのマイクロSDカードが必要です。 通常のパソコンのSSDに当たります。最低でも8GB以上の容量のマイクロSDカードが必要です。</p>
+</section>
+<section id="id3">
+<h2>その他<a class="headerlink" href="#id3" title="Permalink to this heading">¶</a></h2>
+<p><strong>ディスプレイ</strong></p>
+<p>Raspberry Piのデスクトップを表示するにはHDMI端子付きのテレビ画面かパソコン用のディスプレイが必要になります。 画面側にスピーカーが内蔵されている場合は音もそこから再生する事ができます。</p>
+<p><strong>マウスとキーボード</strong></p>
+<p>Raspberry Pi本体の操作のためにはUSBキーボードとUSBマウスも必要です。なおUSBアダプタ付きの無線マウスとキーボードも利用可能です。</p>
+<p><strong>HDMIケーブル</strong></p>
+<p>Raspberry Piには最新のテレビやディスプレイ用のHDMI出力ポートがあります。モデルによって使えるケーブルが異なるので確認してください。 またモニターが古くDVIまたはVGAポートしかない場合は適切な変換器を使用する必要があります。</p>
+<p><strong>ケース</strong></p>
+<p>Raspberry Piは専用ケースに入れることができます。 これによりデバイスを保護できますが、利用するロボットキットなどにはケースが付属していたりしますので必要かどうか確認してください。</p>
+<p><strong>イヤフォン出力</strong></p>
+<p>Raspberry Piには3.5mmのイヤフォン。ジャックが装備されておりモニターにスピーカーが内蔵されていない場合にイヤフォンやPC用外付けスピーカーなどが利用可能です。
+こちらもロボットハットなどにはスピーカーを内蔵しておりますのでキットの内容をご確認ください。</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="quick_guide_on_python.html" class="btn btn-neutral float-left" title="Pythonプログラミング・クイックガイド" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="installing_the_os.html" class="btn btn-neutral float-right" title="Raspberry pi OSのインストール" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, SunFounder.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

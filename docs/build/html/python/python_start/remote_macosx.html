@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mac OS X ユーザ &mdash; SunFounder picar-x  documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="https://ezblock.cc/readDocFile/custom.css" type="text/css" />
+      <link rel="stylesheet" href="https://ezblock.cc/readDocFile/readTheDoc/src/css/index.css" type="text/css" />
+      <link rel="stylesheet" href="https://ezblock.cc/readDocFile/readTheDoc/src/css/xterm.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+        <script src="https://ezblock.cc/readDocFile/custom.js"></script>
+        <script src="../../_static/custom.js"></script>
+        <script src="https://ezblock.cc/readDocFile/readTheDoc/src/js/ace.js"></script>
+        <script src="https://ezblock.cc/readDocFile/readTheDoc/src/js/ext-language_tools.js"></script>
+        <script src="https://ezblock.cc/readDocFile/readTheDoc/src/js/theme-chrome.js"></script>
+        <script src="https://ezblock.cc/readDocFile/readTheDoc/src/js/mode-python.js"></script>
+        <script src="https://ezblock.cc/readDocFile/readTheDoc/src/js/mode-sh.js"></script>
+        <script src="https://ezblock.cc/readDocFile/readTheDoc/src/js/monokai.js"></script>
+        <script src="https://ezblock.cc/readDocFile/readTheDoc/src/js/xterm.js"></script>
+        <script src="https://ezblock.cc/readDocFile/readTheDoc/src/js/FitAddon.js"></script>
+        <script src="https://ezblock.cc/readDocFile/readTheDoc/src/js/readTheDocIndex.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Windows ユーザ" href="remote_windows.html" />
+    <link rel="prev" title="Raspberry Piの設定" href="set_up_your_raspberry_pi.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+<nav id="nav-bar">
+  <ul class="nav-bar-items" id="nav-bar-items">
+    <li class="nav-bar-logo">
+      <a href="https://sunfounder.com">
+        <img class="logo-img" src="https://ezblock.cc/readDocFile/sunfounder_LOGO_160x@2x.png"/>
+      </a>
+    </li>
+  </ul>
+</nav>
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            SunFounder picar-x
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../index.html">About This Kit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction.html">序章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../list_and_assembly.html">部品リストと組み立て説明書</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../about_robot_hat.html">Robot HATについて</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../play_with_python.html">Pythonによるプログラミング</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="quick_guide_on_python.html">Pythonプログラミング・クイックガイド</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="what_do_we_need.html">何が必要？</a></li>
+<li class="toctree-l3"><a class="reference internal" href="installing_the_os.html">Raspberry pi OSのインストール</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="set_up_your_raspberry_pi.html">Raspberry Piの設定</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="set_up_your_raspberry_pi.html#id1">Raspberry Pi用の電源供給（重要）</a></li>
+<li class="toctree-l4"><a class="reference internal" href="set_up_your_raspberry_pi.html#id2">モニターに接続できる場合</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="set_up_your_raspberry_pi.html#id3">モニターがない場合</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="install_all_modules.html">全てのモジュールをインストールする（重要）</a></li>
+<li class="toctree-l3"><a class="reference internal" href="enable_i2c_camera.html">I2Cインターフェースを有効にする（重要）</a></li>
+<li class="toctree-l3"><a class="reference internal" href="py_servo_adjust.html">サーボ調整（重要）</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../python_calibrate.html">PiCar-Xのキャリブレーション</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_move.html">ムーブ（PiCar-Xを動かしてみよう）</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_avoid.html">障害物回避</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_line_track.html">ライントレース</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_tts.html">文書読み上げ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_computer_vision.html">画像解析</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_color_detection.html">色検出</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_face_detection.html">顔検出</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_video_car.html">ビデオ・カー</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../control_by_app.html">アプリからのコントロール</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../ezblock/play_with_ezblock.html">Ezblockの利用に関して</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../appendix/appendix.html">付録</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../faq.html">FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../thank.html">謝辞</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">SunFounder picar-x</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../play_with_python.html">Pythonによるプログラミング</a></li>
+          <li class="breadcrumb-item"><a href="quick_guide_on_python.html">Pythonプログラミング・クイックガイド</a></li>
+          <li class="breadcrumb-item"><a href="set_up_your_raspberry_pi.html">Raspberry Piの設定</a></li>
+      <li class="breadcrumb-item active">Mac OS X ユーザ</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/python/python_start/remote_macosx.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="mac-os-x">
+<h1>Mac OS X ユーザ<a class="headerlink" href="#mac-os-x" title="Permalink to this heading">¶</a></h1>
+<p>しかしMacユーザーの場合は可能であれば一時的にでもモニター、キーボード、マウスをセットしてRspberry pi側のVNCの設定を行った方が楽です。
+まずはその方法から説明いたします。</p>
+<p>なお予め断っておきますが、この方法の場合MacとRaspberry piの間の通信は暗号化による保護がなされません。
+実際の利用に際しては個人宅もしくは社内のネットワーク内での通信となるので保護がなくても問題にはならないでしょう。
+しかし気になる方は別途記述するVNCアプリを導入してご利用ください。</p>
+<section id="mac-os-x-tv">
+<h2>Mac OS X ユーザーで一時的にモニター（あるいはTV）を利用できる方<a class="headerlink" href="#mac-os-x-tv" title="Permalink to this heading">¶</a></h2>
+<ol class="arabic">
+<li><p>Raspberry Piにディスプレイ、マウス、キーボードを接続し、電源を入れる。図の番号に従ってメニューを選択します。</p>
+<blockquote>
+<div><img alt="../../_images/mac_vnc1.png" class="align-center" src="../../_images/mac_vnc1.png" />
+</div></blockquote>
+</li>
+<li><p>以下の画面が表示されるので <strong>Interfaces</strong> タブをクリックし、さらに <strong>VNC</strong> を <strong>Enabled</strong> に設定してから画面右下の <strong>OK</strong> ボタンをクリックします。</p>
+<blockquote>
+<div><img alt="../../_images/mac_vnc2.png" class="align-center" src="../../_images/mac_vnc2.png" />
+</div></blockquote>
+</li>
+<li><p>画面右上に <strong>VNC</strong> のアイコンが表示されVNCサーバーが起動します。</p>
+<blockquote>
+<div><img alt="../../_images/mac_vnc3.png" class="align-center" src="../../_images/mac_vnc3.png" />
+</div></blockquote>
+</li>
+<li><p>表示された <strong>VNC</strong> アイコンをクリックしてVNC Serverウィンドウを表示し、さらに右上のメニューボタンをクリック、続いて <strong>Options</strong> をクリックします</p>
+<blockquote>
+<div><img alt="../../_images/mac_vnc4.png" class="align-center" src="../../_images/mac_vnc4.png" />
+</div></blockquote>
+</li>
+<li><p>以下の画面が表示されるのでオプションを変更します。</p>
+<blockquote>
+<div><img alt="../../_images/mac_vnc5.png" class="align-center" src="../../_images/mac_vnc5.png" />
+<p>Encryptionを <strong>Prefer offon</strong> に、Authenticationを <strong>VNC password</strong> に設定してください。
+<strong>OK</strong> ボタンをクリックするとパスワードの入力画面が表示されるのでRaspberry piのパスワードと同じでも、別のパスワードでも構わないので入力して <strong>OK</strong> をクリックしてください。これでMacから接続できる準備が整いました。もうモニターなどは接続を外しても大丈夫です。</p>
+</div></blockquote>
+</li>
+</ol>
+<p><strong>ここからはMac側での操作になります。</strong></p>
+<ol class="arabic">
+<li><p>ファインダーの移動メニューからサーバーへ接続を選択します。</p>
+<blockquote>
+<div><img alt="../../_images/mac_vnc10.png" class="align-center" src="../../_images/mac_vnc10.png" />
+</div></blockquote>
+</li>
+<li><p>Raspberry pi のアドレスを入力します。以下のように <strong>Raspberri piの名前</strong> ＋ <strong>.local</strong> でアドレスを指定します。</p>
+<blockquote>
+<div><blockquote>
+<div><img alt="../../_images/mac_vnc11.png" class="align-center" src="../../_images/mac_vnc11.png" />
+</div></blockquote>
+<p><strong>接続</strong> ボタンをクリックします。</p>
+</div></blockquote>
+</li>
+<li><p>パスワードを聞いてくるので入力してください。</p>
+<blockquote>
+<div><img alt="../../_images/mac_vnc12.png" class="align-center" src="../../_images/mac_vnc12.png" />
+</div></blockquote>
+</li>
+<li><p>Raspberry pi のデスクトップが表示され、Mac上からそのまま操作ができるようになります。</p>
+<blockquote>
+<div><img alt="../../_images/mac_vnc13.png" class="align-center" src="../../_images/mac_vnc13.png" />
+</div></blockquote>
+</li>
+</ol>
+</section>
+<section id="id1">
+<h2>Mac OS X ユーザーで一時的であってもモニター（あるいはTV）を利用できない方<a class="headerlink" href="#id1" title="Permalink to this heading">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li><p>SSHコマンドを適用してRaspberry PiのBash Shellを開くことができます。</p></li>
+<li><p>BashはLinuxの標準のデフォルト・シェルです。</p></li>
+<li><p>シェル自体はユーザーがUnix/Linuxを利用する際のコマンド（命令）です。</p></li>
+<li><p>シェルを通して必要な作業のほとんどが行えます。</p></li>
+<li><p>Raspberry pi 側の設定が終われば前述の <strong>Mac</strong> からファインダーを使ってRaspberry piのデスクトップにアクセスできます。</p></li>
+</ul>
+</div></blockquote>
+<ol class="arabic">
+<li><p>Raspberry Pi への <strong>SSH</strong> 接続 <code class="docutils literal notranslate"><span class="pre">ssh</span> <span class="pre">&lt;username&gt;&#64;&lt;hostname&gt;.local</span></code> と入力して <code class="docutils literal notranslate"><span class="pre">リターンキー</span></code> を押します。</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ssh</span> <span class="n">pi</span><span class="nd">@raspberrypi</span><span class="o">.</span><span class="n">local</span>
+</pre></div>
+</div>
+<img alt="../../_images/mac_vnc14.png" src="../../_images/mac_vnc14.png" />
+</div></blockquote>
+</li>
+<li><p>最初にログインするときだけ以下のメッセージが表示されるので <strong>yes</strong> と入力してください。</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span>The authenticity of host &#39;raspberrypi.local (2400:2410:2101:5800:635b:f0b6:2662:8cba)&#39; can&#39;t be established.
+ED25519 key fingerprint is SHA256:oo7x3ZSgAo032wD1tE8eW0fFM/kmewIvRwkBys6XRwg.
+This key is not known by any other names
+Are you sure you want to continue connecting (yes/no/[fingerprint])?
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>Raspberry pi の <strong>パスワード</strong> を入力します。パスワードは入力しても表示されませんので入力を間違えないように注意してください。</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span>pi@raspberrypi.local&#39;s password:
+Linux raspberrypi 5.15.61-v8+ #1579 SMP PREEMPT Fri Aug 26 11:16:44 BST 2022 aarch64
+
+The programs included with the Debian GNU/Linux system are free software;
+the exact distribution terms for each program are described in the
+individual files in /usr/share/doc/*/copyright.
+
+Debian GNU/Linux comes with ABSOLUTELY NO WARRANTY, to the extent
+permitted by applicable law.
+Last login: Thu Sep 22 12:18:22 2022
+pi@raspberrypi:~ $
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>これでRaspberry piに正常にログインできましたので、MacからVNCでログイン出来るように設定します。まずはOSのアップデートを行います。以下のコマンドを入力します。</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span> <span class="n">update</span>
+<span class="n">sudo</span> <span class="n">apt</span> <span class="n">upgrade</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Do</span> <span class="pre">you</span> <span class="pre">want</span> <span class="pre">to</span> <span class="pre">continue?</span> <span class="pre">[Y/n]</span></code> が表示されたら <strong>Y</strong> を入力します。</p>
+<p>アップデートが終わるまでしばし時間がかかりることがあります。（その時のアップデート量によります。）</p>
+</div></blockquote>
+</li>
+<li><p>VNC を有効化して VNC サーバーを起動します。以下のコマンドを入力します。</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">raspi</span><span class="o">-</span><span class="n">config</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>以下の画面が表示されますので、キーボードの矢印キーで <strong>3 Interface Options</strong> を選択してリターンキーを押します。</p>
+<blockquote>
+<div><img alt="../../_images/image282.png" class="align-center" src="../../_images/image282.png" />
+</div></blockquote>
+</li>
+<li><p>以下の画面が表示されますので、キーボードの矢印キーで <strong>VNC</strong> を選択してリターンキーを押します。</p>
+<blockquote>
+<div><img alt="../../_images/image288.png" class="align-center" src="../../_images/image288.png" />
+</div></blockquote>
+</li>
+<li><p>以下の画面が表示されますので、キーボードの矢印キーで <strong>&lt;Yes&gt;</strong> を選択してリターンキーを押します。</p>
+<blockquote>
+<div><img alt="../../_images/mac_vnc8.png" class="align-center" src="../../_images/mac_vnc8.png" />
+</div></blockquote>
+</li>
+<li><p>以下の画面が表示されますので、キーボードの矢印キーで <strong>&lt;Ok&gt;</strong> を選択してリターンキーを押します。</p>
+<blockquote>
+<div><img alt="../../_images/mac_vnc7.png" class="align-center" src="../../_images/mac_vnc7.png" />
+</div></blockquote>
+</li>
+<li><p>最後にキーボードの矢印キーで <strong>&lt;Finish&gt;</strong> を選択してリターンキーを押します。</p>
+<blockquote>
+<div><img alt="../../_images/mac_vnc6.png" class="align-center" src="../../_images/mac_vnc6.png" />
+</div></blockquote>
+</li>
+<li><p>VNCサーバーが起動するようになったので、今度はMacからの接続様の設定を変更します。</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">nano</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">vnc</span><span class="o">/</span><span class="n">config</span><span class="o">.</span><span class="n">d</span><span class="o">/</span><span class="n">common</span><span class="o">.</span><span class="n">custom</span>
+</pre></div>
+</div>
+<p>以下のような画面になるので <code class="docutils literal notranslate"><span class="pre">Authentication=VncAuth</span></code> と入力し、 <code class="docutils literal notranslate"><span class="pre">Ctl</span> <span class="pre">+</span> <span class="pre">o</span></code> を押し、リターンキーを押し、さらに <code class="docutils literal notranslate"><span class="pre">Ctl</span> <span class="pre">+</span> <span class="pre">x</span></code> を押します。</p>
+<img alt="../../_images/mac_vnc15.png" class="align-center" src="../../_images/mac_vnc15.png" />
+</div></blockquote>
+</li>
+<li><p>さらにMacからVNCでログインするときのパスワードを設定します。Raspberry pi のパスワードと同じで問題はないはずです。</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">vncpasswd</span> <span class="o">-</span><span class="n">service</span>
+<span class="n">password</span><span class="p">:</span> <span class="p">(</span><span class="n">パスワードを入力</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>これで設定が出来ましたので設定を反映させるためにRaspberry piを再起動します。</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">sudo</span> <span class="n">reboot</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>ファインダーの移動メニューからサーバーへ接続を選択します。</p>
+<blockquote>
+<div><img alt="../../_images/mac_vnc10.png" class="align-center" src="../../_images/mac_vnc10.png" />
+</div></blockquote>
+</li>
+<li><p>Raspberry pi のアドレスを入力します。以下のように <strong>Raspberri piの名前</strong> ＋ <strong>.local</strong> でアドレスを指定します。</p>
+<blockquote>
+<div><blockquote>
+<div><img alt="../../_images/mac_vnc11.png" class="align-center" src="../../_images/mac_vnc11.png" />
+</div></blockquote>
+<p><strong>Connect</strong> ボタンをクリックします。</p>
+</div></blockquote>
+</li>
+<li><p>パスワードを聞いてくるので入力してください。</p>
+<blockquote>
+<div><img alt="../../_images/mac_vnc12.png" class="align-center" src="../../_images/mac_vnc12.png" />
+</div></blockquote>
+</li>
+<li><p>Raspberry pi のデスクトップが表示され、Mac上からそのまま操作ができるようになります。</p>
+<blockquote>
+<div><img alt="../../_images/mac_vnc13.png" class="align-center" src="../../_images/mac_vnc13.png" />
+</div></blockquote>
+</li>
+</ol>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="set_up_your_raspberry_pi.html" class="btn btn-neutral float-left" title="Raspberry Piの設定" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="remote_windows.html" class="btn btn-neutral float-right" title="Windows ユーザ" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, SunFounder.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
