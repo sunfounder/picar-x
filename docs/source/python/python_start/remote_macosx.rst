@@ -133,12 +133,12 @@ Macのユーザーにとって、Raspberry Piのデスクトップへの直接�
 
         sudo raspi-config
 
-#. 以下の画面が表示されます。キーボードの矢印キーで **3 Interface Options** を選択し、 **Enter** キーを押します。
+#. 以下の画面が表示されます。キーボードの矢印キーで **Interface Options** を選択し、 **Enter** キーを押します。
 
     .. image:: img/image282.png
         :align: center
 
-#. 次に **P3 VNC** を選択します。
+#. 次に **VNC** を選択します。
 
     .. image:: img/image288.png
         :align: center

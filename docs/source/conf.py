@@ -61,7 +61,7 @@ intersphinx_mapping = {
 }
 
 
-
+html_static_path = ['_static']
 
 # SunFounder logo
 
@@ -86,6 +86,7 @@ html_js_files = [
     'https://ezblock.cc/readDocFile/readTheDoc/src/js/FitAddon.js',
     'https://ezblock.cc/readDocFile/readTheDoc/src/js/readTheDocIndex.js',
     './lang.js', # new
+    'custom.js', #new
 
 ]
 html_css_files = [

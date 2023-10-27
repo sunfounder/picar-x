@@ -14,6 +14,7 @@ EzBlockのインストール、ダウンロード、使用を完了するため�
   :maxdepth: 1
 
   quick_guide_on_ezblock
+  get_start_app
   calibrate_the_car
 
 
