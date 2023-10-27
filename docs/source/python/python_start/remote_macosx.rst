@@ -152,12 +152,12 @@ Don't Have Temporarily Monitor (or TV)?
 
         sudo raspi-config
 
-#. The following screen will be displayed. Select **3 Interface Options** with the arrow keys on the keyboard and press the **Enter** key.
+#. The following screen will be displayed. Select **Interface Options** with the arrow keys on the keyboard and press the **Enter** key.
 
     .. image:: img/image282.png
         :align: center
 
-#. Then select **P3 VNC**.
+#. Then select **VNC**.
 
     .. image:: img/image288.png
         :align: center

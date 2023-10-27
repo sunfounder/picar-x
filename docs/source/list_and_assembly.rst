@@ -16,8 +16,7 @@ If your mainboard is a Raspberry Pi Zero W, here are the steps to install it on 
 
 .. raw:: html
 
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/akHr9L9iQy0?si=gRY8d7seVVVG2czJ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-
+    <iframe width="600" height="400" src="https://www.youtube.com/embed/DcobAsvRrV0?si=9cEGmphSqD9WVKzV" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 Afterward, you can continue following the instructions in the video below from **1:45** onwards to assemble it.
 
