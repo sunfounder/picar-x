@@ -15,7 +15,7 @@ Wenn Ihr Hauptplatine ein Raspberry Pi Zero W ist, finden Sie hier die Schritte 
 
 .. raw:: html
 
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/akHr9L9iQy0?si=gRY8d7seVVVG2czJ" title="YouTube-Videoplayer" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    <iframe width="600" height="400" src="https://www.youtube.com/embed/DcobAsvRrV0?si=MYyOGj34gki3RurW" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 Danach können Sie die Anweisungen im Video unten ab 1:45 fortsetzen, um es zusammenzubauen.
 

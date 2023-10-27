@@ -21,6 +21,9 @@ automatic obstacle avoidance, automatic line tracking, etc.
 
 
 <a id="update"></a>
+2023-10-27:
+ - Optimize the servo zeroing procedure.
+
 
 2023-10-10:
  - Optimize some of the content in the quick guide on Python.

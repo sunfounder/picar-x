@@ -13,6 +13,7 @@ Hier ist ein Tutorial, das Ihnen hilft, die Installation, den Download und die N
   :maxdepth: 1
 
   quick_guide_on_ezblock
+  get_start_app
   calibrate_the_car
 
 
