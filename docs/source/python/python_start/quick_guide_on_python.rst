@@ -16,7 +16,7 @@ If you are familiar with Raspberry Pi and can open the command line successfully
     installing_the_os
     set_up_your_raspberry_pi
     install_all_modules
-    enable_i2c_camera
+    enable_i2c
     py_servo_adjust
     
 

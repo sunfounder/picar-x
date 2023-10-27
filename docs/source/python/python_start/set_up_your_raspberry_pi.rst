@@ -21,7 +21,7 @@ If You Have a Screen
 If you have a screen, it will be easy for you to operate on the
 Raspberry Pi.
 
-**Required Components**
+**Required Components**
 
 * Any Raspberry Pi   
 * 1 * Power Adapter
@@ -31,8 +31,6 @@ Raspberry Pi.
 * 1 * Screen
 * 1 * Mouse
 * 1 * Keyboard
-
-1. Insert the SD card you’ve set up with Raspberry Pi OS into the micro SD card slot on the underside of your Raspberry Pi.
 
 #. Plug in the Mouse and Keyboard.
 

@@ -157,7 +157,7 @@ Don't Have Temporarily Monitor (or TV)?
     .. image:: img/image282.png
         :align: center
 
-#. Then select **P3 VNC**.
+#. Then select **VNC**.
 
     .. image:: img/image288.png
         :align: center

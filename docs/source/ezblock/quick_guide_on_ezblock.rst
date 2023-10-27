@@ -7,11 +7,6 @@ The angle range of the servo is -90~90, but the angle set at the factory is rand
 
 So here we need to set all the servo angles to 0° and then install them, so that the servo angle is in the middle, no matter which direction to turn.
 
-It is recommended that you follow the intructions on the APP to calibrate the picar-x after assembling it. The servo angle will be tilted due to possible deviations during assembly or limitations of the servo itself, so you can get the servo to a perfect state by calibrating it, usually the calibration angle is -5~5°.
-
-But if the deviation angle is too big, you still have to go back to this section to set the servo angle to 0°, and then follow the instructions to reassemble the car.
-
-
 #. Firstly, :ref:`ezblock:install_ezblock_os_latest` (EzBlock's own tutorials) onto a Micro SD card, once the installation is complete, insert it into the Raspberry Pi.
 
     .. note::

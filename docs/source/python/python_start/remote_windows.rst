@@ -65,6 +65,8 @@ If you are using win10, you can use follow way to login Raspberry Pi remotely.
         :width: 550
         :align: center
 
+.. _remote_desktop:
+
 Remote Desktop
 ------------------
 
@@ -90,12 +92,12 @@ disabled. You need to enable it in config.
     .. image:: img/image287.png
         :align: center
 
-#. Choose **3** **Interfacing Options** by press the down arrow key on your keyboard, then press the **Enter** key.
+#. Choose **Interfacing Options** by press the down arrow key on your keyboard, then press the **Enter** key.
 
     .. image:: img/image282.png
         :align: center
 
-#. Then **P3 VNC**. 
+#. Then **VNC**. 
 
     .. image:: img/image288.png
         :align: center

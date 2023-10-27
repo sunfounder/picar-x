@@ -13,12 +13,12 @@ Here we are using the Raspberry Pi's I2C interfaces, but by default they are dis
 
         sudo raspi-config
 
-#. Choose **3** **Interfacing Options** by press the down arrow key on your keyboard, then press the **Enter** key.
+#. Choose **Interfacing Options** by press the down arrow key on your keyboard, then press the **Enter** key.
 
     .. image:: img/image282.png
         :align: center
 
-#. Then **P5 I2C**.
+#. Then **I2C**.
 
     .. image:: img/image283.png
         :align: center
