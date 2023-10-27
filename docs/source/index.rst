@@ -3,6 +3,30 @@
 
 感谢你选择我们的帕克智能小车。
 
+.. note::
+   
+    本文档支持以下语言版本。
+
+        * |link_zh_tutorials|
+        * |link_jp_tutorials|
+        * |link_en_tutorials|
+    
+    请点击相应的链接以选择您偏好的语言版本查阅。
+
+.. warning::
+
+    我们提供两个版本的PiCar-X。需要特别注意的是，每个版本在线教程中的脚本不能互换使用。
+    
+    为确保正确设置，您需要根据说明书中提供的短链接确定您的版本：
+
+    * 若链接为 "picar-x.rtfd.io"，请继续阅读此教程。
+    * 若链接显示为 "picar-x-v20.rtfd.io"，请前往 |link_picarx_v2| 查看教程。
+
+    .. image:: img/short_link.jpg
+        :width: 500
+        :align: center
+
+
 .. image:: img/picar-x.jpg
    :width: 400
    :align: center

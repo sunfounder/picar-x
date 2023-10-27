@@ -14,7 +14,9 @@ EzBlock几乎可用于所有类型的设备，包括Mac、PC和Android。
   :maxdepth: 2
 
   ezb_start/quick_guide_on_ezblock
-  
+  ezb_start/download_ezb
+  ezb_start/first_config
+  ezb_start/open_run_project
 
 **EzBlock项目**
 

@@ -7,8 +7,7 @@
     web_ezblock
     pip_apt
     filezilla
-    i2c_configuration
-    remote_desktop
     battery
-    
+    login_windows
+    install_openssh_powershell
 

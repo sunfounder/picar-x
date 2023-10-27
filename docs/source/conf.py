@@ -17,10 +17,11 @@
 
 # -- Project information -----------------------------------------------------
 import sphinx_rtd_theme
+import time
 
 project = 'SunFounder 帕克智能小车'
-copyright = '2021, SunFounder'
-author = 'SunFounder'
+copyright = f'{time.localtime().tm_year}, SunFounder'
+author = 'www.sunfounder.com'
 
 
 # -- General configuration ---------------------------------------------------
@@ -116,3 +117,27 @@ latex_elements = {
 \AtEndDocument{\end{CJK}}
 ''',
 }
+
+
+# links
+
+rst_epilog = """
+
+
+.. |link_zh_tutorials| raw:: html
+
+    <a href="https://docs.sunfounder.com/projects/picar-x/zh/latest/" target="_blank">中文在线教程</a>
+
+.. |link_jp_tutorials| raw:: html
+
+    <a href="https://docs.sunfounder.com/projects/picar-x/ja/latest/" target="_blank">日本語オンライン教材</a>
+
+.. |link_en_tutorials| raw:: html
+
+    <a href="https://docs.sunfounder.com/projects/picar-x/en/latest/" target="_blank">English Online-tutorials</a>
+
+.. |link_picarx_v2| raw:: html
+
+    <a href="https://docs.sunfounder.com/projects/picar-x-v20/en/latest/" target="_blank">PiCar-X v2.0</a>
+
+"""

@@ -77,7 +77,11 @@ sudo python3 xxx.py
 ## Update
 
 2023-09-26:
- -Fix Bug
+ - Optimize some steps and images
+ - update all the content of Python start
+
+2023-09-26:
+ - Fix Bug
 
 2021-1-21
  -Add the Japanese user manual
