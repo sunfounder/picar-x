@@ -1,7 +1,7 @@
 Installing the OS
 =======================
 
-**Required Components**
+**Required Components**
 
 ================== ======================
 Any Raspberry Pi   1 \* Personal Computer
@@ -29,7 +29,7 @@ When you launch the installer, your operating system may try to block
 you from running it. For example, on Windows I receive the following
 message:
 
-If this pops up, click on **More info** and then **Run anyway**, then
+If this pops up, click on **More info** and then **Run anyway**, then
 follow the instructions to install the Raspberry Pi Imager.
 
 .. image:: img/image12.png
@@ -41,42 +41,14 @@ Insert your SD card into the computer or laptop SD card slot.
 
 **Step 4**
 
-In the Raspberry Pi Imager, select the OS that you want to install and
-the SD card you would like to install it on.
+In the Raspberry Pi Imager, click **CHOOSE OS** -> **Raspberry Pi OS(Legacy)**.
 
-.. image:: img/sp230607_161330.png
+.. warning::
+    * Please do not install the **Bookworm** version as the speaker will not work.
+    * You need to install the **Raspberry Pi OS (Legacy)** version - **Debian Bullseye**.
+
+.. image:: img/3d33.png
     :align: center
-
-.. note:: 
-
-    1) You will need to be connected to the internet the first time.
-
-    2) That OS will then be stored for future offline use(lastdownload.cache, C:/Users/yourname/AppData/Local/Raspberry Pi/Imager/cache). So the next time you open the software, it will have the display "Released: date, cached on your computer".
-
-
-.. Download the `raspios_armhf-2020-05-28 <https://downloads.raspberrypi.org/raspios_armhf/images/raspios_armhf-2021-05-28/2021-05-07-raspios-buster-armhf.zip>`_ image and select it in Raspberry Pi Imager.
-
-.. .. image:: img/otherOS.png
-..     :align: center
-
-.. .. warning::
-..     Raspberry Pi OS has major changes after the 2021-05-28 version, which may cause some functions to be unavailable. Please do not use the latest version for now.
-
-
-.. .. warning::
-
-..     Upgrading the Raspberry Pi OS to **Debian Bullseye** will cause some features to not work, so it is recommended to continue using the **Debian Buster** version.
-
-.. In the Raspberry Pi Imager, click **CHOOSE OS** -> **Raspberry Pi OS(other)**.
-
-.. .. image:: img/3d33.png
-..     :align: center
-
-.. Scroll down to the end of the newly opened page and you will see **Raspberry Pi OS(Legacy)** and **Raspberry Pi OS Lite(Legacy)**, these are security updates for Debian Buster, the difference between them is with or without the desktop.
-.. It is recommended to install **Raspberry Pi OS(Legacy)**, the system with the desktop.
-
-.. .. image:: img/3d34.png
-..     :align: center
 
 
 **Step 5**
@@ -88,11 +60,13 @@ Select the SD card you are using.
 
 **Step 6**
 
-To open the advanced options page, click the setting button (appears after selecting operating system) or press Ctrl+Shift+X. 
-Enable ssh and set the username and name. You can choose to always use this image customization options.
+To open the advanced options page, click the **setting** button (appears after selecting operating system) or press **Ctrl+Shift+X**. 
 
-.. note::
-    When the Set hostname box is not checked, the default hostname will still be ``raspberrypi``, and we will use this hostname to access the Raspberry Pi remotely.
+Now, set hostname, enable ssh and set the username and password.
+
+.. warning::
+
+    Make sure to note down the ``hostname``, ``username``, and ``password``; they're crucial for later remote access to the Raspberry Pi.
 
 .. image:: img/image15.png
     :align: center
