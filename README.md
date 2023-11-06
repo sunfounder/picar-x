@@ -22,19 +22,22 @@ automatic obstacle avoidance, automatic line tracking, etc.
 
 <a id="update"></a>
 
+2023-11-06:
+- Emphasize installing the Raspberry Pi OS (Legacy) version.
+
 2023-10-10:
- - Optimize the servo zeroing procedure.
+- Optimize the servo zeroing procedure.
 
 
 2023-10-10:
- - Optimize some of the content in the quick guide on Python.
+- Optimize some of the content in the quick guide on Python.
 
 2023-10-09:
- - Add assembly video link.
- - Modify some issues.
+- Add assembly video link.
+- Modify some issues.
 
 2023-09-07:
- - New Release
+- New Release
 
 <a id="about_sunfounder"></a>
 ## About SunFounder
