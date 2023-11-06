@@ -1,101 +1,102 @@
-OS Installation
-=======================
+Betriebssysteminstallation
+==========================
 
 **Benötigte Komponenten**
 
-================== ======================
-Raspberry Pi        Personal Computer
-Micro SD-Karte 
-================== ======================
+* Beliebiges Raspberry Pi 
+* 1 x Persönlicher Computer
+* 1 x Micro-SD-Karte
 
 **Schritt 1**
 
-Raspberry Pi hat ein grafisches SD-Kartenschreibtool entwickelt, das
-auf Mac OS, Ubuntu 18.04 und Windows funktioniert. Es ist die einfachste Option für die meisten
-Benutzer, da es das Image herunterlädt und automatisch auf die
-SD-Karte installiert.
+Die Entwickler des Raspberry Pi haben ein grafisches SD-Karten-Schreibprogramm entwickelt,
+das unter Mac OS, Ubuntu 18.04 und Windows läuft. Es ist die einfachste Option für die meisten
+Nutzer, da es das Image herunterlädt und automatisch auf die SD-Karte installiert.
 
-Besuchen Sie die Download-Seite: https://www.raspberrypi.org/software/. Klicken Sie auf
-den Link für den Raspberry Pi Imager, der zu Ihrem Betriebssystem passt. Nachdem der Download abgeschlossen ist, klicken Sie darauf, um den Installer zu starten.
+Besuche die Download-Seite: https://www.raspberrypi.org/software/. Klicke auf
+den Link für den Raspberry Pi Imager, der zu deinem Betriebssystem passt.
+Wenn der Download abgeschlossen ist, klicke darauf, um das Installationsprogramm zu starten.
 
 .. image:: img/image11.png
     :align: center
 
 **Schritt 2**
 
-Wenn Sie den Installer starten, versucht Ihr Betriebssystem möglicherweise, 
-die Ausführung zu blockieren. Zum Beispiel erhalte ich unter Windows folgende
+Wenn du das Installationsprogramm startest, versucht dein Betriebssystem möglicherweise,
+die Ausführung zu blockieren. Zum Beispiel erhalte ich unter Windows die folgende
 Meldung:
 
-Wenn dies erscheint, klicken Sie auf **Mehr Infos** und dann auf **Trotzdem ausführen** und
-folgen Sie den Anweisungen, um den Raspberry Pi Imager zu installieren.
+Wenn dies erscheint, klicke auf **Weitere Informationen** und dann auf **Trotzdem ausführen**,
+und folge den Anweisungen, um den Raspberry Pi Imager zu installieren.
 
 .. image:: img/image12.png
     :align: center
 
 **Schritt 3**
 
-Stecken Sie Ihre SD-Karte in den SD-Karten-Slot Ihres Computers oder Laptops.
+Lege deine SD-Karte in den SD-Kartenslot deines Computers oder Laptops ein.
 
 **Schritt 4**
 
-Wählen Sie im Raspberry Pi Imager das Betriebssystem aus, das Sie installieren möchten, und
-die SD-Karte, auf die es installiert werden soll.
+Klicke im Raspberry Pi Imager auf **CHOOSE OS** -> **Raspberry Pi OS (Legacy)**.
 
-.. image:: img/sp230607_161330.png
+.. warning::
+    * Bitte installiere nicht die **Bookworm**-Version, da der Lautsprecher nicht funktionieren wird.
+    * Du musst die Version **Raspberry Pi OS (Legacy)** - **Debian Bullseye** installieren.
+
+.. image:: img/3d33.png
     :align: center
-
-.. note::
-
-    1) Sie müssen beim ersten Mal mit dem Internet verbunden sein.
-
-    2) Das Betriebssystem wird dann für die spätere Offline-Nutzung gespeichert (lastdownload.cache, C:/Users/IhrName/AppData/Local/Raspberry Pi/Imager/cache). Das nächste Mal, wenn Sie die Software öffnen, wird angezeigt "Veröffentlicht: Datum, im Cache auf Ihrem Computer".
 
 **Schritt 5**
 
-Wählen Sie die von Ihnen verwendete SD-Karte aus.
+Wähle die SD-Karte aus, die du benutzt.
 
 .. image:: img/image14.png
     :align: center
 
 **Schritt 6**
 
-Um zur Seite für erweiterte Optionen zu gelangen, klicken Sie auf die Einstellungsschaltfläche (erscheint nach Auswahl des Betriebssystems) oder drücken Sie Strg+Shift+X. 
-Aktivieren Sie SSH und legen Sie den Benutzernamen und Namen fest. Sie können wählen, diese Bildanpassungsoptionen immer zu verwenden.
+Um die Seite mit den erweiterten Optionen zu öffnen, klicke auf das **Einstellungen** -Symbol
+(erscheint nach der Auswahl des Betriebssystems) oder drücke **Ctrl+Shift+X**.
 
-.. note::
+Stelle jetzt den Hostnamen ein, aktiviere SSH und setze Benutzername sowie Passwort.
 
-    Wenn das Kontrollkästchen "Hostname festlegen" nicht aktiviert ist, wird der Standard-Hostname weiterhin ``raspberrypi`` sein. Wir werden diesen Hostnamen verwenden, um auf den Raspberry Pi aus der Ferne zuzugreifen.
+.. warning::
+
+    Notiere unbedingt den ``hostname``, ``username`` und das ``password``; sie sind entscheidend für den späteren Fernzugriff auf den Raspberry Pi.
 
 .. image:: img/image15.png
     :align: center
 
-Scrollen Sie anschließend nach unten, um die WLAN-Konfiguration abzuschließen, und klicken Sie auf **SPEICHERN**.
+Dann scrolle nach unten, um die WLAN-Konfiguration abzuschließen, und klicke auf **SPEICHERN**.
 
 .. note::
 
-    **WLAN-Land** sollte den zweibuchstabigen `ISO/IEC alpha2 code <https://de.wikipedia.org/wiki/ISO_3166-1_alpha-2>`_ für das Land, in dem Sie Ihren Raspberry Pi verwenden, festlegen. Bitte verweisen Sie auf den folgenden Link: https://de.wikipedia.org/wiki/ISO_3166-1_alpha-2
+    Das **WLAN-Land** sollte den zweibuchstabigen `ISO/IEC Alpha2-Code <https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2#Officially_assigned_code_elements>`_ für das Land, in dem du deinen Raspberry Pi benutzt, entsprechen. Bitte beachte folgenden Link: https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2#Officially_assigned_code_elements.
 
 .. image:: img/image16.png
     :align: center
 
 **Schritt 7**
 
-Klicken Sie auf die Schaltfläche **SCHREIBEN**.
+Klicke auf die Schaltfläche **SCHREIBEN**.
 
 .. image:: img/image17.png
     :align: center
 
 **Schritt 8**
 
-Wenn sich derzeit Dateien auf Ihrer SD-Karte befinden, möchten Sie diese Dateien möglicherweise zuerst sichern, um einen dauerhaften Verlust zu verhindern. Wenn keine Datei gesichert werden muss, klicken Sie auf **Ja**.
+Wenn sich aktuell Dateien auf deiner SD-Karte befinden, möchtest du vielleicht
+zuerst diese Dateien sichern, um zu verhindern, dass sie dauerhaft verloren gehen.
+Wenn keine Datei gesichert werden muss, klicke auf **Ja**.
 
 .. image:: img/image18.png
     :align: center
 
 **Schritt 9**
 
-Nach einer gewissen Wartezeit erscheint das folgende Fenster, das das erfolgreiche Schreiben anzeigt.
+Nach einer gewissen Wartezeit erscheint das folgende Fenster, um die Fertigstellung
+des Schreibvorgangs anzuzeigen.
 
 .. image:: img/image19.png
     :align: center
