@@ -76,6 +76,9 @@ sudo python3 xxx.py
 
 ## Update
 
+2023-11-06:
+- Emphasize installing the Raspberry Pi OS (Legacy) version.
+
 2023-09-26:
  - Optimize some steps and images
  - update all the content of Python start

@@ -33,41 +33,14 @@
 
 **第4步**
 
-在 Raspberry Pi Imager 中，选择要安装的操作系统以及要安装的 SD 卡。
+在 Raspberry Pi Imager 中，单击选择 **操作系统** -> **Raspberry Pi OS(Legacy)**。
 
-.. image:: img/image13.png
+.. warning::
+    * 请不要安装 **Bookworm** 版本，因为扬声器将无法工作。
+    * 您需要安装 **Raspberry Pi OS（legacy）** 版本 - **Debian Bullseye**。
+
+.. image:: img/3d33.png
     :align: center
-
-.. note:: 
-
-    1) 您第一次需要连接到互联网。
-
-    2) 该操作系统将被存储以供将来离线使用（lastdownload.cache，C：/Users/yourname/AppData/Local/Raspberry Pi/Imager/cache）。 这样下次打开该软件时，就会显示“发布：日期，缓存在您的计算机上”。 
-    
-    
-.. 下载 `raspios_armhf-2020-05-28 <https://downloads.raspberrypi.org/raspios_armhf/images/raspios_armhf-2021-05-28/2021-05-07-raspios-buster-armhf.zip>`_ 镜像 并在 Raspberry Pi Imager 中选择它。
-
-.. .. image:: img/otherOS.png
-..     :align: center
-
-.. .. warning::
-..     树莓派操作系统在2021-05-28版本后有较大变化，可能会导致部分功能不可用。 请暂时不要使用最新版本。
-
-
-.. .. warning::
-
-..     Raspberry Pi OS升级到 **Debian Bullseye** 后，会导致有些功能不能使用，建议还是继续使用 **Debian Buster** 版本。
-
-.. 在Raspberry Pi Imager中，点击 **CHOOSE OS** -》 **Raspberry Pi OS(other)**。
-
-.. .. image:: img/3d33.png
-..     :align: center
-
-.. 将新打开的页下拉到最后面，你会看到 **Raspberry Pi OS(Legacy)** 和 **Raspberry Pi OS Lite(Legacy)**，这2个是对Debian Buster安全更新，它们之间的区别是带不带桌面。
-.. 建议安装 **Raspberry Pi OS(Legacy)**，这个带桌面的系统。
-
-.. .. image:: img/3d34.png
-..     :align: center
 
 
 
@@ -80,7 +53,13 @@
 
 **第6步**
 
-按 **Ctrl+Shift+X** 或者点击 **设置** 按钮来打开 **高级选项** 页面启用SSH和配置wifi，这2项必须设置，其他取决于你的选择。 您可以选择始终使用此图像自定义选项。
+要打开高级选项页面，请单击设置按钮（选择操作系统后出现）或按Ctrl+Shift+X。
+
+现在，设置主机名，启用 ssh 并设置用户名和密码。
+
+.. warning::
+
+    请务必记下 ``hostname``、 ``username``、 和 ``password``; 它们对于以后远程访问 Raspberry Pi 至关重要。
 
 .. image:: img/image15.png
     :align: center
@@ -89,7 +68,7 @@
 
 .. note::
 
-    **wifi country** 选择 **CN**。
+    **wifi country** 选择 **CN**。
 
 .. image:: img/image16.png
     :align: center
