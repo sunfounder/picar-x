@@ -34,7 +34,7 @@ class Picarx(object):
     # servo_pins: camera_pan_servo, camera_tilt_servo, direction_servo
     # motor_pins: left_swicth, right_swicth, left_pwm, right_pwm
     # grayscale_pins: 3 adc channels
-    # ultrasonic_pins: tring, echo
+    # ultrasonic_pins: tring, echo2
     # config: path of config file
     def __init__(self, 
                 servo_pins:list=['P0', 'P1', 'P2'], 
@@ -164,7 +164,7 @@ class Picarx(object):
         value = constrain(value, self.CAM_PAN_MIN, self.CAM_PAN_MAX)
         self.cam_pan.angle(-1*(value + -1*self.cam_pan_cali_val))
 
-    def set_camera_tilt_angle(self,value):
+    def set_cam_tilt_angle(self,value):
         value = constrain(value, self.CAM_TILT_MIN, self.CAM_TILT_MAX)
         self.cam_tilt.angle(-1*(value + -1*self.cam_tilt_cali_val))
 
@@ -229,6 +229,12 @@ class Picarx(object):
 
     def set_line_reference(self, value):
         self.set_grayscale_reference(value)
+
+    def get_cliff_status(self,gm_val_list):
+        for i in range(0,3):
+            if gm_val_list[i]<=self.cliff_reference[i]:
+                return True
+        return False
 
     def set_cliff_reference(self, value):
         if isinstance(value, list) and len(value) == 3:

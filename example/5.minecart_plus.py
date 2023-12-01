@@ -18,7 +18,8 @@ from time import sleep
 px = Picarx()
 # px = Picarx(grayscale_pins=['A0', 'A1', 'A2'])
 # manual modify reference value
-# px.set_line_reference([1400, 1400, 1400])
+px.set_line_reference([500, 600, 600])
+
 current_state = None
 px_power = 10
 offset = 20
@@ -58,12 +59,11 @@ if __name__=='__main__':
             gm_val_list = px.get_grayscale_data()
             gm_state = get_status(gm_val_list)
             print("gm_val_list: %s, %s"%(gm_val_list, gm_state))
-            print(gm_state[0], last_state)
 
             if gm_state != "stop":
                 last_state = gm_state
-
-            if gm_state == 'forward':
+                px.stop()
+            elif gm_state == 'forward':
                 px.set_dir_servo_angle(0)
                 px.forward(px_power) 
             elif gm_state == 'left':
@@ -72,8 +72,8 @@ if __name__=='__main__':
             elif gm_state == 'right':
                 px.set_dir_servo_angle(-offset)
                 px.forward(px_power) 
-            else:
-                outHandle()
+            # else:
+            #     outHandle()
     finally:
         px.stop()
         print("stop and exit")
