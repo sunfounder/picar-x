@@ -1,7 +1,7 @@
 .. _control_by_app:
 
-Controlled by the APP
-=======================
+13. Controlled by the APP
+==================================
 
 The SunFounder controller is used to control Raspberry Pi/Pico based robots.
 

@@ -1,7 +1,8 @@
-Obstacle Avoidance
+4. Obstacle Avoidance
 =============================
 
-In this project, PiCar-X will detect obstacles in front of it while moving forward, and when the obstacles are too close, it will change the direction of moving forward.
+In this project, PiCar-X will detect obstacles in front of it while moving forward, 
+and when the obstacles are too close, it will change the direction of moving forward.
 
 **Run the Code**
 
@@ -12,13 +13,16 @@ In this project, PiCar-X will detect obstacles in front of it while moving forwa
 .. code-block::
 
     cd ~/picar-x/example
-    sudo python3 avoiding_obstacles.py
+    sudo python3 4.avoiding_obstacles.py
     
 After running the code, PiCar-X will walk forward. 
 
-If it detects that the distance of the obstacle ahead is less than 25cm, it will turn left. 
+If it detects that the distance of the obstacle ahead is less than 20cm, it will go backward. 
 
-If there is no obstacle in the direction after turning left or the obstacle distance is greater than 25cm, it will continue to move forward.
+If there is an obstacle within 20 to 40cm, it will turn left.
+
+If there is no obstacle in the direction after turning left or the obstacle distance is greater than 25cm, 
+it will continue to move forward.
 
 **Code**
 
@@ -32,21 +36,33 @@ If there is no obstacle in the direction after turning left or the obstacle dist
 .. code-block:: python
 
     from picarx import Picarx
+    import time
 
+    POWER = 50
+    SafeDistance = 40   # > 40 safe
+    DangerDistance = 20 # > 20 && < 40 turn around, 
+                        # < 20 backward
 
     def main():
         try:
             px = Picarx()
             # px = Picarx(ultrasonic_pins=['D2','D3']) # tring, echo
-            px.forward(30)
+        
             while True:
-                distance = px.ultrasonic.read()
+                distance = round(px.ultrasonic.read(), 2)
                 print("distance: ",distance)
-                if distance > 0 and distance < 300:
-                    if distance < 25:
-                        px.set_dir_servo_angle(-35)
-                    else:
-                        px.set_dir_servo_angle(0)
+                if distance >= SafeDistance:
+                    px.set_dir_servo_angle(0)
+                    px.forward(POWER)
+                elif distance >= DangerDistance:
+                    px.set_dir_servo_angle(40)
+                    px.forward(POWER)
+                    time.sleep(0.1)
+                else:
+                    px.set_dir_servo_angle(-40)
+                    px.backward(POWER)
+                    time.sleep(0.5)
+
         finally:
             px.forward(0)
 
@@ -55,15 +71,18 @@ If there is no obstacle in the direction after turning left or the obstacle dist
         main()
 
 
+
 **How it works?**
 
-The ultrasonic module is also imported in the picarx module, and we can use some of its encapsulated functions to detect distance.
+The ultrasonic module is also imported in the picarx module, 
+and we can use some of its encapsulated functions to detect distance.
 
 .. code-block:: python
 
     from picarx import Picarx
 
-Because the ultrasonic module is imported into the picarx module, we can directly use ``px.ultrasonic.read()`` to get the distance.
+Because the ultrasonic module is imported into the picarx module, 
+we can directly use ``px.ultrasonic.read()`` to get the distance.
 
 .. code-block:: python
 
@@ -72,7 +91,9 @@ Because the ultrasonic module is imported into the picarx module, we can directl
     while True:
         distance = px.ultrasonic.read() 
 
-The following code snippet reads the distance value reported by the ultrasonic module, and if the distance is below 25cm (10 inches) it will set the steering servo from 0° (straight) to -35° (turn left).
+The following code snippet reads the distance value reported by the ultrasonic module, 
+and if the distance is below 40cm it will set the steering servo from 0° (straight) to -40° 
+(turn left).
 
 .. code-block:: python
 

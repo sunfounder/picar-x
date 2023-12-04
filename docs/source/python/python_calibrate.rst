@@ -1,7 +1,7 @@
 .. _py_calibrate:
 
-Calibrating the PiCar-X
-==========================
+0. Calibrating the PiCar-X
+=================================
 
 Calibrate Motors & Servo
 ---------------------------

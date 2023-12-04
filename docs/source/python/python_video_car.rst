@@ -1,24 +1,20 @@
-Video Car
+11. Video Car
 ==========================================
 
-This program will provide a First Person View from the PiCar-X! Use the keyboards WSAD keys to control the direction of movement, and the O and P to adjust the speed.
-
+This program will provide a First Person View from the PiCar-X! 
+Use the keyboards WSAD keys to control the direction of movement, 
+and the O and P to adjust the speed.
 
 **Run the Code**
 
+.. raw:: html
 
-.. note::
-
-    * This project requires access to the Raspberry Pi desktop to view the footage taken by the camera module.
-    * You can connect a screen to the PiCar-X or refer to the tutorial :ref:`remote_desktop` to access it with VNC or XRDP.
-    * Once inside the Raspberry Pi desktop, open Terminal and type the following command to run it, or just open and run it with a Python editor.
-
-
+    <run></run>
 
 .. code-block::
 
     cd ~/picar-x/example
-    sudo python3 video_car.py
+    sudo python3 11.video_car.py
 
 Once the code is running, you can see what PiCar-X is shooting and control it by pressing the following keys.
 
@@ -27,18 +23,35 @@ Once the code is running, you can see what PiCar-X is shooting and control it by
 * W: forward  
 * S: backward
 * A: turn left
-* D：turn right
+* D: turn right
 * F: stop
 * T: take photo
-* ESC / Ctrl+C: quit
+* Ctrl+C: quit
+
+**View the Image**
+
+After the code runs, the terminal will display the following prompt:
+
+.. code-block::
+
+    No desktop !
+    * Serving Flask app "vilib.vilib" (lazy loading)
+    * Environment: production
+    WARNING: Do not use the development server in a production environment.
+    Use a production WSGI server instead.
+    * Debug mode: off
+    * Running on http://0.0.0.0:9000/ (Press CTRL+C to quit)
+
+Then you can enter ``http://<your IP>:9000/mjpg`` in the browser to view the video screen. such as:  ``https://192.168.18.113:9000/mjpg``
+
+.. image:: img/display.png
+
 
 **code**
 
 .. code-block:: python
     
     # #!/usr/bin/env python3
-
-    print('Please run under desktop environment (eg: vnc) to display the image window')
 
     from utils import reset_mcu
     reset_mcu()
@@ -48,28 +61,26 @@ Once the code is running, you can see what PiCar-X is shooting and control it by
     import readchar
 
     manual = '''
-    Press key to call the function(non-case sensitive)：
+    Press key to call the function(non-case sensitive):
         O: speed up
         P: speed down
         W: forward  
         S: backward
         A: turn left
-        D：turn right
+        D: turn right
         F: stop
         T: take photo
-        ESC / Ctrl+C: quit
+        Ctrl+C: quit
     '''
-
 
     px = Picarx()
 
     def take_photo():
         _time = strftime('%Y-%m-%d-%H-%M-%S',localtime(time()))
         name = 'photo_%s'%_time
-        path = "~/Pictures/picar-x/"
+        path = f"{user_home}/Pictures/picar-x/"
         Vilib.take_photo(name, path)
         print('\nphoto save as %s%s.jpg'%(path,name))
-
 
     def move(operate:str, speed):
 
@@ -141,7 +152,7 @@ Once the code is running, you can see what PiCar-X is shooting and control it by
             elif key == 't':
                 take_photo()
             # quit
-            elif key == readchar.key.CTRL_C or key in readchar.key.ESCAPE_SEQUENCES:
+            elif key == readchar.key.CTRL_C:
                 print('\nquit ...')
                 px.stop()
                 Vilib.camera_close()
