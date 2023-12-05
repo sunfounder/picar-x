@@ -19,7 +19,7 @@ Input key to call the function!
     5: Color detect : blue
     6: Color detect : purple
     0: Switch off Color detect
-    r：Scan the QR code
+    r: Scan the QR code
     f: Switch ON/OFF face detect
     s: Display detected object information
 '''

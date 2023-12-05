@@ -12,7 +12,7 @@ music = Music()
 tts = TTS()
 
 manual = '''
-Press keys on keyboard to control Picrawler!
+Press keys on keyboard to control Picar-X!
     w: Forward
     a: Turn left
     s: Backward
