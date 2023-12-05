@@ -42,11 +42,11 @@ def servos_test():
     sleep(0.5)
     px.set_cam_pan_angle(0)
     sleep(0.5)
-    px.set_camera_tilt_angle(-30)
+    px.set_cam_tilt_angle(-30)
     sleep(0.5)
-    px.set_camera_tilt_angle(30)
+    px.set_cam_tilt_angle(30)
     sleep(0.5)
-    px.set_camera_tilt_angle(0)
+    px.set_cam_tilt_angle(0)
     sleep(0.5)
 
 def servos_move(servo_num, value):
@@ -55,7 +55,7 @@ def servos_move(servo_num, value):
     elif servo_num == 1:
         px.set_cam_pan_angle(value)
     elif servo_num == 2:
-        px.set_camera_tilt_angle(value)
+        px.set_cam_tilt_angle(value)
     sleep(0.2)
 
 def set_servos_offset(servo_num, value):
