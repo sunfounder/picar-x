@@ -1,7 +1,7 @@
 6. Cliff Detection 
 ===========================
 
-Let us give Pico-4wd a little self-protection awareness and let it learn to use its own grayscale module to avoid rushing down the cliff.
+Let us give PiCar-X a little self-protection awareness and let it learn to use its own grayscale module to avoid rushing down the cliff.
 
 In this example, the car will be dormant. 
 If you push it to a cliff, it will be awakened urgently, then back up, and say "danger".

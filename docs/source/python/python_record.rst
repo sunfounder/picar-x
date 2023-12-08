@@ -87,7 +87,7 @@ Recording can be stopped or started by pressing the keys on the keyboard.
                 Vilib.rec_video_stop()
                 print_overwrite("The video saved as %s%s.avi"%(Vilib.rec_video_set["path"],vname),end='\n')  
             # quit
-            elif key == readchar.key.CTRL_C or key in readchar.key.ESCAPE_SEQUENCES:
+            elif key == readchar.key.CTRL_C:
                 Vilib.camera_close()
                 print('\nquit')
                 break 
