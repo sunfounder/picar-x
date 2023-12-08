@@ -44,7 +44,7 @@ if __name__=='__main__':
             else:
                 state = "danger"   
                 px.backward(80)
-                if last_state is "safe":
+                if last_state == "safe":
                     tts.say("danger")
                     sleep(0.1)
             last_state = state
