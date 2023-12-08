@@ -59,7 +59,7 @@ If you push it to a cliff, it will be awakened urgently, then back up, and say "
                 else:
                     state = "danger"   
                     px.backward(80)
-                    if last_state is "safe":
+                    if last_state == "safe":
                         tts.say("danger")
                         sleep(0.1)
                 last_state = state
