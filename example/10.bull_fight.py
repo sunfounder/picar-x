@@ -20,7 +20,6 @@ def main():
         if Vilib.detect_obj_parameter['color_n']!=0:
             coordinate_x = Vilib.detect_obj_parameter['color_x']
             coordinate_y = Vilib.detect_obj_parameter['color_y']
-            # music.sound_effect_threading('./sounds/car-double-horn.wav')
             
             # change the pan-tilt angle for track the object
             x_angle +=(coordinate_x*10/640)-5
