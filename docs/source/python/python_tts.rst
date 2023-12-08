@@ -1,4 +1,4 @@
-3. Sound Effect
+3. Sound Effect & TTS
 ===========================
 
 In this example, we use PiCar-X's (to be precise, Robot HAT’s) sound effects. 
@@ -8,7 +8,7 @@ It consists of three parts, namely Muisc, Sound, Text to Speech.
 
 **Install i2samp**
 
-Before using the that functions, 
+Before using the Text-to-Speech (TTS) and Sound Effect functions, 
 first activate the speaker so that it will be enabled and can make sounds.
 
 Run ``i2samp.sh`` in the **picar-x** folder, 
@@ -114,12 +114,16 @@ Functions related to background music include these:
 
     You can add different sound effects or music to ``musics`` or ``sounds`` folder via :ref:`filezilla`.
 
-
 Functions related to sound effects include these:
 
 * ``music = Music()``
 * ``music.sound_play('../sounds/car-double-horn.wav')`` : Play the sound effect file.
 * ``muisc.sound_play_threading('../sounds/car-double-horn.wav')`` : Play the sound effect file in a new thread mode without suspending the main thread.
+
+
+The `eSpeak <http://espeak.sourceforge.net/>`_ software is used to implement the functions of TTS.
+
+Import the TTS module in robot_hat, which encapsulates functions that convert text to speech.
 
 Functions related to Text to Speech include these:
 
