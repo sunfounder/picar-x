@@ -2,7 +2,7 @@
 
 
 Install All the Modules(Important)
-=======================================
+========================================
 
 Make sure you are connected to the Internet and update your system:
 
@@ -40,6 +40,7 @@ Install ``robot-hat``.
     git clone -b v2.0 https://github.com/sunfounder/robot-hat.git
     cd robot-hat
     sudo python3 setup.py install
+
 
 Then download and install the ``vilib`` module.
 
@@ -79,7 +80,7 @@ Finally, you need to run the script ``i2samp.sh`` to install the components requ
 
     cd ~/picar-x
     sudo bash i2samp.sh
-    
+	
 .. image:: img/i2s.png
 
 Type ``y`` and press enter to continue running the script.

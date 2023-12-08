@@ -92,7 +92,7 @@ disabled. You need to enable it in config.
     .. image:: img/image287.png
         :align: center
 
-#. Choose **Interfacing Options** by press the down arrow key on your keyboard, then press the **Enter** key.
+#. Choose **3** **Interfacing Options** by press the down arrow key on your keyboard, then press the **Enter** key.
 
     .. image:: img/image282.png
         :align: center

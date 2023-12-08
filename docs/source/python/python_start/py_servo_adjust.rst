@@ -1,5 +1,5 @@
 Servo Adjust(Important)
-==========================
+============================
 
 The angle range of the servo is -90~90, but the angle set at the factory is random, maybe 0°, maybe 45°; if we assemble it with such an angle directly, it will lead to a chaotic state after the robot runs the code, or worse, it will cause the servo to block and burn out.
 
@@ -23,13 +23,13 @@ So here we need to set all the servo angles to 0° and then install them, so tha
 #. Next, plug the servo cable into the P11 port as follows, at the same time you will see the servo arm rotate to a position(This is the 0° position, which is a random location and may not be vertical or parallel.).
 
 
-    .. image:: img/pin11_connect.png
+    .. image:: img/Z_P11.JPG
 
 #. Now, remove the servo arm, ensuring the servo wire remains connected, and do not turn off the power. Then continue the assembly following the paper instructions.
 
 .. note::
 
-    * Do not unplug this servo cable before fastening this servo with the servo screw, you can unplug it after fastening.
-    * Do not turn the servo while it is powered on to avoid damage; if the servo shaft is inserted at the wrong angle, pull out the servo and reinsert it.
+    * Do not unplug this servo cable before fixing it with the servo screw, you can unplug it after fixing it.
+    * Do not rotate the servo while it is powered on to avoid damage; if the servo shaft is not inserted at the right angle, pull the servo out and reinsert it.
     * Before assembling each servo, you need to plug the servo cable into P11 and turn on the power to set its angle to 0°.
 
