@@ -38,7 +38,7 @@ After rebooting, run the ``i2samp.sh`` script again to test the amplifier. If a 
 .. code-block::
 
     cd ~/picar-x/example
-    sudo python3 3.sound_effect.py
+    sudo python3 3.tts_example.py
     
 After the code runs, please operate according to the prompt that printed on the terminal.
 
