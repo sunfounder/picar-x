@@ -1,4 +1,4 @@
-.. _py_face_detection:
+.. _py_stare:
 
 8. Stare at You
 ==========================================

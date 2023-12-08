@@ -18,7 +18,7 @@ Thanks for choosing our PiCar-X.
     :width: 500
 
 The PiCar-X is an AI-driven self-driving robot car for the Raspberry Pi platform, upon which the Raspberry Pi acts as the control center. 
-The PiCar-X’s 2-axis camera module, ultrasonic module, and line tracking modules can provide the functions of color/face/traffic-signs detection, 
+The PiCar-X's 2-axis camera module, ultrasonic module, and line tracking modules can provide the functions of color/face/traffic-signs detection, 
 automatic obstacle avoidance, automatic line tracking, etc.
 
 PiCar-X has two programming languages: Blockly and Python. No matter what language you program in, you'll find detailed steps to teach you everything from configuring the Raspberry Pi to running the relevant example code.
@@ -48,6 +48,7 @@ PiCar-X has two programming languages: Blockly and Python. No matter what langua
     list_and_assembly
     adjust_servo
     python/play_with_python
+    python_video_course/python_video_course
     ezblock/play_with_ezblock
     appendix/appendix
     faq

@@ -22,6 +22,11 @@ automatic obstacle avoidance, automatic line tracking, etc.
 
 <a id="update"></a>
 
+2023-12-08:
+- Modify the tutorial for installing Raspberry Pi OS.
+- Add video course chapters.
+
+
 2023-11-06:
 - Emphasize installing the Raspberry Pi OS (Legacy) version.
 

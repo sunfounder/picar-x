@@ -3,103 +3,92 @@ Installing the OS
 
 **Required Components**
 
-================== ======================
-Any Raspberry Pi   1 \* Personal Computer
-1 \* Micro SD card 
-================== ======================
+* Raspberry Pi 4B/Zero 2 w/3B 3B+/2B/Zero W
+* 1 x Personal Computer
+* 1 x Micro SD card 
 
-**Step 1**
-
-Raspberry Pi have developed a graphical SD card writing tool that works
-on Mac OS, Ubuntu 18.04 and Windows, and is the easiest option for most
-users as it will download the image and install it automatically to the
-SD card.
-
-Visit the download page: https://www.raspberrypi.org/software/. Click on
-the link for the Raspberry Pi Imager that matches your operating system,
-when the download finishes, click it to launch the installer.
-
-.. image:: img/image11.png
-    :align: center
+**Steps**
 
 
-**Step 2**
+#. Go to the Raspberry Pi software download page: `Raspberry Pi Imager <https://www.raspberrypi.org/software/>`_. Select the Imager version for your operating system. After downloading, open the file to start the installation.
 
-When you launch the installer, your operating system may try to block
-you from running it. For example, on Windows I receive the following
-message:
-
-If this pops up, click on **More info** and then **Run anyway**, then
-follow the instructions to install the Raspberry Pi Imager.
-
-.. image:: img/image12.png
-    :align: center
-
-**Step 3**
-
-Insert your SD card into the computer or laptop SD card slot.
-
-**Step 4**
-
-In the Raspberry Pi Imager, click **CHOOSE OS** -> **Raspberry Pi OS(Legacy)**.
-
-.. warning::
-    * Please do not install the **Bookworm** version as the speaker will not work.
-    * You need to install the **Raspberry Pi OS (Legacy)** version - **Debian Bullseye**.
-
-.. image:: img/3d33.png
-    :align: center
+    .. image:: img/os_install_imager.png
 
 
-**Step 5**
+#. Upon launching the installer, your OS might display a security warning. For instance, Windows may show a caution message. If this occurs, select **More info** and then **Run anyway**. Follow the on-screen instructions to install the Raspberry Pi Imager.
 
-Select the SD card you are using.
+    .. image:: img/os_info.png
 
-.. image:: img/image14.png
-    :align: center
 
-**Step 6**
+#. Insert your SD card into the computer or laptop SD card slot.
 
-To open the advanced options page, click the **setting** button (appears after selecting operating system) or press **Ctrl+Shift+X**. 
+#. Open the Raspberry Pi Imager application either by clicking its icon or executing ``rpi-imager`` in your terminal.
 
-Now, set hostname, enable ssh and set the username and password.
+    .. image:: img/os_open_imager.png
 
-.. warning::
+#. Click **CHOOSE DEVICE** and select your specific Raspberry Pi model from the list (Note: Raspberry Pi 5 is not applicable).
 
-    Make sure to note down the ``hostname``, ``username``, and ``password``; they're crucial for later remote access to the Raspberry Pi.
+    .. image:: img/os_choose_device.png
 
-.. image:: img/image15.png
-    :align: center
+#. Select **CHOOSE OS** and then choose **Raspberry Pi OS (Legacy)**.
 
-Then scroll down to complete the wifi configuration and click **SAVE**.
+    .. warning::
+        * Please do not install the **Bookworm** version as the speaker will not work.
+        * You need to install the **Raspberry Pi OS (Legacy)** version - **Debian Bullseye**.
 
-.. note::
+    .. image:: img/os_choose_os.png
 
-    **wifi country** should be set the two-letter `ISO/IEC alpha2 code <https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2#Officially_assigned_code_elements>`_ for the country in which you are using your Raspberry Pi, please refer to the following link: https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2#Officially_assigned_code_elements
 
-.. image:: img/image16.png
-    :align: center
+#. Click **Choose Storage** and pick the correct storage device for the installation.
 
-**Step 7**
+    .. note::
 
-Click the **WRITE** button.
+        Be sure to select the correct device, especially if multiple storage devices are connected. Disconnect others if you're unsure.
 
-.. image:: img/image17.png
-    :align: center
+    .. image:: img/os_choose_sd.png
 
-**Step 8**
+#. Press **NEXT** and select **EDIT SETTINGS** to customize your OS settings.
 
-If your SD card currently has any files on it, you may wish to back up
-these files first to prevent you from permanently losing them. If there
-is no file to be backed up, click **Yes**.
+    .. image:: img/os_enter_setting.png
 
-.. image:: img/image18.png
-    :align: center
+#. Set your Raspberry Pi's **hostname**.
 
-**Step 9**
+    .. note::
 
-After waiting for a period of time, the following window will appear to
-represent the completion of writing.
+        The hostname is what your Raspberry Pi uses to identify itself on the network. You can connect to your Pi using `<hostname>.local` or `<hostname>.lan`.
 
-.. image:: img/image19.png
-    :align: center
+    .. image:: img/os_set_hostname.png
+
+#. Create a **Username** and **Password** for the Raspberry Pi's administrator account.
+
+    .. note::
+
+        Setting a unique username and password is crucial for security, as the Raspberry Pi does not have a default password.
+
+    .. image:: img/os_set_username.png
+
+#. Set up wireless LAN by inputting your network's **SSID** and **Password**.
+
+    .. note::
+
+        ``Wireless LAN country`` should be set the two-letter `ISO/IEC alpha2 code <https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2#Officially_assigned_code_elements>`_ for the country in which you are using your Raspberry Pi.
+
+    .. image:: img/os_set_wifi.png
+
+
+#. Click **SERVICES** and enable **SSH** for password-based remote access. Remember to click **Save**.
+
+    .. image:: img/os_enable_ssh.png
+
+#. Confirm your choices by clicking **Yes**.
+
+    .. image:: img/os_click_yes.png
+
+#. If your SD card has existing files, back them up to avoid data loss. Click **Yes** to proceed if no backup is necessary.
+
+    .. image:: img/os_continue.png
+
+#. Wait as the OS is written to the SD card. Once completed, a confirmation window will appear.
+
+    .. image:: img/os_finish.png
+        :align: center

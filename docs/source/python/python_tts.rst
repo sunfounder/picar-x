@@ -1,5 +1,7 @@
-3. Sound Effect & TTS
-===========================
+.. _py_tts:
+
+3. Text to Speech & Sound Effect
+=========================================
 
 In this example, we use PiCar-X's (to be precise, Robot HAT’s) sound effects. 
 It consists of three parts, namely Muisc, Sound, Text to Speech.
