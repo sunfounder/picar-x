@@ -24,7 +24,7 @@ After the PiCar-X assembly is completed, try running the projects below:
     python_line_track
     python_cliff
     python_computer_vision
-    python_face_detection
+    python_stare_at_you
     python_record
     python_bull_fight
     python_video_car

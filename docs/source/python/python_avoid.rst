@@ -1,3 +1,5 @@
+.. _py_avoid:
+
 4. Obstacle Avoidance
 =============================
 

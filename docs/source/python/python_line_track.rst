@@ -1,3 +1,5 @@
+.. _py_line_tracking:
+
 5. Line Tracking
 ====================================
 

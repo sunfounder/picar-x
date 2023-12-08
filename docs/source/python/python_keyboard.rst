@@ -1,3 +1,5 @@
+.. _py_keyboard_control:
+
 2. Keyboard Control
 ================================
 

@@ -31,7 +31,7 @@ Raspberry Pi.
 
 **Required Components**
 
-* Any Raspberry Pi   
+* Raspberry Pi 4B/3B 3B+/2B
 * 1 * Power Adapter
 * 1 * Micro SD card
 * 1 * Screen Power Adapter
@@ -57,6 +57,12 @@ If You Have No Screen
 --------------------------
 
 If you don't have a monitor, you can remotely log into your Raspberry Pi.
+
+**Required Components**
+
+* * Raspberry Pi 4B/Zero 2 w/3B 3B+/2B/Zero W  
+* 1 * Power Adapter
+* 1 * Micro SD card
 
 You can apply the SSH command to open the Raspberry Pi's Bash shell. Bash is the standard default shell for Linux. The shell itself is a command (instruction) when the user uses Unix/Linux. Most of what you need to do can be done through the shell.
 
