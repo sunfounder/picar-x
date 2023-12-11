@@ -23,7 +23,7 @@ So here we need to set all the servo angles to 0° and then install them, so tha
 #. Next, plug the servo cable into the P11 port as follows, at the same time you will see the servo arm rotate to a position(This is the 0° position, which is a random location and may not be vertical or parallel.).
 
 
-    .. image:: img/Z_P11.JPG
+    .. image:: img/pin11_connect.png
 
 #. Now, remove the servo arm, ensuring the servo wire remains connected, and do not turn off the power. Then continue the assembly following the paper instructions.
 

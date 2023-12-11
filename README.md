@@ -21,6 +21,8 @@ automatic obstacle avoidance, automatic line tracking, etc.
 
 
 <a id="update"></a>
+2023-12-08:
+- Update all Python projects.
 
 2023-11-16:
 - Emphasize installing the Raspberry Pi OS (Legacy) version.
