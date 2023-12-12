@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Windowsユーザー &mdash; SunFounder picar-x  documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="https://ezblock.cc/readDocFile/custom.css" type="text/css" />
+      <link rel="stylesheet" href="https://ezblock.cc/readDocFile/readTheDoc/src/css/index.css" type="text/css" />
+      <link rel="stylesheet" href="https://ezblock.cc/readDocFile/readTheDoc/src/css/xterm.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+        <script src="https://ezblock.cc/readDocFile/custom.js"></script>
+        <script src="../../_static/custom.js"></script>
+        <script src="https://ezblock.cc/readDocFile/readTheDoc/src/js/ace.js"></script>
+        <script src="https://ezblock.cc/readDocFile/readTheDoc/src/js/ext-language_tools.js"></script>
+        <script src="https://ezblock.cc/readDocFile/readTheDoc/src/js/theme-chrome.js"></script>
+        <script src="https://ezblock.cc/readDocFile/readTheDoc/src/js/mode-python.js"></script>
+        <script src="https://ezblock.cc/readDocFile/readTheDoc/src/js/mode-sh.js"></script>
+        <script src="https://ezblock.cc/readDocFile/readTheDoc/src/js/monokai.js"></script>
+        <script src="https://ezblock.cc/readDocFile/readTheDoc/src/js/xterm.js"></script>
+        <script src="https://ezblock.cc/readDocFile/readTheDoc/src/js/FitAddon.js"></script>
+        <script src="https://ezblock.cc/readDocFile/readTheDoc/src/js/readTheDocIndex.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Linux /Unix Users" href="remote_linux.html" />
+    <link rel="prev" title="Mac OS Xユーザー" href="remote_macosx.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+<nav id="nav-bar">
+  <ul class="nav-bar-items" id="nav-bar-items">
+    <li class="nav-bar-logo">
+      <a href="https://sunfounder.com">
+        <img class="logo-img" src="https://ezblock.cc/readDocFile/sunfounder_LOGO_160x@2x.png"/>
+      </a>
+    </li>
+  </ul>
+</nav>
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            SunFounder picar-x
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../index.html">About This Kit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction.html">序章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../list_and_assembly.html">部品リストと組み立て説明書</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../about_robot_hat.html">Robot HATについて</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../play_with_python.html">Pythonを楽しもう</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="quick_guide_on_python.html">Pythonに関するクイックガイド</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="what_do_we_need.html">必要なものは何ですか？</a></li>
+<li class="toctree-l3"><a class="reference internal" href="installing_the_os.html">OSのインストール</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="set_up_your_raspberry_pi.html">Raspberry Piのセットアップ</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="set_up_your_raspberry_pi.html#id1">Raspberry Pi用の電源供給（重要）</a></li>
+<li class="toctree-l4"><a class="reference internal" href="set_up_your_raspberry_pi.html#id2">画面をお持ちの場合</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="set_up_your_raspberry_pi.html#id3">画面がない場合</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="install_all_modules.html">Install All the Modules(Important)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="enable_i2c.html">Enable I2C Interface(Important)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="py_servo_adjust.html">Servo Adjust(Important)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../python_calibrate.html">0. PiCar-Xの校正</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_move.html">1. Let PiCar-X Move</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_keyboard.html">2. Keyboard Control</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_tts.html">3. Text to Speech &amp; Sound Effect</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_avoid.html">4. Obstacle Avoidance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_line_track.html">5. Line Tracking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_cliff.html">6. Cliff Detection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_computer_vision.html">7. Computer Vision</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_stare_at_you.html">8. Stare at You</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_record.html">9. Record Video</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_bull_fight.html">10. Bull Fight</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_video_car.html">11. Video Car</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_treasure_hunt.html">12. Treasure Hunt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../control_by_app.html">13. Controlled by the APP</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../ezblock/play_with_ezblock.html">Ezblockの利用に関して</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../appendix/appendix.html">付録</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../faq.html">FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../thank.html">謝辞</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">SunFounder picar-x</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../play_with_python.html">Pythonを楽しもう</a></li>
+          <li class="breadcrumb-item"><a href="quick_guide_on_python.html">Pythonに関するクイックガイド</a></li>
+          <li class="breadcrumb-item"><a href="set_up_your_raspberry_pi.html">Raspberry Piのセットアップ</a></li>
+      <li class="breadcrumb-item active">Windowsユーザー</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/python/python_start/remote_windows.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="windows">
+<h1>Windowsユーザー<a class="headerlink" href="#windows" title="Permalink to this heading">¶</a></h1>
+<section id="raspberry-pi">
+<h2>リモートでRaspberry Piにログイン<a class="headerlink" href="#raspberry-pi" title="Permalink to this heading">¶</a></h2>
+<p>win10を使用している場合、以下の方法でリモートでRaspberry Piにログインできます。</p>
+<ol class="arabic">
+<li><p>Windowsデスクトップの検索ボックスに <code class="docutils literal notranslate"><span class="pre">powershell</span></code> と入力し、 <code class="docutils literal notranslate"><span class="pre">Windows</span> <span class="pre">PowerShell</span></code> を右クリックして、表示されるメニューから <code class="docutils literal notranslate"><span class="pre">Run</span> <span class="pre">as</span> <span class="pre">administrator</span></code> を選択します。</p>
+<blockquote>
+<div><img alt="../../_images/powershell_ssh1.png" class="align-center" src="../../_images/powershell_ssh1.png" />
+</div></blockquote>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ping</span> <span class="pre">-4</span> <span class="pre">&lt;hostname&gt;.local</span></code> と入力して、Raspberry PiのIPアドレスを確認します。</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ping</span> <span class="o">-</span><span class="mi">4</span> <span class="n">raspberrypi</span><span class="o">.</span><span class="n">local</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../../_images/sp221221_145225.png"><img alt="../../_images/sp221221_145225.png" class="align-center" src="../../_images/sp221221_145225.png" style="width: 550px;" /></a>
+<p>上記のように、ネットワークに接続された後、Raspberry PiのIPアドレスが表示されます。</p>
+<ul class="simple">
+<li><p>ターミナルが <code class="docutils literal notranslate"><span class="pre">Ping</span> <span class="pre">request</span> <span class="pre">could</span> <span class="pre">not</span> <span class="pre">find</span> <span class="pre">host</span> <span class="pre">pi.local.</span> <span class="pre">Please</span> <span class="pre">check</span> <span class="pre">the</span> <span class="pre">name</span> <span class="pre">and</span> <span class="pre">try</span> <span class="pre">again.</span></code> と表示された場合は、入力したホスト名が正しいか確認してください。</p></li>
+<li><p>それでもIPを取得できない場合は、Raspberry PiのネットワークまたはWiFi設定を確認してください。</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>これで、 <code class="docutils literal notranslate"><span class="pre">ssh</span> <span class="pre">&lt;username&gt;&#64;&lt;hostname&gt;.local</span></code> （または <code class="docutils literal notranslate"><span class="pre">ssh</span> <span class="pre">&lt;username&gt;&#64;&lt;IP</span> <span class="pre">address&gt;</span></code> ）を使用してRaspberry Piにログインできます。</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ssh</span> <span class="n">pi</span><span class="nd">@raspberrypi</span><span class="o">.</span><span class="n">local</span>
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p><code class="docutils literal notranslate"><span class="pre">The</span> <span class="pre">term</span> <span class="pre">'ssh'</span> <span class="pre">is</span> <span class="pre">not</span> <span class="pre">recognized</span> <span class="pre">as</span> <span class="pre">the</span> <span class="pre">name</span> <span class="pre">of</span> <span class="pre">a</span> <span class="pre">cmdlet...</span></code> というプロンプトが表示された場合、</p>
+<p>システムが古く、sshツールがプリインストールされていないことを意味します。手動で <a class="reference internal" href="../../appendix/install_openssh_powershell.html#openssh-powershell"><span class="std std-ref">Powershellを使ってOpenSSHをインストールする</span></a> を行う必要があります。</p>
+<p>または、<a class="reference internal" href="../../appendix/login_windows.html#login-windows"><span class="std std-ref">PuTTY</span></a> のようなサードパーティツールを使用することもできます。</p>
+</div>
+</div></blockquote>
+</li>
+<li><p>最初にログインする際にのみ、以下のメッセージが表示されるので、 <code class="docutils literal notranslate"><span class="pre">yes</span></code> と入力します。</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span>The authenticity of host &#39;raspberrypi.local (2400:2410:2101:5800:635b:f0b6:2662:8cba)&#39; can&#39;t be established.
+ED25519 key fingerprint is SHA256:oo7x3ZSgAo032wD1tE8eW0fFM/kmewIvRwkBys6XRwg.
+This key is not known by any other names
+Are you sure you want to continue connecting (yes/no/[fingerprint])?
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>以前に設定したパスワードを入力します（私の場合は <code class="docutils literal notranslate"><span class="pre">raspberry</span></code> ）。</p>
+<blockquote>
+<div><div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>パスワードを入力するとき、ウィンドウ上に文字が表示されないのは正常です。正しいパスワードを入力してください。</p>
+</div>
+</div></blockquote>
+</li>
+<li><p>これでRaspberry Piに接続され、次のステップに進む準備ができました。</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../_images/sp221221_140628.png"><img alt="../../_images/sp221221_140628.png" class="align-center" src="../../_images/sp221221_140628.png" style="width: 550px;" /></a>
+</div></blockquote>
+</li>
+</ol>
+</section>
+<section id="remote-desktop">
+<span id="id1"></span><h2>リモートデスクトップ<a class="headerlink" href="#remote-desktop" title="Permalink to this heading">¶</a></h2>
+<p>コマンドウィンドウを使用してRaspberry Piにアクセスすることに満足していない場合、リモートデスクトップ機能を使用して、GUIを使用してRaspberry Pi上のファイルを簡単に管理することもできます。</p>
+<p>ここでは <a class="reference external" href="https://www.realvnc.com/en/connect/download/viewer/">VNC® Viewer</a> を使用します。</p>
+<p><strong>VNCサービスの有効化</strong></p>
+<p>VNCサービスはシステムにインストールされています。デフォルトでは、VNCは無効になっています。configで有効にする必要があります。</p>
+<ol class="arabic">
+<li><p>次のコマンドを入力します：</p>
+<blockquote>
+<div><run></run><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">raspi</span><span class="o">-</span><span class="n">config</span>
+</pre></div>
+</div>
+<img alt="../../_images/image287.png" class="align-center" src="../../_images/image287.png" />
+</div></blockquote>
+</li>
+<li><p>キーボードの下矢印キーを押して <strong>3 Interfacing Options</strong> を選択し、 <strong>Enter</strong> キーを押します。</p>
+<blockquote>
+<div><img alt="../../_images/image282.png" class="align-center" src="../../_images/image282.png" />
+</div></blockquote>
+</li>
+<li><p>次に <strong>VNC</strong> を選択します。</p>
+<blockquote>
+<div><img alt="../../_images/image288.png" class="align-center" src="../../_images/image288.png" />
+</div></blockquote>
+</li>
+<li><p>キーボードの矢印キーで <strong>&lt;Yes&gt;</strong> -&gt; <strong>&lt;OK&gt;</strong> -&gt; <strong>&lt;Finish&gt;</strong> を選択して、設定を完了します。</p>
+<blockquote>
+<div><img alt="../../_images/mac_vnc8.png" class="align-center" src="../../_images/mac_vnc8.png" />
+</div></blockquote>
+</li>
+</ol>
+<p><strong>VNCでログイン</strong></p>
+<ol class="arabic">
+<li><p>個人用コンピューターに <a class="reference external" href="https://www.realvnc.com/en/connect/download/viewer/">VNC Viewer</a> をダウンロードしてインストールします。</p></li>
+<li><p>インストールが完了したら、開いてホスト名またはIPアドレスを入力してEnterキーを押します。</p>
+<blockquote>
+<div><img alt="../../_images/vnc_viewer1.png" class="align-center" src="../../_images/vnc_viewer1.png" />
+</div></blockquote>
+</li>
+<li><p>Raspberry Piの名前とパスワードを入力した後、 <strong>OK</strong> をクリックします。</p>
+<blockquote>
+<div><img alt="../../_images/vnc_viewer2.png" class="align-center" src="../../_images/vnc_viewer2.png" />
+</div></blockquote>
+</li>
+<li><p>これでRaspberry Piのデスクトップが表示されます。</p>
+<blockquote>
+<div><img alt="../../_images/image294.png" class="align-center" src="../../_images/image294.png" />
+</div></blockquote>
+</li>
+</ol>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="remote_macosx.html" class="btn btn-neutral float-left" title="Mac OS Xユーザー" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="remote_linux.html" class="btn btn-neutral float-right" title="Linux /Unix Users" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, SunFounder.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

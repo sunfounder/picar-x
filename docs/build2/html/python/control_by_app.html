@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>13. アプリによる制御 &mdash; SunFounder picar-x  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="https://ezblock.cc/readDocFile/custom.css" type="text/css" />
+      <link rel="stylesheet" href="https://ezblock.cc/readDocFile/readTheDoc/src/css/index.css" type="text/css" />
+      <link rel="stylesheet" href="https://ezblock.cc/readDocFile/readTheDoc/src/css/xterm.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+        <script src="https://ezblock.cc/readDocFile/custom.js"></script>
+        <script src="../_static/custom.js"></script>
+        <script src="https://ezblock.cc/readDocFile/readTheDoc/src/js/ace.js"></script>
+        <script src="https://ezblock.cc/readDocFile/readTheDoc/src/js/ext-language_tools.js"></script>
+        <script src="https://ezblock.cc/readDocFile/readTheDoc/src/js/theme-chrome.js"></script>
+        <script src="https://ezblock.cc/readDocFile/readTheDoc/src/js/mode-python.js"></script>
+        <script src="https://ezblock.cc/readDocFile/readTheDoc/src/js/mode-sh.js"></script>
+        <script src="https://ezblock.cc/readDocFile/readTheDoc/src/js/monokai.js"></script>
+        <script src="https://ezblock.cc/readDocFile/readTheDoc/src/js/xterm.js"></script>
+        <script src="https://ezblock.cc/readDocFile/readTheDoc/src/js/FitAddon.js"></script>
+        <script src="https://ezblock.cc/readDocFile/readTheDoc/src/js/readTheDocIndex.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Ezblockの利用に関して" href="../ezblock/play_with_ezblock.html" />
+    <link rel="prev" title="12. 宝探し" href="python_treasure_hunt.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+<nav id="nav-bar">
+  <ul class="nav-bar-items" id="nav-bar-items">
+    <li class="nav-bar-logo">
+      <a href="https://sunfounder.com">
+        <img class="logo-img" src="https://ezblock.cc/readDocFile/sunfounder_LOGO_160x@2x.png"/>
+      </a>
+    </li>
+  </ul>
+</nav>
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            SunFounder picar-x
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">About This Kit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html">序章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../list_and_assembly.html">部品リストと組み立て説明書</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about_robot_hat.html">Robot HATについて</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="play_with_python.html">Pythonを楽しもう</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="python_start/quick_guide_on_python.html">Pythonに関するクイックガイド</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_calibrate.html">0. PiCar-Xの校正</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_move.html">1. PiCar-Xを動かす</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_keyboard.html">2. キーボード制御</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_tts.html">3. テキストから音声へ &amp; 効果音</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_avoid.html">4. 障害物回避</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_line_track.html">5. ライン追跡</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_cliff.html">6. 崖検出</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_computer_vision.html">7. コンピュータービジョン</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_stare_at_you.html">8. あなたを見つめる</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_record.html">9. ビデオ録画</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_bull_fight.html">10. ブルファイト</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_video_car.html">11. ビデオカー</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_treasure_hunt.html">12. 宝探し</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">13. アプリによる制御</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../ezblock/play_with_ezblock.html">Ezblockの利用に関して</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../appendix/appendix.html">付録</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq.html">FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../thank.html">謝辞</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">SunFounder picar-x</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="play_with_python.html">Pythonを楽しもう</a></li>
+      <li class="breadcrumb-item active">13. アプリによる制御</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/python/control_by_app.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="control-by-app">
+<span id="id1"></span><h1>13. アプリによる制御<a class="headerlink" href="#control-by-app" title="Permalink to this heading">¶</a></h1>
+<p>SunFounderコントローラーは、Raspberry Pi/Picoベースのロボットを制御するために使用されます。</p>
+<p>このアプリには、ボタン、スイッチ、ジョイスティック、Dパッド、スライダー、スロットルスライダーウィジェット、デジタルディスプレイ、超音波レーダー、グレースケール検出、スピードメーター入力ウィジェットが統合されています。</p>
+<p>A-Qまでの17エリアがあり、異なるウィジェットを配置して独自のコントローラーをカスタマイズできます。</p>
+<p>さらに、このアプリケーションはライブビデオストリーミングサービスも提供しています。</p>
+<p>このアプリを使用してPiCar-Xコントローラーをカスタマイズしましょう。</p>
+<p><strong>どうやって？</strong></p>
+<ol class="arabic">
+<li><p><code class="docutils literal notranslate"><span class="pre">sunfounder-controller</span></code> モジュールをインストールします。</p>
+<blockquote>
+<div><p>最初に <code class="docutils literal notranslate"><span class="pre">robot-hat</span></code>、 <code class="docutils literal notranslate"><span class="pre">vilib</span></code>、 <code class="docutils literal notranslate"><span class="pre">picar-x</span></code> モジュールをインストールする必要があります。詳細は： <a class="reference internal" href="python_start/install_all_modules.html#install-all-modules"><span class="std std-ref">すべてのモジュールをインストールする（重要）</span></a> を参照してください。</p>
+<run></run><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">~</span>
+<span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">sunfounder</span><span class="o">/</span><span class="n">sunfounder</span><span class="o">-</span><span class="n">controller</span><span class="o">.</span><span class="n">git</span>
+<span class="n">cd</span> <span class="o">~/</span><span class="n">sunfounder</span><span class="o">-</span><span class="n">controller</span>
+<span class="n">sudo</span> <span class="n">python3</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="n">install</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>コードを実行します。</p>
+<blockquote>
+<div><run></run><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">~/</span><span class="n">picar</span><span class="o">-</span><span class="n">x</span><span class="o">/</span><span class="n">example</span>
+<span class="n">sudo</span> <span class="n">python3</span> <span class="n">app_control</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p><strong>APP Store(iOS)</strong> または <strong>Google Play(Android)</strong> から <a class="reference external" href="https://docs.sunfounder.com/projects/sf-controller/en/latest/">SunFounder Controller</a> をインストールします。</p></li>
+<li><p>アプリを開き、新しいコントローラーを作成します。</p>
+<blockquote>
+<div><p>SunFounder Controllerアプリ内の+記号をクリックして新しいコントローラーを作成します。</p>
+<img alt="../_images/app1.PNG" src="../_images/app1.PNG" />
+<p>名前を付け、コントローラータイプを選択します。プリセットセクションには、一部の製品のためのプリセットコントローラーがあり、必要に応じて使用できます。以下の手順に従って、独自のコントローラーをカスタマイズすることもできます。</p>
+<img alt="../_images/app2.PNG" src="../_images/app2.PNG" />
+</div></blockquote>
+</li>
+<li><p>このコントローラーに異なるウィジェットを追加します。</p>
+<blockquote>
+<div><p>このコントローラー内の <strong>A-Q</strong> までの17の小エリアに、異なるタイプと形状のウィジェットを追加できます。</p>
+<img alt="../_images/app3.PNG" src="../_images/app3.PNG" />
+<p><strong>A</strong> エリアには、車の速度を表示する <strong>Speedometer</strong> ウィジェットを追加します。</p>
+<img alt="../_images/app4.PNG" src="../_images/app4.PNG" />
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>選択したウィジェットをクリックして、左にスワイプして <strong>Delete</strong> ボタンを見つけ、それをクリックすることで削除できます。</p>
+<img alt="../_images/app5.PNG" src="../_images/app5.PNG" />
+</div>
+<p>右上の <strong>Settings</strong> アイコンをクリックして、名前、最大値と最小値、単位を設定します。</p>
+<img alt="../_images/app6.PNG" src="../_images/app6.PNG" />
+<p><strong>D</strong> エリアの <strong>Grayscale Detection</strong> ウィジェットのために、現在の環境の <code class="docutils literal notranslate"><span class="pre">Line_Ref</span></code> と <code class="docutils literal notranslate"><span class="pre">Cliff_Ref</span></code> を設定します。</p>
+<img alt="../_images/app7.PNG" src="../_images/app7.PNG" />
+<p>最後に、残りのウィジェットを追加し、右上のボタンをクリックして保存します。</p>
+<img alt="../_images/app8.PNG" src="../_images/app8.PNG" />
+</div></blockquote>
+</li>
+<li><p>PiCar-xに接続する。</p>
+<blockquote>
+<div><p><strong>Connect</strong> ボタンをクリックすると、近くのロボットを自動的に検索します。その名前は <code class="docutils literal notranslate"><span class="pre">picarx_control.py</span></code> で定義されており、常に実行されている必要があります。</p>
+<img alt="../_images/app9.PNG" src="../_images/app9.PNG" />
+<p>製品名をクリックすると「接続成功」というメッセージが表示され、製品名が右上に表示されます。</p>
+<img alt="../_images/app10.PNG" src="../_images/app10.PNG" />
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>モバイルデバイスがPiCar-Xと同じLANに接続されていることを確認する必要があります。</p></li>
+<li><p>自動検索されない場合は、手動でIPを入力して接続することもできます。</p></li>
+</ul>
+<img alt="../_images/app11.PNG" src="../_images/app11.PNG" />
+</div>
+</div></blockquote>
+</li>
+<li><p>このコントローラーを実行する。</p>
+<blockquote>
+<div><p><strong>Run</strong> ボタンをクリックしてコントローラーを起動すると、車が撮影した映像が表示され、これらのウィジェットでPiCar-Xを操作できます。</p>
+<img alt="../_images/app12.PNG" src="../_images/app12.PNG" />
+<p>ウィジェットの機能は次のとおりです。</p>
+<ul class="simple">
+<li><p><strong>A</strong>: 車の現在の速度を表示します。</p></li>
+<li><p><strong>D</strong>: グレースケールモジュールの3つのセンサーのデータを表示します。3つの状態があります： <strong>black block</strong> ：黒線検出； <strong>white</strong> ：白検出； <strong>exclamation point</strong> ：崖検出。</p></li>
+<li><p><strong>E</strong>: 障害物回避機能をオンにします。</p></li>
+<li><p><strong>I</strong>: ラインフォロー機能をオンにします。</p></li>
+<li><p><strong>J</strong>: 音声認識。このウィジェットを押して話し始め、離すと認識された音声が表示されます。 <code class="docutils literal notranslate"><span class="pre">forward</span></code>、 <code class="docutils literal notranslate"><span class="pre">backward</span></code>、 <code class="docutils literal notranslate"><span class="pre">left</span></code>、 <code class="docutils literal notranslate"><span class="pre">right</span></code> の4つのコマンドをコードに設定し、車を制御します。</p></li>
+<li><p><strong>K</strong>: 車の前進、後進、左折、右折を制御します。</p></li>
+<li><p><strong>Q</strong>: カメラ（頭部）を上下左右に動かします。</p></li>
+<li><p><strong>N</strong>: 色認識機能をオンにします。</p></li>
+<li><p><strong>O</strong>: 顔認識機能をオンにします。</p></li>
+<li><p><strong>P</strong>: 物体認識機能をオンにし、約90種類の物体を認識できます。モデルのリストについては、こちらを参照してください： <a class="reference external" href="https://github.com/sunfounder/vilib/blob/master/workspace/coco_labels.txt">https://github.com/sunfounder/vilib/blob/master/workspace/coco_labels.txt</a>。</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ol>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="python_treasure_hunt.html" class="btn btn-neutral float-left" title="12. 宝探し" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../ezblock/play_with_ezblock.html" class="btn btn-neutral float-right" title="Ezblockの利用に関して" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, SunFounder.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

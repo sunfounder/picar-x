@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>9. ビデオ録画 &mdash; SunFounder picar-x  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="https://ezblock.cc/readDocFile/custom.css" type="text/css" />
+      <link rel="stylesheet" href="https://ezblock.cc/readDocFile/readTheDoc/src/css/index.css" type="text/css" />
+      <link rel="stylesheet" href="https://ezblock.cc/readDocFile/readTheDoc/src/css/xterm.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+        <script src="https://ezblock.cc/readDocFile/custom.js"></script>
+        <script src="../_static/custom.js"></script>
+        <script src="https://ezblock.cc/readDocFile/readTheDoc/src/js/ace.js"></script>
+        <script src="https://ezblock.cc/readDocFile/readTheDoc/src/js/ext-language_tools.js"></script>
+        <script src="https://ezblock.cc/readDocFile/readTheDoc/src/js/theme-chrome.js"></script>
+        <script src="https://ezblock.cc/readDocFile/readTheDoc/src/js/mode-python.js"></script>
+        <script src="https://ezblock.cc/readDocFile/readTheDoc/src/js/mode-sh.js"></script>
+        <script src="https://ezblock.cc/readDocFile/readTheDoc/src/js/monokai.js"></script>
+        <script src="https://ezblock.cc/readDocFile/readTheDoc/src/js/xterm.js"></script>
+        <script src="https://ezblock.cc/readDocFile/readTheDoc/src/js/FitAddon.js"></script>
+        <script src="https://ezblock.cc/readDocFile/readTheDoc/src/js/readTheDocIndex.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="10. Bull Fight" href="python_bull_fight.html" />
+    <link rel="prev" title="8. あなたを見つめる" href="python_stare_at_you.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+<nav id="nav-bar">
+  <ul class="nav-bar-items" id="nav-bar-items">
+    <li class="nav-bar-logo">
+      <a href="https://sunfounder.com">
+        <img class="logo-img" src="https://ezblock.cc/readDocFile/sunfounder_LOGO_160x@2x.png"/>
+      </a>
+    </li>
+  </ul>
+</nav>
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            SunFounder picar-x
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">About This Kit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html">序章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../list_and_assembly.html">部品リストと組み立て説明書</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about_robot_hat.html">Robot HATについて</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="play_with_python.html">Pythonを楽しもう</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="python_start/quick_guide_on_python.html">Pythonに関するクイックガイド</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_calibrate.html">0. PiCar-Xの校正</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_move.html">1. PiCar-Xを動かす</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_keyboard.html">2. キーボード制御</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_tts.html">3. テキストから音声へ &amp; 効果音</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_avoid.html">4. 障害物回避</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_line_track.html">5. ライン追跡</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_cliff.html">6. 崖検出</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_computer_vision.html">7. コンピュータービジョン</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_stare_at_you.html">8. あなたを見つめる</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">9. ビデオ録画</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_bull_fight.html">10. Bull Fight</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_video_car.html">11. Video Car</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_treasure_hunt.html">12. Treasure Hunt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="control_by_app.html">13. Controlled by the APP</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../ezblock/play_with_ezblock.html">Ezblockの利用に関して</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../appendix/appendix.html">付録</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq.html">FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../thank.html">謝辞</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">SunFounder picar-x</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="play_with_python.html">Pythonを楽しもう</a></li>
+      <li class="breadcrumb-item active">9. ビデオ録画</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/python/python_record.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="py-video">
+<span id="id1"></span><h1>9. ビデオ録画<a class="headerlink" href="#py-video" title="Permalink to this heading">¶</a></h1>
+<p>この例では、録画機能の使用方法を案内します。</p>
+<p><strong>コードの実行</strong></p>
+<run></run><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">~/</span><span class="n">picar</span><span class="o">-</span><span class="n">x</span><span class="o">/</span><span class="n">example</span>
+<span class="n">sudo</span> <span class="n">python3</span> <span class="mf">9.</span><span class="n">record_video</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+<p>コードを実行した後、ブラウザで <code class="docutils literal notranslate"><span class="pre">http://&lt;your</span> <span class="pre">IP&gt;:9000/mjpg</span></code> にアクセスして、ビデオ画面を表示できます。例えば： <code class="docutils literal notranslate"><span class="pre">http://192.168.18.113:9000/mjpg</span></code></p>
+<img alt="../_images/display.png" src="../_images/display.png" />
+<p>キーボードのキーを押すことで、録画を停止または開始できます。</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">q</span></code> を押して録画を開始または一時停止/続行し、 <code class="docutils literal notranslate"><span class="pre">e</span></code> を押して録画を停止または保存します。</p></li>
+<li><p>プログラムを終了したい場合は、 <code class="docutils literal notranslate"><span class="pre">ctrl+c</span></code> を押してください。</p></li>
+</ul>
+<p><strong>コード</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">sleep</span><span class="p">,</span><span class="n">strftime</span><span class="p">,</span><span class="n">localtime</span>
+<span class="kn">from</span> <span class="nn">vilib</span> <span class="kn">import</span> <span class="n">Vilib</span>
+<span class="kn">import</span> <span class="nn">readchar</span>
+
+<span class="n">manual</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">Press keys on keyboard to control recording:</span>
+<span class="s1">    Q: record/pause/continue</span>
+<span class="s1">    E: stop</span>
+<span class="s1">    Ctrl + C: Quit</span>
+<span class="s1">&#39;&#39;&#39;</span>
+
+<span class="k">def</span> <span class="nf">print_overwrite</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span>  <span class="n">end</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">flush</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\r\033</span><span class="s1">[2K&#39;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span><span class="n">flush</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="n">end</span><span class="p">,</span> <span class="n">flush</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">rec_flag</span> <span class="o">=</span> <span class="s1">&#39;stop&#39;</span> <span class="c1"># start,pause,stop</span>
+    <span class="n">vname</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">Vilib</span><span class="o">.</span><span class="n">rec_video_set</span><span class="p">[</span><span class="s2">&quot;path&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;/home/pi/Videos/&quot;</span> <span class="c1"># set path</span>
+
+    <span class="n">Vilib</span><span class="o">.</span><span class="n">camera_start</span><span class="p">(</span><span class="n">vflip</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">hflip</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">Vilib</span><span class="o">.</span><span class="n">display</span><span class="p">(</span><span class="n">local</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">web</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">sleep</span><span class="p">(</span><span class="mf">0.8</span><span class="p">)</span>  <span class="c1"># wait for startup</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="n">manual</span><span class="p">)</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="c1"># read keyboard</span>
+        <span class="n">key</span> <span class="o">=</span> <span class="n">readchar</span><span class="o">.</span><span class="n">readkey</span><span class="p">()</span>
+        <span class="n">key</span> <span class="o">=</span> <span class="n">key</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+        <span class="c1"># start,pause</span>
+        <span class="k">if</span> <span class="n">key</span> <span class="o">==</span> <span class="s1">&#39;q&#39;</span><span class="p">:</span>
+            <span class="n">key</span> <span class="o">=</span> <span class="kc">None</span>
+            <span class="k">if</span> <span class="n">rec_flag</span> <span class="o">==</span> <span class="s1">&#39;stop&#39;</span><span class="p">:</span>
+                <span class="n">rec_flag</span> <span class="o">=</span> <span class="s1">&#39;start&#39;</span>
+                <span class="c1"># set name</span>
+                <span class="n">vname</span> <span class="o">=</span> <span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;%Y-%m-</span><span class="si">%d</span><span class="s2">-%H.%M.%S&quot;</span><span class="p">,</span> <span class="n">localtime</span><span class="p">())</span>
+                <span class="n">Vilib</span><span class="o">.</span><span class="n">rec_video_set</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">vname</span>
+                <span class="c1"># start record</span>
+                <span class="n">Vilib</span><span class="o">.</span><span class="n">rec_video_run</span><span class="p">()</span>
+                <span class="n">Vilib</span><span class="o">.</span><span class="n">rec_video_start</span><span class="p">()</span>
+                <span class="n">print_overwrite</span><span class="p">(</span><span class="s1">&#39;rec start ...&#39;</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">rec_flag</span> <span class="o">==</span> <span class="s1">&#39;start&#39;</span><span class="p">:</span>
+                <span class="n">rec_flag</span> <span class="o">=</span> <span class="s1">&#39;pause&#39;</span>
+                <span class="n">Vilib</span><span class="o">.</span><span class="n">rec_video_pause</span><span class="p">()</span>
+                <span class="n">print_overwrite</span><span class="p">(</span><span class="s1">&#39;pause&#39;</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">rec_flag</span> <span class="o">==</span> <span class="s1">&#39;pause&#39;</span><span class="p">:</span>
+                <span class="n">rec_flag</span> <span class="o">=</span> <span class="s1">&#39;start&#39;</span>
+                <span class="n">Vilib</span><span class="o">.</span><span class="n">rec_video_start</span><span class="p">()</span>
+                <span class="n">print_overwrite</span><span class="p">(</span><span class="s1">&#39;continue&#39;</span><span class="p">)</span>
+        <span class="c1"># stop</span>
+        <span class="k">elif</span> <span class="n">key</span> <span class="o">==</span> <span class="s1">&#39;e&#39;</span> <span class="ow">and</span> <span class="n">rec_flag</span> <span class="o">!=</span> <span class="s1">&#39;stop&#39;</span><span class="p">:</span>
+            <span class="n">key</span> <span class="o">=</span> <span class="kc">None</span>
+            <span class="n">rec_flag</span> <span class="o">=</span> <span class="s1">&#39;stop&#39;</span>
+            <span class="n">Vilib</span><span class="o">.</span><span class="n">rec_video_stop</span><span class="p">()</span>
+            <span class="n">print_overwrite</span><span class="p">(</span><span class="s2">&quot;The video saved as </span><span class="si">%s%s</span><span class="s2">.avi&quot;</span><span class="o">%</span><span class="p">(</span><span class="n">Vilib</span><span class="o">.</span><span class="n">rec_video_set</span><span class="p">[</span><span class="s2">&quot;path&quot;</span><span class="p">],</span><span class="n">vname</span><span class="p">),</span><span class="n">end</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="c1"># quit</span>
+        <span class="k">elif</span> <span class="n">key</span> <span class="o">==</span> <span class="n">readchar</span><span class="o">.</span><span class="n">key</span><span class="o">.</span><span class="n">CTRL_C</span><span class="p">:</span>
+            <span class="n">Vilib</span><span class="o">.</span><span class="n">camera_close</span><span class="p">()</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">quit&#39;</span><span class="p">)</span>
+            <span class="k">break</span>
+
+        <span class="n">sleep</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</pre></div>
+</div>
+<p><strong>どのように動作するのか？</strong></p>
+<p>録画に関連する機能は以下の通りです：</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Vilib.rec_video_run(video_name)</span></code> ：ビデオの録画を開始するスレッドを開始します。 <code class="docutils literal notranslate"><span class="pre">video_name</span></code> はビデオファイルの名前で、文字列である必要があります。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Vilib.rec_video_start()</span></code> ：ビデオ録画を開始または続行します。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Vilib.rec_video_pause()</span></code> ：録画を一時停止します。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Vilib.rec_video_stop()</span></code> ：録画を停止します。</p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">Vilib.rec_video_set[&quot;path&quot;]</span> <span class="pre">=</span> <span class="pre">f&quot;/home/{username}/Videos/&quot;</span></code> はビデオファイルの保存場所を設定します。</p>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="python_stare_at_you.html" class="btn btn-neutral float-left" title="8. あなたを見つめる" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="python_bull_fight.html" class="btn btn-neutral float-right" title="10. Bull Fight" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, SunFounder.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

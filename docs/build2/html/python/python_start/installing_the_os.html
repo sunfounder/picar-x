@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OSのインストール &mdash; SunFounder picar-x  documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="https://ezblock.cc/readDocFile/custom.css" type="text/css" />
+      <link rel="stylesheet" href="https://ezblock.cc/readDocFile/readTheDoc/src/css/index.css" type="text/css" />
+      <link rel="stylesheet" href="https://ezblock.cc/readDocFile/readTheDoc/src/css/xterm.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+        <script src="https://ezblock.cc/readDocFile/custom.js"></script>
+        <script src="../../_static/custom.js"></script>
+        <script src="https://ezblock.cc/readDocFile/readTheDoc/src/js/ace.js"></script>
+        <script src="https://ezblock.cc/readDocFile/readTheDoc/src/js/ext-language_tools.js"></script>
+        <script src="https://ezblock.cc/readDocFile/readTheDoc/src/js/theme-chrome.js"></script>
+        <script src="https://ezblock.cc/readDocFile/readTheDoc/src/js/mode-python.js"></script>
+        <script src="https://ezblock.cc/readDocFile/readTheDoc/src/js/mode-sh.js"></script>
+        <script src="https://ezblock.cc/readDocFile/readTheDoc/src/js/monokai.js"></script>
+        <script src="https://ezblock.cc/readDocFile/readTheDoc/src/js/xterm.js"></script>
+        <script src="https://ezblock.cc/readDocFile/readTheDoc/src/js/FitAddon.js"></script>
+        <script src="https://ezblock.cc/readDocFile/readTheDoc/src/js/readTheDocIndex.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Raspberry Piのセットアップ" href="set_up_your_raspberry_pi.html" />
+    <link rel="prev" title="必要なものは何ですか？" href="what_do_we_need.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+<nav id="nav-bar">
+  <ul class="nav-bar-items" id="nav-bar-items">
+    <li class="nav-bar-logo">
+      <a href="https://sunfounder.com">
+        <img class="logo-img" src="https://ezblock.cc/readDocFile/sunfounder_LOGO_160x@2x.png"/>
+      </a>
+    </li>
+  </ul>
+</nav>
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            SunFounder picar-x
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../index.html">About This Kit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction.html">序章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../list_and_assembly.html">部品リストと組み立て説明書</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../about_robot_hat.html">Robot HATについて</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../play_with_python.html">Pythonを楽しもう</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="quick_guide_on_python.html">Pythonに関するクイックガイド</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="what_do_we_need.html">必要なものは何ですか？</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">OSのインストール</a></li>
+<li class="toctree-l3"><a class="reference internal" href="set_up_your_raspberry_pi.html">Raspberry Piのセットアップ</a></li>
+<li class="toctree-l3"><a class="reference internal" href="install_all_modules.html">Install All the Modules(Important)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="enable_i2c.html">Enable I2C Interface(Important)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="py_servo_adjust.html">Servo Adjust(Important)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../python_calibrate.html">0. PiCar-Xの校正</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_move.html">1. Let PiCar-X Move</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_keyboard.html">2. Keyboard Control</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_tts.html">3. Text to Speech &amp; Sound Effect</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_avoid.html">4. Obstacle Avoidance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_line_track.html">5. Line Tracking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_cliff.html">6. Cliff Detection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_computer_vision.html">7. Computer Vision</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_stare_at_you.html">8. Stare at You</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_record.html">9. Record Video</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_bull_fight.html">10. Bull Fight</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_video_car.html">11. Video Car</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_treasure_hunt.html">12. Treasure Hunt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../control_by_app.html">13. Controlled by the APP</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../ezblock/play_with_ezblock.html">Ezblockの利用に関して</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../appendix/appendix.html">付録</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../faq.html">FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../thank.html">謝辞</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">SunFounder picar-x</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../play_with_python.html">Pythonを楽しもう</a></li>
+          <li class="breadcrumb-item"><a href="quick_guide_on_python.html">Pythonに関するクイックガイド</a></li>
+      <li class="breadcrumb-item active">OSのインストール</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/python/python_start/installing_the_os.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="os">
+<span id="installing-the-os"></span><h1>OSのインストール<a class="headerlink" href="#os" title="Permalink to this heading">¶</a></h1>
+<p><strong>必要なコンポーネント</strong></p>
+<ul class="simple">
+<li><p>Raspberry Pi 4B/Zero 2 w/3B 3B+/2B/Zero W</p></li>
+<li><p>1 x パーソナルコンピュータ</p></li>
+<li><p>1 x マイクロSDカード</p></li>
+</ul>
+<p><strong>手順</strong></p>
+<ol class="arabic">
+<li><p>Raspberry Piのソフトウェアダウンロードページにアクセスします： <a class="reference external" href="https://www.raspberrypi.org/software/">Raspberry Pi Imager</a>。ご使用のオペレーティングシステムに合わせたImagerバージョンを選択します。ダウンロード後、ファイルを開いてインストールを開始します。</p>
+<blockquote>
+<div><img alt="../../_images/os_install_imager.png" src="../../_images/os_install_imager.png" />
+</div></blockquote>
+</li>
+<li><p>インストーラを起動すると、OSがセキュリティ警告を表示する場合があります。たとえば、Windowsでは警告メッセージが表示されることがあります。このような場合は、 <strong>More info</strong> を選択し、その後 <strong>Run anyway</strong> を選択します。画面の指示に従ってRaspberry Pi Imagerをインストールします。</p>
+<blockquote>
+<div><img alt="../../_images/os_info.png" src="../../_images/os_info.png" />
+</div></blockquote>
+</li>
+<li><p>SDカードをコンピュータまたはラップトップのSDカードスロットに挿入します。</p></li>
+<li><p>Raspberry Pi Imagerアプリケーションをアイコンをクリックするか、端末で <code class="docutils literal notranslate"><span class="pre">rpi-imager</span></code> を実行して開きます。</p>
+<blockquote>
+<div><img alt="../../_images/os_open_imager.png" src="../../_images/os_open_imager.png" />
+</div></blockquote>
+</li>
+<li><p><strong>CHOOSE DEVICE</strong> をクリックし、リストから特定のRaspberry Piモデルを選択します（注意：Raspberry Pi 5は適用されません）。</p>
+<blockquote>
+<div><img alt="../../_images/os_choose_device.png" src="../../_images/os_choose_device.png" />
+</div></blockquote>
+</li>
+<li><p><strong>CHOOSE OS</strong> を選択し、次に <strong>Raspberry Pi OS (Legacy)</strong> を選択します。</p>
+<blockquote>
+<div><div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<ul class="simple">
+<li><p>スピーカーが動作しないため、 <strong>Bookworm</strong> バージョンをインストールしないでください。</p></li>
+<li><p><strong>Raspberry Pi OS (Legacy)</strong> バージョン - <strong>Debian Bullseye</strong> をインストールする必要があります。</p></li>
+</ul>
+</div>
+<img alt="../../_images/os_choose_os.png" src="../../_images/os_choose_os.png" />
+</div></blockquote>
+</li>
+<li><p><strong>Choose Storage</strong> をクリックし、インストール用の正しいストレージデバイスを選択します。</p>
+<blockquote>
+<div><div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>複数のストレージデバイスが接続されている場合は、特に正しいデバイスを選択してください。不確かな場合は他のデバイスを切断してください。</p>
+</div>
+<img alt="../../_images/os_choose_sd.png" src="../../_images/os_choose_sd.png" />
+</div></blockquote>
+</li>
+<li><p><strong>NEXT</strong> を押し、 <strong>EDIT SETTINGS</strong> を選択してOSの設定をカスタマイズします。</p>
+<blockquote>
+<div><img alt="../../_images/os_enter_setting.png" src="../../_images/os_enter_setting.png" />
+</div></blockquote>
+</li>
+<li><p>Raspberry Piの <strong>hostname</strong> を設定します。</p>
+<blockquote>
+<div><div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>ホスト名は、Raspberry Piがネットワーク上で自身を識別するために使用するものです。 <cite>&lt;hostname&gt;.local</cite> または <cite>&lt;hostname&gt;.lan</cite> を使用してPiに接続できます。</p>
+</div>
+<img alt="../../_images/os_set_hostname.png" src="../../_images/os_set_hostname.png" />
+</div></blockquote>
+</li>
+<li><p>Raspberry Piの管理者アカウント用に <strong>Username</strong> と <strong>Password</strong> を作成します。</p>
+<blockquote>
+<div><div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Raspberry Piにはデフォルトのパスワードがないため、セキュリティのためにユニークなユーザー名とパスワードを設定することが重要です。</p>
+</div>
+<img alt="../../_images/os_set_username.png" src="../../_images/os_set_username.png" />
+</div></blockquote>
+</li>
+<li><p>ワイヤレスLANを設定するために、ネットワークの <strong>SSID</strong> と <strong>Password</strong> を入力します。</p>
+<blockquote>
+<div><div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code class="docutils literal notranslate"><span class="pre">Wireless</span> <span class="pre">LAN</span> <span class="pre">country</span></code> は、Raspberry Piを使用している国の2文字の <a class="reference external" href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2#Officially_assigned_code_elements">ISO/IEC alpha2コード</a> に設定する必要があります。</p>
+</div>
+<img alt="../../_images/os_set_wifi.png" src="../../_images/os_set_wifi.png" />
+</div></blockquote>
+</li>
+<li><p><strong>SERVICES</strong> をクリックし、パスワードベースのリモートアクセスのために <strong>SSH</strong> を有効にします。 <strong>Save</strong> をクリックすることを忘れないでください。</p>
+<blockquote>
+<div><img alt="../../_images/os_enable_ssh.png" src="../../_images/os_enable_ssh.png" />
+</div></blockquote>
+</li>
+<li><p><strong>Yes</strong> をクリックして選択を確認します。</p>
+<blockquote>
+<div><img alt="../../_images/os_click_yes.png" src="../../_images/os_click_yes.png" />
+</div></blockquote>
+</li>
+<li><p>SDカードに既存のファイルがある場合は、データ損失を避けるためにバックアップを行ってください。バックアップが不要な場合は <strong>Yes</strong> をクリックして続行します。</p>
+<blockquote>
+<div><img alt="../../_images/os_continue.png" src="../../_images/os_continue.png" />
+</div></blockquote>
+</li>
+<li><p>OSがSDカードに書き込まれるのを待ちます。完了すると、確認ウィンドウが表示されます。</p>
+<blockquote>
+<div><img alt="../../_images/os_finish.png" class="align-center" src="../../_images/os_finish.png" />
+</div></blockquote>
+</li>
+</ol>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="what_do_we_need.html" class="btn btn-neutral float-left" title="必要なものは何ですか？" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="set_up_your_raspberry_pi.html" class="btn btn-neutral float-right" title="Raspberry Piのセットアップ" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, SunFounder.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>サーボ調整（重要） &mdash; SunFounder picar-x  documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="https://ezblock.cc/readDocFile/custom.css" type="text/css" />
+      <link rel="stylesheet" href="https://ezblock.cc/readDocFile/readTheDoc/src/css/index.css" type="text/css" />
+      <link rel="stylesheet" href="https://ezblock.cc/readDocFile/readTheDoc/src/css/xterm.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+        <script src="https://ezblock.cc/readDocFile/custom.js"></script>
+        <script src="../../_static/custom.js"></script>
+        <script src="https://ezblock.cc/readDocFile/readTheDoc/src/js/ace.js"></script>
+        <script src="https://ezblock.cc/readDocFile/readTheDoc/src/js/ext-language_tools.js"></script>
+        <script src="https://ezblock.cc/readDocFile/readTheDoc/src/js/theme-chrome.js"></script>
+        <script src="https://ezblock.cc/readDocFile/readTheDoc/src/js/mode-python.js"></script>
+        <script src="https://ezblock.cc/readDocFile/readTheDoc/src/js/mode-sh.js"></script>
+        <script src="https://ezblock.cc/readDocFile/readTheDoc/src/js/monokai.js"></script>
+        <script src="https://ezblock.cc/readDocFile/readTheDoc/src/js/xterm.js"></script>
+        <script src="https://ezblock.cc/readDocFile/readTheDoc/src/js/FitAddon.js"></script>
+        <script src="https://ezblock.cc/readDocFile/readTheDoc/src/js/readTheDocIndex.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="0. PiCar-Xの校正" href="../python_calibrate.html" />
+    <link rel="prev" title="I2Cインターフェースを有効にする（重要）" href="enable_i2c.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+<nav id="nav-bar">
+  <ul class="nav-bar-items" id="nav-bar-items">
+    <li class="nav-bar-logo">
+      <a href="https://sunfounder.com">
+        <img class="logo-img" src="https://ezblock.cc/readDocFile/sunfounder_LOGO_160x@2x.png"/>
+      </a>
+    </li>
+  </ul>
+</nav>
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            SunFounder picar-x
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../index.html">About This Kit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction.html">序章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../list_and_assembly.html">部品リストと組み立て説明書</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../about_robot_hat.html">Robot HATについて</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../play_with_python.html">Pythonを楽しもう</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="quick_guide_on_python.html">Pythonに関するクイックガイド</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="what_do_we_need.html">必要なものは何ですか？</a></li>
+<li class="toctree-l3"><a class="reference internal" href="installing_the_os.html">OSのインストール</a></li>
+<li class="toctree-l3"><a class="reference internal" href="set_up_your_raspberry_pi.html">Raspberry Piのセットアップ</a></li>
+<li class="toctree-l3"><a class="reference internal" href="install_all_modules.html">すべてのモジュールをインストールする（重要）</a></li>
+<li class="toctree-l3"><a class="reference internal" href="enable_i2c.html">I2Cインターフェースを有効にする（重要）</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">サーボ調整（重要）</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../python_calibrate.html">0. PiCar-Xの校正</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_move.html">1. Let PiCar-X Move</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_keyboard.html">2. Keyboard Control</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_tts.html">3. Text to Speech &amp; Sound Effect</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_avoid.html">4. Obstacle Avoidance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_line_track.html">5. Line Tracking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_cliff.html">6. Cliff Detection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_computer_vision.html">7. Computer Vision</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_stare_at_you.html">8. Stare at You</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_record.html">9. Record Video</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_bull_fight.html">10. Bull Fight</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_video_car.html">11. Video Car</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_treasure_hunt.html">12. Treasure Hunt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../control_by_app.html">13. Controlled by the APP</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../ezblock/play_with_ezblock.html">Ezblockの利用に関して</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../appendix/appendix.html">付録</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../faq.html">FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../thank.html">謝辞</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">SunFounder picar-x</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../play_with_python.html">Pythonを楽しもう</a></li>
+          <li class="breadcrumb-item"><a href="quick_guide_on_python.html">Pythonに関するクイックガイド</a></li>
+      <li class="breadcrumb-item active">サーボ調整（重要）</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/python/python_start/py_servo_adjust.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="id1">
+<h1>サーボ調整（重要）<a class="headerlink" href="#id1" title="Permalink to this heading">¶</a></h1>
+<p>サーボの角度範囲は-90〜90度ですが、工場で設定された角度はランダムで、0°かもしれませんし、45°かもしれません。このような角度で直接組み立てると、ロボットがコードを実行した後に混乱状態になったり、最悪の場合はサーボがブロックして焼損する原因となります。</p>
+<p>したがって、サーボの角度を0°に設定してから取り付ける必要があります。そうすれば、どちらの方向に回転してもサーボの角度は中央になります。</p>
+<ol class="arabic">
+<li><p>サーボが正しく0°に設定されていることを確認するために、まずサーボアームをサーボシャフトに挿入し、その後ロッカーアームを優しく異なる角度に回転させます。このサーボアームは、サーボが回転していることをはっきりと確認できるようにするためのものです。</p>
+<blockquote>
+<div><img alt="../../_images/servo_arm1.png" src="../../_images/servo_arm1.png" />
+</div></blockquote>
+</li>
+<li><p>次に、 <code class="docutils literal notranslate"><span class="pre">example/</span></code> フォルダ内の <code class="docutils literal notranslate"><span class="pre">servo_zeroing.py</span></code> を実行します。</p>
+<blockquote>
+<div><run></run><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">~/</span><span class="n">picar</span><span class="o">-</span><span class="n">x</span><span class="o">/</span><span class="n">example</span>
+<span class="n">sudo</span> <span class="n">python3</span> <span class="n">servo_zeroing</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>次に、以下のようにサーボケーブルをP11ポートに接続します。同時にサーボアームが位置に回転するのを見ることができます（これが0°の位置で、ランダムな位置であり、垂直または平行でない場合があります）。</p>
+<blockquote>
+<div><img alt="../../_images/pin11_connect1.png" src="../../_images/pin11_connect1.png" />
+</div></blockquote>
+</li>
+<li><p>今、サーボアームを取り外し、サーボワイヤーが接続されたままにし、電源を切らないでください。その後、紙の指示に従って組み立てを続けます。</p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>サーボネジで固定する前に、このサーボケーブルを抜かないでください。固定した後に抜くことができます。</p></li>
+<li><p>電源が入っている状態でサーボを回転させないでください。サーボシャフトが正しい角度に挿入されていない場合は、サーボを取り出して再度挿入してください。</p></li>
+<li><p>各サーボを組み立てる前に、P11にサーボケーブルを接続し、電源を入れてその角度を0°に設定する必要があります。</p></li>
+</ul>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="enable_i2c.html" class="btn btn-neutral float-left" title="I2Cインターフェースを有効にする（重要）" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../python_calibrate.html" class="btn btn-neutral float-right" title="0. PiCar-Xの校正" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, SunFounder.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
