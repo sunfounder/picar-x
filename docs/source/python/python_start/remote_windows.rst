@@ -1,17 +1,17 @@
 Windowsユーザー
 =======================
 
-Raspberry Piへのリモートログイン
--------------------------------------------------
+リモートでRaspberry Piにログイン
+------------------------------------
 
-Windows10を使用している場合、以下の方法でRaspberry Piにリモートログインすることができます。
+win10を使用している場合、以下の方法でリモートでRaspberry Piにログインできます。
 
-#. Windowsのデスクトップの検索ボックスに ``powershell`` と入力し、表示される ``Windows PowerShell`` を右クリックして、メニューから ``管理者として実行`` を選択します。
+#. Windowsデスクトップの検索ボックスに ``powershell`` と入力し、 ``Windows PowerShell`` を右クリックして、表示されるメニューから ``Run as administrator`` を選択します。
 
     .. image:: img/powershell_ssh.png
         :align: center
 
-#. 次に、 ``ping -4 <hostname>.local`` と入力して、Raspberry PiのIPアドレスを確認します。
+#. ``ping -4 <hostname>.local`` と入力して、Raspberry PiのIPアドレスを確認します。
 
     .. code-block::
 
@@ -21,12 +21,13 @@ Windows10を使用している場合、以下の方法でRaspberry Piにリモ�
         :width: 550
         :align: center
 
-    上記のように、Raspberry Piがネットワークに接続された後のIPアドレスを確認できます。
+    上記のように、ネットワークに接続された後、Raspberry PiのIPアドレスが表示されます。
 
-    * もし、ターミナルに ``Ping request could not find host pi.local. Please check the name and try again.`` と表示された場合は、ホスト名が正しいか確認してください。
-    * IPアドレスが取得できない場合は、Raspberry PiのネットワークまたはWiFiの設定を確認してください。
+    * ターミナルが ``Ping request could not find host pi.local. Please check the name and try again.`` と表示された場合は、入力したホスト名が正しいか確認してください。
+    * それでもIPを取得できない場合は、Raspberry PiのネットワークまたはWiFi設定を確認してください。
 
-#. この時点で、 ``ssh <username>@<hostname>.local`` （または ``ssh <username>@<IP address>`` ）を使用して、Raspberry Piにログインできるようになります。
+
+#. これで、 ``ssh <username>@<hostname>.local`` （または ``ssh <username>@<IP address>`` ）を使用してRaspberry Piにログインできます。
 
     .. code-block::
 
@@ -36,11 +37,12 @@ Windows10を使用している場合、以下の方法でRaspberry Piにリモ�
 
         ``The term 'ssh' is not recognized as the name of a cmdlet...`` というプロンプトが表示された場合、
         
-        システムが古く、SSHツールが事前にインストールされていないことを意味します。手動で :ref:`openssh_powershell` をインストールする必要があります。
+        システムが古く、sshツールがプリインストールされていないことを意味します。手動で :ref:`openssh_powershell` を行う必要があります。
         
-        または、 :ref:`login_windows` のようなサードパーティツールを使用することができます。
+        または、:ref:`login_windows` のようなサードパーティツールを使用することもできます。
 
-#. 初めてログインする際には以下のメッセージが表示されるので、 ``yes`` と入力します。
+
+#. 最初にログインする際にのみ、以下のメッセージが表示されるので、 ``yes`` と入力します。
 
     .. code-block::
 
@@ -49,13 +51,13 @@ Windows10を使用している場合、以下の方法でRaspberry Piにリモ�
         This key is not known by any other names
         Are you sure you want to continue connecting (yes/no/[fingerprint])?
 
-#. 以前設定したパスワードを入力します。(私の場合は ``raspberry`` です。)
+
+#. 以前に設定したパスワードを入力します（私の場合は ``raspberry`` ）。
 
     .. note::
-        パスワードを入力する際、文字はウィンドウ上に表示されませんが、これは正常です。
-        正しいパスワードを入力するだけで大丈夫です。
+        パスワードを入力するとき、ウィンドウ上に文字が表示されないのは正常です。正しいパスワードを入力してください。
 
-#. Raspberry Piに接続が完了したので、次のステップに進む準備ができました。
+#. これでRaspberry Piに接続され、次のステップに進む準備ができました。
 
     .. image:: img/sp221221_140628.png
         :width: 550
@@ -64,17 +66,17 @@ Windows10を使用している場合、以下の方法でRaspberry Piにリモ�
 .. _remote_desktop:
 
 リモートデスクトップ
--------------------------------------------
+---------------------
 
-コマンドウィンドウを使用してRaspberry Piにアクセスするだけでは満足できない場合、リモートデスクトップ機能を使用して、GUIを使用してRaspberry Pi上のファイルを簡単に管理することができます。
+コマンドウィンドウを使用してRaspberry Piにアクセスすることに満足していない場合、リモートデスクトップ機能を使用して、GUIを使用してRaspberry Pi上のファイルを簡単に管理することもできます。
 
-ここでは、 `VNC® Viewer <https://www.realvnc.com/en/connect/download/viewer/>`_ を使用します。
+ここでは `VNC® Viewer <https://www.realvnc.com/en/connect/download/viewer/>`_ を使用します。
 
 **VNCサービスの有効化**
 
-VNCサービスはシステムにインストールされています。デフォルトではVNCは無効になっています。それを設定で有効にする必要があります。
+VNCサービスはシステムにインストールされています。デフォルトでは、VNCは無効になっています。configで有効にする必要があります。
 
-#. 以下のコマンドを入力します:
+#. 次のコマンドを入力します：
 
     .. raw:: html
 
@@ -87,26 +89,26 @@ VNCサービスはシステムにインストールされています。デフ�
     .. image:: img/image287.png
         :align: center
 
-#. キーボードの矢印キーを使用して **Interfacing Options** を選択し、 **Enter** キーを押します。
+#. キーボードの下矢印キーを押して **3 Interfacing Options** を選択し、 **Enter** キーを押します。
 
     .. image:: img/image282.png
         :align: center
 
-#. 次に、 **VNC** を選択します。
+#. 次に **VNC** を選択します。
 
     .. image:: img/image288.png
         :align: center
 
-#. キーボードの矢印キーを使用して、 **<Yes>** -> **<OK>** -> **<Finish>** を選択し、設定を完了します。
+#. キーボードの矢印キーで **<Yes>** -> **<OK>** -> **<Finish>** を選択して、設定を完了します。
 
     .. image:: img/mac_vnc8.png
         :align: center
 
-**VNCへのログイン**
+**VNCでログイン**
 
-#. まず、個人のコンピューターに `VNC Viewer <https://www.realvnc.com/en/connect/download/viewer/>`_ をダウンロードしてインストールする必要があります。
+#. 個人用コンピューターに `VNC Viewer <https://www.realvnc.com/en/connect/download/viewer/>`_ をダウンロードしてインストールします。
 
-#. インストールが完了したら、ホスト名またはIPアドレスを入力してEnterキーを押します。
+#. インストールが完了したら、開いてホスト名またはIPアドレスを入力してEnterキーを押します。
 
     .. image:: img/vnc_viewer1.png
         :align: center
@@ -116,7 +118,8 @@ VNCサービスはシステムにインストールされています。デフ�
     .. image:: img/vnc_viewer2.png
         :align: center
 
-#. Raspberry Piのデスクトップが表示されます。
+#. これでRaspberry Piのデスクトップが表示されます。
 
     .. image:: img/image294.png
         :align: center
+

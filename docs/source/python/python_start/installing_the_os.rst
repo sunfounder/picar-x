@@ -1,95 +1,96 @@
+.. _installing_the_os:
+
 OSのインストール
 =======================
 
 **必要なコンポーネント**
 
+* Raspberry Pi 4B/Zero 2 w/3B 3B+/2B/Zero W
+* 1 x パーソナルコンピュータ
+* 1 x マイクロSDカード 
 
-* 任意のRaspberry Pi 
-* 1 x 個人用コンピュータ
-* 1 x Micro SDカード 
-
-
-**ステップ 1**
-
-Raspberry Piは、Mac OS、Ubuntu 18.04、Windowsで動作するグラフィカルなSDカードライティングツールを開発しました。これはほとんどのユーザーにとって最も簡単なオプションです。イメージをダウンロードしてSDカードに自動的にインストールします。
-
-ダウンロードページを訪れてください: https://www.raspberrypi.org/software/。あなたのオペレーティングシステムに合ったRaspberry Pi Imagerのリンクをクリックし、ダウンロードが完了したらそれをクリックしてインストーラを起動してください。
-
-.. image:: img/image11.png
-    :align: center
+**手順**
 
 
-**ステップ 2**
+#. Raspberry Piのソフトウェアダウンロードページにアクセスします： `Raspberry Pi Imager <https://www.raspberrypi.org/software/>`_。ご使用のオペレーティングシステムに合わせたImagerバージョンを選択します。ダウンロード後、ファイルを開いてインストールを開始します。
 
-インストーラを起動すると、オペレーティングシステムが実行をブロックしようとする場合があります。例えば、Windowsでは次のようなメッセージが表示されます。
-
-このようなポップアップが表示された場合は、 **詳細情報** をクリックし、次に **とにかく実行** をクリックして、Raspberry Pi Imagerをインストールする手順に従ってください。
-
-.. image:: img/image12.png
-    :align: center
-
-**ステップ 3**
-
-SDカードをコンピュータまたはラップトップのSDカードスロットに挿入します。
-
-**ステップ 4**
-
-Raspberry Pi Imagerで、 **CHOOSE OS** -> **Raspberry Pi OS(Legacy)** をクリックします。
-
-.. warning::
-    * **Bookworm** バージョンをインストールしないでください。それではスピーカーが動作しません。
-    * **Raspberry Pi OS (Legacy)** バージョン - **Debian Bullseye** をインストールする必要があります。
-
-.. image:: img/3d33.png
-    :align: center
+    .. image:: img/os_install_imager.png
 
 
-**ステップ 5**
+#. インストーラを起動すると、OSがセキュリティ警告を表示する場合があります。たとえば、Windowsでは警告メッセージが表示されることがあります。このような場合は、 **More info** を選択し、その後 **Run anyway** を選択します。画面の指示に従ってRaspberry Pi Imagerをインストールします。
 
-使用するSDカードを選択します。
+    .. image:: img/os_info.png
 
-.. image:: img/image14.png
-    :align: center
 
-**ステップ 6**
+#. SDカードをコンピュータまたはラップトップのSDカードスロットに挿入します。
 
-詳細オプションページを開くには、オペレーティングシステムを選択した後に表示される **設定** ボタンをクリックするか、 **Ctrl+Shift+X** を押します。
+#. Raspberry Pi Imagerアプリケーションをアイコンをクリックするか、端末で ``rpi-imager`` を実行して開きます。
 
-ここで、ホスト名を設定し、sshを有効にし、ユーザー名とパスワードを設定します。
+    .. image:: img/os_open_imager.png
 
-.. warning::
+#. **CHOOSE DEVICE** をクリックし、リストから特定のRaspberry Piモデルを選択します（注意：Raspberry Pi 5は適用されません）。
 
-    リモートでRaspberry Piにアクセスするためには、 ``hostname``、 ``username``、 ``password`` を必ずメモしておいてください。これらは後で非常に重要になります。
+    .. image:: img/os_choose_device.png
 
-.. image:: img/image15.png
-    :align: center
+#. **CHOOSE OS** を選択し、次に **Raspberry Pi OS (Legacy)** を選択します。
 
-その後、下にスクロールしてwifi設定を完了し、 **SAVE** をクリックします。
+    .. warning::
+        * スピーカーが動作しないため、 **Bookworm** バージョンをインストールしないでください。
+        * **Raspberry Pi OS (Legacy)** バージョン - **Debian Bullseye** をインストールする必要があります。
 
-.. note::
+    .. image:: img/os_choose_os.png
 
-    **wifi country** は、あなたがRaspberry Piを使用している国の2文字の `ISO/IEC alpha2コード <https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2#Officially_assigned_code_elements>`_ に設定してください。次のリンクを参照してください: https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2#Officially_assigned_code_elements。
 
-.. image:: img/image16.png
-    :align: center
+#. **Choose Storage** をクリックし、インストール用の正しいストレージデバイスを選択します。
 
-**ステップ 7**
+    .. note::
 
-**WRITE** ボタンをクリックします。
+        複数のストレージデバイスが接続されている場合は、特に正しいデバイスを選択してください。不確かな場合は他のデバイスを切断してください。
 
-.. image:: img/image17.png
-    :align: center
+    .. image:: img/os_choose_sd.png
 
-**ステップ 8**
+#. **NEXT** を押し、 **EDIT SETTINGS** を選択してOSの設定をカスタマイズします。
 
-現在SDカードにファイルがある場合は、それらのファイルをまずバックアップして、永久に失うことがないようにしたいでしょう。バックアップするファイルがない場合は、 **Yes** をクリックします。
+    .. image:: img/os_enter_setting.png
 
-.. image:: img/image18.png
-    :align: center
+#. Raspberry Piの **hostname** を設定します。
 
-**ステップ 9**
+    .. note::
 
-しばらく待った後、書き込みが完了したことを表す以下のウィンドウが表示されます。
+        ホスト名は、Raspberry Piがネットワーク上で自身を識別するために使用するものです。 `<hostname>.local` または `<hostname>.lan` を使用してPiに接続できます。
 
-.. image:: img/image19.png
-    :align: center
+    .. image:: img/os_set_hostname.png
+
+#. Raspberry Piの管理者アカウント用に **Username** と **Password** を作成します。
+
+    .. note::
+
+        Raspberry Piにはデフォルトのパスワードがないため、セキュリティのためにユニークなユーザー名とパスワードを設定することが重要です。
+
+    .. image:: img/os_set_username.png
+
+#. ワイヤレスLANを設定するために、ネットワークの **SSID** と **Password** を入力します。
+
+    .. note::
+
+        ``Wireless LAN country`` は、Raspberry Piを使用している国の2文字の `ISO/IEC alpha2コード <https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2#Officially_assigned_code_elements>`_ に設定する必要があります。
+
+    .. image:: img/os_set_wifi.png
+
+
+#. **SERVICES** をクリックし、パスワードベースのリモートアクセスのために **SSH** を有効にします。 **Save** をクリックすることを忘れないでください。
+
+    .. image:: img/os_enable_ssh.png
+
+#. **Yes** をクリックして選択を確認します。
+
+    .. image:: img/os_click_yes.png
+
+#. SDカードに既存のファイルがある場合は、データ損失を避けるためにバックアップを行ってください。バックアップが不要な場合は **Yes** をクリックして続行します。
+
+    .. image:: img/os_continue.png
+
+#. OSがSDカードに書き込まれるのを待ちます。完了すると、確認ウィンドウが表示されます。
+
+    .. image:: img/os_finish.png
+        :align: center

@@ -1,11 +1,11 @@
+.. _py_move:
 
-
-PiCar-Xを動かす
+1. PiCar-Xを動かす
 ========================
 
-これは初めてのプロジェクトです。まず、PiCar-Xの基本的な動きをテストしましょう。
+これは最初のプロジェクトです。PiCar-Xの基本的な動きをテストしましょう。
 
-**コードを実行する**
+**コードの実行**
 
 .. raw:: html
 
@@ -14,14 +14,14 @@ PiCar-Xを動かす
 .. code-block::
 
     cd ~/picar-x/example
-    sudo python3 move.py
+    sudo python3 1.move.py
 
-このコードを実行すると、PiCar-Xは前進し、S字カーブで曲がり、停止してから頭を振ります。
+このコードを実行すると、PiCar-Xは前進し、S字型に曲がり、停止して頭を振ります。
 
 **コード**
 
 .. note::
-    下のコードは **変更/リセット/コピー/実行/停止** ができます。しかし、それをする前に、 ``picar-x/example`` のようなソースコードのパスに移動する必要があります。コードを変更した後、その効果を直接見るために実行することができます。
+    以下のコードは **変更/リセット/コピー/実行/停止** が可能です。しかし、それをする前に、 ``picar-x/example`` のようなソースコードのパスに移動する必要があります。コードを変更した後、直接実行して効果を確認できます。
 
 .. raw:: html
 
@@ -72,13 +72,14 @@ PiCar-Xを動かす
         finally:
             px.forward(0)
 
-**どのように動作するのか？**
+**それはどのように機能するのですか？**
 
-Parkerの基本機能は ``picarx`` モジュールにあり、
-操舵装置やホイールを制御するために使用できます。
-そして、PiCar-Xを前進させたり、S字カーブで曲げたり、頭を振らせることができます。
+PiCar-Xの基本機能は、 ``picarx`` モジュールにあります。
+これは、ステアリングギアやホイールの制御に使用され、
+PiCar-Xを前進させたり、S字型に曲がらせたり、頭を振らせたりすることができます。
 
-現在、PiCar-Xの基本機能をサポートするライブラリがインポートされています。これらの行は、PiCar-Xの動きに関連するすべての例に表示されます。
+現在、PiCar-Xの基本機能をサポートするライブラリがインポートされています。
+これらの行は、PiCar-Xの動きを伴うすべての例に表示されます。
 
 .. code-block:: python
     :emphasize-lines: 0
@@ -86,7 +87,8 @@ Parkerの基本機能は ``picarx`` モジュールにあり、
     from picarx import Picarx
     import time
 
-次に、 ``for`` ループを使用した以下の関数は、PiCar-Xを前進させ、方向を変え、カメラのパン/チルトを動かすために使用されます。
+次に、 ``for`` ループを使用する以下の関数は、PiCar-Xを前進させ、
+方向を変え、カメラのパン/チルトを動かすために使用されます。
 
 .. code-block:: python
 
@@ -95,10 +97,10 @@ Parkerの基本機能は ``picarx`` モジュールにあり、
     px.set_camera_servo1_angle(angle)
     px.set_camera_servo2_angle(angle)
 
-* ``forward()``: PiCar-Xに指定した ``speed`` で前進するように命令します。
-* ``set_dir_servo_angle``: 指定した ``angle`` で操舵サーボを回転させます。
-* ``set_camera_servo1_angle``: 指定した ``angle`` でパンサーボを回転させます。
-* ``set_camera_servo2_angle``: 指定した ``angle`` でチルトサーボを回転させます。
+* ``forward()``：PiCar-Xに指定された ``speed`` で前進するよう命令します。
+* ``set_dir_servo_angle``：ステアリングサーボを特定の ``angle`` に回転させます。
+* ``set_cam_pan_angle``：パンサーボを特定の ``angle`` に回転させます。
+* ``set_cam_tilt_angle``：チルトサーボを特定の ``angle`` に回転させます。
 
 .. image:: img/pan_tilt_servo.png
     :width: 400

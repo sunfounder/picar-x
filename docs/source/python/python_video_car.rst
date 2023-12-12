@@ -1,40 +1,59 @@
-Video Car
+.. _video_car:
+
+11. ビデオカー
 ==========================================
 
-このプログラムでは、PiCar-Xからの第一人称視点が提供されます！キーボードのWSADキーを使用して動きの方向を制御し、OとPキーでスピードを調整してください。
+このプログラムはPiCar-Xからの一人称視点を提供します！
+キーボードのWSADキーを使用して移動方向を制御し、
+OとPで速度を調整します。
 
 **コードの実行**
 
-.. note::
+.. raw:: html
 
-    * このプロジェクトは、カメラモジュールで撮影した映像を見るためにRaspberry Piのデスクトップへのアクセスが必要です。
-    * PiCar-Xにスクリーンを接続するか、 :ref:`remote_desktop` のチュートリアルを参照してVNCやXRDPでアクセスしてください。
-    * Raspberry Piのデスクトップに入ったら、ターミナルを開いて以下のコマンドを入力するか、Pythonエディタで開いて実行してください。
+    <run></run>
 
 .. code-block::
 
     cd ~/picar-x/example
-    sudo python3 video_car.py
+    sudo python3 11.video_car.py
 
-コードが実行されると、PiCar-Xが撮影している内容を確認し、以下のキーを押して制御することができます。
+コードが実行されると、PiCar-Xが撮影しているものを見て、次のキーを押すことで制御できます。
 
-* O: スピードアップ
-* P: スピードダウン
-* W: 前進
+* O: 速度アップ
+* P: 速度ダウン
+* W: 前進  
 * S: 後進
-* A: 左へ旋回
-* D: 右へ旋回
+* A: 左折
+* D: 右折
 * F: 停止
 * T: 写真を撮る
-* ESC / Ctrl+C: 終了
+* Ctrl+C: 終了
+
+**画像の表示**
+
+コードを実行すると、ターミナルに次のプロンプトが表示されます：
+
+.. code-block::
+
+    No desktop !
+    * Serving Flask app "vilib.vilib" (lazy loading)
+    * Environment: production
+    WARNING: Do not use the development server in a production environment.
+    Use a production WSGI server instead.
+    * Debug mode: off
+    * Running on http://0.0.0.0:9000/ (Press CTRL+C to quit)
+
+次に、ブラウザで ``http://<your IP>:9000/mjpg`` にアクセスして、ビデオ画面を表示できます。例えば： ``https://192.168.18.113:9000/mjpg``
+
+.. image:: img/display.png
+
 
 **コード**
 
 .. code-block:: python
     
     # #!/usr/bin/env python3
-
-    print('Please run under desktop environment (eg: vnc) to display the image window')
 
     from utils import reset_mcu
     reset_mcu()
@@ -44,28 +63,26 @@ Video Car
     import readchar
 
     manual = '''
-    Press key to call the function(non-case sensitive)：
+    Press key to call the function(non-case sensitive):
         O: speed up
         P: speed down
         W: forward  
         S: backward
         A: turn left
-        D：turn right
+        D: turn right
         F: stop
         T: take photo
-        ESC / Ctrl+C: quit
+        Ctrl+C: quit
     '''
-
 
     px = Picarx()
 
     def take_photo():
         _time = strftime('%Y-%m-%d-%H-%M-%S',localtime(time()))
         name = 'photo_%s'%_time
-        path = "~/Pictures/picar-x/"
+        path = f"{user_home}/Pictures/picar-x/"
         Vilib.take_photo(name, path)
         print('\nphoto save as %s%s.jpg'%(path,name))
-
 
     def move(operate:str, speed):
 
@@ -137,7 +154,7 @@ Video Car
             elif key == 't':
                 take_photo()
             # quit
-            elif key == readchar.key.CTRL_C or key in readchar.key.ESCAPE_SEQUENCES:
+            elif key == readchar.key.CTRL_C:
                 print('\nquit ...')
                 px.stop()
                 Vilib.camera_close()

@@ -1,12 +1,13 @@
 Linux /Unix ユーザー
 ==========================
 
-#. **Applications** -> **Utilities** へ移動し、 **Terminal** を探して開きます。
+
+#. **Applications** -> **Utilities** に移動し、 **Terminal** を探して開きます。
 
     .. image:: img/image21.png
         :align: center
 
-#. Raspberry Piが同じネットワーク上にあるかどうかを確認するために、 ``ping <hostname>.local`` を入力します。
+#. Raspberry Piが同じネットワーク上にあるかを確認するために、 ``ping <hostname>.local`` と入力します。
 
     .. code-block::
 
@@ -16,12 +17,13 @@ Linux /Unix ユーザー
         :width: 550
         :align: center
 
-    上記の通り、Raspberry Piがネットワークに接続された後のIPアドレスを確認できます。
+    上記のように、ネットワークに接続された後、Raspberry PiのIPアドレスが表示されます。
 
-    * もしターミナルに ``Ping request could not find host pi.local. Please check the name and try again.`` と表示された場合、入力したホスト名が正しいか確認してください。
-    * IPアドレスを取得できない場合は、Raspberry PiのネットワークまたはWiFiの設定を確認してください。
+    * ターミナルが ``Ping request could not find host pi.local. Please check the name and try again.`` と表示された場合、入力したホスト名が正しいか確認してください。
+    * それでもIPを取得できない場合は、Raspberry PiのネットワークまたはWiFi設定を確認してください。
 
-#. ``ssh <username>@<hostname>.local`` （もしくは ``ssh <username>@<IP address>`` ）を入力します。
+
+#. ``ssh <username>@<hostname>.local`` （または ``ssh <username>@<IP address>`` ）と入力します。
 
     .. code-block::
 
@@ -29,13 +31,14 @@ Linux /Unix ユーザー
 
     .. note::
 
-        もし ``The term 'ssh' is not recognized as the name of a cmdlet...`` というメッセージが表示された場合、
+        ``The term 'ssh' is not recognized as the name of a cmdlet...`` というプロンプトが表示された場合、
         
-        あなたのシステムが古く、SSHツールが事前にインストールされていないことを意味します。手動で :ref:`openssh_powershell` をインストールする必要があります。
+        システムが古く、sshツールがプリインストールされていないことを意味します。手動で :ref:`openssh_powershell` を行う必要があります。
         
-        または、 :ref:`login_windows` のようなサードパーティのツールを使用することもできます。
+        または、 :ref:`login_windows` のようなサードパーティツールを使用することもできます。
 
-#. 初めてログインする際、以下のメッセージが表示されるので、 ``yes`` と入力します。
+
+#. 最初にログインする際にのみ、以下のメッセージが表示されるので、 ``yes`` と入力します。
 
     .. code-block::
 
@@ -44,12 +47,16 @@ Linux /Unix ユーザー
         This key is not known by any other names
         Are you sure you want to continue connecting (yes/no/[fingerprint])?
 
-#. 以前に設定したパスワードを入力します。(私の場合は ``raspberry`` です。)
+
+#. 以前に設定したパスワードを入力します（私の場合は ``raspberry`` です）。
+
 
     .. note::
-        パスワードを入力する際、文字は画面上には表示されませんが、これは正常です。正しいパスワードを入力するだけで問題ありません。
+        パスワードを入力するとき、ウィンドウ上に文字が表示されないのは正常です。正しいパスワードを入力してください。
 
-#. Raspberry Piとの接続が完了したので、次のステップに進む準備ができました。
+
+
+#. これでRaspberry Piに接続され、次のステップに進む準備ができました。
 
     .. image:: img/mac-ssh-terminal.png
         :width: 550

@@ -1,10 +1,9 @@
 .. _install_all_modules:
 
-
 すべてのモジュールをインストールする（重要）
 ============================================
 
-インターネットに接続されていることを確認し、システムを更新してください:
+インターネットに接続していることを確認し、システムをアップデートしてください：
 
 .. raw:: html
 
@@ -17,17 +16,18 @@
 
 .. note::
 
-    LiteバージョンのOSをインストールしている場合、Python3関連のパッケージをインストールする必要があります。
+    LiteバージョンのOSをインストールする場合は、Python3関連のパッケージをインストールする必要があります。
 
     .. raw:: html
 
         <run></run>
 
     .. code-block::
-
+    
         sudo apt install git python3-pip python3-setuptools python3-smbus
 
-``robot-hat`` をインストールしてください。
+
+``robot-hat`` をインストールします。
 
 .. raw:: html
 
@@ -39,6 +39,7 @@
     git clone -b v2.0 https://github.com/sunfounder/robot-hat.git
     cd robot-hat
     sudo python3 setup.py install
+
 
 次に、 ``vilib`` モジュールをダウンロードしてインストールします。
 
@@ -66,9 +67,9 @@
     cd picar-x
     sudo python3 setup.py install
 
-このステップは少し時間がかかるので、お待ちください。
+このステップには少し時間がかかりますので、ご patienceください。
 
-最後に、i2sアンプに必要なコンポーネントをインストールするために、スクリプト ``i2samp.sh`` を実行する必要があります。そうしないと、picar-xに音が出ません。
+最後に、i2sアンプに必要なコンポーネントをインストールするためのスクリプト ``i2samp.sh`` を実行する必要があります。そうしないと、picar-xに音が出ません。
 
 .. raw:: html
 
@@ -81,15 +82,15 @@
 	
 .. image:: img/i2s.png
 
-``y`` を入力して、Enterキーを押し、スクリプトの実行を続行します。
+スクリプトを続けて実行するために ``y`` と入力し、Enterキーを押します。
 
 .. image:: img/i2s2.png
 
-``y`` を入力して、Enterキーを押し、 ``/dev/zero`` をバックグラウンドで実行します。
+バックグラウンドで ``/dev/zero`` を実行するために ``y`` と入力し、Enterキーを押します。
 
 .. image:: img/i2s3.png
 
-``y`` を入力して、Enterキーを押し、Picar-Xを再起動します。
+Picar-Xを再起動するために ``y`` と入力し、Enterキーを押します。
 
 .. note::
-    再起動後に音が出ない場合、i2samp.shスクリプトを数回実行する必要があるかもしれません。
+    再起動後に音が出ない場合は、i2samp.shスクリプトを何度か実行する必要があるかもしれません。
