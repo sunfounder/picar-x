@@ -126,7 +126,7 @@ You need to pay attention to the following three parts of this example:
     * Set the camera's pan and tilt angles using ``px.set_cam_pan_angle()`` and ``px.set_cam_tilt_angle()`` to keep the object in view.
 
 
-3. Control the car's movement based on the difference between dir_angle and ``x_angle``:
+3. Control the car's movement based on the difference between ``dir_angle`` and ``x_angle``:
 
     * If ``dir_angle`` is greater than ``x_angle``, decrement ``dir_angle`` by 1 to gradually change the direction angle.
     * If ``dir_angle`` is less than ``x_angle``, increment ``dir_angle`` by 1.

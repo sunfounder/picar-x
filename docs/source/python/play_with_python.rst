@@ -29,4 +29,4 @@ After the PiCar-X assembly is completed, try running the projects below:
     python_bull_fight
     python_video_car
     python_treasure_hunt
-    control_by_appgit
+    control_by_app
