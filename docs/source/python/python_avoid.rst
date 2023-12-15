@@ -1,9 +1,12 @@
-Hindernisvermeidung
-====================
+.. _py_avoid:
 
-In diesem Projekt wird PiCar-X Hindernisse vor sich erkennen, während es vorwärts fährt. Bei zu großer Annäherung wird die Fahrtrichtung geändert.
+4. Hindernisvermeidung
+=============================
 
-**Den Code ausführen**
+In diesem Projekt wird PiCar-X Hindernisse vor sich erkennen, während es vorwärtsfährt, 
+und wenn die Hindernisse zu nah sind, wird es die Fahrtrichtung ändern.
+
+**Code ausführen**
 
 .. raw:: html
 
@@ -12,18 +15,21 @@ In diesem Projekt wird PiCar-X Hindernisse vor sich erkennen, während es vorwä
 .. code-block::
 
     cd ~/picar-x/example
-    sudo python3 avoiding_obstacles.py
+    sudo python3 4.avoiding_obstacles.py
+    
+Nachdem der Code ausgeführt wurde, fährt PiCar-X vorwärts.
 
-Nach dem Ausführen des Codes wird der PiCar-X vorwärts fahren.
+Wenn es erkennt, dass die Entfernung des Hindernisses vor ihm weniger als 20 cm beträgt, wird es rückwärtsfahren.
 
-Erkennt das Auto, dass der Abstand zum Hindernis vor ihm weniger als 25 cm beträgt, wird es nach links abbiegen.
+Wenn ein Hindernis innerhalb von 20 bis 40 cm ist, wird es nach links abbiegen.
 
-Ist nach dem Abbiegen nach links kein Hindernis im Weg oder liegt die Hindernisdistanz bei mehr als 25 cm, wird die Vorwärtsfahrt fortgesetzt.
+Wenn nach dem Linksabbiegen kein Hindernis in der Richtung ist oder die Hindernisentfernung größer als 25 cm ist, 
+wird es weiter vorwärtsfahren.
 
 **Code**
 
 .. note::
-    Sie können den untenstehenden Code **ändern/zurücksetzen/kopieren/ausführen/stoppen**. Zuvor müssen Sie jedoch zum Quellcodepfad, etwa ``picar-x/example``, navigieren. Nach der Modifikation können Sie den Code direkt ausführen, um die Auswirkungen zu sehen.
+    Sie können den untenstehenden Code **modifizieren/zurücksetzen/kopieren/ausführen/stoppen**. Bevor Sie das tun, müssen Sie jedoch zum Quellcodepfad wie ``picar-x/example`` gehen. Nachdem Sie den Code modifiziert haben, können Sie ihn direkt ausführen, um den Effekt zu sehen.
 
 .. raw:: html
 
@@ -32,44 +38,64 @@ Ist nach dem Abbiegen nach links kein Hindernis im Weg oder liegt die Hindernisd
 .. code-block:: python
 
     from picarx import Picarx
+    import time
+
+    POWER = 50
+    SafeDistance = 40   # > 40 safe
+    DangerDistance = 20 # > 20 && < 40 turn around, 
+                        # < 20 backward
 
     def main():
         try:
             px = Picarx()
             # px = Picarx(ultrasonic_pins=['D2','D3']) # tring, echo
-            px.forward(30)
+        
             while True:
-                distance = px.ultrasonic.read()
+                distance = round(px.ultrasonic.read(), 2)
                 print("distance: ",distance)
-                if distance > 0 and distance < 300:
-                    if distance < 25:
-                        px.set_dir_servo_angle(-35)
-                    else:
-                        px.set_dir_servo_angle(0)
+                if distance >= SafeDistance:
+                    px.set_dir_servo_angle(0)
+                    px.forward(POWER)
+                elif distance >= DangerDistance:
+                    px.set_dir_servo_angle(40)
+                    px.forward(POWER)
+                    time.sleep(0.1)
+                else:
+                    px.set_dir_servo_angle(-40)
+                    px.backward(POWER)
+                    time.sleep(0.5)
+
         finally:
             px.forward(0)
+
 
     if __name__ == "__main__":
         main()
 
-**Wie funktioniert das?**
 
-Das Ultraschallmodul ist ebenfalls im picarx-Modul importiert, und wir können einige seiner integrierten Funktionen zur Distanzerkennung verwenden.
+
+**Wie funktioniert des?**
+
+Das Ultraschallmodul wird ebenfalls im picarx-Modul importiert, 
+und wir können einige seiner gekapselten Funktionen nutzen, um die Entfernung zu erkennen.
 
 .. code-block:: python
 
     from picarx import Picarx
 
-Da das Ultraschallmodul ins picarx-Modul importiert ist, können wir direkt ``px.ultrasonic.read()`` verwenden, um die Distanz zu erhalten.
+Da das Ultraschallmodul in das picarx-Modul importiert wird, 
+können wir direkt ``px.ultrasonic.read()`` verwenden, um die Entfernung zu ermitteln.
 
 .. code-block:: python
 
     px = Picarx()
     px.forward(30)
     while True:
-        distance = px.ultrasonic.read()
+        distance = px.ultrasonic.read() 
 
-Im folgenden Codesegment wird der vom Ultraschallmodul gemeldete Abstandswert ausgelesen. Wenn dieser unter 25 cm (10 Zoll) liegt, wird das Lenkservo von 0° (geradeaus) auf -35° (nach links abbiegen) eingestellt.
+Der folgende Codeausschnitt liest den vom Ultraschallmodul gemeldeten Entfernungswert, 
+und wenn die Entfernung unter 40 cm liegt, wird der Lenkservo von 0° (geradeaus) auf -40° 
+(nach links abbiegen) eingestellt.
 
 .. code-block:: python
 

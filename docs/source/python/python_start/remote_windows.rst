@@ -1,19 +1,17 @@
-
-
 Windows-Nutzer
 =======================
 
-Remote-Anmeldung am Raspberry Pi
+Anmeldung am Raspberry Pi Aus der Ferne
 ---------------------------------------------
 
-Wenn Sie Windows 10 verwenden, können Sie die folgende Methode nutzen, um sich remote am Raspberry Pi anzumelden.
+Wenn Sie win10 verwenden, können Sie folgenden Weg nutzen, um sich aus der Ferne am Raspberry Pi anzumelden.
 
-#. Geben Sie ``powershell`` in das Suchfeld Ihres Windows-Desktops ein, klicken Sie mit der rechten Maustaste auf ``Windows PowerShell`` und wählen Sie ``Als Administrator ausführen`` aus dem erscheinenden Menü.
+#. Geben Sie in das Suchfeld Ihres Windows-Desktops ``powershell`` ein, klicken Sie mit der rechten Maustaste auf die ``Windows PowerShell`` und wählen Sie ``Run as administrator`` aus dem erscheinenden Menü.
 
     .. image:: img/powershell_ssh.png
         :align: center
 
-#. Überprüfen Sie dann die IP-Adresse Ihres Raspberry Pi, indem Sie ``ping -4 <hostname>.local`` eingeben.
+#. Überprüfen Sie dann die IP-Adresse Ihres Raspberry Pi, indem Sie ``ping -4 <hostname>.local`` eingeben. 
 
     .. code-block::
 
@@ -25,10 +23,11 @@ Wenn Sie Windows 10 verwenden, können Sie die folgende Methode nutzen, um sich 
 
     Wie oben gezeigt, können Sie die IP-Adresse des Raspberry Pi sehen, nachdem er mit dem Netzwerk verbunden wurde.
 
-    * Wenn das Terminal die Meldung ``Ping request could not find host pi.local. Please check the name and try again.`` anzeigt, befolgen Sie die Anweisungen und stellen Sie sicher, dass der von Ihnen eingegebene Hostname korrekt ist.
-    * Sie können die IP immer noch nicht erhalten? Überprüfen Sie Ihre Netzwerk- oder WLAN-Konfiguration auf dem Raspberry Pi.
+    * Wenn das Terminal ``Ping-Anforderung konnte Host pi.local nicht finden. Bitte überprüfen Sie den Namen und versuchen Sie es erneut.`` anzeigt, folgen Sie den Anweisungen, um sicherzustellen, dass der Hostname, den Sie ausfüllen, korrekt ist.
+    * Bekommen Sie immer noch keine IP? Überprüfen Sie Ihre Netzwerk- oder WLAN-Konfiguration auf dem Raspberry Pi.
 
-#. Nun können Sie sich mit dem Befehl ``ssh <username>@<hostname>.local`` (oder ``ssh <username>@<IP address>``) an Ihrem Raspberry Pi anmelden.
+
+#. Jetzt können Sie sich mit ``ssh <username>@<hostname>.local`` (oder ``ssh <username>@<IP address>``) an Ihrem Raspberry Pi anmelden.
 
     .. code-block::
 
@@ -36,13 +35,14 @@ Wenn Sie Windows 10 verwenden, können Sie die folgende Methode nutzen, um sich 
 
     .. warning::
 
-        Wenn die Meldung ``The term 'ssh' is not recognized as the name of a cmdlet...`` erscheint,
+        Wenn eine Aufforderung erscheint ``The term 'ssh' is not recognized as the name of a cmdlet...``
         
-        bedeutet dies, dass Ihr System veraltet ist und keine vorinstallierten SSH-Tools hat. Sie müssen manuell :ref:`openssh_powershell` installieren.
+        Das bedeutet, dass Ihr System zu alt ist und keine vorinstallierten SSH-Tools hat, Sie müssen manuell :ref:`openssh_powershell` installieren.
         
         Oder verwenden Sie ein Drittanbieter-Tool wie :ref:`login_windows`.
 
-#. Die folgende Meldung wird nur bei Ihrer ersten Anmeldung angezeigt. Geben Sie ``yes`` ein.
+
+#. Die folgende Nachricht wird nur beim ersten Anmelden angezeigt, also geben Sie ``yes`` ein.
 
     .. code-block::
 
@@ -51,14 +51,15 @@ Wenn Sie Windows 10 verwenden, können Sie die folgende Methode nutzen, um sich 
         This key is not known by any other names
         Are you sure you want to continue connecting (yes/no/[fingerprint])?
 
-#. Geben Sie das zuvor festgelegte Passwort ein. (Meins ist ``raspberry``.)
+
+#. Geben Sie das zuvor festgelegte Passwort ein. (Meines ist ``raspberry``.)
 
     .. note::
-        Wenn Sie das Passwort eingeben, werden die Zeichen nicht entsprechend im
+        Wenn Sie das Passwort eingeben, werden die Zeichen nicht im
         Fenster angezeigt, was normal ist. Wichtig ist, dass Sie das
         korrekte Passwort eingeben.
 
-#. Nun haben wir den Raspberry Pi verbunden und sind bereit, zum nächsten Schritt zu gehen.
+#. Wir haben jetzt den Raspberry Pi verbunden und sind bereit für den nächsten Schritt.
 
     .. image:: img/sp221221_140628.png
         :width: 550
@@ -69,16 +70,20 @@ Wenn Sie Windows 10 verwenden, können Sie die folgende Methode nutzen, um sich 
 Remote-Desktop
 ------------------
 
-Wenn Sie mit dem Befehlsfenster zur Steuerung Ihres Raspberry Pi nicht zufrieden sind, können Sie auch die Remote-Desktop-Funktion nutzen, um Dateien auf Ihrem Raspberry Pi über eine GUI einfach zu verwalten.
+Wenn Sie mit der Nutzung des Befehlsfensters für den Zugriff auf Ihren Raspberry Pi nicht zufrieden sind, können Sie auch die Remote-Desktop-Funktion verwenden, um Dateien auf Ihrem Raspberry Pi einfach über eine grafische Benutzeroberfläche (GUI) zu verwalten.
 
-Hierfür verwenden wir den `VNC® Viewer <https://www.realvnc.com/en/connect/download/viewer/>`_.
+Hier verwenden wir `VNC® Viewer <https://www.realvnc.com/en/connect/download/viewer/>`_.
 
-**VNC-Service aktivieren**
+**VNC-Dienst Aktivieren**
 
-Der VNC-Service ist im System installiert. Standardmäßig ist VNC
-deaktiviert. Sie müssen ihn in der Konfiguration aktivieren.
+Der VNC-Dienst ist im System installiert. Standardmäßig ist VNC
+deaktiviert. Sie müssen es in der Konfiguration aktivieren.
 
 #. Geben Sie den folgenden Befehl ein:
+
+    .. raw:: html
+
+        <run></run>
 
     .. code-block:: 
 
@@ -87,36 +92,37 @@ deaktiviert. Sie müssen ihn in der Konfiguration aktivieren.
     .. image:: img/image287.png
         :align: center
 
-#. Wählen Sie **3** **Interfacing Options** mithilfe der Abwärtspfeiltaste Ihrer Tastatur und drücken Sie dann die **Enter**-Taste.
+#. Wählen Sie **3** **Interfacing Options** durch Drücken der Abwärtspfeiltaste auf Ihrer Tastatur, dann drücken Sie die **Enter**-Taste.
 
     .. image:: img/image282.png
         :align: center
 
-#. Danach **P3 VNC**. 
+#. Dann **VNC**. 
 
     .. image:: img/image288.png
         :align: center
 
-#. Verwenden Sie die Pfeiltasten auf der Tastatur, um **<Ja>** -> **<OK>** -> **<Beenden>** auszuwählen und die Einrichtung abzuschließen.
+#. Verwenden Sie die Pfeiltasten auf der Tastatur, um **<Yes>** -> **<OK>** -> **<Finish>** auszuwählen und die Einrichtung abzuschließen.
 
     .. image:: img/mac_vnc8.png
         :align: center
 
-**Anmeldung bei VNC**
+**Anmeldung beim VNC**
 
-#. Sie müssen den `VNC Viewer <https://www.realvnc.com/en/connect/download/viewer/>`_ auf Ihrem Computer herunterladen und installieren.
+#. Sie müssen den `VNC Viewer <https://www.realvnc.com/en/connect/download/viewer/>`_ auf Ihrem persönlichen Computer herunterladen und installieren.
 
-#. Öffnen Sie ihn nach Abschluss der Installation. Geben Sie dann den Hostnamen oder die IP-Adresse ein und drücken Sie Enter.
+#. Öffnen Sie ihn, sobald die Installation abgeschlossen ist. Geben Sie dann den Hostnamen oder die IP-Adresse ein und drücken Sie Enter.
 
     .. image:: img/vnc_viewer1.png
         :align: center
 
-#. Nach Eingabe Ihres Raspberry Pi-Namens und Passworts klicken Sie auf **OK**.
+#. Nachdem Sie Ihren Raspberry Pi-Namen und Ihr Passwort eingegeben haben, klicken Sie auf **OK**.
 
     .. image:: img/vnc_viewer2.png
         :align: center
 
-#. Nun können Sie den Desktop des Raspberry Pi sehen.
+#. Jetzt können Sie den Desktop des Raspberry Pi sehen.
 
     .. image:: img/image294.png
         :align: center
+

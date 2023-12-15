@@ -1,11 +1,11 @@
-Servo-Einstellung (Wichtig)
+Servo-Justierung(Wichtig)
 ============================
 
-Der Drehwinkelbereich des Servos liegt zwischen -90° und 90°. Der im Werk eingestellte Winkel ist jedoch zufällig, vielleicht 0° oder vielleicht 45°. Montiert man ihn direkt mit einem solchen Winkel, führt dies nach Ausführung des Robotercodes zu einem chaotischen Zustand. Im schlimmsten Fall blockiert der Servo und brennt durch.
+Der Winkelbereich des Servos liegt bei -90~90 Grad, aber der in der Fabrik eingestellte Winkel ist zufällig, vielleicht 0°, vielleicht 45°. Wenn wir ihn direkt mit einem solchen Winkel montieren, führt dies nach dem Ausführen des Codes des Roboters zu einem chaotischen Zustand oder schlimmer noch, es kann dazu führen, dass der Servo blockiert und durchbrennt.
 
-Daher müssen wir alle Servo-Winkel auf 0° einstellen und dann installieren. So ist der Servo-Winkel zentral, egal in welche Richtung er dreht.
+Daher müssen wir hier alle Servowinkel auf 0° einstellen und sie dann montieren, sodass der Servowinkel in der Mitte ist, egal in welche Richtung er sich dreht.
 
-#. Um sicherzustellen, dass der Servo korrekt auf 0° eingestellt ist, zuerst den Servoarm in die Servoachse einsetzen und dann den Hebelarm sanft in einen anderen Winkel drehen. Dieser Servoarm dient lediglich dazu, deutlich zu machen, dass der Servo sich dreht.
+#. Um sicherzustellen, dass der Servo ordnungsgemäß auf 0° eingestellt wurde, stecken Sie zuerst den Servoarm in die Servowelle und drehen Sie dann vorsichtig den Schwenkarm in einen anderen Winkel. Dieser Servoarm dient lediglich dazu, Ihnen deutlich zu zeigen, dass der Servo sich dreht.
 
     .. image:: img/servo_arm.png
 
@@ -20,14 +20,16 @@ Daher müssen wir alle Servo-Winkel auf 0° einstellen und dann installieren. So
         cd ~/picar-x/example
         sudo python3 servo_zeroing.py
 
-#. Anschließend das Servokabel wie abgebildet in den P11-Port stecken. Gleichzeitig wird der Servoarm zu einer Position drehen (dies ist die 0°-Position, die sich an einer zufälligen Stelle befindet und möglicherweise nicht senkrecht oder parallel ist).
+#. Stecken Sie als Nächstes das Servokabel wie folgt in den P11-Port, gleichzeitig sehen Sie, dass sich der Servoarm in eine Position dreht (Dies ist die 0°-Position, die ein zufälliger Ort ist und möglicherweise nicht vertikal oder parallel ist).
 
     .. image:: img/Z_P11.JPG
 
-#. Jetzt den Servoarm entfernen, sicherstellen, dass das Servokabel verbunden bleibt und die Stromversorgung nicht abschalten. Danach die Montage gemäß der schriftlichen Anleitung fortsetzen.
+#. Entfernen Sie jetzt den Servoarm, wobei das Servokabel angeschlossen bleibt, und schalten Sie den Strom nicht aus. Fahren Sie dann mit der Montage gemäß den Papieranweisungen fort.
 
 .. note::
 
-    * Das Servokabel nicht vor dem Befestigen mit der Servoschraube abziehen. Nach dem Befestigen kann es abgezogen werden.
-    * Den Servo nicht drehen, solange er eingeschaltet ist, um Beschädigungen zu vermeiden. Wenn die Servoachse nicht im richtigen Winkel eingesetzt ist, den Servo herausziehen und erneut einsetzen.
-    * Vor der Montage jedes Servos muss das Servokabel in P11 eingesteckt und die Stromversorgung eingeschaltet werden, um seinen Winkel auf 0° einzustellen.
+    * Ziehen Sie dieses Servokabel nicht ab, bevor Sie es mit der Servoschraube befestigt haben; Sie können es nach der Befestigung abziehen.
+    * Drehen Sie den Servo nicht, während er eingeschaltet ist, um Schäden zu vermeiden. Wenn die Servowelle nicht im richtigen Winkel eingeführt ist, ziehen Sie den Servo heraus und stecken Sie ihn erneut ein.
+    * Bevor Sie jeden Servo montieren, müssen Sie das Servokabel in P11 einstecken und den Strom einschalten, um seinen Winkel auf 0° einzustellen.
+
+

@@ -1,7 +1,8 @@
-Linux/Unix-Benutzer
+Linux/Unix-Nutzer
 ==========================
 
-#. Navigieren Sie zu **Anwendungen** -> **Dienstprogramme**, suchen Sie das **Terminal** und öffnen Sie es.
+
+#. Gehen Sie zu **Applications** ->\ **Utilities**, finden Sie das **Terminal** und öffnen Sie es.
 
     .. image:: img/image21.png
         :align: center
@@ -18,10 +19,11 @@ Linux/Unix-Benutzer
 
     Wie oben gezeigt, können Sie die IP-Adresse des Raspberry Pi sehen, nachdem er mit dem Netzwerk verbunden wurde.
 
-    * Wenn das Terminal den Hinweis ``Ping-Anforderung konnte Host pi.local nicht finden. Bitte überprüfen Sie den Namen und versuchen Sie es erneut.`` gibt, folgen Sie den Anweisungen und stellen Sie sicher, dass der von Ihnen eingegebene Hostname korrekt ist.
-    * Sie erhalten die IP nicht? Überprüfen Sie Ihre Netzwerk- oder WLAN-Konfiguration auf dem Raspberry Pi.
+    * Wenn das Terminal ``Ping request could not find host pi.local. Please check the name and try again.`` meldet, folgen Sie den Anweisungen, um sicherzustellen, dass der Hostname, den Sie eingeben, korrekt ist.
+    * Bekommen Sie immer noch keine IP? Überprüfen Sie Ihre Netzwerk- oder WLAN-Konfiguration auf dem Raspberry Pi.
 
-#. Geben Sie ``ssh <username>@<hostname>.local`` (oder ``ssh <username>@<IP-Adresse>``) ein.
+
+#. Geben Sie ``ssh <username>@<hostname>.local`` (oder ``ssh <username>@<IP address>``) ein.
 
     .. code-block::
 
@@ -29,13 +31,14 @@ Linux/Unix-Benutzer
 
     .. note::
 
-        Wenn die Meldung ``Der Begriff 'ssh' wird nicht als Name eines Cmdlet erkannt...`` erscheint,
+        Wenn eine Aufforderung erscheint ``The term 'ssh' is not recognized as the name of a cmdlet...``
         
-        bedeutet das, dass Ihr System veraltet ist und keine vorinstallierten SSH-Tools hat. Sie müssen manuell :ref:`openssh_powershell` installieren.
+        Das bedeutet, dass Ihr System zu alt ist und keine vorinstallierten SSH-Tools hat, Sie müssen manuell :ref:`openssh_powershell` installieren.
         
         Oder verwenden Sie ein Drittanbieter-Tool wie :ref:`login_windows`.
 
-#. Die folgende Nachricht wird nur angezeigt, wenn Sie sich zum ersten Mal anmelden. Geben Sie also ``ja`` ein.
+
+#. Die folgende Nachricht wird nur beim ersten Anmelden angezeigt, also geben Sie ``yes`` ein.
 
     .. code-block::
 
@@ -44,13 +47,18 @@ Linux/Unix-Benutzer
         This key is not known by any other names
         Are you sure you want to continue connecting (yes/no/[fingerprint])?
 
-#. Geben Sie das Passwort ein, das Sie zuvor festgelegt haben. (Meins ist ``raspberry``.)
+
+#. Geben Sie das zuvor festgelegte Passwort ein. (Meines ist ``raspberry``.)
+
 
     .. note::
-        Beim Eingeben des Passworts werden die Zeichen im Fenster nicht angezeigt, 
-        was normal ist. Es ist wichtig, dass Sie das korrekte Passwort eingeben.
+        Wenn Sie das Passwort eingeben, werden die Zeichen nicht im
+        Fenster angezeigt, was normal ist. Wichtig ist, dass Sie das
+        korrekte Passwort eingeben.
 
-#. Nun haben wir den Raspberry Pi verbunden und sind bereit, zum nächsten Schritt überzugehen.
+
+
+#. Wir haben jetzt den Raspberry Pi verbunden und sind bereit für den nächsten Schritt.
 
     .. image:: img/mac-ssh-terminal.png
         :width: 550

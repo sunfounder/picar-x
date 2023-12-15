@@ -1,11 +1,11 @@
+.. _py_move:
 
+1. Lassen Sie PiCar-X sich bewegen
+======================================
 
-PiCar-X in Bewegung setzen
-==========================
+Dies ist das erste Projekt, testen wir die grundlegende Bewegung des Picar-X.
 
-Dies ist das erste Projekt, in dem wir die grundlegende Bewegung des PiCar-X testen.
-
-**Den Code ausführen**
+**Code ausführen**
 
 .. raw:: html
 
@@ -14,14 +14,14 @@ Dies ist das erste Projekt, in dem wir die grundlegende Bewegung des PiCar-X tes
 .. code-block::
 
     cd ~/picar-x/example
-    sudo python3 move.py
+    sudo python3 1.move.py
 
-Nach dem Ausführen des Codes wird der PiCar-X vorwärts fahren, eine S-förmige Kurve machen, anhalten und den Kopf schütteln.
+Nachdem der Code ausgeführt wurde, wird PiCar-X vorwärts fahren, in einer S-Form abbiegen, anhalten und den Kopf schütteln.
 
 **Code**
 
 .. note::
-    Sie können den untenstehenden Code **ändern/zurücksetzen/kopieren/ausführen/stoppen**. Bevor Sie dies tun, navigieren Sie zum Quellcodepfad, beispielsweise ``picar-x/example``. Nach der Änderung können Sie den Code direkt ausführen, um die Auswirkungen zu sehen.
+    Sie können den untenstehenden Code **modifizieren/zurücksetzen/kopieren/ausführen/stoppen**. Bevor Sie das tun, müssen Sie jedoch zum Quellcodepfad wie ``picar-x/example`` gehen. Nachdem Sie den Code modifiziert haben, können Sie ihn direkt ausführen, um den Effekt zu sehen.
 
 .. raw:: html
 
@@ -31,6 +31,7 @@ Nach dem Ausführen des Codes wird der PiCar-X vorwärts fahren, eine S-förmige
 
     from picarx import Picarx
     import time
+
 
     if __name__ == "__main__":
         try:
@@ -71,13 +72,14 @@ Nach dem Ausführen des Codes wird der PiCar-X vorwärts fahren, eine S-förmige
         finally:
             px.forward(0)
 
-**Wie funktioniert das?**
+**Wie funktioniert des?**
 
-Die Grundfunktionalitäten von PiCar-X sind im ``picarx`` Modul hinterlegt.
-Damit lassen sich Lenkgetriebe und Räder steuern,
-und der PiCar-X wird vorwärts fahren, eine S-förmige Kurve machen oder den Kopf schütteln.
+Die grundlegende Funktionalität von PiCar-X ist im Modul ``picarx`` enthalten,
+welches zur Steuerung von Lenkservos und Rädern verwendet werden kann,
+und lässt das PiCar-X vorwärtsfahren, in einer S-Form abbiegen oder den Kopf schütteln.
 
-Nun sind die Bibliotheken für die grundlegende Funktionalität des PiCar-X importiert. Diese Zeilen werden in allen Beispielen auftauchen, die die Bewegung des PiCar-X betreffen.
+Nun werden die Bibliotheken importiert, die die grundlegende Funktionalität von PiCar-X unterstützen.
+Diese Zeilen erscheinen in allen Beispielen, die die Bewegung von PiCar-X involvieren.
 
 .. code-block:: python
     :emphasize-lines: 0
@@ -85,7 +87,8 @@ Nun sind die Bibliotheken für die grundlegende Funktionalität des PiCar-X impo
     from picarx import Picarx
     import time
 
-Die nachfolgende Funktion mit der ``for``-Schleife wird dann genutzt, um den PiCar-X vorwärts fahren zu lassen, die Richtung zu ändern und die Neigung/Schwenkung der Kamera zu steuern.
+Die folgende Funktion mit der ``for``-Schleife wird dann verwendet, um PiCar-X 
+vorwärts zu bewegen, die Richtung zu ändern und die Schwenk-/Neigeplattform der Kamera zu bewegen.
 
 .. code-block:: python
 
@@ -94,10 +97,10 @@ Die nachfolgende Funktion mit der ``for``-Schleife wird dann genutzt, um den PiC
     px.set_camera_servo1_angle(angle)
     px.set_camera_servo2_angle(angle)
 
-* ``forward()``: Veranlasst den PiCar-X, mit einer gegebenen ``Geschwindigkeit`` vorwärts zu fahren.
-* ``set_dir_servo_angle``: Dreht das Lenkservo auf einen bestimmten ``Winkel``.
-* ``set_camera_servo1_angle``: Dreht das Pan-Servo auf einen spezifischen ``Winkel``.
-* ``set_camera_servo2_angle``: Dreht das Tilt-Servo auf einen spezifischen ``Winkel``.
+* ``forward()``: Befiehlt dem PiCar-X, mit einer bestimmten ``speed`` vorwärtszufahren.
+* ``set_dir_servo_angle``: Dreht den Lenkservo in einen bestimmten ``angle``.
+* ``set_cam_pan_angle``: Dreht den Pan-Servo in einen bestimmten ``angle``.
+* ``set_cam_tilt_angle``: Dreht den Neige-Servo in einen bestimmten ``angle``.
 
 .. image:: img/pan_tilt_servo.png
     :width: 400

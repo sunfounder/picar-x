@@ -1,44 +1,58 @@
-Video-Auto
+.. _video_car:
+
+11. Video-Auto
 ==========================================
 
-Mit diesem Programm erhalten Sie eine Ego-Perspektive von Ihrem PiCar-X! Verwenden Sie die Tasten WSAD Ihrer Tastatur, um die Fahrtrichtung zu steuern, und die Tasten O und P, um die Geschwindigkeit anzupassen.
+Dieses Programm ermöglicht eine First-Person-Ansicht vom PiCar-X!
+Verwenden Sie die WSAD-Tasten der Tastatur, um die Bewegungsrichtung zu steuern, 
+sowie O und P, um die Geschwindigkeit anzupassen.
 
 **Code ausführen**
 
+.. raw:: html
 
-.. note::
-
-    * Für dieses Projekt ist der Zugriff auf den Raspberry Pi-Desktop erforderlich, um die von der Kameramodul erfassten Aufnahmen sehen zu können.
-    * Sie können einen Bildschirm am PiCar-X anschließen oder sich anhand des Tutorials :ref:`remote_desktop` informieren, wie Sie per VNC oder XRDP darauf zugreifen können.
-    * Sobald Sie sich auf dem Raspberry Pi-Desktop befinden, öffnen Sie das Terminal und geben Sie den folgenden Befehl ein, um das Programm zu starten. Alternativ können Sie den Code auch in einem Python-Editor öffnen und ausführen.
-
-
+    <run></run>
 
 .. code-block::
 
-    cd ~/picar-x/example
-    sudo python3 video_car.py
+    cd ~/picar-x/beispiel
+    sudo python3 11.video_auto.py
 
-Nach dem Start des Codes können Sie sehen, was das PiCar-X filmt, und es durch Drücken der folgenden Tasten steuern:
+Sobald der Code läuft, können Sie sehen, was PiCar-X filmt und es steuern, indem Sie die folgenden Tasten drücken.
 
 * O: Geschwindigkeit erhöhen
 * P: Geschwindigkeit verringern
-* W: vorwärts  
+* W: vorwärts
 * S: rückwärts
-* A: nach links abbiegen
-* D: nach rechts abbiegen
+* A: links abbiegen
+* D: rechts abbiegen
 * F: anhalten
 * T: Foto aufnehmen
-* ESC / Ctrl+C: beenden
+* Strg+C: beenden
+
+**Das Bild ansehen**
+
+Nachdem der Code ausgeführt wurde, zeigt das Terminal folgende Aufforderung an:
+
+.. code-block::
+
+    No desktop !
+    * Serving Flask app "vilib.vilib" (lazy loading)
+    * Environment: production
+    WARNING: Do not use the development server in a production environment.
+    Use a production WSGI server instead.
+    * Debug mode: off
+    * Running on http://0.0.0.0:9000/ (Press CTRL+C to quit)
+
+Anschließend können Sie ``http://<Ihre IP>:9000/mjpg`` im Browser eingeben, um das Videosignal zu sehen, z.B.: ``https://192.168.18.113:9000/mjpg``
+
+.. image:: img/display.png
 
 **Code**
-
 
 .. code-block:: python
     
     # #!/usr/bin/env python3
-
-    print('Please run under desktop environment (eg: vnc) to display the image window')
 
     from utils import reset_mcu
     reset_mcu()
@@ -48,28 +62,26 @@ Nach dem Start des Codes können Sie sehen, was das PiCar-X filmt, und es durch 
     import readchar
 
     manual = '''
-    Press key to call the function(non-case sensitive)：
+    Press key to call the function(non-case sensitive):
         O: speed up
         P: speed down
         W: forward  
         S: backward
         A: turn left
-        D：turn right
+        D: turn right
         F: stop
         T: take photo
-        ESC / Ctrl+C: quit
+        Ctrl+C: quit
     '''
-
 
     px = Picarx()
 
     def take_photo():
         _time = strftime('%Y-%m-%d-%H-%M-%S',localtime(time()))
         name = 'photo_%s'%_time
-        path = "~/Pictures/picar-x/"
+        path = f"{user_home}/Pictures/picar-x/"
         Vilib.take_photo(name, path)
         print('\nphoto save as %s%s.jpg'%(path,name))
-
 
     def move(operate:str, speed):
 
@@ -141,7 +153,7 @@ Nach dem Start des Codes können Sie sehen, was das PiCar-X filmt, und es durch 
             elif key == 't':
                 take_photo()
             # quit
-            elif key == readchar.key.CTRL_C or key in readchar.key.ESCAPE_SEQUENCES:
+            elif key == readchar.key.CTRL_C:
                 print('\nquit ...')
                 px.stop()
                 Vilib.camera_close()

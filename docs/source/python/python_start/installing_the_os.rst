@@ -1,102 +1,94 @@
-Betriebssysteminstallation
-==========================
+Betriebssystem Installieren
+==================================
 
 **Benötigte Komponenten**
 
-* Beliebiges Raspberry Pi 
-* 1 x Persönlicher Computer
-* 1 x Micro-SD-Karte
+* Raspberry Pi 4B/Zero 2 W/3B 3B+/2B/Zero W
+* 1 x Personal Computer
+* 1 x Micro SD-Karte
 
-**Schritt 1**
+**Schritte**
 
-Die Entwickler des Raspberry Pi haben ein grafisches SD-Karten-Schreibprogramm entwickelt,
-das unter Mac OS, Ubuntu 18.04 und Windows läuft. Es ist die einfachste Option für die meisten
-Nutzer, da es das Image herunterlädt und automatisch auf die SD-Karte installiert.
 
-Besuche die Download-Seite: https://www.raspberrypi.org/software/. Klicke auf
-den Link für den Raspberry Pi Imager, der zu deinem Betriebssystem passt.
-Wenn der Download abgeschlossen ist, klicke darauf, um das Installationsprogramm zu starten.
+#. Besuchen Sie die Download-Seite der Raspberry Pi-Software: `Raspberry Pi Imager <https://www.raspberrypi.org/software/>`_. Wählen Sie die Imager-Version für Ihr Betriebssystem aus. Nach dem Herunterladen öffnen Sie die Datei, um die Installation zu starten.
 
-.. image:: img/image11.png
-    :align: center
+    .. image:: img/os_install_imager.png
 
-**Schritt 2**
 
-Wenn du das Installationsprogramm startest, versucht dein Betriebssystem möglicherweise,
-die Ausführung zu blockieren. Zum Beispiel erhalte ich unter Windows die folgende
-Meldung:
+#. Nach dem Start des Installationsprogramms zeigt Ihr Betriebssystem möglicherweise eine Sicherheitswarnung an. Beispielsweise könnte Windows eine Warnmeldung anzeigen. Wenn dies der Fall ist, wählen Sie **More info** und dann **Run anyway**. Folgen Sie den Anweisungen auf dem Bildschirm, um den Raspberry Pi Imager zu installieren.
 
-Wenn dies erscheint, klicke auf **Weitere Informationen** und dann auf **Trotzdem ausführen**,
-und folge den Anweisungen, um den Raspberry Pi Imager zu installieren.
+    .. image:: img/os_info.png
 
-.. image:: img/image12.png
-    :align: center
 
-**Schritt 3**
+#. Legen Sie Ihre SD-Karte in den SD-Kartenslot Ihres Computers oder Laptops ein.
 
-Lege deine SD-Karte in den SD-Kartenslot deines Computers oder Laptops ein.
+#. Öffnen Sie die Raspberry Pi Imager-Anwendung entweder durch Klicken auf das Symbol oder durch Ausführen von ``rpi-imager`` in Ihrem Terminal.
 
-**Schritt 4**
+    .. image:: img/os_open_imager.png
 
-Klicke im Raspberry Pi Imager auf **CHOOSE OS** -> **Raspberry Pi OS (Legacy)**.
+#. Klicken Sie auf **CHOOSE DEVICE** und wählen Sie Ihr spezifisches Raspberry Pi-Modell aus der Liste aus (Hinweis: Raspberry Pi 5 ist nicht anwendbar).
 
-.. warning::
-    * Bitte installiere nicht die **Bookworm**-Version, da der Lautsprecher nicht funktionieren wird.
-    * Du musst die Version **Raspberry Pi OS (Legacy)** - **Debian Bullseye** installieren.
+    .. image:: img/os_choose_device.png
 
-.. image:: img/3d33.png
-    :align: center
+#. Wählen Sie **CHOOSE OS** und dann **Raspberry Pi OS (Legacy)**.
 
-**Schritt 5**
+    .. warning::
+        * Bitte installieren Sie nicht die **Bookworm**-Version, da die Lautsprecher nicht funktionieren werden.
+        * Sie müssen die Version **Raspberry Pi OS (Legacy)** - **Debian Bullseye** installieren.
 
-Wähle die SD-Karte aus, die du benutzt.
+    .. image:: img/os_choose_os.png
 
-.. image:: img/image14.png
-    :align: center
 
-**Schritt 6**
+#. Klicken Sie auf **Choose Storage** und wählen Sie das richtige Speichergerät für die Installation aus.
 
-Um die Seite mit den erweiterten Optionen zu öffnen, klicke auf das **Einstellungen** -Symbol
-(erscheint nach der Auswahl des Betriebssystems) oder drücke **Ctrl+Shift+X**.
+    .. note::
 
-Stelle jetzt den Hostnamen ein, aktiviere SSH und setze Benutzername sowie Passwort.
+        Stellen Sie sicher, dass Sie das richtige Gerät auswählen, insbesondere wenn mehrere Speichergeräte angeschlossen sind. Trennen Sie andere Geräte, wenn Sie sich nicht sicher sind.
 
-.. warning::
+    .. image:: img/os_choose_sd.png
 
-    Notiere unbedingt den ``hostname``, ``username`` und das ``password``; sie sind entscheidend für den späteren Fernzugriff auf den Raspberry Pi.
+#. Drücken Sie **NEXT** und wählen Sie **EDIT SETTINGS**, um Ihre Betriebssystemeinstellungen anzupassen.
 
-.. image:: img/image15.png
-    :align: center
+    .. image:: img/os_enter_setting.png
 
-Dann scrolle nach unten, um die WLAN-Konfiguration abzuschließen, und klicke auf **SPEICHERN**.
+#. Legen Sie den **hostname** Ihres Raspberry Pi fest.
 
-.. note::
+    .. note::
 
-    Das **WLAN-Land** sollte den zweibuchstabigen `ISO/IEC Alpha2-Code <https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2#Officially_assigned_code_elements>`_ für das Land, in dem du deinen Raspberry Pi benutzt, entsprechen. Bitte beachte folgenden Link: https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2#Officially_assigned_code_elements.
+        Der Hostname ist der Name, mit dem sich Ihr Raspberry Pi im Netzwerk identifiziert. Sie können sich mit `<hostname>.local` oder `<hostname>.lan` mit Ihrem Pi verbinden.
 
-.. image:: img/image16.png
-    :align: center
+    .. image:: img/os_set_hostname.png
 
-**Schritt 7**
+#. Erstellen Sie einen **Username** und ein **Password** für das Administratorkonto des Raspberry Pi.
 
-Klicke auf die Schaltfläche **SCHREIBEN**.
+    .. note::
 
-.. image:: img/image17.png
-    :align: center
+        Das Festlegen eines einzigartigen Benutzernamens und Passworts ist aus Sicherheitsgründen wichtig, da der Raspberry Pi kein Standardpasswort hat.
 
-**Schritt 8**
+    .. image:: img/os_set_username.png
 
-Wenn sich aktuell Dateien auf deiner SD-Karte befinden, möchtest du vielleicht
-zuerst diese Dateien sichern, um zu verhindern, dass sie dauerhaft verloren gehen.
-Wenn keine Datei gesichert werden muss, klicke auf **Ja**.
+#. Richten Sie das drahtlose LAN ein, indem Sie den **SSID** und das **Password** Ihres Netzwerks eingeben.
 
-.. image:: img/image18.png
-    :align: center
+    .. note::
 
-**Schritt 9**
+        ``Wireless LAN-Land`` sollte auf den zweistelligen `ISO/IEC Alpha2-Code <https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2#Officially_assigned_code_elements>`_ für das Land eingestellt werden, in dem Sie Ihren Raspberry Pi verwenden.
 
-Nach einer gewissen Wartezeit erscheint das folgende Fenster, um die Fertigstellung
-des Schreibvorgangs anzuzeigen.
+    .. image:: img/os_set_wifi.png
 
-.. image:: img/image19.png
-    :align: center
+
+#. Klicken Sie auf **SERVICES** und aktivieren Sie **SSH** für den passwortbasierten Fernzugriff. Denken Sie daran, auf **Save** zu klicken.
+
+    .. image:: img/os_enable_ssh.png
+
+#. Bestätigen Sie Ihre Auswahl, indem Sie auf **Yes** klicken.
+
+    .. image:: img/os_click_yes.png
+
+#. Sichern Sie vorhandene Dateien auf Ihrer SD-Karte, um Datenverlust zu vermeiden. Klicken Sie auf **Yes**, um fortzufahren, wenn keine Sicherung erforderlich ist.
+
+    .. image:: img/os_continue.png
+
+#. Warten Sie, während das Betriebssystem auf die SD-Karte geschrieben wird. Nach Abschluss erscheint ein Bestätigungsfenster.
+
+    .. image:: img/os_finish.png
+        :align: center

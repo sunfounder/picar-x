@@ -1,11 +1,12 @@
 .. _quick_guide_python:
 
-Schnellanleitung zu Python
-==========================
+Schnellstartführer für Python
+=====================================
 
-Dieser Abschnitt erklärt, wie Sie das Raspberry Pi OS installieren, das WLAN für den Raspberry Pi konfigurieren und aus der Ferne auf den Raspberry Pi zugreifen, um den entsprechenden Code auszuführen.
+Dieser Abschnitt lehrt Sie, wie Sie das Raspberry Pi OS installieren, das WLAN für den Raspberry Pi konfigurieren und den Fernzugriff auf den Raspberry Pi einrichten, um den entsprechenden Code auszuführen.
 
-Wenn Sie mit dem Raspberry Pi vertraut sind und die Befehlszeile erfolgreich öffnen können, können Sie die ersten drei Teile überspringen und dann den letzten Teil abschließen.
+Wenn Sie mit dem Raspberry Pi vertraut sind und die Befehlszeile erfolgreich öffnen können, können Sie die ersten 3 Teile überspringen und dann den letzten Teil abschließen.
+
 
 
 .. toctree::
@@ -20,9 +21,10 @@ Wenn Sie mit dem Raspberry Pi vertraut sind und die Befehlszeile erfolgreich öf
     
 **Video**
 
-In unserem Montagevideo von 6:25 bis 8:48 gibt es auch eine ausführliche Anleitung für dieses Kapitel. Sie können den Videoanweisungen direkt folgen.
+In unserem Montagevideo von 6:25 bis 8:48 gibt es auch ein detailliertes Tutorial zu diesem Kapitel. Sie können den Videoanweisungen direkt folgen.
 
 .. raw:: html
 
-   <iframe width="700" height="500" src="https://www.youtube.com/embed/i5FpY3FAcyA?start=385&end=528&si=2WlfchM0ryLU3yi1" title="YouTube-Videoplayer" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+   <iframe width="700" height="500" src="https://www.youtube.com/embed/i5FpY3FAcyA?start=385&end=528&si=2WlfchM0ryLU3yi1" title="YouTube-Video-Player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
 

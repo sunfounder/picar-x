@@ -1,155 +1,280 @@
 .. _py_computer_vision:
 
-Computer Vision
-==========================================
+7. Computervision
+=======================
 
-Mit diesem nächsten Projekt steigen wir offiziell in den Bereich der Computer Vision ein!
-
-Um die nächsten vier Experimente durchzuführen, stellen Sie sicher, dass Sie die :ref:`remote_desktop` Anleitung abgeschlossen haben. Eine Remote-Verbindung via SSH reicht nicht aus, um die Kamerabilder anzuzeigen.
+Dieses Projekt wird offiziell in das Feld der Computervision eintreten!
 
 **Code ausführen**
 
-.. note::
+.. raw:: html
 
-    * Dieses Projekt erfordert Zugang zum Raspberry Pi Desktop, um die Aufnahmen des Kameramoduls zu sehen.
-    * Sie können einen Bildschirm an den PiCar-X anschließen oder die Anleitung :ref:`remote_desktop` befolgen, um via VNC oder XRDP darauf zuzugreifen.
-    * Nachdem Sie den Raspberry Pi Desktop geöffnet haben, öffnen Sie das Terminal und führen Sie den folgenden Befehl aus oder starten Sie ihn direkt über einen Python-Editor.
+    <run></run>
 
 .. code-block::
 
     cd ~/picar-x/example
-    sudo python3 computer_vision.py
+    sudo python3 7.display.py
 
-Nachdem der Code ausgeführt wurde, wird ein Fenster auf Ihrem Desktop geöffnet, in dem die Aufnahme zu sehen ist.
+**Das Bild betrachten**
 
-.. **Code**
+Nachdem der Code ausgeführt wurde, wird im Terminal folgende Aufforderung angezeigt:
 
-.. .. code-block:: python
+.. code-block::
 
-..     import cv2
-..     from picamera.array import PiRGBArray
-..     from picamera import PiCamera
-..     import time
+    No desktop !
+    * Serving Flask app "vilib.vilib" (lazy loading)
+    * Environment: production
+    WARNING: Do not use the development server in a production environment.
+    Use a production WSGI server instead.
+    * Debug mode: off
+    * Running on http://0.0.0.0:9000/ (Press CTRL+C to quit)
 
-..     with PiCamera() as camera:
-..         camera.resolution = (640, 480)  
-..         camera.framerate = 24
-..         rawCapture = PiRGBArray(camera, size=camera.resolution)  
-..         time.sleep(2)
+Dann können Sie ``http://<Ihre IP>:9000/mjpg`` im Browser eingeben, um den Videobildschirm zu betrachten, wie z. B.:  ``https://192.168.18.113:9000/mjpg``
 
-..         for frame in camera.capture_continuous(rawCapture, format="bgr",use_video_port=True):  
-..             img = frame.array
-..             cv2.imshow("video", img)  
-..             rawCapture.truncate(0)  
+.. image:: img/display.png
 
-..             k = cv2.waitKey(1) & 0xFF
-..             if k == 27:
-..                 break
 
-..         print('quit ...')  
-..         cv2.destroyAllWindows()
-..         camera.close()  
+Nachdem das Programm ausgeführt wurde, sehen Sie folgende Informationen am Ende:
 
-.. **Wie funktioniert das?**
 
-.. Fotos werden mit ``PiCamera`` gemacht. Dieses Paket stellt eine rein Python-basierte Schnittstelle zur Raspberry Pi Kamera zur Verfügung.
+* Taste drücken, um die Funktion aufzurufen!
+* q: Foto machen
+* 1: Farberkennung : rot
+* 2: Farberkennung : orange
+* 3: Farberkennung : gelb
+* 4: Farberkennung : grün
+* 5: Farberkennung : blau
+* 6: Farberkennung : lila
+* 0: Farberkennung ausschalten
+* r: QR-Code scannen
+* f: Gesichtserkennung EIN/AUS schalten
+* s: Informationen über erkannte Objekte anzeigen
 
-.. * `PiCamera Dokumentation <https://picamera.readthedocs.io/en/latest/index.html>`_
+Bitte folgen Sie den Aufforderungen, um die entsprechenden Funktionen zu aktivieren.
 
-.. Das Speichern eines Bildes in einer Datei erfordert nur die Angabe des Dateinamens als Ausgabe für die entsprechende ``capture()`` Methode.
+    *  **Foto machen**
 
-.. .. code-block:: python
+        Geben Sie im Terminal ``q`` ein und drücken Sie Enter. Das von der Kamera aktuell gesehene Bild wird gespeichert (wenn die Farberkennungsfunktion eingeschaltet ist, wird auch die Markierungsbox im gespeicherten Bild angezeigt). 
+        Diese Fotos können Sie im Verzeichnis ``/home/{username}/Pictures/`` des Raspberry Pi sehen.
+        Sie können Tools wie :ref:`filezilla` verwenden, um Fotos auf Ihren PC zu übertragen.
+        
 
-..     from time import sleep
-..     from picamera import PiCamera
+    *  **Farberkennung**
 
-..     with PiCamera() as camera:
-..         camera.resolution = (640, 480)
-..         camera.start_preview()
-..         sleep(2)
-..         camera.capture('foo.jpg')
+        Durch Eingabe einer Zahl zwischen ``1~6`` wird eine der Farben „rot, orange, gelb, grün, blau, lila“ erkannt. Geben Sie ``0`` ein, um die Farberkennung auszuschalten.
 
-.. In diesem Projekt wird die Methode zur **Zeitrafferaufnahme** verwendet. Diese Methode ermöglicht es OpenCV, sequenzielle Frames zu erfassen.
+        .. image:: img/DTC2.png
 
-.. .. code-block:: python
+        .. note:: Sie können die :download:`PDF-Farbkarten <https://github.com/sunfounder/sf-pdf/raw/master/prop_card/object_detection/color-cards.pdf>` für die Farberkennung herunterladen und ausdrucken.
 
-..     from time import sleep
-..     from picamera import PiCamera
 
-..     with PiCamera() as camera:
-..         camera.resolution = (640, 480)
-..         camera.start_preview()
-..         sleep(2)    
+    *  **Gesichtserkennung**
 
-..         for filename in camera.capture_continuous('img{counter:03d}.jpg'):
-..             print('Captured %s' % filename)
-..             sleep(10)  
+        Geben Sie ``f`` ein, um die Gesichtserkennung einzuschalten.
 
-.. Um OpenCV-Objekte zu erfassen, wird ein Bild in Pythons im Speicher liegende Stream-Klasse ``BytesIO`` erfasst. BytesIO wird den Stream in ein ``numpy``-Array umwandeln, und das Programm wird das Array mit OpenCV lesen:
+        .. image:: img/DTC5.png
 
-.. * `Was ist Numpy? <https://numpy.org/doc/stable/user/whatisnumpy.html>`_
+    *  **QR-Code-Erkennung**
 
-.. .. code-block:: python
+        Geben Sie ``r`` ein, um die QR-Code-Erkennung zu öffnen. Vor der Erkennung des QR-Codes können keine anderen Operationen durchgeführt werden. Die Dekodierungsinformationen des QR-Codes werden im Terminal gedruckt.
 
-..     import io
-..     import time
-..     import picamera
-..     import cv2
-..     import numpy as np
+        .. image:: img/DTC4.png
 
-..     stream = io.BytesIO()
-..     with picamera.PiCamera() as camera:
-..         camera.start_preview()
-..         time.sleep(2)
-..         camera.capture(stream, format='jpeg')
-..     data = np.fromstring(stream.getvalue(), dtype=np.uint8)
-..     image = cv2.imdecode(data, 1)
-..     image = image[:, :, ::-1]
+    *  **Informationen anzeigen**
 
-.. Um die Verluste bei JPEG-Kodierung und -Dekodierung zu vermeiden, verwenden Sie die Klassen im ``picamera.array`` Modul. Dadurch könnte auch die Bildverarbeitungsgeschwindigkeit erhöht werden.
+        Durch Eingabe von ``s`` werden die Informationen des Gesichtserkennungs- (und Farberkennungs-) Ziels im Terminal gedruckt. Einschließlich der Mittelkoordinaten (X, Y) und Größe (Breite, Höhe) des gemessenen Objekts.
 
-.. Da OpenCV-Bilder einfach ``numpy`` -Arrays sind, die in BGR-Reihenfolge angeordnet sind, wird die Klasse ``PiRGBArray`` verwendet und einfach im ``'bgr'`` -Format erfasst. Hinweis: RGB-Daten und BGR-Daten haben die gleiche Größe und Konfiguration, weisen jedoch umgekehrte Farbebenen auf.
 
-.. * `PiRGBArray <https://picamera.readthedocs.io/en/release-1.13/api_array.html#pirgbarray>`_
+**Code** 
 
-.. .. code-block:: python
+.. code-block:: python
 
-..     import time
-..     import picamera
-..     import picamera.array
-..     import cv2
+    from pydoc import text
+    from vilib import Vilib
+    from time import sleep, time, strftime, localtime
+    import threading
+    import readchar
+    import os
 
-..     with picamera.PiCamera() as camera:
-..         camera.start_preview()
-..         time.sleep(2)
-..         with picamera.array.PiRGBArray(camera) as stream:
-..             camera.capture(stream, format='bgr')
-..             image = stream.array
+    flag_face = False
+    flag_color = False
+    qr_code_flag = False
 
-.. In Kombination mit der Methode zur Zeitrafferaufnahme werden diese 3-dimensionalen RGB-Arrays von OpenCV angezeigt.
+    manual = '''
+    Input key to call the function!
+        q: Take photo
+        1: Color detect : red
+        2: Color detect : orange
+        3: Color detect : yellow
+        4: Color detect : green
+        5: Color detect : blue
+        6: Color detect : purple
+        0: Switch off Color detect
+        r: Scan the QR code
+        f: Switch ON/OFF face detect
+        s: Display detected object information
+    '''
 
-.. .. code-block:: python
+    color_list = ['close', 'red', 'orange', 'yellow',
+            'green', 'blue', 'purple',
+    ]
 
-..     import cv2
-..     from picamera.array import PiRGBArray
-..     from picamera import PiCamera
+    def face_detect(flag):
+        print("Face Detect:" + str(flag))
+        Vilib.face_detect_switch(flag)
 
-..     with PiCamera() as camera:
-..         camera.resolution = (640,480)
-..         camera.framerate = 24
-..         rawCapture = PiRGBArray(camera, size=camera.resolution)  
 
-..         for frame in camera.capture_continuous(rawCapture, format="bgr",use_video_port=True):  
-..             img = frame.array
-..             cv2.imshow("video", img)  
-..             rawCapture.truncate(0)  
+    def qrcode_detect():
+        global qr_code_flag
+        if qr_code_flag == True:
+            Vilib.qrcode_detect_switch(True)
+            print("Waitting for QR code")
 
-..             k = cv2.waitKey(1) & 0xFF
-..             if k == 27:
-..                 camera.close()
-..                 break
+        text = None
+        while True:
+            temp = Vilib.detect_obj_parameter['qr_data']
+            if temp != "None" and temp != text:
+                text = temp
+                print('QR code:%s'%text)
+            if qr_code_flag == False:
+                break
+            sleep(0.5)
+        Vilib.qrcode_detect_switch(False)
 
-.. Es gibt viele weitere Möglichkeiten, Videostreams mit OpenCV zu lesen. Die in diesen Beispielen verwendeten sind besonders gut geeignet für die nächsten vier PiCar-X Aufgaben, wie z.B. :ref:`py_color_detection` und :ref:`py_face_detection`.
 
-.. Für weitere Möglichkeiten zur Verwendung von Videostreams siehe: `OpenCV-Python Tutorials <https://docs.opencv.org/4.0.0/d6/d00/tutorial_py_root.html>`_.
+    def take_photo():
+        _time = strftime('%Y-%m-%d-%H-%M-%S',localtime(time()))
+        name = 'photo_%s'%_time
+        username = os.getlogin()
 
+        path = f"/home/{username}/Pictures/"
+        Vilib.take_photo(name, path)
+        print('photo save as %s%s.jpg'%(path,name))
+
+
+    def object_show():
+        global flag_color, flag_face
+
+        if flag_color is True:
+            if Vilib.detect_obj_parameter['color_n'] == 0:
+                print('Color Detect: None')
+            else:
+                color_coodinate = (Vilib.detect_obj_parameter['color_x'],Vilib.detect_obj_parameter['color_y'])
+                color_size = (Vilib.detect_obj_parameter['color_w'],Vilib.detect_obj_parameter['color_h'])
+                print("[Color Detect] ","Coordinate:",color_coodinate,"Size",color_size)
+
+        if flag_face is True:
+            if Vilib.detect_obj_parameter['human_n'] == 0:
+                print('Face Detect: None')
+            else:
+                human_coodinate = (Vilib.detect_obj_parameter['human_x'],Vilib.detect_obj_parameter['human_y'])
+                human_size = (Vilib.detect_obj_parameter['human_w'],Vilib.detect_obj_parameter['human_h'])
+                print("[Face Detect] ","Coordinate:",human_coodinate,"Size",human_size)
+
+
+    def main():
+        global flag_face, flag_color, qr_code_flag
+        qrcode_thread = None
+
+        Vilib.camera_start(vflip=False,hflip=False)
+        Vilib.display(local=True,web=True)
+        print(manual)
+
+        while True:
+            # readkey
+            key = readchar.readkey()
+            key = key.lower()
+            # take photo
+            if key == 'q':
+                take_photo()
+            # color detect
+            elif key != '' and key in ('0123456'):  # '' in ('0123') -> True
+                index = int(key)
+                if index == 0:
+                    flag_color = False
+                    Vilib.color_detect('close')
+                else:
+                    flag_color = True
+                    Vilib.color_detect(color_list[index]) # color_detect(color:str -> color_name/close)
+                print('Color detect : %s'%color_list[index])
+            # face detection
+            elif key =="f":
+                flag_face = not flag_face
+                face_detect(flag_face)
+            # qrcode detection
+            elif key =="r":
+                qr_code_flag = not qr_code_flag
+                if qr_code_flag == True:
+                    if qrcode_thread == None or not qrcode_thread.is_alive():
+                        qrcode_thread = threading.Thread(target=qrcode_detect)
+                        qrcode_thread.setDaemon(True)
+                        qrcode_thread.start()
+                else:
+                    if qrcode_thread != None and qrcode_thread.is_alive():
+                    # wait for thread to end
+                        qrcode_thread.join()
+                        print('QRcode Detect: close')
+            # show detected object information
+            elif key == "s":
+                object_show()
+
+            sleep(0.5)
+
+
+    if __name__ == "__main__":
+        main()
+
+**Wie funktioniert des?**
+
+Das Erste, worauf Sie hier achten müssen, ist die folgende Funktion. Diese beiden Funktionen ermöglichen es Ihnen, die Kamera zu starten.
+
+.. code-block:: python
+
+    Vilib.camera_start()
+    Vilib.display()
+
+Funktionen, die mit „Objekterkennung“ zusammenhängen:
+
+* ``Vilib.face_detect_switch(True)`` : Gesichtserkennung EIN/AUS schalten
+* ``Vilib.color_detect(color)`` : Für die Farberkennung, es kann nur eine Farberkennung gleichzeitig durchgeführt werden. Die einführbaren Parameter sind: ``"rot"``, ``"orange"``, ``"gelb"``, ``"grün"``, ``"blau"``, ``"lila"``
+* ``Vilib.color_detect_switch(False)`` : Farberkennung ausschalten
+* ``Vilib.qrcode_detect_switch(False)`` : QR-Code-Erkennung EIN/AUS schalten, gibt die dekodierten Daten des QR-Codes zurück.
+* ``Vilib.gesture_detect_switch(False)`` : Gestenerkennung EIN/AUS schalten
+* ``Vilib.traffic_sign_detect_switch(False)`` : Verkehrszeichenerkennung EIN/AUS schalten
+
+Die von dem Ziel erkannten Informationen werden im Wörterbuch ``detect_obj_parameter = Manager().dict()`` gespeichert.
+
+Im Hauptprogramm können Sie es so verwenden:
+
+.. code-block:: python
+
+    Vilib.detect_obj_parameter['color_x']
+
+Die Schlüssel des Wörterbuchs und deren Verwendungen werden in der folgenden Liste gezeigt:
+
+* ``color_x``: der x-Wert der Mittelkoordinate des erkannten Farbblocks, der Bereich ist 0~320
+* ``color_y``: der y-Wert der Mittelkoordinate des erkannten Farbblocks, der Bereich ist 0~240
+* ``color_w``: die Breite des erkannten Farbblocks, der Bereich ist 0~320
+* ``color_h``: die Höhe des erkannten Farbblocks, der Bereich ist 0~240
+* ``color_n``: die Anzahl der erkannten Farbflecken
+* ``human_x``: der x-Wert der Mittelkoordinate des erkannten menschlichen Gesichts, der Bereich ist 0~320
+* ``human_y``: der y-Wert der Mittelkoordinate des erkannten Gesichts, der Bereich ist 0~240
+* ``human_w``: die Breite des erkannten menschlichen Gesichts, der Bereich ist 0~320
+* ``human_h``: die Höhe des erkannten Gesichts, der Bereich ist 0~240
+* ``human_n``: die Anzahl der erkannten Gesichter
+* ``traffic_sign_x``: der Mittelkoordinaten-x-Wert des erkannten Verkehrszeichens, der Bereich ist 0~320
+* ``traffic_sign_y``: der Mittelkoordinaten-y-Wert des erkannten Verkehrszeichens, der Bereich ist 0~240
+* ``traffic_sign_w``: die Breite des erkannten Verkehrszeichens, der Bereich ist 0~320
+* ``traffic_sign_h``: die Höhe des erkannten Verkehrszeichens, der Bereich ist 0~240
+* ``traffic_sign_t``: der Inhalt des erkannten Verkehrszeichens, die Werteliste ist `['stop','right','left','forward']`
+* ``gesture_x``: Der Mittelkoordinaten-x-Wert der erkannten Geste, der Bereich ist 0~320
+* ``gesture_y``: Der Mittelkoordinaten-y-Wert der erkannten Geste, der Bereich ist 0~240
+* ``gesture_w``: Die Breite der erkannten Geste, der Bereich ist 0~320
+* ``gesture_h``: Die Höhe der erkannten Geste, der Bereich ist 0~240
+* ``gesture_t``: Der Inhalt der erkannten Geste, die Werteliste ist `["paper","scissor","rock"]`
+* ``qr_date``: der Inhalt des erkannten QR-Codes
+* ``qr_x``: der Mittelkoordinaten-x-Wert des zu erkennenden QR-Codes, der Bereich ist 0~320
+* ``qr_y``: der Mittelkoordinaten-y-Wert des zu erkennenden QR-Codes, der Bereich ist 0~240
+* ``qr_w``: die Breite des zu erkennenden QR-Codes, der Bereich ist 0~320
+* ``qr_h``: die Höhe des zu erkennenden QR-Codes, der Bereich ist 0~320

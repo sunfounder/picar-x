@@ -1,7 +1,7 @@
-I2C-Schnittstelle aktivieren (Wichtig)
+Aktivierung des I2C-Interface(Wichtig)
 ========================================
 
-Hier verwenden wir die I2C-Schnittstellen des Raspberry Pi, aber standardmäßig sind sie deaktiviert, daher müssen wir sie zuerst aktivieren.
+Hier verwenden wir die I2C-Schnittstellen des Raspberry Pi, standardmäßig sind diese jedoch deaktiviert, daher müssen wir sie zunächst aktivieren.
 
 #. Geben Sie den folgenden Befehl ein:
 
@@ -9,22 +9,26 @@ Hier verwenden wir die I2C-Schnittstellen des Raspberry Pi, aber standardmäßig
 
         <run></run>
 
-    .. code-block::
+    .. code-block:: 
 
         sudo raspi-config
 
-#. Wählen Sie **Interfacing Options** mit der Abwärtspfeiltaste Ihrer Tastatur und drücken Sie dann die **Enter**-Taste.
+#. Wählen Sie **Interfacing Options** durch Drücken der Abwärtspfeiltaste auf Ihrer Tastatur, dann drücken Sie die **Enter**-Taste.
 
     .. image:: img/image282.png
         :align: center
 
-#. Anschließend **I2C**.
+#. Dann **I2C**.
 
     .. image:: img/image283.png
         :align: center
 
-#. Verwenden Sie die Pfeiltasten auf der Tastatur, um **<Yes>** -> **<OK>** auszuwählen und die Einrichtung des I2C abzuschließen.
+#. Verwenden Sie die Pfeiltasten auf der Tastatur, um **<yes>** -> **<OK>** auszuwählen und die Einrichtung des I2C abzuschließen.
 
     .. image:: img/image284.png
         :align: center
 
+#. Nachdem Sie **<Finish>** ausgewählt haben, erscheint ein Pop-up, das Sie daran erinnert, dass Sie neu starten müssen, damit die Einstellungen wirksam werden. Wählen Sie **<yes>**.
+
+    .. image:: img/camera_enable2.png
+        :align: center

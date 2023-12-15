@@ -1,8 +1,8 @@
 .. _install_all_modules:
 
 
-Alle Module installieren  (Wichtig)
-==============================================
+Installiere Alle Module(Wichtig)
+========================================
 
 Stellen Sie sicher, dass Sie mit dem Internet verbunden sind und aktualisieren Sie Ihr System:
 
@@ -17,7 +17,7 @@ Stellen Sie sicher, dass Sie mit dem Internet verbunden sind und aktualisieren S
 
 .. note::
 
-    Python3-bezogene Pakete müssen installiert sein, wenn Sie die Lite-Version des Betriebssystems installieren.
+    Python3-bezogene Pakete müssen installiert werden, wenn Sie die Lite-Version des Betriebssystems installieren.
 
     .. raw:: html
 
@@ -28,7 +28,7 @@ Stellen Sie sicher, dass Sie mit dem Internet verbunden sind und aktualisieren S
         sudo apt install git python3-pip python3-setuptools python3-smbus
 
 
-Installieren Sie das Modul ``robot-hat``.
+Installieren Sie ``robot-hat``.
 
 .. raw:: html
 
@@ -41,7 +41,8 @@ Installieren Sie das Modul ``robot-hat``.
     cd robot-hat
     sudo python3 setup.py install
 
-Laden Sie dann das Modul ``vilib`` herunter und installieren Sie es.
+
+Dann laden Sie das Modul ``vilib`` herunter und installieren Sie es.
 
 .. raw:: html
 
@@ -69,7 +70,7 @@ Laden Sie das Modul ``picar-x`` herunter und installieren Sie es.
 
 Dieser Schritt dauert eine Weile, bitte haben Sie Geduld.
 
-Schließlich müssen Sie das Skript ``i2samp.sh`` ausführen, um die für den i2s-Verstärker erforderlichen Komponenten zu installieren. Andernfalls hat der Picar-X keinen Ton.
+Schließlich müssen Sie das Skript ``i2samp.sh`` ausführen, um die Komponenten zu installieren, die der i2s-Verstärker benötigt, sonst hat der Picar-X keinen Ton.
 
 .. raw:: html
 
@@ -82,15 +83,15 @@ Schließlich müssen Sie das Skript ``i2samp.sh`` ausführen, um die für den i2
 	
 .. image:: img/i2s.png
 
-Geben Sie "y" ein und drücken Sie die Eingabetaste, um das Skript fortzusetzen.
+Geben Sie ``y`` ein und drücken Sie Enter, um das Skript weiter auszuführen.
 
 .. image:: img/i2s2.png
 
-Geben Sie "y" ein und drücken Sie die Eingabetaste, um ``/dev/zero`` im Hintergrund auszuführen.
+Geben Sie ``y`` ein und drücken Sie Enter, um ``/dev/zero`` im Hintergrund laufen zu lassen.
 
 .. image:: img/i2s3.png
 
-Geben Sie "y" ein und drücken Sie die Eingabetaste, um den Picar-X neu zu starten.
+Geben Sie ``y`` ein und drücken Sie Enter, um den Picar-X neu zu starten.
 
 .. note::
-    Wenn nach dem Neustart kein Ton vorhanden ist, müssen Sie das i2samp.sh-Skript möglicherweise mehrmals ausführen.
+    Wenn nach dem Neustart kein Ton vorhanden ist, müssen Sie möglicherweise das i2samp.sh-Skript mehrmals ausführen.
