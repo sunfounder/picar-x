@@ -40,7 +40,7 @@ Let's customize a PiCar-X controller using this app.
     .. code-block::
 
         cd ~/picar-x/example
-        sudo python3 app_control.py
+        sudo python3 13.app_control.py
 
 #. Install `SunFounder Controller <https://docs.sunfounder.com/projects/sf-controller/en/latest/>`_ from **APP Store(iOS)** or **Google Play(Android)**.
 
