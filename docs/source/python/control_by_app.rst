@@ -37,9 +37,9 @@ Lassen Sie uns einen PiCar-X-Controller mit dieser App anpassen.
         <run></run>
 
     .. code-block::
-
-        cd ~/picar-x/beispiel
-        sudo python3 app_steuerung.py
+        
+        cd ~/picar-x/example
+        sudo python3 13.app_control.py
 
 #. Installieren Sie `SunFounder Controller <https://docs.sunfounder.com/projects/sf-controller/en/latest/>`_ aus dem **App Store(iOS)** oder **Google Play(Android)**.
 
