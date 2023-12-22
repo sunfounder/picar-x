@@ -1,7 +1,5 @@
 # #!/usr/bin/env python3
 
-print('Please run under desktop environment (eg: vnc) to display the image window')
-
 from robot_hat.utils import reset_mcu
 from picarx import Picarx
 from vilib import Vilib
