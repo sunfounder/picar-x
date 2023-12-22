@@ -37,27 +37,27 @@ if __name__ == "__main__":
                     px.set_dir_servo_angle(0)
                     px.backward(80)
                 elif 'a' == key:
-                    px.set_dir_servo_angle(-35)
+                    px.set_dir_servo_angle(-30)
                     px.forward(80)
                 elif 'd' == key:
-                    px.set_dir_servo_angle(35)
+                    px.set_dir_servo_angle(30)
                     px.forward(80)
                 elif 'i' == key:
                     tilt_angle+=5
-                    if tilt_angle>35:
-                        tilt_angle=35
+                    if tilt_angle>30:
+                        tilt_angle=30
                 elif 'k' == key:
                     tilt_angle-=5
-                    if tilt_angle<-35:
-                        tilt_angle=-35
+                    if tilt_angle<-30:
+                        tilt_angle=-30
                 elif 'l' == key:
                     pan_angle+=5
-                    if pan_angle>35:
-                        pan_angle=35
+                    if pan_angle>30:
+                        pan_angle=30
                 elif 'j' == key:
                     pan_angle-=5
-                    if pan_angle<-35:
-                        pan_angle=-35                 
+                    if pan_angle<-30:
+                        pan_angle=-30                 
 
                 px.set_cam_tilt_angle(tilt_angle)
                 px.set_cam_pan_angle(pan_angle)      
