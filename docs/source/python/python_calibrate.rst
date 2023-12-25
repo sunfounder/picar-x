@@ -68,7 +68,7 @@ Sie können diese Einstellungen über dieses Programm feinjustieren, um bessere 
     .. code-block::
 
         cd ~/picar-x/example/calibration
-        sudo python3 Grayscale.py
+        sudo python3 grayscale_calibration.py
 
 #. Nachdem Sie den Code ausgeführt haben, wird folgende Oberfläche im Terminal angezeigt.
 
