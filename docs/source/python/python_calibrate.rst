@@ -69,7 +69,7 @@ You can fine-tune these settings through this program to achieve better results.
     .. code-block::
 
         cd ~/picar-x/example/calibration
-        sudo python3 Grayscale.py
+        sudo python3 grayscale_calibration.py
 
 #. After running the code, you will see the following interface displayed in the terminal.
 
