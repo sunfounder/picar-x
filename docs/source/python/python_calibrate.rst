@@ -67,7 +67,7 @@ PiCar-Xの取り付け中やサーボ自体の限界により、サーボの角�
     .. code-block::
 
         cd ~/picar-x/example/calibration
-        sudo python3 Grayscale.py
+        sudo python3 grayscale_calibration.py
 
 #. コードを実行すると、端末に以下のインターフェースが表示されます。
 
