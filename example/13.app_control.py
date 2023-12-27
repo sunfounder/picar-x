@@ -141,24 +141,24 @@ def main():
             pan = min(90, max(-90, Joystick_Q_Val[0]))
             tilt = min(65, max(-35, Joystick_Q_Val[1]))
             px.set_cam_pan_angle(pan)
-            px.set_camera_tilt_angle(tilt)
+            px.set_cam_tilt_angle(tilt)
 
 
 def servos_test():
     px = Picarx()
     px.set_cam_pan_angle(0)
-    px.set_camera_tilt_angle(0)
+    px.set_cam_tilt_angle(0)
     sleep(0.5)
 
     while True:
         for angle in range(0,75):
-            px.set_camera_tilt_angle(angle)
+            px.set_cam_tilt_angle(angle)
             sleep(0.01)
         for angle in range(75,-35,-1):
-            px.set_camera_tilt_angle(angle)
+            px.set_cam_tilt_angle(angle)
             sleep(0.01)        
         for angle in range(-35,0):
-            px.set_camera_tilt_angle(angle)
+            px.set_cam_tilt_angle(angle)
             sleep(0.01)
 
 
