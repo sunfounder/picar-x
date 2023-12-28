@@ -20,8 +20,8 @@ class Picarx(object):
     DEFAULT_LINE_REF = [1000, 1000, 1000]
     DEFAULT_CLIFF_REF = [500, 500, 500]
 
-    DIR_MIN = -35
-    DIR_MAX = 35
+    DIR_MIN = -30
+    DIR_MAX = 30
     CAM_PAN_MIN = -90
     CAM_PAN_MAX = 90
     CAM_TILT_MIN = -35
@@ -100,6 +100,7 @@ class Picarx(object):
         param speed: speed
         type speed: int      
         '''
+        speed = constrain(speed, -100, 100)
         motor -= 1
         if speed >= 0:
             direction = 1 * self.cali_dir_value[motor]
@@ -147,7 +148,7 @@ class Picarx(object):
 
     def set_dir_servo_angle(self, value):
         self.dir_current_angle = constrain(value, self.DIR_MIN, self.DIR_MAX)
-        angle_value  = value + self.dir_cali_val
+        angle_value  = self.dir_current_angle + self.dir_cali_val
         self.dir_servo_pin.angle(angle_value)
 
     def cam_pan_servo_calibrate(self, value):
@@ -170,14 +171,14 @@ class Picarx(object):
 
     def set_power(self, speed):
         self.set_motor_speed(1, speed)
-        self.set_motor_speed(2, speed) 
+        self.set_motor_speed(2, speed)
 
     def backward(self, speed):
         current_angle = self.dir_current_angle
         if current_angle != 0:
             abs_current_angle = abs(current_angle)
-            if abs_current_angle > 40:
-                abs_current_angle = 40
+            if abs_current_angle > self.DIR_MAX:
+                abs_current_angle = self.DIR_MAX
             power_scale = (100 - abs_current_angle) / 100.0 
             if (current_angle / abs_current_angle) > 0:
                 self.set_motor_speed(1, -1*speed)
@@ -193,8 +194,8 @@ class Picarx(object):
         current_angle = self.dir_current_angle
         if current_angle != 0:
             abs_current_angle = abs(current_angle)
-            if abs_current_angle > 40:
-                abs_current_angle = 40
+            if abs_current_angle > self.DIR_MAX:
+                abs_current_angle = self.DIR_MAX
             power_scale = (100 - abs_current_angle) / 100.0
             if (current_angle / abs_current_angle) > 0:
                 self.set_motor_speed(1, 1*speed * power_scale)
@@ -207,8 +208,13 @@ class Picarx(object):
             self.set_motor_speed(2, -1*speed)                  
 
     def stop(self):
-        self.set_motor_speed(1, 0)
-        self.set_motor_speed(2, 0)
+        '''
+        Execute twice to make sure it stops
+        '''
+        for _ in range(2):
+            self.motor_speed_pins[0].pulse_width_percent(0)
+            self.motor_speed_pins[1].pulse_width_percent(0)
+            time.sleep(0.002)
 
     def get_distance(self):
         return self.ultrasonic.read()
