@@ -17,10 +17,18 @@ sc.start()
 
 # init picarx
 px = Picarx()
-speed = 50
-line_following_speed = 20
-line_following_angle_offset = 20
-avoid_obstacles_speed = 30
+speed = 0
+
+current_line_state = None
+last_line_state = "stop"
+LINE_TRACK_SPEED = 10
+LINE_TRACK_ANGLE_OFFSET = 20
+
+AVOID_OBSTACLES_SPEED = 40
+SafeDistance = 40   # > 40 safe
+DangerDistance = 20 # > 20 && < 40 turn around, < 20 backward
+
+DETECT_COLOR = 'red' # red, green, blue, yellow , orange, purple
 
 # init music player
 music = Music()
@@ -31,97 +39,150 @@ def horn():
     _status, _result = utils.run_command('sudo killall pulseaudio')
     music.sound_play_threading('./sounds/car-double-horn.wav')
 
-
 def avoid_obstacles():
-    px.forward(avoid_obstacles_speed)
     distance = px.get_distance()
-    if distance > 0 and distance < 300:
-        if distance < 25:
-            px.set_dir_servo_angle(-35)
-        else:
-            px.set_dir_servo_angle(0)   
-
-
-def line_following():
-    gm_val_list = px.get_grayscale_data()
-    gm_status = px.get_line_status(gm_val_list)
-    if gm_status == 'forward':
-        px.forward(line_following_speed) 
-    elif gm_status == 'left':
-        px.set_dir_servo_angle(line_following_angle_offset)
-        px.forward(line_following_speed) 
-    elif gm_status == 'right':
-        px.set_dir_servo_angle(-line_following_angle_offset)
-        px.forward(line_following_speed) 
-    else:
+    if distance >= SafeDistance:
         px.set_dir_servo_angle(0)
-        px.stop()
+        px.forward(AVOID_OBSTACLES_SPEED)
+    elif distance >= DangerDistance:
+        px.set_dir_servo_angle(30)
+        px.forward(AVOID_OBSTACLES_SPEED)
+        sleep(0.1)
+    else:
+        px.set_dir_servo_angle(-30)
+        px.backward(AVOID_OBSTACLES_SPEED)
+        sleep(0.5) 
 
+def get_status(val_list):
+    _state = px.get_line_status(val_list)  # [bool, bool, bool], 0 means line, 1 means background
+    if _state == [0, 0, 0]:
+        return 'stop'
+    elif _state[1] == 1:
+        return 'forward'
+    elif _state[0] == 1:
+        return 'right'
+    elif _state[2] == 1:
+        return 'left'
 
+def outHandle():
+    global last_line_state, current_line_state
+    if last_line_state == 'left':
+        px.set_dir_servo_angle(-30)
+        px.backward(10)
+    elif last_line_state == 'right':
+        px.set_dir_servo_angle(30)
+        px.backward(10)
+    while True:
+        gm_val_list = px.get_grayscale_data()
+        gm_state = get_status(gm_val_list)
+        currentSta = gm_state
+        if currentSta != last_line_state:
+            break
+    sleep(0.001)
+
+def line_track():
+    global last_line_state
+    gm_val_list = px.get_grayscale_data()
+    gm_state = get_status(gm_val_list)
+
+    if gm_state != "stop":
+        last_line_state = gm_state
+
+    if gm_state == 'forward':
+        px.set_dir_servo_angle(0)
+        px.forward(LINE_TRACK_SPEED) 
+    elif gm_state == 'left':
+        px.set_dir_servo_angle(LINE_TRACK_ANGLE_OFFSET)
+        px.forward(LINE_TRACK_SPEED) 
+    elif gm_state == 'right':
+        px.set_dir_servo_angle(-LINE_TRACK_ANGLE_OFFSET)
+        px.forward(LINE_TRACK_SPEED) 
+    else:
+        outHandle()
 
 def main():
     global speed
 
     ip = utils.get_ip()
     print('ip : %s'%ip)
+    sc.set('video','http://'+ip+':9000/mjpg')
 
     Vilib.camera_start(vflip=False,hflip=False)
     Vilib.display(local=False, web=True)
     speak = None
     while True:
-        # sleep(0.2)
-
-        # send data 
-        sc.set('video','http://'+ip+':9000/mjpg')
+        # --- send data ---
         sc.set("A", speed)
 
         grayscale_data = px.get_grayscale_data()
-        # print(px.get_grayscale_data())
         sc.set("D", grayscale_data )
-        
 
         distance = px.get_distance()
-        # sc.set("L", [0,distance])
         sc.set("F", distance)
 
-        # if sc.get('J') == True:
+        # --- control ---
+
+        # # horn
+        # if sc.get('M') == True:
         #     horn()
 
-        # print(sc.get('J'), type(sc.get('J')), speak)
+        # speaker
         if sc.get('J') != None:
             speak=sc.get('J')
-        if speak == "forward":
+            print(f'speaker: {speak}')
+        if speak in ["forward"]:
             px.forward(speed)
-        elif speak == "backward":
+        elif speak in ["backward"]:
             px.backward(speed)
-        elif speak == "left":
-            px.left(speed)
-        elif speak == "right":
-            px.right(speed)
-        else:
+        elif speak in ["left"]:
+            px.set_dir_servo_angle(-30)
+            px.forward(60)
+            sleep(1.2)
+            px.set_dir_servo_angle(0)
+            px.forward(speed)
+        elif speak in ["right", "white", "rice"]:
+            px.set_dir_servo_angle(30)
+            px.forward(60)
+            sleep(1.2)
+            px.set_dir_servo_angle(0)
+            px.forward(speed)
+        elif speak in ["stop"]:
             px.stop()
-            
-        Joystick_K_Val = sc.get('K')
-        if Joystick_K_Val != None:
-            dir_angle = utils.mapping(Joystick_K_Val[0], -100, 100, -45, 45)
-            speed = Joystick_K_Val[1]
-            px.set_dir_servo_angle(dir_angle)
-            if speed > 0:
-                px.forward(speed)
-            elif speed < 0:
-                speed = -speed
-                px.backward(speed)
-            else:
-                px.stop()
 
-        if sc.get('I') == True:
-            line_following()
-        elif sc.get('E') == True:
+        # line_track and avoid_obstacles
+        line_track_switch = sc.get('I')
+        avoid_obstacles_switch = sc.get('E')
+        if line_track_switch == True:
+            line_track()
+        elif avoid_obstacles_switch == True:
             avoid_obstacles()
+    
+        # joystick moving
+        if line_track_switch != True and avoid_obstacles_switch != True:
+            Joystick_K_Val = sc.get('K')
+            if Joystick_K_Val != None:
+                dir_angle = utils.mapping(Joystick_K_Val[0], -100, 100, -30, 30)
+                speed = Joystick_K_Val[1]
+                px.set_dir_servo_angle(dir_angle)
+                if speed > 0:
+                    px.forward(speed)
+                elif speed < 0:
+                    speed = -speed
+                    px.backward(speed)
+                else:
+                    px.stop()
 
+        # camera servos control
+        Joystick_Q_Val = sc.get('Q')
+        if Joystick_Q_Val != None:
+            pan = min(90, max(-90, Joystick_Q_Val[0]))
+            tilt = min(65, max(-35, Joystick_Q_Val[1]))
+            px.set_cam_pan_angle(pan)
+            px.set_cam_tilt_angle(tilt)
 
+        # image recognition
         if sc.get('N') == True:
-            Vilib.color_detect("red")
+            Vilib.color_detect(DETECT_COLOR)
         else:
             Vilib.color_detect_switch(False)
 
@@ -135,38 +196,15 @@ def main():
         else:
             Vilib.object_detect_switch(False)
 
-        
-        Joystick_Q_Val = sc.get('Q')
-        if Joystick_Q_Val != None:
-            pan = min(90, max(-90, Joystick_Q_Val[0]))
-            tilt = min(65, max(-35, Joystick_Q_Val[1]))
-            px.set_cam_pan_angle(pan)
-            px.set_cam_tilt_angle(tilt)
-
-
-def servos_test():
-    px = Picarx()
-    px.set_cam_pan_angle(0)
-    px.set_cam_tilt_angle(0)
-    sleep(0.5)
-
-    while True:
-        for angle in range(0,75):
-            px.set_cam_tilt_angle(angle)
-            sleep(0.01)
-        for angle in range(75,-35,-1):
-            px.set_cam_tilt_angle(angle)
-            sleep(0.01)        
-        for angle in range(-35,0):
-            px.set_cam_tilt_angle(angle)
-            sleep(0.01)
-
 
 if __name__ == "__main__":
     try:
         main()
     finally:
+        print("stop and exit")
         px.stop()
-    # servos_test()
+        Vilib.camera_close()
+
+
 
 
