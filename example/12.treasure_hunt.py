@@ -54,10 +54,10 @@ def car_move(key):
         px.set_dir_servo_angle(0)
         px.backward(80)
     elif 'a' == key:
-        px.set_dir_servo_angle(-35)
+        px.set_dir_servo_angle(-30)
         px.forward(80)
     elif 'd' == key:
-        px.set_dir_servo_angle(35)
+        px.set_dir_servo_angle(30)
         px.forward(80)
 
 
