@@ -12,7 +12,7 @@ Press keys on keyboard to control PiCar-X!
     k: Head down
     j: Turn head left
     l: Turn head right
-    ctrl+c: Quit
+    ctrl+c: Press twice to exit the program
 '''
 
 def show_info():
