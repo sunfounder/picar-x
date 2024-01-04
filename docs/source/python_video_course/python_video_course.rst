@@ -28,7 +28,10 @@ Following the setup, the course dives into twelve project-based videos. These vi
     video_3_tts
     video_4_ir_avoid
     video_5_line_tracking
+    video_6_cliff
     video_7_computer_vision
     video_8_stares_at_you
+    video_9_record_video
     video_10_bullfight
     video_11_video_car
+    video_12_treasure_hunting

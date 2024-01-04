@@ -35,12 +35,33 @@ After running the code, PiCar-X will move forward along a line.
     from time import sleep
 
     px = Picarx()
-    # manual modify reference value
-    px.set_line_reference([500, 600, 600])
+    # px = Picarx(grayscale_pins=['A0', 'A1', 'A2'])
+
+    # Please run ./calibration/grayscale_calibration.py to Auto calibrate grayscale values
+    # or manual modify reference value by follow code
+    # px.set_line_reference([1400, 1400, 1400])
 
     current_state = None
     px_power = 10
     offset = 20
+    last_state = "stop"
+
+    def outHandle():
+        global last_state, current_state
+        if last_state == 'left':
+            px.set_dir_servo_angle(-30)
+            px.backward(10)
+        elif last_state == 'right':
+            px.set_dir_servo_angle(30)
+            px.backward(10)
+        while True:
+            gm_val_list = px.get_grayscale_data()
+            gm_state = get_status(gm_val_list)
+            print("outHandle gm_val_list: %s, %s"%(gm_val_list, gm_state))
+            currentSta = gm_state
+            if currentSta != last_state:
+                break
+        sleep(0.001)
 
     def get_status(val_list):
         _state = px.get_line_status(val_list)  # [bool, bool, bool], 0 means line, 1 means background
@@ -60,9 +81,10 @@ After running the code, PiCar-X will move forward along a line.
                 gm_state = get_status(gm_val_list)
                 print("gm_val_list: %s, %s"%(gm_val_list, gm_state))
 
-                if gm_state == "stop":
-                    px.stop()
-                elif gm_state == 'forward':
+                if gm_state != "stop":
+                    last_state = gm_state
+
+                if gm_state == 'forward':
                     px.set_dir_servo_angle(0)
                     px.forward(px_power) 
                 elif gm_state == 'left':
@@ -71,33 +93,125 @@ After running the code, PiCar-X will move forward along a line.
                 elif gm_state == 'right':
                     px.set_dir_servo_angle(-offset)
                     px.forward(px_power) 
+                else:
+                    outHandle()
         finally:
             px.stop()
             print("stop and exit")
             sleep(0.1)
-
-
-                
+       
 
 **How it works?** 
 
-The grayscale sensor module ``grayscale_module`` is also imported in the picarx module, and we can use some of these methods to detect black lines.
+This Python script controls a Picarx robot car using grayscale sensors for navigation. Here's a breakdown of its main components:
 
-The function to detect the black line looks like this:
+* Import and Initialization:
 
-* ``get_grayscale_data()``: This method directly outputs the readings of the three sensors, from right to left. The brighter the area, the larger the value obtained.
+    The script imports the Picarx class for controlling the robot car and the sleep function from the time module for adding delays.
 
-* ``get_line_status(gm_val_list)``: This method compares the readings from the three probes and outputs an array of three Boolean values. A value of 1 means black is detected, and a value of 0 means white.
+    An instance of Picarx is created, and there's a commented line showing an alternative initialization with specific grayscale sensor pins.
 
-* ``get_status(val_list)``: This function will generate an action based on the boolean values detected by the three probes. There are four types of actions: forward , left , right , and stop.
+    .. code-block:: python
+        
+        from picarx import Picarx
+        from time import sleep
 
-The trigger conditions for these actions are as follows: 
-A value is assigned by default in the module as the threshold for detecting black or white.
-When the detection values of the three probes are all greater than the threshold,
-it means that the probes are sensing the color white, and no black line is detected, 
-which makes the ``get_status()`` to generate a return value of ``stop``.
+        px = Picarx()
 
-* If the right (and the first) probe detects a black line, ``right`` is returned; 
-* If the middle probe detects a black line, return ``forward``; 
-* If the left probe detects a black line, ``left`` is returned;
-* If no probe detects a black line, return ``stop``.
+* Configuration and Global Variables:
+
+    ``current_state``, ``px_power``, ``offset``, and ``last_state`` are global variables used to track and control the car's movement. ``px_power`` sets the motor power, and ``offset`` is used for adjusting the steering angle.
+
+    .. code-block:: python
+
+        current_state = None
+        px_power = 10
+        offset = 20
+        last_state = "stop"
+
+* ``outHandle`` Function:
+
+    This function is called when the car needs to handle an 'out of line' scenario.
+
+    It adjusts the car's direction based on ``last_state`` and checks the grayscale sensor values to determine the new state.
+
+    .. code-block:: python
+
+        def outHandle():
+            global last_state, current_state
+            if last_state == 'left':
+                px.set_dir_servo_angle(-30)
+                px.backward(10)
+            elif last_state == 'right':
+                px.set_dir_servo_angle(30)
+                px.backward(10)
+            while True:
+                gm_val_list = px.get_grayscale_data()
+                gm_state = get_status(gm_val_list)
+                print("outHandle gm_val_list: %s, %s"%(gm_val_list, gm_state))
+                currentSta = gm_state
+                if currentSta != last_state:
+                    break
+            sleep(0.001)
+
+* ``get_status`` Function:
+
+    It interprets the grayscale sensor data (``val_list``) to determine the car's navigation state.
+
+    The car's state can be 'forward', 'left', 'right', or 'stop', based on which sensor detects the line.
+
+    .. code-block:: python
+        
+        def get_status(val_list):
+            _state = px.get_line_status(val_list)  # [bool, bool, bool], 0 means line, 1 means background
+            if _state == [0, 0, 0]:
+                return 'stop'
+            elif _state[1] == 1:
+                return 'forward'
+            elif _state[0] == 1:
+                return 'right'
+            elif _state[2] == 1:
+                return 'left'
+
+* Main Loop:
+
+    The ``while True`` loop continuously checks the grayscale data and adjusts the car's movement accordingly.
+
+    Depending on the ``gm_state``, it sets the steering angle and movement direction.
+
+    .. code-block:: python
+
+        if __name__=='__main__':
+            try:
+                while True:
+                    gm_val_list = px.get_grayscale_data()
+                    gm_state = get_status(gm_val_list)
+                    print("gm_val_list: %s, %s"%(gm_val_list, gm_state))
+
+                    if gm_state != "stop":
+                        last_state = gm_state
+
+                    if gm_state == 'forward':
+                        px.set_dir_servo_angle(0)
+                        px.forward(px_power) 
+                    elif gm_state == 'left':
+                        px.set_dir_servo_angle(offset)
+                        px.forward(px_power) 
+                    elif gm_state == 'right':
+                        px.set_dir_servo_angle(-offset)
+                        px.forward(px_power) 
+                    else:
+                        outHandle()
+
+* Safety and Cleanup:
+
+    The ``try...finally`` block ensures the car stops when the script is interrupted or finished.
+
+    .. code-block:: python
+        
+        finally:
+        px.stop()
+        print("stop and exit")
+        sleep(0.1)
+
+In summary, the script uses grayscale sensors to navigate the Picarx robot car. It continuously reads the sensor data to determine the direction and adjusts the car's movement and steering accordingly. The outHandle function provides additional logic for situations where the car needs to adjust its path significantly.

@@ -53,17 +53,24 @@ Then you can enter ``http://<your IP>:9000/mjpg`` in the browser to view the vid
 
 .. code-block:: python
     
-    # #!/usr/bin/env python3
+    #!/usr/bin/env python3
 
-    from utils import reset_mcu
-    reset_mcu()
+    from robot_hat.utils import reset_mcu
     from picarx import Picarx
     from vilib import Vilib
     from time import sleep, time, strftime, localtime
     import readchar
 
+    import os
+    user = os.getlogin()
+    user_home = os.path.expanduser(f'~{user}')
+
+    reset_mcu()
+    sleep(0.2)
+
     manual = '''
     Press key to call the function(non-case sensitive):
+
         O: speed up
         P: speed down
         W: forward  
@@ -72,8 +79,10 @@ Then you can enter ``http://<your IP>:9000/mjpg`` in the browser to view the vid
         D: turn right
         F: stop
         T: take photo
+
         Ctrl+C: quit
     '''
+
 
     px = Picarx()
 
@@ -83,6 +92,7 @@ Then you can enter ``http://<your IP>:9000/mjpg`` in the browser to view the vid
         path = f"{user_home}/Pictures/picar-x/"
         Vilib.take_photo(name, path)
         print('\nphoto save as %s%s.jpg'%(path,name))
+
 
     def move(operate:str, speed):
 
@@ -166,7 +176,7 @@ Then you can enter ``http://<your IP>:9000/mjpg`` in the browser to view the vid
     if __name__ == "__main__":
         try:
             main()
-        except Exception as e:
+        except Exception as e:    
             print("error:%s"%e)
         finally:
             px.stop()
