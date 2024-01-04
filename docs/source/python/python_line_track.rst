@@ -35,12 +35,33 @@ Nachdem der Code ausgeführt wurde, wird PiCar-X entlang einer Linie vorwärtsfa
     from time import sleep
 
     px = Picarx()
-    # manual modify reference value
-    px.set_line_reference([500, 600, 600])
+    # px = Picarx(grayscale_pins=['A0', 'A1', 'A2'])
+
+    # Please run ./calibration/grayscale_calibration.py to Auto calibrate grayscale values
+    # or manual modify reference value by follow code
+    # px.set_line_reference([1400, 1400, 1400])
 
     current_state = None
     px_power = 10
     offset = 20
+    last_state = "stop"
+
+    def outHandle():
+        global last_state, current_state
+        if last_state == 'left':
+            px.set_dir_servo_angle(-30)
+            px.backward(10)
+        elif last_state == 'right':
+            px.set_dir_servo_angle(30)
+            px.backward(10)
+        while True:
+            gm_val_list = px.get_grayscale_data()
+            gm_state = get_status(gm_val_list)
+            print("outHandle gm_val_list: %s, %s"%(gm_val_list, gm_state))
+            currentSta = gm_state
+            if currentSta != last_state:
+                break
+        sleep(0.001)
 
     def get_status(val_list):
         _state = px.get_line_status(val_list)  # [bool, bool, bool], 0 means line, 1 means background
@@ -60,9 +81,10 @@ Nachdem der Code ausgeführt wurde, wird PiCar-X entlang einer Linie vorwärtsfa
                 gm_state = get_status(gm_val_list)
                 print("gm_val_list: %s, %s"%(gm_val_list, gm_state))
 
-                if gm_state == "stop":
-                    px.stop()
-                elif gm_state == 'forward':
+                if gm_state != "stop":
+                    last_state = gm_state
+
+                if gm_state == 'forward':
                     px.set_dir_servo_angle(0)
                     px.forward(px_power) 
                 elif gm_state == 'left':
@@ -71,6 +93,8 @@ Nachdem der Code ausgeführt wurde, wird PiCar-X entlang einer Linie vorwärtsfa
                 elif gm_state == 'right':
                     px.set_dir_servo_angle(-offset)
                     px.forward(px_power) 
+                else:
+                    outHandle()
         finally:
             px.stop()
             print("stop and exit")
@@ -81,23 +105,115 @@ Nachdem der Code ausgeführt wurde, wird PiCar-X entlang einer Linie vorwärtsfa
 
 **Wie funktioniert des?** 
 
-Das Graustufensensormodul ``grayscale_module`` wird ebenfalls im picarx-Modul importiert, und wir können einige dieser Methoden verwenden, um schwarze Linien zu erkennen.
+Dieses Python-Skript steuert ein Picarx-Roboterauto mithilfe von Graustufensensoren zur Navigation. Hier ist eine Zusammenfassung seiner Hauptkomponenten:
 
-Die Funktion zur Erkennung der schwarzen Linie sieht so aus:
+* Import und Initialisierung:
 
-* ``get_grayscale_data()``: Diese Methode gibt direkt die Messwerte der drei Sensoren von rechts nach links aus. Je heller die Fläche, desto größer der erhaltene Wert.
+    Das Skript importiert die Picarx-Klasse zur Steuerung des Roboterwagens und die Sleep-Funktion aus dem Time-Modul, um Verzögerungen hinzuzufügen.
 
-* ``get_line_status(gm_val_list)``: Diese Methode vergleicht die Messwerte der drei Sensoren und gibt ein Array mit drei booleschen Werten aus. Ein Wert von 1 bedeutet, dass Schwarz erkannt wurde, und ein Wert von 0 bedeutet Weiß.
+    Eine Instanz von Picarx wird erstellt, und es gibt eine auskommentierte Zeile, die eine alternative Initialisierung mit spezifischen Graustufensensor-Pins zeigt.
 
-* ``get_status(val_list)``: Diese Funktion generiert eine Aktion basierend auf den von den drei Sensoren erkannten booleschen Werten. Es gibt vier Arten von Aktionen: vorwärts, links, rechts und stoppen.
+    .. code-block:: python
+        
+        from picarx import Picarx
+        from time import sleep
 
-Die Auslösebedingungen für diese Aktionen sind wie folgt:
-Ein Wert wird standardmäßig im Modul als Schwellenwert zur Erkennung von Schwarz oder Weiß zugewiesen.
-Wenn die Erkennungswerte der drei Sensoren alle größer als der Schwellenwert sind,
-bedeutet das, dass die Sensoren die Farbe Weiß wahrnehmen und keine schwarze Linie erkannt wird,
-was dazu führt, dass ``get_status()`` einen Rückgabewert von ``stop`` generiert.
+        px = Picarx()
 
-* Wenn der rechte (und erste) Sensor eine schwarze Linie erkennt, wird ``right`` zurückgegeben; 
-* Wenn der mittlere Sensor eine schwarze Linie erkennt, wird ``forward`` zurückgegeben; 
-* Wenn der linke Sensor eine schwarze Linie erkennt, wird ``left`` zurückgegeben;
-* Wenn kein Sensor eine schwarze Linie erkennt, wird ``stop`` zurückgegeben.
+* Konfiguration und Globale Variablen:
+
+    ``current_state``, ``px_power``, ``offset`` und ``last_state`` sind globale Variablen, die verwendet werden, um die Bewegung des Autos zu verfolgen und zu steuern. ``px_power`` setzt die Motorleistung, und ``offset`` wird zur Einstellung des Lenkwinkels verwendet.
+
+    .. code-block:: python
+
+        current_state = None
+        px_power = 10
+        offset = 20
+        last_state = "stop"
+
+* ``outHandle`` Funktion:
+
+    Diese Funktion wird aufgerufen, wenn das Auto ein 'Aus-der-Linie'-Szenario behandeln muss.
+
+    Sie passt die Fahrtrichtung basierend auf ``last_state`` an und überprüft die Graustufensensorwerte, um den neuen Zustand zu bestimmen.
+
+    .. code-block:: python
+
+        def outHandle():
+            global last_state, current_state
+            if last_state == 'left':
+                px.set_dir_servo_angle(-30)
+                px.backward(10)
+            elif last_state == 'right':
+                px.set_dir_servo_angle(30)
+                px.backward(10)
+            while True:
+                gm_val_list = px.get_grayscale_data()
+                gm_state = get_status(gm_val_list)
+                print("outHandle gm_val_list: %s, %s"%(gm_val_list, gm_state))
+                currentSta = gm_state
+                if currentSta != last_state:
+                    break
+            sleep(0.001)
+
+* ``get_status`` Funktion:
+
+    Sie interpretiert die Graustufensensordaten (``val_list``), um den Navigationszustand des Autos zu bestimmen.
+
+    Der Zustand des Autos kann ``vorwärts``, ``links``, ``rechts`` oder ``stop`` sein, je nachdem, welcher Sensor die Linie erkennt.
+
+    .. code-block:: python
+        
+        def get_status(val_list):
+            _state = px.get_line_status(val_list)  # [bool, bool, bool], 0 bedeutet Linie, 1 bedeutet Hintergrund
+            if _state == [0, 0, 0]:
+                return 'stop'
+            elif _state[1] == 1:
+                return 'vorwärts'
+            elif _state[0] == 1:
+                return 'rechts'
+            elif _state[2] == 1:
+                return 'links'
+
+* Hauptschleife:
+
+    Die ``while True``-Schleife überprüft kontinuierlich die Graustufendaten und passt die Bewegung des Autos entsprechend an.
+
+    Abhängig vom ``gm_state`` wird der Lenkwinkel und die Bewegungsrichtung eingestellt.
+
+    .. code-block:: python
+
+        if __name__=='__main__':
+            try:
+                while True:
+                    gm_val_list = px.get_grayscale_data()
+                    gm_state = get_status(gm_val_list)
+                    print("gm_val_list: %s, %s"%(gm_val_list, gm_state))
+
+                    if gm_state != "stop":
+                        last_state = gm_state
+
+                    if gm_state == 'vorwärts':
+                        px.set_dir_servo_angle(0)
+                        px.forward(px_power) 
+                    elif gm_state == 'links':
+                        px.set_dir_servo_angle(offset)
+                        px.forward(px_power) 
+                    elif gm_state == 'rechts':
+                        px.set_dir_servo_angle(-offset)
+                        px.forward(px_power) 
+                    else:
+                        outHandle()
+
+* Sicherheit und Aufräumen:
+
+    Der ``try...finally``-Block stellt sicher, dass das Auto stoppt, wenn das Skript unterbrochen oder beendet wird.
+
+    .. code-block:: python
+        
+        finally:
+            px.stop()
+            print("stop and exit")
+            sleep(0.1)
+
+Zusammenfassend verwendet das Skript Graustufensensoren zur Navigation des Picarx-Roboterwagens. Es liest kontinuierlich die Sensordaten, um die Richtung zu bestimmen und passt die Bewegung und Lenkung des Autos entsprechend an. Die outHandle-Funktion bietet zusätzliche Logik für Situationen, in denen das Auto seinen Weg deutlich anpassen muss.

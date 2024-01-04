@@ -49,37 +49,9 @@ Lassen Sie uns einen PiCar-X-Controller mit dieser App anpassen.
 
     .. image:: img/app1.PNG
 
-    Geben Sie ihm einen Namen und wählen Sie den Controllertyp. Im Bereich Voreinstellungen gibt es voreingestellte Controller für einige Produkte, die Sie bei Bedarf verwenden können. Sie können auch Ihren eigenen Controller anpassen, indem Sie die folgenden Schritte befolgen.
-
-    .. image:: img/app2.PNG
-
-#. Fügen Sie verschiedene Widgets zu diesem Controller hinzu.
-
-    Sie können unterschiedliche Typen und Formen von Widgets zu den 17 kleinen Bereichen **A-Q** in diesem Controller hinzufügen.
-
-    .. image:: img/app3.PNG
-
-    Im Bereich **A** fügen Sie ein **Speedometer**-Widget hinzu, um die Geschwindigkeit des Autos anzuzeigen.
-
-    .. image:: img/app4.PNG
+    Im Abschnitt 'Voreinstellungen' gibt es voreingestellte Controller für einige Produkte, die Sie bei Bedarf verwenden können. Hier wählen wir PiCar-X aus.
     
-    .. note::
-    
-        Sie können das ausgewählte Widget löschen, indem Sie darauf klicken, nach links wischen, um den **Delete**-Button zu finden, und darauf klicken.
-
-        .. image:: img/app5.PNG
-
-    Legen Sie den Namen, die maximalen und minimalen Werte sowie die Einheiten fest, indem Sie auf das **Settings**-Symbol in der oberen rechten Ecke klicken.
-
-    .. image:: img/app6.PNG
-
-    Stellen Sie die Werte ``Linien_Ref`` und ``Klippen_Ref`` für das **Grayscale Detection**-Widget im Bereich **D** entsprechend Ihrer aktuellen Umgebung ein.
-
-    .. image:: img/app7.PNG
-
-    Fügen Sie zuletzt die verbleibenden Widgets hinzu und klicken Sie auf den Button oben rechts, um zu speichern.
-
-    .. image:: img/app8.PNG
+    .. image:: img/app_control_preset.jpg
 
 #. Verbinden Sie sich mit PiCar-x.
 
@@ -107,7 +79,6 @@ Lassen Sie uns einen PiCar-X-Controller mit dieser App anpassen.
     Hier sind die Funktionen der Widgets.
 
     * **A**: Zeigt die aktuelle Geschwindigkeit des Autos an.
-    * **D**: Zeigt die Daten der drei Sensoren auf dem Graustufenmodul an, die drei Zustände haben: **black block**: schwarze Linie erkannt; **white**: Weiß erkannt; **exclamation point**: Klippe erkannt.
     * **E**: Schaltet die Hindernisvermeidungsfunktion ein.
     * **I**: Schaltet die Linienverfolgungsfunktion ein.
     * **J**: Spracherkennung, halten Sie dieses Widget gedrückt, um zu sprechen, und es zeigt die erkannte Stimme an, wenn Sie es loslassen. Wir haben die 4 Befehle ``forward``, ``backard``, ``left`` und ``right`` im Code festgelegt, um das Auto zu steuern.

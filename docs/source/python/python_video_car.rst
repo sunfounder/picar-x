@@ -52,17 +52,24 @@ Anschließend können Sie ``http://<Ihre IP>:9000/mjpg`` im Browser eingeben, um
 
 .. code-block:: python
     
-    # #!/usr/bin/env python3
+    #!/usr/bin/env python3
 
-    from utils import reset_mcu
-    reset_mcu()
+    from robot_hat.utils import reset_mcu
     from picarx import Picarx
     from vilib import Vilib
     from time import sleep, time, strftime, localtime
     import readchar
 
+    import os
+    user = os.getlogin()
+    user_home = os.path.expanduser(f'~{user}')
+
+    reset_mcu()
+    sleep(0.2)
+
     manual = '''
     Press key to call the function(non-case sensitive):
+
         O: speed up
         P: speed down
         W: forward  
@@ -71,8 +78,10 @@ Anschließend können Sie ``http://<Ihre IP>:9000/mjpg`` im Browser eingeben, um
         D: turn right
         F: stop
         T: take photo
-        Ctrl+C: quit
+
+        ctrl + c: Press twice to exit the program
     '''
+
 
     px = Picarx()
 
@@ -82,6 +91,7 @@ Anschließend können Sie ``http://<Ihre IP>:9000/mjpg`` im Browser eingeben, um
         path = f"{user_home}/Pictures/picar-x/"
         Vilib.take_photo(name, path)
         print('\nphoto save as %s%s.jpg'%(path,name))
+
 
     def move(operate:str, speed):
 
@@ -165,7 +175,7 @@ Anschließend können Sie ``http://<Ihre IP>:9000/mjpg`` im Browser eingeben, um
     if __name__ == "__main__":
         try:
             main()
-        except Exception as e:
+        except Exception as e:    
             print("error:%s"%e)
         finally:
             px.stop()

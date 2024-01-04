@@ -32,7 +32,8 @@ Die Aufnahme kann durch Drücken der Tasten auf der Tastatur gestartet oder gest
 
     from time import sleep,strftime,localtime
     from vilib import Vilib
-    import readchar 
+    import readchar
+    import os
 
     manual = '''
     Press keys on keyboard to control recording:
@@ -48,9 +49,11 @@ Die Aufnahme kann durch Drücken der Tasten auf der Tastatur gestartet oder gest
     def main():
         rec_flag = 'stop' # start,pause,stop
         vname = None
-        Vilib.rec_video_set["path"] = "/home/pi/Videos/" # set path
+        username = os.getlogin()
+        
+        Vilib.rec_video_set["path"] = f"/home/{username}/Videos/" # set path
 
-        Vilib.camera_start(vflip=False,hflip=False) 
+        Vilib.camera_start(vflip=False,hflip=False)
         Vilib.display(local=True,web=True)
         sleep(0.8)  # wait for startup
 
@@ -62,7 +65,7 @@ Die Aufnahme kann durch Drücken der Tasten auf der Tastatur gestartet oder gest
             # start,pause
             if key == 'q':
                 key = None
-                if rec_flag == 'stop':            
+                if rec_flag == 'stop':
                     rec_flag = 'start'
                     # set name
                     vname = strftime("%Y-%m-%d-%H.%M.%S", localtime())
@@ -79,17 +82,17 @@ Die Aufnahme kann durch Drücken der Tasten auf der Tastatur gestartet oder gest
                     rec_flag = 'start'
                     Vilib.rec_video_start()
                     print_overwrite('continue')
-            # stop       
+            # stop
             elif key == 'e' and rec_flag != 'stop':
                 key = None
                 rec_flag = 'stop'
                 Vilib.rec_video_stop()
-                print_overwrite("The video saved as %s%s.avi"%(Vilib.rec_video_set["path"],vname),end='\n')  
+                print_overwrite("The video saved as %s%s.avi"%(Vilib.rec_video_set["path"],vname),end='\n')
             # quit
             elif key == readchar.key.CTRL_C:
                 Vilib.camera_close()
                 print('\nquit')
-                break 
+                break
 
             sleep(0.1)
 
@@ -100,9 +103,9 @@ Die Aufnahme kann durch Drücken der Tasten auf der Tastatur gestartet oder gest
 
 Die Funktionen zur Videoaufnahme umfassen Folgendes:
 
-* ``Vilib.rec_video_run(video_name)`` : Startet den Thread für die Videoaufnahme. ``video_name`` ist der Name der Videodatei, es sollte ein String sein.
-* ``Vilib.rec_video_start()`` : Startet oder setzt die Videoaufnahme fort.
-* ``Vilib.rec_video_pause()`` : Pausiert die Aufnahme.
-* ``Vilib.rec_video_stop()`` : Stoppt die Aufnahme.
+* ``Vilib.rec_video_run(video_name)``: Startet den Thread für die Videoaufnahme. ``video_name`` ist der Name der Videodatei, es sollte ein String sein.
+* ``Vilib.rec_video_start()``: Startet oder setzt die Videoaufnahme fort.
+* ``Vilib.rec_video_pause()``: Pausiert die Aufnahme.
+* ``Vilib.rec_video_stop()``: Stoppt die Aufnahme.
 
 ``Vilib.rec_video_set["path"] = f"/home/{username}/Videos/"`` legt den Speicherort der Videodateien fest.

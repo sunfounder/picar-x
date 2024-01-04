@@ -25,7 +25,7 @@ Natürlich können Sie dieses Kapitel überspringen, wenn Sie denken, dass die M
 
     .. image:: img/calibrate1.png
 
-#. Die Taste ``R`` dient dazu, zu testen, ob der Servo, der die Richtung des Vorderrads steuert, normal funktioniert und nicht beschädigt ist.
+#. Die Taste ``R`` wird verwendet, um zu testen, ob die 3 Servos einwandfrei funktionieren. Nachdem ein Servo mit den Tasten ``1``, ``2`` oder ``3`` ausgewählt wurde, drücken Sie die Taste ``R``, um diesen Servo zu testen.
 
 #. Drücken Sie die Zahlentaste ``1``, um den Servo des Vorderrads auszuwählen, und dann die Tasten ``W/S``, damit das Vorderrad so gerade wie möglich aussieht, ohne nach links oder rechts abzuweichen.
 
@@ -43,7 +43,7 @@ Natürlich können Sie dieses Kapitel überspringen, wenn Sie denken, dass die M
 
     .. image:: img/calibrate6.png
 
-#. Wenn die Kalibrierung abgeschlossen ist, drücken Sie die ``Spacebar``, um die Kalibrierungsparameter zu speichern. Es erscheint eine Aufforderung, ``y`` zur Bestätigung einzugeben, und dann drücken Sie ``esc``, um das Programm zu beenden und die Kalibrierung abzuschließen.
+#. Wenn die Kalibrierung abgeschlossen ist, drücken Sie die ``Spacebar``, um die Kalibrierungsparameter zu speichern. Es erscheint eine Aufforderung, ``y`` zur Bestätigung einzugeben, und dann drücken Sie ``Ctrl+C``, um das Programm zu beenden und die Kalibrierung abzuschließen.
 
     .. image:: img/calibrate5.png
 

@@ -1,3 +1,5 @@
+.. _py_cliff:
+
 6. Klippenerkennung 
 ===========================
 

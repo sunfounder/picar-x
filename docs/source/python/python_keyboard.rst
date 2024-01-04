@@ -27,7 +27,7 @@ Drücken Sie Tasten auf der Tastatur, um PiCar-X zu steuern!
     * k: Kopf runter
     * j: Kopf nach links drehen
     * l: Kopf nach rechts drehen     
-    * Strg + c: Beenden
+    * ctrl + c: Zweimal drücken, um das Programm zu beenden
 
 **Code**
 
@@ -47,7 +47,8 @@ Drücken Sie Tasten auf der Tastatur, um PiCar-X zu steuern!
         k: Head down
         j: Turn head left
         l: Turn head right
-        ctrl+c: Quit
+        ctrl + c: Press twice to exit the program
+
     '''
 
     def show_info():
