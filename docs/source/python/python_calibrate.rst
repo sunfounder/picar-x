@@ -26,7 +26,7 @@ Of course, you can skip this chapter if you think the assembly is perfect and do
 
     .. image:: img/calibrate1.png
 
-#. The ``R`` key is used to test whether the servo that controls the direction of the front wheel can work normally and is not damaged.
+#. The ``R`` key is used to test if the 3 servos are working properly. After selecting a servo with the ``1``, ``2`` or ``3`` keys, then press the ``R`` key to test that servo.
 
 #. Press the number key ``1`` to select the front wheel servo, and then press the ``W/S`` key to let the front wheel looks as forward as possible without skewing left and right.
 
@@ -44,7 +44,7 @@ Of course, you can skip this chapter if you think the assembly is perfect and do
 
     .. image:: img/calibrate6.png
 
-#. When the calibration is completed, press the ``Spacebar`` to save the calibration parameters. There will be a prompt to enter ``y`` to confirm, and then press ``esc`` to exit the program to complete the calibration.
+#. When the calibration is completed, press the ``Spacebar`` to save the calibration parameters. There will be a prompt to enter ``y`` to confirm, and then press ``Ctrl+C`` to exit the program to complete the calibration.
 
     .. image:: img/calibrate5.png
 

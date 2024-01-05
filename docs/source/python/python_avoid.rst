@@ -39,17 +39,17 @@ it will continue to move forward.
 
     from picarx import Picarx
     import time
-
+    
     POWER = 50
     SafeDistance = 40   # > 40 safe
     DangerDistance = 20 # > 20 && < 40 turn around, 
                         # < 20 backward
-
+    
     def main():
         try:
             px = Picarx()
             # px = Picarx(ultrasonic_pins=['D2','D3']) # tring, echo
-        
+           
             while True:
                 distance = round(px.ultrasonic.read(), 2)
                 print("distance: ",distance)
@@ -57,53 +57,87 @@ it will continue to move forward.
                     px.set_dir_servo_angle(0)
                     px.forward(POWER)
                 elif distance >= DangerDistance:
-                    px.set_dir_servo_angle(40)
+                    px.set_dir_servo_angle(30)
                     px.forward(POWER)
                     time.sleep(0.1)
                 else:
-                    px.set_dir_servo_angle(-40)
+                    px.set_dir_servo_angle(-30)
                     px.backward(POWER)
                     time.sleep(0.5)
-
+    
         finally:
             px.forward(0)
-
-
+    
+    
     if __name__ == "__main__":
         main()
 
-
-
 **How it works?**
 
-The ultrasonic module is also imported in the picarx module, 
-and we can use some of its encapsulated functions to detect distance.
+* Importing the Picarx Module and Initializing Constants: 
 
-.. code-block:: python
+    This section of the code imports the ``Picarx`` class from the ``picarx`` module, which is essential for controlling the Picarx robot. Constants like ``POWER``, ``SafeDistance``, and ``DangerDistance`` are defined, which will be used later in the script to control the robot's movement based on distance measurements.
 
-    from picarx import Picarx
+    .. code-block:: python
 
-Because the ultrasonic module is imported into the picarx module, 
-we can directly use ``px.ultrasonic.read()`` to get the distance.
+        from picarx import Picarx
+        import time
 
-.. code-block:: python
+        POWER = 50
+        SafeDistance = 40 # > 40 safe
+        DangerDistance = 20 # > 20 && < 40 turn around,
+        # < 20 backward
 
-    px = Picarx()
-    px.forward(30)
-    while True:
-        distance = px.ultrasonic.read() 
+* Main Function Definition and Ultrasonic Sensor Reading:
 
-The following code snippet reads the distance value reported by the ultrasonic module, 
-and if the distance is below 40cm it will set the steering servo from 0° (straight) to -40° 
-(turn left).
+    The ``main`` function is where the Picarx robot is controlled. An instance of ``Picarx`` is created, which activates the robot's functionalities. The code enters an infinite loop, constantly reading the distance from the ultrasonic sensor. This distance is used to determine the robot's movement.
 
-.. code-block:: python
+    .. code-block:: python
+        
+        def main():
+        try:
+        px = Picarx()
 
-    while True:
-        distance = px.ultrasonic.read()
-        print("distance: ",distance)
-        if distance > 0 and distance < 300:
-            if distance < 25:
-                px.set_dir_servo_angle(-35)
-            else:
-                px.set_dir_servo_angle(0)
+            while True:
+                distance = round(px.ultrasonic.read(), 2)
+                # [Rest of the logic]
+
+* Movement Logic Based on Distance:
+
+    The robot's movement is controlled based on the ``distance`` read from the ultrasonic sensor. If the ``distance`` is greater than ``SafeDistance``, the robot moves forward. If the distance is between ``DangerDistance`` and ``SafeDistance``, it slightly turns and moves forward. If the ``distance`` is less than ``DangerDistance``, the robot reverses while turning in the opposite direction.
+
+    .. code-block:: python
+
+        if distance >= SafeDistance:
+            px.set_dir_servo_angle(0)
+            px.forward(POWER)
+        elif distance >= DangerDistance:
+            px.set_dir_servo_angle(30)
+            px.forward(POWER)
+            time.sleep(0.1)
+        else:
+            px.set_dir_servo_angle(-30)
+            px.backward(POWER)
+            time.sleep(0.5)
+
+* Safety and Cleanup with the 'finally' Block:
+
+    The ``try...finally`` block ensures safety by stopping the robot's motion in case of an interruption or error. This is a crucial part for preventing uncontrollable behavior of the robot.
+
+    .. code-block:: python
+        
+        try:
+        # [Control logic]
+        finally:
+        px.forward(0)
+
+* Execution Entry Point:
+
+    The standard Python entry point ``if __name__ == "__main__":`` is used to run the main function when the script is executed as a standalone program.
+
+    .. code-block:: python
+        
+        if name == "main":
+            main()
+
+In summary, the script uses the Picarx module to control a robot, utilizing an ultrasonic sensor for distance measurement. The robot's movement is adapted based on these measurements, ensuring safe operation through careful control and a safety mechanism in the finally block.
