@@ -47,7 +47,7 @@ PiCar-Xを前進、後退、左、右に動かすことができます。
         k: Head down
         j: Turn head left
         l: Turn head right
-        ctrl+c: Quit
+        ctrl + c: Press twice to exit the program
     '''
 
     def show_info():
