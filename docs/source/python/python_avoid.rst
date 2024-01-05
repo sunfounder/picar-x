@@ -39,17 +39,17 @@
 
     from picarx import Picarx
     import time
-
+    
     POWER = 50
     SafeDistance = 40   # > 40 safe
     DangerDistance = 20 # > 20 && < 40 turn around, 
                         # < 20 backward
-
+    
     def main():
         try:
             px = Picarx()
             # px = Picarx(ultrasonic_pins=['D2','D3']) # tring, echo
-        
+           
             while True:
                 distance = round(px.ultrasonic.read(), 2)
                 print("distance: ",distance)
@@ -57,18 +57,18 @@
                     px.set_dir_servo_angle(0)
                     px.forward(POWER)
                 elif distance >= DangerDistance:
-                    px.set_dir_servo_angle(40)
+                    px.set_dir_servo_angle(30)
                     px.forward(POWER)
                     time.sleep(0.1)
                 else:
-                    px.set_dir_servo_angle(-40)
+                    px.set_dir_servo_angle(-30)
                     px.backward(POWER)
                     time.sleep(0.5)
-
+    
         finally:
             px.forward(0)
-
-
+    
+    
     if __name__ == "__main__":
         main()
 
@@ -76,34 +76,70 @@
 
 **どのように動作するのか？**
 
-picarxモジュールには超音波モジュールもインポートされており、
-そのカプセル化された機能のいくつかを使用して距離を検出できます。
+* Picarx モジュールのインポートと定数の初期化: 
 
-.. code-block:: python
+    このコードのセクションでは、Picarxロボットを制御するために不可欠な ``picarx`` モジュールから ``Picarx`` クラスをインポートします。後でスクリプト内で距離測定に基づいてロボットの動きを制御するために使用される ``POWER`` 、 ``SafeDistance`` 、 ``DangerDistance`` などの定数が定義されています。
 
-    from picarx import Picarx
+    .. code-block:: python
 
-超音波モジュールがpicarxモジュールにインポートされているため、
-``px.ultrasonic.read()`` を直接使用して距離を取得できます。
+        from picarx import Picarx
+        import time
 
-.. code-block:: python
+        POWER = 50
+        SafeDistance = 40 # > 40 安全
+        DangerDistance = 20 # > 20 && < 40 旋回
+        # < 20 後退
 
-    px = Picarx()
-    px.forward(30)
-    while True:
-        distance = px.ultrasonic.read() 
+* メイン関数の定義と超音波センサーの読み取り:
 
-以下のコードスニペットは、超音波モジュールによって報告される距離値を読み取り、
-距離が40cm以下であればステアリングサーボを0°（直進）から-40°（左に曲がる）に設定します。
+    ``main`` 関数は、Picarxロボットが制御される場所です。 ``Picarx`` のインスタンスが作成され、ロボットの機能が活性化します。コードは無限ループに入り、超音波センサーからの距離を常に読み取ります。この距離はロボットの動きを決定するために使用されます。
 
+    .. code-block:: python
+        
+        def main():
+        try:
+            px = Picarx()
 
-.. code-block:: python
+            while True:
+                distance = round(px.ultrasonic.read(), 2)
+                # [残りのロジック]
 
-    while True:
-        distance = px.ultrasonic.read()
-        print("distance: ",distance)
-        if distance > 0 and distance < 300:
-            if distance < 25:
-                px.set_dir_servo_angle(-35)
-            else:
-                px.set_dir_servo_angle(0)
+* 距離に基づく動きのロジック:
+
+    ロボットの動きは、超音波センサーから読み取った ``distance`` に基づいて制御されます。 ``distance`` が ``SafeDistance`` より大きい場合、ロボットは前進します。距離が ``DangerDistance`` と ``SafeDistance`` の間であれば、わずかに旋回して前進します。もし ``distance`` が ``DangerDistance`` 未満であれば、ロボットは逆方向に旋回しながら後退します。
+
+    .. code-block:: python
+
+        if distance >= SafeDistance:
+            px.set_dir_servo_angle(0)
+            px.forward(POWER)
+        elif distance >= DangerDistance:
+            px.set_dir_servo_angle(30)
+            px.forward(POWER)
+            time.sleep(0.1)
+        else:
+            px.set_dir_servo_angle(-30)
+            px.backward(POWER)
+            time.sleep(0.5)
+
+* 'finally' ブロックでの安全性とクリーンアップ:
+
+    ``try...finally`` ブロックは、中断またはエラーが発生した場合にロボットの動きを停止させることで安全性を確保します。これは、ロボットの制御不能な振る舞いを防ぐために重要な部分です。
+
+    .. code-block:: python
+        
+        try:
+        # [制御ロジック]
+        finally:
+            px.forward(0)
+
+* 実行エントリーポイント:
+
+    標準的なPythonエントリーポイント ``if __name__ == "__main__":`` が使用され、スクリプトがスタンドアロンプログラムとして実行されたときにメイン関数を実行します。
+
+    .. code-block:: python
+        
+        if __name__ == "main":
+            main()
+
+要約すると、このスクリプトはPicarxモジュールを使用してロボットを制御し、超音波センサーを利用して距離を測定します。ロボットの動きはこれらの測定値に基づいて適応され、finallyブロック内の安全メカニズムを通じて慎重な制御と安全な操作を保証します。
