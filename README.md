@@ -12,7 +12,7 @@ PiCar-X is the car that is built based on the Raspberry Pi, with the functions, 
 
 ## Usage
 
-Before running the example, stop ezblock sercive
+Before running the example, stop ezblock service.
 
 ```python
 sudo service ezblock stop
