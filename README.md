@@ -1,7 +1,7 @@
 
 # PiCar-X Examples
 
-These are the python scripts to interact with your picar.
+This was forked from the main project [Picar-x](https://github.com/Sunfounder/picar-x.git).These are the python scripts to interact with your picar.
 
 ## About this kit
 
