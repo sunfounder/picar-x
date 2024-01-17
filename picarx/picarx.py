@@ -1,5 +1,5 @@
 from robot_hat import Pin, ADC, PWM, Servo, fileDB
-from robot_hat import Grayscale_Module, Ultrasonic
+from robot_hat import Grayscale_Module, Ultrasonic, utils
 import time
 import os
 
@@ -39,6 +39,10 @@ class Picarx(object):
                 ultrasonic_pins:list=['D2','D3'],
                 config:str=CONFIG,
                 ):
+
+        # reset robot_hat
+        utils.reset_mcu()
+        time.sleep(0.2)
 
         # --------- config_flie ---------
         self.config_flie = fileDB(config, 777, os.getlogin())
