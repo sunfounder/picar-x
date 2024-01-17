@@ -31,13 +31,16 @@ DangerDistance = 20 # > 20 && < 40 turn around, < 20 backward
 DETECT_COLOR = 'red' # red, green, blue, yellow , orange, purple
 
 # init music player
+User = os.popen('echo ${SUDO_USER:-$LOGNAME}').readline().strip()
+UserHome = os.popen('getent passwd %s | cut -d: -f 6' %User).readline().strip()
+
 music = Music()
 if os.geteuid() != 0:
     print('\033[33mPlay sound needs to be run with sudo.\033[m')
 
 def horn(): 
     _status, _result = utils.run_command('sudo killall pulseaudio')
-    music.sound_play_threading('./sounds/car-double-horn.wav')
+    music.sound_play_threading(f'{UserHome}/picar-x/sounds/car-double-horn.wav')
 
 def avoid_obstacles():
     distance = px.get_distance()
@@ -123,8 +126,8 @@ def main():
         # --- control ---
 
         # # horn
-        # if sc.get('M') == True:
-        #     horn()
+        if sc.get('M') == True:
+            horn()
 
         # speaker
         if sc.get('J') != None:
