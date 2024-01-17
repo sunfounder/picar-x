@@ -1,12 +1,8 @@
 from robot_hat import Pin, ADC, PWM, Servo, fileDB
 from robot_hat import Grayscale_Module, Ultrasonic
-from robot_hat.utils import reset_mcu, run_command
 import time
 import os
 
-# reset robot_hat
-reset_mcu()
-time.sleep(0.2)
 
 def constrain(x, min_val, max_val):
     '''
@@ -45,7 +41,7 @@ class Picarx(object):
                 ):
 
         # --------- config_flie ---------
-        self.config_flie = fileDB(config, 774, os.getlogin())
+        self.config_flie = fileDB(config, 777, os.getlogin())
 
         # --------- servos init ---------
         self.cam_pan = Servo(servo_pins[0])
