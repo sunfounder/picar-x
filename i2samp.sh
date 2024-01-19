@@ -451,7 +451,7 @@ sudo cat > /usr/local/bin/auto_sound_card << '-EOF'
 ASOUND_CONF=/etc/asound.conf
 AUDIO_CARD_NAME="sndrpihifiberry"
 
-card_num=$(sudo aplay -l |grep $AUDIO_CARD_NAME |awk -F'card |:' '{print $2}')
+card_num=$(sudo aplay -l |grep $AUDIO_CARD_NAME |awk '{print $2}'|tr -d ':')
 echo "card_num=$card_num"
 if [ -n "$card_num" ]; then
     cat > $ASOUND_CONF << EOF
