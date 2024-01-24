@@ -16,7 +16,7 @@ The lesson provides a concise overview of operating the PiCar-X as a video car, 
 
 .. raw:: html
 
-    <iframe width="600" height="400" src="https://www.youtube.com/embed/oA9m3dQ-f-E?si=V5lKo0lqqhxtzkOa" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    <iframe width="700" height="500" src="https://www.youtube.com/embed/oA9m3dQ-f-E?si=V5lKo0lqqhxtzkOa" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 **Related On-line Tutorials**
 

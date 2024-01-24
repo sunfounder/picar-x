@@ -15,7 +15,7 @@ This tutorial offers a concise yet detailed guide on recording and managing vide
 
 .. raw:: html
 
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/rpNop99nwuw?si=bes9E07grkh3khcm" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    <iframe width="700" height="500" src="https://www.youtube.com/embed/rpNop99nwuw?si=bes9E07grkh3khcm" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 **Related On-line Tutorials**
 

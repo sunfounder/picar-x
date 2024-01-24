@@ -14,7 +14,7 @@ The tutorial provides an engaging and educational experience in programming and 
 
 .. raw:: html
 
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/sT7hEXe1byE?si=R1qGtVFpxP_JtH1m" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    <iframe width="700" height="500" src="https://www.youtube.com/embed/sT7hEXe1byE?si=R1qGtVFpxP_JtH1m" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 **Related On-line Tutorials**
 

@@ -13,7 +13,7 @@ This tutorial provides essential insights into programming and utilizing cliff d
 
 .. raw:: html
 
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/7-sJsRaBI8Q?si=QVsHZ9oEwLEwRUE5" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    <iframe width="700" height="500" src="https://www.youtube.com/embed/7-sJsRaBI8Q?si=QVsHZ9oEwLEwRUE5" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
         
 **Related On-line Tutorials**
 

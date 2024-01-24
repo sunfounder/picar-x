@@ -16,7 +16,7 @@ This video is an excellent practical guide for beginners to PiCar-X, providing d
 
 .. raw:: html
 
-    <iframe width="600" height="400" src="https://www.youtube.com/embed/hlHajsMr1Xk?si=QMnT7oM_93vNnBd0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    <iframe width="700" height="500" src="https://www.youtube.com/embed/hlHajsMr1Xk?si=QMnT7oM_93vNnBd0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 **Related On-line Tutorials**
 

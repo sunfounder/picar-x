@@ -16,7 +16,7 @@ The lesson offers an in-depth tutorial on integrating text-to-speech functionali
 
 .. raw:: html
 
-    <iframe width="600" height="400" src="https://www.youtube.com/embed/w4hyhuV0LQs?si=MgiwG3Ii3lODZnOF" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    <iframe width="700" height="500" src="https://www.youtube.com/embed/w4hyhuV0LQs?si=MgiwG3Ii3lODZnOF" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 **Related On-line Tutorials**
 

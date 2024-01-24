@@ -17,7 +17,7 @@ This lesson provides a succinct guide on enabling the PiCar-X to track and focus
 
 .. raw:: html
 
-    <iframe width="600" height="400" src="https://www.youtube.com/embed/zr01y4pFKSA?si=IhFTLQaDw32-HbZx" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    <iframe width="700" height="500" src="https://www.youtube.com/embed/zr01y4pFKSA?si=IhFTLQaDw32-HbZx" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 
 **Related On-line Tutorials**

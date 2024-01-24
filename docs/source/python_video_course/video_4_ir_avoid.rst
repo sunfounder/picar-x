@@ -16,7 +16,7 @@ This lesson offers an essential guide to implementing ultrasonic sensor-based ob
 
 .. raw:: html
 
-    <iframe width="600" height="400" src="https://www.youtube.com/embed/zi5GM7lP5JA?si=obLF_79PFZv8xAZl" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    <iframe width="700" height="500" src="https://www.youtube.com/embed/zi5GM7lP5JA?si=obLF_79PFZv8xAZl" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 **Related On-line Tutorials**
 
