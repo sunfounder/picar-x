@@ -15,7 +15,7 @@ PiCar-Xを組み立てる前に、すべての部品とコンポーネントが�
 
 .. raw:: html
 
-    <iframe width="600" height="400" src="https://www.youtube.com/embed/DcobAsvRrV0?si=h2jvrqzU0z2InjSs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    <iframe width="700" height="500" src="https://www.youtube.com/embed/DcobAsvRrV0?si=h2jvrqzU0z2InjSs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 その後、 **1:45** からのビデオ内の指示に従って組み立てを続けることができます。
 
@@ -36,4 +36,4 @@ PiCar-Xを組み立てる前に、すべての部品とコンポーネントが�
 
 .. raw:: html
 
-    <iframe width="600" height="400" src="https://www.youtube.com/embed/i5FpY3FAcyA?si=2WlfchM0ryLU3yi1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    <iframe width="700" height="500" src="https://www.youtube.com/embed/i5FpY3FAcyA?si=2WlfchM0ryLU3yi1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>

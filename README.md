@@ -21,6 +21,9 @@ automatic obstacle avoidance, automatic line tracking, etc.
 
 
 <a id="update"></a>
+2024-1-24:
+- Add the video course.
+
 2023-12-12:
 - Modify the Python course.
 

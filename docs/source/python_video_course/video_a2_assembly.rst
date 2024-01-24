@@ -1,0 +1,25 @@
+ビデオA2：PICAR-Xの組み立て
+=============================================
+
+このビデオでは、PICAR-Xの組み立てに焦点を当てています。
+
+チュートリアルの主な内容には以下が含まれます：
+
+* **開梱**：キットコンポーネントの紹介、組み立て説明書、ツール、モジュール、モーターなど。
+* **組み立てガイド**：Raspberry Piにネジを取り付けることから始まり、ケーブルを接続し、ロボットハットを設定するまでのPICAR-Xの組み立て手順の詳細。
+* **サーボキャリブレーション**：サンファウンダーのCreate Agentを使用してサーボをゼロ調整する。
+* **モーターとバッテリーの取り付け**：フレームにモーターを取り付け、バッテリーを固定する。
+* **センサーとカメラの取り付け**：グレースケールセンサー、超音波センサー、カメラを取り付けて接続する。
+* **配線と最終セットアップ**：さまざまなコンポーネントのための配線を整理し接続し、最終チェックと配線の整理を行う。
+
+このビデオは、組み立てプロセスの各ステップを通じてガイドするように設計されており、各コンポーネントがどのように一緒にフィットするかを徹底的に理解することを目的としています。
+
+**ビデオ**
+
+.. raw:: html
+
+    <iframe width="700" height="500" src="https://www.youtube.com/embed/4Gk2c565lO8?si=ZwhJb1dqQVfGpyiY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+**関連するオンラインチュートリアル**
+
+* :ref:`assembly_instructions`
