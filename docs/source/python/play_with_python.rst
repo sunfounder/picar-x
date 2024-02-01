@@ -10,6 +10,7 @@ To start configuring the Raspberry Pi, please reference Quick Guide on Python:
     :maxdepth: 2
     
     python_start/quick_guide_on_python
+    charge_battery
 
 
 After the PiCar-X assembly is completed, try running the projects below:
