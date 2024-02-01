@@ -10,6 +10,7 @@ Um mit der Konfiguration des Raspberry Pi zu beginnen, beziehen Sie sich bitte a
     :maxdepth: 2
     
     python_start/quick_guide_on_python
+    charge_battery
 
 
 Nachdem die Montage des PiCar-X abgeschlossen ist, versuchen Sie, die untenstehenden Projekte auszuführen:
