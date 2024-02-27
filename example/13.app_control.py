@@ -156,8 +156,10 @@ def main():
         line_track_switch = sc.get('I')
         avoid_obstacles_switch = sc.get('E')
         if line_track_switch == True:
+            speed = LINE_TRACK_SPEED
             line_track()
         elif avoid_obstacles_switch == True:
+            speed = AVOID_OBSTACLES_SPEED
             avoid_obstacles()
     
         # joystick moving
