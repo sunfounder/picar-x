@@ -30,7 +30,7 @@ class Picarx(object):
     # servo_pins: camera_pan_servo, camera_tilt_servo, direction_servo
     # motor_pins: left_swicth, right_swicth, left_pwm, right_pwm
     # grayscale_pins: 3 adc channels
-    # ultrasonic_pins: tring, echo2
+    # ultrasonic_pins: trig, echo2
     # config: path of config file
     def __init__(self, 
                 servo_pins:list=['P0', 'P1', 'P2'], 
@@ -89,8 +89,8 @@ class Picarx(object):
         self.grayscale.reference(self.line_reference)
 
         # --------- ultrasonic init ---------
-        tring, echo= ultrasonic_pins
-        self.ultrasonic = Ultrasonic(Pin(tring), Pin(echo, mode=Pin.IN, pull=Pin.PULL_DOWN))
+        trig, echo= ultrasonic_pins
+        self.ultrasonic = Ultrasonic(Pin(trig), Pin(echo, mode=Pin.IN, pull=Pin.PULL_DOWN))
         
     def set_motor_speed(self, motor, speed):
         ''' set motor speed
