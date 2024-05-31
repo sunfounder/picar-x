@@ -35,6 +35,11 @@ Installation des Raspberry Pi OS abzuschließen und den Winkel der Servos anzupa
 
 **Für Ezblock-Nutzer**
 
+.. note::
+
+  Wenn Sie einen Raspberry Pi 5 verwenden, können Sie unsere grafische Programmier-Software EzBlock nicht verwenden, um den PiCar-X zu programmieren.
+
+
 Nachdem Sie das Ezblock-System installiert haben, 
 kann der P11-Pin verwendet werden, um den Servo anzupassen. 
 Weitere Informationen finden Sie unter :ref:`ezb_servo_adjust`.

@@ -12,8 +12,8 @@
 
     👉 Sind Sie bereit, mit uns zu erkunden und zu erschaffen? Klicken Sie auf [|link_sf_facebook|] und treten Sie heute bei!
 
-Aktivierung des I2C-Interface(Wichtig)
-========================================
+6. Aktivierung des I2C-Interface(Wichtig)
+===================================================
 
 Hier verwenden wir die I2C-Schnittstellen des Raspberry Pi, standardmäßig sind diese jedoch deaktiviert, daher müssen wir sie zunächst aktivieren.
 

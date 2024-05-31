@@ -12,7 +12,7 @@
 
     👉 Sind Sie bereit, mit uns zu erkunden und zu erschaffen? Klicken Sie auf [|link_sf_facebook|] und treten Sie heute bei!
 
-Was Brauchen Wir?
+1. Was Brauchen Wir?
 ====================
 
 Benötigte Komponenten

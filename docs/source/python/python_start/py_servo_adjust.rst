@@ -12,8 +12,8 @@
 
     👉 Sind Sie bereit, mit uns zu erkunden und zu erschaffen? Klicken Sie auf [|link_sf_facebook|] und treten Sie heute bei!
 
-Servo-Justierung(Wichtig)
-============================
+7. Servo-Justierung(Wichtig)
+================================
 
 Der Winkelbereich des Servos liegt bei -90~90 Grad, aber der in der Fabrik eingestellte Winkel ist zufällig, vielleicht 0°, vielleicht 45°. Wenn wir ihn direkt mit einem solchen Winkel montieren, führt dies nach dem Ausführen des Codes des Roboters zu einem chaotischen Zustand oder schlimmer noch, es kann dazu führen, dass der Servo blockiert und durchbrennt.
 

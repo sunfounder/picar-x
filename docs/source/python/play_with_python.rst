@@ -24,14 +24,14 @@ Um mit der Konfiguration des Raspberry Pi zu beginnen, beziehen Sie sich bitte a
     :maxdepth: 2
     
     python_start/quick_guide_on_python
-    charge_battery
+    python_calibrate
 
 
 Nachdem die Montage des PiCar-X abgeschlossen ist, versuchen Sie, die untenstehenden Projekte auszuführen:
 
 .. toctree::
 
-    python_calibrate
+
     python_move
     python_keyboard
     python_tts
