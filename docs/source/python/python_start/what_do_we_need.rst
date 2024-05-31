@@ -12,8 +12,8 @@
 
     👉 Ready to explore and create with us? Click [|link_sf_facebook|] and join today!
 
-What Do We Need?
-================
+1. What Do We Need?
+====================
 
 Required Components
 -----------------------

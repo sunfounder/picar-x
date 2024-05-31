@@ -12,69 +12,39 @@
 
     👉 Ready to explore and create with us? Click [|link_sf_facebook|] and join today!
 
-Linux /Unix Users
+For Linux/Unix Users
 ==========================
 
+#. Locate and open the **Terminal** on your Linux/Unix system.
 
-#. Go to **Applications**->\ **Utilities**, find the **Terminal**, and open
-it.
-
-    .. image:: img/image21.png
-        :align: center
-
-#. Check if your Raspberry Pi is on the same network by type in ``ping <hostname>.local``. 
+#. Ensure your Raspberry Pi is connected to the same network. Verify this by typing ``ping <hostname>.local``. For example:
 
     .. code-block::
 
         ping raspberrypi.local
 
-    .. image:: img/mac-ping.png
-        :width: 550
-        :align: center
+    You should see the Raspberry Pi's IP address if it's connected to the network.
 
-    As shown above, you can see the Raspberry Pi's IP address after it has been connected to the network.
+    * If the terminal shows a message like ``Ping request could not find host pi.local. Please check the name and try again.``, double-check the hostname you've entered.
+    * If you're unable to retrieve the IP address, inspect your network or WiFi settings on the Raspberry Pi.
 
-    * If terminal prompts ``Ping request could not find host pi.local. Please check the name and try again.``. Please follow the prompts to make sure the hostname you fill in is correct.
-    * Still can't get the IP? Check your network or WiFi configuration on the Raspberry Pi.
-
-
-#. Type in ``ssh <username>@<hostname>.local`` (or ``ssh <username>@<IP address>``).
+#. Initiate an SSH connection by typing ``ssh <username>@<hostname>.local`` or ``ssh <username>@<IP address>``. For instance:
 
     .. code-block::
 
         ssh pi@raspberrypi.local
 
-    .. note::
-
-        If a prompt appears ``The term 'ssh' is not recognized as the name of a cmdlet...``.
-        
-        It means your system is too old and does not have ssh tools pre-installed, you need to manually :ref:`openssh_powershell`.
-        
-        Or use a third party tool like :ref:`login_windows`.
-
-
-#. The following message will be displayed only when you log in for the first time, so enter ``yes``.
+#. On your first login, you'll encounter a security message. Type ``yes`` to proceed.
 
     .. code-block::
 
         The authenticity of host 'raspberrypi.local (2400:2410:2101:5800:635b:f0b6:2662:8cba)' can't be established.
         ED25519 key fingerprint is SHA256:oo7x3ZSgAo032wD1tE8eW0fFM/kmewIvRwkBys6XRwg.
-        This key is not known by any other names
         Are you sure you want to continue connecting (yes/no/[fingerprint])?
 
-
-#. Input the password you set before. (Mine is ``raspberry``.)
-
+#. Enter the password you previously set. Note that for security reasons, the password won't be visible as you type.
 
     .. note::
-        When you input the password, the characters do not display on
-        window accordingly, which is normal. What you need is to input the
-        correct password.
+        It's normal for the password characters not to display in the terminal. Just ensure to enter the correct password.
 
-
-
-#. We now get the Raspberry Pi connected and are ready to go to the nextstep.
-
-    .. image:: img/mac-ssh-terminal.png
-        :width: 550
-        :align: center
+#. Once you've successfully logged in, your Raspberry Pi is now connected, and you're ready to proceed to the next step.

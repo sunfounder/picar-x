@@ -12,10 +12,10 @@
 
     👉 Ready to explore and create with us? Click [|link_sf_facebook|] and join today!
 
-Enable I2C Interface(Important)
+6. Enable I2C Interface(Important)
 ========================================
 
-Here we are using the Raspberry Pi's I2C interfaces, but by default they are disabled, so we need to enable them first.
+We will be using the Raspberry Pi's I2C interface. This interface should have been enabled when installing the ``robot-hat`` module earlier. To ensure everything is in order, let's check if it is indeed enabled.
 
 #. Input the following command:
 

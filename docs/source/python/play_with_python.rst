@@ -24,14 +24,13 @@ To start configuring the Raspberry Pi, please reference Quick Guide on Python:
     :maxdepth: 2
     
     python_start/quick_guide_on_python
-    charge_battery
-
+    python_calibrate
 
 After the PiCar-X assembly is completed, try running the projects below:
 
 .. toctree::
 
-    python_calibrate
+
     python_move
     python_keyboard
     python_tts

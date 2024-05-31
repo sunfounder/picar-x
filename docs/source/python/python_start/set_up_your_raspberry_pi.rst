@@ -12,28 +12,8 @@
 
     👉 Ready to explore and create with us? Click [|link_sf_facebook|] and join today!
 
-Set up Your Raspberry Pi
+4. Set up Your Raspberry Pi
 ============================
-Power Supply for Raspberry Pi (Important)
---------------------------------------------------
-
-#. Insert the SD card set up with Raspberry Pi OS into the microSD card slot located on the underside of the Raspberry Pi.
-
-    .. image:: img/insert_sd_card.png
-        :width: 500
-        :align: center
-
-#. Following the assembly instructions, insert the battery cable and turn on the power switch. Next, insert the USB-C cable to power up the battery. Wait for 1-2 minutes, and you will hear a sound indicating that the Raspberry Pi has successfully booted.
-
-    .. image:: img/Z_BTR.JPG
-        :width: 800
-        :align: center
-
-    .. note::
-
-        It is recommended to leave the USB-C cable plugged in, as the subsequent software setup process can take a considerable amount of time.
-
-
 If You Have a Screen
 -------------------------
 
@@ -45,14 +25,14 @@ Raspberry Pi.
 
 **Required Components**
 
-* Raspberry Pi 4B/3B 3B+/2B
-* 1 * Power Adapter
-* 1 * Micro SD card
-* 1 * Screen Power Adapter
-* 1 * HDMI cable
-* 1 * Screen
-* 1 * Mouse
-* 1 * Keyboard
+* Raspberry Pi
+* Power Adapter
+* Micro SD card
+* Screen Power Adapter
+* HDMI cable
+* Screen
+* Mouse
+* Keyboard
 
 #. Plug in the Mouse and Keyboard.
 
@@ -62,9 +42,11 @@ Raspberry Pi.
 
         If you use a Raspberry Pi 4, you need to connect the screen to the HDMI0 (nearest the power in port).
 
-#. Use the power adapter to power the Raspberry Pi. After a few seconds, the Raspberry Pi OS desktop will be displayed.
+#. Use the power adapter to power the Raspberry Pi.
 
-    .. image:: img/image20.png
+#. After a few seconds, the Raspberry Pi OS desktop will be displayed. Now you can open the Terminal to start entering commands.
+
+    .. image:: img/bookwarm.png
         :align: center
 
 If You Have No Screen
@@ -74,9 +56,9 @@ If you don't have a monitor, you can remotely log into your Raspberry Pi.
 
 **Required Components**
 
-* * Raspberry Pi 4B/Zero 2 w/3B 3B+/2B/Zero W  
-* 1 * Power Adapter
-* 1 * Micro SD card
+* Raspberry Pi
+* Power Adapter
+* Micro SD card
 
 You can apply the SSH command to open the Raspberry Pi's Bash shell. Bash is the standard default shell for Linux. The shell itself is a command (instruction) when the user uses Unix/Linux. Most of what you need to do can be done through the shell.
 
@@ -90,4 +72,5 @@ See below for detailed tutorials for each system.
     remote_macosx
     remote_windows
     remote_linux
+    remote_desktop
 

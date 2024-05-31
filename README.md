@@ -21,6 +21,8 @@ automatic obstacle avoidance, automatic line tracking, etc.
 
 
 <a id="update"></a>
+2024-05-31:
+- Optimized the introductory knowledge of Python, including all Python code and related courses.
 
 2023-12-08:
 - Modify the tutorial for installing Raspberry Pi OS.

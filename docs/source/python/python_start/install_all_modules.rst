@@ -15,7 +15,7 @@
 .. _install_all_modules:
 
 
-Install All the Modules(Important)
+5. Install All the Modules(Important)
 ========================================
 
 Make sure you are connected to the Internet and update your system:
