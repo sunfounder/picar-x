@@ -26,6 +26,7 @@ Raspberry Piに精通しており、コマンドラインを正常に開くこ�
 
     what_do_we_need
     installing_the_os
+    power_supply
     set_up_your_raspberry_pi
     install_all_modules
     enable_i2c

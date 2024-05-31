@@ -21,6 +21,9 @@ automatic obstacle avoidance, automatic line tracking, etc.
 
 
 <a id="update"></a>
+2024-5-31:
+- Optimized the introductory knowledge of Python, including all Python code and related courses.
+
 2024-1-24:
 - Add the video course.
 

@@ -24,14 +24,13 @@ Raspberry Piの設定を始めるには、Pythonに関するクイックガイ�
     :maxdepth: 2
     
     python_start/quick_guide_on_python
-    charge_battery
+    python_calibrate
 
 
 PiCar-Xの組み立てが完了したら、以下のプロジェクトを実行してみてください：
 
 .. toctree::
 
-    python_calibrate
     python_move
     python_keyboard
     python_tts
