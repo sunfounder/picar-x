@@ -49,3 +49,4 @@ Following the setup, the course dives into twelve project-based videos. These vi
     video_10_bullfight
     video_11_video_car
     video_12_treasure_hunting
+    video_12_using_mobile_app
