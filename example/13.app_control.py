@@ -189,12 +189,12 @@ def main():
         if sc.get('N') == True:
             Vilib.color_detect(DETECT_COLOR)
         else:
-            Vilib.color_detect_switch(False)
+            Vilib.color_detect("close")
 
         if sc.get('O') == True:
-            Vilib.human_detect_switch(True)  
+            Vilib.face_detect_switch(True)  
         else:
-            Vilib.human_detect_switch(False)  
+            Vilib.face_detect_switch(False)  
 
         if sc.get('P') == True:
             Vilib.object_detect_switch(True) 
