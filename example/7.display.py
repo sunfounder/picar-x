@@ -116,7 +116,7 @@ def main():
             if qr_code_flag == True:
                 if qrcode_thread == None or not qrcode_thread.is_alive():
                     qrcode_thread = threading.Thread(target=qrcode_detect)
-                    qrcode_thread.setDaemon(True)
+                    qrcode_thread.daemon = True
                     qrcode_thread.start()
             else:
                 if qrcode_thread != None and qrcode_thread.is_alive():
