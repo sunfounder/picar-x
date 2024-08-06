@@ -21,7 +21,7 @@ PiCar-Xを組み立てる前に、すべての部品とコンポーネントが�
 
 組み立て手順については、以下のPDFを参照して手順に従ってください：
 
-:download:`[PDF]PiCar-Xの部品リストと組み立て <https://github.com/sunfounder/sf-pdf/raw/master/assembly_file/z0104V31-a0001013-picar-x.pdf>`。
+:download:`[PDF]PiCar-Xの部品リストと組み立て <https://github.com/sunfounder/sf-pdf/raw/master/assembly_file/z0104v33-a0001013-picar-x.pdf>`。
 
 **Raspberry Pi Zero WをPiCar-Xに取り付ける**
 
