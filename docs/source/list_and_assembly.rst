@@ -21,7 +21,7 @@ Bevor Sie den PiCar-X zusammenbauen, überprüfen Sie bitte zuerst, ob alle Teil
 
 Befolgen Sie die Schritte in der folgenden PDF für Montageanleitungen:
 
-:download:`[PDF]Teileliste und Montage des PiCar-X <https://github.com/sunfounder/sf-pdf/raw/master/assembly_file/z0104V31-a0001013-picar-x.pdf>`.
+:download:`[PDF]Teileliste und Montage des PiCar-X <https://github.com/sunfounder/sf-pdf/raw/master/assembly_file/z0104v33-a0001013-picar-x.pdf>`.
 
 **Montieren Sie den Raspberry Pi Zero W auf dem PiCar-X**
 
