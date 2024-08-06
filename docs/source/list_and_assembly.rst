@@ -22,7 +22,7 @@ Before assembling the PiCar-X, please first verify that all parts and components
 
 Please follow the steps on the following PDF for assembly instructions: 
 
-:download:`[PDF]Component List and Assembly of PiCar-X <https://github.com/sunfounder/sf-pdf/raw/master/assembly_file/z0104V31-a0001013-picar-x.pdf>`.
+:download:`[PDF]Component List and Assembly of PiCar-X <https://github.com/sunfounder/sf-pdf/raw/master/assembly_file/z0104v33-a0001013-picar-x.pdf>`.
 
 **Mount Raspberry Pi Zero W on PiCar-X**
 
