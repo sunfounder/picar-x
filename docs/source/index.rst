@@ -12,10 +12,12 @@
 
     👉 Ready to explore and create with us? Click [|link_sf_facebook|] and join today!
 
-Welcome to PiCar-X's Documentation!
-===================================
+Welcome to |link_picarx|'s Documentation!
+===============================================
 
-Thanks for choosing our PiCar-X.
+* |link_picarx2.0|
+
+Thanks for choosing our |link_picarx|.
 
 .. note::
     This document is available in the following languages.
