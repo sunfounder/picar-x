@@ -12,10 +12,12 @@
 
     👉 Ready to explore and create with us? Click [|link_sf_facebook|] and join today!
 
-SunFounder PiCar-X Kit
+SunFounder |link_PiCar_kit|
 ============================================
 
-Thanks for choosing our PiCar-X.
+* |link_PiCar-X_kit|
+
+Thanks for choosing our |link_PiCar_kit|.
 
 .. note::
     This document is available in the following languages.

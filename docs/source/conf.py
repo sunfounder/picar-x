@@ -128,6 +128,13 @@ rst_epilog = """
 
     <a href="https://docs.sunfounder.com/projects/picar-x-v20/en/latest/" target="_blank">English Online-tutorials</a>
 
+.. |link_PiCar-X_kit| raw:: html
+
+    <a href="https://www.sunfounder.com/products/picar-x?variant=44269165510891" target="_blank">Purchase Link for PiCar-X Kit</a>
+
+.. |link_PiCar_kit| raw:: html
+
+    <a href="https://www.sunfounder.com/products/picar-x?variant=44269165510891" target="_blank">PiCar-X</a>
 
 
 """
