@@ -5,7 +5,7 @@ This was forked from the main project [Picar-x](https://github.com/Sunfounder/pi
 
 ## About this kit
 
-Added 00.my_car.py that includes the driving functions with camera movement. Also, I put in the music feature and the ability to talk via the command line. Lastly, I have added the file picarAssistant.py that has ChatGPT functionality with the picar.txt as the knowledge document. Does require a small usb microphone to interact.
+Added 00.my_car.py that includes the driving functions with camera movement. Also, I put in the music feature and the ability to talk via the command line. Lastly, I have added the file picarAssistant.py that has ChatGPT functionality with the picar.txt as the knowledge document. Does require a small usb microphone to interact. See link below for microphone.
 
 ## About PiCar-X:
 PiCar-X is the car that is built based on the Raspberry Pi, with the functions, including line following,human following, color following, obstacle avoidance, horn,  remote control and use the web page to control.
@@ -49,3 +49,7 @@ After your code is done, exit the text compiler via <kbd>Ctrl</kbd>+<kbd>X</kbd>
 ```python
 sudo python3 xxx.py
 ```
+
+## Link
+
+[Sunfounder Microphone](https://www.amazon.com/gp/product/B01KLRBHGM/ref=ppx_yo_dt_b_search_asin_title?ie=UTF8&th=1)
