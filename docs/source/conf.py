@@ -125,6 +125,6 @@ rst_epilog = """
 
 .. |link_picarx_v2| raw:: html
 
-    <a href="https://docs.sunfounder.com/projects/picar-x-v20/en/latest/" target="_blank">PiCar-X v2.0</a>
+    <a href="https://docs.sunfounder.com/projects/picar-x-v20/en/latest/" target="_blank">PiCar-X-V2.0</a>
 
 """
