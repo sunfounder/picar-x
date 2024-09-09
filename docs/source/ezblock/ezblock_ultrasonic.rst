@@ -1,50 +1,49 @@
 .. note::
 
-    Hello, welcome to the SunFounder Raspberry Pi & Arduino & ESP32 Enthusiasts Community on Facebook! Dive deeper into Raspberry Pi, Arduino, and ESP32 with fellow enthusiasts.
+    Hola, bienvenido a la Comunidad de Entusiastas de SunFounder Raspberry Pi, Arduino y ESP32 en Facebook. Sumérgete en el mundo de Raspberry Pi, Arduino y ESP32 junto a otros entusiastas.
 
-    **Why Join?**
+    **¿Por qué unirte?**
 
-    - **Expert Support**: Solve post-sale issues and technical challenges with help from our community and team.
-    - **Learn & Share**: Exchange tips and tutorials to enhance your skills.
-    - **Exclusive Previews**: Get early access to new product announcements and sneak peeks.
-    - **Special Discounts**: Enjoy exclusive discounts on our newest products.
-    - **Festive Promotions and Giveaways**: Take part in giveaways and holiday promotions.
+    - **Soporte experto**: Resuelve problemas postventa y desafíos técnicos con la ayuda de nuestra comunidad y equipo.
+    - **Aprende y comparte**: Intercambia consejos y tutoriales para mejorar tus habilidades.
+    - **Preestrenos exclusivos**: Obtén acceso anticipado a nuevos anuncios de productos y adelantos exclusivos.
+    - **Descuentos especiales**: Disfruta de descuentos exclusivos en nuestros productos más recientes.
+    - **Promociones festivas y sorteos**: Participa en sorteos y promociones durante las festividades.
 
-    👉 Ready to explore and create with us? Click [|link_sf_facebook|] and join today!
+    👉 ¿Listo para explorar y crear con nosotros? Haz clic en [|link_sf_facebook|] y únete hoy mismo!
 
-Test Ultrasonic Module
-==============================
+Prueba del Módulo Ultrasónico
+=================================
 
-PiCar-X has a built-in Ultrasonic Sensor module that can be used for obstacle avoidance and automatic object-following experiments. In this lesson the module will read a distance in centimeters (24 cm = 1 inch), and **Print** the results in a **Debug** window.
+PiCar-X tiene un módulo de sensor ultrasónico integrado que se puede usar para evitar obstáculos y realizar experimentos de seguimiento automático de objetos. En esta lección, el módulo leerá una distancia en centímetros (24 cm = 1 pulgada) y **imprimirá** los resultados en una ventana de **Depuración**.
 
-**TIPS**
+**CONSEJOS**
 
 .. image:: img/sp210512_114549.png 
 
-The **Ultrasonic get distance** block will read the distance from the PiCar-X to an obstacle directly ahead.
+El bloque **Ultrasonic get distance** leerá la distancia entre el PiCar-X y un obstáculo directamente al frente.
 
 .. image:: img/sp210512_114830.png
 
-This program is simplified with a **Variable**. For example, when there are multiple functions in a program that each need to use the distance to an obstacle, a **Variable** can be used to report the same distance value to each function, instead of each function reading the same value separately.
+Este programa se simplifica con una **Variable**. Por ejemplo, cuando hay múltiples funciones en un programa que necesitan utilizar la distancia a un obstáculo, se puede usar una **Variable** para informar el mismo valor de distancia a cada función, en lugar de que cada función lea el valor por separado.
 
 .. image:: img/sp210512_114916.png
 
-Click the **Create variable...** button on the **Variables** category, and use the drop-down arrow to select the variable named “distance”.
+Haz clic en el botón **Crear variable...** en la categoría de **Variables** y utiliza la flecha desplegable para seleccionar la variable llamada “distancia”.
 
 .. image:: img/sp210512_114945.png
 
-The **Print** function can print data such as variables and text for easy debugging.
+La función **Imprimir** puede imprimir datos como variables y texto para facilitar la depuración.
 
 .. image:: img/debug_monitor.png
 
-Once the code is running, enable the debug monitor by clicking the **Debug** icon in the bottom left corner.
+Una vez que el código esté en ejecución, habilita el monitor de depuración haciendo clic en el icono **Depuración** en la esquina inferior izquierda.
 
-**EXAMPLE**
+**EJEMPLO**
 
 .. note::
 
-    * You can write the program according to the following picture, please refer to the tutorial: :ref:`ezblock:create_project_latest`.
-    * Or find the code with the same name on the **Examples** page of the EzBlock Studio and click **Run** or **Edit** directly.
-
+    * Puedes escribir el programa según la siguiente imagen, consulta el tutorial: :ref:`ezblock:create_project_latest`.
+    * O encuentra el código con el mismo nombre en la página de **Ejemplos** de EzBlock Studio y haz clic en **Ejecutar** o **Editar** directamente.
 
 .. image:: img/sp210512_115125.png

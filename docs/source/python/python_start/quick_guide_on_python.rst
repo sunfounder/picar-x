@@ -1,25 +1,25 @@
 .. note::
 
-    Hello, welcome to the SunFounder Raspberry Pi & Arduino & ESP32 Enthusiasts Community on Facebook! Dive deeper into Raspberry Pi, Arduino, and ESP32 with fellow enthusiasts.
+    Hola, bienvenido a la Comunidad de Entusiastas de SunFounder Raspberry Pi, Arduino y ESP32 en Facebook. ¡Sumérgete en el mundo de Raspberry Pi, Arduino y ESP32 con otros entusiastas!
 
-    **Why Join?**
+    **¿Por qué unirte?**
 
-    - **Expert Support**: Solve post-sale issues and technical challenges with help from our community and team.
-    - **Learn & Share**: Exchange tips and tutorials to enhance your skills.
-    - **Exclusive Previews**: Get early access to new product announcements and sneak peeks.
-    - **Special Discounts**: Enjoy exclusive discounts on our newest products.
-    - **Festive Promotions and Giveaways**: Take part in giveaways and holiday promotions.
+    - **Soporte experto**: Resuelve problemas postventa y desafíos técnicos con la ayuda de nuestra comunidad y equipo.
+    - **Aprende y comparte**: Intercambia consejos y tutoriales para mejorar tus habilidades.
+    - **Preestrenos exclusivos**: Obtén acceso anticipado a nuevos anuncios de productos y adelantos.
+    - **Descuentos especiales**: Disfruta de descuentos exclusivos en nuestros productos más recientes.
+    - **Promociones festivas y sorteos**: Participa en sorteos y promociones durante las festividades.
 
-    👉 Ready to explore and create with us? Click [|link_sf_facebook|] and join today!
+    👉 ¿Listo para explorar y crear con nosotros? Haz clic en [|link_sf_facebook|] y únete hoy mismo!
 
 .. _quick_guide_python:
 
-Quick Guide on Python
+Guía rápida de Python
 ==========================
 
-This section is to teach you how to install Raspberry Pi OS, configure wifi to Raspberry Pi, remote access to Raspberry Pi to run the corresponding code.
+Esta sección te enseñará cómo instalar Raspberry Pi OS, configurar wifi en Raspberry Pi, acceder remotamente a Raspberry Pi y ejecutar el código correspondiente.
 
-If you are familiar with Raspberry Pi and can open the command line successfully, then you can skip the first 3 parts and then complete the last part. 
+Si ya estás familiarizado con Raspberry Pi y puedes abrir la línea de comandos correctamente, puedes omitir las primeras 3 partes y completar solo la última parte.
 
 
 
@@ -34,9 +34,9 @@ If you are familiar with Raspberry Pi and can open the command line successfully
     enable_i2c
     py_servo_adjust
     
-**Video**
+**Vídeo**
 
-In our assembly video from 6:25 to 8:48, there is also a detailed tutorial for this chapter. You can follow the video instructions directly.
+En nuestro video de ensamblaje, desde el minuto 6:25 hasta el 8:48, también hay un tutorial detallado para este capítulo. Puedes seguir las instrucciones del video directamente.
 
 .. raw:: html
 

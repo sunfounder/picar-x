@@ -1,27 +1,28 @@
 .. note::
 
-    Hello, welcome to the SunFounder Raspberry Pi & Arduino & ESP32 Enthusiasts Community on Facebook! Dive deeper into Raspberry Pi, Arduino, and ESP32 with fellow enthusiasts.
+    ¡Hola! Bienvenido a la comunidad de entusiastas de SunFounder Raspberry Pi, Arduino y ESP32 en Facebook. ¡Profundiza en el mundo de Raspberry Pi, Arduino y ESP32 junto a otros apasionados!
 
-    **Why Join?**
+    **¿Por qué unirte?**
 
-    - **Expert Support**: Solve post-sale issues and technical challenges with help from our community and team.
-    - **Learn & Share**: Exchange tips and tutorials to enhance your skills.
-    - **Exclusive Previews**: Get early access to new product announcements and sneak peeks.
-    - **Special Discounts**: Enjoy exclusive discounts on our newest products.
-    - **Festive Promotions and Giveaways**: Take part in giveaways and holiday promotions.
+    - **Soporte experto**: Resuelve problemas postventa y desafíos técnicos con la ayuda de nuestra comunidad y equipo.
+    - **Aprende y comparte**: Intercambia consejos y tutoriales para mejorar tus habilidades.
+    - **Preestrenos exclusivos**: Obtén acceso anticipado a nuevos anuncios de productos y adelantos.
+    - **Descuentos especiales**: Disfruta de descuentos exclusivos en nuestros productos más recientes.
+    - **Promociones festivas y sorteos**: Participa en sorteos y promociones especiales.
 
-    👉 Ready to explore and create with us? Click [|link_sf_facebook|] and join today!
+    👉 ¿Listo para explorar y crear con nosotros? Haz clic en [|link_sf_facebook|] y únete hoy mismo.
 
-Video 6: Cliff Detection 
-===========================
 
-This tutorial provides essential insights into programming and utilizing cliff detection in the PiCar-X robot.
+Video 6: Detección de precipicios
+=======================================
 
-* **Introduction**: Explains the use of a grayscale sensor in PiCar-X for cliff detection by measuring surface reflections.
-* **Python Code Walkthrough**: Covers the code for cliff detection, detailing sensor setup, and program logic.
-* **Demonstration and Testing**: Shows the robot detecting cliffs and reacting, with steps on running and testing the code.
-* **Auto-Start Setup**: Guides on configuring the Raspberry Pi to run the cliff detection script on boot.
-* **Practical Application**: Demonstrates the robot's response to different surfaces and edges, highlighting its cliff detection capability.
+Este tutorial ofrece información clave sobre la programación y el uso de la detección de precipicios en el robot PiCar-X.
+
+* **Introducción**: Explica el uso del sensor de escala de grises en PiCar-X para detectar precipicios mediante la medición de las reflexiones de la superficie.
+* **Recorrido del código Python**: Detalla el código para la detección de precipicios, incluyendo la configuración del sensor y la lógica del programa.
+* **Demostración y pruebas**: Muestra al robot detectando precipicios y reaccionando, con los pasos para ejecutar y probar el código.
+* **Configuración de inicio automático**: Guía sobre cómo configurar el Raspberry Pi para que ejecute el script de detección de precipicios al iniciar.
+* **Aplicación práctica**: Demuestra cómo el robot responde a diferentes superficies y bordes, resaltando su capacidad de detección de precipicios.
 
 **Video**
 
@@ -29,6 +30,6 @@ This tutorial provides essential insights into programming and utilizing cliff d
 
     <iframe width="700" height="500" src="https://www.youtube.com/embed/7-sJsRaBI8Q?si=QVsHZ9oEwLEwRUE5" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
         
-**Related On-line Tutorials**
+**Tutoriales en línea relacionados**
 
 * :ref:`py_cliff`

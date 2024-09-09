@@ -1,29 +1,29 @@
 .. note::
 
-    Hello, welcome to the SunFounder Raspberry Pi & Arduino & ESP32 Enthusiasts Community on Facebook! Dive deeper into Raspberry Pi, Arduino, and ESP32 with fellow enthusiasts.
+    ¡Hola! Bienvenido a la comunidad de entusiastas de SunFounder Raspberry Pi, Arduino y ESP32 en Facebook. ¡Profundiza en el mundo de Raspberry Pi, Arduino y ESP32 junto a otros entusiastas!
 
-    **Why Join?**
+    **¿Por qué unirte?**
 
-    - **Expert Support**: Solve post-sale issues and technical challenges with help from our community and team.
-    - **Learn & Share**: Exchange tips and tutorials to enhance your skills.
-    - **Exclusive Previews**: Get early access to new product announcements and sneak peeks.
-    - **Special Discounts**: Enjoy exclusive discounts on our newest products.
-    - **Festive Promotions and Giveaways**: Take part in giveaways and holiday promotions.
+    - **Soporte experto**: Resuelve problemas postventa y desafíos técnicos con la ayuda de nuestra comunidad y equipo.
+    - **Aprende y comparte**: Intercambia consejos y tutoriales para mejorar tus habilidades.
+    - **Preestrenos exclusivos**: Obtén acceso anticipado a nuevos anuncios de productos y adelantos.
+    - **Descuentos especiales**: Disfruta de descuentos exclusivos en nuestros productos más recientes.
+    - **Promociones festivas y sorteos**: Participa en sorteos y promociones especiales.
 
-    👉 Ready to explore and create with us? Click [|link_sf_facebook|] and join today!
+    👉 ¿Listo para explorar y crear con nosotros? Haz clic en [|link_sf_facebook|] y únete hoy mismo.
 
-Video A1: Starting with Raspbrry Pi
-=====================================
-This is the first video for the PiCar-X.
+Video A1: Iniciando con Raspberry Pi
+==========================================
+Este es el primer video para el PiCar-X.
 
-This video provides a comprehensive tutorial on setting up a Raspberry Pi for use with the PiCar-X robot car. It covers:
+Este video proporciona un tutorial completo sobre cómo configurar una Raspberry Pi para usar con el coche robot PiCar-X. Cubre los siguientes temas:
 
-* The features of the PiCar-X.
-* How to image the Raspberry Pi OS.
-* Various programming methods including using HDMI, PowerShell, Remote Desktop, and SunFounder Create Agent.
-* Installing necessary robot modules.
+* Las características del PiCar-X.
+* Cómo crear una imagen del sistema operativo Raspberry Pi OS.
+* Diversos métodos de programación, incluyendo el uso de HDMI, PowerShell, Escritorio Remoto y SunFounder Create Agent.
+* Instalación de los módulos necesarios para el robot.
 
-If you are a beginner, it is suggested to follow the steps one by one. If you are more familiar with Raspberry Pi, then you can directly follow the latter part of the video to install the necessary modules.
+Si eres principiante, se sugiere seguir los pasos uno por uno. Si ya estás más familiarizado con Raspberry Pi, puedes saltar directamente a la última parte del video para instalar los módulos necesarios.
 
 **Video**
 
@@ -31,6 +31,7 @@ If you are a beginner, it is suggested to follow the steps one by one. If you ar
 
     <iframe width="700" height="500" src="https://www.youtube.com/embed/qD6Nu82qmbg?si=iNTBm5qaGTaMh6Za" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
-**Related On-line Tutorials**
+**Tutoriales en línea relacionados**
 
 * :ref:`quick_guide_python`
+

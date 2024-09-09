@@ -1,28 +1,28 @@
 .. note::
 
-    Hello, welcome to the SunFounder Raspberry Pi & Arduino & ESP32 Enthusiasts Community on Facebook! Dive deeper into Raspberry Pi, Arduino, and ESP32 with fellow enthusiasts.
+    ¡Hola! Bienvenido a la Comunidad de Entusiastas de SunFounder Raspberry Pi, Arduino y ESP32 en Facebook. Sumérgete en el mundo de Raspberry Pi, Arduino y ESP32 con otros apasionados.
 
-    **Why Join?**
+    **¿Por qué unirte?**
 
-    - **Expert Support**: Solve post-sale issues and technical challenges with help from our community and team.
-    - **Learn & Share**: Exchange tips and tutorials to enhance your skills.
-    - **Exclusive Previews**: Get early access to new product announcements and sneak peeks.
-    - **Special Discounts**: Enjoy exclusive discounts on our newest products.
-    - **Festive Promotions and Giveaways**: Take part in giveaways and holiday promotions.
+    - **Soporte experto**: Resuelve problemas técnicos y posventa con la ayuda de nuestra comunidad y equipo.
+    - **Aprende y comparte**: Intercambia consejos y tutoriales para mejorar tus habilidades.
+    - **Preestrenos exclusivos**: Obtén acceso anticipado a nuevos anuncios de productos y adelantos exclusivos.
+    - **Descuentos especiales**: Disfruta de descuentos exclusivos en nuestros productos más recientes.
+    - **Promociones festivas y sorteos**: Participa en sorteos y promociones durante las festividades.
 
-    👉 Ready to explore and create with us? Click [|link_sf_facebook|] and join today!
+    👉 ¿Listo para explorar y crear con nosotros? Haz clic en [|link_sf_facebook|] y únete hoy mismo.
 
 .. _py_cliff:
 
-6. Cliff Detection 
-===========================
+6. Detección de acantilados 
+===============================
 
-Let us give PiCar-X a little self-protection awareness and let it learn to use its own grayscale module to avoid rushing down the cliff.
+Vamos a dotar al PiCar-X de un poco de conciencia de autoprotección y enseñarle a usar su propio módulo de escala de grises para evitar caer por un acantilado.
 
-In this example, the car will be dormant. 
-If you push it to a cliff, it will be awakened urgently, then back up, and say "danger".
+En este ejemplo, el coche estará en reposo. 
+Si lo empujas hacia un acantilado, se activará de inmediato, retrocederá y dirá "peligro".
 
-**Run the Code**
+**Ejecutar el código**
 
 .. raw:: html
 
@@ -34,10 +34,10 @@ If you push it to a cliff, it will be awakened urgently, then back up, and say "
     sudo python3 6.cliff_detection.py
     
 
-**Code**
+**Código**
 
 .. note::
-    You can **Modify/Reset/Copy/Run/Stop** the code below. But before that, you need to go to  source code path like ``picar-x/example``. After modifying the code, you can run it directly to see the effect.
+    Puedes **Modificar/Restablecer/Copiar/Ejecutar/Detener** el código a continuación. Pero antes de eso, debes ir a la ruta del código fuente como ``picar-x/example``. Después de modificar el código, puedes ejecutarlo directamente para ver el efecto.
 
 .. raw:: html
 
@@ -54,7 +54,7 @@ If you push it to a cliff, it will be awakened urgently, then back up, and say "
 
     px = Picarx()
     # px = Picarx(grayscale_pins=['A0', 'A1', 'A2'])
-    # manual modify reference value
+    # modificar manualmente el valor de referencia
     px.set_cliff_reference([200, 200, 200])
 
     current_state = None
@@ -67,7 +67,7 @@ If you push it to a cliff, it will be awakened urgently, then back up, and say "
             while True:
                 gm_val_list = px.get_grayscale_data()
                 gm_state = px.get_cliff_status(gm_val_list)
-                # print("cliff status is:  %s"%gm_state)
+                # print("El estado del acantilado es:  %s"%gm_state)
 
                 if gm_state is False:
                     state = "safe"
@@ -85,10 +85,11 @@ If you push it to a cliff, it will be awakened urgently, then back up, and say "
             print("stop and exit")
             sleep(0.1)
 
-**How it works?** 
+**¿Cómo funciona?** 
 
-The function to detect the cliff looks like this:
+La función para detectar acantilados funciona así:
 
-* ``get_grayscale_data()``: This method directly outputs the readings of the three sensors, from right to left. The brighter the area, the larger the value obtained.
+* ``get_grayscale_data()``: Este método proporciona directamente las lecturas de los tres sensores, de derecha a izquierda. Cuanto más brillante sea la zona, mayor será el valor obtenido.
 
-* ``get_cliff_status(gm_val_list)``: This method compares the readings from the three probes and outputs a result. If the result is true, it is detected that there is a cliff in front of the car.
+* ``get_cliff_status(gm_val_list)``: Este método compara las lecturas de las tres sondas y da un resultado. Si el resultado es verdadero, se detecta que hay un acantilado delante del coche.
+

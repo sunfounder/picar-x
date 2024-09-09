@@ -1,29 +1,30 @@
 .. note::
 
-    Hello, welcome to the SunFounder Raspberry Pi & Arduino & ESP32 Enthusiasts Community on Facebook! Dive deeper into Raspberry Pi, Arduino, and ESP32 with fellow enthusiasts.
+    ¡Hola! Bienvenido a la comunidad de entusiastas de SunFounder Raspberry Pi, Arduino y ESP32 en Facebook. ¡Sumérgete en el mundo de Raspberry Pi, Arduino y ESP32 junto con otros apasionados!
 
-    **Why Join?**
+    **¿Por qué unirte?**
 
-    - **Expert Support**: Solve post-sale issues and technical challenges with help from our community and team.
-    - **Learn & Share**: Exchange tips and tutorials to enhance your skills.
-    - **Exclusive Previews**: Get early access to new product announcements and sneak peeks.
-    - **Special Discounts**: Enjoy exclusive discounts on our newest products.
-    - **Festive Promotions and Giveaways**: Take part in giveaways and holiday promotions.
+    - **Soporte experto**: Resuelve problemas postventa y desafíos técnicos con la ayuda de nuestra comunidad y equipo.
+    - **Aprende y comparte**: Intercambia consejos y tutoriales para mejorar tus habilidades.
+    - **Preestrenos exclusivos**: Obtén acceso anticipado a nuevos anuncios de productos y adelantos.
+    - **Descuentos especiales**: Disfruta de descuentos exclusivos en nuestros productos más recientes.
+    - **Promociones festivas y sorteos**: Participa en sorteos y promociones especiales.
 
-    👉 Ready to explore and create with us? Click [|link_sf_facebook|] and join today!
+    👉 ¿Listo para explorar y crear con nosotros? Haz clic en [|link_sf_facebook|] y únete hoy mismo.
 
-Video 4: Obstacle Avoidance with Ultrasonic
-============================================
 
-This video tutorial covers obstacle avoidance using an ultrasonic sensor in the PiCar-X robot:
+Video 4: Evitación de Obstáculos con Ultrasonido
+=======================================================
 
-* **Introduction to Ultrasonic Sensor**: Explains how to use the ultrasonic sensor for measuring distance and controlling the car's movement.
-* **Python Code Walkthrough**: Details the Python code for obstacle avoidance, including variable definitions and conditional movement logic.
-* **Creating and Running Custom Scripts**: Shows how to write and execute custom scripts for U-turns and obstacle reactions.
-* **Practical Demonstrations**: Provides demonstrations of the robot's obstacle avoidance capabilities on different surfaces.
-* **Code Saving and Updating**: Explains how to save and update scripts on the robot.
+Este tutorial en video cubre la evitación de obstáculos utilizando un sensor ultrasónico en el robot PiCar-X:
 
-This lesson offers an essential guide to implementing ultrasonic sensor-based obstacle avoidance in the PiCar-X robot.
+* **Introducción al sensor ultrasónico**: Explica cómo usar el sensor ultrasónico para medir distancias y controlar el movimiento del coche.
+* **Análisis del código Python**: Detalla el código Python para la evitación de obstáculos, incluyendo la definición de variables y la lógica condicional de movimiento.
+* **Creación y ejecución de scripts personalizados**: Muestra cómo escribir y ejecutar scripts personalizados para giros en U y reacciones a obstáculos.
+* **Demostraciones prácticas**: Ofrece demostraciones de las capacidades del robot para evitar obstáculos en diferentes superficies.
+* **Guardar y actualizar scripts**: Explica cómo guardar y actualizar los scripts en el robot.
+
+Esta lección proporciona una guía esencial para implementar la evitación de obstáculos basada en sensores ultrasónicos en el robot PiCar-X.
 
 
 **Video**
@@ -32,6 +33,6 @@ This lesson offers an essential guide to implementing ultrasonic sensor-based ob
 
     <iframe width="700" height="500" src="https://www.youtube.com/embed/zi5GM7lP5JA?si=obLF_79PFZv8xAZl" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
-**Related On-line Tutorials**
+**Tutoriales en línea relacionados**
 
 * :ref:`py_avoid`

@@ -1,30 +1,30 @@
 .. note::
 
-    Hello, welcome to the SunFounder Raspberry Pi & Arduino & ESP32 Enthusiasts Community on Facebook! Dive deeper into Raspberry Pi, Arduino, and ESP32 with fellow enthusiasts.
+    ¡Hola! Bienvenido a la comunidad de entusiastas de SunFounder Raspberry Pi, Arduino y ESP32 en Facebook. ¡Sumérgete en el mundo de Raspberry Pi, Arduino y ESP32 junto con otros entusiastas!
 
-    **Why Join?**
+    **¿Por qué unirte?**
 
-    - **Expert Support**: Solve post-sale issues and technical challenges with help from our community and team.
-    - **Learn & Share**: Exchange tips and tutorials to enhance your skills.
-    - **Exclusive Previews**: Get early access to new product announcements and sneak peeks.
-    - **Special Discounts**: Enjoy exclusive discounts on our newest products.
-    - **Festive Promotions and Giveaways**: Take part in giveaways and holiday promotions.
+    - **Soporte experto**: Resuelve problemas postventa y desafíos técnicos con la ayuda de nuestra comunidad y equipo.
+    - **Aprende y comparte**: Intercambia consejos y tutoriales para mejorar tus habilidades.
+    - **Preestrenos exclusivos**: Obtén acceso anticipado a nuevos anuncios de productos y adelantos.
+    - **Descuentos especiales**: Disfruta de descuentos exclusivos en nuestros productos más recientes.
+    - **Promociones festivas y sorteos**: Participa en sorteos y promociones especiales.
 
-    👉 Ready to explore and create with us? Click [|link_sf_facebook|] and join today!
+    👉 ¿Listo para explorar y crear con nosotros? Haz clic en [|link_sf_facebook|] y únete hoy.
 
 .. _py_stare:
 
-8. Stare at You
+8. Te Observa
 ==========================================
 
-This project is also based on the :ref:`py_computer_vision` project, 
-with the addition of face detection algorithms.
+Este proyecto también se basa en el proyecto :ref:`py_computer_vision`, 
+con la incorporación de algoritmos de detección facial.
 
-When you appear in front of the camera, it will recognize your face and adjust its gimbal to keep your face in the center of the frame.
+Cuando aparezcas frente a la cámara, reconocerá tu rostro y ajustará su soporte para mantener tu cara en el centro de la imagen.
 
-You can view the screen at ``http://<your IP>:9000/mjpg``.
+Puedes ver la transmisión en ``http://<your IP>:9000/mjpg``.
 
-**Run the Code**
+**Ejecutar el Código**
 
 .. raw:: html
 
@@ -35,9 +35,9 @@ You can view the screen at ``http://<your IP>:9000/mjpg``.
     cd ~/picar-x/example
     sudo python3 8.stare_at_you.py
 
-When the code is run, the car's camera will always be staring at your face.
+Cuando el código se ejecute, la cámara del coche seguirá enfocando tu rostro.
 
-**Code**
+**Código**
 
 .. code-block:: python
 
@@ -61,7 +61,7 @@ When the code is run, the car's camera will always be staring at your face.
                 coordinate_x = Vilib.detect_obj_parameter['human_x']
                 coordinate_y = Vilib.detect_obj_parameter['human_y']
                 
-                # change the pan-tilt angle for track the object
+                # ajustar el ángulo del soporte para seguir el rostro
                 x_angle +=(coordinate_x*10/640)-5
                 x_angle = clamp_number(x_angle,-35,35)
                 px.set_cam_pan_angle(x_angle)
@@ -72,22 +72,21 @@ When the code is run, the car's camera will always be staring at your face.
 
                 sleep(0.05)
 
-            else :
+            else:
                 pass
                 sleep(0.05)
 
     if __name__ == "__main__":
         try:
-        main()
-        
+            main()
         finally:
             px.stop()
             print("stop and exit")
             sleep(0.1)
 
-**How it works?**
+**¿Cómo funciona?**
 
-These lines of code in ``while True`` make the camera follow the face.
+Estas líneas de código en el bucle ``while True`` permiten que la cámara siga el rostro.
 
 .. code-block:: python
 
@@ -96,7 +95,7 @@ These lines of code in ``while True`` make the camera follow the face.
             coordinate_x = Vilib.detect_obj_parameter['human_x']
             coordinate_y = Vilib.detect_obj_parameter['human_y']
             
-            # change the pan-tilt angle for track the object
+            # ajustar el ángulo del soporte para seguir el rostro
             x_angle +=(coordinate_x*10/640)-5
             x_angle = clamp_number(x_angle,-35,35)
             px.set_cam_pan_angle(x_angle)
@@ -105,16 +104,17 @@ These lines of code in ``while True`` make the camera follow the face.
             y_angle = clamp_number(y_angle,-35,35)
             px.set_cam_tilt_angle(y_angle)
 
-1. Check if there is a detected human face
+1. Verifica si se ha detectado un rostro humano.
 
     .. code-block:: python
 
         Vilib.detect_obj_parameter['human_n'] != 0
 
-2. If a human face is detected, obtain the coordinates ( ``coordinate_x`` and ``coordinate_y`` ) of the detected face.
+2. Si se detecta un rostro, obtén las coordenadas ( ``coordinate_x`` y ``coordinate_y`` ) del rostro detectado.
 
-3. Calculate new pan and tilt angles ( ``x_angle`` and ``y_angle`` ) based on the detected face's position and adjust them to follow the face.
+3. Calcula los nuevos ángulos de paneo e inclinación ( ``x_angle`` y ``y_angle`` ) basados en la posición del rostro y ajústalos para seguirlo.
 
-4. Limit the pan and tilt angles within the specified range using the ``clamp_number`` function.
+4. Limita los ángulos de paneo e inclinación dentro del rango especificado usando la función ``clamp_number``.
 
-5. Set the camera's pan and tilt angles using ``px.set_cam_pan_angle()`` and ``px.set_cam_tilt_angle()`` .
+5. Configura los ángulos de paneo e inclinación de la cámara utilizando ``px.set_cam_pan_angle()`` y ``px.set_cam_tilt_angle()``.
+

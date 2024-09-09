@@ -1,9 +1,9 @@
-For Mac OS X Users
-==========================
+Para Usuarios de Mac OS X
+=============================
 
-For Mac OS X users, SSH (Secure Shell) offers a secure and convenient method to remotely access and control a Raspberry Pi. This is particularly handy for working with the Raspberry Pi remotely or when it's not connected to a monitor. Using the Terminal application on a Mac, you can establish this secure connection. The process involves an SSH command incorporating the Raspberry Pi's username and hostname. During the initial connection, a security prompt will ask for confirmation of the Raspberry Pi's authenticity.
+Para los usuarios de Mac OS X, SSH (Secure Shell) ofrece un método seguro y conveniente para acceder y controlar remotamente una Raspberry Pi. Esto es especialmente útil cuando se trabaja con la Raspberry Pi de forma remota o cuando no está conectada a un monitor. Usando la aplicación Terminal en un Mac, puedes establecer esta conexión segura. El proceso implica un comando SSH que incorpora el nombre de usuario y el nombre del host de la Raspberry Pi. Durante la conexión inicial, aparecerá un mensaje de seguridad solicitando la confirmación de la autenticidad de la Raspberry Pi.
 
-#. To connect to the Raspberry Pi, type the following SSH command:
+#. Para conectarte a la Raspberry Pi, escribe el siguiente comando SSH:
 
     .. code-block::
 
@@ -11,7 +11,7 @@ For Mac OS X users, SSH (Secure Shell) offers a secure and convenient method to 
 
     .. image:: img/mac-ping.png
 
-#. A security message will appear during your first login. Respond with **yes** to proceed.
+#. Aparecerá un mensaje de seguridad durante tu primer inicio de sesión. Responde con **yes** para continuar.
 
     .. code-block::
 
@@ -19,7 +19,7 @@ For Mac OS X users, SSH (Secure Shell) offers a secure and convenient method to 
         ED25519 key fingerprint is SHA256:oo7x3ZSgAo032wD1tE8eW0fFM/kmewIvRwkBys6XRwg.
         Are you sure you want to continue connecting (yes/no/[fingerprint])?
 
-#. Input the password for the Raspberry Pi. Be aware that the password won’t display on the screen as you type, which is a standard security feature.
+#. Introduce la contraseña de la Raspberry Pi. Ten en cuenta que la contraseña no se mostrará en la pantalla mientras la escribes, lo cual es una característica estándar de seguridad.
 
     .. code-block::
 

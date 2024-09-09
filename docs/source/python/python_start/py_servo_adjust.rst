@@ -1,29 +1,29 @@
 .. note::
 
-    Hello, welcome to the SunFounder Raspberry Pi & Arduino & ESP32 Enthusiasts Community on Facebook! Dive deeper into Raspberry Pi, Arduino, and ESP32 with fellow enthusiasts.
+    Hola, bienvenido a la Comunidad de Entusiastas de SunFounder Raspberry Pi, Arduino y ESP32 en Facebook. ¡Sumérgete en el mundo de Raspberry Pi, Arduino y ESP32 con otros entusiastas!
 
-    **Why Join?**
+    **¿Por qué unirte?**
 
-    - **Expert Support**: Solve post-sale issues and technical challenges with help from our community and team.
-    - **Learn & Share**: Exchange tips and tutorials to enhance your skills.
-    - **Exclusive Previews**: Get early access to new product announcements and sneak peeks.
-    - **Special Discounts**: Enjoy exclusive discounts on our newest products.
-    - **Festive Promotions and Giveaways**: Take part in giveaways and holiday promotions.
+    - **Soporte experto**: Resuelve problemas postventa y desafíos técnicos con la ayuda de nuestra comunidad y equipo.
+    - **Aprende y comparte**: Intercambia consejos y tutoriales para mejorar tus habilidades.
+    - **Preestrenos exclusivos**: Obtén acceso anticipado a nuevos anuncios de productos y adelantos.
+    - **Descuentos especiales**: Disfruta de descuentos exclusivos en nuestros productos más recientes.
+    - **Promociones festivas y sorteos**: Participa en sorteos y promociones durante las festividades.
 
-    👉 Ready to explore and create with us? Click [|link_sf_facebook|] and join today!
+    👉 ¿Listo para explorar y crear con nosotros? Haz clic en [|link_sf_facebook|] y únete hoy mismo!
 
-7. Servo Adjust(Important)
-============================
+7. Ajuste del Servomotor (Importante)
+======================================
 
-The angle range of the servo is -90~90, but the angle set at the factory is random, maybe 0°, maybe 45°; if we assemble it with such an angle directly, it will lead to a chaotic state after the robot runs the code, or worse, it will cause the servo to block and burn out.
+El rango de ángulo del servomotor es de -90° a 90°, pero el ángulo configurado en la fábrica es aleatorio, puede ser 0° o 45°. Si ensamblamos el servomotor con ese ángulo directamente, provocará un estado caótico cuando el robot ejecute el código, o peor aún, el servomotor podría bloquearse y quemarse.
 
-So here we need to set all the servo angles to 0° and then install them, so that the servo angle is in the middle, no matter which direction to turn.
+Por eso, es necesario configurar todos los ángulos de los servomotores a 0° antes de instalarlos, de manera que el ángulo del servomotor quede centrado, sin importar en qué dirección gire.
 
-#. To ensure that the servo has been properly set to 0°, first insert the servo arm into the servo shaft and then gently rotate the rocker arm to a different angle. This servo arm is just to allow you to clearly see that the servo is rotating.
+#. Para asegurarte de que el servomotor esté correctamente ajustado a 0°, primero inserta el brazo del servomotor en el eje del servo y luego gira suavemente el brazo a diferentes ángulos. Este brazo solo te permitirá ver claramente que el servomotor está rotando.
 
     .. image:: img/servo_arm.png
 
-#. Now, run ``servo_zeroing.py`` in the ``example/`` folder.
+#. Ahora, ejecuta ``servo_zeroing.py`` en la carpeta ``example/``.
 
     .. raw:: html
 
@@ -34,16 +34,15 @@ So here we need to set all the servo angles to 0° and then install them, so tha
         cd ~/picar-x/example
         sudo python3 servo_zeroing.py
 
-#. Next, plug the servo cable into the P11 port as follows, at the same time you will see the servo arm rotate to a position(This is the 0° position, which is a random location and may not be vertical or parallel.).
-
+#. A continuación, conecta el cable del servomotor en el puerto P11 como se muestra a continuación. Al mismo tiempo, verás que el brazo del servo gira a una posición (esta es la posición de 0°, que puede no estar vertical o paralela).
 
     .. image:: img/Z_P11.JPG
 
-#. Now, remove the servo arm, ensuring the servo wire remains connected, and do not turn off the power. Then continue the assembly following the paper instructions.
+#. Ahora, retira el brazo del servomotor, asegurándote de que el cable permanezca conectado, y no apagues el sistema. Luego, continúa el ensamblaje siguiendo las instrucciones en papel.
 
 .. note::
 
-    * Do not unplug this servo cable before fixing it with the servo screw, you can unplug it after fixing it.
-    * Do not rotate the servo while it is powered on to avoid damage; if the servo shaft is not inserted at the right angle, pull the servo out and reinsert it.
-    * Before assembling each servo, you need to plug the servo cable into P11 and turn on the power to set its angle to 0°.
+    * No desconectes este cable del servomotor antes de fijarlo con el tornillo del servo; puedes desconectarlo después de fijarlo.
+    * No gires el servomotor mientras esté encendido para evitar daños; si el eje del servomotor no está insertado en el ángulo correcto, retira el servomotor y vuelve a insertarlo.
+    * Antes de ensamblar cada servomotor, debes conectar el cable del servo en el puerto P11 y encender el sistema para configurar su ángulo a 0°.
 

@@ -1,27 +1,28 @@
 .. note::
 
-    Hello, welcome to the SunFounder Raspberry Pi & Arduino & ESP32 Enthusiasts Community on Facebook! Dive deeper into Raspberry Pi, Arduino, and ESP32 with fellow enthusiasts.
+    ¡Hola! Bienvenido a la comunidad de entusiastas de SunFounder Raspberry Pi, Arduino y ESP32 en Facebook. ¡Sumérgete más en Raspberry Pi, Arduino y ESP32 junto con otros entusiastas!
 
-    **Why Join?**
+    **¿Por qué unirse?**
 
-    - **Expert Support**: Solve post-sale issues and technical challenges with help from our community and team.
-    - **Learn & Share**: Exchange tips and tutorials to enhance your skills.
-    - **Exclusive Previews**: Get early access to new product announcements and sneak peeks.
-    - **Special Discounts**: Enjoy exclusive discounts on our newest products.
-    - **Festive Promotions and Giveaways**: Take part in giveaways and holiday promotions.
+    - **Soporte experto**: Resuelve problemas postventa y desafíos técnicos con la ayuda de nuestra comunidad y equipo.
+    - **Aprende y comparte**: Intercambia consejos y tutoriales para mejorar tus habilidades.
+    - **Preestrenos exclusivos**: Obtén acceso anticipado a nuevos anuncios de productos y adelantos.
+    - **Descuentos especiales**: Disfruta de descuentos exclusivos en nuestros productos más recientes.
+    - **Promociones y sorteos festivos**: Participa en sorteos y promociones especiales.
 
-    👉 Ready to explore and create with us? Click [|link_sf_facebook|] and join today!
+    👉 ¿Listo para explorar y crear con nosotros? Haz clic en [|link_sf_facebook|] y únete hoy.
 
 .. _py_keyboard_control:
 
-2. Keyboard Control
+2. Control por Teclado
 ================================
 
 
-In this project, we will learn how to use the keyboard to remotely control the PiCar-X. 
-You can control the PiCar-X to move forward, backward, left, and right.
+En este proyecto, aprenderemos a utilizar el teclado para controlar remotamente el 
+PiCar-X. Podrás manejar el PiCar-X para avanzar, retroceder, girar a la izquierda y 
+a la derecha.
 
-**Run the Code**
+**Ejecutar el Código**
 
 .. raw:: html
 
@@ -32,19 +33,19 @@ You can control the PiCar-X to move forward, backward, left, and right.
     cd ~/picar-x/example
     sudo python3 2.keyboard_control.py
 
-Press keys on keyboard to control PiCar-X! 
+¡Presiona teclas en el teclado para controlar el PiCar-X!
 
-    * w: Forward 
-    * a: Turn left 
-    * s: Backward 
-    * d: Turn right
-    * i: Head up
-    * k: Head down
-    * j: Turn head left
-    * l: Turn head right     
-    * ctrl + c: Press twice to exit the program
+    * w: Avanzar 
+    * a: Girar a la izquierda 
+    * s: Retroceder 
+    * d: Girar a la derecha
+    * i: Subir la cabeza
+    * k: Bajar la cabeza
+    * j: Girar la cabeza a la izquierda
+    * l: Girar la cabeza a la derecha     
+    * ctrl + c: Presiona dos veces para salir del programa
 
-**Code**
+**Código**
 
 .. code-block:: python
 
@@ -127,11 +128,11 @@ Press keys on keyboard to control PiCar-X!
             sleep(.2)
 
 
-**How it works?**
+**¿Cómo funciona?**
 
-PiCar-X should take appropriate action based on the keyboard characters read. 
-The ``lower()`` function converts upper case characters into lower case characters, 
-so that the letter remains valid regardless of case.
+El PiCar-X debe realizar la acción apropiada en función de los caracteres leídos desde el teclado. 
+La función ``lower()`` convierte las letras mayúsculas en minúsculas, 
+de modo que las letras sean válidas sin importar el caso.
 
 .. code-block:: python
 
@@ -159,3 +160,4 @@ so that the letter remains valid regardless of case.
         elif key == readchar.key.CTRL_C:
             print("\n Quit")
             break
+

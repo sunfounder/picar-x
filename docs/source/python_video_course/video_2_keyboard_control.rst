@@ -1,29 +1,29 @@
 .. note::
 
-    Hello, welcome to the SunFounder Raspberry Pi & Arduino & ESP32 Enthusiasts Community on Facebook! Dive deeper into Raspberry Pi, Arduino, and ESP32 with fellow enthusiasts.
+    ¡Hola! Bienvenido a la comunidad de entusiastas de SunFounder Raspberry Pi, Arduino y ESP32 en Facebook. ¡Sumérgete en el mundo de Raspberry Pi, Arduino y ESP32 junto con otros apasionados!
 
-    **Why Join?**
+    **¿Por qué unirte?**
 
-    - **Expert Support**: Solve post-sale issues and technical challenges with help from our community and team.
-    - **Learn & Share**: Exchange tips and tutorials to enhance your skills.
-    - **Exclusive Previews**: Get early access to new product announcements and sneak peeks.
-    - **Special Discounts**: Enjoy exclusive discounts on our newest products.
-    - **Festive Promotions and Giveaways**: Take part in giveaways and holiday promotions.
+    - **Soporte experto**: Resuelve problemas postventa y desafíos técnicos con la ayuda de nuestra comunidad y equipo.
+    - **Aprende y comparte**: Intercambia consejos y tutoriales para mejorar tus habilidades.
+    - **Preestrenos exclusivos**: Obtén acceso anticipado a nuevos anuncios de productos y adelantos.
+    - **Descuentos especiales**: Disfruta de descuentos exclusivos en nuestros productos más recientes.
+    - **Promociones festivas y sorteos**: Participa en sorteos y promociones especiales.
 
-    👉 Ready to explore and create with us? Click [|link_sf_facebook|] and join today!
+    👉 ¿Listo para explorar y crear con nosotros? Haz clic en [|link_sf_facebook|] y únete hoy mismo.
 
-Video 2: Controlling the PiCar-X using keyboard
+Video 2: Controlando el PiCar-X con el teclado
 =======================================================
 
-In this video tutorial, you'll learn how to control the PiCar-X robot using a keyboard. It covers:
+En este tutorial en video, aprenderás a controlar el robot PiCar-X usando un teclado. Se cubren los siguientes temas:
 
-* **Basic Control**: Demonstrates controlling the PiCar-X with keyboard commands - "W" for forward, "S" for backward, "A" for left turns, and "D" for right turns.
-* **Tilt and Pan of Camera**: Teaches controlling the mounted camera's tilt and pan using "I" (up), "K" (down), "J" (left), and "L" (right).
-* **Code Explanation**: Provides a detailed explanation of the Python code for keyboard control, including library imports and control logic.
-* **Running the Code**: Shows how to execute the Python code for keyboard control, including connecting to the PiCar-X.
-* **Exiting Control**: Explains exiting keyboard control by pressing "Ctrl + C", returning the robot to its default state.
+* **Control básico**: Demuestra cómo controlar el PiCar-X con comandos de teclado: "W" para avanzar, "S" para retroceder, "A" para girar a la izquierda y "D" para girar a la derecha.
+* **Inclinación y paneo de la cámara**: Enseña cómo controlar la inclinación y el paneo de la cámara montada usando "I" (arriba), "K" (abajo), "J" (izquierda) y "L" (derecha).
+* **Explicación del código**: Proporciona una explicación detallada del código en Python para el control por teclado, incluyendo las bibliotecas importadas y la lógica de control.
+* **Ejecutar el código**: Muestra cómo ejecutar el código en Python para el control por teclado, incluyendo la conexión con el PiCar-X.
+* **Salir del control**: Explica cómo salir del control por teclado presionando "Ctrl + C", devolviendo al robot a su estado predeterminado.
 
-This tutorial is ideal for beginners and robotics enthusiasts, offering clear instructions and a hands-on demonstration for controlling the PiCar-X robot with a keyboard.
+Este tutorial es ideal para principiantes y entusiastas de la robótica, ya que ofrece instrucciones claras y una demostración práctica para controlar el robot PiCar-X con un teclado.
 
 
 **Video**
@@ -32,6 +32,6 @@ This tutorial is ideal for beginners and robotics enthusiasts, offering clear in
 
     <iframe width="700" height="500" src="https://www.youtube.com/embed/UZ1ogrjyb3I?si=2p30eJcnBQn6nWSc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
-**Related On-line Tutorials**
+**Tutoriales en línea relacionados**
 
 * :ref:`py_keyboard_control`

@@ -1,34 +1,34 @@
 .. note::
 
-    Hello, welcome to the SunFounder Raspberry Pi & Arduino & ESP32 Enthusiasts Community on Facebook! Dive deeper into Raspberry Pi, Arduino, and ESP32 with fellow enthusiasts.
+    ¡Hola! Bienvenido a la comunidad de entusiastas de SunFounder Raspberry Pi, Arduino y ESP32 en Facebook. ¡Profundiza en el mundo de Raspberry Pi, Arduino y ESP32 junto con otros entusiastas!
 
-    **Why Join?**
+    **¿Por qué unirte?**
 
-    - **Expert Support**: Solve post-sale issues and technical challenges with help from our community and team.
-    - **Learn & Share**: Exchange tips and tutorials to enhance your skills.
-    - **Exclusive Previews**: Get early access to new product announcements and sneak peeks.
-    - **Special Discounts**: Enjoy exclusive discounts on our newest products.
-    - **Festive Promotions and Giveaways**: Take part in giveaways and holiday promotions.
+    - **Soporte experto**: Resuelve problemas postventa y desafíos técnicos con la ayuda de nuestra comunidad y equipo.
+    - **Aprende y comparte**: Intercambia consejos y tutoriales para mejorar tus habilidades.
+    - **Preestrenos exclusivos**: Obtén acceso anticipado a nuevos anuncios de productos y adelantos.
+    - **Descuentos especiales**: Disfruta de descuentos exclusivos en nuestros productos más recientes.
+    - **Promociones festivas y sorteos**: Participa en sorteos y promociones especiales.
 
-    👉 Ready to explore and create with us? Click [|link_sf_facebook|] and join today!
+    👉 ¿Listo para explorar y crear con nosotros? Haz clic en [|link_sf_facebook|] y únete hoy.
 
 .. _py_tts:
 
-3. Text to Speech & Sound Effect
+3. Texto a Voz y Efectos de Sonido
 =========================================
 
-In this example, we use PiCar-X's (to be precise, Robot HAT’s) sound effects. 
-It consists of three parts, namely Muisc, Sound, Text to Speech.
+En este ejemplo, usamos los efectos de sonido de PiCar-X (o más específicamente, de Robot HAT). 
+Consiste en tres partes: Música, Sonido y Texto a Voz.
 
 .. image:: img/how_are_you.jpg
 
-**Install i2samp**
+**Instalar i2samp**
 
-Before using the Text-to-Speech (TTS) and Sound Effect functions, 
-first activate the speaker so that it will be enabled and can make sounds.
+Antes de usar las funciones de Texto a Voz (TTS) y los Efectos de Sonido, 
+primero activa el altavoz para que esté habilitado y pueda emitir sonidos.
 
-Run ``i2samp.sh`` in the **picar-x** folder, 
-and this script will install everything needed to use i2s amplifier.
+Ejecuta ``i2samp.sh`` en la carpeta **picar-x**, 
+y este script instalará todo lo necesario para usar el amplificador i2s.
 
 .. raw:: html
 
@@ -41,11 +41,11 @@ and this script will install everything needed to use i2s amplifier.
 
 .. image:: img/tt_bash.png
 
-There will be several prompts asking to confirm the request. Respond to all prompts with a **Y**. After the changes have been made to the Raspberry Pi system, the computer will need to reboot for these changes to take effect.
+Habrá varios mensajes pidiendo confirmar la solicitud. Responde a todos los mensajes con un **Y**. Después de que se hayan realizado los cambios en el sistema de Raspberry Pi, será necesario reiniciar el equipo para que los cambios surtan efecto.
 
-After rebooting, run the ``i2samp.sh`` script again to test the amplifier. If a sound successfully plays from the speaker, the configuration is complete.
+Después de reiniciar, ejecuta nuevamente el script ``i2samp.sh`` para probar el amplificador. Si se reproduce sonido correctamente desde el altavoz, la configuración estará completa.
 
-**Run the Code**
+**Ejecutar el Código**
 
 .. raw:: html
 
@@ -56,16 +56,16 @@ After rebooting, run the ``i2samp.sh`` script again to test the amplifier. If a 
     cd ~/picar-x/example
     sudo python3 3.tts_example.py
     
-After the code runs, please operate according to the prompt that printed on the terminal.
+Después de ejecutar el código, sigue las instrucciones que se imprimirán en el terminal.
 
-Input key to call the function!
+¡Introduce una tecla para llamar a la función!
 
-    * space: Play sound effect (Car horn)
-    * c: Play sound effect with threads
-    * t: Text to speak (Say Hello)
-    * q: Play/Stop Music
+    * espacio: Reproducir efecto de sonido (Bocina de coche)
+    * c: Reproducir efecto de sonido con hilos
+    * t: Texto a decir (Decir Hola)
+    * q: Reproducir/Detener música
 
-**Code**
+**Código**
 
 .. code-block:: python
 
@@ -77,11 +77,11 @@ Input key to call the function!
     tts = TTS()
 
     manual = '''
-    Input key to call the function!
-        space: Play sound effect (Car horn)
-        c: Play sound effect with threads
-        t: Text to speak
-        q: Play/Stop Music
+    Introduce una tecla para llamar a la función:
+        espacio: Reproducir efecto de sonido (Bocina de coche)
+        c: Reproducir efecto de sonido con hilos
+        t: Texto a decir
+        q: Reproducir/Detener música
     '''
 
     def main():
@@ -117,54 +117,53 @@ Input key to call the function!
     if __name__ == "__main__":
         main()
 
-**How it works?**
+**¿Cómo funciona?**
 
-Functions related to background music include these:
+Las funciones relacionadas con la música de fondo incluyen:
 
-* ``music = Music()`` : Declare the object.
-* ``music.music_set_volume(20)`` : Set the volume, the range is 0~100.
-* ``music.music_play('../musics/slow-trail-Ahjay_Stelino.mp3')`` : Play music files, here is the **slow-trail-Ahjay_Stelino.mp3** file under the ``../musics`` path.
-* ``music.music_stop()`` : Stop playing background music.
+* ``music = Music()`` : Declara el objeto.
+* ``music.music_set_volume(20)`` : Ajusta el volumen, el rango es de 0~100.
+* ``music.music_play('../musics/slow-trail-Ahjay_Stelino.mp3')`` : Reproduce archivos de música, en este caso el archivo **slow-trail-Ahjay_Stelino.mp3** que está en la ruta ``../musics``.
+* ``music.music_stop()`` : Detiene la música de fondo.
 
 .. note::
 
-    You can add different sound effects or music to ``musics`` or ``sounds`` folder via :ref:`filezilla`.
+    Puedes agregar diferentes efectos de sonido o música a la carpeta ``musics`` o ``sounds`` mediante :ref:`filezilla`.
 
-Functions related to sound effects include these:
+Las funciones relacionadas con los efectos de sonido incluyen:
 
 * ``music = Music()``
-* ``music.sound_play('../sounds/car-double-horn.wav')`` : Play the sound effect file.
-* ``muisc.sound_play_threading('../sounds/car-double-horn.wav')`` : Play the sound effect file in a new thread mode without suspending the main thread.
+* ``music.sound_play('../sounds/car-double-horn.wav')`` : Reproduce el archivo de efecto de sonido.
+* ``music.sound_play_threading('../sounds/car-double-horn.wav')`` : Reproduce el archivo de efecto de sonido en un nuevo hilo sin suspender el hilo principal.
 
+El software `eSpeak <http://espeak.sourceforge.net/>`_ se utiliza para implementar las funciones de TTS.
 
-The `eSpeak <http://espeak.sourceforge.net/>`_ software is used to implement the functions of TTS.
+Importa el módulo TTS en robot_hat, que encapsula funciones que convierten texto en voz.
 
-Import the TTS module in robot_hat, which encapsulates functions that convert text to speech.
-
-Functions related to Text to Speech include these:
+Las funciones relacionadas con Texto a Voz incluyen:
 
 * ``tts = TTS()``
-* ``tts.say(words)`` : Text audio.
-* ``tts.lang("en-US")`` :  Set the language.
+* ``tts.say(words)`` : Reproducción de texto en audio.
+* ``tts.lang("en-US")`` :  Configura el idioma.
 
 .. note:: 
 
-    Set the language by setting the parameters of ``lang("")`` with the following characters.
+    Configura el idioma utilizando los parámetros de ``lang("")`` con los siguientes caracteres.
 
-.. list-table:: Language
+.. list-table:: Idioma
     :widths: 15 50
 
     *   - zh-CN 
-        - Mandarin (Chinese)
+        - Mandarín (Chino)
     *   - en-US 
-        - English-United States
+        - Inglés-Estados Unidos
     *   - en-GB     
-        - English-United Kingdom
+        - Inglés-Reino Unido
     *   - de-DE     
-        - Germany-Deutsch
+        - Alemán-Deutsch
     *   - es-ES     
         - España-Español
     *   - fr-FR  
-        - France-Le français
+        - Francia-Francés
     *   - it-IT  
-        - Italia-lingua italiana
+        - Italia-Italiano

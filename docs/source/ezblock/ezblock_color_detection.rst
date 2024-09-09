@@ -1,29 +1,29 @@
 .. note::
 
-    Hello, welcome to the SunFounder Raspberry Pi & Arduino & ESP32 Enthusiasts Community on Facebook! Dive deeper into Raspberry Pi, Arduino, and ESP32 with fellow enthusiasts.
+    Hola, bienvenido a la Comunidad de Entusiastas de SunFounder Raspberry Pi, Arduino y ESP32 en Facebook. Sumérgete en el mundo de Raspberry Pi, Arduino y ESP32 junto a otros entusiastas.
 
-    **Why Join?**
+    **¿Por qué unirse?**
 
-    - **Expert Support**: Solve post-sale issues and technical challenges with help from our community and team.
-    - **Learn & Share**: Exchange tips and tutorials to enhance your skills.
-    - **Exclusive Previews**: Get early access to new product announcements and sneak peeks.
-    - **Special Discounts**: Enjoy exclusive discounts on our newest products.
-    - **Festive Promotions and Giveaways**: Take part in giveaways and holiday promotions.
+    - **Soporte experto**: Resuelve problemas postventa y desafíos técnicos con la ayuda de nuestra comunidad y equipo.
+    - **Aprende y comparte**: Intercambia consejos y tutoriales para mejorar tus habilidades.
+    - **Preestrenos exclusivos**: Obtén acceso anticipado a nuevos anuncios de productos y adelantos exclusivos.
+    - **Descuentos especiales**: Disfruta de descuentos exclusivos en nuestros productos más recientes.
+    - **Promociones festivas y sorteos**: Participa en sorteos y promociones durante las festividades.
 
-    👉 Ready to explore and create with us? Click [|link_sf_facebook|] and join today!
+    👉 ¿Listo para explorar y crear con nosotros? Haz clic en [|link_sf_facebook|] y únete hoy mismo!
 
-Color Detection
+Detección de Color
 ===========================
 
-PiCar-X is a self-driving car with a built-in camera, which allows Ezblock programs to utilize object detection and color recognition code. In this section, Ezblock will be used to create a program for color detection. 
+El PiCar-X es un coche autónomo con una cámara integrada, lo que permite a los programas de Ezblock utilizar el código de detección de objetos y reconocimiento de colores. En esta sección, utilizaremos Ezblock para crear un programa de detección de color. 
 
 .. note:: 
 
-    Before attempting this section, make sure that the Raspberry Pi Camera’s FFC cable is properly and securely connected. For detailed instructions on securely connecting the FCC cable, please reference: :ref:`assembly_instructions`.
+    Antes de comenzar con esta sección, asegúrate de que el cable FFC de la cámara Raspberry Pi esté correctamente y firmemente conectado. Para obtener instrucciones detalladas sobre cómo conectar correctamente el cable FFC, consulta: :ref:`assembly_instructions`.
 
-In this program, Ezblock will first be told the Hue-Saturation-Value (HSV) space range of the color to be detected, then utilize OpenCV to process the colors in the HSV range to remove the background noise, and finally, box the matching color.
+En este programa, primero se indicará a Ezblock el rango de espacio de Tono-Saturación-Valor (HSV) del color a detectar, luego se utilizará OpenCV para procesar los colores dentro del rango HSV para eliminar el ruido de fondo, y finalmente, se encuadrará el color que coincida.
 
-Ezblock includes 6 color models for PiCar-X, “red”, “orange”, “yellow”, “green”, “blue”, and “purple”. Color cards have been prepared in the following PDF, and will need to be printed on a color printer.
+Ezblock incluye 6 modelos de color para el PiCar-X: "rojo", "naranja", "amarillo", "verde", "azul" y "púrpura". Se han preparado tarjetas de colores en el siguiente PDF, y deberán imprimirse en una impresora a color.
 
 * :download:`[PDF]Color Cards <https://github.com/sunfounder/sf-pdf/raw/master/prop_card/object_detection/color-cards.pdf>`
 
@@ -32,30 +32,30 @@ Ezblock includes 6 color models for PiCar-X, “red”, “orange”, “yellow�
 
 .. note::
 
-    The printed colors may have a slightly different hue from the Ezblock color models due to printer toner differences, or the printed medium, such as a tan-colored paper. This can cause a less accurate color recognition.
+    Los colores impresos pueden tener un tono ligeramente diferente al de los modelos de color de Ezblock debido a las diferencias en el tóner de la impresora o en el medio de impresión, como un papel de color beige. Esto puede causar un reconocimiento de color menos preciso.
 
 
 .. image:: img/ezblock_color_detect.PNG
 
-**TIPS**
+**CONSEJOS**
 
 .. image:: img/sp210512_121105.png
 
-Drag the Video widget from the remote Control page, and it will generate a video monitor. For more information on how to use the Video widget, please reference the tutorial on Ezblock video here: :ref:`ezblock:video_latest`.
+Arrastra el widget de Video desde la página de Control remoto, y generará un monitor de video. Para obtener más información sobre cómo usar el widget de Video, consulta el tutorial de Ezblock sobre video aquí: :ref:`ezblock:video_latest`.
 
 .. image:: img/sp210512_121125.png
 
-Enable the video monitor by setting the **camera monitor** block to **on**. Note: Setting the **camera monitor** to **off** will close the monitor, but object detection will still be available.
+Activa el monitor de video configurando el bloque **monitor de cámara** en **encendido**. Nota: Configurar el **monitor de cámara** en **apagado** cerrará el monitor, pero la detección de objetos seguirá estando disponible.
 
 .. image:: img/sp210512_134133.png
 
-Use the **color detection** block to enable the color detection. Note: only one color can be detected at a time.
+Usa el bloque de **detección de color** para habilitar la detección de color. Nota: solo se puede detectar un color a la vez.
 
-**EXAMPLE**
+**EJEMPLO**
 
 .. note::
 
-    * You can write the program according to the following picture, please refer to the tutorial: :ref:`ezblock:create_project_latest`.
-    * Or find the code with the same name on the **Examples** page of the EzBlock Studio and click **Run** or **Edit** directly.
+    * Puedes escribir el programa según la imagen a continuación, consulta el tutorial: :ref:`ezblock:create_project_latest`.
+    * O encuentra el código con el mismo nombre en la página de **Ejemplos** de EzBlock Studio y haz clic en **Ejecutar** o **Editar** directamente.
 
 .. image:: img/sp210512_134636.png

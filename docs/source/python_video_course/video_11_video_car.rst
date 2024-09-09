@@ -1,30 +1,30 @@
 .. note::
 
-    Hello, welcome to the SunFounder Raspberry Pi & Arduino & ESP32 Enthusiasts Community on Facebook! Dive deeper into Raspberry Pi, Arduino, and ESP32 with fellow enthusiasts.
+    ¡Hola! Bienvenido a la comunidad de entusiastas de SunFounder Raspberry Pi, Arduino y ESP32 en Facebook. ¡Profundiza en el mundo de Raspberry Pi, Arduino y ESP32 junto a otros entusiastas!
 
-    **Why Join?**
+    **¿Por qué unirte?**
 
-    - **Expert Support**: Solve post-sale issues and technical challenges with help from our community and team.
-    - **Learn & Share**: Exchange tips and tutorials to enhance your skills.
-    - **Exclusive Previews**: Get early access to new product announcements and sneak peeks.
-    - **Special Discounts**: Enjoy exclusive discounts on our newest products.
-    - **Festive Promotions and Giveaways**: Take part in giveaways and holiday promotions.
+    - **Soporte experto**: Resuelve problemas postventa y desafíos técnicos con la ayuda de nuestra comunidad y equipo.
+    - **Aprende y comparte**: Intercambia consejos y tutoriales para mejorar tus habilidades.
+    - **Preestrenos exclusivos**: Obtén acceso anticipado a nuevos anuncios de productos y adelantos.
+    - **Descuentos especiales**: Disfruta de descuentos exclusivos en nuestros productos más recientes.
+    - **Promociones festivas y sorteos**: Participa en sorteos y promociones especiales.
 
-    👉 Ready to explore and create with us? Click [|link_sf_facebook|] and join today!
+    👉 ¿Listo para explorar y crear con nosotros? Haz clic en [|link_sf_facebook|] y únete hoy mismo.
 
-Video 11: PiCar-X as Video Car
+Video 11: PiCar-X como Video Car
 ==================================
 
-This tutorial teaches using PiCar-X as a video car with camera control:
+Este tutorial enseña cómo usar el PiCar-X como un coche con cámara para grabar videos:
 
-* **Control Mechanics**: Introduces keyboard controls for movement - forward, backward, left, right, and stop.
-* **Video Car Features**: Focuses on using PiCar-X for driving, adjusting speed, turning, and taking pictures.
-* **Python Code Overview**: Briefly explains the Python code for controlling the car and camera.
-* **Remote Desktop and Program Setup**: Shows setting up the car's program via remote desktop and running it at startup.
-* **Live Demonstration**: Includes demonstrations of controlling the PiCar-X with keyboard inputs and using its camera.
-* **Photo Capture and Viewing**: Teaches capturing and viewing photos taken by the PiCar-X.
+* **Mecánica de control**: Introduce los controles de teclado para el movimiento: adelante, atrás, izquierda, derecha y detener.
+* **Características del Video Car**: Se enfoca en usar el PiCar-X para conducir, ajustar la velocidad, girar y tomar fotos.
+* **Descripción del código en Python**: Explica brevemente el código Python para controlar el coche y la cámara.
+* **Configuración del programa y acceso remoto**: Muestra cómo configurar el programa del coche a través del escritorio remoto y ejecutarlo al inicio.
+* **Demostración en vivo**: Incluye demostraciones de control del PiCar-X con entradas de teclado y el uso de su cámara.
+* **Captura y visualización de fotos**: Enseña a capturar y ver las fotos tomadas por el PiCar-X.
 
-The lesson provides a concise overview of operating the PiCar-X as a video car, emphasizing hands-on control and camera usage.
+La lección ofrece una visión concisa sobre cómo operar el PiCar-X como un coche con cámara, destacando el control manual y el uso de la cámara.
 
 **Video**
 
@@ -32,6 +32,6 @@ The lesson provides a concise overview of operating the PiCar-X as a video car, 
 
     <iframe width="700" height="500" src="https://www.youtube.com/embed/oA9m3dQ-f-E?si=V5lKo0lqqhxtzkOa" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
-**Related On-line Tutorials**
+**Tutoriales en línea relacionados**
 
 * :ref:`video_car`

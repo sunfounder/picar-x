@@ -1,28 +1,27 @@
 .. note::
 
-    Hello, welcome to the SunFounder Raspberry Pi & Arduino & ESP32 Enthusiasts Community on Facebook! Dive deeper into Raspberry Pi, Arduino, and ESP32 with fellow enthusiasts.
+    ¡Hola! Bienvenido a la comunidad de entusiastas de SunFounder Raspberry Pi, Arduino y ESP32 en Facebook. ¡Sumérgete en el mundo de Raspberry Pi, Arduino y ESP32 junto con otros entusiastas!
 
-    **Why Join?**
+    **¿Por qué unirte?**
 
-    - **Expert Support**: Solve post-sale issues and technical challenges with help from our community and team.
-    - **Learn & Share**: Exchange tips and tutorials to enhance your skills.
-    - **Exclusive Previews**: Get early access to new product announcements and sneak peeks.
-    - **Special Discounts**: Enjoy exclusive discounts on our newest products.
-    - **Festive Promotions and Giveaways**: Take part in giveaways and holiday promotions.
+    - **Soporte experto**: Resuelve problemas postventa y desafíos técnicos con la ayuda de nuestra comunidad y equipo.
+    - **Aprende y comparte**: Intercambia consejos y tutoriales para mejorar tus habilidades.
+    - **Preestrenos exclusivos**: Obtén acceso anticipado a nuevos anuncios de productos y adelantos.
+    - **Descuentos especiales**: Disfruta de descuentos exclusivos en nuestros productos más recientes.
+    - **Promociones festivas y sorteos**: Participa en sorteos y promociones especiales.
 
-    👉 Ready to explore and create with us? Click [|link_sf_facebook|] and join today!
+    👉 ¿Listo para explorar y crear con nosotros? Haz clic en [|link_sf_facebook|] y únete hoy.
 
 .. _py_treasure:
 
-12. Treasure Hunt
+12. Búsqueda del Tesoro
 ============================
 
-Arrange a maze in your room and place six different color cards in six corners. Then control PiCar-X to search for these color cards one by one!
+Organiza un laberinto en tu habitación y coloca seis tarjetas de colores diferentes en seis esquinas. ¡Luego controla el PiCar-X para buscar estas tarjetas de colores una por una!
 
-.. note:: You can download and print the :download:`PDF Color Cards <https://github.com/sunfounder/sf-pdf/raw/master/prop_card/object_detection/color-cards.pdf>` for color detection.
+.. note:: Puedes descargar e imprimir las :download:`Tarjetas de Colores en PDF <https://github.com/sunfounder/sf-pdf/raw/master/prop_card/object_detection/color-cards.pdf>` para la detección de colores.
 
-
-**Run the Code**
+**Ejecutar el Código**
 
 .. raw:: html
 
@@ -33,25 +32,25 @@ Arrange a maze in your room and place six different color cards in six corners. 
     cd ~/picar-x/example
     sudo python3 12.treasure_hunt.py
 
-**View the Image**
+**Ver la Imagen**
 
-After the code runs, the terminal will display the following prompt:
+Después de ejecutar el código, el terminal mostrará el siguiente mensaje:
 
 .. code-block::
 
-    No desktop !
-    * Serving Flask app "vilib.vilib" (lazy loading)
-    * Environment: production
-    WARNING: Do not use the development server in a production environment.
-    Use a production WSGI server instead.
-    * Debug mode: off
-    * Running on http://0.0.0.0:9000/ (Press CTRL+C to quit)
+    ¡No hay escritorio!
+    * Sirviendo la aplicación Flask "vilib.vilib" (carga perezosa)
+    * Entorno: producción
+    ADVERTENCIA: No utilices el servidor de desarrollo en un entorno de producción.
+    Usa un servidor WSGI de producción en su lugar.
+    * Modo de depuración: desactivado
+    * Ejecutando en http://0.0.0.0:9000/ (Presiona CTRL+C para salir)
 
-Then you can enter ``http://<your IP>:9000/mjpg`` in the browser to view the video screen. such as:  ``http://192.168.18.113:9000/mjpg``
+Luego puedes ingresar ``http://<your IP>:9000/mjpg`` en el navegador para ver la pantalla de video, por ejemplo:  ``http://192.168.18.113:9000/mjpg``
 
 .. image:: img/display.png
 
-**Code**
+**Código**
 
 .. code-block:: python
 
@@ -117,7 +116,6 @@ Then you can enter ``http://<your IP>:9000/mjpg`` in the browser to view the vid
             px.set_dir_servo_angle(30)
             px.forward(80)
     
-    
     def main():
         global key
         Vilib.camera_start(vflip=False,hflip=False)
@@ -168,39 +166,36 @@ Then you can enter ``http://<your IP>:9000/mjpg`` in the browser to view the vid
             px.stop()
             sleep(.2)
 
+**¿Cómo funciona?**
 
-**How it works?**
+Para entender la lógica básica de este código, puedes concentrarte en las siguientes partes clave:
 
-To understand the basic logic of this code, you can focus on the following key parts:
+1. **Inicialización e Importaciones:**
+   Las declaraciones de importación al comienzo del código te permiten entender las bibliotecas que se están utilizando.
 
-1. **Initialization and Imports:**
-   Import statements at the beginning of the code to understand the libraries being used.
-
-2. **Global Variables:**
-   Definitions of global variables, such as ``color`` and ``key``, which are used throughout the code to track the target color and keyboard input.
+2. **Variables globales:**
+   Definiciones de variables globales, como ``color`` y ``key``, que se utilizan a lo largo del código para rastrear el color objetivo y la entrada del teclado.
 
 3. ``renew_color_detect()`` :
-   This function selects a random color from a list and sets it as the target color for detection. It also uses text-to-speech to announce the selected color.
+   Esta función selecciona un color aleatorio de una lista y lo establece como el color objetivo para la detección. También utiliza la conversión de texto a voz para anunciar el color seleccionado.
 
 4. ``key_scan_thread()`` :
-   This function runs in a separate thread and continuously scans for keyboard input, updating the ``key`` variable with the pressed key. It uses a lock for thread-safe access.
+   Esta función se ejecuta en un hilo separado y escanea continuamente la entrada del teclado, actualizando la variable ``key`` con la tecla presionada. Utiliza un bloqueo para garantizar el acceso seguro entre hilos.
 
 5. ``car_move(key)`` :
-   This function controls the movement of the PiCar-X based on the keyboard input (``key``). It sets the direction and speed of the robot's movement.
+   Esta función controla el movimiento del PiCar-X basado en la entrada del teclado (``key``). Establece la dirección y la velocidad del movimiento del robot.
 
-6. ``main()`` :The primary function that orchestrates the overall logic of the code. It does the following:
+6. ``main()`` : La función principal que organiza la lógica general del código. Realiza las siguientes acciones:
 
-    * Initializes the camera and starts displaying the camera feed.
-    * Creates a separate thread to scan for keyboard input.
-    * Announces the start of the game using text-to-speech.
-    * Enters a continuous loop to:
+    * Inicializa la cámara y comienza a mostrar la transmisión de la cámara.
+    * Crea un hilo separado para escanear la entrada del teclado.
+    * Anuncia el inicio del juego utilizando la conversión de texto a voz.
+    * Entra en un bucle continuo para:
 
-        * Check for detected colored objects and trigger actions when a valid object is detected.
-        * Handle keyboard input to control the robot and interact with the game.
-    * Handles quitting the game and exceptions like KeyboardInterrupt.
-    * Ensures that the camera is closed and the PiCar-X is stopped when exiting.
+        * Verificar si se han detectado objetos de color y activar acciones cuando se detecta un objeto válido.
+        * Manejar la entrada del teclado para controlar el robot e interactuar con el juego.
+    * Gestiona la salida del juego y las excepciones, como KeyboardInterrupt.
+    * Asegura que la cámara se cierre y el PiCar-X se detenga al salir.
 
-By understanding these key parts of the code, 
-you can grasp the fundamental logic of how the PiCar-X robot responds to keyboard 
-input and detects and interacts with objects of a 
-specific color using the camera and audio output capabilities.
+Al comprender estas partes clave del código, 
+puedes captar la lógica fundamental de cómo el robot PiCar-X responde a la entrada del teclado y detecta e interactúa con objetos de un color específico usando la cámara y las capacidades de salida de audio.

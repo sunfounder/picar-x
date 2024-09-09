@@ -1,25 +1,25 @@
 .. note::
 
-    Hello, welcome to the SunFounder Raspberry Pi & Arduino & ESP32 Enthusiasts Community on Facebook! Dive deeper into Raspberry Pi, Arduino, and ESP32 with fellow enthusiasts.
+    ¡Hola! Bienvenido a la Comunidad de Entusiastas de SunFounder Raspberry Pi, Arduino y ESP32 en Facebook. Profundiza más en Raspberry Pi, Arduino y ESP32 con otros entusiastas.
 
-    **Why Join?**
+    **¿Por qué unirte?**
 
-    - **Expert Support**: Solve post-sale issues and technical challenges with help from our community and team.
-    - **Learn & Share**: Exchange tips and tutorials to enhance your skills.
-    - **Exclusive Previews**: Get early access to new product announcements and sneak peeks.
-    - **Special Discounts**: Enjoy exclusive discounts on our newest products.
-    - **Festive Promotions and Giveaways**: Take part in giveaways and holiday promotions.
+    - **Soporte Experto**: Resuelve problemas postventa y desafíos técnicos con la ayuda de nuestra comunidad y equipo.
+    - **Aprende y Comparte**: Intercambia consejos y tutoriales para mejorar tus habilidades.
+    - **Preestrenos Exclusivos**: Accede anticipadamente a anuncios de nuevos productos y adelantos.
+    - **Descuentos Especiales**: Disfruta de descuentos exclusivos en nuestros productos más recientes.
+    - **Promociones Festivas y Sorteos**: Participa en sorteos y promociones de temporada.
 
-    👉 Ready to explore and create with us? Click [|link_sf_facebook|] and join today!
+    👉 ¿Listo para explorar y crear con nosotros? Haz clic en [|link_sf_facebook|] y únete hoy.
 
 .. _py_computer_vision:
 
-7. Computer Vision
-=======================
+7. Visión por Computadora
+=============================
 
-This project will officially enter the field of computer vision!
+¡Este proyecto te introducirá oficialmente en el campo de la visión por computadora!
 
-**Run the Code**
+**Ejecuta el Código**
 
 .. raw:: html
 
@@ -30,9 +30,9 @@ This project will officially enter the field of computer vision!
     cd ~/picar-x/example
     sudo python3 7.display.py
 
-**View the Image**
+**Ver la Imagen**
 
-After the code runs, the terminal will display the following prompt:
+Después de ejecutar el código, el terminal mostrará el siguiente mensaje:
 
 .. code-block::
 
@@ -44,63 +44,59 @@ After the code runs, the terminal will display the following prompt:
     * Debug mode: off
     * Running on http://0.0.0.0:9000/ (Press CTRL+C to quit)
 
-Then you can enter ``http://<your IP>:9000/mjpg`` in the browser to view the video screen. such as:  ``https://192.168.18.113:9000/mjpg``
+Luego puedes ingresar ``http://<your IP>:9000/mjpg`` en el navegador para ver la pantalla de video, por ejemplo: ``https://192.168.18.113:9000/mjpg``
 
 .. image:: img/display.png
 
 
-After the program runs, you will see the following information in the final:
+Al finalizar el programa, verás la siguiente información:
 
+* ¡Presiona una tecla para activar la función!
+* q: Tomar foto
+* 1: Detectar color: rojo
+* 2: Detectar color: naranja
+* 3: Detectar color: amarillo
+* 4: Detectar color: verde
+* 5: Detectar color: azul
+* 6: Detectar color: púrpura
+* 0: Apagar detección de color
+* r: Escanear código QR
+* f: Activar/Desactivar detección facial
+* s: Mostrar información del objeto detectado
 
-* Input key to call the function!
-* q: Take photo
-* 1: Color detect : red
-* 2: Color detect : orange
-* 3: Color detect : yellow
-* 4: Color detect : green
-* 5: Color detect : blue
-* 6: Color detect : purple
-* 0: Switch off Color detect
-* r: Scan the QR code
-* f: Switch ON/OFF face detect
-* s: Display detected object information
+Sigue las indicaciones para activar las funciones correspondientes.
 
-Please follow the prompts to activate the corresponding functions.
+    *  **Tomar Foto**
 
-    *  **Take Photo**
+        Escribe ``q`` en el terminal y presiona Enter. La imagen actual vista por la cámara se guardará (si la función de detección de color está activada, también aparecerá el cuadro de marca en la imagen guardada). 
+        Puedes ver estas fotos en el directorio ``/home/{username}/Pictures/`` de tu Raspberry Pi.
+        Puedes usar herramientas como :ref:`filezilla` para transferir las fotos a tu PC.
 
-        Type ``q`` in the terminal and press Enter. The picture currently seen by the camera will be saved (if the color detection function is turned on, the mark box will also appear in the saved picture). 
-        You can see these photos from the ``/home/{username}/Pictures/`` directory of the Raspberry Pi.
-        You can use tools such as :ref:`filezilla` to transfer photos to your PC.
-        
+    *  **Detección de Color**
 
-    *  **Color Detect**
-
-        Entering a number between ``1~6`` will detect one of the colors in "red, orange, yellow, green, blue, purple". Enter ``0`` to turn off color detection.
+        Ingresar un número entre ``1~6`` detectará uno de los colores: "rojo, naranja, amarillo, verde, azul, púrpura". Ingresar ``0`` apagará la detección de color.
 
         .. image:: img/DTC2.png
 
-        .. note:: You can download and print the :download:`PDF Color Cards <https://github.com/sunfounder/sf-pdf/raw/master/prop_card/object_detection/color-cards.pdf>` for color detection.
+        .. note:: Puedes descargar e imprimir las :download:`Tarjetas de Colores en PDF <https://github.com/sunfounder/sf-pdf/raw/master/prop_card/object_detection/color-cards.pdf>` para la detección de colores.
 
+    *  **Detección Facial**
 
-    *  **Face Detect**
-
-        Type ``f`` to turn on face detection.
+        Escribe ``f`` para activar la detección facial.
 
         .. image:: img/DTC5.png
 
-    *  **QR Code Detect**
+    *  **Detección de Código QR**
 
-        Enter ``r`` to open the QR code recognition. No other operations can be performed before the QR code is recognized. The decoding information of the QR code will be printed in the terminal.
+        Ingresar ``r`` abrirá el reconocimiento del código QR. No se podrán realizar otras operaciones antes de que el código QR sea reconocido. La información decodificada del código QR se imprimirá en el terminal.
 
         .. image:: img/DTC4.png
 
-    *  **Display Information**
+    *  **Mostrar Información**
 
-        Entering ``s`` will print the information of the face detection (and color detection) target in the terminal. Including the center coordinates (X, Y) and size (Weight, height) of the measured object.
+        Ingresar ``s`` imprimirá la información del objetivo detectado (detección facial y detección de color) en el terminal, incluyendo las coordenadas del centro (X, Y) y el tamaño (Ancho, Alto) del objeto detectado.
 
-
-**Code** 
+**Código**
 
 .. code-block:: python
 
@@ -176,7 +172,7 @@ Please follow the prompts to activate the corresponding functions.
             else:
                 color_coodinate = (Vilib.detect_obj_parameter['color_x'],Vilib.detect_obj_parameter['color_y'])
                 color_size = (Vilib.detect_obj_parameter['color_w'],Vilib.detect_obj_parameter['color_h'])
-                print("[Color Detect] ","Coordinate:",color_coodinate,"Size",color_size)
+                    print("[Color Detect] ","Coordinate:",color_coodinate,"Size",color_size)
 
         if flag_face is True:
             if Vilib.detect_obj_parameter['human_n'] == 0:
@@ -184,7 +180,7 @@ Please follow the prompts to activate the corresponding functions.
             else:
                 human_coodinate = (Vilib.detect_obj_parameter['human_x'],Vilib.detect_obj_parameter['human_y'])
                 human_size = (Vilib.detect_obj_parameter['human_w'],Vilib.detect_obj_parameter['human_h'])
-                print("[Face Detect] ","Coordinate:",human_coodinate,"Size",human_size)
+                    print("[Face Detect] ","Coordinate:",human_coodinate,"Size",human_size)
 
 
     def main():
@@ -196,27 +192,27 @@ Please follow the prompts to activate the corresponding functions.
         print(manual)
 
         while True:
-            # readkey
+            # leer tecla
             key = readchar.readkey()
             key = key.lower()
-            # take photo
+            # tomar foto
             if key == 'q':
                 take_photo()
-            # color detect
-            elif key != '' and key in ('0123456'):  # '' in ('0123') -> True
+            # detección de color
+            elif key != '' and key in ('0123456'):
                 index = int(key)
                 if index == 0:
                     flag_color = False
                     Vilib.color_detect('close')
                 else:
                     flag_color = True
-                    Vilib.color_detect(color_list[index]) # color_detect(color:str -> color_name/close)
+                    Vilib.color_detect(color_list[index])
                 print('Color detect : %s'%color_list[index])
-            # face detection
+            # detección facial
             elif key =="f":
                 flag_face = not flag_face
                 face_detect(flag_face)
-            # qrcode detection
+            # detección de código QR
             elif key =="r":
                 qr_code_flag = not qr_code_flag
                 if qr_code_flag == True:
@@ -226,10 +222,9 @@ Please follow the prompts to activate the corresponding functions.
                         qrcode_thread.start()
                 else:
                     if qrcode_thread != None and qrcode_thread.is_alive():
-                    # wait for thread to end
                         qrcode_thread.join()
                         print('QRcode Detect: close')
-            # show detected object information
+            # mostrar información del objeto detectado
             elif key == "s":
                 object_show()
 
@@ -239,56 +234,56 @@ Please follow the prompts to activate the corresponding functions.
     if __name__ == "__main__":
         main()
 
-**How it works?**
+**¿Cómo funciona?**
 
-The first thing you need to pay attention to here is the following function. These two functions allow you to start the camera.
+Lo primero a lo que debes prestar atención es a la siguiente función. Estas dos funciones te permiten iniciar la cámara.
 
 .. code-block:: python
 
     Vilib.camera_start()
     Vilib.display()
 
-Functions related to "object detection":
+Funciones relacionadas con "detección de objetos":
 
-* ``Vilib.face_detect_switch(True)`` : Switch ON/OFF face detection
-* ``Vilib.color_detect(color)`` : For color detection, only one color detection can be performed at the same time. The parameters that can be input are: ``"red"``, ``"orange"``, ``"yellow"``, ``"green"``, ``"blue"``, ``"purple"``
-* ``Vilib.color_detect_switch(False)`` : Switch OFF color detection
-* ``Vilib.qrcode_detect_switch(False)`` : Switch ON/OFF QR code detection, Returns the decoded data of the QR code.
-* ``Vilib.gesture_detect_switch(False)`` : Switch ON/OFF gesture detection
-* ``Vilib.traffic_sign_detect_switch(False)`` : Switch ON/OFF traffic sign detection
+* ``Vilib.face_detect_switch(True)`` : Activar/Desactivar detección facial
+* ``Vilib.color_detect(color)`` : Para la detección de colores, solo se puede realizar una detección a la vez. Los parámetros que se pueden ingresar son: ``"red"``, ``"orange"``, ``"yellow"``, ``"green"``, ``"blue"``, ``"purple"``
+* ``Vilib.color_detect_switch(False)`` : Apagar la detección de color
+* ``Vilib.qrcode_detect_switch(False)`` : Activar/Desactivar la detección de códigos QR, devuelve los datos decodificados del código QR.
+* ``Vilib.gesture_detect_switch(False)`` : Activar/Desactivar la detección de gestos
+* ``Vilib.traffic_sign_detect_switch(False)`` : Activar/Desactivar la detección de señales de tráfico
 
-The information detected by the target will be stored in the ``detect_obj_parameter = Manager().dict()`` dictionary.
+La información detectada por el objetivo se almacenará en el diccionario ``detect_obj_parameter = Manager().dict()``.
 
-In the main program, you can use it like this:
+En el programa principal, puedes usarlo de esta manera:
 
 .. code-block:: python
 
     Vilib.detect_obj_parameter['color_x']
 
-The keys of the dictionary and their uses are shown in the following list:
+Las claves del diccionario y sus usos se muestran en la siguiente lista:
 
-* ``color_x``: the x value of the center coordinate of the detected color block, the range is 0~320
-* ``color_y``: the y value of the center coordinate of the detected color block, the range is 0~240
-* ``color_w``: the width of the detected color block, the range is 0~320
-* ``color_h``: the height of the detected color block, the range is 0~240
-* ``color_n``: the number of detected color patches
-* ``human_x``: the x value of the center coordinate of the detected human face, the range is 0~320
-* ``human_y``: the y value of the center coordinate of the detected face, the range is 0~240
-* ``human_w``: the width of the detected human face, the range is 0~320
-* ``human_h``: the height of the detected face, the range is 0~240
-* ``human_n``: the number of detected faces
-* ``traffic_sign_x``: the center coordinate x value of the detected traffic sign, the range is 0~320
-* ``traffic_sign_y``: the center coordinate y value of the detected traffic sign, the range is 0~240
-* ``traffic_sign_w``: the width of the detected traffic sign, the range is 0~320
-* ``traffic_sign_h``: the height of the detected traffic sign, the range is 0~240
-* ``traffic_sign_t``: the content of the detected traffic sign, the value list is `['stop','right','left','forward']`
-* ``gesture_x``: The center coordinate x value of the detected gesture, the range is 0~320
-* ``gesture_y``: The center coordinate y value of the detected gesture, the range is 0~240
-* ``gesture_w``: The width of the detected gesture, the range is 0~320
-* ``gesture_h``: The height of the detected gesture, the range is 0~240
-* ``gesture_t``: The content of the detected gesture, the value list is `["paper","scissor","rock"]`
-* ``qr_date``: the content of the QR code being detected
-* ``qr_x``: the center coordinate x value of the QR code to be detected, the range is 0~320
-* ``qr_y``: the center coordinate y value of the QR code to be detected, the range is 0~240
-* ``qr_w``: the width of the QR code to be detected, the range is 0~320
-* ``qr_h``: the height of the QR code to be detected, the range is 0~320
+* ``color_x``: el valor x de la coordenada central del bloque de color detectado, el rango es 0~320
+* ``color_y``: el valor y de la coordenada central del bloque de color detectado, el rango es 0~240
+* ``color_w``: el ancho del bloque de color detectado, el rango es 0~320
+* ``color_h``: la altura del bloque de color detectado, el rango es 0~240
+* ``color_n``: el número de parches de color detectados
+* ``human_x``: el valor x de la coordenada central del rostro humano detectado, el rango es 0~320
+* ``human_y``: el valor y de la coordenada central del rostro detectado, el rango es 0~240
+* ``human_w``: el ancho del rostro humano detectado, el rango es 0~320
+* ``human_h``: la altura del rostro humano detectado, el rango es 0~240
+* ``human_n``: el número de rostros detectados
+* ``traffic_sign_x``: el valor x de la coordenada central de la señal de tráfico detectada, el rango es 0~320
+* ``traffic_sign_y``: el valor y de la coordenada central de la señal de tráfico detectada, el rango es 0~240
+* ``traffic_sign_w``: el ancho de la señal de tráfico detectada, el rango es 0~320
+* ``traffic_sign_h``: la altura de la señal de tráfico detectada, el rango es 0~240
+* ``traffic_sign_t``: el contenido de la señal de tráfico detectada, la lista de valores es `['stop','right','left','forward']`
+* ``gesture_x``: el valor x de la coordenada central del gesto detectado, el rango es 0~320
+* ``gesture_y``: el valor y de la coordenada central del gesto detectado, el rango es 0~240
+* ``gesture_w``: el ancho del gesto detectado, el rango es 0~320
+* ``gesture_h``: la altura del gesto detectado, el rango es 0~240
+* ``gesture_t``: el contenido del gesto detectado, la lista de valores es `["paper","scissor","rock"]`
+* ``qr_date``: el contenido del código QR detectado
+* ``qr_x``: el valor x de la coordenada central del código QR detectado, el rango es 0~320
+* ``qr_y``: el valor y de la coordenada central del código QR detectado, el rango es 0~240
+* ``qr_w``: el ancho del código QR detectado, el rango es 0~320
+* ``qr_h``: la altura del código QR detectado, el rango es 0~320

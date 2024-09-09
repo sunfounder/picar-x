@@ -1,39 +1,39 @@
 .. note::
 
-    Hello, welcome to the SunFounder Raspberry Pi & Arduino & ESP32 Enthusiasts Community on Facebook! Dive deeper into Raspberry Pi, Arduino, and ESP32 with fellow enthusiasts.
+    Hola, ¡bienvenido a la Comunidad de Entusiastas de SunFounder Raspberry Pi, Arduino y ESP32 en Facebook! Sumérgete en el mundo de Raspberry Pi, Arduino y ESP32 junto a otros entusiastas.
 
-    **Why Join?**
+    **¿Por qué unirse?**
 
-    - **Expert Support**: Solve post-sale issues and technical challenges with help from our community and team.
-    - **Learn & Share**: Exchange tips and tutorials to enhance your skills.
-    - **Exclusive Previews**: Get early access to new product announcements and sneak peeks.
-    - **Special Discounts**: Enjoy exclusive discounts on our newest products.
-    - **Festive Promotions and Giveaways**: Take part in giveaways and holiday promotions.
+    - **Soporte experto**: Resuelve problemas postventa y desafíos técnicos con la ayuda de nuestra comunidad y equipo.
+    - **Aprende y comparte**: Intercambia consejos y tutoriales para mejorar tus habilidades.
+    - **Preestrenos exclusivos**: Obtén acceso anticipado a nuevos anuncios de productos y adelantos exclusivos.
+    - **Descuentos especiales**: Disfruta de descuentos exclusivos en nuestros productos más recientes.
+    - **Promociones festivas y sorteos**: Participa en sorteos y promociones durante las festividades.
 
-    👉 Ready to explore and create with us? Click [|link_sf_facebook|] and join today!
+    👉 ¿Listo para explorar y crear con nosotros? Haz clic en [|link_sf_facebook|] y únete hoy mismo!
 
 .. _ezb_minecart:
 
-Minecart
+Carro Minero
 =====================
 
-Let’s make a minecart project! This project will use the Grayscale module to make the PiCar-X move forward along a track. 
-Use dark-colored tape to make a track on the ground as straight as possible, and not too curved. Some experimenting might be needed if the PiCar-X becomes derailed. 
+¡Hagamos un proyecto de carro minero! Este proyecto utilizará el módulo de escala de grises para hacer que el PiCar-X avance a lo largo de una pista. 
+Usa cinta de color oscuro para crear una pista en el suelo lo más recta posible y no demasiado curva. Puede que necesites hacer algunos ajustes si el PiCar-X se descarrila.
 
-When moving along the track, the probes on the left and right sides of the Grayscale module will detect light-colored ground, and the middle probe will detect the track. If the track has an arc, the probe on the left or right side of the sensor will detect the dark-colored tape, and turn the wheels in that direction. If the minecart reaches the end of the track or derails, the Grayscale module will no longer detect the dark-colored tape track, and the PiCar-X will come to a stop.
-
-
-**TIPS**
-
-* **Set ref to ()** block is used to set the grayscale threshold, you need to modify it according to the actual situation. You can go ahead and run :ref:`test_grayscale` to see the values of the grayscale module on the white and black surfaces, and fill in their middle values in this block.
+Mientras avanza por la pista, las sondas en los lados izquierdo y derecho del módulo de escala de grises detectarán el suelo de color claro, y la sonda central detectará la pista. Si la pista tiene una curva, la sonda en el lado izquierdo o derecho del sensor detectará la cinta de color oscuro y girará las ruedas en esa dirección. Si el carro minero llega al final de la pista o se descarrila, el módulo de escala de grises dejará de detectar la cinta de color oscuro y el PiCar-X se detendrá.
 
 
-**EXAMPLE**
+**CONSEJOS**
+
+* El bloque **Establecer ref a ()** se usa para configurar el umbral de escala de grises, y deberás modificarlo según la situación real. Puedes ejecutar :ref:`test_grayscale` para ver los valores del módulo de escala de grises en las superficies blancas y negras, y llenar con los valores intermedios en este bloque.
+
+
+**EJEMPLO**
 
 .. note::
 
-    * You can write the program according to the following picture, please refer to the tutorial: :ref:`ezblock:create_project_latest`.
-    * Or find the code with the same name on the **Examples** page of the EzBlock Studio and click **Run** or **Edit** directly.
+    * Puedes escribir el programa según la siguiente imagen, consulta el tutorial: :ref:`ezblock:create_project_latest`.
+    * O encuentra el código con el mismo nombre en la página de **Ejemplos** de EzBlock Studio y haz clic en **Ejecutar** o **Editar** directamente.
 
 
 .. image:: img/sp210512_170342.png

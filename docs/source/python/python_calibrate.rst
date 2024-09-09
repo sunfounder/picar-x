@@ -1,31 +1,30 @@
 .. note::
 
-    Hello, welcome to the SunFounder Raspberry Pi & Arduino & ESP32 Enthusiasts Community on Facebook! Dive deeper into Raspberry Pi, Arduino, and ESP32 with fellow enthusiasts.
+    ¡Hola! Bienvenido a la Comunidad de Entusiastas de SunFounder Raspberry Pi, Arduino y ESP32 en Facebook. Sumérgete en el mundo de Raspberry Pi, Arduino y ESP32 con otros entusiastas.
 
-    **Why Join?**
+    **¿Por qué unirte?**
 
-    - **Expert Support**: Solve post-sale issues and technical challenges with help from our community and team.
-    - **Learn & Share**: Exchange tips and tutorials to enhance your skills.
-    - **Exclusive Previews**: Get early access to new product announcements and sneak peeks.
-    - **Special Discounts**: Enjoy exclusive discounts on our newest products.
-    - **Festive Promotions and Giveaways**: Take part in giveaways and holiday promotions.
+    - **Soporte experto**: Resuelve problemas técnicos y de posventa con la ayuda de nuestra comunidad y equipo.
+    - **Aprende y comparte**: Intercambia consejos y tutoriales para mejorar tus habilidades.
+    - **Preestrenos exclusivos**: Obtén acceso anticipado a anuncios de nuevos productos y adelantos.
+    - **Descuentos exclusivos**: Disfruta de descuentos exclusivos en nuestros productos más recientes.
+    - **Promociones y sorteos festivos**: Participa en sorteos y promociones durante las festividades.
 
-    👉 Ready to explore and create with us? Click [|link_sf_facebook|] and join today!
+    👉 ¿Listo para explorar y crear con nosotros? Haz clic en [|link_sf_facebook|] y únete hoy mismo.
 
 .. _py_calibrate:
 
-0. Calibrating the PiCar-X
-=================================
+0. Calibración del PiCar-X
+==================================
 
-Calibrate Motors & Servo
----------------------------
+Calibrar Motores y Servos
+-----------------------------
 
-Some servo angles may be slightly tilted due to possible deviations during PiCar-X 
-installation or limitations of the servos themselves, so you can calibrate them.
+Algunos ángulos de los servos pueden estar ligeramente desalineados debido a posibles desviaciones durante la instalación del PiCar-X o limitaciones de los propios servos, por lo que puedes calibrarlos.
 
-Of course, you can skip this chapter if you think the assembly is perfect and doesn't require calibration.
+Por supuesto, puedes omitir este capítulo si consideras que el montaje es perfecto y no requiere calibración.
 
-#. Run the ``calibration.py``.
+#. Ejecuta el archivo ``calibration.py``.
 
     .. raw:: html
 
@@ -36,45 +35,45 @@ Of course, you can skip this chapter if you think the assembly is perfect and do
         cd ~/picar-x/example/calibration
         sudo python3 calibration.py
 
-#. After running the code, you will see the following interface displayed in the terminal.
+#. Después de ejecutar el código, verás la siguiente interfaz mostrada en el terminal.
 
     .. image:: img/calibrate1.png
 
-#. The ``R`` key is used to test if the 3 servos are working properly. After selecting a servo with the ``1``, ``2`` or ``3`` keys, then press the ``R`` key to test that servo.
+#. La tecla ``R`` se utiliza para probar si los 3 servos funcionan correctamente. Después de seleccionar un servo con las teclas ``1``, ``2`` o ``3``, presiona la tecla ``R`` para probar ese servo.
 
-#. Press the number key ``1`` to select the front wheel servo, and then press the ``W/S`` key to let the front wheel looks as forward as possible without skewing left and right.
+#. Presiona la tecla numérica ``1`` para seleccionar el servo de la rueda delantera, y luego presiona las teclas ``W/S`` para que la rueda delantera mire lo más hacia adelante posible sin desviarse a la izquierda ni a la derecha.
 
     .. image:: img/calibrate2.png
 
-#. Press the number key ``2`` to select the **Pan servo**, then press the ``W/S`` key to make the pan/tilt platform look straight ahead and not tilt left or right.
+#. Presiona la tecla numérica ``2`` para seleccionar el **servo Pan**, luego presiona las teclas ``W/S`` para que la plataforma de la cámara mire al frente sin inclinarse a la izquierda ni a la derecha.
 
     .. image:: img/calibrate3.png
 
-#. Press the number key ``3`` to select the **tilt servo**, then press the ``W/S`` key to make the pan/tilt platform look straight ahead and not tilt up and down.
+#. Presiona la tecla numérica ``3`` para seleccionar el **servo de inclinación**, luego presiona las teclas ``W/S`` para que la plataforma de la cámara no se incline hacia arriba ni hacia abajo.
 
     .. image:: img/calibrate4.png
 
-#. Since the wiring of the motors may be reversed during installation, you can press ``E`` to test whether the car can move forward normally. If not, use the number keys ``4`` and ``5`` to select the left and right motors, then press the ``Q`` key to calibrate the rotation direction.
+#. Dado que los cables de los motores pueden haberse invertido durante la instalación, puedes presionar la tecla ``E`` para probar si el coche puede avanzar normalmente. Si no es así, utiliza las teclas numéricas ``4`` y ``5`` para seleccionar los motores izquierdo y derecho, luego presiona la tecla ``Q`` para calibrar la dirección de rotación.
 
     .. image:: img/calibrate6.png
 
-#. When the calibration is completed, press the ``Spacebar`` to save the calibration parameters. There will be a prompt to enter ``y`` to confirm, and then press ``Ctrl+C`` to exit the program to complete the calibration.
+#. Cuando la calibración esté completa, presiona la tecla ``Barra Espaciadora`` para guardar los parámetros de calibración. Aparecerá un mensaje pidiéndote que ingreses ``y`` para confirmar, y luego presiona ``Ctrl+C`` para salir del programa y completar la calibración.
 
     .. image:: img/calibrate5.png
 
 
-Calibrate Grayscale Module
----------------------------
+Calibrar el Módulo de Escala de Grises
+-----------------------------------------------
 
-Due to varying environmental conditions and lighting situations, 
-the preset parameters for the greyscale module might not be optimal. 
-You can fine-tune these settings through this program to achieve better results.
-
-
-#. Lay down a strip of black electrical tape, about 15cm long, on a light-colored floor. Center your PiCar-X so that it straddles the tape. In this setup, the middle sensor of the greyscale module should be directly above the tape, while the two flanking sensors should hover over the lighter surface.
+Debido a las condiciones ambientales variables y a las situaciones de iluminación, 
+los parámetros predeterminados para el módulo de escala de grises podrían no ser óptimos. 
+Puedes ajustar estos valores con este programa para lograr mejores resultados.
 
 
-#. Run the ``grayscale_calibration.py``.
+#. Coloca una tira de cinta adhesiva negra, de aproximadamente 15 cm de largo, en un suelo de color claro. Centra tu PiCar-X de manera que quede sobre la cinta. En esta configuración, el sensor central del módulo de escala de grises debe estar directamente sobre la cinta, mientras que los dos sensores laterales deben estar sobre la superficie clara.
+
+
+#. Ejecuta el archivo ``grayscale_calibration.py``.
 
     .. raw:: html
 
@@ -85,19 +84,19 @@ You can fine-tune these settings through this program to achieve better results.
         cd ~/picar-x/example/calibration
         sudo python3 grayscale_calibration.py
 
-#. After running the code, you will see the following interface displayed in the terminal.
+#. Después de ejecutar el código, verás la siguiente interfaz mostrada en el terminal.
 
     .. image:: img/calibrate_g1.png
 
-#. Press the "Q" key to initiate the greyscale calibration. You'll then observe the PiCar-X make minor movements to both the left and the right. During this process, each of the three sensors should sweep across the electrical tape at least once.
+#. Presiona la tecla "Q" para iniciar la calibración de escala de grises. Luego observarás que el PiCar-X realiza pequeños movimientos hacia la izquierda y hacia la derecha. Durante este proceso, cada uno de los tres sensores debería cruzar la cinta adhesiva al menos una vez.
 
-
-#. Additionally, you will notice three pairs of significantly different values appearing in the "threshold value" section, while the "line reference" will display two intermediate values, each representing the average of one of these pairs.
+#. Además, notarás que aparecen tres pares de valores significativamente diferentes en la sección de "valor de umbral", mientras que la "referencia de línea" mostrará dos valores intermedios, representando el promedio de cada uno de estos pares.
 
     .. image:: img/calibrate_g2.png
 
-#. Next, suspend the PiCar-X in mid-air (or position it over a cliff edge) and press the "E" key. You'll observe that the "cliff reference" values are also updated accordingly.
+#. A continuación, suspende el PiCar-X en el aire (o colócalo sobre el borde de un acantilado) y presiona la tecla "E". Observarás que los valores de la "referencia de acantilado" también se actualizan en consecuencia.
 
     .. image:: img/calibrate_g3.png
 
-#. Once you've verified that all the values are accurate, press the "space" key to save the data. You can then exit the program by pressing Ctrl+C.
+#. Una vez que hayas verificado que todos los valores son precisos, presiona la tecla "Barra Espaciadora" para guardar los datos. Luego puedes salir del programa presionando Ctrl+C.
+

@@ -1,32 +1,32 @@
 .. note::
 
-    Hello, welcome to the SunFounder Raspberry Pi & Arduino & ESP32 Enthusiasts Community on Facebook! Dive deeper into Raspberry Pi, Arduino, and ESP32 with fellow enthusiasts.
+    ¡Hola! Bienvenido a la comunidad de entusiastas de SunFounder Raspberry Pi, Arduino y ESP32 en Facebook. ¡Profundiza en el mundo de Raspberry Pi, Arduino y ESP32 junto a otros entusiastas!
 
-    **Why Join?**
+    **¿Por qué unirte?**
 
-    - **Expert Support**: Solve post-sale issues and technical challenges with help from our community and team.
-    - **Learn & Share**: Exchange tips and tutorials to enhance your skills.
-    - **Exclusive Previews**: Get early access to new product announcements and sneak peeks.
-    - **Special Discounts**: Enjoy exclusive discounts on our newest products.
-    - **Festive Promotions and Giveaways**: Take part in giveaways and holiday promotions.
+    - **Soporte experto**: Resuelve problemas postventa y desafíos técnicos con la ayuda de nuestra comunidad y equipo.
+    - **Aprende y comparte**: Intercambia consejos y tutoriales para mejorar tus habilidades.
+    - **Preestrenos exclusivos**: Obtén acceso anticipado a nuevos anuncios de productos y adelantos.
+    - **Descuentos especiales**: Disfruta de descuentos exclusivos en nuestros productos más recientes.
+    - **Promociones festivas y sorteos**: Participa en sorteos y promociones especiales.
 
-    👉 Ready to explore and create with us? Click [|link_sf_facebook|] and join today!
+    👉 ¿Listo para explorar y crear con nosotros? Haz clic en [|link_sf_facebook|] y únete hoy mismo.
 
-Video A2: Assembly of the PICAR-X
+Video A2: Montaje del PICAR-X
 =============================================
 
-In this video, the focus is on assembling the PICAR-X. 
+En este video, el enfoque está en el montaje del PICAR-X. 
 
-Key aspects of the tutorial include:
+Los aspectos clave del tutorial incluyen:
 
-* **Unboxing**: Introduction of the kit components, including the assembly instruction sheet, tools, modules, and motors.
-* **Assembly Guide**: Detailed steps for assembling the PICAR-X, starting from attaching screws to the Raspberry Pi, connecting cables, and setting up the robot hat.
-* **Servo Calibration**: Using SunFounder's Create Agent for zeroing the servos.
-* **Motor and Battery Installation**: Attaching motors to the frame and securing the battery.
-* **Sensor and Camera Installation**: Installing and connecting the grayscale sensor, ultrasonic sensor, and camera.
-* **Wiring and Final Setup**: Organizing and connecting wires for various components, followed by final checks and tidy wire management.
+* **Desempaquetado**: Introducción a los componentes del kit, incluyendo la hoja de instrucciones de montaje, herramientas, módulos y motores.
+* **Guía de montaje**: Pasos detallados para ensamblar el PICAR-X, comenzando por fijar los tornillos a la Raspberry Pi, conectar los cables y configurar el sombrero del robot.
+* **Calibración de servos**: Usando el Create Agent de SunFounder para calibrar los servos.
+* **Instalación del motor y la batería**: Colocación de los motores en el marco y asegurando la batería.
+* **Instalación del sensor y la cámara**: Instalación y conexión del sensor de escala de grises, sensor ultrasónico y cámara.
+* **Cableado y configuración final**: Organización y conexión de cables para varios componentes, seguidos de comprobaciones finales y gestión ordenada de los cables.
 
-The video is designed to guide you through each step of the assembly process, ensuring a thorough understanding of how each component fits together. 
+El video está diseñado para guiarte paso a paso en el proceso de ensamblaje, asegurando una comprensión completa de cómo se ensamblan todos los componentes.
 
 **Video**
 
@@ -34,6 +34,7 @@ The video is designed to guide you through each step of the assembly process, en
 
     <iframe width="700" height="500" src="https://www.youtube.com/embed/4Gk2c565lO8?si=ZwhJb1dqQVfGpyiY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
-**Related On-line Tutorials**
+**Tutoriales en línea relacionados**
 
 * :ref:`assembly_instructions`
+

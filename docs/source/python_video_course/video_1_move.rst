@@ -1,30 +1,30 @@
 .. note::
 
-    Hello, welcome to the SunFounder Raspberry Pi & Arduino & ESP32 Enthusiasts Community on Facebook! Dive deeper into Raspberry Pi, Arduino, and ESP32 with fellow enthusiasts.
+    ¡Hola! Bienvenido a la comunidad de entusiastas de SunFounder Raspberry Pi, Arduino y ESP32 en Facebook. ¡Sumérgete en el mundo de Raspberry Pi, Arduino y ESP32 junto con otros apasionados!
 
-    **Why Join?**
+    **¿Por qué unirte?**
 
-    - **Expert Support**: Solve post-sale issues and technical challenges with help from our community and team.
-    - **Learn & Share**: Exchange tips and tutorials to enhance your skills.
-    - **Exclusive Previews**: Get early access to new product announcements and sneak peeks.
-    - **Special Discounts**: Enjoy exclusive discounts on our newest products.
-    - **Festive Promotions and Giveaways**: Take part in giveaways and holiday promotions.
+    - **Soporte experto**: Resuelve problemas postventa y desafíos técnicos con la ayuda de nuestra comunidad y equipo.
+    - **Aprende y comparte**: Intercambia consejos y tutoriales para mejorar tus habilidades.
+    - **Preestrenos exclusivos**: Obtén acceso anticipado a nuevos anuncios de productos y adelantos.
+    - **Descuentos especiales**: Disfruta de descuentos exclusivos en nuestros productos más recientes.
+    - **Promociones festivas y sorteos**: Participa en sorteos y promociones especiales.
 
-    👉 Ready to explore and create with us? Click [|link_sf_facebook|] and join today!
+    👉 ¿Listo para explorar y crear con nosotros? Haz clic en [|link_sf_facebook|] y únete hoy mismo.
 
-Video 1: Motor Move and Steering Control
-==================================================
+Video 1: Control de Movimiento del Motor y Dirección
+=========================================================
 
-This video serves as the first project tutorial in the PiCar-X series, focusing on how to control the motors and steering servo of the PiCar-X. The key contents include:
+Este video es el primer tutorial de proyectos en la serie PiCar-X, y se centra en cómo controlar los motores y el servo de dirección del PiCar-X. Los contenidos clave incluyen:
 
-* **Starting and Stopping Motors**: Demonstrates how to control the movement of the PiCar-X, including moving forward and backward.
-* **Motor Speed Control**: Shows how to increase and decrease the speed of the motors.
-* **Steering Control**: Teaches how to turn left and right by controlling the front steering servo.
-* **Script Execution**: Illustrates how to run a program automatically when the Raspberry Pi starts.
-* **Move.py Code Analysis**: Offers an in-depth explanation of the Move.py script, detailing the logic behind controlling motors and steering.
-* **Testing and Debugging**: Practical testing to ensure both the code and hardware function correctly.
+* **Inicio y Parada de los Motores**: Demuestra cómo controlar el movimiento del PiCar-X, incluyendo avanzar y retroceder.
+* **Control de Velocidad del Motor**: Muestra cómo aumentar y disminuir la velocidad de los motores.
+* **Control de Dirección**: Enseña cómo girar a la izquierda y a la derecha controlando el servo de dirección frontal.
+* **Ejecución de Scripts**: Ilustra cómo ejecutar un programa automáticamente cuando la Raspberry Pi se inicia.
+* **Análisis del Código Move.py**: Ofrece una explicación detallada del script Move.py, desglosando la lógica detrás del control de motores y dirección.
+* **Pruebas y Depuración**: Pruebas prácticas para asegurar que tanto el código como el hardware funcionen correctamente.
 
-This video is an excellent practical guide for beginners to PiCar-X, providing detailed instructions on controlling motors and steering, laying a solid foundation for further project development.
+Este video es una excelente guía práctica para principiantes en PiCar-X, proporcionando instrucciones detalladas sobre el control de motores y dirección, y estableciendo una base sólida para el desarrollo de proyectos futuros.
 
 **Video**
 
@@ -32,6 +32,7 @@ This video is an excellent practical guide for beginners to PiCar-X, providing d
 
     <iframe width="700" height="500" src="https://www.youtube.com/embed/hlHajsMr1Xk?si=QMnT7oM_93vNnBd0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
-**Related On-line Tutorials**
+**Tutoriales en línea relacionados**
 
 * :ref:`py_move`
+

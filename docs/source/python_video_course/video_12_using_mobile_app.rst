@@ -1,30 +1,30 @@
 .. note::
 
-    Hello, welcome to the SunFounder Raspberry Pi & Arduino & ESP32 Enthusiasts Community on Facebook! Dive deeper into Raspberry Pi, Arduino, and ESP32 with fellow enthusiasts.
+    ¡Hola! Bienvenido a la comunidad de entusiastas de SunFounder Raspberry Pi, Arduino y ESP32 en Facebook. ¡Profundiza en el mundo de Raspberry Pi, Arduino y ESP32 junto a otros entusiastas!
 
-    **Why Join?**
+    **¿Por qué unirte?**
 
-    - **Expert Support**: Solve post-sale issues and technical challenges with help from our community and team.
-    - **Learn & Share**: Exchange tips and tutorials to enhance your skills.
-    - **Exclusive Previews**: Get early access to new product announcements and sneak peeks.
-    - **Special Discounts**: Enjoy exclusive discounts on our newest products.
-    - **Festive Promotions and Giveaways**: Take part in giveaways and holiday promotions.
+    - **Soporte experto**: Resuelve problemas postventa y desafíos técnicos con la ayuda de nuestra comunidad y equipo.
+    - **Aprende y comparte**: Intercambia consejos y tutoriales para mejorar tus habilidades.
+    - **Preestrenos exclusivos**: Obtén acceso anticipado a nuevos anuncios de productos y adelantos.
+    - **Descuentos especiales**: Disfruta de descuentos exclusivos en nuestros productos más recientes.
+    - **Promociones festivas y sorteos**: Participa en sorteos y promociones especiales.
 
-    👉 Ready to explore and create with us? Click [|link_sf_facebook|] and join today!
+    👉 ¿Listo para explorar y crear con nosotros? Haz clic en [|link_sf_facebook|] y únete hoy mismo.
 
-Video 12: Control PiCAR-X Robot Car use mobile app 
-========================================================
+Video 12: Controlar el PiCAR-X Robot con la app móvil
+==========================================================
 
-The tutorial provides a comprehensive guide on using the mobile app for the Picar-X Raspberry Pi robot from SunFounder.
+Este tutorial proporciona una guía completa sobre cómo usar la app móvil para controlar el robot PiCar-X de SunFounder.
 
-1. **Overview**: Explains the setup and usage of the SunFounder Picar-X robot car kit, including how to use the mobile app to control the robot.
-2. **Initial Setup**: Demonstrates the initial setup steps, including installing necessary modules and setting up the PowerShell for SSH access.
-3. **App Integration**: Shows how to customize the mobile app interface with various widgets such as button switches, joysticks, and digital displays.
-4. **Python Code Execution**: Guides through the process of running Python scripts to control the robot, including setting up the IP address and executing the scripts.
-5. **Camera Setup**: Explains how to set up and view the camera feed from the robot, ensuring proper connection and functionality.
-6. **App Installation and Configuration**: Details the steps to install and configure the SunFounder controller app, connect to the robot, and control its movements.
-7. **Practical Demonstration**: Provides a hands-on demonstration of controlling the robot using the app, including moving the camera and navigating the robot.
-8. **Debugging and Troubleshooting**: Offers tips on troubleshooting common issues, ensuring smooth operation and connectivity of the robot and app.
+1. **Resumen**: Explica la configuración y uso del kit de robot PiCar-X de SunFounder, incluyendo cómo usar la app móvil para controlar el robot.
+2. **Configuración inicial**: Demuestra los primeros pasos de configuración, incluida la instalación de los módulos necesarios y la configuración de PowerShell para el acceso por SSH.
+3. **Integración de la app**: Muestra cómo personalizar la interfaz de la app móvil con diferentes widgets como interruptores de botón, joysticks y pantallas digitales.
+4. **Ejecución de código en Python**: Guía sobre el proceso para ejecutar scripts en Python para controlar el robot, incluyendo la configuración de la dirección IP y la ejecución de los scripts.
+5. **Configuración de la cámara**: Explica cómo configurar y visualizar la transmisión de la cámara desde el robot, asegurando una conexión y funcionalidad adecuadas.
+6. **Instalación y configuración de la app**: Detalla los pasos para instalar y configurar la app de control de SunFounder, conectarse al robot y controlar sus movimientos.
+7. **Demostración práctica**: Proporciona una demostración práctica de cómo controlar el robot usando la app, incluyendo mover la cámara y navegar el robot.
+8. **Depuración y resolución de problemas**: Ofrece consejos sobre cómo solucionar problemas comunes, garantizando una operación y conectividad fluida entre el robot y la app.
 
 **Video**
 
@@ -32,6 +32,6 @@ The tutorial provides a comprehensive guide on using the mobile app for the Pica
 
     <iframe width="700" height="500" src="https://www.youtube.com/embed/19HIXnFood4?si=LX22v83ZaF4h9vMA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
-**Related On-line Tutorials**
+**Tutoriales en línea relacionados**
 
 * :ref:`py_treasure`

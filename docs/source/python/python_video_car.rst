@@ -1,27 +1,27 @@
 .. note::
 
-    Hello, welcome to the SunFounder Raspberry Pi & Arduino & ESP32 Enthusiasts Community on Facebook! Dive deeper into Raspberry Pi, Arduino, and ESP32 with fellow enthusiasts.
+    ¡Hola! Bienvenido a la comunidad de entusiastas de SunFounder Raspberry Pi, Arduino y ESP32 en Facebook. ¡Sumérgete en el mundo de Raspberry Pi, Arduino y ESP32 junto con otros entusiastas!
 
-    **Why Join?**
+    **¿Por qué unirte?**
 
-    - **Expert Support**: Solve post-sale issues and technical challenges with help from our community and team.
-    - **Learn & Share**: Exchange tips and tutorials to enhance your skills.
-    - **Exclusive Previews**: Get early access to new product announcements and sneak peeks.
-    - **Special Discounts**: Enjoy exclusive discounts on our newest products.
-    - **Festive Promotions and Giveaways**: Take part in giveaways and holiday promotions.
+    - **Soporte experto**: Resuelve problemas postventa y desafíos técnicos con la ayuda de nuestra comunidad y equipo.
+    - **Aprende y comparte**: Intercambia consejos y tutoriales para mejorar tus habilidades.
+    - **Preestrenos exclusivos**: Obtén acceso anticipado a nuevos anuncios de productos y adelantos.
+    - **Descuentos especiales**: Disfruta de descuentos exclusivos en nuestros productos más recientes.
+    - **Promociones festivas y sorteos**: Participa en sorteos y promociones especiales.
 
-    👉 Ready to explore and create with us? Click [|link_sf_facebook|] and join today!
+    👉 ¿Listo para explorar y crear con nosotros? Haz clic en [|link_sf_facebook|] y únete hoy.
 
 .. _video_car:
 
-11. Video Car
+11. Coche con Video
 ==========================================
 
-This program will provide a First Person View from the PiCar-X! 
-Use the keyboards WSAD keys to control the direction of movement, 
-and the O and P to adjust the speed.
+¡Este programa te proporcionará una Vista en Primera Persona desde el PiCar-X! 
+Usa las teclas WSAD del teclado para controlar la dirección del movimiento, 
+y las teclas O y P para ajustar la velocidad.
 
-**Run the Code**
+**Ejecutar el Código**
 
 .. raw:: html
 
@@ -32,38 +32,38 @@ and the O and P to adjust the speed.
     cd ~/picar-x/example
     sudo python3 11.video_car.py
 
-Once the code is running, you can see what PiCar-X is shooting and control it by pressing the following keys.
+Una vez que el código esté en ejecución, podrás ver lo que PiCar-X está grabando y controlarlo presionando las siguientes teclas.
 
-* O: speed up
-* P: speed down
-* W: forward  
-* S: backward
-* A: turn left
-* D: turn right
-* F: stop
-* T: take photo
-* Ctrl+C: quit
+* O: aumentar velocidad
+* P: disminuir velocidad
+* W: avanzar  
+* S: retroceder
+* A: girar a la izquierda
+* D: girar a la derecha
+* F: detenerse
+* T: tomar foto
+* Ctrl+C: salir
 
-**View the Image**
+**Ver la Imagen**
 
-After the code runs, the terminal will display the following prompt:
+Después de ejecutar el código, el terminal mostrará el siguiente mensaje:
 
 .. code-block::
 
-    No desktop !
-    * Serving Flask app "vilib.vilib" (lazy loading)
-    * Environment: production
-    WARNING: Do not use the development server in a production environment.
-    Use a production WSGI server instead.
-    * Debug mode: off
-    * Running on http://0.0.0.0:9000/ (Press CTRL+C to quit)
+    ¡No hay escritorio!
+    * Sirviendo la aplicación Flask "vilib.vilib" (carga perezosa)
+    * Entorno: producción
+    ADVERTENCIA: No utilices el servidor de desarrollo en un entorno de producción.
+    Usa un servidor WSGI de producción.
+    * Modo de depuración: desactivado
+    * Ejecutando en http://0.0.0.0:9000/ (Presiona CTRL+C para salir)
 
-Then you can enter ``http://<your IP>:9000/mjpg`` in the browser to view the video screen. such as:  ``https://192.168.18.113:9000/mjpg``
+Luego puedes ingresar ``http://<tu IP>:9000/mjpg`` en el navegador para ver la pantalla de video, por ejemplo:  ``https://192.168.18.113:9000/mjpg``
 
 .. image:: img/display.png
 
 
-**code**
+**Código**
 
 .. code-block:: python
     
@@ -134,16 +134,16 @@ Then you can enter ``http://<your IP>:9000/mjpg`` in the browser to view the vid
 
         Vilib.camera_start(vflip=False,hflip=False)
         Vilib.display(local=True,web=True)
-        sleep(2)  # wait for startup
+        sleep(2)  # espera a que arranque
         print(manual)
         
         while True:
-            print("\rstatus: %s , speed: %s    "%(status, speed), end='', flush=True)
-            # readkey
+             print("\rstatus: %s , speed: %s    "%(status, speed), end='', flush=True)
+            # leer tecla
             key = readchar.readkey().lower()
-            # operation 
+            # operación 
             if key in ('wsadfop'):
-                # throttle
+                # aceleración
                 if key == 'o':
                     if speed <=90:
                         speed += 10           
@@ -152,32 +152,32 @@ Then you can enter ``http://<your IP>:9000/mjpg`` in the browser to view the vid
                         speed -= 10
                     if speed == 0:
                         status = 'stop'
-                # direction
+                # dirección
                 elif key in ('wsad'):
                     if speed == 0:
                         speed = 10
                     if key == 'w':
-                        # Speed limit when reversing,avoid instantaneous current too large
+                        # Límite de velocidad al retroceder, evitar corrientes instantáneas demasiado altas
                         if status != 'forward' and speed > 60:  
                             speed = 60
                         status = 'forward'
                     elif key == 'a':
                         status = 'turn left'
                     elif key == 's':
-                        if status != 'backward' and speed > 60: # Speed limit when reversing
+                        if status != 'backward' and speed > 60: # Límite de velocidad al retroceder
                             speed = 60
                         status = 'backward'
                     elif key == 'd':
                         status = 'turn right' 
-                # stop
+                # detener
                 elif key == 'f':
                     status = 'stop'
-                # move 
+                # mover
                 move(status, speed)  
-            # take photo
+            # tomar foto
             elif key == 't':
                 take_photo()
-            # quit
+            # salir
             elif key == readchar.key.CTRL_C:
                 print('\nquit ...')
                 px.stop()

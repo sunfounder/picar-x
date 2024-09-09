@@ -1,24 +1,24 @@
 .. note::
 
-    Hello, welcome to the SunFounder Raspberry Pi & Arduino & ESP32 Enthusiasts Community on Facebook! Dive deeper into Raspberry Pi, Arduino, and ESP32 with fellow enthusiasts.
+    ¡Hola, bienvenido a la Comunidad de Entusiastas de SunFounder Raspberry Pi, Arduino y ESP32 en Facebook! Sumérgete en el mundo de Raspberry Pi, Arduino y ESP32 junto a otros entusiastas.
 
-    **Why Join?**
+    **¿Por qué unirte?**
 
-    - **Expert Support**: Solve post-sale issues and technical challenges with help from our community and team.
-    - **Learn & Share**: Exchange tips and tutorials to enhance your skills.
-    - **Exclusive Previews**: Get early access to new product announcements and sneak peeks.
-    - **Special Discounts**: Enjoy exclusive discounts on our newest products.
-    - **Festive Promotions and Giveaways**: Take part in giveaways and holiday promotions.
+    - **Soporte experto**: Resuelve problemas postventa y desafíos técnicos con la ayuda de nuestra comunidad y equipo.
+    - **Aprende y comparte**: Intercambia consejos y tutoriales para mejorar tus habilidades.
+    - **Preestrenos exclusivos**: Obtén acceso anticipado a nuevos anuncios de productos y adelantos exclusivos.
+    - **Descuentos especiales**: Disfruta de descuentos exclusivos en nuestros productos más recientes.
+    - **Promociones festivas y sorteos**: Participa en sorteos y promociones durante las festividades.
 
-    👉 Ready to explore and create with us? Click [|link_sf_facebook|] and join today!
+    👉 ¿Listo para explorar y crear con nosotros? Haz clic en [|link_sf_facebook|] y únete hoy mismo!
 
 .. _install_all_modules:
 
 
-5. Install All the Modules(Important)
-========================================
+5. Instalar Todos los Módulos (Importante)
+=============================================
 
-Make sure you are connected to the Internet and update your system:
+Asegúrate de estar conectado a Internet y actualiza tu sistema:
 
 .. raw:: html
 
@@ -31,7 +31,7 @@ Make sure you are connected to the Internet and update your system:
 
 .. note::
 
-    Python3 related packages must be installed if you are installing the Lite version OS.
+    Los paquetes relacionados con Python3 deben estar instalados si estás utilizando la versión Lite del sistema operativo.
 
     .. raw:: html
 
@@ -42,7 +42,7 @@ Make sure you are connected to the Internet and update your system:
         sudo apt install git python3-pip python3-setuptools python3-smbus
 
 
-Install ``robot-hat``.
+Instala ``robot-hat``.
 
 .. raw:: html
 
@@ -56,7 +56,7 @@ Install ``robot-hat``.
     sudo python3 setup.py install
 
 
-Then download and install the ``vilib`` module.
+Luego descarga e instala el módulo ``vilib``.
 
 .. raw:: html
 
@@ -69,7 +69,7 @@ Then download and install the ``vilib`` module.
     cd vilib
     sudo python3 install.py
 
-Download and install the ``picar-x`` module.
+Descarga e instala el módulo ``picar-x``.
 
 .. raw:: html
 
@@ -82,9 +82,9 @@ Download and install the ``picar-x`` module.
     cd picar-x
     sudo python3 setup.py install
 
-This step will take a little while, so please be patient.
+Este paso tomará un poco de tiempo, así que por favor ten paciencia.
 
-Finally, you need to run the script ``i2samp.sh`` to install the components required by the i2s amplifier, otherwise the picar-x will have no sound.
+Finalmente, necesitas ejecutar el script ``i2samp.sh`` para instalar los componentes requeridos por el amplificador i2s, de lo contrario el picar-x no tendrá sonido.
 
 .. raw:: html
 
@@ -97,15 +97,15 @@ Finally, you need to run the script ``i2samp.sh`` to install the components requ
 	
 .. image:: img/i2s.png
 
-Type ``y`` and press enter to continue running the script.
+Escribe ``y`` y presiona enter para continuar ejecutando el script.
 
 .. image:: img/i2s2.png
 
-Type ``y`` and press enter to run ``/dev/zero`` in the background.
+Escribe ``y`` y presiona enter para ejecutar ``/dev/zero`` en segundo plano.
 
 .. image:: img/i2s3.png
 
-Type ``y`` and press enter to restart the Picar-X.
+Escribe ``y`` y presiona enter para reiniciar el Picar-X.
 
 .. note::
-    If there is no sound after restarting, you may need to run the i2samp.sh script several times.
+    Si no hay sonido después de reiniciar, es posible que necesites ejecutar el script i2samp.sh varias veces.
