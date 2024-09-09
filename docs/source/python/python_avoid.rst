@@ -1,26 +1,26 @@
 .. note::
 
-    Hello, welcome to the SunFounder Raspberry Pi & Arduino & ESP32 Enthusiasts Community on Facebook! Dive deeper into Raspberry Pi, Arduino, and ESP32 with fellow enthusiasts.
+    Bonjour et bienvenue dans la communauté des passionnés de Raspberry Pi, Arduino et ESP32 de SunFounder sur Facebook ! Plongez dans l'univers du Raspberry Pi, d'Arduino et de l'ESP32 avec d'autres passionnés.
 
-    **Why Join?**
+    **Pourquoi nous rejoindre ?**
 
-    - **Expert Support**: Solve post-sale issues and technical challenges with help from our community and team.
-    - **Learn & Share**: Exchange tips and tutorials to enhance your skills.
-    - **Exclusive Previews**: Get early access to new product announcements and sneak peeks.
-    - **Special Discounts**: Enjoy exclusive discounts on our newest products.
-    - **Festive Promotions and Giveaways**: Take part in giveaways and holiday promotions.
+    - **Support d'experts** : Résolvez les problèmes après-vente et surmontez les défis techniques avec l'aide de notre communauté et de notre équipe.
+    - **Apprenez & Partagez** : Échangez des astuces et des tutoriels pour améliorer vos compétences.
+    - **Aperçus exclusifs** : Accédez en avant-première aux annonces de nouveaux produits et aux avant-goûts.
+    - **Réductions exclusives** : Profitez de remises spéciales sur nos nouveaux produits.
+    - **Promotions festives et concours** : Participez à des concours et à des promotions lors des fêtes.
 
-    👉 Ready to explore and create with us? Click [|link_sf_facebook|] and join today!
+    👉 Prêt à explorer et à créer avec nous ? Cliquez sur [|link_sf_facebook|] et rejoignez-nous dès aujourd'hui !
 
 .. _py_avoid:
 
-4. Obstacle Avoidance
+4. Évitement d'obstacles
 =============================
 
-In this project, PiCar-X will detect obstacles in front of it while moving forward, 
-and when the obstacles are too close, it will change the direction of moving forward.
+Dans ce projet, le PiCar-X détectera les obstacles devant lui pendant qu'il avance, 
+et lorsque les obstacles seront trop proches, il changera de direction pour continuer à avancer.
 
-**Run the Code**
+**Exécution du code**
 
 .. raw:: html
 
@@ -31,19 +31,19 @@ and when the obstacles are too close, it will change the direction of moving for
     cd ~/picar-x/example
     sudo python3 4.avoiding_obstacles.py
     
-After running the code, PiCar-X will walk forward. 
+Après avoir exécuté le code, le PiCar-X avancera.
 
-If it detects that the distance of the obstacle ahead is less than 20cm, it will go backward. 
+S'il détecte que la distance de l'obstacle devant est inférieure à 20 cm, il reculera.
 
-If there is an obstacle within 20 to 40cm, it will turn left.
+Si un obstacle se trouve à une distance comprise entre 20 et 40 cm, il tournera à gauche.
 
-If there is no obstacle in the direction after turning left or the obstacle distance is greater than 25cm, 
-it will continue to move forward.
+S'il n'y a pas d'obstacle après avoir tourné à gauche ou si la distance de l'obstacle est supérieure à 25 cm, 
+il continuera d'avancer.
 
 **Code**
 
 .. note::
-    You can **Modify/Reset/Copy/Run/Stop** the code below. But before that, you need to go to source code path like ``picar-x/example``. After modifying the code, you can run it directly to see the effect.
+    Vous pouvez **Modifier/Réinitialiser/Copier/Exécuter/Arrêter** le code ci-dessous. Mais avant cela, vous devez vous rendre dans le chemin du code source comme ``picar-x/example``. Après avoir modifié le code, vous pouvez l'exécuter directement pour voir l'effet.
 
 .. raw:: html
 
@@ -55,14 +55,14 @@ it will continue to move forward.
     import time
     
     POWER = 50
-    SafeDistance = 40   # > 40 safe
-    DangerDistance = 20 # > 20 && < 40 turn around, 
-                        # < 20 backward
+    SafeDistance = 40   # > 40 sûr
+    DangerDistance = 20 # > 20 && < 40 tourner, 
+                        # < 20 reculer
     
     def main():
         try:
             px = Picarx()
-            # px = Picarx(ultrasonic_pins=['D2','D3']) # tring, echo
+            # px = Picarx(ultrasonic_pins=['D2','D3']) # déclencheur, écho
            
             while True:
                 distance = round(px.ultrasonic.read(), 2)
@@ -86,11 +86,11 @@ it will continue to move forward.
     if __name__ == "__main__":
         main()
 
-**How it works?**
+**Comment ça marche ?**
 
-* Importing the Picarx Module and Initializing Constants: 
+* Importation du module Picarx et initialisation des constantes :
 
-    This section of the code imports the ``Picarx`` class from the ``picarx`` module, which is essential for controlling the Picarx robot. Constants like ``POWER``, ``SafeDistance``, and ``DangerDistance`` are defined, which will be used later in the script to control the robot's movement based on distance measurements.
+    Cette section du code importe la classe ``Picarx`` du module ``picarx``, qui est essentielle pour contrôler le robot Picarx. Les constantes comme ``POWER``, ``SafeDistance`` et ``DangerDistance`` sont définies et seront utilisées plus tard dans le script pour contrôler le mouvement du robot en fonction des mesures de distance.
 
     .. code-block:: python
 
@@ -98,13 +98,13 @@ it will continue to move forward.
         import time
 
         POWER = 50
-        SafeDistance = 40 # > 40 safe
-        DangerDistance = 20 # > 20 && < 40 turn around,
-        # < 20 backward
+        SafeDistance = 40 # > 40 sûr
+        DangerDistance = 20 # > 20 && < 40 tourner,
+        # < 20 reculer
 
-* Main Function Definition and Ultrasonic Sensor Reading:
+* Définition de la fonction principale et lecture du capteur ultrasonique :
 
-    The ``main`` function is where the Picarx robot is controlled. An instance of ``Picarx`` is created, which activates the robot's functionalities. The code enters an infinite loop, constantly reading the distance from the ultrasonic sensor. This distance is used to determine the robot's movement.
+    La fonction ``main`` contrôle le robot Picarx. Une instance de ``Picarx`` est créée, ce qui active les fonctionnalités du robot. Le code entre dans une boucle infinie, lisant constamment la distance depuis le capteur ultrasonique. Cette distance est utilisée pour déterminer les mouvements du robot.
 
     .. code-block:: python
         
@@ -114,11 +114,11 @@ it will continue to move forward.
 
             while True:
                 distance = round(px.ultrasonic.read(), 2)
-                # [Rest of the logic]
+                # [Rest du code]
 
-* Movement Logic Based on Distance:
+* Logique de mouvement basée sur la distance :
 
-    The robot's movement is controlled based on the ``distance`` read from the ultrasonic sensor. If the ``distance`` is greater than ``SafeDistance``, the robot moves forward. If the distance is between ``DangerDistance`` and ``SafeDistance``, it slightly turns and moves forward. If the ``distance`` is less than ``DangerDistance``, the robot reverses while turning in the opposite direction.
+    Le mouvement du robot est contrôlé en fonction de la distance lue par le capteur ultrasonique. Si la ``distance`` est supérieure à ``SafeDistance``, le robot avance. Si la distance est comprise entre ``DangerDistance`` et ``SafeDistance``, il tourne légèrement et avance. Si la ``distance`` est inférieure à ``DangerDistance``, le robot recule tout en tournant dans la direction opposée.
 
     .. code-block:: python
 
@@ -134,24 +134,25 @@ it will continue to move forward.
             px.backward(POWER)
             time.sleep(0.5)
 
-* Safety and Cleanup with the 'finally' Block:
+* Sécurité et nettoyage avec le bloc 'finally' :
 
-    The ``try...finally`` block ensures safety by stopping the robot's motion in case of an interruption or error. This is a crucial part for preventing uncontrollable behavior of the robot.
+    Le bloc ``try...finally`` garantit la sécurité en arrêtant le mouvement du robot en cas d'interruption ou d'erreur. Cela est essentiel pour éviter tout comportement incontrôlable du robot.
 
     .. code-block:: python
         
         try:
-        # [Control logic]
+        # [Logique de contrôle]
         finally:
         px.forward(0)
 
-* Execution Entry Point:
+* Point d'entrée de l'exécution :
 
-    The standard Python entry point ``if __name__ == "__main__":`` is used to run the main function when the script is executed as a standalone program.
+    Le point d'entrée standard en Python ``if __name__ == "__main__":`` est utilisé pour exécuter la fonction principale lorsque le script est lancé en tant que programme autonome.
 
     .. code-block:: python
         
         if name == "main":
             main()
 
-In summary, the script uses the Picarx module to control a robot, utilizing an ultrasonic sensor for distance measurement. The robot's movement is adapted based on these measurements, ensuring safe operation through careful control and a safety mechanism in the finally block.
+En résumé, le script utilise le module Picarx pour contrôler un robot, en utilisant un capteur ultrasonique pour mesurer les distances. Le mouvement du robot est adapté en fonction de ces mesures, garantissant un fonctionnement sécurisé grâce à un contrôle minutieux et à un mécanisme de sécurité dans le bloc finally.
+

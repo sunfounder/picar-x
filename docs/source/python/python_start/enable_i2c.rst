@@ -1,23 +1,23 @@
 .. note::
 
-    Hello, welcome to the SunFounder Raspberry Pi & Arduino & ESP32 Enthusiasts Community on Facebook! Dive deeper into Raspberry Pi, Arduino, and ESP32 with fellow enthusiasts.
+    Bonjour et bienvenue dans la communauté Facebook des passionnés de Raspberry Pi, Arduino et ESP32 de SunFounder ! Plongez-vous dans l'univers du Raspberry Pi, Arduino et ESP32 avec d'autres passionnés.
 
-    **Why Join?**
+    **Pourquoi nous rejoindre ?**
 
-    - **Expert Support**: Solve post-sale issues and technical challenges with help from our community and team.
-    - **Learn & Share**: Exchange tips and tutorials to enhance your skills.
-    - **Exclusive Previews**: Get early access to new product announcements and sneak peeks.
-    - **Special Discounts**: Enjoy exclusive discounts on our newest products.
-    - **Festive Promotions and Giveaways**: Take part in giveaways and holiday promotions.
+    - **Support d'experts** : Résolvez vos problèmes après-vente et relevez les défis techniques grâce à l'aide de notre communauté et de notre équipe.
+    - **Apprenez & Partagez** : Échangez des astuces et des tutoriels pour améliorer vos compétences.
+    - **Aperçus exclusifs** : Bénéficiez d'un accès anticipé aux annonces de nouveaux produits et à des avant-premières.
+    - **Remises spéciales** : Profitez de réductions exclusives sur nos derniers produits.
+    - **Promotions festives et concours** : Participez à des tirages au sort et à des promotions durant les fêtes.
 
-    👉 Ready to explore and create with us? Click [|link_sf_facebook|] and join today!
+    👉 Prêt à explorer et à créer avec nous ? Cliquez sur [|link_sf_facebook|] et rejoignez-nous dès aujourd'hui !
 
-6. Enable I2C Interface(Important)
-========================================
+6. Activer l'interface I2C (Important)
+==========================================
 
-We will be using the Raspberry Pi's I2C interface. This interface should have been enabled when installing the ``robot-hat`` module earlier. To ensure everything is in order, let's check if it is indeed enabled.
+Nous utiliserons l'interface I2C du Raspberry Pi. Cette interface devrait avoir été activée lors de l'installation du module ``robot-hat`` plus tôt. Pour vous assurer que tout fonctionne correctement, vérifions si elle est bien activée.
 
-#. Input the following command:
+#. Entrez la commande suivante :
 
     .. raw:: html
 
@@ -27,22 +27,22 @@ We will be using the Raspberry Pi's I2C interface. This interface should have be
 
         sudo raspi-config
 
-#. Choose **Interfacing Options** by press the down arrow key on your keyboard, then press the **Enter** key.
+#. Sélectionnez **Options d'interface** en appuyant sur la flèche bas de votre clavier, puis appuyez sur la touche **Entrée**.
 
     .. image:: img/image282.png
         :align: center
 
-#. Then **I2C**.
+#. Ensuite, sélectionnez **I2C**.
 
     .. image:: img/image283.png
         :align: center
 
-#. Use the arrow keys on the keyboard to select **<Yes>** -> **<OK>** to complete the setup of the I2C.
+#. Utilisez les flèches de votre clavier pour sélectionner **<Oui>** -> **<OK>** afin de finaliser la configuration de l'I2C.
 
     .. image:: img/image284.png
         :align: center
 
-#. After you select **<Finish>**, a pop-up will remind you that you need to reboot for the settings to take effect, select **<Yes>**.
+#. Après avoir sélectionné **<Finish>**, une fenêtre contextuelle vous rappellera que vous devez redémarrer pour que les paramètres prennent effet, sélectionnez **<Oui>**.
 
     .. image:: img/camera_enable2.png
         :align: center

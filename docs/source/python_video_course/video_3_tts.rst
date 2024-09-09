@@ -1,37 +1,37 @@
 .. note::
 
-    Hello, welcome to the SunFounder Raspberry Pi & Arduino & ESP32 Enthusiasts Community on Facebook! Dive deeper into Raspberry Pi, Arduino, and ESP32 with fellow enthusiasts.
+    Bonjour et bienvenue dans la communauté Facebook des passionnés de Raspberry Pi, Arduino et ESP32 de SunFounder ! Plongez dans l'univers du Raspberry Pi, Arduino et ESP32 avec d'autres passionnés.
 
-    **Why Join?**
+    **Pourquoi rejoindre ?**
 
-    - **Expert Support**: Solve post-sale issues and technical challenges with help from our community and team.
-    - **Learn & Share**: Exchange tips and tutorials to enhance your skills.
-    - **Exclusive Previews**: Get early access to new product announcements and sneak peeks.
-    - **Special Discounts**: Enjoy exclusive discounts on our newest products.
-    - **Festive Promotions and Giveaways**: Take part in giveaways and holiday promotions.
+    - **Support d'experts** : Résolvez les problèmes après-vente et les défis techniques grâce à l'aide de notre communauté et de notre équipe.
+    - **Apprendre et partager** : Échangez des astuces et des tutoriels pour améliorer vos compétences.
+    - **Aperçus exclusifs** : Accédez en avant-première aux annonces de nouveaux produits et à des avant-goûts exclusifs.
+    - **Réductions spéciales** : Profitez de réductions exclusives sur nos nouveaux produits.
+    - **Promotions et concours festifs** : Participez à des concours et des promotions pendant les fêtes.
 
-    👉 Ready to explore and create with us? Click [|link_sf_facebook|] and join today!
-
-
-Video 3: Text to Speech
-============================
-
-This tutorial covers the text-to-speech features of the PiCar-X robot:
-
-* **Robot Setup and Initial Movement**: Demonstrates the robot's readiness and initial movement, including stopping and obstacle detection.
-* **Text-to-Speech Capabilities**: Shows how the robot can speak predefined phrases and count down using text-to-speech technology.
-* **Custom Script Demonstration**: Runs a custom script where the robot talks, moves, reacts to obstacles, and makes U-turns.
-* **Playing Music**: Teaches how to play music files on the robot using Python scripts.
-
-The lesson offers an in-depth tutorial on integrating text-to-speech functionality into the PiCar-X robot, including practical demonstrations and code details.
+    👉 Prêt à explorer et à créer avec nous ? Cliquez sur [|link_sf_facebook|] et rejoignez-nous dès aujourd'hui !
 
 
-**Video**
+Vidéo 3 : Synthèse vocale
+=============================
+
+Ce tutoriel couvre les fonctionnalités de synthèse vocale du robot PiCar-X :
+
+* **Mise en place du robot et mouvement initial** : Démonstration de la préparation du robot, de ses premiers mouvements, y compris l'arrêt et la détection d'obstacles.
+* **Fonctionnalités de synthèse vocale** : Présentation de la capacité du robot à énoncer des phrases prédéfinies et à effectuer un compte à rebours grâce à la technologie de synthèse vocale.
+* **Démonstration de script personnalisé** : Exécution d'un script personnalisé où le robot parle, se déplace, réagit aux obstacles et effectue des demi-tours.
+* **Lecture de musique** : Explication de la manière de lire des fichiers musicaux sur le robot en utilisant des scripts Python.
+
+La leçon propose un tutoriel approfondi sur l'intégration des fonctionnalités de synthèse vocale dans le robot PiCar-X, avec des démonstrations pratiques et des détails sur le code.
+
+
+**Vidéo**
 
 .. raw:: html
 
     <iframe width="700" height="500" src="https://www.youtube.com/embed/w4hyhuV0LQs?si=MgiwG3Ii3lODZnOF" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
-**Related On-line Tutorials**
+**Tutoriels en ligne associés**
 
 * :ref:`py_tts`

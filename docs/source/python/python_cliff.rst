@@ -1,28 +1,28 @@
 .. note::
 
-    Hello, welcome to the SunFounder Raspberry Pi & Arduino & ESP32 Enthusiasts Community on Facebook! Dive deeper into Raspberry Pi, Arduino, and ESP32 with fellow enthusiasts.
+    Bonjour et bienvenue dans la communauté des passionnés de SunFounder Raspberry Pi, Arduino et ESP32 sur Facebook ! Plongez au cœur des projets avec Raspberry Pi, Arduino et ESP32 aux côtés d'autres passionnés.
 
-    **Why Join?**
+    **Pourquoi nous rejoindre ?**
 
-    - **Expert Support**: Solve post-sale issues and technical challenges with help from our community and team.
-    - **Learn & Share**: Exchange tips and tutorials to enhance your skills.
-    - **Exclusive Previews**: Get early access to new product announcements and sneak peeks.
-    - **Special Discounts**: Enjoy exclusive discounts on our newest products.
-    - **Festive Promotions and Giveaways**: Take part in giveaways and holiday promotions.
+    - **Support d'experts** : Résolvez les problèmes après-vente et surmontez les défis techniques avec l'aide de notre communauté et de notre équipe.
+    - **Apprenez et partagez** : Échangez des conseils et des tutoriels pour améliorer vos compétences.
+    - **Aperçus exclusifs** : Accédez en avant-première aux annonces et aperçus de nouveaux produits.
+    - **Réductions spéciales** : Bénéficiez de remises exclusives sur nos produits les plus récents.
+    - **Promotions festives et concours** : Participez à des promotions et à des concours lors d'événements spéciaux.
 
-    👉 Ready to explore and create with us? Click [|link_sf_facebook|] and join today!
+    👉 Prêt à explorer et à créer avec nous ? Cliquez sur [|link_sf_facebook|] et rejoignez-nous dès aujourd'hui !
 
 .. _py_cliff:
 
-6. Cliff Detection 
+6. Détection de Falaise 
 ===========================
 
-Let us give PiCar-X a little self-protection awareness and let it learn to use its own grayscale module to avoid rushing down the cliff.
+Apprenons à PiCar-X un peu de conscience de protection pour qu'il utilise son module de niveaux de gris afin d'éviter de tomber d'une falaise.
 
-In this example, the car will be dormant. 
-If you push it to a cliff, it will be awakened urgently, then back up, and say "danger".
+Dans cet exemple, la voiture sera en veille. 
+Si vous la poussez vers une falaise, elle se réveillera immédiatement, reculera et dira "danger".
 
-**Run the Code**
+**Exécution du Code**
 
 .. raw:: html
 
@@ -37,7 +37,7 @@ If you push it to a cliff, it will be awakened urgently, then back up, and say "
 **Code**
 
 .. note::
-    You can **Modify/Reset/Copy/Run/Stop** the code below. But before that, you need to go to  source code path like ``picar-x/example``. After modifying the code, you can run it directly to see the effect.
+    Vous pouvez **Modifier/Réinitialiser/Copier/Exécuter/Arrêter** le code ci-dessous. Avant cela, vous devez vous rendre dans le répertoire du code source comme ``picar-x/example``. Après avoir modifié le code, vous pouvez l'exécuter directement pour voir l'effet.
 
 .. raw:: html
 
@@ -54,7 +54,7 @@ If you push it to a cliff, it will be awakened urgently, then back up, and say "
 
     px = Picarx()
     # px = Picarx(grayscale_pins=['A0', 'A1', 'A2'])
-    # manual modify reference value
+    # modifier manuellement la valeur de référence
     px.set_cliff_reference([200, 200, 200])
 
     current_state = None
@@ -67,7 +67,7 @@ If you push it to a cliff, it will be awakened urgently, then back up, and say "
             while True:
                 gm_val_list = px.get_grayscale_data()
                 gm_state = px.get_cliff_status(gm_val_list)
-                # print("cliff status is:  %s"%gm_state)
+                # print("état de la falaise :  %s"%gm_state)
 
                 if gm_state is False:
                     state = "safe"
@@ -85,10 +85,13 @@ If you push it to a cliff, it will be awakened urgently, then back up, and say "
             print("stop and exit")
             sleep(0.1)
 
-**How it works?** 
+**Comment ça fonctionne ?** 
 
-The function to detect the cliff looks like this:
+La fonction de détection de falaise fonctionne comme suit :
 
-* ``get_grayscale_data()``: This method directly outputs the readings of the three sensors, from right to left. The brighter the area, the larger the value obtained.
 
-* ``get_cliff_status(gm_val_list)``: This method compares the readings from the three probes and outputs a result. If the result is true, it is detected that there is a cliff in front of the car.
+
+* ``get_grayscale_data()`` : Cette méthode renvoie directement les relevés des trois capteurs, de droite à gauche. Plus la zone est lumineuse, plus la valeur obtenue est grande.
+
+* ``get_cliff_status(gm_val_list)`` : Cette méthode compare les relevés des trois sondes et donne un résultat. Si le résultat est vrai, une falaise est détectée devant la voiture.
+

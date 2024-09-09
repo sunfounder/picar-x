@@ -1,49 +1,49 @@
 .. note::
 
-    Hello, welcome to the SunFounder Raspberry Pi & Arduino & ESP32 Enthusiasts Community on Facebook! Dive deeper into Raspberry Pi, Arduino, and ESP32 with fellow enthusiasts.
+    Bonjour et bienvenue dans la communauté SunFounder Raspberry Pi & Arduino & ESP32 sur Facebook ! Plongez dans l'univers du Raspberry Pi, Arduino et ESP32 avec d'autres passionnés.
 
-    **Why Join?**
+    **Pourquoi nous rejoindre ?**
 
-    - **Expert Support**: Solve post-sale issues and technical challenges with help from our community and team.
-    - **Learn & Share**: Exchange tips and tutorials to enhance your skills.
-    - **Exclusive Previews**: Get early access to new product announcements and sneak peeks.
-    - **Special Discounts**: Enjoy exclusive discounts on our newest products.
-    - **Festive Promotions and Giveaways**: Take part in giveaways and holiday promotions.
+    - **Support d'experts** : Résolvez les problèmes après-vente et les défis techniques avec l'aide de notre communauté et de notre équipe.
+    - **Apprendre et partager** : Échangez des astuces et des tutoriels pour perfectionner vos compétences.
+    - **Aperçus exclusifs** : Bénéficiez d'un accès anticipé aux annonces de nouveaux produits et aux avant-premières.
+    - **Réductions spéciales** : Profitez de remises exclusives sur nos derniers produits.
+    - **Promotions festives et concours** : Participez à des concours et à des promotions spéciales lors des fêtes.
 
-    👉 Ready to explore and create with us? Click [|link_sf_facebook|] and join today!
+    👉 Prêt à explorer et créer avec nous ? Cliquez sur [|link_sf_facebook|] et rejoignez-nous dès aujourd'hui !
 
-Background Music
+Musique de fond
 ======================
 
-In addition to programming the PiCar-X to play sound effects or text-to-speech (TTS), the PiCar-X will also play background music. This project will also use a **Slider** widget for adjusting the music volume. 
+En plus de programmer le PiCar-X pour jouer des effets sonores ou utiliser la synthèse vocale (TTS), le PiCar-X peut également diffuser de la musique de fond. Ce projet utilisera également un widget **Slider** pour ajuster le volume de la musique.
 
 * :ref:`ezblock:remote_control_latest`
 
-For a detailed tutorial on Ezblocks remote control functions, please reference the :ref:`ezb_remote_control` tutorial.
+Pour un tutoriel détaillé sur les fonctions de contrôle à distance d'Ezblocks, veuillez consulter le tutoriel :ref:`ezb_remote_control`.
 
-**TIPS**
+**ASTUCES**
 
 .. image:: img/sp210512_152803.png
 
-The **play background music** block will need to be added to the **Start** function. Use the drop-down menu to choose different background music for the PiCar-X to play.
+Le bloc **jouer la musique de fond** doit être ajouté à la fonction **Start**. Utilisez le menu déroulant pour choisir la musique de fond que le PiCar-X diffusera.
 
 .. image:: img/sp210512_153123.png
 
-The block **set background music volume to** will adjust the volume between the range of 0 to 100.
+Le bloc **définir le volume de la musique de fond à** permet d'ajuster le volume dans une plage de 0 à 100.
 
 .. image:: img/sp210512_154708.png
 
-Drag a **Slider** bar from the **Remote Control** page to adjust music volume.
+Faites glisser une barre **Slider** depuis la page **Remote Control** pour régler le volume de la musique.
 
 .. image:: img/sp210512_154259.png
 
-The **slider [A] get value** block will read the slider value. The example above has slider ‘A’ selected. If there are multiple sliders, use the drop-down menu to select the appropriate one.
+Le bloc **slider [A] obtenir la valeur** lira la valeur du curseur. Dans l'exemple ci-dessus, le curseur ‘A’ est sélectionné. S'il y a plusieurs curseurs, utilisez le menu déroulant pour choisir celui qui convient.
 
-**EXAMPLE**
+**EXEMPLE**
 
 .. note::
 
-    * You can write the program according to the following picture, please refer to the tutorial: :ref:`ezblock:create_project_latest`.
-    * Or find the code with the same name on the **Examples** page of the EzBlock Studio and click **Run** or **Edit** directly.
+    * Vous pouvez écrire le programme en suivant l'image ci-dessous. Veuillez vous référer au tutoriel :ref:`ezblock:create_project_latest`.
+    * Ou trouvez le code du même nom sur la page **Exemples** de l'EzBlock Studio et cliquez sur **Exécuter** ou **Modifier** directement.
 
 .. image:: img/sp210512_155406.png

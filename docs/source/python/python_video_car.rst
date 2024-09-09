@@ -1,27 +1,27 @@
 .. note::
 
-    Hello, welcome to the SunFounder Raspberry Pi & Arduino & ESP32 Enthusiasts Community on Facebook! Dive deeper into Raspberry Pi, Arduino, and ESP32 with fellow enthusiasts.
+    Bonjour et bienvenue dans la communauté Facebook des passionnés de Raspberry Pi, Arduino et ESP32 de SunFounder ! Plongez dans l'univers du Raspberry Pi, Arduino et ESP32 avec d'autres passionnés.
 
-    **Why Join?**
+    **Pourquoi rejoindre ?**
 
-    - **Expert Support**: Solve post-sale issues and technical challenges with help from our community and team.
-    - **Learn & Share**: Exchange tips and tutorials to enhance your skills.
-    - **Exclusive Previews**: Get early access to new product announcements and sneak peeks.
-    - **Special Discounts**: Enjoy exclusive discounts on our newest products.
-    - **Festive Promotions and Giveaways**: Take part in giveaways and holiday promotions.
+    - **Support d'experts** : Résolvez les problèmes après-vente et les défis techniques grâce à l'aide de notre communauté et de notre équipe.
+    - **Apprendre et partager** : Échangez des astuces et des tutoriels pour améliorer vos compétences.
+    - **Aperçus exclusifs** : Accédez en avant-première aux annonces de nouveaux produits et à des avant-goûts exclusifs.
+    - **Réductions spéciales** : Profitez de réductions exclusives sur nos nouveaux produits.
+    - **Promotions et concours festifs** : Participez à des concours et des promotions pendant les fêtes.
 
-    👉 Ready to explore and create with us? Click [|link_sf_facebook|] and join today!
+    👉 Prêt à explorer et à créer avec nous ? Cliquez sur [|link_sf_facebook|] et rejoignez-nous dès aujourd'hui !
 
 .. _video_car:
 
-11. Video Car
-==========================================
+11. Voiture Vidéo
+====================
 
-This program will provide a First Person View from the PiCar-X! 
-Use the keyboards WSAD keys to control the direction of movement, 
-and the O and P to adjust the speed.
+Ce programme offre une vue à la première personne depuis le PiCar-X ! 
+Utilisez les touches WSAD du clavier pour contrôler la direction du mouvement, 
+et les touches O et P pour ajuster la vitesse.
 
-**Run the Code**
+**Exécuter le code**
 
 .. raw:: html
 
@@ -32,21 +32,21 @@ and the O and P to adjust the speed.
     cd ~/picar-x/example
     sudo python3 11.video_car.py
 
-Once the code is running, you can see what PiCar-X is shooting and control it by pressing the following keys.
+Une fois le code en cours d'exécution, vous pouvez voir ce que PiCar-X filme et le contrôler en appuyant sur les touches suivantes :
 
-* O: speed up
-* P: speed down
-* W: forward  
-* S: backward
-* A: turn left
-* D: turn right
-* F: stop
-* T: take photo
-* Ctrl+C: quit
+* O : augmenter la vitesse
+* P : diminuer la vitesse
+* W : avancer  
+* S : reculer
+* A : tourner à gauche
+* D : tourner à droite
+* F : arrêter
+* T : prendre une photo
+* Ctrl+C : quitter
 
-**View the Image**
+**Voir l'image**
 
-After the code runs, the terminal will display the following prompt:
+Après l'exécution du code, le terminal affichera l'invite suivante :
 
 .. code-block::
 
@@ -58,12 +58,12 @@ After the code runs, the terminal will display the following prompt:
     * Debug mode: off
     * Running on http://0.0.0.0:9000/ (Press CTRL+C to quit)
 
-Then you can enter ``http://<your IP>:9000/mjpg`` in the browser to view the video screen. such as:  ``https://192.168.18.113:9000/mjpg``
+Vous pouvez ensuite entrer ``http://<your IP>:9000/mjpg`` dans le navigateur pour voir l'écran vidéo, par exemple : ``https://192.168.18.113:9000/mjpg``
 
 .. image:: img/display.png
 
 
-**code**
+**Code**
 
 .. code-block:: python
     

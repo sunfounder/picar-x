@@ -1,57 +1,53 @@
 .. note::
 
-    Hello, welcome to the SunFounder Raspberry Pi & Arduino & ESP32 Enthusiasts Community on Facebook! Dive deeper into Raspberry Pi, Arduino, and ESP32 with fellow enthusiasts.
+    Bonjour et bienvenue dans la communauté Facebook des passionnés de Raspberry Pi, Arduino et ESP32 de SunFounder ! Plongez-vous dans l'univers du Raspberry Pi, Arduino et ESP32 avec d'autres passionnés.
 
-    **Why Join?**
+    **Pourquoi nous rejoindre ?**
 
-    - **Expert Support**: Solve post-sale issues and technical challenges with help from our community and team.
-    - **Learn & Share**: Exchange tips and tutorials to enhance your skills.
-    - **Exclusive Previews**: Get early access to new product announcements and sneak peeks.
-    - **Special Discounts**: Enjoy exclusive discounts on our newest products.
-    - **Festive Promotions and Giveaways**: Take part in giveaways and holiday promotions.
+    - **Support d'experts** : Résolvez vos problèmes après-vente et relevez les défis techniques grâce à l'aide de notre communauté et de notre équipe.
+    - **Apprenez & Partagez** : Échangez des astuces et des tutoriels pour améliorer vos compétences.
+    - **Aperçus exclusifs** : Bénéficiez d'un accès anticipé aux annonces de nouveaux produits et à des avant-premières.
+    - **Remises spéciales** : Profitez de réductions exclusives sur nos derniers produits.
+    - **Promotions festives et concours** : Participez à des tirages au sort et à des promotions durant les fêtes.
 
-    👉 Ready to explore and create with us? Click [|link_sf_facebook|] and join today!
+    👉 Prêt à explorer et à créer avec nous ? Cliquez sur [|link_sf_facebook|] et rejoignez-nous dès aujourd'hui !
 
 .. _ezb_remote_control:
 
-Remote Control
+Télécommande
 =======================
 
-This project will teach how to remotely control the PiCar-X with the Joystick widget. 
-Note: After dragging and dropping the Joystick widget from the Remote Control page, use the “Map” function to calibrate the Joysticks X-axis and Y-axis readings. For more information on the Remote Control function, please reference the following link:
-
+Ce projet vous apprendra à contrôler à distance le PiCar-X avec le widget Joystick.
+Remarque : Après avoir glissé-déposé le widget Joystick depuis la page Télécommande, utilisez la fonction "Map" pour calibrer les lectures des axes X et Y du joystick. Pour plus d'informations sur la fonction Télécommande, veuillez consulter le lien suivant :
 
 * :ref:`ezblock:remote_control_latest`
 
-
 .. image:: img/remote_control23.png
 
-**TIPS**
+**CONSEILS**
 
 .. image:: img/sp210512_114004.png
 
-To use the remote control function, open the Remote Control page from the left side of the main page.
+Pour utiliser la fonction de télécommande, ouvrez la page Télécommande depuis le côté gauche de la page principale.
 
 .. image:: img/sp210512_114042.png
 
-Drag a Joystick to the central area of the Remote Control page. Toggling the white point in the center, and gently dragging in any direction will produce an (X,Y) coordinate. The range of the X-axis or Y-axis is defaulted to “-100” to “100”. Toggling the white point and dragging it directly to the far left of the Joystick will result in an X value of “-100” and a Y value of “0”.
+Glissez un Joystick vers la zone centrale de la page Télécommande. En basculant le point blanc au centre et en le faisant glisser doucement dans n'importe quelle direction, vous obtiendrez une coordonnée (X,Y). La plage des axes X et Y est par défaut réglée de “-100” à “100”. En basculant le point blanc et en le faisant glisser complètement à gauche du joystick, vous obtiendrez une valeur de X égale à “-100” et une valeur de Y égale à “0”.
 
 .. image:: img/sp210512_114136.png
 
-After dragging and dropping a widget on the remote control page, a new category-Remote with the above block will appear.
-This block reads the Joystick value in the Remote Control page. You can click the drop-down menu to switch to the Y-axis reading.
+Après avoir glissé-déposé un widget sur la page Télécommande, une nouvelle catégorie - Remote - apparaîtra avec le bloc ci-dessus.
+Ce bloc lit la valeur du joystick sur la page Télécommande. Vous pouvez utiliser le menu déroulant pour passer à la lecture de l'axe Y.
 
 .. image:: img/sp210512_114235.png
 
-The map value block can remap a number from one range to another. If the range is set to 0 to 100, and the map value number is 50, then it is at a 50% position of the range, or “50”. If the range is set to 0 to 255 and the map value number is 50, then it is at a 50% position of the range, or “127.5”.
+Le bloc de valeur de mappage permet de remapper un nombre d'une plage à une autre. Si la plage est réglée de 0 à 100 et que la valeur de mappage est de 50, alors elle est à 50 % de la plage, soit “50”. Si la plage est réglée de 0 à 255 et que la valeur de mappage est de 50, alors elle est à 50 % de la plage, soit “127,5”.
 
-**EXAMPLE**
+**EXEMPLE**
 
 .. note::
 
-    * You can write the program according to the following picture, please refer to the tutorial: :ref:`ezblock:create_project_latest`.
-    * Or find the code with the same name on the **Examples** page of the EzBlock Studio and click **Run** or **Edit** directly.
-
+    * Vous pouvez écrire le programme en suivant l'image ci-dessous, veuillez consulter le tutoriel : :ref:`ezblock:create_project_latest`.
+    * Ou trouvez le code portant le même nom sur la page **Exemples** d'EzBlock Studio, puis cliquez sur **Exécuter** ou **Modifier** directement.
 
 .. image:: img/sp210512_114416.png
-

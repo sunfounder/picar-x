@@ -1,30 +1,30 @@
 .. note::
 
-    Hello, welcome to the SunFounder Raspberry Pi & Arduino & ESP32 Enthusiasts Community on Facebook! Dive deeper into Raspberry Pi, Arduino, and ESP32 with fellow enthusiasts.
+    Bonjour et bienvenue dans la communauté Facebook des passionnés de Raspberry Pi, Arduino et ESP32 de SunFounder ! Plongez-vous dans l'univers du Raspberry Pi, Arduino et ESP32 avec d'autres passionnés.
 
-    **Why Join?**
+    **Pourquoi nous rejoindre ?**
 
-    - **Expert Support**: Solve post-sale issues and technical challenges with help from our community and team.
-    - **Learn & Share**: Exchange tips and tutorials to enhance your skills.
-    - **Exclusive Previews**: Get early access to new product announcements and sneak peeks.
-    - **Special Discounts**: Enjoy exclusive discounts on our newest products.
-    - **Festive Promotions and Giveaways**: Take part in giveaways and holiday promotions.
+    - **Support d'experts** : Résolvez vos problèmes après-vente et relevez les défis techniques grâce à l'aide de notre communauté et de notre équipe.
+    - **Apprenez & Partagez** : Échangez des astuces et des tutoriels pour améliorer vos compétences.
+    - **Aperçus exclusifs** : Bénéficiez d'un accès anticipé aux annonces de nouveaux produits et à des avant-premières.
+    - **Remises spéciales** : Profitez de réductions exclusives sur nos derniers produits.
+    - **Promotions festives et concours** : Participez à des tirages au sort et à des promotions durant les fêtes.
 
-    👉 Ready to explore and create with us? Click [|link_sf_facebook|] and join today!
+    👉 Prêt à explorer et à créer avec nous ? Cliquez sur [|link_sf_facebook|] et rejoignez-nous dès aujourd'hui !
 
 .. _install_ezblock:
 
-Install and Configure EzBlock Studio
+Installer et configurer EzBlock Studio
 =========================================
 
-As soon as the robot is assembled, you will need to carry out some basic operations.
+Dès que le robot est assemblé, vous devrez effectuer quelques opérations de base.
 
-* :ref:`ezblock:install_ezblock_app_latest`: Download and install EzBlock Studio on your device or use the web-based version.
-* :ref:`ezblock:connect_product_ezblock_latest`: Configure Wi-Fi, Bluetooth and calibrate before use.
-* :ref:`ezblock:open_run_latest`: View or run the related example directly.
+* :ref:`ezblock:install_ezblock_app_latest`: Téléchargez et installez EzBlock Studio sur votre appareil ou utilisez la version en ligne.
+* :ref:`ezblock:connect_product_ezblock_latest`: Configurez le Wi-Fi, le Bluetooth et calibrez avant utilisation.
+* :ref:`ezblock:open_run_latest`: Consultez ou exécutez directement l'exemple correspondant.
 
 .. note::
 
-    After you connect the Picar-x, there will be a calibration step. This is because of possible deviations in the installation process or limitations of the servos themselves, making some servo angles slightly tilted, so you can calibrate them in this step.
-    
-    But if you think the assembly is perfect and no calibration is needed, you can also skip this step.
+    Après avoir connecté le Picar-X, une étape de calibration sera nécessaire. Cela est dû à d'éventuelles déviations lors de l'installation ou aux limites des servos eux-mêmes, ce qui peut légèrement incliner certains angles de servos. Vous pourrez les calibrer à cette étape.
+
+    Mais si vous pensez que l'assemblage est parfait et qu'aucune calibration n'est nécessaire, vous pouvez également ignorer cette étape.

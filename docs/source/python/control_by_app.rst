@@ -1,38 +1,37 @@
 .. note::
 
-    Hello, welcome to the SunFounder Raspberry Pi & Arduino & ESP32 Enthusiasts Community on Facebook! Dive deeper into Raspberry Pi, Arduino, and ESP32 with fellow enthusiasts.
+    Bonjour et bienvenue dans la communauté des passionnés de Raspberry Pi, Arduino et ESP32 de SunFounder sur Facebook ! Plongez au cœur du Raspberry Pi, Arduino et ESP32 avec d'autres passionnés.
 
-    **Why Join?**
+    **Pourquoi nous rejoindre ?**
 
-    - **Expert Support**: Solve post-sale issues and technical challenges with help from our community and team.
-    - **Learn & Share**: Exchange tips and tutorials to enhance your skills.
-    - **Exclusive Previews**: Get early access to new product announcements and sneak peeks.
-    - **Special Discounts**: Enjoy exclusive discounts on our newest products.
-    - **Festive Promotions and Giveaways**: Take part in giveaways and holiday promotions.
+    - **Support d'experts** : Résolvez vos problèmes après-vente et relevez les défis techniques avec l'aide de notre communauté et de notre équipe.
+    - **Apprenez & Partagez** : Échangez des conseils et des tutoriels pour améliorer vos compétences.
+    - **Aperçus exclusifs** : Obtenez un accès anticipé aux annonces de nouveaux produits et aux avant-premières.
+    - **Remises spéciales** : Profitez de réductions exclusives sur nos nouveaux produits.
+    - **Promotions festives et concours** : Participez à des concours et des promotions pendant les fêtes.
 
-    👉 Ready to explore and create with us? Click [|link_sf_facebook|] and join today!
+    👉 Prêt à explorer et créer avec nous ? Cliquez sur [|link_sf_facebook|] et rejoignez-nous dès aujourd'hui !
 
 .. _control_by_app:
 
-13. Controlled by the APP
+13. Contrôlé par l'application
 ==================================
 
-The SunFounder controller is used to control Raspberry Pi/Pico based robots.
+Le contrôleur SunFounder est utilisé pour contrôler les robots basés sur Raspberry Pi/Pico.
 
-The APP integrates Button, Switch, Joystick, D-pad, Slider and Throttle Slider widgets; Digital Display, Ultrasonic Radar, Grayscale Detection and Speedometer input widgets.
+L'application intègre des widgets tels que Bouton, Interrupteur, Joystick, Pavé directionnel, Curseur et Curseur de puissance ; des widgets d'entrée tels que l'affichage numérique, le radar ultrasonique, la détection de niveaux de gris et le compteur de vitesse.
 
-There are 17 areas A-Q , where you can place different widgets to customize your own controller.
+Il y a 17 zones, de A à Q, où vous pouvez placer différents widgets pour personnaliser votre propre contrôleur.
 
-In addition, this application provides a live video streaming service.
+De plus, cette application propose un service de streaming vidéo en direct.
 
-Let's customize a PiCar-X controller using this app.
+Personnalisons un contrôleur PiCar-X à l'aide de cette application.
 
-**How to do?**
+**Comment faire ?**
 
-#. Install the ``sunfounder-controller`` module.
+#. Installez le module ``sunfounder-controller``.
 
-    The ``robot-hat``, ``vilib``, and ``picar-x`` modules need to be installed first, for details see: :ref:`install_all_modules`.
-
+    Les modules ``robot-hat``, ``vilib`` et ``picar-x`` doivent être installés en premier, pour plus de détails, consultez : :ref:`install_all_modules`.
 
     .. raw:: html
 
@@ -45,7 +44,7 @@ Let's customize a PiCar-X controller using this app.
         cd ~/sunfounder-controller
         sudo python3 setup.py install
 
-#. Run the code.
+#. Exécutez le code.
 
     .. raw:: html
 
@@ -56,52 +55,47 @@ Let's customize a PiCar-X controller using this app.
         cd ~/picar-x/example
         sudo python3 13.app_control.py
 
-#. Install `SunFounder Controller <https://docs.sunfounder.com/projects/sf-controller/en/latest/>`_ from **APP Store(iOS)** or **Google Play(Android)**.
+#. Installez le `SunFounder Controller <https://docs.sunfounder.com/projects/sf-controller/en/latest/>`_ depuis **APP Store (iOS)** ou **Google Play (Android)**.
 
+#. Ouvrez et créez un nouveau contrôleur.
 
-#. Open and create a new controller.
-
-    Create a new controller by clicking on the + sign in the SunFounder Controller APP.
+    Créez un nouveau contrôleur en cliquant sur le signe + dans l'application SunFounder Controller.
 
     .. image:: img/app1.PNG
 
-    There are preset controllers for some products in the Preset section, which you can use as needed. Here, we select **PiCar-X**.
+    Il existe des contrôleurs prédéfinis pour certains produits dans la section Prédéfinis, que vous pouvez utiliser selon vos besoins. Ici, nous sélectionnons **PiCar-X**.
 
     .. image:: img/app_control_preset.jpg
 
-#. Connect to PiCar-x.
+#. Connectez-vous au PiCar-X.
 
-    When you click the **Connect** button, it will automatically search for robots nearby. Its name is defined in ``picarx_control.py`` and it must be running at all times.
+    Lorsque vous cliquez sur le bouton **Connecter**, il recherchera automatiquement les robots à proximité. Son nom est défini dans ``picarx_control.py`` et doit être en cours d'exécution en permanence.
 
     .. image:: img/app9.PNG
-    
-    Once you click on the product name, the message "Connected Successfully" will appear and the product name will appear in the upper right corner.
 
-    .. image:: img/app10.PNG
+    Une fois que vous avez cliqué sur le nom du produit, le message "Connexion réussie" apparaîtra et le nom du produit s'affichera dans le coin supérieur droit.
 
     .. note::
 
-        * You need to make sure that your mobile device is connected to the same LAN as PiCar-X.
-        * If it doesn't search automatically, you can also manually enter the IP to connect.
+        * Vous devez vous assurer que votre appareil mobile est connecté au même réseau LAN que PiCar-X.
+        * Si la recherche ne se fait pas automatiquement, vous pouvez également entrer manuellement l'adresse IP pour vous connecter.
 
         .. image:: img/app11.PNG
 
-#. Run this controller.
+#. Exécutez ce contrôleur.
 
-    Click the **Run** button to start the controller, you will see the footage of the car shooting, and now you can control your PiCar-X with these widgets.
+    Cliquez sur le bouton **Exécuter** pour démarrer le contrôleur, vous verrez l'image capturée par la voiture, et vous pourrez maintenant contrôler votre PiCar-X avec ces widgets.
 
     .. image:: img/app12.PNG
-    
-    Here are the functions of the widgets.
 
-    * **A**: Show the current speed of the car.
-    * **E**: turn on the obstacle avoidance function.
-    * **I**: turn on the line following function.
-    * **J**: voice recognition, press and hold this widget to start speaking, and it will show the recognized voice when you release it. We have set ``forward``, ``backard``, ``left`` and ``right`` 4 commands in the code to control the car.
-    * **K**: Control forward, backward, left, and right motions of the car.
-    * **Q**: turn the head(Camera) up, down, left and right.
-    * **N**: Turn on the color recognition function.
-    * **O**: Turn on the face recognition function.
-    * **P**: Turn on the object recognition function, it can recognize nearly 90 kinds of objects, for the list of models, please refer to: https://github.com/sunfounder/vilib/blob/master/workspace/coco_labels.txt.
+    Voici les fonctions des widgets :
 
-
+    * **A** : Affiche la vitesse actuelle de la voiture.
+    * **E** : Active la fonction d'évitement d'obstacles.
+    * **I** : Active la fonction de suivi de ligne.
+    * **J** : Reconnaissance vocale, maintenez ce widget enfoncé pour parler, et il affichera la voix reconnue lorsque vous relâcherez. Nous avons défini les commandes ``forward``, ``backward``, ``left`` et ``right`` dans le code pour contrôler la voiture.
+    * **K** : Contrôle les mouvements avant, arrière, gauche et droite de la voiture.
+    * **Q** : Contrôle l'orientation de la tête (caméra) vers le haut, le bas, la gauche et la droite.
+    * **N** : Active la fonction de reconnaissance des couleurs.
+    * **O** : Active la fonction de reconnaissance faciale.
+    * **P** : Active la fonction de reconnaissance d'objets, elle peut reconnaître près de 90 types d'objets. Pour la liste des modèles, veuillez consulter : https://github.com/sunfounder/vilib/blob/master/workspace/coco_labels.txt.

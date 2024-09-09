@@ -1,30 +1,29 @@
 .. note::
 
-    Hello, welcome to the SunFounder Raspberry Pi & Arduino & ESP32 Enthusiasts Community on Facebook! Dive deeper into Raspberry Pi, Arduino, and ESP32 with fellow enthusiasts.
+    Bonjour et bienvenue dans la communauté Facebook des passionnés de Raspberry Pi, Arduino et ESP32 de SunFounder ! Explorez plus en profondeur le Raspberry Pi, Arduino et ESP32 avec d'autres passionnés.
 
-    **Why Join?**
+    **Pourquoi rejoindre ?**
 
-    - **Expert Support**: Solve post-sale issues and technical challenges with help from our community and team.
-    - **Learn & Share**: Exchange tips and tutorials to enhance your skills.
-    - **Exclusive Previews**: Get early access to new product announcements and sneak peeks.
-    - **Special Discounts**: Enjoy exclusive discounts on our newest products.
-    - **Festive Promotions and Giveaways**: Take part in giveaways and holiday promotions.
+    - **Support d'experts** : Résolvez les problèmes après-vente et les défis techniques avec l'aide de notre communauté et de notre équipe.
+    - **Apprendre et partager** : Échangez des astuces et des tutoriels pour améliorer vos compétences.
+    - **Aperçus exclusifs** : Accédez en avant-première aux annonces de nouveaux produits et aux aperçus exclusifs.
+    - **Réductions spéciales** : Profitez de réductions exclusives sur nos derniers produits.
+    - **Promotions et concours festifs** : Participez à des concours et des promotions spéciales pendant les fêtes.
 
-    👉 Ready to explore and create with us? Click [|link_sf_facebook|] and join today!
+    👉 Prêt à explorer et à créer avec nous ? Cliquez sur [|link_sf_facebook|] et rejoignez-nous dès aujourd'hui !
 
 .. _py_stare:
 
-8. Stare at You
-==========================================
+8. Vous fixer du regard
+=======================
 
-This project is also based on the :ref:`py_computer_vision` project, 
-with the addition of face detection algorithms.
+Ce projet est également basé sur le projet :ref:`py_computer_vision`, avec l'ajout d'algorithmes de détection de visage.
 
-When you appear in front of the camera, it will recognize your face and adjust its gimbal to keep your face in the center of the frame.
+Lorsque vous apparaissez devant la caméra, elle reconnaît votre visage et ajuste son cardan pour garder votre visage au centre du cadre.
 
-You can view the screen at ``http://<your IP>:9000/mjpg``.
+Vous pouvez visionner l'écran à l'adresse ``http://<your IP>:9000/mjpg``.
 
-**Run the Code**
+**Exécuter le code**
 
 .. raw:: html
 
@@ -35,7 +34,7 @@ You can view the screen at ``http://<your IP>:9000/mjpg``.
     cd ~/picar-x/example
     sudo python3 8.stare_at_you.py
 
-When the code is run, the car's camera will always be staring at your face.
+Une fois le code exécuté, la caméra de la voiture suivra toujours votre visage.
 
 **Code**
 
@@ -78,16 +77,16 @@ When the code is run, the car's camera will always be staring at your face.
 
     if __name__ == "__main__":
         try:
-        main()
+            main()
         
         finally:
             px.stop()
             print("stop and exit")
             sleep(0.1)
 
-**How it works?**
+**Comment ça fonctionne ?**
 
-These lines of code in ``while True`` make the camera follow the face.
+Ces lignes de code dans la boucle ``while True`` permettent à la caméra de suivre le visage.
 
 .. code-block:: python
 
@@ -96,7 +95,7 @@ These lines of code in ``while True`` make the camera follow the face.
             coordinate_x = Vilib.detect_obj_parameter['human_x']
             coordinate_y = Vilib.detect_obj_parameter['human_y']
             
-            # change the pan-tilt angle for track the object
+            # modifier l'angle de panoramique/inclinaison pour suivre l'objet
             x_angle +=(coordinate_x*10/640)-5
             x_angle = clamp_number(x_angle,-35,35)
             px.set_cam_pan_angle(x_angle)
@@ -105,16 +104,16 @@ These lines of code in ``while True`` make the camera follow the face.
             y_angle = clamp_number(y_angle,-35,35)
             px.set_cam_tilt_angle(y_angle)
 
-1. Check if there is a detected human face
+1. Vérifiez s'il y a un visage humain détecté
 
     .. code-block:: python
 
         Vilib.detect_obj_parameter['human_n'] != 0
 
-2. If a human face is detected, obtain the coordinates ( ``coordinate_x`` and ``coordinate_y`` ) of the detected face.
+2. Si un visage humain est détecté, obtenez les coordonnées (``coordinate_x`` et ``coordinate_y``) du visage détecté.
 
-3. Calculate new pan and tilt angles ( ``x_angle`` and ``y_angle`` ) based on the detected face's position and adjust them to follow the face.
+3. Calculez les nouveaux angles de panoramique et d'inclinaison (``x_angle`` et ``y_angle``) en fonction de la position du visage détecté et ajustez-les pour suivre le visage.
 
-4. Limit the pan and tilt angles within the specified range using the ``clamp_number`` function.
+4. Limitez les angles de panoramique et d'inclinaison dans les plages spécifiées à l'aide de la fonction ``clamp_number``.
 
-5. Set the camera's pan and tilt angles using ``px.set_cam_pan_angle()`` and ``px.set_cam_tilt_angle()`` .
+5. Réglez les angles de panoramique et d'inclinaison de la caméra à l'aide de ``px.set_cam_pan_angle()`` et ``px.set_cam_tilt_angle()``.

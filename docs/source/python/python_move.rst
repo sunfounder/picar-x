@@ -1,25 +1,25 @@
 .. note::
 
-    Hello, welcome to the SunFounder Raspberry Pi & Arduino & ESP32 Enthusiasts Community on Facebook! Dive deeper into Raspberry Pi, Arduino, and ESP32 with fellow enthusiasts.
+    Bonjour et bienvenue dans la communauté Facebook des passionnés de Raspberry Pi, Arduino et ESP32 de SunFounder ! Plongez dans l'univers du Raspberry Pi, de l'Arduino et de l'ESP32 avec d'autres passionnés.
 
-    **Why Join?**
+    **Pourquoi rejoindre ?**
 
-    - **Expert Support**: Solve post-sale issues and technical challenges with help from our community and team.
-    - **Learn & Share**: Exchange tips and tutorials to enhance your skills.
-    - **Exclusive Previews**: Get early access to new product announcements and sneak peeks.
-    - **Special Discounts**: Enjoy exclusive discounts on our newest products.
-    - **Festive Promotions and Giveaways**: Take part in giveaways and holiday promotions.
+    - **Support d'experts** : Résolvez les problèmes après-vente et les défis techniques avec l'aide de notre communauté et de notre équipe.
+    - **Apprendre et partager** : Échangez des conseils et des tutoriels pour améliorer vos compétences.
+    - **Aperçus exclusifs** : Accédez en avant-première aux annonces de nouveaux produits et à des avant-goûts exclusifs.
+    - **Réductions spéciales** : Profitez de réductions exclusives sur nos derniers produits.
+    - **Promotions et concours festifs** : Participez à des concours et promotions spéciales pendant les fêtes.
 
-    👉 Ready to explore and create with us? Click [|link_sf_facebook|] and join today!
+    👉 Prêt à explorer et créer avec nous ? Cliquez sur [|link_sf_facebook|] et rejoignez-nous dès aujourd'hui !
 
 .. _py_move:
 
-1. Let PiCar-X Move
-========================
+1. Faites bouger PiCar-X
+=============================
 
-This is the first project, let’s test the basic movement of Picar-X.
+Voici le premier projet, testons les mouvements de base de PiCar-X.
 
-**Run the Code**
+**Exécuter le code**
 
 .. raw:: html
 
@@ -30,12 +30,12 @@ This is the first project, let’s test the basic movement of Picar-X.
     cd ~/picar-x/example
     sudo python3 1.move.py
 
-After running the code, PiCar-X will move forward, turn in an S-shape, stop and shake its head. 
+Après avoir exécuté le code, PiCar-X avancera, effectuera un virage en forme de S, s'arrêtera et secouera sa tête.
 
 **Code**
 
 .. note::
-    You can **Modify/Reset/Copy/Run/Stop** the code below. But before that, you need to go to  source code path like ``picar-x/example``. After modifying the code, you can run it directly to see the effect.
+    Vous pouvez **Modifier/Réinitialiser/Copier/Exécuter/Arrêter** le code ci-dessous. Mais avant cela, vous devez vous rendre dans le chemin du code source, tel que ``picar-x/example``. Après avoir modifié le code, vous pouvez l'exécuter directement pour voir le résultat.
 
 .. raw:: html
 
@@ -86,14 +86,14 @@ After running the code, PiCar-X will move forward, turn in an S-shape, stop and 
         finally:
             px.forward(0)
 
-**How it works?**
+**Comment ça fonctionne ?**
 
-The basic functionality of PiCar-X is in the ``picarx`` module,
-Can be used to control steering gear and wheels,
-and will make the PiCar-X move forward, turn in an S-shape, or shake its head. 
+La fonctionnalité de base de PiCar-X se trouve dans le module ``picarx``, 
+qui permet de contrôler le servo de direction et les roues,
+et fait en sorte que PiCar-X avance, tourne en forme de S ou secoue sa tête.
 
-Now, the libraries to support the basic functionality of PiCar-X are imported. 
-These lines will appear in all the examples that involve PiCar-X movement.
+Les bibliothèques pour supporter les fonctions de base de PiCar-X sont maintenant importées. 
+Ces lignes apparaîtront dans tous les exemples impliquant le mouvement de PiCar-X.
 
 .. code-block:: python
     :emphasize-lines: 0
@@ -101,8 +101,7 @@ These lines will appear in all the examples that involve PiCar-X movement.
     from picarx import Picarx
     import time
 
-The following function with the ``for`` loop is then used to make PiCar-X 
-move forward, change directions, and move the camera's pan/tilt.
+La fonction suivante avec la boucle ``for`` est ensuite utilisée pour faire avancer PiCar-X, changer de direction, et bouger la caméra en mode panoramique/inclinaison.
 
 .. code-block:: python
 
@@ -111,10 +110,10 @@ move forward, change directions, and move the camera's pan/tilt.
     px.set_camera_servo1_angle(angle)
     px.set_camera_servo2_angle(angle)
 
-* ``forward()``: Orders the PiCar-X go forward at a given ``speed``.
-* ``set_dir_servo_angle``: Turns the Steering servo to a specific ``angle``.
-* ``set_cam_pan_angle``: Turns the Pan servo to a specific ``angle``.
-* ``set_cam_tilt_angle``: Turns the Tilt servo to a specific ``angle``.
+* ``forward()`` : Ordonne à PiCar-X d'avancer à une ``vitesse`` donnée.
+* ``set_dir_servo_angle`` : Tourne le servo de direction à un ``angle`` spécifique.
+* ``set_cam_pan_angle`` : Tourne le servo de panoramique à un ``angle`` spécifique.
+* ``set_cam_tilt_angle`` : Tourne le servo d'inclinaison à un ``angle`` spécifique.
 
 .. image:: img/pan_tilt_servo.png
     :width: 400

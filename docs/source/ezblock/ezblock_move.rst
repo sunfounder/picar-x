@@ -1,59 +1,56 @@
 .. note::
 
-    Hello, welcome to the SunFounder Raspberry Pi & Arduino & ESP32 Enthusiasts Community on Facebook! Dive deeper into Raspberry Pi, Arduino, and ESP32 with fellow enthusiasts.
+    Bonjour et bienvenue dans la communauté Facebook des passionnés de Raspberry Pi, Arduino et ESP32 de SunFounder ! Plongez-vous dans l'univers du Raspberry Pi, Arduino et ESP32 avec d'autres passionnés.
 
-    **Why Join?**
+    **Pourquoi nous rejoindre ?**
 
-    - **Expert Support**: Solve post-sale issues and technical challenges with help from our community and team.
-    - **Learn & Share**: Exchange tips and tutorials to enhance your skills.
-    - **Exclusive Previews**: Get early access to new product announcements and sneak peeks.
-    - **Special Discounts**: Enjoy exclusive discounts on our newest products.
-    - **Festive Promotions and Giveaways**: Take part in giveaways and holiday promotions.
+    - **Support d'experts** : Résolvez vos problèmes après-vente et relevez les défis techniques grâce à l'aide de notre communauté et de notre équipe.
+    - **Apprenez & Partagez** : Échangez des astuces et des tutoriels pour améliorer vos compétences.
+    - **Aperçus exclusifs** : Bénéficiez d'un accès anticipé aux annonces de nouveaux produits et à des avant-premières.
+    - **Remises spéciales** : Profitez de réductions exclusives sur nos nouveaux produits.
+    - **Promotions festives et concours** : Participez à des tirages au sort et à des promotions durant les fêtes.
 
-    👉 Ready to explore and create with us? Click [|link_sf_facebook|] and join today!
+    👉 Prêt à explorer et à créer avec nous ? Cliquez sur [|link_sf_facebook|] et rejoignez-nous dès aujourd'hui !
 
-Move
+Mouvement
 ============
 
-This first project teaches how to program movement actions for the PiCar-X. In this project, the program will tell the PiCar-X to execute five actions in order: “forward”, “backward”, “turn left”, “turn right”, and “stop”.
+Ce premier projet vous apprend à programmer les actions de mouvement pour le PiCar-X. Dans ce projet, le programme ordonnera au PiCar-X d'exécuter cinq actions dans l'ordre : « avancer », « reculer », « tourner à gauche », « tourner à droite » et « s'arrêter ».
 
-To learn the basic usage of Ezblock Studio, please read through the following two sections:
+Pour apprendre les bases de l'utilisation d'Ezblock Studio, veuillez lire attentivement les deux sections suivantes :
 
 * :ref:`ezblock:create_project_latest`
 
-
 .. image:: img/move.png
 
-**TIPS**
+**CONSEILS**
 
 .. image:: img/sp210512_113300.png
 
-This block will make the PiCar-X move forward at a speed based on a percentage of available power. In the example below “50” is 50% of power, or half-speed.
+Ce bloc fera avancer le PiCar-X à une vitesse basée sur un pourcentage de la puissance disponible. Dans l'exemple ci-dessous, « 50 » correspond à 50 % de la puissance, soit la moitié de la vitesse.
 
 .. image:: img/sp210512_113418.png
 
-This block will make the PiCar-X move backward at a speed based on a percentage of available power.
+Ce bloc fera reculer le PiCar-X à une vitesse basée sur un pourcentage de la puissance disponible.
 
 .. image:: img/sp210512_113514.png
 
-This block adjusts the orientation of the front wheels. The range is “-45” to ”45”. In the example below, “-30” means the wheels will turn 30° to the left.
+Ce bloc ajuste l'orientation des roues avant. La plage de valeurs est de « -45 » à « 45 ». Dans l'exemple ci-dessous, « -30 » signifie que les roues tourneront de 30° vers la gauche.
 
 .. image:: img/BLK_Basic_delay.png
     :width: 200
 
-This block will cause a timed break between commands, based on milliseconds. In the example below, the PiCar-X will wait for 1 second (1000 milliseconds) before executing the next command.
+Ce bloc introduira une pause temporaire entre les commandes, basée sur des millisecondes. Dans l'exemple ci-dessous, le PiCar-X attendra 1 seconde (1000 millisecondes) avant d'exécuter la commande suivante.
 
 .. image:: img/sp210512_113550.png
 
-This block will bring the PiCar-X to a complete stop.
+Ce bloc arrêtera complètement le PiCar-X.
 
-**EXAMPLE**
+**EXEMPLE**
 
 .. note::
 
-    * You can write the program according to the following picture, please refer to the tutorial: :ref:`ezblock:create_project_latest`.
-    * Or find the code with the same name on the **Examples** page of the EzBlock Studio and click **Run** or **Edit** directly.
-
+    * Vous pouvez écrire le programme en suivant l'image ci-dessous, veuillez consulter le tutoriel : :ref:`ezblock:create_project_latest`.
+    * Ou trouvez le code portant le même nom sur la page **Exemples** d'EzBlock Studio, puis cliquez sur **Exécuter** ou **Modifier** directement.
 
 .. image:: img/sp210512_113827.png
-

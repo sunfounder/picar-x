@@ -1,28 +1,27 @@
 .. note::
 
-    Hello, welcome to the SunFounder Raspberry Pi & Arduino & ESP32 Enthusiasts Community on Facebook! Dive deeper into Raspberry Pi, Arduino, and ESP32 with fellow enthusiasts.
+    Bonjour et bienvenue dans la communauté des passionnés de Raspberry Pi, Arduino et ESP32 de SunFounder sur Facebook ! Plongez dans l'univers du Raspberry Pi, Arduino et ESP32 avec d'autres passionnés.
 
-    **Why Join?**
+    **Pourquoi rejoindre ?**
 
-    - **Expert Support**: Solve post-sale issues and technical challenges with help from our community and team.
-    - **Learn & Share**: Exchange tips and tutorials to enhance your skills.
-    - **Exclusive Previews**: Get early access to new product announcements and sneak peeks.
-    - **Special Discounts**: Enjoy exclusive discounts on our newest products.
-    - **Festive Promotions and Giveaways**: Take part in giveaways and holiday promotions.
+    - **Support d'experts** : Résolvez les problèmes après-vente et les défis techniques avec l'aide de notre communauté et de notre équipe.
+    - **Apprendre et partager** : Échangez des astuces et des tutoriels pour perfectionner vos compétences.
+    - **Aperçus exclusifs** : Accédez en avant-première aux annonces de nouveaux produits et à des aperçus exclusifs.
+    - **Réductions spéciales** : Bénéficiez de réductions exclusives sur nos nouveaux produits.
+    - **Promotions et concours festifs** : Participez à des concours et promotions spéciales pendant les fêtes.
 
-    👉 Ready to explore and create with us? Click [|link_sf_facebook|] and join today!
+    👉 Prêt à explorer et à créer avec nous ? Cliquez sur [|link_sf_facebook|] et rejoignez-nous dès aujourd'hui !
 
 .. _py_treasure:
 
-12. Treasure Hunt
+12. Chasse au trésor
 ============================
 
-Arrange a maze in your room and place six different color cards in six corners. Then control PiCar-X to search for these color cards one by one!
+Disposez un labyrinthe dans votre pièce et placez six cartes de couleurs différentes dans six coins. Ensuite, contrôlez PiCar-X pour rechercher ces cartes de couleurs une par une !
 
-.. note:: You can download and print the :download:`PDF Color Cards <https://github.com/sunfounder/sf-pdf/raw/master/prop_card/object_detection/color-cards.pdf>` for color detection.
+.. note:: Vous pouvez télécharger et imprimer les :download:`cartes de couleur en PDF <https://github.com/sunfounder/sf-pdf/raw/master/prop_card/object_detection/color-cards.pdf>` pour la détection de couleur.
 
-
-**Run the Code**
+**Exécuter le code**
 
 .. raw:: html
 
@@ -33,9 +32,9 @@ Arrange a maze in your room and place six different color cards in six corners. 
     cd ~/picar-x/example
     sudo python3 12.treasure_hunt.py
 
-**View the Image**
+**Voir l'image**
 
-After the code runs, the terminal will display the following prompt:
+Après l'exécution du code, le terminal affichera l'invite suivante :
 
 .. code-block::
 
@@ -47,7 +46,7 @@ After the code runs, the terminal will display the following prompt:
     * Debug mode: off
     * Running on http://0.0.0.0:9000/ (Press CTRL+C to quit)
 
-Then you can enter ``http://<your IP>:9000/mjpg`` in the browser to view the video screen. such as:  ``http://192.168.18.113:9000/mjpg``
+Vous pouvez ensuite entrer ``http://<your IP>:9000/mjpg`` dans le navigateur pour voir l'écran vidéo, par exemple : ``http://192.168.18.113:9000/mjpg``.
 
 .. image:: img/display.png
 
@@ -168,39 +167,36 @@ Then you can enter ``http://<your IP>:9000/mjpg`` in the browser to view the vid
             px.stop()
             sleep(.2)
 
+**Comment ça fonctionne ?**
 
-**How it works?**
+Pour comprendre la logique de base de ce code, vous pouvez vous concentrer sur les parties clés suivantes :
 
-To understand the basic logic of this code, you can focus on the following key parts:
+1. **Initialisation et importations :**
+   Les instructions d'importation au début du code vous permettent de comprendre les bibliothèques utilisées.
 
-1. **Initialization and Imports:**
-   Import statements at the beginning of the code to understand the libraries being used.
-
-2. **Global Variables:**
-   Definitions of global variables, such as ``color`` and ``key``, which are used throughout the code to track the target color and keyboard input.
+2. **Variables globales :**
+   Les définitions des variables globales, telles que ``color`` et ``key``, qui sont utilisées dans tout le code pour suivre la couleur cible et les entrées du clavier.
 
 3. ``renew_color_detect()`` :
-   This function selects a random color from a list and sets it as the target color for detection. It also uses text-to-speech to announce the selected color.
+   Cette fonction sélectionne une couleur aléatoire dans une liste et la définit comme couleur cible à détecter. Elle utilise également la synthèse vocale pour annoncer la couleur sélectionnée.
 
 4. ``key_scan_thread()`` :
-   This function runs in a separate thread and continuously scans for keyboard input, updating the ``key`` variable with the pressed key. It uses a lock for thread-safe access.
+   Cette fonction s'exécute dans un thread séparé et scanne continuellement les entrées du clavier, mettant à jour la variable ``key`` avec la touche pressée. Elle utilise un verrou pour garantir un accès sécurisé aux threads.
 
 5. ``car_move(key)`` :
-   This function controls the movement of the PiCar-X based on the keyboard input (``key``). It sets the direction and speed of the robot's movement.
+   Cette fonction contrôle les mouvements du PiCar-X en fonction des entrées du clavier (``key``). Elle définit la direction et la vitesse du déplacement du robot.
 
-6. ``main()`` :The primary function that orchestrates the overall logic of the code. It does the following:
+6. ``main()`` : La fonction principale qui orchestre la logique générale du code. Elle fait les actions suivantes :
 
-    * Initializes the camera and starts displaying the camera feed.
-    * Creates a separate thread to scan for keyboard input.
-    * Announces the start of the game using text-to-speech.
-    * Enters a continuous loop to:
+    * Initialise la caméra et démarre l'affichage du flux vidéo.
+    * Crée un thread séparé pour scanner les entrées du clavier.
+    * Annonce le début du jeu avec la synthèse vocale.
+    * Entre dans une boucle continue pour :
 
-        * Check for detected colored objects and trigger actions when a valid object is detected.
-        * Handle keyboard input to control the robot and interact with the game.
-    * Handles quitting the game and exceptions like KeyboardInterrupt.
-    * Ensures that the camera is closed and the PiCar-X is stopped when exiting.
+        * Vérifier la détection d'objets colorés et déclencher des actions lorsqu'un objet valide est détecté.
+        * Gérer les entrées du clavier pour contrôler le robot et interagir avec le jeu.
+    * Gère la sortie du jeu et les exceptions comme l'interruption clavier (KeyboardInterrupt).
+    * S'assure que la caméra est fermée et que PiCar-X s'arrête à la sortie.
 
-By understanding these key parts of the code, 
-you can grasp the fundamental logic of how the PiCar-X robot responds to keyboard 
-input and detects and interacts with objects of a 
-specific color using the camera and audio output capabilities.
+En comprenant ces parties clés du code, 
+vous pouvez saisir la logique fondamentale de la manière dont le robot PiCar-X réagit aux entrées du clavier et détecte/interagit avec les objets d'une couleur spécifique en utilisant les capacités de la caméra et de la sortie audio.

@@ -1,25 +1,25 @@
 .. note::
 
-    Hello, welcome to the SunFounder Raspberry Pi & Arduino & ESP32 Enthusiasts Community on Facebook! Dive deeper into Raspberry Pi, Arduino, and ESP32 with fellow enthusiasts.
+    Bonjour, bienvenue dans la communauté des passionnés de Raspberry Pi, Arduino et ESP32 de SunFounder sur Facebook ! Explorez en profondeur le Raspberry Pi, Arduino et ESP32 avec d'autres passionnés.
 
-    **Why Join?**
+    **Pourquoi rejoindre ?**
 
-    - **Expert Support**: Solve post-sale issues and technical challenges with help from our community and team.
-    - **Learn & Share**: Exchange tips and tutorials to enhance your skills.
-    - **Exclusive Previews**: Get early access to new product announcements and sneak peeks.
-    - **Special Discounts**: Enjoy exclusive discounts on our newest products.
-    - **Festive Promotions and Giveaways**: Take part in giveaways and holiday promotions.
+    - **Support d'experts** : Résolvez les problèmes après-vente et les défis techniques grâce à l'aide de notre communauté et de notre équipe.
+    - **Apprendre et partager** : Échangez des astuces et des tutoriels pour améliorer vos compétences.
+    - **Aperçus exclusifs** : Accédez en avant-première aux nouvelles annonces de produits et à des aperçus exclusifs.
+    - **Réductions spéciales** : Bénéficiez de réductions exclusives sur nos derniers produits.
+    - **Promotions et concours festifs** : Participez à des concours et promotions spéciales pendant les fêtes.
 
-    👉 Ready to explore and create with us? Click [|link_sf_facebook|] and join today!
+    👉 Prêt à explorer et créer avec nous ? Cliquez sur [|link_sf_facebook|] et rejoignez-nous dès aujourd'hui !
 
 .. _py_video:
 
-9. Record Video
-==================
+9. Enregistrer une vidéo
+=============================
 
-This example will guide you how to use the recording function.
+Cet exemple vous guidera dans l'utilisation de la fonction d'enregistrement.
 
-**Run the Code**
+**Exécuter le code**
 
 .. raw:: html
 
@@ -30,18 +30,16 @@ This example will guide you how to use the recording function.
     cd ~/picar-x/example
     sudo python3 9.record_video.py
 
-
-After the code runs, you can enter ``http://<your IP>:9000/mjpg`` in the browser to view the video screen. such as:  ``http://192.168.18.113:9000/mjpg``
+Après l'exécution du code, vous pouvez entrer ``http://<your IP>:9000/mjpg`` dans le navigateur pour voir l'écran vidéo, par exemple : ``http://192.168.18.113:9000/mjpg``.
 
 .. image:: img/display.png
 
-Recording can be stopped or started by pressing the keys on the keyboard.
+L'enregistrement peut être démarré ou arrêté en appuyant sur les touches du clavier.
 
-* Press ``q`` to begin recording or pause/continue, ``e`` to stop recording or save.
-* If you want to exit the program, press ``ctrl+c``.
+* Appuyez sur ``q`` pour commencer à enregistrer, mettre en pause ou continuer, ``e`` pour arrêter l'enregistrement ou sauvegarder.
+* Si vous souhaitez quitter le programme, appuyez sur ``ctrl+c``.
 
-
-**Code** 
+**Code**
 
 .. code-block:: python
 
@@ -114,13 +112,15 @@ Recording can be stopped or started by pressing the keys on the keyboard.
     if __name__ == "__main__":
         main()
 
-**How it works?**
+**Comment ça fonctionne ?**
 
-Functions related to recording include the following:
 
-* ``Vilib.rec_video_run(video_name)`` : Started the thread to record the video. ``video_name`` is the name of the video file, it should be a string.
-* ``Vilib.rec_video_start()``: Start or continue video recording.
-* ``Vilib.rec_video_pause()``: Pause recording.
-* ``Vilib.rec_video_stop()``: Stop recording.
+Les fonctions liées à l'enregistrement incluent les suivantes :
 
-``Vilib.rec_video_set["path"] = f"/home/{username}/Videos/"`` sets the storage location of video files.
+
+* ``Vilib.rec_video_run(video_name)`` : Lance le thread pour enregistrer la vidéo. ``video_name`` est le nom du fichier vidéo, qui doit être une chaîne de caractères.
+* ``Vilib.rec_video_start()`` : Démarrer ou continuer l'enregistrement vidéo.
+* ``Vilib.rec_video_pause()`` : Mettre en pause l'enregistrement.
+* ``Vilib.rec_video_stop()`` : Arrêter l'enregistrement.
+
+``Vilib.rec_video_set["path"] = f"/home/{username}/Videos/"`` définit l'emplacement de stockage des fichiers vidéo.

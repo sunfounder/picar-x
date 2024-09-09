@@ -1,27 +1,26 @@
 .. note::
 
-    Hello, welcome to the SunFounder Raspberry Pi & Arduino & ESP32 Enthusiasts Community on Facebook! Dive deeper into Raspberry Pi, Arduino, and ESP32 with fellow enthusiasts.
+    Bonjour, bienvenue dans la communauté SunFounder pour les passionnés de Raspberry Pi, Arduino et ESP32 sur Facebook ! Plongez plus profondément dans l'univers du Raspberry Pi, d'Arduino et de l'ESP32 avec d'autres passionnés.
 
-    **Why Join?**
+    **Pourquoi nous rejoindre ?**
 
-    - **Expert Support**: Solve post-sale issues and technical challenges with help from our community and team.
-    - **Learn & Share**: Exchange tips and tutorials to enhance your skills.
-    - **Exclusive Previews**: Get early access to new product announcements and sneak peeks.
-    - **Special Discounts**: Enjoy exclusive discounts on our newest products.
-    - **Festive Promotions and Giveaways**: Take part in giveaways and holiday promotions.
+    - **Support d'experts** : Résolvez vos problèmes après-vente et relevez les défis techniques avec l'aide de notre communauté et de notre équipe.
+    - **Apprendre & Partager** : Échangez des conseils et des tutoriels pour améliorer vos compétences.
+    - **Aperçus exclusifs** : Accédez en avant-première aux annonces de nouveaux produits et aux avant-premières.
+    - **Réductions spéciales** : Profitez de réductions exclusives sur nos derniers produits.
+    - **Promotions festives et concours** : Participez à des concours et des promotions spéciales lors des fêtes.
 
-    👉 Ready to explore and create with us? Click [|link_sf_facebook|] and join today!
+    👉 Prêt à explorer et à créer avec nous ? Cliquez sur [|link_sf_facebook|] et rejoignez-nous dès aujourd'hui !
 
 .. _py_line_tracking:
 
-5. Line Tracking
+5. Suivi de ligne
 ====================================
 
-This project will use the Grayscale module to make the PiCar-X move forward along a line. 
-Use dark-colored tape to make a line as straight as possible, and not too curved. 
-Some experimenting might be needed if the PiCar-X is derailed.
+Dans ce projet, nous allons utiliser le module de détection de niveaux de 
+gris pour faire avancer le PiCar-X le long d'une ligne. Utilisez un ruban adhésif de couleur sombre pour tracer une ligne aussi droite que possible, et évitez les courbes trop prononcées. Quelques ajustements peuvent être nécessaires si le PiCar-X déraille.
 
-**Run the Code**
+**Exécuter le code**
 
 .. raw:: html
 
@@ -32,12 +31,12 @@ Some experimenting might be needed if the PiCar-X is derailed.
     cd ~/picar-x/example
     sudo python3 5.minecart_plus.py
     
-After running the code, PiCar-X will move forward along a line.
+Après avoir exécuté le code, le PiCar-X se déplacera le long de la ligne.
 
 **Code**
 
 .. note::
-    You can **Modify/Reset/Copy/Run/Stop** the code below. But before that, you need to go to  source code path like ``picar-x/example``. After modifying the code, you can run it directly to see the effect.
+    Vous pouvez **Modifier/Réinitialiser/Copier/Exécuter/Arrêter** le code ci-dessous. Mais avant cela, vous devez aller dans le chemin du code source, comme ``picar-x/example``. Après avoir modifié le code, vous pouvez l'exécuter directement pour voir le résultat.
 
 .. raw:: html
 
@@ -51,8 +50,8 @@ After running the code, PiCar-X will move forward along a line.
     px = Picarx()
     # px = Picarx(grayscale_pins=['A0', 'A1', 'A2'])
 
-    # Please run ./calibration/grayscale_calibration.py to Auto calibrate grayscale values
-    # or manual modify reference value by follow code
+    # Veuillez exécuter ./calibration/grayscale_calibration.py pour calibrer automatiquement les valeurs de niveaux de gris
+    # ou modifiez manuellement la valeur de référence avec le code suivant
     # px.set_line_reference([1400, 1400, 1400])
 
     current_state = None
@@ -115,15 +114,15 @@ After running the code, PiCar-X will move forward along a line.
             sleep(0.1)
        
 
-**How it works?** 
+**Comment ça fonctionne ?**
 
-This Python script controls a Picarx robot car using grayscale sensors for navigation. Here's a breakdown of its main components:
+Ce script Python contrôle une voiture robot PiCarx en utilisant des capteurs de niveaux de gris pour la navigation. Voici une explication de ses principales composantes :
 
-* Import and Initialization:
+* Importation et initialisation :
 
-    The script imports the Picarx class for controlling the robot car and the sleep function from the time module for adding delays.
+    Le script importe la classe Picarx pour contrôler la voiture robot et la fonction sleep du module time pour ajouter des délais.
 
-    An instance of Picarx is created, and there's a commented line showing an alternative initialization with specific grayscale sensor pins.
+    Une instance de Picarx est créée, avec une ligne commentée montrant une autre initialisation avec des broches de capteurs de niveaux de gris spécifiques.
 
     .. code-block:: python
         
@@ -132,9 +131,9 @@ This Python script controls a Picarx robot car using grayscale sensors for navig
 
         px = Picarx()
 
-* Configuration and Global Variables:
+* Configuration et variables globales :
 
-    ``current_state``, ``px_power``, ``offset``, and ``last_state`` are global variables used to track and control the car's movement. ``px_power`` sets the motor power, and ``offset`` is used for adjusting the steering angle.
+    ``current_state``, ``px_power``, ``offset``, et ``last_state`` sont des variables globales utilisées pour suivre et contrôler les mouvements de la voiture. ``px_power`` définit la puissance du moteur, et ``offset`` est utilisé pour ajuster l'angle de direction.
 
     .. code-block:: python
 
@@ -143,11 +142,11 @@ This Python script controls a Picarx robot car using grayscale sensors for navig
         offset = 20
         last_state = "stop"
 
-* ``outHandle`` Function:
+* Fonction ``outHandle`` :
 
-    This function is called when the car needs to handle an 'out of line' scenario.
+    Cette fonction est appelée lorsque la voiture doit gérer un scénario de "sortie de ligne".
 
-    It adjusts the car's direction based on ``last_state`` and checks the grayscale sensor values to determine the new state.
+    Elle ajuste la direction de la voiture en fonction de ``last_state`` et vérifie les valeurs des capteurs de niveaux de gris pour déterminer le nouvel état.
 
     .. code-block:: python
 
@@ -168,11 +167,11 @@ This Python script controls a Picarx robot car using grayscale sensors for navig
                     break
             sleep(0.001)
 
-* ``get_status`` Function:
+* Fonction ``get_status`` :
 
-    It interprets the grayscale sensor data (``val_list``) to determine the car's navigation state.
+    Cette fonction interprète les données du capteur de niveaux de gris (``val_list``) pour déterminer l'état de navigation de la voiture.
 
-    The car's state can be 'forward', 'left', 'right', or 'stop', based on which sensor detects the line.
+    L'état de la voiture peut être "forward", "left", "right" ou "stop", selon le capteur qui détecte la ligne.
 
     .. code-block:: python
         
@@ -187,11 +186,11 @@ This Python script controls a Picarx robot car using grayscale sensors for navig
             elif _state[2] == 1:
                 return 'left'
 
-* Main Loop:
+* Boucle principale :
 
-    The ``while True`` loop continuously checks the grayscale data and adjusts the car's movement accordingly.
+    La boucle ``while True`` vérifie continuellement les données des capteurs de niveaux de gris et ajuste les mouvements de la voiture en conséquence.
 
-    Depending on the ``gm_state``, it sets the steering angle and movement direction.
+    En fonction de l'état ``gm_state``, elle définit l'angle de direction et la direction du mouvement.
 
     .. code-block:: python
 
@@ -217,9 +216,9 @@ This Python script controls a Picarx robot car using grayscale sensors for navig
                     else:
                         outHandle()
 
-* Safety and Cleanup:
+* Sécurité et nettoyage :
 
-    The ``try...finally`` block ensures the car stops when the script is interrupted or finished.
+    Le bloc ``try...finally`` garantit que la voiture s'arrête lorsque le script est interrompu ou terminé.
 
     .. code-block:: python
         
@@ -228,4 +227,4 @@ This Python script controls a Picarx robot car using grayscale sensors for navig
         print("stop and exit")
         sleep(0.1)
 
-In summary, the script uses grayscale sensors to navigate the Picarx robot car. It continuously reads the sensor data to determine the direction and adjusts the car's movement and steering accordingly. The outHandle function provides additional logic for situations where the car needs to adjust its path significantly.
+En résumé, le script utilise des capteurs de niveaux de gris pour naviguer avec la voiture robot PiCarx. Il lit continuellement les données des capteurs pour déterminer la direction et ajuste les mouvements et la direction de la voiture en conséquence. La fonction outHandle fournit une logique supplémentaire pour les situations où la voiture doit ajuster son chemin de manière significative.

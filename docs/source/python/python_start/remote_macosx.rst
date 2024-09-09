@@ -1,9 +1,9 @@
-For Mac OS X Users
-==========================
+Pour les utilisateurs de Mac OS X
+=========================================
 
-For Mac OS X users, SSH (Secure Shell) offers a secure and convenient method to remotely access and control a Raspberry Pi. This is particularly handy for working with the Raspberry Pi remotely or when it's not connected to a monitor. Using the Terminal application on a Mac, you can establish this secure connection. The process involves an SSH command incorporating the Raspberry Pi's username and hostname. During the initial connection, a security prompt will ask for confirmation of the Raspberry Pi's authenticity.
+Pour les utilisateurs de Mac OS X, SSH (Secure Shell) offre une méthode sécurisée et pratique pour accéder et contrôler à distance un Raspberry Pi. Cela est particulièrement utile lorsque vous travaillez à distance avec le Raspberry Pi ou lorsqu'il n'est pas connecté à un moniteur. Grâce à l'application Terminal sur Mac, vous pouvez établir cette connexion sécurisée. Le processus implique une commande SSH incorporant le nom d'utilisateur et le nom d'hôte du Raspberry Pi. Lors de la première connexion, une invite de sécurité vous demandera de confirmer l'authenticité du Raspberry Pi.
 
-#. To connect to the Raspberry Pi, type the following SSH command:
+#. Pour vous connecter au Raspberry Pi, tapez la commande SSH suivante :
 
     .. code-block::
 
@@ -11,7 +11,7 @@ For Mac OS X users, SSH (Secure Shell) offers a secure and convenient method to 
 
     .. image:: img/mac-ping.png
 
-#. A security message will appear during your first login. Respond with **yes** to proceed.
+#. Un message de sécurité apparaîtra lors de votre première connexion. Répondez par **yes** pour continuer.
 
     .. code-block::
 
@@ -19,7 +19,7 @@ For Mac OS X users, SSH (Secure Shell) offers a secure and convenient method to 
         ED25519 key fingerprint is SHA256:oo7x3ZSgAo032wD1tE8eW0fFM/kmewIvRwkBys6XRwg.
         Are you sure you want to continue connecting (yes/no/[fingerprint])?
 
-#. Input the password for the Raspberry Pi. Be aware that the password won’t display on the screen as you type, which is a standard security feature.
+#. Saisissez le mot de passe du Raspberry Pi. Sachez que le mot de passe ne s'affichera pas à l'écran pendant la saisie, ce qui est une fonctionnalité de sécurité standard.
 
     .. code-block::
 
@@ -34,4 +34,3 @@ For Mac OS X users, SSH (Secure Shell) offers a secure and convenient method to 
         permitted by applicable law.
         Last login: Thu Sep 22 12:18:22 2022
         pi@raspberrypi:~ $ 
-

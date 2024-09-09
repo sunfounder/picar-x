@@ -1,53 +1,52 @@
 .. note::
 
-    Hello, welcome to the SunFounder Raspberry Pi & Arduino & ESP32 Enthusiasts Community on Facebook! Dive deeper into Raspberry Pi, Arduino, and ESP32 with fellow enthusiasts.
+    Bonjour, bienvenue dans la communauté SunFounder Raspberry Pi & Arduino & ESP32 sur Facebook ! Plongez dans l'univers du Raspberry Pi, Arduino et ESP32 avec d'autres passionnés.
 
-    **Why Join?**
+    **Pourquoi nous rejoindre ?**
 
-    - **Expert Support**: Solve post-sale issues and technical challenges with help from our community and team.
-    - **Learn & Share**: Exchange tips and tutorials to enhance your skills.
-    - **Exclusive Previews**: Get early access to new product announcements and sneak peeks.
-    - **Special Discounts**: Enjoy exclusive discounts on our newest products.
-    - **Festive Promotions and Giveaways**: Take part in giveaways and holiday promotions.
+    - **Support d'experts** : Résolvez les problèmes après-vente et les défis techniques grâce à l'aide de notre communauté et de notre équipe.
+    - **Apprendre et partager** : Échangez des conseils et des tutoriels pour améliorer vos compétences.
+    - **Aperçus exclusifs** : Bénéficiez d'un accès anticipé aux annonces de nouveaux produits et aux avant-premières.
+    - **Réductions spéciales** : Profitez de réductions exclusives sur nos nouveaux produits.
+    - **Promotions festives et concours** : Participez à des concours et à des promotions spéciales lors des fêtes.
 
-    👉 Ready to explore and create with us? Click [|link_sf_facebook|] and join today!
+    👉 Prêt à explorer et créer avec nous ? Cliquez sur [|link_sf_facebook|] et rejoignez-nous dès aujourd'hui !
 
-Calibrate the Car
-============================
+Calibration de la voiture
+==============================
 
-After you connect the PiCar-X, there will be a calibration step. This is because of possible deviations in the installation process or limitations of the servos themselves, making some servo angles slightly tilted, so you can calibrate them in this step.
+Après avoir connecté le PiCar-X, vous passerez par une étape de calibration. Cela est nécessaire en raison des éventuelles déviations lors de l'installation ou des limitations des servos eux-mêmes, ce qui peut entraîner une légère inclinaison des angles des servos. Vous pouvez donc les calibrer à cette étape.
 
-But if you think the assembly is perfect and no calibration is needed, you can also skip this step.
-
+Cependant, si vous pensez que l'assemblage est parfait et qu'aucune calibration n'est nécessaire, vous pouvez également ignorer cette étape.
 
 .. note::
-    If you want to recalibrate the robot during use, please follow the steps below.
+    Si vous souhaitez recalibrer le robot pendant son utilisation, veuillez suivre les étapes ci-dessous.
     
-    #. You can open the product detail page by clicking the connect icon in the upper left corner.
+    #. Vous pouvez ouvrir la page de détails du produit en cliquant sur l'icône de connexion dans le coin supérieur gauche.
 
         .. image:: img/calibrate0.png
 
-    #. Click the **Settings** button.
+    #. Cliquez sur le bouton **Paramètres**.
 
         .. image:: img/calibrate1.png
 
-    #. On this page, you can change the product name, product type, view the app version or calibrate the robot. Once you click on **Calibrate** you can go to the calibration page.
+    #. Sur cette page, vous pouvez modifier le nom du produit, le type de produit, voir la version de l'application ou calibrer le robot. Une fois que vous cliquez sur **Calibrer**, vous accéderez à la page de calibration.
 
         .. image:: img/calibrate2.png
 
-The calibration steps are as follows:
+Les étapes de calibration sont les suivantes :
 
-#. Once you get to the calibration page, there will be two prompt points telling you where to calibrate.
+#. Une fois sur la page de calibration, deux points de repère vous indiqueront où calibrer.
 
     .. note::
-        Calibrating is a micro-adjustment process. It is recommended to take the part off and reassemble it if you click a button to the limit and the part is still off.
+        La calibration est un processus de micro-ajustement. Il est recommandé de démonter et de réassembler la pièce si, après avoir cliqué plusieurs fois sur un bouton, la pièce reste décalée.
 
     .. image:: img/calibrate3.png
 
-#. Click on the left prompt point to calibrate the PiCar-X's Pan-Tilt(the camera part). By using the two sets of buttons on the right, you can slowly adjust the Pan-Tilt's orientation, as well as view their angles. When the adjustment is complete, click on **Confirm**.
+#. Cliquez sur le point de repère de gauche pour calibrer le Pan-Tilt du PiCar-X (la partie caméra). En utilisant les deux ensembles de boutons à droite, vous pouvez ajuster lentement l'orientation du Pan-Tilt, ainsi que vérifier les angles. Une fois l'ajustement terminé, cliquez sur **Confirmer**.
 
     .. image:: img/calibrate4.png
 
-#. To calibrate the front wheel orientation, click on the right prompt point. Use the two buttons on the right to get the front wheel facing straight ahead. When the adjustment is done, click on **Confirm**.
+#. Pour calibrer l'orientation des roues avant, cliquez sur le point de repère de droite. Utilisez les deux boutons à droite pour aligner les roues avant vers l'avant. Lorsque l'ajustement est terminé, cliquez sur **Confirmer**.
 
-    .. image:: img/calibrate5.png    
+    .. image:: img/calibrate5.png

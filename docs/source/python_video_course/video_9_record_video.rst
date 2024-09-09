@@ -1,36 +1,36 @@
 .. note::
 
-    Hello, welcome to the SunFounder Raspberry Pi & Arduino & ESP32 Enthusiasts Community on Facebook! Dive deeper into Raspberry Pi, Arduino, and ESP32 with fellow enthusiasts.
+    Bonjour et bienvenue dans la communauté Facebook des passionnés de Raspberry Pi, Arduino et ESP32 de SunFounder ! Plongez dans l'univers du Raspberry Pi, Arduino et ESP32 avec d'autres passionnés.
 
-    **Why Join?**
+    **Pourquoi rejoindre ?**
 
-    - **Expert Support**: Solve post-sale issues and technical challenges with help from our community and team.
-    - **Learn & Share**: Exchange tips and tutorials to enhance your skills.
-    - **Exclusive Previews**: Get early access to new product announcements and sneak peeks.
-    - **Special Discounts**: Enjoy exclusive discounts on our newest products.
-    - **Festive Promotions and Giveaways**: Take part in giveaways and holiday promotions.
+    - **Support d'experts** : Résolvez les problèmes après-vente et les défis techniques grâce à l'aide de notre communauté et de notre équipe.
+    - **Apprendre et partager** : Échangez des astuces et des tutoriels pour améliorer vos compétences.
+    - **Aperçus exclusifs** : Accédez en avant-première aux annonces de nouveaux produits et à des avant-goûts exclusifs.
+    - **Réductions spéciales** : Profitez de réductions exclusives sur nos nouveaux produits.
+    - **Promotions et concours festifs** : Participez à des concours et des promotions pendant les fêtes.
 
-    👉 Ready to explore and create with us? Click [|link_sf_facebook|] and join today!
+    👉 Prêt à explorer et à créer avec nous ? Cliquez sur [|link_sf_facebook|] et rejoignez-nous dès aujourd'hui !
 
-Video 9: Recording Video
-=========================================
-This tutorial offers a concise yet detailed guide on recording and managing videos using the PiCar-X robot.
+Vidéo 9 : Enregistrement vidéo
+==================================
 
-* **Overview**: Teaches how to record HD 1080p videos using the PiCar-X, a Raspberry Pi self-driving robot car kit.
-* **Documentation and Code**: Guides through the PiCar-X documentation for video recording and explains the Python script for recording control (start, pause, continue, stop).
-* **Remote Desktop Connection**: Demonstrates how to connect remotely to the Raspberry Pi for video recording.
-* **Practical Recording Demonstration**: Shows running the video recording script and operating it through a remote desktop.
-* **Video Playback**: Illustrates locating and playing back recorded videos to check quality.
-* **Additional Features**: Introduces PiCamera2 GitHub Repository for more recording options like time-lapse and easy capture.
-* **Simple Video Scripting**: Highlights creating and running basic video recording scripts with different formats and configurations.
+Ce tutoriel propose un guide concis mais détaillé sur l'enregistrement et la gestion de vidéos à l'aide du robot PiCar-X.
 
+* **Aperçu** : Apprenez à enregistrer des vidéos HD 1080p avec le PiCar-X, un kit de voiture robotique autonome basé sur Raspberry Pi.
+* **Documentation et code** : Guide à travers la documentation de PiCar-X pour l'enregistrement vidéo et explication du script Python pour le contrôle de l'enregistrement (démarrer, pause, continuer, arrêter).
+* **Connexion à distance** : Démonstration de la manière de se connecter à distance au Raspberry Pi pour l'enregistrement vidéo.
+* **Démonstration pratique** : Exécution du script d'enregistrement vidéo et manipulation à travers un bureau à distance.
+* **Lecture des vidéos** : Explication sur la façon de localiser et lire les vidéos enregistrées pour vérifier leur qualité.
+* **Fonctionnalités supplémentaires** : Présentation du dépôt GitHub PiCamera2 pour plus d'options d'enregistrement comme le time-lapse et la capture facile.
+* **Script simple d'enregistrement vidéo** : Mise en avant de la création et de l'exécution de scripts simples d'enregistrement vidéo avec différents formats et configurations.
 
-**Video**
+**Vidéo**
 
 .. raw:: html
 
     <iframe width="700" height="500" src="https://www.youtube.com/embed/rpNop99nwuw?si=bes9E07grkh3khcm" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
-**Related On-line Tutorials**
+**Tutoriels en ligne associés**
 
 * :ref:`py_video`

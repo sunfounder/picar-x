@@ -1,47 +1,46 @@
 .. note::
 
-    Hello, welcome to the SunFounder Raspberry Pi & Arduino & ESP32 Enthusiasts Community on Facebook! Dive deeper into Raspberry Pi, Arduino, and ESP32 with fellow enthusiasts.
+    Bonjour, bienvenue dans la communauté SunFounder Raspberry Pi & Arduino & ESP32 sur Facebook ! Plongez au cœur de l'univers Raspberry Pi, Arduino et ESP32 avec d'autres passionnés.
 
-    **Why Join?**
+    **Pourquoi nous rejoindre ?**
 
-    - **Expert Support**: Solve post-sale issues and technical challenges with help from our community and team.
-    - **Learn & Share**: Exchange tips and tutorials to enhance your skills.
-    - **Exclusive Previews**: Get early access to new product announcements and sneak peeks.
-    - **Special Discounts**: Enjoy exclusive discounts on our newest products.
-    - **Festive Promotions and Giveaways**: Take part in giveaways and holiday promotions.
+    - **Support d'experts** : Résolvez vos problèmes après-vente et défis techniques avec l'aide de notre communauté et de notre équipe.
+    - **Apprendre et partager** : Échangez des astuces et des tutoriels pour développer vos compétences.
+    - **Aperçus exclusifs** : Accédez en avant-première aux annonces de nouveaux produits et aux aperçus exclusifs.
+    - **Réductions exclusives** : Profitez de remises exclusives sur nos derniers produits.
+    - **Promotions festives et concours** : Participez à des concours et promotions spéciales lors des fêtes.
 
-    👉 Ready to explore and create with us? Click [|link_sf_facebook|] and join today!
+    👉 Prêt à explorer et à créer avec nous ? Cliquez sur [|link_sf_facebook|] et rejoignez-nous dès aujourd'hui !
 
 .. _filezilla:
 
-Filezilla Software
+Logiciel Filezilla
 ==========================
 
 .. image:: img/filezilla_icon.png
 
-The File Transfer Protocol (FTP) is a standard communication protocol used for the transfer of computer files from a server to a client on a computer network.
+Le File Transfer Protocol (FTP) est un protocole de communication standard utilisé pour transférer des fichiers informatiques d'un serveur à un client sur un réseau.
 
-Filezilla is an open source software that not only supports FTP, but also FTP over TLS (FTPS) and SFTP. We can use Filezilla to upload local files (such as pictures and audio, etc.) to the Raspberry Pi, or download files from the Raspberry Pi to the local.
+Filezilla est un logiciel open source qui prend en charge non seulement FTP, mais aussi FTP sur TLS (FTPS) et SFTP. Nous pouvons utiliser Filezilla pour télécharger des fichiers locaux (comme des images, de l'audio, etc.) vers le Raspberry Pi, ou pour télécharger des fichiers depuis le Raspberry Pi vers un ordinateur local.
 
-**Step 1**: Download Filezilla.
+**Étape 1** : Télécharger Filezilla.
 
-Download the client from `Filezilla’s official website <https://filezilla-project.org/>`_, Filezilla has a very good tutorial, please refer to: `Documentation - Filezilla <https://wiki.filezilla-project.org/Documentation>`_.
+Téléchargez le client depuis le  `Filezilla’s official website <https://filezilla-project.org/>`_, Filezilla propose également un excellent tutoriel, veuillez vous référer à : `Documentation - Filezilla <https://wiki.filezilla-project.org/Documentation>`_.
 
-**Step 2**: Connect to Raspberry Pi
+**Étape 2** : Connectez-vous à Raspberry Pi.
 
-After a quick install open it up and now `connect it to an FTP server <https://wiki.filezilla-project.org/Using#Connecting_to_an_FTP_server>`_. It has 3 ways to connect, here we use the **Quick Connect** bar. Enter the **hostname/IP**, **username**, **password** and **port (22)**, then click **Quick Connect** or press **Enter** to connect to the server.
+Après une installation rapide, ouvrez Filezilla et  `connect it to an FTP server <https://wiki.filezilla-project.org/Using#Connecting_to_an_FTP_server>`_. Il y a 3 façons de se connecter, ici nous utilisons la barre de **Connexion rapide**. Entrez le **nom d'hôte/IP**, **nom d'utilisateur**, **mot de passe** et **port (22)**, puis cliquez sur **Connexion rapide** ou appuyez sur **Entrée** pour vous connecter au serveur.
 
 .. image:: img/filezilla_connect.png
 
 .. note::
 
-    Quick Connect is a good way to test your login information. If you want to create a permanent entry, you can select **File**-> **Copy Current Connection to Site Manager** after a successful Quick Connect, enter the name and click **OK**. Next time you will be able to connect by selecting the previously saved site inside **File** -> **Site Manager**.
-    
+    La Connexion rapide est un bon moyen de tester vos informations de connexion. Si vous souhaitez créer une entrée permanente, vous pouvez sélectionner **Fichier** -> **Copier la connexion actuelle dans le gestionnaire de sites** après une Connexion rapide réussie, entrez le nom et cliquez sur **OK**. La prochaine fois, vous pourrez vous connecter en sélectionnant le site enregistré dans **Fichier** -> **Gestionnaire de sites**.
+
     .. image:: img/ftp_site.png
 
-**Step 3**: Upload/download files.
+**Étape 3** : Télécharger ou téléverser des fichiers.
 
-You can upload local files to Raspberry Pi by dragging and dropping them, or download the files inside Raspberry Pi
-files locally.
+Vous pouvez téléverser des fichiers locaux sur le Raspberry Pi en les faisant glisser et en les déposant, ou télécharger des fichiers du Raspberry Pi vers votre ordinateur.
 
 .. image:: img/upload_ftp.png

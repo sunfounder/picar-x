@@ -1,37 +1,37 @@
 .. note::
 
-    Hello, welcome to the SunFounder Raspberry Pi & Arduino & ESP32 Enthusiasts Community on Facebook! Dive deeper into Raspberry Pi, Arduino, and ESP32 with fellow enthusiasts.
+    Bonjour et bienvenue dans la communauté Facebook des passionnés de Raspberry Pi, Arduino et ESP32 de SunFounder ! Plongez dans l'univers du Raspberry Pi, Arduino et ESP32 avec d'autres passionnés.
 
-    **Why Join?**
+    **Pourquoi rejoindre ?**
 
-    - **Expert Support**: Solve post-sale issues and technical challenges with help from our community and team.
-    - **Learn & Share**: Exchange tips and tutorials to enhance your skills.
-    - **Exclusive Previews**: Get early access to new product announcements and sneak peeks.
-    - **Special Discounts**: Enjoy exclusive discounts on our newest products.
-    - **Festive Promotions and Giveaways**: Take part in giveaways and holiday promotions.
+    - **Support d'experts** : Résolvez les problèmes après-vente et les défis techniques grâce à l'aide de notre communauté et de notre équipe.
+    - **Apprendre et partager** : Échangez des astuces et des tutoriels pour améliorer vos compétences.
+    - **Aperçus exclusifs** : Accédez en avant-première aux annonces de nouveaux produits et à des avant-goûts exclusifs.
+    - **Réductions spéciales** : Profitez de réductions exclusives sur nos nouveaux produits.
+    - **Promotions et concours festifs** : Participez à des concours et des promotions pendant les fêtes.
 
-    👉 Ready to explore and create with us? Click [|link_sf_facebook|] and join today!
+    👉 Prêt à explorer et à créer avec nous ? Cliquez sur [|link_sf_facebook|] et rejoignez-nous dès aujourd'hui !
 
-Video 10: Bull Fight with PiCar-X
-========================================
+Vidéo 10 : Combat de taureau avec PiCar-X
+==============================================
 
-This tutorial covers using the PiCar-X Robot for a "bullfight" game, focusing on color detection and movement:
+Ce tutoriel couvre l'utilisation du robot PiCar-X pour un jeu de "combat de taureau", en se concentrant sur la détection de couleurs et les mouvements :
 
-* **Bull Fight Concept**: Uses PiCar-X's camera to track and follow red color, with pan and tilt control.
-* **Python Code Overview**: Details the programming behind color detection and robotic movements.
-* **Remote Desktop Access**: Demonstrates managing the PiCar-X's code via remote desktop.
-* **Color Tracking Mechanics**: Explains how the robot tracks red objects, adjusting its movement accordingly.
-* **Demonstration**: Showcases the PiCar-X in action, pursuing a red target.
+* **Concept du combat de taureau** : Utilisation de la caméra du PiCar-X pour suivre et détecter la couleur rouge, avec un contrôle de l'inclinaison et de la rotation.
+* **Aperçu du code Python** : Détail de la programmation liée à la détection de couleurs et aux mouvements du robot.
+* **Accès à distance** : Démonstration de la gestion du code du PiCar-X via un bureau à distance.
+* **Mécanismes de suivi des couleurs** : Explication sur la manière dont le robot suit les objets rouges en ajustant ses mouvements en conséquence.
+* **Démonstration** : Présentation du PiCar-X en action, poursuivant une cible rouge.
 
-This lesson provides a comprehensive guide on programming the PiCar-X for a color-tracking game, complete with code explanations and a live demonstration.
+Cette leçon fournit un guide complet sur la programmation du PiCar-X pour un jeu de suivi de couleur, avec des explications du code et une démonstration en direct.
 
 
-**Video**
+**Vidéo**
 
 .. raw:: html
 
     <iframe width="700" height="500" src="https://www.youtube.com/embed/xYMo35pjDxY?si=6jPJ3iMc0qIEANpu" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
-**Related On-line Tutorials**
+**Tutoriels en ligne associés**
 
 * :ref:`py_bull_fight`

@@ -1,46 +1,42 @@
 .. note::
 
-    Hello, welcome to the SunFounder Raspberry Pi & Arduino & ESP32 Enthusiasts Community on Facebook! Dive deeper into Raspberry Pi, Arduino, and ESP32 with fellow enthusiasts.
+    Bonjour et bienvenue dans la communauté des passionnés de Raspberry Pi, Arduino et ESP32 de SunFounder sur Facebook ! Plongez dans l'univers du Raspberry Pi, Arduino et ESP32 avec d'autres passionnés.
 
-    **Why Join?**
+    **Pourquoi nous rejoindre ?**
 
-    - **Expert Support**: Solve post-sale issues and technical challenges with help from our community and team.
-    - **Learn & Share**: Exchange tips and tutorials to enhance your skills.
-    - **Exclusive Previews**: Get early access to new product announcements and sneak peeks.
-    - **Special Discounts**: Enjoy exclusive discounts on our newest products.
-    - **Festive Promotions and Giveaways**: Take part in giveaways and holiday promotions.
+    - **Support d'experts** : Résolvez les problèmes après-vente et les défis techniques grâce à l'aide de notre communauté et de notre équipe.
+    - **Apprendre et partager** : Échangez des astuces et des tutoriels pour améliorer vos compétences.
+    - **Aperçus exclusifs** : Accédez en avant-première aux annonces de nouveaux produits et aux avant-goûts.
+    - **Réductions spéciales** : Bénéficiez de réductions exclusives sur nos derniers produits.
+    - **Promotions et cadeaux festifs** : Participez à des concours et des promotions festives.
 
-    👉 Ready to explore and create with us? Click [|link_sf_facebook|] and join today!
+    👉 Prêt à explorer et créer avec nous ? Cliquez sur [|link_sf_facebook|] et rejoignez-nous dès aujourd'hui !
 
-Adjust Servo for Assembly
-==========================
+Ajuster le servo pour l'assemblage
+==================================
 
-Before assembling the servo, 
-the angle needs to be set to zero. 
-This is because the servo motor has a limited range of motion, 
-setting the angle to zero degrees ensures that the servo is in its 
-initial position and does not exceed its range of motion when the servo is powered on. 
-If the servo is not set to zero degrees prior to assembly, 
-it may attempt to exceed its range of motion when powered, 
-potentially damaging the servo or the mechanical system it is connected to. 
-Therefore, setting the angle to zero is an important step to ensure the 
-safe and normal operation of the servo motor.
+Avant d'assembler le servo, l'angle doit être réglé à zéro. En effet, 
+le moteur du servo a une plage de mouvement limitée, et en réglant 
+l'angle à zéro degré, cela garantit que le servo est en position initiale 
+et ne dépasse pas sa plage de mouvement lorsqu'il est alimenté. Si le servo 
+n'est pas réglé à zéro degré avant l'assemblage, il pourrait tenter de dépasser 
+sa plage de mouvement une fois sous tension, risquant d'endommager le servo 
+ou le système mécanique auquel il est connecté. Ainsi, régler l'angle à zéro 
+est une étape cruciale pour assurer un fonctionnement sûr et normal du moteur 
+du servo.
 
 .. image:: img/IMG_9897.png
 
+**Pour les utilisateurs de Python**
 
-**For Python User**
+Veuillez consulter :ref:`quick_guide_python` pour finaliser l'installation de l'OS Raspberry Pi et ajuster l'angle des servos.
 
-Please refer to :ref:`quick_guide_python` to complete the 
-installation of the Raspberry Pi OS and adjust the angle of the servos.
-
-
-**For Ezblock User**
+**Pour les utilisateurs d'Ezblock**
 
 .. note::
 
-    If you are using a Raspberry Pi 5, you will not be able to use our graphical programming software, EzBlock, to program the PiCrawler.
+    Si vous utilisez un Raspberry Pi 5, vous ne pourrez pas utiliser notre logiciel de programmation graphique, EzBlock, pour programmer le PiCrawler.
 
-After you have installed the ezblock system, 
-the P11 pin can be used to adjust the servo. 
-Please refer to :ref:`ezb_servo_adjust` for details.
+
+Après avoir installé le système Ezblock, la broche P11 peut être utilisée pour 
+ajuster le servo. Veuillez consulter :ref:`ezb_servo_adjust` pour plus de détails.

@@ -1,25 +1,25 @@
 .. note::
 
-    Hello, welcome to the SunFounder Raspberry Pi & Arduino & ESP32 Enthusiasts Community on Facebook! Dive deeper into Raspberry Pi, Arduino, and ESP32 with fellow enthusiasts.
+    Bonjour et bienvenue dans la communauté Facebook des passionnés de Raspberry Pi, Arduino et ESP32 de SunFounder ! Plongez-vous dans l'univers du Raspberry Pi, Arduino et ESP32 avec d'autres passionnés.
 
-    **Why Join?**
+    **Pourquoi nous rejoindre ?**
 
-    - **Expert Support**: Solve post-sale issues and technical challenges with help from our community and team.
-    - **Learn & Share**: Exchange tips and tutorials to enhance your skills.
-    - **Exclusive Previews**: Get early access to new product announcements and sneak peeks.
-    - **Special Discounts**: Enjoy exclusive discounts on our newest products.
-    - **Festive Promotions and Giveaways**: Take part in giveaways and holiday promotions.
+    - **Support d'experts** : Résolvez vos problèmes après-vente et relevez les défis techniques grâce à l'aide de notre communauté et de notre équipe.
+    - **Apprenez & Partagez** : Échangez des astuces et des tutoriels pour améliorer vos compétences.
+    - **Aperçus exclusifs** : Bénéficiez d'un accès anticipé aux annonces de nouveaux produits et à des avant-premières.
+    - **Remises spéciales** : Profitez de réductions exclusives sur nos derniers produits.
+    - **Promotions festives et concours** : Participez à des tirages au sort et à des promotions durant les fêtes.
 
-    👉 Ready to explore and create with us? Click [|link_sf_facebook|] and join today!
+    👉 Prêt à explorer et à créer avec nous ? Cliquez sur [|link_sf_facebook|] et rejoignez-nous dès aujourd'hui !
 
-Orienteering
-==================
+Course d'orientation
+======================
 
-This project uses the remote control function to guide the PiCar-X through a competitive scavenger hunt!
+Ce projet utilise la fonction de télécommande pour guider le PiCar-X dans une chasse au trésor compétitive !
 
-First, set up either an obstacle course, or a maze, or even an empty room that the PiCar-X can drive through. Then, randomly place six markers along the route, and put a color-card at each of the six markers for the PiCar-X to find. 
+Commencez par installer un parcours d'obstacles, un labyrinthe ou même une pièce vide dans laquelle le PiCar-X peut circuler. Ensuite, placez six marqueurs aléatoires le long de la route et placez une carte de couleur à chaque marqueur pour que le PiCar-X les trouve.
 
-The six color models for PiCar-X are: red, orange, yellow, green, blue and purple, and are ready to print from a colored printer from the PDF below. 
+Les six modèles de couleurs pour le PiCar-X sont : rouge, orange, jaune, vert, bleu et violet, prêts à être imprimés à partir du fichier PDF suivant.
 
 * :download:`[PDF]Color Cards <https://github.com/sunfounder/sf-pdf/raw/master/prop_card/object_detection/color-cards.pdf>`
 
@@ -27,26 +27,24 @@ The six color models for PiCar-X are: red, orange, yellow, green, blue and purpl
 
 .. note::
 
-    The printed colors may have a slightly different hue from the Ezblock color models due to printer toner differences, or the printed medium, such as a tan-colored paper. This can cause a less accurate color recognition.
+    Les couleurs imprimées peuvent avoir une teinte légèrement différente des modèles de couleurs Ezblock en raison des différences de toner d'imprimante ou du support d'impression, comme un papier légèrement teinté. Cela peut entraîner une reconnaissance des couleurs moins précise.
 
-The PiCar-X will be programmed to find three of the six colors in a random order, and will be using the TTS function to announce which color to look for next.
+Le PiCar-X sera programmé pour trouver trois des six couleurs dans un ordre aléatoire et utilisera la fonction TTS pour annoncer la couleur à rechercher ensuite.
 
-The objective is to help the PiCar-X find each of the three colors in as short of a time as possible.
+L'objectif est d'aider le PiCar-X à trouver chacune des trois couleurs dans le temps le plus court possible.
 
-Place PiCar-X in the middle of the field and click the Button on the Remote Control page to start the game. 
-
+Placez le PiCar-X au centre du terrain et cliquez sur le bouton de la page Télécommande pour commencer le jeu.
 
 .. image:: img/orienteering.png
 
-Take turns playing this game with friends to see who can help PiCar-X complete the objective the fastest!
+Jouez à tour de rôle avec des amis pour voir qui peut aider le PiCar-X à atteindre l'objectif le plus rapidement !
 
-**EXAMPLE**
+**EXEMPLE**
 
 .. note::
 
-    * You can write the program according to the following picture, please refer to the tutorial: :ref:`ezblock:create_project_latest`.
-    * Or find the code with the same name on the **Examples** page of the EzBlock Studio and click **Run** or **Edit** directly.
-
+    * Vous pouvez écrire le programme en suivant l'image ci-dessous, veuillez consulter le tutoriel : :ref:`ezblock:create_project_latest`.
+    * Ou trouvez le code portant le même nom sur la page **Exemples** d'EzBlock Studio, puis cliquez sur **Exécuter** ou **Modifier** directement.
 
 .. image:: img/sp210513_154117.png
     :width: 800
