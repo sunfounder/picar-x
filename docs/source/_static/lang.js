@@ -1,3 +1,10 @@
+
+let supportLangs = {
+    'en': ['This documentation is also available in', 'English', 'Never show again'],
+    'de': ['Diese Dokumentation ist auch in', 'Deutsch', 'Nie wieder anzeigen'],
+    'ja': ['このドキュメントは', '日本語', '今後表示しない'],
+};
+
 // Get the URL of the current page
 var currentURL = window.location.href;
 
