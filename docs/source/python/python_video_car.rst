@@ -1,27 +1,27 @@
 .. note::
 
-    Hello, welcome to the SunFounder Raspberry Pi & Arduino & ESP32 Enthusiasts Community on Facebook! Dive deeper into Raspberry Pi, Arduino, and ESP32 with fellow enthusiasts.
+    Ciao, benvenuto nella Community di SunFounder Raspberry Pi & Arduino & ESP32 su Facebook! Approfondisci Raspberry Pi, Arduino ed ESP32 insieme ad altri appassionati.
 
-    **Why Join?**
+    **Perché unirti?**
 
-    - **Expert Support**: Solve post-sale issues and technical challenges with help from our community and team.
-    - **Learn & Share**: Exchange tips and tutorials to enhance your skills.
-    - **Exclusive Previews**: Get early access to new product announcements and sneak peeks.
-    - **Special Discounts**: Enjoy exclusive discounts on our newest products.
-    - **Festive Promotions and Giveaways**: Take part in giveaways and holiday promotions.
+    - **Supporto Esperti**: Risolvi i problemi post-vendita e le sfide tecniche con l'aiuto della nostra community e del nostro team.
+    - **Impara & Condividi**: Scambia suggerimenti e tutorial per migliorare le tue competenze.
+    - **Anteprime Esclusive**: Ottieni accesso anticipato ai nuovi annunci di prodotti e anteprime.
+    - **Sconti Speciali**: Approfitta di sconti esclusivi sui nostri prodotti più recenti.
+    - **Promozioni Festive e Giveaway**: Partecipa a concorsi e promozioni durante le festività.
 
-    👉 Ready to explore and create with us? Click [|link_sf_facebook|] and join today!
+    👉 Pronto a esplorare e creare con noi? Clicca [|link_sf_facebook|] e unisciti oggi!
 
 .. _video_car:
 
 11. Video Car
 ==========================================
 
-This program will provide a First Person View from the PiCar-X! 
-Use the keyboards WSAD keys to control the direction of movement, 
-and the O and P to adjust the speed.
+Questo programma ti offrirà una visione in prima persona dal PiCar-X! 
+Usa i tasti WSAD della tastiera per controllare la direzione di movimento, 
+e i tasti O e P per regolare la velocità.
 
-**Run the Code**
+**Esegui il Codice**
 
 .. raw:: html
 
@@ -32,21 +32,21 @@ and the O and P to adjust the speed.
     cd ~/picar-x/example
     sudo python3 11.video_car.py
 
-Once the code is running, you can see what PiCar-X is shooting and control it by pressing the following keys.
+Una volta eseguito il codice, puoi vedere cosa sta riprendendo PiCar-X e controllarlo premendo i seguenti tasti:
 
-* O: speed up
-* P: speed down
-* W: forward  
-* S: backward
-* A: turn left
-* D: turn right
-* F: stop
-* T: take photo
-* Ctrl+C: quit
+* O: aumenta la velocità
+* P: diminuisci la velocità
+* W: avanti  
+* S: indietro
+* A: gira a sinistra
+* D: gira a destra
+* F: ferma
+* T: scatta foto
+* Ctrl+C: esci
 
-**View the Image**
+**Visualizza l'Immagine**
 
-After the code runs, the terminal will display the following prompt:
+Dopo l'esecuzione del codice, il terminale mostrerà il seguente prompt:
 
 .. code-block::
 
@@ -58,12 +58,12 @@ After the code runs, the terminal will display the following prompt:
     * Debug mode: off
     * Running on http://0.0.0.0:9000/ (Press CTRL+C to quit)
 
-Then you can enter ``http://<your IP>:9000/mjpg`` in the browser to view the video screen. such as:  ``https://192.168.18.113:9000/mjpg``
+Puoi quindi inserire ``http://<your IP>:9000/mjpg`` nel browser per visualizzare lo schermo video, ad esempio:  ``https://192.168.18.113:9000/mjpg``
 
 .. image:: img/display.png
 
 
-**code**
+**Codice**
 
 .. code-block:: python
     
@@ -134,16 +134,16 @@ Then you can enter ``http://<your IP>:9000/mjpg`` in the browser to view the vid
 
         Vilib.camera_start(vflip=False,hflip=False)
         Vilib.display(local=True,web=True)
-        sleep(2)  # wait for startup
+        sleep(2)  # attendi l'avvio
         print(manual)
         
         while True:
             print("\rstatus: %s , speed: %s    "%(status, speed), end='', flush=True)
             # readkey
             key = readchar.readkey().lower()
-            # operation 
+            # operazione 
             if key in ('wsadfop'):
-                # throttle
+                # accelerazione
                 if key == 'o':
                     if speed <=90:
                         speed += 10           
@@ -152,12 +152,12 @@ Then you can enter ``http://<your IP>:9000/mjpg`` in the browser to view the vid
                         speed -= 10
                     if speed == 0:
                         status = 'stop'
-                # direction
+                # direzione
                 elif key in ('wsad'):
                     if speed == 0:
                         speed = 10
                     if key == 'w':
-                        # Speed limit when reversing,avoid instantaneous current too large
+                        # Limite di velocità in retromarcia, per evitare un corrente eccessivo
                         if status != 'forward' and speed > 60:  
                             speed = 60
                         status = 'forward'

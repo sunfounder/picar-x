@@ -1,26 +1,26 @@
 .. note::
 
-    Hello, welcome to the SunFounder Raspberry Pi & Arduino & ESP32 Enthusiasts Community on Facebook! Dive deeper into Raspberry Pi, Arduino, and ESP32 with fellow enthusiasts.
+    Ciao, benvenuto nella community di appassionati di SunFounder Raspberry Pi & Arduino & ESP32 su Facebook! Approfondisci le tue conoscenze su Raspberry Pi, Arduino ed ESP32 insieme ad altri appassionati.
 
-    **Why Join?**
+    **Perché unirti a noi?**
 
-    - **Expert Support**: Solve post-sale issues and technical challenges with help from our community and team.
-    - **Learn & Share**: Exchange tips and tutorials to enhance your skills.
-    - **Exclusive Previews**: Get early access to new product announcements and sneak peeks.
-    - **Special Discounts**: Enjoy exclusive discounts on our newest products.
-    - **Festive Promotions and Giveaways**: Take part in giveaways and holiday promotions.
+    - **Supporto esperto**: Risolvi problemi post-vendita e sfide tecniche con l'aiuto della nostra community e del nostro team.
+    - **Impara e condividi**: Scambia suggerimenti e tutorial per migliorare le tue competenze.
+    - **Anteprime esclusive**: Ottieni accesso anticipato ai nuovi annunci di prodotto e anteprime esclusive.
+    - **Sconti speciali**: Approfitta di sconti esclusivi sui nostri prodotti più recenti.
+    - **Promozioni festive e giveaway**: Partecipa a promozioni e omaggi durante le festività.
 
-    👉 Ready to explore and create with us? Click [|link_sf_facebook|] and join today!
+    👉 Sei pronto a esplorare e creare con noi? Clicca [|link_sf_facebook|] e unisciti oggi stesso!
 
 .. _py_avoid:
 
-4. Obstacle Avoidance
+4. Evitamento Ostacoli
 =============================
 
-In this project, PiCar-X will detect obstacles in front of it while moving forward, 
-and when the obstacles are too close, it will change the direction of moving forward.
+In questo progetto, PiCar-X rileverà ostacoli davanti a sé mentre si muove 
+in avanti, e quando gli ostacoli sono troppo vicini, cambierà direzione.
 
-**Run the Code**
+**Esegui il codice**
 
 .. raw:: html
 
@@ -31,19 +31,18 @@ and when the obstacles are too close, it will change the direction of moving for
     cd ~/picar-x/example
     sudo python3 4.avoiding_obstacles.py
     
-After running the code, PiCar-X will walk forward. 
+Dopo aver eseguito il codice, PiCar-X si muoverà in avanti.
 
-If it detects that the distance of the obstacle ahead is less than 20cm, it will go backward. 
+Se rileva che la distanza dell'ostacolo davanti è inferiore a 20 cm, si sposterà all'indietro.
 
-If there is an obstacle within 20 to 40cm, it will turn left.
+Se c'è un ostacolo tra 20 e 40 cm, girerà a sinistra.
 
-If there is no obstacle in the direction after turning left or the obstacle distance is greater than 25cm, 
-it will continue to move forward.
+Se non ci sono ostacoli nella direzione dopo aver girato a sinistra o la distanza dell'ostacolo è superiore a 25 cm, continuerà a muoversi in avanti.
 
-**Code**
+**Codice**
 
 .. note::
-    You can **Modify/Reset/Copy/Run/Stop** the code below. But before that, you need to go to source code path like ``picar-x/example``. After modifying the code, you can run it directly to see the effect.
+    Puoi **Modificare/Reimpostare/Copiare/Eseguire/Interrompere** il codice seguente. Ma prima devi andare nel percorso del codice sorgente come ``picar-x/example``. Dopo aver modificato il codice, puoi eseguirlo direttamente per vedere l'effetto.
 
 .. raw:: html
 
@@ -55,9 +54,9 @@ it will continue to move forward.
     import time
     
     POWER = 50
-    SafeDistance = 40   # > 40 safe
-    DangerDistance = 20 # > 20 && < 40 turn around, 
-                        # < 20 backward
+    SafeDistance = 40   # > 40 sicuro
+    DangerDistance = 20 # > 20 && < 40 girare, 
+                        # < 20 indietro
     
     def main():
         try:
@@ -86,11 +85,11 @@ it will continue to move forward.
     if __name__ == "__main__":
         main()
 
-**How it works?**
+**Come funziona?**
 
-* Importing the Picarx Module and Initializing Constants: 
+* Importazione del Modulo Picarx e Inizializzazione delle Costanti:
 
-    This section of the code imports the ``Picarx`` class from the ``picarx`` module, which is essential for controlling the Picarx robot. Constants like ``POWER``, ``SafeDistance``, and ``DangerDistance`` are defined, which will be used later in the script to control the robot's movement based on distance measurements.
+    Questa parte del codice importa la classe ``Picarx`` dal modulo ``picarx``, essenziale per controllare il robot Picarx. Sono definite costanti come ``POWER``, ``SafeDistance`` e ``DangerDistance``, che verranno utilizzate successivamente per controllare il movimento del robot in base alle misurazioni della distanza.
 
     .. code-block:: python
 
@@ -98,13 +97,13 @@ it will continue to move forward.
         import time
 
         POWER = 50
-        SafeDistance = 40 # > 40 safe
-        DangerDistance = 20 # > 20 && < 40 turn around,
-        # < 20 backward
+        SafeDistance = 40 # > 40 sicuro
+        DangerDistance = 20 # > 20 && < 40 girare,
+        # < 20 indietro
 
-* Main Function Definition and Ultrasonic Sensor Reading:
+* Definizione della Funzione Principale e Lettura del Sensore Ultrasonico:
 
-    The ``main`` function is where the Picarx robot is controlled. An instance of ``Picarx`` is created, which activates the robot's functionalities. The code enters an infinite loop, constantly reading the distance from the ultrasonic sensor. This distance is used to determine the robot's movement.
+    La funzione ``main`` è il punto in cui viene controllato il robot Picarx. Viene creata un'istanza di ``Picarx``, che attiva le funzionalità del robot. Il codice entra in un ciclo infinito, leggendo costantemente la distanza dal sensore ultrasonico. Questa distanza viene utilizzata per determinare il movimento del robot.
 
     .. code-block:: python
         
@@ -114,11 +113,11 @@ it will continue to move forward.
 
             while True:
                 distance = round(px.ultrasonic.read(), 2)
-                # [Rest of the logic]
+                # [Resto della logica]
 
-* Movement Logic Based on Distance:
+* Logica del Movimento Basata sulla Distanza:
 
-    The robot's movement is controlled based on the ``distance`` read from the ultrasonic sensor. If the ``distance`` is greater than ``SafeDistance``, the robot moves forward. If the distance is between ``DangerDistance`` and ``SafeDistance``, it slightly turns and moves forward. If the ``distance`` is less than ``DangerDistance``, the robot reverses while turning in the opposite direction.
+    Il movimento del robot è controllato in base alla ``distanza`` letta dal sensore ultrasonico. Se la ``distanza`` è maggiore di ``SafeDistance``, il robot si muove in avanti. Se la distanza è compresa tra ``DangerDistance`` e ``SafeDistance``, gira leggermente e continua a muoversi in avanti. Se la ``distanza`` è inferiore a ``DangerDistance``, il robot si muove all'indietro girando in direzione opposta.
 
     .. code-block:: python
 
@@ -134,24 +133,25 @@ it will continue to move forward.
             px.backward(POWER)
             time.sleep(0.5)
 
-* Safety and Cleanup with the 'finally' Block:
+* Sicurezza e Pulizia con il Blocco 'finally':
 
-    The ``try...finally`` block ensures safety by stopping the robot's motion in case of an interruption or error. This is a crucial part for preventing uncontrollable behavior of the robot.
+    Il blocco ``try...finally`` garantisce la sicurezza fermando il movimento del robot in caso di interruzione o errore. Questo è un passaggio cruciale per prevenire comportamenti incontrollabili del robot.
 
     .. code-block:: python
         
         try:
-        # [Control logic]
+        # [Logica di controllo]
         finally:
         px.forward(0)
 
-* Execution Entry Point:
+* Punto di Ingresso dell'Esecuzione:
 
-    The standard Python entry point ``if __name__ == "__main__":`` is used to run the main function when the script is executed as a standalone program.
+    Il classico punto di ingresso Python ``if __name__ == "__main__":`` viene utilizzato per eseguire la funzione principale quando lo script viene eseguito come programma autonomo.
 
     .. code-block:: python
         
         if name == "main":
             main()
 
-In summary, the script uses the Picarx module to control a robot, utilizing an ultrasonic sensor for distance measurement. The robot's movement is adapted based on these measurements, ensuring safe operation through careful control and a safety mechanism in the finally block.
+In sintesi, lo script utilizza il modulo Picarx per controllare un robot, utilizzando un sensore ultrasonico per la misurazione della distanza. Il movimento del robot viene adattato in base a queste misurazioni, garantendo un funzionamento sicuro attraverso un attento controllo e un meccanismo di sicurezza nel blocco finally.
+

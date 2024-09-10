@@ -1,34 +1,34 @@
 .. note::
 
-    Hello, welcome to the SunFounder Raspberry Pi & Arduino & ESP32 Enthusiasts Community on Facebook! Dive deeper into Raspberry Pi, Arduino, and ESP32 with fellow enthusiasts.
+    Ciao, benvenuto nella Community di SunFounder Raspberry Pi & Arduino & ESP32 su Facebook! Approfondisci Raspberry Pi, Arduino ed ESP32 insieme ad altri appassionati.
 
-    **Why Join?**
+    **Perché unirti?**
 
-    - **Expert Support**: Solve post-sale issues and technical challenges with help from our community and team.
-    - **Learn & Share**: Exchange tips and tutorials to enhance your skills.
-    - **Exclusive Previews**: Get early access to new product announcements and sneak peeks.
-    - **Special Discounts**: Enjoy exclusive discounts on our newest products.
-    - **Festive Promotions and Giveaways**: Take part in giveaways and holiday promotions.
+    - **Supporto Esperti**: Risolvi problemi post-vendita e sfide tecniche con l'aiuto della nostra community e del nostro team.
+    - **Impara & Condividi**: Scambia suggerimenti e tutorial per migliorare le tue competenze.
+    - **Anteprime Esclusive**: Ottieni accesso anticipato ai nuovi annunci di prodotti e anteprime.
+    - **Sconti Speciali**: Approfitta di sconti esclusivi sui nostri prodotti più recenti.
+    - **Promozioni Festive e Giveaway**: Partecipa a concorsi e promozioni durante le festività.
 
-    👉 Ready to explore and create with us? Click [|link_sf_facebook|] and join today!
+    👉 Pronto a esplorare e creare con noi? Clicca [|link_sf_facebook|] e unisciti oggi!
 
 .. _py_tts:
 
-3. Text to Speech & Sound Effect
+3. Sintesi Vocale & Effetti Sonori
 =========================================
 
-In this example, we use PiCar-X's (to be precise, Robot HAT’s) sound effects. 
-It consists of three parts, namely Muisc, Sound, Text to Speech.
+In questo esempio utilizziamo gli effetti sonori di PiCar-X (più precisamente del Robot HAT).
+È composto da tre parti: Musica, Suoni, Sintesi Vocale.
 
 .. image:: img/how_are_you.jpg
 
-**Install i2samp**
+**Installa i2samp**
 
-Before using the Text-to-Speech (TTS) and Sound Effect functions, 
-first activate the speaker so that it will be enabled and can make sounds.
+Prima di utilizzare le funzioni di Sintesi Vocale (TTS) e degli Effetti Sonori,
+attiva l'altoparlante in modo che possa emettere suoni.
 
-Run ``i2samp.sh`` in the **picar-x** folder, 
-and this script will install everything needed to use i2s amplifier.
+Esegui ``i2samp.sh`` nella cartella **picar-x**,
+questo script installerà tutto il necessario per usare l'amplificatore i2s.
 
 .. raw:: html
 
@@ -41,11 +41,11 @@ and this script will install everything needed to use i2s amplifier.
 
 .. image:: img/tt_bash.png
 
-There will be several prompts asking to confirm the request. Respond to all prompts with a **Y**. After the changes have been made to the Raspberry Pi system, the computer will need to reboot for these changes to take effect.
+Ci saranno diversi messaggi che chiederanno di confermare le richieste. Rispondi a tutti con **Y**. Dopo aver apportato le modifiche al sistema Raspberry Pi, sarà necessario riavviare il computer affinché le modifiche abbiano effetto.
 
-After rebooting, run the ``i2samp.sh`` script again to test the amplifier. If a sound successfully plays from the speaker, the configuration is complete.
+Dopo il riavvio, esegui nuovamente lo script ``i2samp.sh`` per testare l'amplificatore. Se un suono viene riprodotto con successo dall'altoparlante, la configurazione è completata.
 
-**Run the Code**
+**Esegui il Codice**
 
 .. raw:: html
 
@@ -56,16 +56,16 @@ After rebooting, run the ``i2samp.sh`` script again to test the amplifier. If a 
     cd ~/picar-x/example
     sudo python3 3.tts_example.py
     
-After the code runs, please operate according to the prompt that printed on the terminal.
+Dopo l'esecuzione del codice, segui le istruzioni stampate nel terminale.
 
-Input key to call the function!
+Input da tastiera per richiamare la funzione!
 
-    * space: Play sound effect (Car horn)
-    * c: Play sound effect with threads
-    * t: Text to speak (Say Hello)
-    * q: Play/Stop Music
+    * space: Riproduci effetto sonoro (Clacson dell'auto)
+    * c: Riproduci effetto sonoro in thread
+    * t: Sintesi vocale (Di' Ciao)
+    * q: Riproduci/Interrompi Musica
 
-**Code**
+**Codice**
 
 .. code-block:: python
 
@@ -90,7 +90,6 @@ Input key to call the function!
         flag_bgm = False
         music.music_set_volume(20)
         tts.lang("en-US")
-
 
         while True:
             key = readchar.readkey()
@@ -117,54 +116,53 @@ Input key to call the function!
     if __name__ == "__main__":
         main()
 
-**How it works?**
+**Come funziona?**
 
-Functions related to background music include these:
+Le funzioni relative alla musica di sottofondo includono:
 
-* ``music = Music()`` : Declare the object.
-* ``music.music_set_volume(20)`` : Set the volume, the range is 0~100.
-* ``music.music_play('../musics/slow-trail-Ahjay_Stelino.mp3')`` : Play music files, here is the **slow-trail-Ahjay_Stelino.mp3** file under the ``../musics`` path.
-* ``music.music_stop()`` : Stop playing background music.
+* ``music = Music()`` : Dichiara l'oggetto.
+* ``music.music_set_volume(20)`` : Imposta il volume, il range è 0~100.
+* ``music.music_play('../musics/slow-trail-Ahjay_Stelino.mp3')`` : Riproduci il file musicale, in questo caso il file **slow-trail-Ahjay_Stelino.mp3** nella cartella ``../musics``.
+* ``music.music_stop()`` : Interrompi la riproduzione della musica di sottofondo.
 
 .. note::
 
-    You can add different sound effects or music to ``musics`` or ``sounds`` folder via :ref:`filezilla`.
+    Puoi aggiungere diversi effetti sonori o musica nella cartella ``musics`` o ``sounds`` tramite :ref:`filezilla`.
 
-Functions related to sound effects include these:
+Le funzioni relative agli effetti sonori includono:
 
 * ``music = Music()``
-* ``music.sound_play('../sounds/car-double-horn.wav')`` : Play the sound effect file.
-* ``muisc.sound_play_threading('../sounds/car-double-horn.wav')`` : Play the sound effect file in a new thread mode without suspending the main thread.
+* ``music.sound_play('../sounds/car-double-horn.wav')`` : Riproduci il file degli effetti sonori.
+* ``music.sound_play_threading('../sounds/car-double-horn.wav')`` : Riproduci il file degli effetti sonori in modalità threading senza sospendere il thread principale.
 
+Il software `eSpeak <http://espeak.sourceforge.net/>`_ è utilizzato per implementare le funzioni di Sintesi Vocale (TTS).
 
-The `eSpeak <http://espeak.sourceforge.net/>`_ software is used to implement the functions of TTS.
+Importa il modulo TTS in robot_hat, che incapsula le funzioni per convertire il testo in voce.
 
-Import the TTS module in robot_hat, which encapsulates functions that convert text to speech.
-
-Functions related to Text to Speech include these:
+Le funzioni relative alla Sintesi Vocale includono:
 
 * ``tts = TTS()``
-* ``tts.say(words)`` : Text audio.
-* ``tts.lang("en-US")`` :  Set the language.
+* ``tts.say(words)`` : Sintesi vocale del testo.
+* ``tts.lang("en-US")`` : Imposta la lingua.
 
 .. note:: 
 
-    Set the language by setting the parameters of ``lang("")`` with the following characters.
+    Imposta la lingua con i parametri di ``lang("")`` usando i seguenti caratteri.
 
 .. list-table:: Language
     :widths: 15 50
 
     *   - zh-CN 
-        - Mandarin (Chinese)
+        - Mandarino (Cinese)
     *   - en-US 
-        - English-United States
+        - Inglese-Stati Uniti
     *   - en-GB     
-        - English-United Kingdom
+        - Inglese-Regno Unito
     *   - de-DE     
-        - Germany-Deutsch
+        - Tedesco-Deutsch
     *   - es-ES     
-        - España-Español
+        - Spagna-Spagnolo
     *   - fr-FR  
-        - France-Le français
+        - Francia-Francese
     *   - it-IT  
-        - Italia-lingua italiana
+        - Italia-Italiano

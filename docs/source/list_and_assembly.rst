@@ -1,56 +1,53 @@
 .. note::
 
-    Hello, welcome to the SunFounder Raspberry Pi & Arduino & ESP32 Enthusiasts Community on Facebook! Dive deeper into Raspberry Pi, Arduino, and ESP32 with fellow enthusiasts.
+    Ciao, benvenuto nella community di SunFounder Raspberry Pi & Arduino & ESP32 Enthusiasts su Facebook! Approfondisci Raspberry Pi, Arduino ed ESP32 insieme agli altri appassionati.
 
-    **Why Join?**
+    **Perché unirsi?**
 
-    - **Expert Support**: Solve post-sale issues and technical challenges with help from our community and team.
-    - **Learn & Share**: Exchange tips and tutorials to enhance your skills.
-    - **Exclusive Previews**: Get early access to new product announcements and sneak peeks.
-    - **Special Discounts**: Enjoy exclusive discounts on our newest products.
-    - **Festive Promotions and Giveaways**: Take part in giveaways and holiday promotions.
+    - **Supporto esperto**: Risolvi i problemi post-vendita e le sfide tecniche con l'aiuto della nostra community e del nostro team.
+    - **Impara e condividi**: Scambia suggerimenti e tutorial per migliorare le tue competenze.
+    - **Anteprime esclusive**: Ottieni l'accesso anticipato agli annunci di nuovi prodotti e anteprime.
+    - **Sconti speciali**: Approfitta di sconti esclusivi sui nostri prodotti più recenti.
+    - **Promozioni festive e giveaway**: Partecipa a giveaway e promozioni per le festività.
 
-    👉 Ready to explore and create with us? Click [|link_sf_facebook|] and join today!
+    👉 Sei pronto a esplorare e creare con noi? Clicca su [|link_sf_facebook|] e unisciti oggi stesso!
 
 .. _assembly_instructions:
 
 
-Assembly Instructions
+Istruzioni di montaggio
 ==========================================
 
-Before assembling the PiCar-X, please first verify that all parts and components have been included. If there are any missing or damaged components, please contact SunFounder immediately at service@sunfounder.com to resolve the issue as soon as possible.
+Prima di assemblare il PiCar-X, verifica che tutte le parti e i componenti siano presenti. Se ci sono componenti mancanti o danneggiati, contatta immediatamente SunFounder all'indirizzo service@sunfounder.com per risolvere il problema il prima possibile.
 
-Please follow the steps on the following PDF for assembly instructions: 
+Segui i passaggi nel seguente PDF per le istruzioni di montaggio: 
 
 :download:`[PDF]Component List and Assembly of PiCar-X <https://github.com/sunfounder/sf-pdf/raw/master/assembly_file/z0104v33-a0001013-picar-x.pdf>`.
 
-**Mount Raspberry Pi Zero W on PiCar-X**
+**Montare Raspberry Pi Zero W sul PiCar-X**
 
-If your mainboard is a Raspberry Pi Zero W, here are the steps to install it on the PiCar-X. 
+Se la tua scheda madre è un Raspberry Pi Zero W, ecco i passaggi per installarlo sul PiCar-X.
 
 .. raw:: html
 
     <iframe width="700" height="500" src="https://www.youtube.com/embed/DcobAsvRrV0?si=9cEGmphSqD9WVKzV" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
-Afterward, you can continue following the instructions in the video below from **1:45** onwards to assemble it.
+Successivamente, puoi continuare a seguire le istruzioni nel video qui sotto a partire da **1:45** per completare l'assemblaggio.
 
 
-**Assembly Tutorial Video(Raspberry Pi 4/3/1 Model)**
+**Video tutorial di montaggio (Modelli Raspberry Pi 4/3/1)**
 
-This video will walk you through the process of assembling your robot from scratch.
+Questo video ti guiderà nel processo di assemblaggio del tuo robot da zero.
 
-In this tutorial, you will learn:
+In questo tutorial imparerai:
 
-* **Preparation**: We'll introduce you to all the tools and parts needed, ensuring you're fully equipped before starting the assembly.
+* **Preparazione**: Ti presenteremo tutti gli strumenti e le parti necessari, assicurandoti di essere completamente equipaggiato prima di iniziare l'assemblaggio.
 
-* **Assembly Steps**: We'll demonstrate each assembly step in a systematic manner.
+* **Passaggi di assemblaggio**: Ti mostreremo ciascun passaggio di assemblaggio in modo sistematico.
 
-* **Tips and Considerations**: Throughout the process, we'll share essential tips and tricks to help you avoid common mistakes and ensure your car operates smoothly.
-
-* **Zeroing a Servo**: Before fixing each servo, it needs to be zeroed first. The steps for zeroing are to first install the Raspberry Pi OS, then install the required modules, and then run a script (set the angle of all PWM pins to 0). After that, plug in the servo wire to zero the servo.
+* **Suggerimenti e considerazioni**: Durante il processo, condivideremo suggerimenti essenziali per aiutarti a evitare errori comuni e garantire che la tua auto funzioni senza problemi.
+* **Azzeramento di un servo**: Prima di fissare ciascun servo, è necessario azzerarlo. I passaggi per l'azzeramento sono: prima installare il sistema operativo Raspberry Pi, poi i moduli necessari, e infine eseguire uno script (impostare l'angolo di tutti i pin PWM su 0). Dopo di ciò, collega il filo del servo per azzerare il servo.
 
 .. raw:: html
 
     <iframe width="700" height="500" src="https://www.youtube.com/embed/i5FpY3FAcyA?si=2WlfchM0ryLU3yi1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-
-

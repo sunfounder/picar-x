@@ -1,29 +1,29 @@
 .. note::
 
-    Hello, welcome to the SunFounder Raspberry Pi & Arduino & ESP32 Enthusiasts Community on Facebook! Dive deeper into Raspberry Pi, Arduino, and ESP32 with fellow enthusiasts.
+    Ciao, benvenuto nella Community di appassionati di Raspberry Pi & Arduino & ESP32 di SunFounder su Facebook! Esplora più a fondo Raspberry Pi, Arduino e ESP32 insieme ad altri appassionati.
 
-    **Why Join?**
+    **Perché unirti a noi?**
 
-    - **Expert Support**: Solve post-sale issues and technical challenges with help from our community and team.
-    - **Learn & Share**: Exchange tips and tutorials to enhance your skills.
-    - **Exclusive Previews**: Get early access to new product announcements and sneak peeks.
-    - **Special Discounts**: Enjoy exclusive discounts on our newest products.
-    - **Festive Promotions and Giveaways**: Take part in giveaways and holiday promotions.
+    - **Supporto Esperto**: Risolvi i problemi post-vendita e affronta le sfide tecniche con l'aiuto della nostra community e del nostro team.
+    - **Impara e Condividi**: Scambia consigli e tutorial per migliorare le tue competenze.
+    - **Anteprime Esclusive**: Ottieni accesso anticipato agli annunci di nuovi prodotti e anteprime riservate.
+    - **Sconti Speciali**: Approfitta di sconti esclusivi sui nostri prodotti più recenti.
+    - **Promozioni Festive e Omaggi**: Partecipa a concorsi e promozioni durante le festività.
 
-    👉 Ready to explore and create with us? Click [|link_sf_facebook|] and join today!
+    👉 Sei pronto a esplorare e creare con noi? Clicca [|link_sf_facebook|] e unisciti subito!
 
-Video 4: Obstacle Avoidance with Ultrasonic
-============================================
+Video 4: Evitamento degli Ostacoli con Sensore Ultrasonico
+================================================================
 
-This video tutorial covers obstacle avoidance using an ultrasonic sensor in the PiCar-X robot:
+Questo tutorial video tratta l'evitamento degli ostacoli utilizzando un sensore ultrasonico nel robot PiCar-X:
 
-* **Introduction to Ultrasonic Sensor**: Explains how to use the ultrasonic sensor for measuring distance and controlling the car's movement.
-* **Python Code Walkthrough**: Details the Python code for obstacle avoidance, including variable definitions and conditional movement logic.
-* **Creating and Running Custom Scripts**: Shows how to write and execute custom scripts for U-turns and obstacle reactions.
-* **Practical Demonstrations**: Provides demonstrations of the robot's obstacle avoidance capabilities on different surfaces.
-* **Code Saving and Updating**: Explains how to save and update scripts on the robot.
+* **Introduzione al Sensore Ultrasonico**: Spiega come utilizzare il sensore ultrasonico per misurare la distanza e controllare il movimento dell'auto.
+* **Spiegazione del Codice Python**: Illustra in dettaglio il codice Python per l'evitamento degli ostacoli, incluse le definizioni delle variabili e la logica di movimento condizionale.
+* **Creazione ed Esecuzione di Script Personalizzati**: Mostra come scrivere ed eseguire script personalizzati per inversioni a U e reazioni agli ostacoli.
+* **Dimostrazioni Pratiche**: Fornisce dimostrazioni delle capacità di evitamento degli ostacoli del robot su diverse superfici.
+* **Salvataggio e Aggiornamento del Codice**: Spiega come salvare e aggiornare gli script sul robot.
 
-This lesson offers an essential guide to implementing ultrasonic sensor-based obstacle avoidance in the PiCar-X robot.
+Questa lezione offre una guida essenziale per implementare l'evitamento degli ostacoli basato su sensore ultrasonico nel robot PiCar-X.
 
 
 **Video**
@@ -32,6 +32,6 @@ This lesson offers an essential guide to implementing ultrasonic sensor-based ob
 
     <iframe width="700" height="500" src="https://www.youtube.com/embed/zi5GM7lP5JA?si=obLF_79PFZv8xAZl" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
-**Related On-line Tutorials**
+**Tutorial Online Correlati**
 
 * :ref:`py_avoid`

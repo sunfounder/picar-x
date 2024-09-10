@@ -1,50 +1,51 @@
 .. note::
 
-    Hello, welcome to the SunFounder Raspberry Pi & Arduino & ESP32 Enthusiasts Community on Facebook! Dive deeper into Raspberry Pi, Arduino, and ESP32 with fellow enthusiasts.
+    Ciao, benvenuto nella SunFounder Raspberry Pi & Arduino & ESP32 Enthusiasts Community su Facebook! Approfondisci le tue conoscenze su Raspberry Pi, Arduino e ESP32 insieme ad altri appassionati.
 
-    **Why Join?**
+    **Perché unirti a noi?**
 
-    - **Expert Support**: Solve post-sale issues and technical challenges with help from our community and team.
-    - **Learn & Share**: Exchange tips and tutorials to enhance your skills.
-    - **Exclusive Previews**: Get early access to new product announcements and sneak peeks.
-    - **Special Discounts**: Enjoy exclusive discounts on our newest products.
-    - **Festive Promotions and Giveaways**: Take part in giveaways and holiday promotions.
+    - **Supporto Esperto**: Risolvi problemi post-vendita e sfide tecniche con l'aiuto della nostra comunità e del nostro team.
+    - **Impara e Condividi**: Scambia suggerimenti e tutorial per migliorare le tue competenze.
+    - **Anteprime Esclusive**: Ottieni accesso anticipato agli annunci di nuovi prodotti e alle anteprime.
+    - **Sconti Speciali**: Approfitta di sconti esclusivi sui nostri prodotti più recenti.
+    - **Promozioni e Giveaway Festivi**: Partecipa a promozioni e concorsi durante le festività.
 
-    👉 Ready to explore and create with us? Click [|link_sf_facebook|] and join today!
+    👉 Sei pronto a esplorare e creare con noi? Clicca [|link_sf_facebook|] e unisciti oggi stesso!
 
-Bullfight
+Corrida
 ==============
 
-Turn PiCar-X into an angry bull! Prepare a red cloth, such as a handkerchief, and become a Bullfighter. When the PiCar-X chases after the red cloth, be careful not to get hit! 
+Trasforma il PiCar-X in un toro furioso! Prepara un panno rosso, come un fazzoletto, e diventa un torero. Quando il PiCar-X insegue il panno rosso, fai attenzione a non farti colpire!
 
 .. note::
 
-    This project is more advanced than the preceding projects. The PiCar-X will need to use the color detection function to keep the camera facing towards the red cloth, then the body orientation will need to automatically adjust in response to the direction that the camera is facing.
+    Questo progetto è più avanzato rispetto ai precedenti. Il PiCar-X dovrà utilizzare la funzione di rilevamento del colore per mantenere la fotocamera rivolta verso il panno rosso, e l'orientamento del corpo si regolerà automaticamente in base alla direzione in cui è rivolta la fotocamera.
 
-**TIPS**
+**CONSIGLI**
 
 .. image:: img/sp210512_174650.png
 
-Begin with adding the **color detection [red]** block to the **Start** widget to make the PiCar-X look for a red-colored object. In the forever loop, add the **[width] of detected color** block to transform the input into an “object detection” grid. 
+Inizia aggiungendo il blocco **color detection [red]** al widget **Start** per far sì che il PiCar-X cerchi un oggetto di colore rosso. Nel ciclo infinito, aggiungi il blocco **[width] of detected color** per trasformare l'ingresso in una griglia di "rilevamento oggetti".
 
 .. image:: img/sp210512_174807.png
 
-The “object detection” will output the detected coordinates in (x, y) values, 
-based on the center point of the camera image. 
-The screen is divided into a 3x3 grid, as shown below, 
-so if the red cloth is kept in the top left of the cameras’ image, the (x, y) coordinates will be (-1, 1).
+Il "rilevamento oggetti" restituirà le coordinate rilevate in valori (x, y), 
+basate sul punto centrale dell'immagine della fotocamera. 
+Lo schermo è suddiviso in una griglia 3x3, come mostrato di seguito, quindi 
+se il panno rosso viene mantenuto in alto a sinistra nell'immagine della 
+fotocamera, le coordinate (x, y) saranno (-1, 1).
 
 .. image:: img/sp210512_174956.png
 
-The “object detection” will detect the Width and Height of the graphic. 
-If multiple targets are identified, the dimensions of the largest target will be recorded.
+Il "rilevamento oggetti" rileverà la larghezza e l'altezza del grafico. Se vengono 
+identificati più obiettivi, verranno registrate le dimensioni dell'obiettivo più grande.
 
-**EXAMPLE**
+**ESEMPIO**
 
 .. note::
 
-    * You can write the program according to the following picture, please refer to the tutorial: :ref:`ezblock:create_project_latest`.
-    * Or find the code with the same name on the **Examples** page of the EzBlock Studio and click **Run** or **Edit** directly.
+    * Puoi scrivere il programma seguendo l'immagine sottostante, fai riferimento al tutorial: :ref:`ezblock:create_project_latest`.
+    * Oppure trova il codice con lo stesso nome nella pagina **Esempi** di EzBlock Studio e clicca direttamente su **Esegui** o **Modifica**.
 
 .. image:: img/sp210512_175519.png
     :width: 800

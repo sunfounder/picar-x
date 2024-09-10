@@ -1,42 +1,42 @@
 .. note::
 
-    Hello, welcome to the SunFounder Raspberry Pi & Arduino & ESP32 Enthusiasts Community on Facebook! Dive deeper into Raspberry Pi, Arduino, and ESP32 with fellow enthusiasts.
+    Ciao, benvenuto nella SunFounder Raspberry Pi & Arduino & ESP32 Enthusiasts Community su Facebook! Approfondisci le tue conoscenze su Raspberry Pi, Arduino e ESP32 insieme ad altri appassionati.
 
-    **Why Join?**
+    **Perché unirti a noi?**
 
-    - **Expert Support**: Solve post-sale issues and technical challenges with help from our community and team.
-    - **Learn & Share**: Exchange tips and tutorials to enhance your skills.
-    - **Exclusive Previews**: Get early access to new product announcements and sneak peeks.
-    - **Special Discounts**: Enjoy exclusive discounts on our newest products.
-    - **Festive Promotions and Giveaways**: Take part in giveaways and holiday promotions.
+    - **Supporto Esperto**: Risolvi problemi post-vendita e sfide tecniche con l'aiuto della nostra comunità e del nostro team.
+    - **Impara e Condividi**: Scambia suggerimenti e tutorial per migliorare le tue competenze.
+    - **Anteprime Esclusive**: Ottieni accesso anticipato agli annunci di nuovi prodotti e alle anteprime.
+    - **Sconti Speciali**: Approfitta di sconti esclusivi sui nostri prodotti più recenti.
+    - **Promozioni e Giveaway Festivi**: Partecipa a promozioni e concorsi durante le festività.
 
-    👉 Ready to explore and create with us? Click [|link_sf_facebook|] and join today!
+    👉 Sei pronto a esplorare e creare con noi? Clicca [|link_sf_facebook|] e unisciti oggi stesso!
 
 .. _test_grayscale:
 
-Test Grayscale Module
-==============================
+Test del Modulo in Scala di Grigi
+======================================
 
-PiCar-X includes a Grayscale module for implementing line-following, cliff detection, and other fun experiments. The Grayscale module has three detection sensors that will each report a value according to the shade of color detected by the sensor. For example, a sensor reading the shade of pure black will return a value of “0”.
+Il PiCar-X include un modulo in scala di grigi per implementare il seguimento delle linee, il rilevamento delle scogliere e altri esperimenti divertenti. Il modulo in scala di grigi ha tre sensori di rilevamento che segnalano ciascuno un valore in base alla tonalità del colore rilevata dal sensore. Ad esempio, un sensore che legge una tonalità di nero puro restituirà un valore di “0”.
 
-**TIPS**
+**CONSIGLI**
 
 .. image:: img/sp210512_115406.png
 
-Use the **Grayscale module** block to read the value of one of the sensors. In the example above, the “A0” sensor is the sensor on the far left of the PiCar-X. Use the drop-down arrow to change the sensor to “A1” (center sensor), or “A2” (far right sensor).
+Utilizza il blocco **Grayscale module** per leggere il valore di uno dei sensori. Nell'esempio sopra, il sensore “A0” è quello più a sinistra del PiCar-X. Utilizza la freccia a tendina per cambiare il sensore in “A1” (sensore centrale) o “A2” (sensore più a destra).
 
 .. image:: img/sp210512_120023.png
 
-The program is simplified with a **create list with** block. 
-A **List** is used in the same way as a single **Variable**, 
-but in this case a **List** is more efficient than a single **Variable** because the **Grayscale module** will be reporting more than one sensor value.
-The **create list with** block will create separate **Variables** for each sensor, and put them into a List.
+Il programma è semplificato con il blocco **create list with**. 
+Una **Lista** viene utilizzata nello stesso modo di una singola **Variabile**, 
+ma in questo caso una **Lista** è più efficiente di una singola **Variabile** perché il **modulo in scala di grigi** riporterà più di un valore del sensore.
+Il blocco **create list with** creerà variabili separate per ogni sensore e le inserirà in una Lista.
 
-**EXAMPLE**
+**ESEMPIO**
 
 .. note::
 
-    * You can write the program according to the following picture, please refer to the tutorial: :ref:`ezblock:create_project_latest`.
-    * Or find the code with the same name on the **Examples** page of the EzBlock Studio and click **Run** or **Edit** directly.
+    * Puoi scrivere il programma seguendo l'immagine qui sotto, fai riferimento al tutorial: :ref:`ezblock:create_project_latest`.
+    * Oppure trova il codice con lo stesso nome nella pagina **Esempi** di EzBlock Studio e clicca direttamente su **Esegui** o **Modifica**.
 
 .. image:: img/sp210512_120508.png

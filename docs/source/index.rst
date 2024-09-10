@@ -1,60 +1,63 @@
 .. note::
 
-    Hello, welcome to the SunFounder Raspberry Pi & Arduino & ESP32 Enthusiasts Community on Facebook! Dive deeper into Raspberry Pi, Arduino, and ESP32 with fellow enthusiasts.
+    Ciao, benvenuto nella Community di appassionati di Raspberry Pi & Arduino & ESP32 di SunFounder su Facebook! Esplora più a fondo Raspberry Pi, Arduino e ESP32 insieme ad altri appassionati.
 
-    **Why Join?**
+    **Perché unirti a noi?**
 
-    - **Expert Support**: Solve post-sale issues and technical challenges with help from our community and team.
-    - **Learn & Share**: Exchange tips and tutorials to enhance your skills.
-    - **Exclusive Previews**: Get early access to new product announcements and sneak peeks.
-    - **Special Discounts**: Enjoy exclusive discounts on our newest products.
-    - **Festive Promotions and Giveaways**: Take part in giveaways and holiday promotions.
+    - **Supporto Esperto**: Risolvi i problemi post-vendita e affronta le sfide tecniche con l'aiuto della nostra community e del nostro team.
+    - **Impara e Condividi**: Scambia consigli e tutorial per migliorare le tue competenze.
+    - **Anteprime Esclusive**: Ottieni accesso anticipato agli annunci di nuovi prodotti e anteprime riservate.
+    - **Sconti Speciali**: Approfitta di sconti esclusivi sui nostri prodotti più recenti.
+    - **Promozioni Festive e Omaggi**: Partecipa a concorsi e promozioni durante le festività.
 
-    👉 Ready to explore and create with us? Click [|link_sf_facebook|] and join today!
+    👉 Sei pronto a esplorare e creare con noi? Clicca [|link_sf_facebook|] e unisciti subito!
 
 SunFounder |link_PiCar_kit|
 ============================================
 
 * |link_PiCar-X_kit|
 
-Thanks for choosing our |link_PiCar_kit|.
+Grazie per aver scelto il nostro |link_PiCar_kit|.
 
 .. note::
-    This document is available in the following languages.
+    Questo documento è disponibile nelle seguenti lingue.
 
         * |link_german_tutorials|
         * |link_jp_tutorials|
         * |link_en_tutorials|
+        * |link_fr_tutorials|
+        * |link_es_tutorials|
+        * |link_it_tutorials|
     
-    Please click on the respective links to access the document in your preferred language.
+    Clicca sui link rispettivi per accedere al documento nella tua lingua preferita.
 
 
 .. image:: img/picar-x_v2.png
     :align: center
     :width: 500
 
-The PiCar-X is an AI-driven self-driving robot car for the Raspberry Pi platform, upon which the Raspberry Pi acts as the control center. 
-The PiCar-X's 2-axis camera module, ultrasonic module, and line tracking modules can provide the functions of color/face/traffic-signs detection, 
-automatic obstacle avoidance, automatic line tracking, etc.
+Il PiCar-X è un'auto robotica a guida autonoma basata su AI per la piattaforma Raspberry Pi, in cui il Raspberry Pi funge da centro di controllo. 
+Il modulo fotocamera a 2 assi, il modulo ultrasonico e i moduli di rilevamento della linea del PiCar-X consentono funzioni come il riconoscimento di colori/volti/segnali stradali, 
+l'evitamento automatico degli ostacoli, il tracciamento automatico della linea, ecc.
 
-PiCar-X has two programming languages: Blockly and Python. No matter what language you program in, you'll find detailed steps to teach you everything from configuring the Raspberry Pi to running the relevant example code.
+PiCar-X supporta due linguaggi di programmazione: Blockly e Python. Qualunque sia il linguaggio che preferisci, troverai passaggi dettagliati per insegnarti tutto, dalla configurazione del Raspberry Pi all'esecuzione del codice di esempio rilevante.
 
 * :ref:`play_python`
 
-    * This chapter is for those who enjoy programming in Python or want to learn the Python language.
-    * To get Picar-X working properly, you must install some libraries first.
-    * The Raspberry Pi configuration and samples code for the PiCar-X are provided in this chapter.
-    * An APP - SunFounder Controller is also provided to allow you to remotely control the PiCar-X on your mobile device.
+    * Questo capitolo è per chi ama programmare in Python o desidera imparare il linguaggio Python.
+    * Per far funzionare correttamente il PiCar-X, è necessario installare prima alcune librerie.
+    * La configurazione del Raspberry Pi e il codice di esempio per il PiCar-X sono forniti in questo capitolo.
+    * È disponibile anche un'APP - SunFounder Controller, che ti consente di controllare il PiCar-X da remoto sul tuo dispositivo mobile.
 
 
 * :ref:`play_ezblock`
 
-    * In this section, you will use a Blockly based APP, Ezblock Studio, which, like Scratch, allows you to drag and drop blocks to make Picar-X move.
-    * It is required to reinstall the SD card with the operating system we provide with pre-installed Ezblock environment before programming. It is recommended to use a new or unused TF card for this section.
-    * Ezblock Studio is available for nearly all types of devices, including Macs, PCs, and Androids.
-    * Ezblock Studio is a good choice if you are 6-12 years old, or don't have programming skills, or want to test Picar-X quickly.
+    * In questa sezione utilizzerai un'APP basata su Blockly, Ezblock Studio, che, come Scratch, ti permette di trascinare e rilasciare blocchi per far muovere il PiCar-X.
+    * È necessario reinstallare la scheda SD con il sistema operativo che forniamo, che include l'ambiente Ezblock preinstallato, prima di programmare. Si consiglia di utilizzare una scheda TF nuova o non utilizzata per questa sezione.
+    * Ezblock Studio è disponibile per quasi tutti i tipi di dispositivi, inclusi Mac, PC e Android.
+    * Ezblock Studio è una buona scelta se hai tra i 6 e i 12 anni, se non hai competenze di programmazione o se desideri testare rapidamente il PiCar-X.
 
-**Content**
+**Indice**
 
 .. toctree::
     :maxdepth: 3
@@ -70,9 +73,8 @@ PiCar-X has two programming languages: Blockly and Python. No matter what langua
     faq
     thank
 
-Copyright Notice
+Avviso sul Copyright
 --------------------------
 
-All contents including but not limited to texts, images, and code in this manual are owned by the SunFounder Company. You should only use it for personal study,investigation, enjoyment, or other non-commercial or nonprofit purposes, under therelated regulations and copyrights laws, without infringing the legal rights of the author and relevant right holders. For any individual or organization that uses these for commercial profit without permission, the Company reserves the right to take legal action.
-
+Tutti i contenuti, inclusi, ma non limitati a testi, immagini e codice, presenti in questo manuale sono di proprietà della SunFounder Company. È consentito utilizzarli esclusivamente per studio personale, ricerca, intrattenimento o altri scopi non commerciali o senza scopo di lucro, in conformità con le normative e le leggi sul copyright vigenti, senza violare i diritti legali dell'autore e dei titolari dei diritti rilevanti. Per qualsiasi individuo o organizzazione che utilizzi questi contenuti a scopo di lucro senza autorizzazione, la Società si riserva il diritto di intraprendere azioni legali.
 

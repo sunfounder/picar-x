@@ -1,32 +1,32 @@
 .. note::
 
-    Hello, welcome to the SunFounder Raspberry Pi & Arduino & ESP32 Enthusiasts Community on Facebook! Dive deeper into Raspberry Pi, Arduino, and ESP32 with fellow enthusiasts.
+    Ciao, benvenuto nella SunFounder Raspberry Pi & Arduino & ESP32 Enthusiasts Community su Facebook! Approfondisci le tue conoscenze su Raspberry Pi, Arduino e ESP32 insieme ad altri appassionati.
 
-    **Why Join?**
+    **Perché unirti a noi?**
 
-    - **Expert Support**: Solve post-sale issues and technical challenges with help from our community and team.
-    - **Learn & Share**: Exchange tips and tutorials to enhance your skills.
-    - **Exclusive Previews**: Get early access to new product announcements and sneak peeks.
-    - **Special Discounts**: Enjoy exclusive discounts on our newest products.
-    - **Festive Promotions and Giveaways**: Take part in giveaways and holiday promotions.
+    - **Supporto Esperto**: Risolvi problemi post-vendita e sfide tecniche con l'aiuto della nostra comunità e del nostro team.
+    - **Impara e Condividi**: Scambia suggerimenti e tutorial per migliorare le tue competenze.
+    - **Anteprime Esclusive**: Ottieni accesso anticipato agli annunci di nuovi prodotti e alle anteprime.
+    - **Sconti Speciali**: Approfitta di sconti esclusivi sui nostri prodotti più recenti.
+    - **Promozioni e Giveaway Festivi**: Partecipa a promozioni e concorsi durante le festività.
 
-    👉 Ready to explore and create with us? Click [|link_sf_facebook|] and join today!
+    👉 Sei pronto a esplorare e creare con noi? Clicca [|link_sf_facebook|] e unisciti oggi stesso!
 
 .. _play_ezblock:
 
-Play with Ezblock
+Gioca con EzBlock
 ===========================
 
 .. note::
 
-    If you are using a Raspberry Pi 5, you will not be able to use our graphical programming software, EzBlock, to program the PiCrawler.
+    Se stai utilizzando un Raspberry Pi 5, non potrai utilizzare il nostro software di programmazione grafica, EzBlock, per programmare il PiCrawler.
 
 
-For beginners and novices, EzBlock is a software development platform offered by SunFounder for Raspberry Pi. Ezbock offers two programming environments: a graphical environment and a Python environment.
+Per principianti e neofiti, EzBlock è una piattaforma di sviluppo software offerta da SunFounder per Raspberry Pi. EzBlock offre due ambienti di programmazione: uno grafico e uno in Python.
 
-It is available for almost all types of devices, including Mac, PC, and Android.
+È disponibile per quasi tutti i tipi di dispositivi, inclusi Mac, PC e Android.
 
-Here is a tutorial to help you complete EzBlock installation, download, and use.
+Ecco un tutorial per aiutarti a completare l'installazione, il download e l'uso di EzBlock.
 
 .. toctree::
   :maxdepth: 1
@@ -37,21 +37,21 @@ Here is a tutorial to help you complete EzBlock installation, download, and use.
 
 
 
-**Projects**
+**Progetti**
 
 
-This section begins with basic programming functions for the PiCar-X, and continues through to creating more advanced programs in Ezblock Studio. 
-Each tutorial contains TIPS that introduce new functions, allowing users to write the corresponding program. 
-There is also a complete reference code in the Example section that can be directly used. 
-We suggest attempting the programming without using the code in the Example sections, and enjoy the fun experience of overcoming the challenges!
+Questa sezione inizia con funzioni di programmazione di base per il PiCar-X e continua fino alla creazione di programmi più avanzati in EzBlock Studio. 
+Ogni tutorial contiene CONSIGLI che introducono nuove funzioni, permettendo agli utenti di scrivere il programma corrispondente. 
+C'è anche un codice di riferimento completo nella sezione Esempi, che può essere utilizzato direttamente. 
+Ti suggeriamo di provare a programmare senza utilizzare il codice nella sezione Esempi e di divertirti nell'affrontare le sfide!
 
-All of the Ezblock projects have been uploaded to Ezblock Studio’s Examples page. From the Examples page, users can run the programs directly, or edit the examples and save them into the users My Projects folder.
+Tutti i progetti EzBlock sono stati caricati nella pagina Esempi di EzBlock Studio. Dalla pagina Esempi, gli utenti possono eseguire i programmi direttamente, oppure modificarli e salvarli nella cartella I Miei Progetti.
 
-The Examples page allows users to choose between Block or Python language. The projects in this section only explain Block language, for an explanation of the Python code, please review this `file <https://github.com/sunfounder/picar-x/blob/v2.0/docs/(EN)%20picarmini.md>`_ to help you understand the Python code.
+La pagina Esempi consente agli utenti di scegliere tra il linguaggio a Blocchi o Python. I progetti in questa sezione spiegano solo il linguaggio a Blocchi, per una spiegazione del codice Python, consulta questo `file <https://github.com/sunfounder/picar-x/blob/v2.0/docs/(EN)%20picarmini.md>`_ per aiutarti a comprendere il codice Python.
 
 .. image:: img/examples23.png
 
-**Basic**
+**Base**
 
 .. toctree::
 
@@ -72,8 +72,3 @@ The Examples page allows users to choose between Block or Python language. The p
     ezblock_beware_pedestrians
     ezblock_traffic
     ezblock_orienteering
-
-
-
-
-

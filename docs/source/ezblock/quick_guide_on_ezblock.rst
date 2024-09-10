@@ -1,71 +1,68 @@
 .. note::
 
-    Hello, welcome to the SunFounder Raspberry Pi & Arduino & ESP32 Enthusiasts Community on Facebook! Dive deeper into Raspberry Pi, Arduino, and ESP32 with fellow enthusiasts.
+    Ciao, benvenuto nella SunFounder Raspberry Pi & Arduino & ESP32 Enthusiasts Community su Facebook! Approfondisci le tue conoscenze su Raspberry Pi, Arduino e ESP32 insieme ad altri appassionati.
 
-    **Why Join?**
+    **Perché unirti a noi?**
 
-    - **Expert Support**: Solve post-sale issues and technical challenges with help from our community and team.
-    - **Learn & Share**: Exchange tips and tutorials to enhance your skills.
-    - **Exclusive Previews**: Get early access to new product announcements and sneak peeks.
-    - **Special Discounts**: Enjoy exclusive discounts on our newest products.
-    - **Festive Promotions and Giveaways**: Take part in giveaways and holiday promotions.
+    - **Supporto Esperto**: Risolvi problemi post-vendita e sfide tecniche con l'aiuto della nostra comunità e del nostro team.
+    - **Impara e Condividi**: Scambia suggerimenti e tutorial per migliorare le tue competenze.
+    - **Anteprime Esclusive**: Ottieni accesso anticipato agli annunci di nuovi prodotti e alle anteprime.
+    - **Sconti Speciali**: Approfitta di sconti esclusivi sui nostri prodotti più recenti.
+    - **Promozioni e Giveaway Festivi**: Partecipa a promozioni e concorsi durante le festività.
 
-    👉 Ready to explore and create with us? Click [|link_sf_facebook|] and join today!
+    👉 Sei pronto a esplorare e creare con noi? Clicca [|link_sf_facebook|] e unisciti oggi stesso!
 
 .. _ezb_servo_adjust:
 
-Quick Guide on EzBlock
+Guida Rapida su EzBlock
 ===========================
 
 .. note::
 
-    If you are using a Raspberry Pi 5, you will not be able to use our graphical programming software, EzBlock, to program the PiCrawler.
+    Se stai utilizzando un Raspberry Pi 5, non potrai usare il nostro software di programmazione grafica, EzBlock, per programmare il PiCrawler.
 
+L'intervallo dell'angolo del servo è -90~90 gradi, ma l'angolo impostato in fabbrica è casuale, potrebbe essere 0°, potrebbe essere 45°; se lo assembliamo con questo angolo direttamente, si verificherà uno stato caotico dopo che il robot esegue il codice, o peggio, il servo potrebbe bloccarsi e bruciarsi.
 
-The angle range of the servo is -90~90, but the angle set at the factory is random, maybe 0°, maybe 45°; if we assemble it with such an angle directly, it will lead to a chaotic state after the robot runs the code, or worse, it will cause the servo to block and burn out.
+Quindi, qui dobbiamo impostare tutti gli angoli del servo a 0° e poi montarli, in modo che l'angolo del servo sia al centro, indipendentemente dalla direzione di rotazione.
 
-So here we need to set all the servo angles to 0° and then install them, so that the servo angle is in the middle, no matter which direction to turn.
-
-#. Firstly, :ref:`ezblock:install_ezblock_os_latest` (EzBlock's own tutorials) onto a Micro SD card, once the installation is complete, insert it into the Raspberry Pi.
+#. Prima di tutto, :ref:`ezblock:install_ezblock_os_latest` (i tutorial di EzBlock) su una scheda Micro SD, una volta completata l'installazione, inseriscila nel Raspberry Pi.
 
     .. note::
-        After the installation is complete, please return to this page.
+        Dopo aver completato l'installazione, torna a questa pagina.
 
     .. image:: img/insert_sd_card.png
         :width: 500
         :align: center
 
-#. To ensure that the servo has been properly set to 0°, first insert the servo arm into the servo shaft and then gently rotate the rocker arm to a different angle. This servo arm is just to allow you to clearly see that the servo is rotating.
+#. Per assicurarti che il servo sia stato correttamente impostato su 0°, inserisci prima il braccio del servo nell'asse del servo e poi ruota delicatamente il braccio oscillante a un angolo diverso. Questo braccio del servo serve solo per permetterti di vedere chiaramente che il servo ruota.
 
     .. image:: img/servo_arm.png
 
-#. Follow the instructions on the assembly foldout, insert the battery cable and turn the power switch to the ON. Then plug in a powered USB-C cable to activate the battery. Wait for 1-2 minutes, there will be a sound to indicate that the Raspberry Pi boots successfully.
+#. Segui le istruzioni sull'opuscolo di montaggio, inserisci il cavo della batteria e accendi l'interruttore di alimentazione. Collega poi un cavo USB-C alimentato per attivare la batteria. Aspetta 1-2 minuti, ci sarà un suono che indicherà l'avvio corretto del Raspberry Pi.
 
     .. image:: img/Z_BTR.JPG
         :width: 800
         :align: center
 
-#. Next, plug the servo cable into the P11 port as follows.
+#. Successivamente, collega il cavo del servo alla porta P11 come mostrato.
 
     .. image:: img/Z_P11.JPG
 
-#. Press and hold the **USR** key, then press the **RST** key to execute the servo zeroing script within the system. When you see the servo arm rotate to a position(This is the 0° position, which is a random location and may not be vertical or parallel.), it indicates that the program has run.
+#. Tieni premuto il tasto **USR**, quindi premi il tasto **RST** per eseguire lo script di azzeramento del servo all'interno del sistema. Quando vedi che il braccio del servo ruota in una posizione (Questa è la posizione 0°, che è casuale e potrebbe non essere verticale o parallela.), significa che il programma è stato eseguito.
 
     .. note::
 
-        This step only needs to be done once; afterward, simply insert other servo wires, and they will automatically zero.
+        Questo passaggio deve essere eseguito solo una volta; successivamente, basta inserire gli altri cavi del servo, e si azzereranno automaticamente.
 
     .. image:: img/Z_P11_BT.png
         :width: 400
         :align: center
     
-#. Now, remove the servo arm, ensuring the servo wire remains connected, and do not turn off the power. Then continue the assembly following the paper assembly instructions.
+#. Ora, rimuovi il braccio del servo, assicurandoti che il cavo del servo rimanga collegato, e non spegnere l'alimentazione. Quindi continua il montaggio seguendo le istruzioni cartacee.
 
 .. note::
 
-    * Do not unplug this servo cable before fastening this servo with the servo screw, you can unplug it after fastening.
-    * Do not turn the servo while it is powered on to avoid damage; if the servo shaft is inserted at the wrong angle, pull out the servo and reinsert it.
-    * Before assembling each servo, you need to plug the servo cable into P11 and turn on the power to set its angle to 0°.
-    * This zeroing function will be disabled if you download a program to the robot later with the EzBlock APP.
-
-
+    * Non scollegare questo cavo del servo prima di fissarlo con la vite del servo; puoi scollegarlo dopo averlo fissato.
+    * Non ruotare il servo mentre è acceso per evitare danni; se l'asse del servo è inserito con l'angolazione sbagliata, estrai il servo e reinseriscilo.
+    * Prima di montare ogni servo, è necessario collegare il cavo del servo alla porta P11 e accendere l'alimentazione per impostare il suo angolo su 0°.
+    * Questa funzione di azzeramento sarà disabilitata se scarichi un programma sul robot successivamente tramite l'app EzBlock.

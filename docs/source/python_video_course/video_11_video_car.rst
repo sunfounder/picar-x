@@ -1,30 +1,30 @@
 .. note::
 
-    Hello, welcome to the SunFounder Raspberry Pi & Arduino & ESP32 Enthusiasts Community on Facebook! Dive deeper into Raspberry Pi, Arduino, and ESP32 with fellow enthusiasts.
+    Ciao, benvenuto nella Community di appassionati di Raspberry Pi & Arduino & ESP32 di SunFounder su Facebook! Esplora più a fondo Raspberry Pi, Arduino e ESP32 insieme ad altri appassionati.
 
-    **Why Join?**
+    **Perché unirti a noi?**
 
-    - **Expert Support**: Solve post-sale issues and technical challenges with help from our community and team.
-    - **Learn & Share**: Exchange tips and tutorials to enhance your skills.
-    - **Exclusive Previews**: Get early access to new product announcements and sneak peeks.
-    - **Special Discounts**: Enjoy exclusive discounts on our newest products.
-    - **Festive Promotions and Giveaways**: Take part in giveaways and holiday promotions.
+    - **Supporto Esperto**: Risolvi i problemi post-vendita e affronta le sfide tecniche con l'aiuto della nostra community e del nostro team.
+    - **Impara e Condividi**: Scambia consigli e tutorial per migliorare le tue competenze.
+    - **Anteprime Esclusive**: Ottieni accesso anticipato agli annunci di nuovi prodotti e anteprime riservate.
+    - **Sconti Speciali**: Approfitta di sconti esclusivi sui nostri prodotti più recenti.
+    - **Promozioni Festive e Omaggi**: Partecipa a concorsi e promozioni durante le festività.
 
-    👉 Ready to explore and create with us? Click [|link_sf_facebook|] and join today!
+    👉 Sei pronto a esplorare e creare con noi? Clicca [|link_sf_facebook|] e unisciti subito!
 
-Video 11: PiCar-X as Video Car
+Video 11: PiCar-X come Video Car
 ==================================
 
-This tutorial teaches using PiCar-X as a video car with camera control:
+Questo tutorial insegna come utilizzare il PiCar-X come una video car con il controllo della telecamera:
 
-* **Control Mechanics**: Introduces keyboard controls for movement - forward, backward, left, right, and stop.
-* **Video Car Features**: Focuses on using PiCar-X for driving, adjusting speed, turning, and taking pictures.
-* **Python Code Overview**: Briefly explains the Python code for controlling the car and camera.
-* **Remote Desktop and Program Setup**: Shows setting up the car's program via remote desktop and running it at startup.
-* **Live Demonstration**: Includes demonstrations of controlling the PiCar-X with keyboard inputs and using its camera.
-* **Photo Capture and Viewing**: Teaches capturing and viewing photos taken by the PiCar-X.
+* **Meccanica di Controllo**: Introduce i controlli da tastiera per il movimento - avanti, indietro, sinistra, destra e stop.
+* **Funzionalità Video Car**: Si concentra sull'uso del PiCar-X per la guida, la regolazione della velocità, la sterzata e lo scatto di foto.
+* **Panoramica del Codice Python**: Spiega brevemente il codice Python per controllare l'auto e la telecamera.
+* **Desktop Remoto e Configurazione del Programma**: Mostra come configurare il programma dell'auto tramite desktop remoto e avviarlo all'accensione.
+* **Dimostrazione dal Vivo**: Include dimostrazioni di controllo del PiCar-X tramite input da tastiera e l'uso della sua telecamera.
+* **Cattura e Visualizzazione Foto**: Insegna come catturare e visualizzare le foto scattate dal PiCar-X.
 
-The lesson provides a concise overview of operating the PiCar-X as a video car, emphasizing hands-on control and camera usage.
+La lezione fornisce una panoramica concisa su come operare il PiCar-X come video car, enfatizzando il controllo manuale e l'uso della telecamera.
 
 **Video**
 
@@ -32,6 +32,6 @@ The lesson provides a concise overview of operating the PiCar-X as a video car, 
 
     <iframe width="700" height="500" src="https://www.youtube.com/embed/oA9m3dQ-f-E?si=V5lKo0lqqhxtzkOa" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
-**Related On-line Tutorials**
+**Tutorial Online Correlati**
 
 * :ref:`video_car`

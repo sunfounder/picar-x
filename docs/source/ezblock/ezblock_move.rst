@@ -1,59 +1,57 @@
 .. note::
 
-    Hello, welcome to the SunFounder Raspberry Pi & Arduino & ESP32 Enthusiasts Community on Facebook! Dive deeper into Raspberry Pi, Arduino, and ESP32 with fellow enthusiasts.
+    Ciao, benvenuto nella SunFounder Raspberry Pi & Arduino & ESP32 Enthusiasts Community su Facebook! Approfondisci le tue conoscenze su Raspberry Pi, Arduino e ESP32 insieme ad altri appassionati.
 
-    **Why Join?**
+    **Perché unirti a noi?**
 
-    - **Expert Support**: Solve post-sale issues and technical challenges with help from our community and team.
-    - **Learn & Share**: Exchange tips and tutorials to enhance your skills.
-    - **Exclusive Previews**: Get early access to new product announcements and sneak peeks.
-    - **Special Discounts**: Enjoy exclusive discounts on our newest products.
-    - **Festive Promotions and Giveaways**: Take part in giveaways and holiday promotions.
+    - **Supporto Esperto**: Risolvi problemi post-vendita e sfide tecniche con l'aiuto della nostra comunità e del nostro team.
+    - **Impara e Condividi**: Scambia suggerimenti e tutorial per migliorare le tue competenze.
+    - **Anteprime Esclusive**: Ottieni accesso anticipato agli annunci di nuovi prodotti e alle anteprime.
+    - **Sconti Speciali**: Approfitta di sconti esclusivi sui nostri prodotti più recenti.
+    - **Promozioni e Giveaway Festivi**: Partecipa a promozioni e concorsi durante le festività.
 
-    👉 Ready to explore and create with us? Click [|link_sf_facebook|] and join today!
+    👉 Sei pronto a esplorare e creare con noi? Clicca [|link_sf_facebook|] e unisciti oggi stesso!
 
-Move
+Movimento
 ============
 
-This first project teaches how to program movement actions for the PiCar-X. In this project, the program will tell the PiCar-X to execute five actions in order: “forward”, “backward”, “turn left”, “turn right”, and “stop”.
+Questo primo progetto ti insegna a programmare le azioni di movimento per il PiCar-X. In questo progetto, il programma dirà al PiCar-X di eseguire cinque azioni in sequenza: “avanti”, “indietro”, “gira a sinistra”, “gira a destra” e “stop”.
 
-To learn the basic usage of Ezblock Studio, please read through the following two sections:
+Per imparare l'uso di base di Ezblock Studio, leggi le seguenti due sezioni:
 
 * :ref:`ezblock:create_project_latest`
 
 
 .. image:: img/move.png
 
-**TIPS**
+**CONSIGLI**
 
 .. image:: img/sp210512_113300.png
 
-This block will make the PiCar-X move forward at a speed based on a percentage of available power. In the example below “50” is 50% of power, or half-speed.
+Questo blocco farà muovere il PiCar-X in avanti a una velocità basata su una percentuale della potenza disponibile. Nell'esempio seguente, “50” indica il 50% della potenza, ovvero a metà velocità.
 
 .. image:: img/sp210512_113418.png
 
-This block will make the PiCar-X move backward at a speed based on a percentage of available power.
+Questo blocco farà muovere il PiCar-X indietro a una velocità basata su una percentuale della potenza disponibile.
 
 .. image:: img/sp210512_113514.png
 
-This block adjusts the orientation of the front wheels. The range is “-45” to ”45”. In the example below, “-30” means the wheels will turn 30° to the left.
+Questo blocco regola l'orientamento delle ruote anteriori. L'intervallo è da “-45” a “45”. Nell'esempio seguente, “-30” significa che le ruote si gireranno di 30° a sinistra.
 
 .. image:: img/BLK_Basic_delay.png
     :width: 200
 
-This block will cause a timed break between commands, based on milliseconds. In the example below, the PiCar-X will wait for 1 second (1000 milliseconds) before executing the next command.
+Questo blocco causerà una pausa temporizzata tra i comandi, basata sui millisecondi. Nell'esempio seguente, il PiCar-X aspetterà 1 secondo (1000 millisecondi) prima di eseguire il comando successivo.
 
 .. image:: img/sp210512_113550.png
 
-This block will bring the PiCar-X to a complete stop.
+Questo blocco fermerà completamente il PiCar-X.
 
-**EXAMPLE**
+**ESEMPIO**
 
 .. note::
 
-    * You can write the program according to the following picture, please refer to the tutorial: :ref:`ezblock:create_project_latest`.
-    * Or find the code with the same name on the **Examples** page of the EzBlock Studio and click **Run** or **Edit** directly.
-
+    * Puoi scrivere il programma seguendo l'immagine qui sotto, fai riferimento al tutorial: :ref:`ezblock:create_project_latest`.
+    * Oppure trova il codice con lo stesso nome nella pagina **Esempi** di EzBlock Studio e clicca direttamente su **Esegui** o **Modifica**.
 
 .. image:: img/sp210512_113827.png
-

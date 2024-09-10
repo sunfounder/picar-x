@@ -1,90 +1,92 @@
 .. note::
 
-    Hello, welcome to the SunFounder Raspberry Pi & Arduino & ESP32 Enthusiasts Community on Facebook! Dive deeper into Raspberry Pi, Arduino, and ESP32 with fellow enthusiasts.
+    Ciao, benvenuto nella Community di appassionati di Raspberry Pi & Arduino & ESP32 di SunFounder su Facebook! Esplora più a fondo Raspberry Pi, Arduino e ESP32 insieme ad altri appassionati.
 
-    **Why Join?**
+    **Perché unirti a noi?**
 
-    - **Expert Support**: Solve post-sale issues and technical challenges with help from our community and team.
-    - **Learn & Share**: Exchange tips and tutorials to enhance your skills.
-    - **Exclusive Previews**: Get early access to new product announcements and sneak peeks.
-    - **Special Discounts**: Enjoy exclusive discounts on our newest products.
-    - **Festive Promotions and Giveaways**: Take part in giveaways and holiday promotions.
+    - **Supporto Esperto**: Risolvi i problemi post-vendita e affronta le sfide tecniche con l'aiuto della nostra community e del nostro team.
+    - **Impara e Condividi**: Scambia consigli e tutorial per migliorare le tue competenze.
+    - **Anteprime Esclusive**: Ottieni accesso anticipato agli annunci di nuovi prodotti e anteprime riservate.
+    - **Sconti Speciali**: Approfitta di sconti esclusivi sui nostri prodotti più recenti.
+    - **Promozioni Festive e Omaggi**: Partecipa a concorsi e promozioni durante le festività.
 
-    👉 Ready to explore and create with us? Click [|link_sf_facebook|] and join today!
+    👉 Sei pronto a esplorare e creare con noi? Clicca [|link_sf_facebook|] e unisciti subito!
 
-Introduction 
+Introduzione
 ====================
 
 
-The History of Self-driving Cars
+La Storia delle Auto a Guida Autonoma
 ----------------------------------------
 
-Experiments have been conducted on self-driving cars since at least the 1920’s. 
-Promising trials took place in the 1950’s, and work has proceeded forward ever since. 
-The first self-sufficient and truly autonomous cars appeared in the 1980’s, 
-with Carnegie Mellon University’s Navlab and ALV projects in 1984, 
-and Mercedes-Benz and Bundeswehr University Munich’s Eureka Prometheus Project in 1987. Since the late 1980’s, 
-numerous research organizations and major automakers have developed working autonomous vehicles, 
-including: Mercedes-Benz, General Motors, Continental Automotive Systems, Autoliv Inc., Bosch, Nissan, Toyota, 
-Audi, Volvo, Vislab from University of Parma, Oxford University, and Google. 
-In July 2013, Vislab demonstrated BRAiVE, a vehicle that moved autonomously on a mixed traffic route open to the public. 
-As of 2019, twenty-nine U.S. states have already passed laws permitting autonomous cars on public roadways.
+Gli esperimenti sulle auto a guida autonoma risalgono almeno agli anni '20 
+del Novecento. Prove promettenti si sono svolte negli anni '50, e da allora 
+il lavoro è proseguito. Le prime auto completamente autonome e autosufficienti 
+sono apparse negli anni '80, con i progetti Navlab e ALV della Carnegie Mellon 
+University nel 1984, e il progetto Eureka Prometheus di Mercedes-Benz e Bundeswehr 
+University Munich nel 1987. Dalla fine degli anni '80, numerose organizzazioni 
+di ricerca e grandi case automobilistiche hanno sviluppato veicoli autonomi 
+funzionanti, tra cui: Mercedes-Benz, General Motors, Continental Automotive Systems, 
+Autoliv Inc., Bosch, Nissan, Toyota, Audi, Volvo, Vislab dell'Università di Parma, 
+l'Università di Oxford e Google. Nel luglio 2013, Vislab ha dimostrato BRAiVE, un 
+veicolo che si muove autonomamente su una rotta a traffico misto aperta al pubblico. 
+A partire dal 2019, ventinove stati americani avevano già approvato leggi che 
+consentono alle auto autonome di circolare su strade pubbliche.
 
-Some UNECE members and EU members, including the UK, 
-have enacted rules and regulations related to automated and fully automated cars. 
-In Europe, cities in Belgium, France, Italy, and the UK have plans in place to operate transport systems for driverless cars, 
-and Germany, the Netherlands, and Spain have already allowed the testing of robotic cars in public traffic. 
-In 2020, the UK, the EU, and Japan are already on track to regulate automated cars.
+Alcuni membri dell'UNECE e dell'UE, inclusi il Regno Unito, hanno emanato regolamenti 
+relativi alle auto automatizzate e completamente automatizzate. In Europa, città in 
+Belgio, Francia, Italia e Regno Unito hanno in programma di implementare sistemi di 
+trasporto per auto senza conducente, e Germania, Paesi Bassi e Spagna hanno già 
+consentito il collaudo di auto robotiche nel traffico pubblico. Nel 2020, Regno Unito, 
+UE e Giappone erano già sulla buona strada per regolamentare le auto automatizzate.
 
-* Reference: `History of self-driving cars - Wikipedia <https://en.wikipedia.org/wiki/History_of_self-driving_cars>`_
+* Riferimento: `History of self-driving cars - Wikipedia <https://en.wikipedia.org/wiki/History_of_self-driving_cars>`_
 
+Oggi, le auto a guida autonoma sono la prossima rivoluzione tecnologica in arrivo. Alcuni esperti prevedono che entro il 2025 le auto di Livello 4 saranno probabilmente sul mercato. Le auto di Livello 4 consentiranno ai conducenti di dedicarsi completamente ad altro, eliminando la necessità di prestare attenzione alle condizioni del traffico, a condizione che il sistema funzioni correttamente.
 
-Today, self-driving cars are the closest technological revolution at hand. Some experts predict that by 2025, Level 4 cars are likely to enter the market. The Level 4 cars will allow drivers to divert their attention to something else entirely, eliminating the need to pay attention to traffic conditions as long as the system is functioning properly.
+Riferimento Livello 4:
 
-Level 4 reference:
-
-* `SAE Levels of Driving Automation™  <https://www.sae.org/blog/sae-j3016-update>`_
+* `SAE Levels of Driving Automation™ <https://www.sae.org/blog/sae-j3016-update>`_
 * `ABI Research Forecasts 8 Million Vehicles to Ship with SAE Level 3, 4 and 5 Autonomous Technology in 2025 <https://www.abiresearch.com/press/abi-research-forecasts-8-million-vehicles-ship-sae-level-3-4-and-5-autonomous-technology-2025/>`_
 
 .. image:: img/self_driving_car.jpeg
 
-Recent rapid advances in software (Artificial Intelligence, Machine Learning), hardware (GPUs, FPGAs, accelerometers, etc.), and cloud computing are driving this technological revolution forward.
+I recenti rapidi progressi nei software (Intelligenza Artificiale, Machine Learning), hardware (GPU, FPGA, accelerometri, ecc.) e nel cloud computing stanno spingendo avanti questa rivoluzione tecnologica.
 
-* In October 2010, a driverless truck designed by the Italian technology company **Vislab** took three months to `travel from Italy to China <http://edition.cnn.com/2010/TECH/innovation/10/27/driverless.car/>`_, with a total distance of 8, 077 miles.
-* In April 2015, a car designed by **Delphi Automotive** traveled from `San Francisco to New York <https://money.cnn.com/2015/04/03/autos/delphi-driverless-car-cross-country- trip/>`_ , traversing 3,400 miles, completing 99 percent of that distance under computer control. 
-* In December 2018, **Alphabet**'s **Waymo** launched a `level 4 self-driving taxi service in Arizona <https://www.reuters.com/article/us-waymo-selfdriving-focus/waymo-unveils-self- driving-taxi-service-in-arizona-for-paying-customers-idUSKBN1O41M2>`_ , where they had already been testing driverless cars since 2008. With no one in the driver's seat, the vehicles operated for more than a year and traveled over 10 million miles.
-* In October 2020, **Baidu** fully opened its `Apollo Robotaxi self-driving cab service <http://autonews.gasgoo.com/icv/70017615.html>`_ in Beijing. The driving routes cover local residential, commercial, leisure, and industrial parks areas, and offer a fully autonomous driving system.
+* Nell'ottobre 2010, un camion senza conducente progettato dalla società tecnologica italiana **Vislab** ha impiegato tre mesi per `travel from Italy to China <http://edition.cnn.com/2010/TECH/innovation/10/27/driverless.car/>`_, coprendo una distanza totale di 8.077 miglia.
+* Nell'aprile 2015, un'auto progettata da **Delphi Automotive** ha viaggiato da `San Francisco a New York <https://money.cnn.com/2015/04/03/autos/delphi-driverless-car-cross-country-trip/>`_, percorrendo 3.400 miglia, completando il 99% di quella distanza sotto controllo del computer.
+* Nel dicembre 2018, **Waymo** di **Alphabet** ha lanciato un `level 4 self-driving taxi service in Arizona <https://www.reuters.com/article/us-waymo-selfdriving-focus/waymo-unveils-self-driving-taxi-service-in-arizona-for-paying-customers-idUSKBN1O41M2>`_, dove testavano già auto senza conducente dal 2008. Con nessuno al volante, i veicoli hanno operato per più di un anno percorrendo oltre 10 milioni di miglia.
+* Nell'ottobre 2020, **Baidu** ha aperto completamente il suo `Apollo Robotaxi self-driving cab service <http://autonews.gasgoo.com/icv/70017615.html>`_, coprendo percorsi che attraversano aree residenziali, commerciali, di svago e parchi industriali locali, offrendo un sistema di guida completamente autonoma.
 
-However, despite the massive amounts of data collected every day, including training data from real driving records and simulated scenarios, the complexity of AI models for self-driving cars has not been fully met.
+Tuttavia, nonostante l'enorme quantità di dati raccolti ogni giorno, compresi i dati di addestramento da registrazioni di guida reali e scenari simulati, la complessità dei modelli di AI per le auto a guida autonoma non è stata ancora pienamente affrontata.
 
-According to `RAND's report <https://www.rand.org/pubs/research_reports/RR1478.html>`_ , reaching the appropriate level of autonomous learning requires training data from hundreds of millions, or even hundreds of billions of miles to establish a level of reliability.
+Secondo il `RAND's report <https://www.rand.org/pubs/research_reports/RR1478.html>`_, per raggiungere un livello adeguato di apprendimento autonomo sono necessari dati di addestramento provenienti da centinaia di milioni, o addirittura centinaia di miliardi di miglia, per stabilire un livello di affidabilità.
 
-So, while the future of self-driving cars is promising and exciting, there are still many more years of development to go before the technology has matured enough to become fully accessible to the self-driving car market.
+Quindi, sebbene il futuro delle auto a guida autonoma sia promettente e affascinante, ci vorranno ancora molti anni di sviluppo prima che la tecnologia sia abbastanza matura per diventare completamente accessibile al mercato delle auto a guida autonoma.
 
-The proven way to allow an emerging technology to quickly mature is to make it easily accessible to everyone by minimizing the market-entry requirements. 
-This is SunFounders motivation for launching PiCar-X.
+Il modo comprovato per consentire a una tecnologia emergente di maturare rapidamente è renderla facilmente accessibile a tutti, riducendo al minimo i requisiti di ingresso sul mercato. 
+Questo è il motivo per cui SunFounder ha lanciato PiCar-X.
 
-SunFounders goal is to help beginners, novices, and those who simply just want to learn about autonomous driving, to understand the development process, the technology, and the latest innovations in self-driving vehicles.
+L'obiettivo di SunFounder è aiutare principianti, neofiti e chiunque desideri semplicemente imparare a conoscere la guida autonoma, a comprendere il processo di sviluppo, la tecnologia e le ultime innovazioni nei veicoli a guida autonoma.
 
 
-About PiCar-X
--------------------
+Informazioni su PiCar-X
+-------------------------------
 
 .. .. image:: img/picar-x.jpg
 
-The PiCar-X is an AI-controlled self-driving robot car for the Raspberry Pi platform, upon which the Raspberry Pi acts as the control center. The PiCar-X’s 2-axis camera module, ultrasonic module, and line tracking modules can provide the functions of color/face/traffic signs detection, automatic obstacle avoidance, automatic line tracking, etc.
+Il PiCar-X è un'auto robotica a guida autonoma controllata da AI per la piattaforma Raspberry Pi, in cui il Raspberry Pi funge da centro di controllo. Il modulo fotocamera a 2 assi, il modulo ultrasonico e i moduli di rilevamento della linea del PiCar-X consentono funzioni come il riconoscimento di colori/volti/segnali stradali, l'evitamento automatico degli ostacoli, il tracciamento automatico della linea, ecc.
 
-With the SunFounder-designed Robot HAT board, the PiCar-X integrates left/right driving motors, servo motors for steering and the camera’s pan/tilt functions, and pre-sets the Robot HAT’s ADC, PWM, and Digital I2C pins to allow for extensions to the standard functionality of the Raspberry Pi. Both a speaker and a bluetooth chip have been engineered into the Robot HAT for remote control of Text-to-Speech, sound effects, or even background music functionality.
+Con la scheda Robot HAT progettata da SunFounder, il PiCar-X integra motori di guida sinistra/destra, servomotori per lo sterzo e le funzioni di pan/tilt della fotocamera, e preimposta i pin ADC, PWM e Digital I2C del Robot HAT per consentire estensioni alle funzionalità standard del Raspberry Pi. Sono stati progettati anche un altoparlante e un chip bluetooth nel Robot HAT per il controllo remoto della sintesi vocale, degli effetti sonori o persino della funzionalità di musica di sottofondo.
 
-All of the PiCar-X functions, including GPIO control, computer vision, and deep learning, are implemented through the open sourced Python programming language, OpenCV’s Computer Vision Library software, and Google’s TensorFlow for deep learning frameworks. Other software has been included to optimize the PiCar-X capabilities, allowing the user a near-limitless learning environment.
+Tutte le funzioni del PiCar-X, inclusi il controllo GPIO, la visione artificiale e il deep learning, vengono implementate tramite il linguaggio di programmazione Python open source, la libreria OpenCV per la visione artificiale e TensorFlow di Google per i framework di deep learning. Altri software sono stati inclusi per ottimizzare le capacità del PiCar-X, offrendo all'utente un ambiente di apprendimento praticamente illimitato.
 
-
-Deep Learning and Neural Networks
+Deep Learning e Reti Neurali
 -------------------------------------------------
-To learn more about deep learning and Neural Networks, SunFounder recommends the following resources:
+Per saperne di più su Deep Learning e Reti Neurali, SunFounder consiglia le seguenti risorse:
 
-`Machine Learning - Andrew Ng <https://www.coursera.org/learn/machine-learning>`_ : This course provides a broad introduction to machine learning, datamining, and statistical pattern recognition. 
+`Machine Learning - Andrew Ng <https://www.coursera.org/learn/machine-learning>`_ : Questo corso fornisce un'ampia introduzione al machine learning, al datamining e al riconoscimento statistico dei modelli.
 
-`Neural Networks and Deep Learning <http://neuralnetworksanddeeplearning.com/>`_ : This E-book covers both Neural Networks, a biologically-inspired programming paradigm that enables a computer to learn from observational data, and Deep learning, a powerful set of techniques for machine learning in neural networks.
+`Neural Networks and Deep Learning <http://neuralnetworksanddeeplearning.com/>`_ : Questo E-book copre sia le reti neurali, un paradigma di programmazione ispirato biologicamente che consente a un computer di apprendere dai dati osservativi, sia il deep learning, un potente insieme di tecniche per l'apprendimento automatico nelle reti neurali.
 
-`Rethinking the Inception Architecture for Computer Vision <https://arxiv.org/abs/1512.00567>`_ : This high-level white-paper explores the methods users can scale up networks by utilizing added computations as efficiently as possible through factorized convolutions and aggressive regularization.
+`Rethinking the Inception Architecture for Computer Vision <https://arxiv.org/abs/1512.00567>`_ : Questo white-paper di alto livello esplora i metodi per scalare le reti utilizzando computazioni aggiuntive nel modo più efficiente possibile, attraverso convoluzioni fattorizzate e regolarizzazione aggressiva.

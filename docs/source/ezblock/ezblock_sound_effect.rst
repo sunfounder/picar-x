@@ -1,50 +1,49 @@
 .. note::
 
-    Hello, welcome to the SunFounder Raspberry Pi & Arduino & ESP32 Enthusiasts Community on Facebook! Dive deeper into Raspberry Pi, Arduino, and ESP32 with fellow enthusiasts.
+    Ciao, benvenuto nella SunFounder Raspberry Pi & Arduino & ESP32 Enthusiasts Community su Facebook! Approfondisci le tue conoscenze su Raspberry Pi, Arduino e ESP32 insieme ad altri appassionati.
 
-    **Why Join?**
+    **Perché unirti a noi?**
 
-    - **Expert Support**: Solve post-sale issues and technical challenges with help from our community and team.
-    - **Learn & Share**: Exchange tips and tutorials to enhance your skills.
-    - **Exclusive Previews**: Get early access to new product announcements and sneak peeks.
-    - **Special Discounts**: Enjoy exclusive discounts on our newest products.
-    - **Festive Promotions and Giveaways**: Take part in giveaways and holiday promotions.
+    - **Supporto Esperto**: Risolvi problemi post-vendita e sfide tecniche con l'aiuto della nostra comunità e del nostro team.
+    - **Impara e Condividi**: Scambia suggerimenti e tutorial per migliorare le tue competenze.
+    - **Anteprime Esclusive**: Ottieni accesso anticipato agli annunci di nuovi prodotti e alle anteprime.
+    - **Sconti Speciali**: Approfitta di sconti esclusivi sui nostri prodotti più recenti.
+    - **Promozioni e Giveaway Festivi**: Partecipa a promozioni e concorsi durante le festività.
 
-    👉 Ready to explore and create with us? Click [|link_sf_facebook|] and join today!
+    👉 Sei pronto a esplorare e creare con noi? Clicca [|link_sf_facebook|] e unisciti oggi stesso!
 
-Sound Effect
+Effetti Sonori
 ===============================
 
-PiCar-X has a built-in speaker that can be used for audio experiments. Ezblock allows users to enter text to make the PiCar-X speak, or make specific sound effects. In this tutorial, the PiCar-X will make the sound of a gun firing after a 3-second countdown, using a do/while function.
+Il PiCar-X ha un altoparlante integrato che può essere utilizzato per esperimenti audio. Ezblock permette agli utenti di inserire testo per far parlare il PiCar-X o di riprodurre effetti sonori specifici. In questo tutorial, il PiCar-X riprodurrà il suono di uno sparo dopo un conto alla rovescia di 3 secondi, utilizzando una funzione do/while.
 
-**TIPS**
+**CONSIGLI**
 
 .. image:: img/sp210512_144106.png
 
-Use the **say** block with a **text** block to write a sentence for the PiCar-X to say. The **say** block can be used with text or numbers.
+Usa il blocco **say** con un blocco **text** per scrivere una frase che il PiCar-X pronuncerà. Il blocco **say** può essere utilizzato con testo o numeri.
 
 .. image:: img/sp210512_144150.png
 
-The **number** block.
+Il blocco **number**.
 
 .. image:: img/sp210512_144216.png
 
-Using the **repeat** block will repeatedly execute the same statement, which reduces the size of the code.
+Utilizzando il blocco **repeat**, la stessa istruzione verrà eseguita ripetutamente, riducendo così la dimensione del codice.
 
 .. image:: img/sp210512_144418.png
 
-The **mathematical operation** block can perform typical mathematical functions, such as ”+”, “-”, “x”, and “÷ “.
+Il blocco delle **operazioni matematiche** può eseguire funzioni matematiche tipiche, come ”+”, “-”, “x” e “÷“.
 
 .. image:: img/sp210512_144530.png
 
-The play **sound effects - with volume - %** block has preset sound effects, such as a siren sound, a gun sound, and others. The range of the volume can be set from 0 to 100.
+Il blocco **play sound effects - with volume - %** ha effetti sonori preimpostati, come il suono di una sirena, di una pistola e altri. Il volume può essere impostato da 0 a 100.
 
-**EXAMPLE**
+**ESEMPIO**
 
 .. note::
 
-    * You can write the program according to the following picture, please refer to the tutorial: :ref:`ezblock:create_project_latest`.
-    * Or find the code with the same name on the **Examples** page of the EzBlock Studio and click **Run** or **Edit** directly.
-
+    * Puoi scrivere il programma seguendo l'immagine qui sotto, fai riferimento al tutorial: :ref:`ezblock:create_project_latest`.
+    * Oppure trova il codice con lo stesso nome nella pagina **Esempi** di EzBlock Studio e clicca direttamente su **Esegui** o **Modifica**.
 
 .. image:: img/sp210512_144944.png

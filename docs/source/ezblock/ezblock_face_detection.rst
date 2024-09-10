@@ -1,50 +1,50 @@
 .. note::
 
-    Hello, welcome to the SunFounder Raspberry Pi & Arduino & ESP32 Enthusiasts Community on Facebook! Dive deeper into Raspberry Pi, Arduino, and ESP32 with fellow enthusiasts.
+    Ciao, benvenuto nella SunFounder Raspberry Pi & Arduino & ESP32 Enthusiasts Community su Facebook! Approfondisci le tue conoscenze su Raspberry Pi, Arduino e ESP32 insieme ad altri appassionati.
 
-    **Why Join?**
+    **Perché unirti a noi?**
 
-    - **Expert Support**: Solve post-sale issues and technical challenges with help from our community and team.
-    - **Learn & Share**: Exchange tips and tutorials to enhance your skills.
-    - **Exclusive Previews**: Get early access to new product announcements and sneak peeks.
-    - **Special Discounts**: Enjoy exclusive discounts on our newest products.
-    - **Festive Promotions and Giveaways**: Take part in giveaways and holiday promotions.
+    - **Supporto Esperto**: Risolvi problemi post-vendita e sfide tecniche con l'aiuto della nostra comunità e del nostro team.
+    - **Impara e Condividi**: Scambia suggerimenti e tutorial per migliorare le tue competenze.
+    - **Anteprime Esclusive**: Ottieni accesso anticipato agli annunci di nuovi prodotti e alle anteprime.
+    - **Sconti Speciali**: Approfitta di sconti esclusivi sui nostri prodotti più recenti.
+    - **Promozioni e Giveaway Festivi**: Partecipa a promozioni e concorsi durante le festività.
 
-    👉 Ready to explore and create with us? Click [|link_sf_facebook|] and join today!
+    👉 Sei pronto a esplorare e creare con noi? Clicca [|link_sf_facebook|] e unisciti oggi stesso!
 
-Face Detection
+Rilevamento del Viso
 ======================
 
-In addition to color detection, PiCar-X also includes a face detection function. In the following example the Joystick widget is used to adjust the direction of the camera, and the number of faces will be displayed in the debug monitor.
+Oltre al rilevamento dei colori, il PiCar-X include anche una funzione di rilevamento del viso. Nell'esempio seguente viene utilizzato il widget Joystick per regolare la direzione della fotocamera, e il numero di volti rilevati verrà visualizzato nel monitor di debug.
 
-For more information on how to use the Video widget, please reference the tutorial on Ezblock video here: :ref:`ezblock:video_latest`.
+Per maggiori informazioni su come utilizzare il widget Video, fai riferimento al tutorial sui video di Ezblock qui: :ref:`ezblock:video_latest`.
 
 .. image:: img/face_detection.PNG
 
 
-**TIPS**
+**CONSIGLI**
 
 .. image:: img/sp210512_141947.png
 
-Set the **face detection** widget to **on** to enable facial detection.
+Imposta il widget **face detection** su **on** per abilitare il rilevamento facciale.
 
 .. image:: img/sp210512_142327.png
 
-These two blocks are used to adjust the orientation of the pan-tilt camera, similar to driving the PiCar-X in the :ref:`ezb_remote_control` tutorial. As the value increases, the camera will rotate to the right, or upwards, a decreasing value will rotate the camera right, or downwards.
+Questi due blocchi vengono utilizzati per regolare l'orientamento della fotocamera pan-tilt, simili alla guida del PiCar-X nel tutorial :ref:`ezb_remote_control`. Aumentando il valore, la fotocamera ruoterà verso destra o verso l'alto, diminuendo il valore la fotocamera ruoterà verso sinistra o verso il basso.
 
 .. image:: img/sp210512_142407.png
 
-The image detection results are given through the of **detected face** block. Use the drop-down menu options to choose between reading the coordinates, size, or number of results from the image detection function.
+I risultati del rilevamento delle immagini vengono forniti tramite il blocco **detected face**. Utilizza le opzioni del menu a tendina per scegliere se leggere le coordinate, la dimensione o il numero di volti rilevati dalla funzione di rilevamento.
 
 .. image:: img/sp210512_142616.png
 
-Use the **create text with** block to print the combination of **text** and of **detected face** data.
+Utilizza il blocco **create text with** per stampare la combinazione di **testo** e dei dati del **detected face**.
 
-**EXAMPLE**
+**ESEMPIO**
 
 .. note::
 
-    * You can write the program according to the following picture, please refer to the tutorial: :ref:`ezblock:create_project_latest`.
-    * Or find the code with the same name on the **Examples** page of the EzBlock Studio and click **Run** or **Edit** directly.
+    * Puoi scrivere il programma seguendo l'immagine qui sotto, fai riferimento al tutorial: :ref:`ezblock:create_project_latest`.
+    * Oppure trova il codice con lo stesso nome nella pagina **Esempi** di EzBlock Studio e clicca direttamente su **Esegui** o **Modifica**.
 
 .. image:: img/sp210512_142830.png

@@ -1,32 +1,32 @@
 .. note::
 
-    Hello, welcome to the SunFounder Raspberry Pi & Arduino & ESP32 Enthusiasts Community on Facebook! Dive deeper into Raspberry Pi, Arduino, and ESP32 with fellow enthusiasts.
+    Ciao, benvenuto nella Community di appassionati di Raspberry Pi & Arduino & ESP32 di SunFounder su Facebook! Esplora più a fondo Raspberry Pi, Arduino e ESP32 insieme ad altri appassionati.
 
-    **Why Join?**
+    **Perché unirti a noi?**
 
-    - **Expert Support**: Solve post-sale issues and technical challenges with help from our community and team.
-    - **Learn & Share**: Exchange tips and tutorials to enhance your skills.
-    - **Exclusive Previews**: Get early access to new product announcements and sneak peeks.
-    - **Special Discounts**: Enjoy exclusive discounts on our newest products.
-    - **Festive Promotions and Giveaways**: Take part in giveaways and holiday promotions.
+    - **Supporto Esperto**: Risolvi i problemi post-vendita e affronta le sfide tecniche con l'aiuto della nostra community e del nostro team.
+    - **Impara e Condividi**: Scambia consigli e tutorial per migliorare le tue competenze.
+    - **Anteprime Esclusive**: Ottieni accesso anticipato agli annunci di nuovi prodotti e anteprime riservate.
+    - **Sconti Speciali**: Approfitta di sconti esclusivi sui nostri prodotti più recenti.
+    - **Promozioni Festive e Omaggi**: Partecipa a concorsi e promozioni durante le festività.
 
-    👉 Ready to explore and create with us? Click [|link_sf_facebook|] and join today!
+    👉 Sei pronto a esplorare e creare con noi? Clicca [|link_sf_facebook|] e unisciti subito!
 
-Video 7: PiCar-X Computer Vision
+Video 7: PiCar-X Visione Artificiale
 =============================================================
 
-This video tutorial focuses on computer vision capabilities in the PiCar-X:
+Questo tutorial video si concentra sulle capacità di visione artificiale del PiCar-X:
 
-* **Introduction to Computer Vision**: Teaches how to detect hand movement, fingers, colors, faces, and read QR codes using the PiCar-X equipped with a camera.
-* **Remote Desktop and Python Code Execution**: Demonstrates using VNC for remote desktop access to the Raspberry Pi and running Python code for computer vision tasks.
-* **Color Detection and Photo Taking**: Shows how to detect different colors and take photos using camera controls.
-* **QR Code and Face Detection**: Explains how to switch between QR code reading and face detection features.
-* **Object Detection**: Discusses the use of built-in functions from SunFounder's VI library for object detection.
-* **Viewing Video on Browser and Mobile**: Teaches how to stream the camera feed to a browser or mobile phone, ensuring they are connected to the same network as the PiCar-X.
-* **Hand Detection**: Covers the use of hand detection feature from the VI library and running corresponding Python code.
-* **Code Editing and Running**: Demonstrates creating, editing, and running Python scripts for various computer vision tasks.
+* **Introduzione alla Visione Artificiale**: Insegna come rilevare movimenti della mano, dita, colori, volti e leggere codici QR utilizzando il PiCar-X dotato di una telecamera.
+* **Accesso Remoto e Esecuzione del Codice Python**: Dimostra come utilizzare VNC per l'accesso remoto al desktop del Raspberry Pi e eseguire il codice Python per i compiti di visione artificiale.
+* **Rilevamento Colori e Scatto di Foto**: Mostra come rilevare diversi colori e scattare foto utilizzando i controlli della telecamera.
+* **Rilevamento di Codici QR e Volti**: Spiega come passare dalla lettura dei codici QR al rilevamento dei volti.
+* **Rilevamento Oggetti**: Discute l'uso delle funzioni integrate nella libreria VI di SunFounder per il rilevamento degli oggetti.
+* **Visualizzazione Video su Browser e Mobile**: Insegna come trasmettere il feed video della telecamera su un browser o su un telefono cellulare, assicurandosi che siano connessi alla stessa rete del PiCar-X.
+* **Rilevamento della Mano**: Copre l'uso della funzione di rilevamento della mano dalla libreria VI e l'esecuzione del codice Python corrispondente.
+* **Modifica ed Esecuzione del Codice**: Dimostra come creare, modificare ed eseguire script Python per vari compiti di visione artificiale.
 
-This lesson offers a comprehensive guide to exploring computer vision features in the PiCar-X, including practical demonstrations of color detection, QR code reading, face detection, and hand movement tracking.
+Questa lezione offre una guida completa per esplorare le funzionalità di visione artificiale del PiCar-X, inclusi rilevamento colori, lettura di codici QR, rilevamento volti e monitoraggio dei movimenti delle mani.
 
 
 **Video**
@@ -35,6 +35,6 @@ This lesson offers a comprehensive guide to exploring computer vision features i
 
     <iframe width="700" height="500" src="https://www.youtube.com/embed/52lRlGIrirg?si=g9JGYHjCVqVSgGM1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
-**Related On-line Tutorials**
+**Tutorial Online Correlati**
 
 * :ref:`py_computer_vision`

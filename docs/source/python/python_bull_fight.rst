@@ -1,27 +1,26 @@
 .. note::
 
-    Hello, welcome to the SunFounder Raspberry Pi & Arduino & ESP32 Enthusiasts Community on Facebook! Dive deeper into Raspberry Pi, Arduino, and ESP32 with fellow enthusiasts.
+    Ciao, benvenuto nella community di appassionati di SunFounder Raspberry Pi & Arduino & ESP32 su Facebook! Approfondisci le tue conoscenze su Raspberry Pi, Arduino ed ESP32 insieme ad altri appassionati.
 
-    **Why Join?**
+    **Perché unirti a noi?**
 
-    - **Expert Support**: Solve post-sale issues and technical challenges with help from our community and team.
-    - **Learn & Share**: Exchange tips and tutorials to enhance your skills.
-    - **Exclusive Previews**: Get early access to new product announcements and sneak peeks.
-    - **Special Discounts**: Enjoy exclusive discounts on our newest products.
-    - **Festive Promotions and Giveaways**: Take part in giveaways and holiday promotions.
+    - **Supporto esperto**: Risolvi problemi post-vendita e sfide tecniche con l'aiuto della nostra community e del nostro team.
+    - **Impara e condividi**: Scambia suggerimenti e tutorial per migliorare le tue competenze.
+    - **Anteprime esclusive**: Ottieni accesso anticipato ai nuovi annunci di prodotto e anteprime esclusive.
+    - **Sconti speciali**: Approfitta di sconti esclusivi sui nostri prodotti più recenti.
+    - **Promozioni festive e giveaway**: Partecipa a promozioni e omaggi durante le festività.
 
-    👉 Ready to explore and create with us? Click [|link_sf_facebook|] and join today!
+    👉 Sei pronto a esplorare e creare con noi? Clicca [|link_sf_facebook|] e unisciti oggi stesso!
 
 .. _py_bull_fight:
 
-10. Bull Fight
+10. Lotta col toro
 =============================
 
 
-Make PiCar-X an angry bull! Use its camera to track and rush the red cloth!
+Trasforma PiCar-X in un toro arrabbiato! Usa la sua fotocamera per seguire e caricare un panno rosso!
 
-
-**Run the Code**
+**Esegui il Codice**
 
 .. raw:: html
 
@@ -33,9 +32,9 @@ Make PiCar-X an angry bull! Use its camera to track and rush the red cloth!
     sudo python3 10.bull_fight.py
 
 
-**View the Image**
+**Visualizza l'immagine**
 
-After the code runs, the terminal will display the following prompt:
+Dopo aver eseguito il codice, il terminale mostrerà il seguente messaggio:
 
 .. code-block::
 
@@ -47,19 +46,19 @@ After the code runs, the terminal will display the following prompt:
     * Debug mode: off
     * Running on http://0.0.0.0:9000/ (Press CTRL+C to quit)
 
-Then you can enter ``http://<your IP>:9000/mjpg`` in the browser to view the video screen. such as:  ``https://192.168.18.113:9000/mjpg``
+Ora puoi inserire ``http://<your IP>:9000/mjpg`` nel browser per visualizzare il video in diretta. Per esempio:  ``https://192.168.18.113:9000/mjpg``
 
 .. image:: img/display.png
 
-**Code**
+**Codice**
 
 .. note::
-    You can **Modify/Reset/Copy/Run/Stop** the code below. But before that, you need to go to source code path like ``picar-x\examples``. After modifying the code, you can run it directly to see the effect.
-
+    Puoi **Modificare/Reimpostare/Copiare/Eseguire/Interrompere** il codice qui sotto. Prima di farlo, devi andare nel percorso del codice sorgente come ``picar-x\examples``. Dopo aver modificato il codice, puoi eseguirlo direttamente per vedere l'effetto.
 
 .. raw:: html
 
     <run></run>
+
 
 .. code-block:: python
 
@@ -119,30 +118,29 @@ Then you can enter ``http://<your IP>:9000/mjpg`` in the browser to view the vid
             print("stop and exit")
             sleep(0.1)
 
-**How it works?**
 
-You need to pay attention to the following three parts of this example:
+**Come funziona?**
 
-1. Define the main function:
+Presta attenzione a queste tre parti dell'esempio:
 
-    * Start the camera using ``Vilib.camera_start()``.
-    * Display the camera feed using ``Vilib.display()``.
-    * Enable color detection and specify the target color as "red" using ``Vilib.color_detect("red")``.
-    * Initialize variables: ``speed`` for car movement speed, ``dir_angle`` for the direction angle of the car's movement, ``x_angle`` for the camera's pan angle, and ``y_angle`` for the camera's tilt angle.
+1. Definizione della funzione principale:
 
+    * Avvia la fotocamera con ``Vilib.camera_start()``.
+    * Visualizza il feed della fotocamera con ``Vilib.display()``.
+    * Attiva il rilevamento del colore e specifica "rosso" come colore target con ``Vilib.color_detect("red")``.
+    * Inizializza le variabili: ``speed`` per la velocità del movimento della macchina, ``dir_angle`` per l'angolo di direzione del movimento della macchina, ``x_angle`` per l'angolo di rotazione della fotocamera, e ``y_angle`` per l'inclinazione della fotocamera.
 
-2. Enter a continuous loop (while True) to track the red-colored object:
+2. Entra in un ciclo continuo (while True) per seguire l'oggetto di colore rosso:
 
-    * Check if there is a detected red-colored object (``Vilib.detect_obj_parameter['color_n'] != 0``).
-    * If a red-colored object is detected, obtain its coordinates (``coordinate_x`` and ``coordinate_y``).
-    * Calculate new pan and tilt angles (``x_angle`` and ``y_angle``) based on the detected object's position and adjust them to track the object.
-    * Limit the pan and tilt angles within the specified range using the ``clamp_number`` function.
-    * Set the camera's pan and tilt angles using ``px.set_cam_pan_angle()`` and ``px.set_cam_tilt_angle()`` to keep the object in view.
+    * Verifica se viene rilevato un oggetto di colore rosso (``Vilib.detect_obj_parameter['color_n'] != 0``).
+    * Se viene rilevato un oggetto di colore rosso, ottieni le sue coordinate (``coordinate_x`` e ``coordinate_y``).
+    * Calcola nuovi angoli di pan e tilt (``x_angle`` e ``y_angle``) in base alla posizione dell'oggetto rilevato e regolali per seguirlo.
+    * Limita gli angoli di pan e tilt entro un intervallo specifico utilizzando la funzione ``clamp_number``.
+    * Imposta gli angoli di pan e tilt della fotocamera utilizzando ``px.set_cam_pan_angle()`` e ``px.set_cam_tilt_angle()`` per mantenere l'oggetto nell'inquadratura.
 
+3. Controlla il movimento della macchina in base alla differenza tra ``dir_angle`` e ``x_angle``:
 
-3. Control the car's movement based on the difference between dir_angle and ``x_angle``:
-
-    * If ``dir_angle`` is greater than ``x_angle``, decrement ``dir_angle`` by 1 to gradually change the direction angle.
-    * If ``dir_angle`` is less than ``x_angle``, increment ``dir_angle`` by 1.
-    * Set the direction servo angle using ``px.set_dir_servo_angle()`` to steer the car's wheels accordingly.
-    * Move the car forward at the specified speed using ``px.forward(speed)``.
+    * Se ``dir_angle`` è maggiore di ``x_angle``, decrementa ``dir_angle`` di 1 per cambiare gradualmente l'angolo di direzione.
+    * Se ``dir_angle`` è minore di ``x_angle``, incrementa ``dir_angle`` di 1.
+    * Imposta l'angolo del servo di direzione con ``px.set_dir_servo_angle()`` per sterzare le ruote della macchina di conseguenza.
+    * Fai avanzare la macchina alla velocità specificata con ``px.forward(speed)``.

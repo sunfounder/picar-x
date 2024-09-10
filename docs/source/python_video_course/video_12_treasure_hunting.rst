@@ -1,28 +1,27 @@
 .. note::
 
-    Hello, welcome to the SunFounder Raspberry Pi & Arduino & ESP32 Enthusiasts Community on Facebook! Dive deeper into Raspberry Pi, Arduino, and ESP32 with fellow enthusiasts.
+    Ciao, benvenuto nella Community di appassionati di Raspberry Pi & Arduino & ESP32 di SunFounder su Facebook! Esplora più a fondo Raspberry Pi, Arduino e ESP32 insieme ad altri appassionati.
 
-    **Why Join?**
+    **Perché unirti a noi?**
 
-    - **Expert Support**: Solve post-sale issues and technical challenges with help from our community and team.
-    - **Learn & Share**: Exchange tips and tutorials to enhance your skills.
-    - **Exclusive Previews**: Get early access to new product announcements and sneak peeks.
-    - **Special Discounts**: Enjoy exclusive discounts on our newest products.
-    - **Festive Promotions and Giveaways**: Take part in giveaways and holiday promotions.
+    - **Supporto Esperto**: Risolvi i problemi post-vendita e affronta le sfide tecniche con l'aiuto della nostra community e del nostro team.
+    - **Impara e Condividi**: Scambia consigli e tutorial per migliorare le tue competenze.
+    - **Anteprime Esclusive**: Ottieni accesso anticipato agli annunci di nuovi prodotti e anteprime riservate.
+    - **Sconti Speciali**: Approfitta di sconti esclusivi sui nostri prodotti più recenti.
+    - **Promozioni Festive e Omaggi**: Partecipa a concorsi e promozioni durante le festività.
 
-    👉 Ready to explore and create with us? Click [|link_sf_facebook|] and join today!
+    👉 Sei pronto a esplorare e creare con noi? Clicca [|link_sf_facebook|] e unisciti subito!
 
-Video 12: Treasure Hunt Game
+Video 12: Gioco della Caccia al Tesoro
 ============================================
 
-The tutorial provides an engaging and educational experience in programming and robotics with the PiCar-X.
+Il tutorial offre un'esperienza coinvolgente ed educativa nella programmazione e nella robotica con il PiCar-X.
 
-* **Overview**: Demonstrates a treasure hunt game where the PiCar-X robot detects and navigates towards randomly selected colors.
-* **Python Code**: Detailed explanation of the Python code used for color detection, robot movement control, and text-to-speech announcements.
-* **Gameplay**: The robot moves using keyboard inputs to find and reach a target color, which is announced via text-to-speech.
-* **Practical Demo**: Shows the robot in action, successfully identifying and moving towards different colors like red, yellow, and blue.
-* **Game Exit Instructions**: Covers how to safely exit the game, including stopping the robot and shutting down the camera.
-
+* **Panoramica**: Dimostra un gioco di caccia al tesoro in cui il robot PiCar-X rileva e si dirige verso colori selezionati casualmente.
+* **Codice Python**: Spiegazione dettagliata del codice Python utilizzato per il rilevamento dei colori, il controllo del movimento del robot e gli annunci tramite sintesi vocale.
+* **Gioco**: Il robot si muove utilizzando input da tastiera per trovare e raggiungere un colore obiettivo, che viene annunciato tramite sintesi vocale.
+* **Dimostrazione Pratica**: Mostra il robot in azione mentre identifica e si dirige con successo verso diversi colori come rosso, giallo e blu.
+* **Istruzioni per Uscire dal Gioco**: Spiega come uscire dal gioco in sicurezza, incluso l'arresto del robot e lo spegnimento della telecamera.
 
 **Video**
 
@@ -30,6 +29,6 @@ The tutorial provides an engaging and educational experience in programming and 
 
     <iframe width="700" height="500" src="https://www.youtube.com/embed/sT7hEXe1byE?si=R1qGtVFpxP_JtH1m" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
-**Related On-line Tutorials**
+**Tutorial Online Correlati**
 
 * :ref:`py_treasure`

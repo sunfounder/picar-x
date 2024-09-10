@@ -1,29 +1,28 @@
 .. note::
 
-    Hello, welcome to the SunFounder Raspberry Pi & Arduino & ESP32 Enthusiasts Community on Facebook! Dive deeper into Raspberry Pi, Arduino, and ESP32 with fellow enthusiasts.
+    Ciao, benvenuto nella Community di appassionati di Raspberry Pi & Arduino & ESP32 di SunFounder su Facebook! Esplora più a fondo Raspberry Pi, Arduino e ESP32 insieme ad altri appassionati.
 
-    **Why Join?**
+    **Perché unirti a noi?**
 
-    - **Expert Support**: Solve post-sale issues and technical challenges with help from our community and team.
-    - **Learn & Share**: Exchange tips and tutorials to enhance your skills.
-    - **Exclusive Previews**: Get early access to new product announcements and sneak peeks.
-    - **Special Discounts**: Enjoy exclusive discounts on our newest products.
-    - **Festive Promotions and Giveaways**: Take part in giveaways and holiday promotions.
+    - **Supporto Esperto**: Risolvi i problemi post-vendita e affronta le sfide tecniche con l'aiuto della nostra community e del nostro team.
+    - **Impara e Condividi**: Scambia consigli e tutorial per migliorare le tue competenze.
+    - **Anteprime Esclusive**: Ottieni accesso anticipato agli annunci di nuovi prodotti e anteprime riservate.
+    - **Sconti Speciali**: Approfitta di sconti esclusivi sui nostri prodotti più recenti.
+    - **Promozioni Festive e Omaggi**: Partecipa a concorsi e promozioni durante le festività.
 
-    👉 Ready to explore and create with us? Click [|link_sf_facebook|] and join today!
+    👉 Sei pronto a esplorare e creare con noi? Clicca [|link_sf_facebook|] e unisciti subito!
 
-Video A3: Calibrate the PiCar-X 
+Video A3: Calibrare il PiCar-X
 ==================================
 
-This third video in the series focuses on calibrating the PiCar-X and introducing the Robot HAT. The tutorial is divided into several key sections:
+Questo terzo video della serie si concentra sulla calibrazione del PiCar-X e introduce il Robot HAT. Il tutorial è suddiviso in diverse sezioni chiave:
 
-* **Greyscale Sensor Calibration**: Instructions on accessing and calibrating the greyscale sensor.
-* **DC Motors and Servo Calibration**: Steps for calibrating the DC motors for direction and speed, as well as the steering and camera pan/tilt servos.
-* **Script Automation at Startup**: How to set scripts to run automatically at the Raspberry Pi's startup.
-* **Robot HAT Overview**: Detailed overview of the Robot HAT, including its features and functionalities.
+* **Calibrazione del Sensore in Scala di Grigi**: Istruzioni su come accedere e calibrare il sensore in scala di grigi.
+* **Calibrazione dei Motori DC e dei Servomotori**: Passaggi per calibrare i motori DC in termini di direzione e velocità, oltre ai servomotori di sterzata e pan/tilt della telecamera.
+* **Automazione degli Script all'Avvio**: Come impostare gli script per l'esecuzione automatica all'avvio del Raspberry Pi.
+* **Panoramica del Robot HAT**: Una panoramica dettagliata del Robot HAT, comprese le sue caratteristiche e funzionalità.
 
-
-This tutorial is crucial for those looking to fine-tune their PiCar-X and understand the technical aspects of the Robot HAT.
+Questo tutorial è fondamentale per chi desidera perfezionare il proprio PiCar-X e comprendere gli aspetti tecnici del Robot HAT.
 
 **Video**
 
@@ -31,6 +30,6 @@ This tutorial is crucial for those looking to fine-tune their PiCar-X and unders
 
     <iframe width="700" height="500" src="https://www.youtube.com/embed/Y7rbS6MdR-g?si=6Snx90ws06B2IPBZ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
-**Related On-line Tutorials**
+**Tutorial Online Correlati**
 
 * :ref:`py_calibrate`

@@ -1,57 +1,58 @@
 .. note::
 
-    Hello, welcome to the SunFounder Raspberry Pi & Arduino & ESP32 Enthusiasts Community on Facebook! Dive deeper into Raspberry Pi, Arduino, and ESP32 with fellow enthusiasts.
+    Ciao, benvenuto nella SunFounder Raspberry Pi & Arduino & ESP32 Enthusiasts Community su Facebook! Approfondisci le tue conoscenze su Raspberry Pi, Arduino e ESP32 insieme ad altri appassionati.
 
-    **Why Join?**
+    **Perché unirti a noi?**
 
-    - **Expert Support**: Solve post-sale issues and technical challenges with help from our community and team.
-    - **Learn & Share**: Exchange tips and tutorials to enhance your skills.
-    - **Exclusive Previews**: Get early access to new product announcements and sneak peeks.
-    - **Special Discounts**: Enjoy exclusive discounts on our newest products.
-    - **Festive Promotions and Giveaways**: Take part in giveaways and holiday promotions.
+    - **Supporto Esperto**: Risolvi problemi post-vendita e sfide tecniche con l'aiuto della nostra comunità e del nostro team.
+    - **Impara e Condividi**: Scambia consigli e tutorial per migliorare le tue abilità.
+    - **Anteprime Esclusive**: Ottieni accesso anticipato agli annunci di nuovi prodotti e alle anteprime.
+    - **Sconti Speciali**: Approfitta di sconti esclusivi sui nostri prodotti più recenti.
+    - **Promozioni e Giveaway Festivi**: Partecipa a promozioni e concorsi durante le festività.
 
-    👉 Ready to explore and create with us? Click [|link_sf_facebook|] and join today!
+    👉 Sei pronto a esplorare e creare con noi? Clicca [|link_sf_facebook|] e unisciti oggi stesso!
 
 .. _login_windows:
 
 PuTTY
 =========================
 
-If you are a Windows user, you can use some applications of SSH. Here, we recommend `PuTTY <https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html>`_.
+Se sei un utente Windows, puoi utilizzare alcune applicazioni per SSH. Qui ti consigliamo `PuTTY <https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html>`_.
 
-**Step 1**
+**Passo 1**
 
-Download PuTTY.
+Scarica PuTTY.
 
-**Step 2**
+**Passo 2**
 
-Open PuTTY and click **Session** on the left tree-alike structure. Enter
-the IP address of the RPi in the text box under **Host Name (or IP
-address)** and **22** under **Port** (by default it is 22).
+Apri PuTTY e clicca su **Session** nella struttura ad albero a sinistra. 
+Inserisci l'indirizzo IP del Raspberry Pi nella casella di testo sotto 
+**Host Name (or IP address)** e **22** sotto **Port** (di default è 22).
 
 .. image:: img/image25.png
     :align: center
 
-**Step 3**
+**Passo 3**
 
-Click **Open**. Note that when you first log in to the Raspberry Pi with
-the IP address, there prompts a security reminder. Just click **Yes**.
+Clicca su **Open**. Nota che, quando accedi per la prima volta al Raspberry Pi 
+utilizzando l'indirizzo IP, comparirà un promemoria di sicurezza. Clicca 
+semplicemente su **Yes**.
 
-**Step 4**
+**Passo 4**
 
-When the PuTTY window prompts \"**login as:**\", type in
-\"**pi**\" (the user name of the RPi), and **password**: \"raspberry\"
-(the default one, if you haven't changed it).
+Quando nella finestra di PuTTY compare \"**login as:**\", digita \"**pi**\" 
+(il nome utente del Raspberry Pi) e come **password** inserisci: \"raspberry\" 
+(quella predefinita, se non l'hai cambiata).
 
 .. note::
 
-    When you input the password, the characters do not display on window accordingly, which is normal. What you need is to input the correct password.
+    Quando inserisci la password, i caratteri non verranno visualizzati nella finestra, il che è normale. Devi solo inserire correttamente la password.
     
-    If inactive appears next to PuTTY, it means that the connection has been broken and needs to be reconnected.
-    
+    Se accanto a PuTTY compare "inactive", significa che la connessione è stata interrotta e deve essere ristabilita.
+
 .. image:: img/image26.png
     :align: center
 
-**Step 5**
+**Passo 5**
 
-Here, we get the Raspberry Pi connected and it is time to conduct the next steps.
+A questo punto, siamo collegati al Raspberry Pi ed è il momento di procedere con i passaggi successivi.

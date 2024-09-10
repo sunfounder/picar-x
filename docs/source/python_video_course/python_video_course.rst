@@ -1,27 +1,27 @@
 .. note::
 
-    Hello, welcome to the SunFounder Raspberry Pi & Arduino & ESP32 Enthusiasts Community on Facebook! Dive deeper into Raspberry Pi, Arduino, and ESP32 with fellow enthusiasts.
+    Ciao, benvenuto nella Community di appassionati di Raspberry Pi & Arduino & ESP32 di SunFounder su Facebook! Esplora più a fondo Raspberry Pi, Arduino e ESP32 con altri appassionati.
 
-    **Why Join?**
+    **Perché unirsi?**
 
-    - **Expert Support**: Solve post-sale issues and technical challenges with help from our community and team.
-    - **Learn & Share**: Exchange tips and tutorials to enhance your skills.
-    - **Exclusive Previews**: Get early access to new product announcements and sneak peeks.
-    - **Special Discounts**: Enjoy exclusive discounts on our newest products.
-    - **Festive Promotions and Giveaways**: Take part in giveaways and holiday promotions.
+    - **Supporto esperto**: Risolvi i problemi post-vendita e le sfide tecniche con l'aiuto della nostra community e del nostro team.
+    - **Impara e condividi**: Scambia consigli e tutorial per migliorare le tue competenze.
+    - **Anteprime esclusive**: Ottieni accesso anticipato agli annunci di nuovi prodotti e anteprime esclusive.
+    - **Sconti speciali**: Goditi sconti esclusivi sui nostri prodotti più recenti.
+    - **Promozioni festive e omaggi**: Partecipa a promozioni e omaggi durante le festività.
 
-    👉 Ready to explore and create with us? Click [|link_sf_facebook|] and join today!
+    👉 Pronto a esplorare e creare con noi? Clicca [|link_sf_facebook|] e unisciti subito!
 
-Python Video Course
-====================
-This video course is an online Python tutorial specifically designed for interactive learning. It includes three introductory videos that cover the essential foundations: starting with setting up the Raspberry Pi, assembling the PiCar-X, and then installing the necessary robot modules. This initial phase ensures that everything is prepared before beginning the various projects with the PiCar-X.
+Corso video Python
+=======================
+Questo corso video è un tutorial online di Python appositamente progettato per l'apprendimento interattivo. Include tre video introduttivi che coprono le basi essenziali: a partire dall'impostazione del Raspberry Pi, l'assemblaggio del PiCar-X e l'installazione dei moduli robot necessari. Questa fase iniziale garantisce che tutto sia pronto prima di iniziare i vari progetti con il PiCar-X.
 
-Following the introductory section, the course features 12 project videos. These projects progressively develop skills starting from basic movement of the PiCar-X, keyboard control, Text-to-Speech (TTS), obstacle avoidance, line tracking, to applications in computer vision. The course then advances to more complex projects that combine multiple functionalities. Besides teaching you to run examples from the online tutorial, the videos also provide additional extensions to each topic, allowing for a deeper understanding of each feature.
+Dopo la sezione introduttiva, il corso presenta 12 video di progetti. Questi progetti sviluppano progressivamente le competenze, a partire dai movimenti di base del PiCar-X, controllo tramite tastiera, sintesi vocale (TTS), evitamento degli ostacoli, tracciamento delle linee, fino alle applicazioni di visione artificiale. Il corso avanza poi verso progetti più complessi che combinano più funzionalità. Oltre a insegnarti a eseguire gli esempi dal tutorial online, i video forniscono anche estensioni aggiuntive su ciascun argomento, consentendo una comprensione più approfondita di ogni funzione.
 
 
-**Get Started**
+**Inizia subito**
 
-The course begins with three introductory videos that lay the foundation for working with the PiCar-X. These videos cover:
+Il corso inizia con tre video introduttivi che gettano le basi per lavorare con il PiCar-X. Questi video coprono:
 
 .. toctree::
     :maxdepth: 1
@@ -30,9 +30,9 @@ The course begins with three introductory videos that lay the foundation for wor
     video_a2_assembly
     video_a3_calibration
 
-**Projects**
+**Progetti**
 
-Following the setup, the course dives into twelve project-based videos. These videos progressively enhance the capabilities of the PiCar-X, starting from basic movements to more complex tasks, including:
+Dopo la configurazione, il corso entra nel vivo con dodici video basati su progetti. Questi video migliorano progressivamente le capacità del PiCar-X, partendo dai movimenti di base fino a compiti più complessi, tra cui:
 
 .. toctree::
     :maxdepth: 1
