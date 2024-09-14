@@ -10,7 +10,7 @@
 
 - Install openai and speech processing libraries
 
-    > [Note]
+    > **Note:**\
     When using pip install outside of a virtual environment you may need to use the `"--break-system-packages"` option.
 
     ```bash
