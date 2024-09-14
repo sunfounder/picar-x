@@ -93,4 +93,5 @@ sudo python3 gpt_dog.py --keyboard
 sudo python3 gpt_dog.py --keyboard --no-img
 ```
 
-> You need to run with `sudo`, otherwise there may be no sound from the speaker.
+> **Note:**\
+You need to run with `sudo`, otherwise there may be no sound from the speaker.
