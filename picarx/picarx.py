@@ -34,7 +34,7 @@ class Picarx(object):
     # config: path of config file
     def __init__(self, 
                 servo_pins:list=['P0', 'P1', 'P2'], 
-                motor_pins:list=['D4', 'D5', 'P12', 'P13'],
+                motor_pins:list=['D4', 'D5', 'P13', 'P12'],
                 grayscale_pins:list=['A0', 'A1', 'A2'],
                 ultrasonic_pins:list=['D2','D3'],
                 config:str=CONFIG,
@@ -107,6 +107,7 @@ class Picarx(object):
         elif speed < 0:
             direction = -1 * self.cali_dir_value[motor]
         speed = abs(speed)
+        # print(f"direction: {direction}, speed: {speed}")
         if speed != 0:
             speed = int(speed /2 ) + 50
         speed = speed - self.cali_speed_value[motor]
@@ -248,6 +249,12 @@ class Picarx(object):
             self.config_flie.set("cliff_reference", self.cliff_reference)
         else:
             raise ValueError("grayscale reference must be a 1*3 list")
+
+    def reset(self):
+        self.stop()
+        self.set_dir_servo_angle(0)
+        self.set_cam_tilt_angle(0)
+        self.set_cam_pan_angle(0)
 
 if __name__ == "__main__":
     px = Picarx()
