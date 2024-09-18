@@ -4,7 +4,7 @@ Picar-X Python library for Raspberry Pi.
 
 Quick Links:
 
-- [Picar-X](#Picar-X)
+- [Picar-X](#picar-x)
   - [About Picar-X](#about-Picar-X)
   - [Update](#update)
   - [Installation](#installation)
@@ -15,13 +15,11 @@ Quick Links:
 
 ## About Robot Hat
 
-TODO
+<https://docs.sunfounder.com/projects/robot-hat-v4/en/latest/>
 
-## Update
+## Docs
 
-2021-07-05:
-
-- New Release
+<https://docs.sunfounder.com/projects/picar-x-v20/en/latest/>
 
 ## Installation
 
