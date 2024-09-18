@@ -1,29 +1,31 @@
 # #!/usr/bin/env python3
 
-print('Please run under desktop environment (eg: vnc) to display the image window')
-
 from robot_hat.utils import reset_mcu
 from picarx import Picarx
 from vilib import Vilib
 from time import sleep, time, strftime, localtime
 import readchar
 
+import os
+user = os.getlogin()
+user_home = os.path.expanduser(f'~{user}')
+
 reset_mcu()
 sleep(0.2)
 
 manual = '''
-Press key to call the function(non-case sensitive)：
+Press key to call the function(non-case sensitive):
 
     O: speed up
     P: speed down
     W: forward  
     S: backward
     A: turn left
-    D：turn right
+    D: turn right
     F: stop
     T: take photo
 
-    ESC / Ctrl+C: quit
+    Ctrl+C: quit
 '''
 
 
@@ -32,7 +34,7 @@ px = Picarx()
 def take_photo():
     _time = strftime('%Y-%m-%d-%H-%M-%S',localtime(time()))
     name = 'photo_%s'%_time
-    path = "/home/pi/Pictures/picar-x/"
+    path = f"{user_home}/Pictures/picar-x/"
     Vilib.take_photo(name, path)
     print('\nphoto save as %s%s.jpg'%(path,name))
 
@@ -107,7 +109,7 @@ def main():
         elif key == 't':
             take_photo()
         # quit
-        elif key == readchar.key.CTRL_C or key in readchar.key.ESCAPE_SEQUENCES:
+        elif key == readchar.key.CTRL_C:
             print('\nquit ...')
             px.stop()
             Vilib.camera_close()
@@ -119,7 +121,7 @@ def main():
 if __name__ == "__main__":
     try:
         main()
-    except Exception as e:
+    except Exception as e:    
         print("error:%s"%e)
     finally:
         px.stop()
