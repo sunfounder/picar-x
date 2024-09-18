@@ -78,19 +78,19 @@ Confirm that `keys.py` is configured correctly
 - Run with vioce
 
 ```bash
-sudo python3 gpt_dog.py
+sudo python3 gpt_car.py
 ```
 
 - Run with keyboard
 
 ```bash
-sudo python3 gpt_dog.py --keyboard
+sudo python3 gpt_car.py --keyboard
 ```
 
 - Run without image analysis
 
 ```bash
-sudo python3 gpt_dog.py --keyboard --no-img
+sudo python3 gpt_car.py --keyboard --no-img
 ```
 
 > **Warning:**\
