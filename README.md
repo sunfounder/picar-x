@@ -2,37 +2,23 @@
 
 Picar-X Python library for Raspberry Pi.
 
-Quick Links:
+## Links
 
-- [Picar-X](#picar-x)
-  - [About Picar-X](#about-Picar-X)
-  - [Update](#update)
-  - [Installation](#installation)
-  - [Trouble Shooting](#trouble-shooting)
-  - [About SunFounder](#about-sunfounder)
-  - [License](#license)
-  - [Contact us](#contact-us)
-
-## About Robot Hat
-
-<https://docs.sunfounder.com/projects/robot-hat-v4/en/latest/>
-
-## Docs
-
-<https://docs.sunfounder.com/projects/picar-x-v20/en/latest/>
+- Docs: <https://docs.sunfounder.com/projects/picar-x-v20/en/latest/>
+- Robot Hat: <https://docs.sunfounder.com/projects/robot-hat-v4/en/latest/>
+- Sunfounder: <https://www.sunfounder.com/>
 
 ## Installation
+
+ > **Note**
+  You also need to install robot_hat, vilib, sunfounder_controller and other dependent libraries.\
+  <https://docs.sunfounder.com/projects/picar-x-v20/en/latest/python/python_start/install_all_modules.html>
 
 ```bash
 git clone -b robot_hat https://github.com/sunfounder/picar-x.git
 cd picar-x
 sudo python3 setup.py install
 
-# i2c
-
-# Install espeak
-
-sudo apt install espeak
 ```
 
 ## Trouble Shooting
