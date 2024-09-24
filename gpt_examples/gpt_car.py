@@ -6,8 +6,7 @@ from utils import *
 import readline # optimize keyboard input, only need to import
 
 import speech_recognition as sr
-from vilib import Vilib
-import cv2
+
 from picarx import Picarx
 from robot_hat import Music, Pin
 
@@ -17,6 +16,10 @@ import random
 
 import os
 import sys
+
+os.popen("pinctrl set 20 op dh") # enable robot_hat speake switch
+current_path = os.path.dirname(os.path.abspath(__file__))
+os.chdir(current_path) # change working directory
 
 input_mode = None
 with_img = True
@@ -35,10 +38,11 @@ else:
 # =================================================================
 openai_helper = OpenAiHelper(OPENAI_API_KEY, OPENAI_ASSISTANT_ID, 'picarx')
 
-# VOLUME_DB = 5
-VOLUME_DB = 2
-VOICE_ACTIONS = ["horn"]
+LANGUAGE = ['zh', 'en'] # config stt language code, https://en.wikipedia.org/wiki/List_of_ISO_639_language_codes
 
+# VOLUME_DB = 5
+VOLUME_DB = 3
+SOUND_EFFECT_ACTIONS = ["honking", "start engine"]
 
 # car init 
 # =================================================================
@@ -48,25 +52,29 @@ try:
 except Exception as e:
     raise RuntimeError(e)
 
-# action_flow = ActionFlow(my_car)
-
 music = Music()
 
 led = Pin('LED')
 
+DEFAULT_HEAD_TILT = 20
+
 # Vilib start
 # =================================================================
-Vilib.camera_start(vflip=False,hflip=False)
-Vilib.show_fps()
-Vilib.display(local=False,web=True)
+if with_img:
+    from vilib import Vilib
+    import cv2
 
-while True:
-    if Vilib.flask_start:
-        break
-    time.sleep(0.01)
+    Vilib.camera_start(vflip=False,hflip=False)
+    Vilib.show_fps()
+    Vilib.display(local=False,web=True)
 
-time.sleep(.5)
-print('\n')
+    while True:
+        if Vilib.flask_start:
+            break
+        time.sleep(0.01)
+
+    time.sleep(.5)
+    print('\n')
 
 # speech_recognition init
 # =================================================================
@@ -98,9 +106,9 @@ def speak_hanlder():
         with speech_lock:
             _isloaded = speech_loaded
         if _isloaded:
-            gray_print('speak start')
+            # gray_print('speak start')
             speak_block(music, tts_file)
-            gray_print('speak done')
+            # gray_print('speak done')
             with speech_lock:
                 speech_loaded = False
         time.sleep(0.05)
@@ -111,8 +119,9 @@ speak_thread.daemon = True
 
 # actions thread
 # =================================================================
-action_state = 'standby' # 'standby', 'think', 'actions', 'actions_done'
+action_status = 'standby' # 'standby', 'think', 'actions', 'actions_done'
 led_status = 'standby' # 'standby', 'think' or 'actions', 'actions_done'
+last_action_status = 'standby'
 last_led_status = 'standby'
 
 LED_DOUBLE_BLINK_INTERVAL = 0.8 # seconds
@@ -122,7 +131,7 @@ actions_to_be_done = []
 action_lock = threading.Lock()
 
 def action_handler():
-    global action_state, actions_to_be_done, led_status, last_led_status
+    global action_status, actions_to_be_done, led_status, last_action_status, last_led_status
 
     # standby_actions = ['waiting', 'feet_left_right']
     # standby_weights = [1, 0.3]
@@ -133,7 +142,7 @@ def action_handler():
 
     while True:
         with action_lock:
-            _state = action_state
+            _state = action_status
 
         # led
         # ------------------------------
@@ -167,29 +176,29 @@ def action_handler():
         # actions
         # ------------------------------
         if _state == 'standby':
+            last_action_status = 'standby'
             if time.time() - last_action_time > action_interval:
-                # choice = random.choices(standby_actions, standby_weights)[0]
-                # action_flow.run(choice)
+                # TODO: standby actions
                 last_action_time = time.time()
                 action_interval = random.randint(2, 6)
         elif _state == 'think':
-            # action_flow.run('think')
-            # last_action_time = time.time()
-            # think(my_car)
-            pass
+            if last_action_status != 'think':
+                last_action_status = 'think'
+                # think(my_car)
+                keep_think(my_car)
         elif _state == 'actions':
+            last_action_status = 'actions'
             with action_lock:
                 _actions = actions_to_be_done
             for _action in _actions:
                 try:
-                    # action_flow.run(_action)
                     actions_dict[_action](my_car)
                 except Exception as e:
                     print(f'action error: {e}')
                 time.sleep(0.5)
 
             with action_lock:
-                action_state = 'actions_done'
+                action_status = 'actions_done'
             last_action_time = time.time()
 
         time.sleep(0.01)
@@ -203,25 +212,25 @@ action_thread.daemon = True
 def main():
     global current_feeling, last_feeling
     global speech_loaded
-    global action_state, actions_to_be_done
+    global action_status, actions_to_be_done
     global tts_file
 
     my_car.reset()
-    my_car.set_cam_tilt_angle(20)
+    my_car.set_cam_tilt_angle(DEFAULT_HEAD_TILT)
 
     speak_thread.start()
     action_thread.start()
 
     while True:
         if input_mode == 'voice':
-            my_car.set_cam_tilt_angle(20)
+            my_car.set_cam_tilt_angle(DEFAULT_HEAD_TILT)
 
             # listen
             # ----------------------------------------------------------------
             gray_print("listening ...")
 
             with action_lock:
-                action_state = 'standby'
+                action_status = 'standby'
 
             _stderr_back = redirect_error_2_null() # ignore error print to ignore ALSA errors
             # If the chunk_size is set too small (default_size=1024), it may cause the program to freeze
@@ -233,7 +242,7 @@ def main():
             # stt
             # ----------------------------------------------------------------
             st = time.time()
-            _result = openai_helper.stt(audio, language=['zh', 'en'])
+            _result = openai_helper.stt(audio, language=LANGUAGE)
             gray_print(f"stt takes: {time.time() - st:.3f} s")
 
             if _result == False or _result == "":
@@ -241,10 +250,10 @@ def main():
                 continue
 
         elif input_mode == 'keyboard':
-            my_car.set_cam_tilt_angle(20)
+            my_car.set_cam_tilt_angle(DEFAULT_HEAD_TILT)
 
             with action_lock:
-                action_state = 'standby'
+                action_status = 'standby'
 
             _result = input(f'\033[1;30m{"intput: "}\033[0m').encode(sys.stdin.encoding).decode('utf-8')
 
@@ -261,7 +270,7 @@ def main():
         st = time.time()
 
         with action_lock:
-            action_state = 'think'
+            action_status = 'think'
 
         if with_img:
             img_path = './img_imput.jpg'
@@ -286,11 +295,14 @@ def main():
                 else:
                     answer = ''
 
+                _sound_actions = []
                 if len(answer) > 0:
                     _actions = list.copy(actions)
                     for _action in _actions:
-                        if _action in VOICE_ACTIONS:
+                        if _action in SOUND_EFFECT_ACTIONS:
+                            _sound_actions.append(_action)
                             actions.remove(_action)
+
             else:
                 response = str(response)
                 if len(response) > 0:
@@ -303,29 +315,33 @@ def main():
     
         try:
             # ---- tts ----
-            _status = False
+            _tts_status = False
             if answer != '':
                 st = time.time()
                 _time = time.strftime("%y-%m-%d_%H-%M-%S", time.localtime())
                 _tts_f = f"./tts/{_time}_raw.wav"
-                _status = openai_helper.text_to_speech(answer, _tts_f, 'echo', response_format='wav') # alloy, echo, fable, onyx, nova, and shimmer
-                if _status:
+                _tts_status = openai_helper.text_to_speech(answer, _tts_f, 'echo', response_format='wav') # alloy, echo, fable, onyx, nova, and shimmer
+                if _tts_status:
                     tts_file = f"./tts/{_time}_{VOLUME_DB}dB.wav"
-                    _status = sox_volume(_tts_f, tts_file, VOLUME_DB)
+                    _tts_status = sox_volume(_tts_f, tts_file, VOLUME_DB)
                 gray_print(f'tts takes: {time.time() - st:.3f} s')
-
-                if _status:
-                    with speech_lock:
-                        speech_loaded = True
 
             # ---- actions ----
             with action_lock:
                 actions_to_be_done = actions
                 gray_print(f'actions: {actions_to_be_done}')
-                action_state = 'actions'
+                action_status = 'actions'
+
+            # --- sound effects and voice ---
+            for _sound in _sound_actions:
+                sounds_dict[_sound](music)
+
+            if _tts_status:
+                with speech_lock:
+                    speech_loaded = True
 
             # ---- wait speak done ----
-            if _status:
+            if _tts_status:
                 while True:
                     with speech_lock:
                         if not speech_loaded:
@@ -336,7 +352,7 @@ def main():
             # ---- wait actions done ----
             while True:
                 with action_lock:
-                    if action_state != 'actions':
+                    if action_status != 'actions':
                         break
                 time.sleep(.01)
 
@@ -355,6 +371,7 @@ if __name__ == "__main__":
     except Exception as e:
         print(f"\033[31mERROR: {e}\033[m")
     finally:
-        Vilib.camera_close()
+        if with_img:
+            Vilib.camera_close()
         my_car.reset()
 
