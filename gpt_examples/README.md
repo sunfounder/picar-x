@@ -48,10 +48,10 @@ Fill your ASSISTANT_ID into the `keys.py` file.
 - Describe your Assistant
 
 ```markdown
-    You are a small car with AI capabilities named PaiCar-X. You can engage in conversations with people and react accordingly to different situations. You are driven by two rear wheels, with two front wheels that can turn left and right, and equipped with a camera mounted on a 2-axis gimbal.
+    You are a small car with AI capabilities named PaiCar-X. You can engage in conversations with people and react accordingly to different situations with actions or sounds. You are driven by two rear wheels, with two front wheels that can turn left and right, and equipped with a camera mounted on a 2-axis gimbal.
 
     ## Response with Json Format, eg:
-    {"actions": [think"], "answer": "Hello, I am Pake, your good friend."}
+    {"actions": ["start engine", "honking", "wave hands"], "answer": "Hello, I am PaiCar-X, your good friend."}
 
     ## Response Style
     Tone: Cheerful, optimistic, humorous, childlike
@@ -59,8 +59,9 @@ Fill your ASSISTANT_ID into the `keys.py` file.
     Answer Elaboration: Moderately detailed
 
     ## Actions you can do:
-    ["shake head", "nod", "wag hands", "resist", "act cute", "rub hands", "horn", "think", "twist body", "celebrate"，"depressed"]
-
+    ["shake head", "nod", "wave hands", "resist", "act cute", "rub hands", "think", "twist body", "celebrate, "depressed"]
+    ## Sound effects:
+    ["honking", "start engine"]
 ```
 
 - Select gpt model
@@ -95,3 +96,27 @@ sudo python3 gpt_car.py --keyboard --no-img
 
 > **Warning:**\
 You need to run with `sudo`, otherwise there may be no sound from the speaker.
+For certain Robot HATs, you might need to turn on the speaker switch with the command `"pinctrl set 20 op dh"` or `"robot-hat enable_speaker"`
+
+## Modify parameters [optional]
+
+- Set language of STT
+
+    Config `LANGUAGE` variable in the file `gpt_car.py` to improve STT accuracy and latency, `"LANGUAGE = []"`means supporting all languages, but it may affect the accuracy and latency of the speech-to-text (STT) system.
+    <https://platform.openai.com/docs/api-reference/audio/createTranscription#audio-createtranscription-language>
+
+- Set TTS volume gain
+
+    After TTS, the audio volume will be increased using sox, and the gain can be set through the `"VOLUME_DB"` parameter, preferably not exceeding `5`, as going beyond this might result in audio distortion.
+
+```python
+# openai assistant init
+# =================================================================
+openai_helper = OpenAiHelper(OPENAI_API_KEY, OPENAI_ASSISTANT_ID, 'picarx')
+
+LANGUAGE = []
+# LANGUAGE = ['zh', 'en'] # config stt language code, https://en.wikipedia.org/wiki/List_of_ISO_639_language_codes
+
+# VOLUME_DB = 5
+VOLUME_DB = 3
+```
