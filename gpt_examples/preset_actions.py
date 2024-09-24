@@ -3,7 +3,7 @@ from time import sleep
 import random
 from math import sin, cos, pi
 
-def wag_hands(car):
+def wave_hands(car):
     car.reset()
     car.set_cam_tilt_angle(20)
     for _ in range(2):
@@ -64,6 +64,13 @@ def think(car):
     sleep(.1)
     car.reset()
 
+def keep_think(car):
+    car.reset()
+    for i in range(11):
+        car.set_cam_pan_angle(i*3)
+        car.set_cam_tilt_angle(-i*2)
+        car.set_dir_servo_angle(i*2)
+        sleep(.05)
 
 def shake_head(car):
     car.stop()
@@ -209,10 +216,21 @@ def celebrate(car):
     car.set_cam_pan_angle(0)
     sleep(.2)
 
+def honking(music):
+    import utils
+    # utils.speak_block(music, "../sounds/car-double-horn.wav", 100)
+    music.sound_play_threading("../sounds/car-double-horn.wav", 100)
+
+def start_engine(music):
+    import utils
+    # utils.speak_block(music, "../sounds/car-start-engine.wav", 100)
+    music.sound_play_threading("../sounds/car-start-engine.wav", 50)
+
+
 actions_dict = {
     "shake head":shake_head, 
     "nod": nod,
-    "wag hands": wag_hands,
+    "wave hands": wave_hands,
     "resist": resist,
     "act cute": act_cute,
     "rub hands": rub_hands,
@@ -222,17 +240,37 @@ actions_dict = {
     "depressed": depressed,
 }
 
+sounds_dict = {
+    "honking": honking,
+    "start engine": start_engine,
+}
+
+
 if __name__ == "__main__":
     from picarx import Picarx
-    import readchar
+    from robot_hat import Music
+    import os
+
+    os.popen("pinctrl set 20 op dh") # enable robot_hat speake switch
+    current_path = os.path.dirname(os.path.abspath(__file__))
+    os.chdir(current_path) # change working directory
 
     my_car = Picarx()
     my_car.reset()
+
+    music = Music()
+
     sleep(.5)
 
+    _actions_num = len(actions_dict)
     actions = list(actions_dict.keys())
     for i, key in enumerate(actions_dict):
         print(f'{i} {key}')
+    
+    _sounds_num = len(sounds_dict)
+    sounds = list(sounds_dict.keys())
+    for i, key in enumerate(sounds_dict):
+        print(f'{_actions_num+i} {key}')
 
     last_key = None
 
@@ -241,12 +279,20 @@ if __name__ == "__main__":
             key = input()
 
             if key == '':
-                print(actions[last_key])
-                actions_dict[actions[last_key]](my_car)
+                if last_key > _actions_num - 1:
+                    print(sounds[last_key-_actions_num])
+                    sounds_dict[sounds[last_key-_actions_num]](music)
+                else:
+                    print(actions[last_key])
+                    actions_dict[actions[last_key]](my_car)
             else:
                 key = int(key)
-                if key > (len(actions) - 1):
+                if key > (_actions_num + _sounds_num - 1):
                     print("Invalid key")
+                elif key > (_actions_num - 1):
+                    last_key = key
+                    print(sounds[last_key-_actions_num])
+                    sounds_dict[sounds[last_key-_actions_num]](music)
                 else:
                     last_key = key
                     print(actions[key])
@@ -255,7 +301,7 @@ if __name__ == "__main__":
             # sleep(2)
             # shake_head(my_car)
             # nod(my_car)
-            # wag_hands(my_car)
+            # wave_hands(my_car)
             # resist(my_car)
             # act_cute(my_car)
             # rub_hands(my_car)
