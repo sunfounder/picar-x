@@ -43,6 +43,11 @@ LANGUAGE = []
 
 # VOLUME_DB = 5
 VOLUME_DB = 3
+
+# select tts voice role, counld be "alloy, echo, fable, onyx, nova, and shimmer"
+# https://platform.openai.com/docs/guides/text-to-speech/supported-languages
+TTS_VOICE = 'echo'
+
 SOUND_EFFECT_ACTIONS = ["honking", "start engine"]
 
 # car init 
@@ -282,7 +287,7 @@ def main():
 
         gray_print(f'chat takes: {time.time() - st:.3f} s')
 
-        # actions & TTSs
+        # actions & TTS
         # ---------------------------------------------------------------- 
         try:
             if isinstance(response, dict):
@@ -307,11 +312,11 @@ def main():
             else:
                 response = str(response)
                 if len(response) > 0:
-                    actions = ['stop']
+                    actions = []
                     answer = response
 
         except:
-            actions = ['stop']
+            actions = []
             answer = ''
     
         try:
@@ -321,7 +326,7 @@ def main():
                 st = time.time()
                 _time = time.strftime("%y-%m-%d_%H-%M-%S", time.localtime())
                 _tts_f = f"./tts/{_time}_raw.wav"
-                _tts_status = openai_helper.text_to_speech(answer, _tts_f, 'echo', response_format='wav') # alloy, echo, fable, onyx, nova, and shimmer
+                _tts_status = openai_helper.text_to_speech(answer, _tts_f, TTS_VOICE, response_format='wav') # alloy, echo, fable, onyx, nova, and shimmer
                 if _tts_status:
                     tts_file = f"./tts/{_time}_{VOLUME_DB}dB.wav"
                     _tts_status = sox_volume(_tts_f, tts_file, VOLUME_DB)
@@ -335,7 +340,10 @@ def main():
 
             # --- sound effects and voice ---
             for _sound in _sound_actions:
-                sounds_dict[_sound](music)
+                try:
+                    sounds_dict[_sound](music)
+                except Exception as e:
+                    print(f'action error: {e}')
 
             if _tts_status:
                 with speech_lock:
@@ -348,7 +356,6 @@ def main():
                         if not speech_loaded:
                             break
                     time.sleep(.01)
-
 
             # ---- wait actions done ----
             while True:
