@@ -10,7 +10,7 @@
 
 - Install openai and speech processing libraries
 
-    > **Note:**\
+    > [!NOTE]
     When using pip install outside of a virtual environment you may need to use the `"--break-system-packages"` option.
 
     ```bash
@@ -94,7 +94,7 @@ sudo python3 gpt_car.py --keyboard
 sudo python3 gpt_car.py --keyboard --no-img
 ```
 
-> **Warning:**\
+> [!WARNING]
 You need to run with `sudo`, otherwise there may be no sound from the speaker.
 For certain Robot HATs, you might need to turn on the speaker switch with the command `"pinctrl set 20 op dh"` or `"robot-hat enable_speaker"`
 
