@@ -15,32 +15,23 @@
 Adjust Servo for Assembly
 ==========================
 
-Before assembling the servo, 
-the angle needs to be set to zero. 
-This is because the servo motor has a limited range of motion, 
-setting the angle to zero degrees ensures that the servo is in its 
-initial position and does not exceed its range of motion when the servo is powered on. 
-If the servo is not set to zero degrees prior to assembly, 
-it may attempt to exceed its range of motion when powered, 
-potentially damaging the servo or the mechanical system it is connected to. 
-Therefore, setting the angle to zero is an important step to ensure the 
-safe and normal operation of the servo motor.
+Before assembling the servo, it is essential to set the angle to zero. Since servo motors have a limited range of motion, setting the angle to zero degrees ensures that the servo starts in its initial position and avoids exceeding its range when powered on. Failing to set the servo to zero beforehand may cause it to attempt to move beyond its allowed range when powered, potentially damaging both the servo and the mechanical system it's attached to. This step is crucial to guarantee safe and proper operation of the servo motor.
 
 .. image:: img/IMG_9897.png
 
 
-**For Python User**
+For Python Users
+-----------------------
 
-Please refer to :ref:`quick_guide_python` to complete the 
-installation of the Raspberry Pi OS and adjust the angle of the servos.
+Refer to :ref:`quick_guide_python` to complete the installation of Raspberry Pi OS and adjust the servo angles.
 
 
-**For Ezblock User**
+For Ezblock Users
+-------------------------
 
 .. note::
 
-    If you are using a Raspberry Pi 5, you will not be able to use our graphical programming software, EzBlock, to program the PiCrawler.
+    If you are using a Raspberry Pi 5, our graphical programming software, EzBlock, is not supported.
 
-After you have installed the ezblock system, 
-the P11 pin can be used to adjust the servo. 
-Please refer to :ref:`ezb_servo_adjust` for details.
+
+Once you have installed the Ezblock system, the P11 pin can be used to adjust the servo. For more details, please refer to :ref:`ezb_servo_adjust`.

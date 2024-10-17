@@ -15,6 +15,14 @@
 7. Servo Adjust(Important)
 ============================
 
+.. note::
+
+    If your Robot HAT is version V44 or higher (with the speaker located at the top of the board) and includes an onboard **Zero** button, you can skip this step and simply press the **Zero** button to activate the servo zeroing program.
+
+    .. image:: img/robot_hat_v44.png
+        :width: 500
+        :align: center
+
 The angle range of the servo is -90~90, but the angle set at the factory is random, maybe 0°, maybe 45°; if we assemble it with such an angle directly, it will lead to a chaotic state after the robot runs the code, or worse, it will cause the servo to block and burn out.
 
 So here we need to set all the servo angles to 0° and then install them, so that the servo angle is in the middle, no matter which direction to turn.
