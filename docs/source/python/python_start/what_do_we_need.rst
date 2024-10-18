@@ -26,9 +26,9 @@ It is a capable little device that enables people of all ages to explore
 computing, and to learn how to program in languages like Scratch and
 Python.
 
-
-.. image:: img/image10.jpeg
-
+.. image:: img/compitable_pi.jpg
+    :width: 600
+    :align: center
 
 **Power Adapter**
 

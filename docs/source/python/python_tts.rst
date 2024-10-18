@@ -20,7 +20,6 @@
 In this example, we use PiCar-X's (to be precise, Robot HAT’s) sound effects. 
 It consists of three parts, namely Muisc, Sound, Text to Speech.
 
-.. image:: img/how_are_you.jpg
 
 **Install i2samp**
 
