@@ -12,28 +12,6 @@
 
     👉 Ready to explore and create with us? Click [|link_sf_facebook|] and join today!
 
-5-pin Battery
-=================
-
-.. image:: img/2battery.jpg
-    :width: 300
-    :align: center
-
-* **VCC**: Battery positive terminal, here there are two sets of VCC and GND is to increase the current and reduce the resistance.
-* **Middle**: To balance the voltage between the two cells and thus protect the battery.
-* **GND**: Negative battery terminal.
-
-This is a custom battery pack made by SunFounder consisting of two 18650 batteries with a capacity of 2000mAh. The connector is PH2.0-5P, which can be charged directly after being inserted into the shield.
-
-**Features**
-
-* **Composition**: Li-ion
-* **Battery Capacity**: 2000mAh, 14.8Wh
-* **Battery Weight**: 90.8g
-* **Number of Cells**: 2
-* **Connector**: PH2.0-5P
-* **Over-discharge protection**: 6.0V
-
 3-pin Battery
 =================
 
@@ -43,7 +21,7 @@ This is a custom battery pack made by SunFounder consisting of two 18650 batteri
 * **Middle**: To balance the voltage between the two cells and thus protect the battery.
 * **GND**: Negative battery terminal.
 
-This is a custom battery pack made by SunFounder consisting of two 18650 batteries with a capacity of 2000mAh. The connector is XH2.54 3P, which can be charged directly after being inserted into the shield.
+This is a custom battery pack made by SunFounder consisting of two 18650 batteries with a capacity of 2000mAh. The connector is XH2.54 3P, which can be charged directly after being inserted into the Robot HAT.
 
 **Features**
 
