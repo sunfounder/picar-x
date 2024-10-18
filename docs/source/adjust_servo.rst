@@ -27,16 +27,18 @@
 .. image:: img/IMG_9897.png
 
 
-**Pythonのユーザーへ**
+Pythonのユーザーへ
+-------------------------
 
 Raspberry Pi OSのインストールとサーボの角度調整の完了には、:ref:`quick_guide_python` を参照してください。
 
 
-**Ezblockのユーザーへ**
+Ezblockのユーザーへ
+-------------------------
 
 .. note::
 
-    もしRaspberry Pi 5を使用している場合、グラフィカルプログラミングソフトウェアのEzBlockを使用してPiCar-Xをプログラミングすることはできません。
+    Raspberry Pi 5を使用している場合、グラフィカルプログラミングソフトウェアEzBlockはサポートされていません。
 
 
 ezblockシステムをインストールした後、

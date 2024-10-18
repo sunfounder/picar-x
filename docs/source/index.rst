@@ -59,16 +59,16 @@ PiCar-Xは、BlocklyとPythonの2つのプログラム言語をサポートし�
 .. toctree::
     :maxdepth: 3
 
-    このキットについて <self>
-    introduction
-    list_and_assembly
-    adjust_servo
+    About This Kit <self>
+    assemble
     python/play_with_python
     python_video_course/python_video_course
     ezblock/play_with_ezblock
+    adjust_servo
+    openai
     appendix/appendix
+    hardware/cpn_hardware
     faq
-    thank
 
 著作権通知
 --------------------------

@@ -26,7 +26,9 @@ Raspberry Piは、低コストでクレジットカードサイズのコンピ�
 これは小さながらも能力のあるデバイスで、あらゆる年齢の人々がコンピューティングを探求し、ScratchやPythonのような言語でプログラムを学ぶことを可能にします。
 
 
-.. image:: img/image10.jpeg
+.. image:: img/compitable_pi.jpg
+    :width: 600
+    :align: center
 
 
 **電源アダプタ**

@@ -21,6 +21,10 @@ automatic obstacle avoidance, automatic line tracking, etc.
 
 
 <a id="update"></a>
+2024-10-18:
+- Added an interaction tutorial with GPT-4O.
+- Optimized version compatibility issues.
+
 2024-5-31:
 - Optimized the introductory knowledge of Python, including all Python code and related courses.
 
