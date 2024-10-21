@@ -20,7 +20,6 @@
 En este ejemplo, usamos los efectos de sonido de PiCar-X (o más específicamente, de Robot HAT). 
 Consiste en tres partes: Música, Sonido y Texto a Voz.
 
-.. image:: img/how_are_you.jpg
 
 **Instalar i2samp**
 

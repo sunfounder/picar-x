@@ -19,8 +19,7 @@ Guía rápida sobre EzBlock
 
 .. note::
 
-    Si estás utilizando una Raspberry Pi 5, no podrás usar nuestro software de programación gráfica, EzBlock, para programar el PiCrawler.
-
+    Si estás utilizando una Raspberry Pi 5, nuestro software de programación gráfica, EzBlock, no es compatible.
 
 El rango de ángulo del servo es de -90 a 90°, pero el ángulo establecido en la fábrica es aleatorio, podría ser 0°, 45°, o cualquier otro; si lo ensamblamos con un ángulo así, esto puede provocar un estado caótico cuando el robot ejecute el código, o peor aún, el servo podría bloquearse y quemarse.
 

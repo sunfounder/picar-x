@@ -15,6 +15,14 @@
 7. Ajuste del Servomotor (Importante)
 ======================================
 
+.. note::
+
+    Si su Robot HAT es la versión V44 o superior (con el altavoz ubicado en la parte superior de la placa) e incluye un botón Zero integrado, puede omitir este paso y simplemente presionar el botón Zero para activar el programa de centrado de los servos.
+
+    .. image:: img/robot_hat_v44.png
+        :width: 500
+        :align: center
+
 El rango de ángulo del servomotor es de -90° a 90°, pero el ángulo configurado en la fábrica es aleatorio, puede ser 0° o 45°. Si ensamblamos el servomotor con ese ángulo directamente, provocará un estado caótico cuando el robot ejecute el código, o peor aún, el servomotor podría bloquearse y quemarse.
 
 Por eso, es necesario configurar todos los ángulos de los servomotores a 0° antes de instalarlos, de manera que el ángulo del servomotor quede centrado, sin importar en qué dirección gire.

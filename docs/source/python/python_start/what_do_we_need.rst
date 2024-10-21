@@ -25,7 +25,10 @@ de crédito, que se conecta a un monitor o TV y utiliza un teclado y un ratón
 estándar. Es un pequeño dispositivo capaz que permite a personas de todas las 
 edades explorar la informática y aprender a programar en lenguajes como Scratch y Python.
 
-.. image:: img/image10.jpeg
+.. image:: img/compitable_pi.jpg
+    :width: 600
+    :align: center
+
 
 **Adaptador de corriente**
 

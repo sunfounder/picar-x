@@ -36,8 +36,9 @@ instalación del sistema operativo Raspberry Pi OS y ajustar el ángulo de los s
 
 .. note::
 
-    Si estás utilizando una Raspberry Pi 5, no podrás usar nuestro software de programación gráfica, EzBlock, para programar el PiCrawler.
+    Si estás utilizando una Raspberry Pi 5, nuestro software de programación gráfica, EzBlock, no es compatible.
 
+        
 Después de haber instalado el sistema Ezblock, 
 se puede usar el pin P11 para ajustar el servo. 
 Consulta :ref:`ezb_servo_adjust` para más detalles.
