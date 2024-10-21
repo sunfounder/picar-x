@@ -20,13 +20,17 @@ Instructions d'assemblage
 
 Avant d'assembler le PiCar-X, veuillez d'abord vérifier que toutes les pièces et composants sont inclus. Si des composants manquent ou sont endommagés, veuillez contacter SunFounder immédiatement à l'adresse service@sunfounder.com afin de résoudre le problème dès que possible.
 
-Veuillez suivre les étapes du PDF suivant pour les instructions d'assemblage : 
+.. Veuillez suivre les étapes du PDF suivant pour les instructions d'assemblage : 
 
-:download:`[PDF]Component List and Assembly of PiCar-X <https://github.com/sunfounder/sf-pdf/raw/master/assembly_file/z0104v33-a0001013-picar-x.pdf>`.
+.. :download:`[PDF]Component List and Assembly of PiCar-X <https://github.com/sunfounder/sf-pdf/raw/master/assembly_file/z0104v33-a0001013-picar-x.pdf>`.
 
 **Monter le Raspberry Pi Zero W sur le PiCar-X**
 
 Si votre carte principale est un Raspberry Pi Zero W, voici les étapes pour l'installer sur le PiCar-X. 
+
+.. note::
+
+    Les étapes d'assemblage dans la vidéo peuvent différer légèrement des instructions imprimées que vous avez. Veuillez donner la priorité au suivi des instructions imprimées. Si certaines étapes ne sont pas claires, vous pouvez vous référer à la vidéo pour plus de précisions.
 
 .. raw:: html
 
@@ -39,6 +43,10 @@ Ensuite, vous pouvez continuer à suivre les instructions de la vidéo ci-dessou
 
 Cette vidéo vous guidera dans le processus d'assemblage de votre robot depuis le début.
 
+.. note::
+
+    Les étapes d'assemblage dans la vidéo peuvent différer légèrement des instructions imprimées que vous avez. Veuillez donner la priorité au suivi des instructions imprimées. Si certaines étapes ne sont pas claires, vous pouvez vous référer à la vidéo pour plus de précisions.
+    
 Dans ce tutoriel, vous apprendrez :
 
 * **Préparation** : Nous vous présenterons tous les outils et pièces nécessaires pour vous assurer que vous êtes entièrement équipé avant de commencer l'assemblage.

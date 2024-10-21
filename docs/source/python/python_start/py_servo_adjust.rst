@@ -15,6 +15,15 @@
 7. Réglage du Servo (Important)
 ===================================
 
+.. note::
+
+    Si votre Robot HAT est de version V44 ou supérieure (avec le haut-parleur situé en haut de la carte) et comprend un bouton Zero intégré, vous pouvez ignorer cette étape et simplement appuyer sur le bouton Zero pour activer le programme de calibrage des servos.
+
+    .. image:: img/robot_hat_v44.png
+        :width: 500
+        :align: center
+
+
 La plage d'angle du servo est de -90° à 90°, mais l'angle défini en usine est aléatoire, peut-être 0°, peut-être 45°. Si nous l'assemblons directement avec un tel angle, cela entraînera un dysfonctionnement lors de l'exécution du code par le robot, voire pire, cela pourrait bloquer le servo et l'endommager.
 
 Nous devons donc régler tous les angles des servos à 0° avant de les installer, afin que l'angle du servo soit centré, quelle que soit la direction de rotation.

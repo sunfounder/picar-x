@@ -20,8 +20,6 @@
 Dans cet exemple, nous utilisons les effets sonores de PiCar-X (ou plus précisément, de Robot HAT).
 Cela comprend trois parties : la Musique, les Sons et la Synthèse vocale (TTS).
 
-.. image:: img/how_are_you.jpg
-
 **Installer i2samp**
 
 Avant d'utiliser les fonctions de Synthèse vocale (TTS) et d'Effet sonore, 

@@ -66,15 +66,15 @@ Le PiCar-X peut être programmé dans deux langages : Blockly et Python. Quel qu
     :maxdepth: 3
 
     About This Kit <self>
-    introduction
-    list_and_assembly
-    adjust_servo
+    assemble
     python/play_with_python
     python_video_course/python_video_course
     ezblock/play_with_ezblock
+    adjust_servo
+    openai
     appendix/appendix
+    hardware/cpn_hardware
     faq
-    thank
 
 Avis de droits d'auteur
 ----------------------------

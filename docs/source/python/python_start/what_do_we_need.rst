@@ -27,8 +27,9 @@ permet aux personnes de tout âge d'explorer l'informatique et d'apprendre
 à programmer dans des langages comme Scratch et Python.
 
 
-.. image:: img/image10.jpeg
-
+.. image:: img/compitable_pi.jpg
+    :width: 600
+    :align: center
 
 **Adaptateur secteur**
 

@@ -13,7 +13,7 @@
     👉 Prêt à explorer et créer avec nous ? Cliquez sur [|link_sf_facebook|] et rejoignez-nous dès aujourd'hui !
 
 Ajuster le servo pour l'assemblage
-==================================
+====================================
 
 Avant d'assembler le servo, l'angle doit être réglé à zéro. En effet, 
 le moteur du servo a une plage de mouvement limitée, et en réglant 
@@ -27,15 +27,17 @@ du servo.
 
 .. image:: img/IMG_9897.png
 
-**Pour les utilisateurs de Python**
+Pour les utilisateurs de Python
+-------------------------------------
 
 Veuillez consulter :ref:`quick_guide_python` pour finaliser l'installation de l'OS Raspberry Pi et ajuster l'angle des servos.
 
-**Pour les utilisateurs d'Ezblock**
+Pour les utilisateurs d'Ezblock
+-------------------------------------
 
 .. note::
 
-    Si vous utilisez un Raspberry Pi 5, vous ne pourrez pas utiliser notre logiciel de programmation graphique, EzBlock, pour programmer le PiCrawler.
+    Si vous utilisez un Raspberry Pi 5, notre logiciel de programmation graphique, EzBlock, n'est pas compatible.
 
 
 Après avoir installé le système Ezblock, la broche P11 peut être utilisée pour 
