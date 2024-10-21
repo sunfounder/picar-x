@@ -42,22 +42,3 @@ Attendi qualche secondo e sentirai un leggero bip, che indicherà che il Raspber
     Se entrambe le spie dell'indicatore di livello della batteria sono spente, carica la batteria.
     Quando hai bisogno di sessioni prolungate di programmazione o debug, puoi mantenere operativo il Raspberry Pi inserendo il cavo USB-C per caricare la batteria contemporaneamente.
 
-Batteria 18650
------------------------------------
-
-.. image:: img/3pin_battery.jpg
-
-* VCC: Terminale positivo della batteria; qui ci sono due set di VCC e GND per aumentare la corrente e ridurre la resistenza.
-* Centrale: Per bilanciare la tensione tra le due celle e quindi proteggere la batteria.
-* GND: Terminale negativo della batteria.
-
-Questo è un pacco batteria personalizzato da SunFounder, composto da due batterie 18650 con una capacità di 2000mAh. Il connettore è XH2.54 3P, che può essere caricato direttamente dopo essere stato inserito nello shield.
-
-**Caratteristiche**
-
-* Carica della batteria: 5V/2A
-* Uscita della batteria: 5V/5A
-* Capacità della batteria: 3.7V 2000mAh x 2
-* Durata della batteria: 90min
-* Tempo di carica della batteria: 130min
-* Connettore: XH2.54 3P

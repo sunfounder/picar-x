@@ -15,6 +15,14 @@
 7. Regolazione del Servo (Importante)
 =========================================
 
+.. note::
+
+    Se il tuo Robot HAT è della versione V44 o superiore (con l'altoparlante posizionato nella parte superiore della scheda) e include un pulsante Zero integrato, puoi saltare questo passaggio e semplicemente premere il pulsante Zero per attivare il programma di azzeramento dei servomotori.
+
+    .. image:: img/robot_hat_v44.png
+        :width: 500
+        :align: center
+
 L'angolo di rotazione del servo varia da -90° a 90°, ma l'angolo impostato in fabbrica è casuale, potrebbe essere 0°, oppure 45°; se montiamo il servo con un angolo casuale, il robot potrebbe non funzionare correttamente, o peggio, il servo potrebbe bloccarsi o surriscaldarsi.
 
 Pertanto, è necessario impostare tutti i servo a 0° prima di assemblarli, in modo che l'angolo sia centrato, indipendentemente dalla direzione di rotazione.

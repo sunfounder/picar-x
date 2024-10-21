@@ -19,8 +19,7 @@ Gioca con EzBlock
 
 .. note::
 
-    Se stai utilizzando un Raspberry Pi 5, non potrai utilizzare il nostro software di programmazione grafica, EzBlock, per programmare il PiCrawler.
-
+    Se stai usando un Raspberry Pi 5, il nostro software di programmazione grafica, EzBlock, non è supportato.
 
 Per principianti e neofiti, EzBlock è una piattaforma di sviluppo software offerta da SunFounder per Raspberry Pi. EzBlock offre due ambienti di programmazione: uno grafico e uno in Python.
 

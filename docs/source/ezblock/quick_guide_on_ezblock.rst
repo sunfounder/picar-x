@@ -19,7 +19,7 @@ Guida Rapida su EzBlock
 
 .. note::
 
-    Se stai utilizzando un Raspberry Pi 5, non potrai usare il nostro software di programmazione grafica, EzBlock, per programmare il PiCrawler.
+    Se stai usando un Raspberry Pi 5, il nostro software di programmazione grafica, EzBlock, non è supportato.
 
 L'intervallo dell'angolo del servo è -90~90 gradi, ma l'angolo impostato in fabbrica è casuale, potrebbe essere 0°, potrebbe essere 45°; se lo assembliamo con questo angolo direttamente, si verificherà uno stato caotico dopo che il robot esegue il codice, o peggio, il servo potrebbe bloccarsi e bruciarsi.
 

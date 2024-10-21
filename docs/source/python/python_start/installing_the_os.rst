@@ -133,6 +133,6 @@
 
 #. Ora puoi inserire la scheda SD configurata con il Raspberry Pi OS nello slot microSD situato sul lato inferiore del Raspberry Pi.
 
-    .. image:: img/insert_sd_card.png
-        :width: 500
-        :align: center
+    .. .. image:: img/insert_sd_card.png
+    ..     :width: 500
+    ..     :align: center

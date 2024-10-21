@@ -20,7 +20,6 @@
 In questo esempio utilizziamo gli effetti sonori di PiCar-X (più precisamente del Robot HAT).
 È composto da tre parti: Musica, Suoni, Sintesi Vocale.
 
-.. image:: img/how_are_you.jpg
 
 **Installa i2samp**
 

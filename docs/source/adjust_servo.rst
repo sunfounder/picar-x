@@ -29,17 +29,19 @@ funzionamento sicuro e corretto del motore del servo.
 .. image:: img/IMG_9897.png
 
 
-**Per Utenti Python**
+Per Utenti Python
+---------------------------
 
 Si prega di fare riferimento a :ref:`quick_guide_python` per completare l'installazione 
 del sistema operativo Raspberry Pi e regolare l'angolo dei servomotori.
 
 
-**Per Utenti Ezblock**
+Per Utenti Ezblock
+----------------------------
 
 .. note::
 
-    Se stai utilizzando un Raspberry Pi 5, non potrai utilizzare il nostro software di programmazione grafica, EzBlock, per programmare il PiCrawler.
+    Se stai usando un Raspberry Pi 5, il nostro software di programmazione grafica, EzBlock, non è supportato.
 
 Dopo aver installato il sistema Ezblock, 
 è possibile utilizzare il pin P11 per regolare il servo. 

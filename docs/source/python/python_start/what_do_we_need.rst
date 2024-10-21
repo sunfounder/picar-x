@@ -26,7 +26,9 @@ mouse standard. È un piccolo dispositivo che permette a persone di tutte le
 età di esplorare il mondo della programmazione, imparando a usare linguaggi 
 come Scratch e Python.
 
-.. image:: img/image10.jpeg
+.. image:: img/compitable_pi.jpg
+    :width: 600
+    :align: center
 
 **Alimentatore**
 
