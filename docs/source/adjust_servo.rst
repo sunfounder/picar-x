@@ -28,17 +28,19 @@ sicheren und normalen Betrieb des Servomotors zu gewährleisten.
 
 .. image:: img/IMG_9897.png
 
-**Für Python-Nutzer**
+Für Python-Nutzer
+-------------------------
+
 
 Bitte beziehen Sie sich auf :ref:`quick_guide_python`, um die 
 Installation des Raspberry Pi OS abzuschließen und den Winkel der Servos anzupassen.
 
-**Für Ezblock-Nutzer**
+Für Ezblock-Nutzer
+--------------------------
 
 .. note::
 
-  Wenn Sie einen Raspberry Pi 5 verwenden, können Sie unsere grafische Programmier-Software EzBlock nicht verwenden, um den PiCar-X zu programmieren.
-
+  Wenn Sie einen Raspberry Pi 5 verwenden, wird unsere grafische Programmiersoftware EzBlock nicht unterstützt.
 
 Nachdem Sie das Ezblock-System installiert haben, 
 kann der P11-Pin verwendet werden, um den Servo anzupassen. 

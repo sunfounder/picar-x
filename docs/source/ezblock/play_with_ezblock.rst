@@ -19,7 +19,7 @@ Mit Ezblock spielen
 
 .. note::
 
-  Wenn Sie einen Raspberry Pi 5 verwenden, können Sie unsere grafische Programmier-Software EzBlock nicht verwenden, um den PiCar-X zu programmieren.
+  Wenn Sie einen Raspberry Pi 5 verwenden, wird unsere grafische Programmiersoftware EzBlock nicht unterstützt.
 
 Für Anfänger ist EzBlock eine Softwareentwicklungsplattform, die von SunFounder für den Raspberry Pi angeboten wird. EzBlock bietet zwei Programmierumgebungen: eine grafische Umgebung und eine Python-Umgebung.
 

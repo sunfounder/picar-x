@@ -41,6 +41,11 @@ templates_path = ['_templates']
 exclude_patterns = []
 
 
+# -- sphinx_rtd_theme Theme options -----------------------------------------------------
+html_theme_options = {
+    'flyout_display': 'attached'
+}
+
 # -- Options for HTML output -------------------------------------------------
 
 # The theme to use for HTML and HTML Help pages.  See the documentation for
@@ -52,9 +57,11 @@ html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
 # Link to other projects’ documentation with intersphinx. Use the intersphinx_mapping configuration to indicate the name and link of the projects you want to use
 
 extensions = [
-    'sphinx.ext.intersphinx',
+    'sphinx.ext.autosectionlabel',
+    'sphinx_copybutton',
+    'sphinx_rtd_theme',
+    "sphinx.ext.intersphinx",
 ]
-
 
 intersphinx_mapping = {
     'ezblock': ('https://docs.sunfounder.com/projects/ezblock3/en/latest/', None),
@@ -108,6 +115,27 @@ gettext_compact = False # Support for generating the contents of the folders ins
 # links
 
 rst_epilog = """
+
+.. |link_robot_hat_v4| raw:: html
+
+    <a href="https://docs.sunfounder.com/projects/robot-hat-v4/en/latest/" target="_blank">Robot HAT</a>
+
+.. |link_voice_options| raw:: html
+
+    <a href="https://platform.openai.com/docs/guides/text-to-speech/voice-options" target="_blank">Voice options</a>
+
+.. |link_iso_language_code| raw:: html
+
+    <a href="https://en.wikipedia.org/wiki/List_of_ISO_639_language_codes" target="_blank">ISO-639</a>
+
+.. |link_openai_platform| raw:: html
+
+    <a href="https://platform.openai.com/api-keys" target="_blank">OpenAI Platform</a>
+
+.. |link_microphone| raw:: html
+
+    <a href="https://www.sunfounder.com/products/mini-usb-microphone?_pos=2&_sid=d05c80026&_ss=r" target="_blank">Microphone link</a>
+
 
 .. |link_sf_facebook| raw:: html
 

@@ -27,9 +27,9 @@ kleines Gerät, das Menschen aller Altersgruppen ermöglicht, die Welt der
 Computer zu erkunden und das Programmieren in Sprachen wie Scratch und
 Python zu erlernen.
 
-
-.. image:: img/image10.jpeg
-
+.. image:: img/compitable_pi.jpg
+    :width: 600
+    :align: center
 
 **Netzteil**
 

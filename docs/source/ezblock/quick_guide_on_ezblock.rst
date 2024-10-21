@@ -19,7 +19,7 @@ Schnellanleitung für EzBlock
 
 .. note::
 
-  Wenn Sie einen Raspberry Pi 5 verwenden, können Sie unsere grafische Programmier-Software EzBlock nicht verwenden, um den PiCar-X zu programmieren.
+  Wenn Sie einen Raspberry Pi 5 verwenden, wird unsere grafische Programmiersoftware EzBlock nicht unterstützt.
 
 
 Der Drehwinkelbereich des Servos liegt zwischen -90° und 90°. Jedoch ist der im Werk eingestellte Winkel zufällig, vielleicht 0° oder vielleicht 45°. Wenn wir ihn direkt mit solch einem Winkel montieren, führt dies zu einem chaotischen Zustand, sobald der Roboter den Code ausführt. Schlimmer noch, es kann dazu führen, dass der Servo blockiert und durchbrennt.

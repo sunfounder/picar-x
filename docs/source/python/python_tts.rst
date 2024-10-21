@@ -20,8 +20,6 @@
 In diesem Beispiel verwenden wir die Soundeffekte von PiCar-X (genauer gesagt, von Robot HAT). 
 Es besteht aus drei Teilen, nämlich Musik, Sound und Text-zu-Sprache.
 
-.. image:: img/how_are_you.jpg
-
 **i2samp installieren**
 
 Bevor Sie die Funktionen Text-zu-Sprache (TTS) und Soundeffekte verwenden, 

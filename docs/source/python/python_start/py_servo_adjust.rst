@@ -15,6 +15,14 @@
 7. Servo-Justierung(Wichtig)
 ================================
 
+.. note::
+
+    Wenn Ihr Robot HAT Version V44 oder höher ist (mit dem Lautsprecher oben auf der Platine) und einen integrierten Zero-Knopf enthält, können Sie diesen Schritt überspringen und einfach den Zero-Knopf drücken, um das Servo-Nullstellungsprogramm zu aktivieren.
+    
+    .. image:: img/robot_hat_v44.png
+        :width: 500
+        :align: center
+
 Der Winkelbereich des Servos liegt bei -90~90 Grad, aber der in der Fabrik eingestellte Winkel ist zufällig, vielleicht 0°, vielleicht 45°. Wenn wir ihn direkt mit einem solchen Winkel montieren, führt dies nach dem Ausführen des Codes des Roboters zu einem chaotischen Zustand oder schlimmer noch, es kann dazu führen, dass der Servo blockiert und durchbrennt.
 
 Daher müssen wir hier alle Servowinkel auf 0° einstellen und sie dann montieren, sodass der Servowinkel in der Mitte ist, egal in welche Richtung er sich dreht.
