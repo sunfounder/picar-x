@@ -342,76 +342,78 @@ async def on_receive(data, client_id):
             print(f"Invalid command format ({client_id}): {_command_entities}")
 
 def update_data():
-        ## read sensor data
-        ultrasonic_distance = px.get_distance()
-        grayscale_data = px.get_grayscale_data()
-        battery_voltage = get_battery_voltage()
-        if battery_voltage < 6:
-            battery_voltage = 6
-        elif battery_voltage > 8.5:
-            battery_voltage = 8.5
+    global color_detect_result, face_detect_result, traffic_sign_detect_result
+    
+    ## read sensor data
+    ultrasonic_distance = px.get_distance()
+    grayscale_data = px.get_grayscale_data()
+    battery_voltage = get_battery_voltage()
+    if battery_voltage < 6:
+        battery_voltage = 6
+    elif battery_voltage > 8.5:
+        battery_voltage = 8.5
 
-        grayscale_status = []
-        for data in grayscale_data:
-            if data > 1000:
-                grayscale_status.append(0)
-            elif data > 300:
-                grayscale_status.append(1)
-            else:
-                grayscale_status.append(2)
-
-        if commands['color_detection_switch']['value'][0] == 1:
-            color_detect_result = [
-                Vilib.color_obj_parameter['n'],
-                Vilib.color_obj_parameter['x'],
-                Vilib.color_obj_parameter['y'],
-                # Vilib.color_obj_parameter['w'],
-                # Vilib.color_obj_parameter['h'],
-            ]
-        if commands['face_detection_switch']['value'][0] == 1:
-            face_detect_result = [
-                Vilib.face_obj_parameter['n'],
-                Vilib.face_obj_parameter['x'],
-                Vilib.face_obj_parameter['y'],
-                # Vilib.face_obj_parameter['w'],
-                # Vilib.face_obj_parameter['h'],
-            ]
-        if commands['traffic_sign_detection_switch']['value'][0] == 1:
-            # traffic_sign_detect_result = [
-            #     Vilib.traffic_sign_obj_parameter['n'],
-            #     Vilib.traffic_sign_obj_parameter['x'],
-            #     Vilib.traffic_sign_obj_parameter['y'],
-            #     # Vilib.traffic_sign_obj_parameter['w'],
-            #     # Vilib.traffic_sign_obj_parameter['h'],
-            # ]
-
-            _traffic_sign = Vilib.traffic_sign_obj_parameter['t']
-            traffic_sign_detect_result = [traffic_sign_label[_traffic_sign]]
-            
-        ###
-        if commands['qr_code_detection_switch']['value'][0] == 1:
-            qr_cod_tests = [x['text'] for x in Vilib.detect_obj_parameter['qr_list']]
-            if len(qr_cod_tests) > 0:
-                ws.send(qr_cod_tests)
-
-
-        ###
-        if music.get_sound_busy():
-            sensors['sound_effect_status']['value'] = [1]
+    grayscale_status = []
+    for data in grayscale_data:
+        if data > 1000:
+            grayscale_status.append(0)
+        elif data > 300:
+            grayscale_status.append(1)
         else:
-            sensors['sound_effect_status']['value'] = [0]
+            grayscale_status.append(2)
 
-        # --- update music position ---
-        if music.get_music_busy():
-            sensors['background_music_pos']['value'][1] = music.get_music_pos()
+    if commands['color_detection_switch']['value'][0] == 1:
+        color_detect_result = [
+            Vilib.color_obj_parameter['n'],
+            Vilib.color_obj_parameter['x'],
+            Vilib.color_obj_parameter['y'],
+            # Vilib.color_obj_parameter['w'],
+            # Vilib.color_obj_parameter['h'],
+        ]
+    if commands['face_detection_switch']['value'][0] == 1:
+        face_detect_result = [
+            Vilib.face_obj_parameter['n'],
+            Vilib.face_obj_parameter['x'],
+            Vilib.face_obj_parameter['y'],
+            # Vilib.face_obj_parameter['w'],
+            # Vilib.face_obj_parameter['h'],
+        ]
+    if commands['traffic_sign_detection_switch']['value'][0] == 1:
+        # traffic_sign_detect_result = [
+        #     Vilib.traffic_sign_obj_parameter['n'],
+        #     Vilib.traffic_sign_obj_parameter['x'],
+        #     Vilib.traffic_sign_obj_parameter['y'],
+        #     # Vilib.traffic_sign_obj_parameter['w'],
+        #     # Vilib.traffic_sign_obj_parameter['h'],
+        # ]
 
-        sensors['ultrasonic']['value'] = int(ultrasonic_distance*10)
-        sensors['grayscale']['value'] = grayscale_data
-        sensors['battery_voltage']['value'] = int((battery_voltage-6)*100)
-        sensors['color_detection']['value'] = list.copy(color_detect_result)
-        sensors['face_detection']['value'] = list.copy(face_detect_result)
-        sensors['traffic_sign_detection']['value'] = list.copy(traffic_sign_detect_result)
-        sensors['grayscale_status']['value'] = list.copy(grayscale_status)
+        _traffic_sign = Vilib.traffic_sign_obj_parameter['t']
+        traffic_sign_detect_result = [traffic_sign_label[_traffic_sign]]
+        
+    ###
+    if commands['qr_code_detection_switch']['value'][0] == 1:
+        qr_cod_tests = [x['text'] for x in Vilib.detect_obj_parameter['qr_list']]
+        if len(qr_cod_tests) > 0:
+            ws.send(qr_cod_tests)
+
+
+    ###
+    if music.get_sound_busy():
+        sensors['sound_effect_status']['value'] = [1]
+    else:
+        sensors['sound_effect_status']['value'] = [0]
+
+    # --- update music position ---
+    if music.get_music_busy():
+        sensors['background_music_pos']['value'][1] = music.get_music_pos()
+
+    sensors['ultrasonic']['value'] = int(ultrasonic_distance*10)
+    sensors['grayscale']['value'] = grayscale_data
+    sensors['battery_voltage']['value'] = int((battery_voltage-6)*100)
+    sensors['color_detection']['value'] = list.copy(color_detect_result)
+    sensors['face_detection']['value'] = list.copy(face_detect_result)
+    sensors['traffic_sign_detection']['value'] = list.copy(traffic_sign_detect_result)
+    sensors['grayscale_status']['value'] = list.copy(grayscale_status)
 
 def main():
 
