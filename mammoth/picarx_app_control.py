@@ -1,17 +1,21 @@
-from mammoth_websocket import MammothWebSocket
+from mammoth_websocket.mammoth_websocket import MammothWebSocket
 from mammoth_websocket.utils import get_ips
-from picarx_entity import picarx_command_entities as commands
-from picarx_entity import picarx_sensor_entities as sensors
-from picarx_entity import color_detection_command, picarx_sounds, picarx_musics, traffic_sign_label
+from picarx_entities import command_entities, sensor_entities
+from picarx_entities import color_detection_command, picarx_sounds, picarx_musics, traffic_sign_label
 from picarx_functions import *
 from picarx import Picarx
+
+from openai_helper import OpenAiHelper
+import speech_recognition as sr
 
 from robot_hat.utils import get_battery_voltage
 import json
 from vilib import Vilib
+import cv2
 
 import time
-import threading
+
+from utils import *
 
 # --- debug ---
 import psutil
@@ -26,59 +30,28 @@ term = Terminal()
 # =================================================================
 VERSION = "0.0.1"
 
-ips = get_ips()
-print(ips)
-ip = '0.0.0.0'
-if 'wlan0' in ips:
-    ip = ips['wlan0']
-elif 'eth0' in ips:
-    ip = ips['eth0']
-
 DEVICE_INFO = {
     "Name": "Picar-X-001", ## TODO: get the name from the device
     "Type": "Picar-X",
     "Check": "MC",
-    "video": f"{ip}:9000/mjpg",
     "Version": VERSION,
+    "video": "",
 }
 
-sensor_data_lock = threading.Lock()
-
-color_detect_result = list.copy(sensors['color_detection']['value'])
-face_detect_result = list.copy(sensors['face_detection']['value'])
-traffic_sign_detect_result = list.copy(sensors['traffic_sign_detection']['value'])
-
-# Mammoth WebSocket server
-# =================================================================
 ws = MammothWebSocket()
-ws.device_info = DEVICE_INFO
+openai = None
+px = Picarx()
+music = Music()
+recognizer = sr.Recognizer()
+recognizer.dynamic_energy_adjustment_damping = 0.16
+recognizer.dynamic_energy_ratio = 1.6
 
 #----
 status = ''
 error = []
-data = {}
+api_key = None
+assistant_id = None
 
-## initialize the picarx
-# =================================================================
-picarx_obj_status = ''
-picarx_obj_error = []
-try:
-    px = Picarx()
-    px.reset()
-    picarx_object_status = 'OK'
-except Exception as e:
-    picarx_obj_error.append(str(e))
-    print(e)
-
-sensors['motors_offset']['value'] = list.copy(px.cali_dir_value)
-
-music = Music()
-
-# initialize the camera 
-# =================================================================
-vilib_obj_status = ''
-vilib_obj_error = []
-# CAMERA_SIZE = (800, 600)
 CAMERA_SIZE = (800, 600)
 
 '''
@@ -88,33 +61,48 @@ SGBRG10_CSI2P,1920x1080/0 - Score: 1349.67
 SGBRG10_CSI2P,2592x1944/0 - Score: 1567
 '''
 
-try:
-    Vilib.camera_start(vflip=False, hflip=False, size=CAMERA_SIZE)
-    Vilib.show_fps()
-    Vilib.display(local=False,web=True)
-    vilib_obj_status = 'OK'
-except Exception as e:
-    vilib_obj_error.add(str(e))
-    print(e)
+def init_openai():
+    global openai
+    if api_key is None or api_key == '' \
+        or assistant_id is None or assistant_id == '':
+        return False
+    print(f"Init OpenAI with API Key: {api_key} and Assistant ID: {assistant_id}")
+    openai = OpenAiHelper(api_key, assistant_id, 'picar-x')
+    sensor_entities.ai_initialized.value = 1
+    return True
 
-def constrain(value, min_value, max_value):
-    return min(max(value, min_value), max_value)
+# --- handler functions ---
+
+def handle_name_changed(name):
+    DEVICE_INFO["Name"] = name
+    print(f"Name changed to {name}")
+    px.config_file.set("name", name)
 
 def handle_motor(values):
     px.set_motor_speed(1, values[0])
     px.set_motor_speed(2, values[1])
 
 def handle_steering(values):
-    px.set_dir_servo_angle(values[0])
+    angle = values[0]
+    # print(f"Handle Steering servo: {angle}")
+    px.set_dir_servo_angle(angle)
 
 def handle_camera_pan(values):
+    angle = values[0]
+    # print(f"Handle Camera Pan servo: {angle}")
     px.set_cam_pan_angle(values[0])
 
 def handle_camera_tilt(values):
+    angle = values[0]
+    angle = constrain(angle, -20, 20)
+    # print(f"Handle Camera Tilt servo: {angle}")
     px.set_cam_tilt_angle(values[0])
 
 def handle_color_detection_switch(values):
-    Vilib.color_detect(values[0])
+    color = values[0]
+    color_name = color_detection_command[color]
+    # print(f"Handle Color Detection Switch: {color_name}")
+    Vilib.color_detect(color_name)
 
 def handle_face_detection_switch(values):
     Vilib.face_detect_switch(values[0])
@@ -125,18 +113,32 @@ def handle_traffic_sign_detection_switch(values):
 def handle_qr_code_detection_switch(values):
     Vilib.qrcode_detect_switch(values[0])
 
-def handle_front_sound_effect(values):
-    if values[0]!= 0 and not music.get_sound_busy():
-        music.play_sound_effect(picarx_sounds[values[0]-1])
+def handle_sound_effect(values):
+    if music.get_sound_busy():
+        print(f"[WARNING] sound effect is busy")
+        return
+    index = values[0] - 1
+    if index not in range(len(picarx_sounds)):
+        print(f"[WARNING] sound effect index out of range")
+        return
+    print(f"[INFO] play sound effect: {picarx_sounds[index]}")
+    music.play_sound_effect(picarx_sounds[index])
 
-def handle_background_music(values):
-    if values[0]!= 0 and not music.get_music_busy():
-        music.play_music(picarx_musics[values[0]-1])
+def handle_music(values):
+    if music.get_sound_busy():
+        print(f"[WARNING] sound effect is busy")
+        return
+    index = values[0] - 1
+    if index not in range(len(picarx_musics)):
+        print(f"[WARNING] music index out of range")
+        return
+    print(f"[INFO] play music: {picarx_musics[index]}")
+    music.play_music(picarx_musics[index])
 
-def handle_background_music_control(values):
+def handle_music_control(values):
     music.music_control(values[0])
 
-def handle_background_music_volume(values):
+def handle_music_volume(values):
     music.set_music_volume(values[0])
 
 def handle_track_mode(values):
@@ -160,19 +162,19 @@ def handle_servo_calibation(values):
     direction = values[1]
     offset = None
     if servo_index == 0: # camera pan servo
-        offset = px.cam_pan_cali_val + direction * 2
-        offset = constrain(offset, -200, 200)
+        offset = px.cam_pan_cali_val + direction * 0.2
+        offset = constrain(offset, -20, 20)
         px.cam_pan_servo_calibrate(offset)
     elif servo_index == 1: # camera tilt servo
-        offset = px.cam_tilt_cali_val + direction * 2
-        offset = constrain(offset, -200, 200)
+        offset = px.cam_tilt_cali_val + direction * 0.2
+        offset = constrain(offset, -20, 20)
         px.cam_tilt_servo_calibrate(offset)
     elif servo_index == 2: # dir servo 1
-        offset = px.dir_cali_val + direction * 2
-        offset = constrain(offset, -200, 200)
+        offset = px.dir_cali_val + direction * 0.2
+        offset = constrain(offset, -20, 20)
         px.dir_servo_calibrate(offset)
     if offset != None:
-        sensors['servos_offset']['value'][servo_index] = offset
+        sensor_entities.servos_offset.values[servo_index] = round(offset * 10, 0)
 
 def handle_motors_calibation(values):
     px.motor_direction_calibrate(1, values[0])
@@ -180,117 +182,188 @@ def handle_motors_calibation(values):
     px.forward(30)
     time.sleep(2)
     px.stop()
+    sensor_entities.motors_offset.values = list(values)
 
-# main
-# =================================================================
-def commands__handler(_command_entities):
+def handle_set_api_key(value):
+    global api_key
+    if value != api_key:
+        api_key = value
+        print(f"[INFO] api-key: {api_key}")
+        init_openai()
+    
+def handle_set_assistant_id(value):
+    global assistant_id
+    if value!= assistant_id:
+        assistant_id = value
+        print(f"[INFO] assistant-id: {assistant_id}")
+        init_openai()
+
+def handle_listen():
+    if openai is None:
+        if not init_openai():
+            print("Open AI init error")
+            return
+    
+    # recording audio
+    with sr.Microphone(chunk_size=8192) as source:
+        cancel_redirect_error() # restore error print
+        recognizer.adjust_for_ambient_noise(source)
+        audio = recognizer.listen(source)
+
+    # stt
+    st = time.time()
+    result = openai.stt(audio, language=LANGUAGE)
+    if len(result) > 65535:
+        print(f"[WARN] listen result is too long, {len(result)} > 65535, cut to 65535")
+        result = result[:65535]
+    sensor_entities.listen_result.values = result
+
+def handle_think(value, with_image=False):
+    
+    if openai is None:
+        if not init_openai():
+            print("Open AI init error")
+            return
+    print(f"Think with: {value}, with image: {with_image}")
+    if with_image:
+        img_path = './img_imput.jpg'
+        cv2.imwrite(img_path, Vilib.img)
+        response = openai.dialogue_with_img(value, img_path)
+    else:
+        response = openai.dialogue(value)
+    if len(response) > 65535:
+        print(f"[WARN] think result is too long, {len(response)} > 65535, cut to 65535")
+        response = response[:65535]
+    print(f"Think result: {response}")
+    sensor_entities.think_result.values = response
+
+def handle_speak(value):
+    if openai is None:
+        if not init_openai():
+            print("Open AI init error")
+            return
+
+    voice = "echo" # alloy, echo, fable, onyx, nova, and shimmer
+    gain = 3
+    timestamp = time.strftime("%y-%m-%d_%H-%M-%S", time.localtime())
+    filename = f"./tts/{timestamp}_raw.wav"
+    status = openai.text_to_speech(value, filename, voice, response_format='wav')
+    # software volume gain
+    if status:
+        new_filename = f"./tts/{timestamp}_{gain}dB.wav"
+        status = volume_gain(filename, new_filename, gain)
+
+def on_io_data(data):
     # control
     # ------------------------------------
     # --- motors ---
-    if 'motor' in _command_entities.keys():
-        values = _command_entities['motor']['value']
+    if 'motor' in data.keys():
+        values = data['motor']
         handle_motor(values)
     # --- steering servo ---
-    if 'steering' in _command_entities.keys():
-        values = _command_entities['steering']['value']
+    if 'steering' in data.keys():
+        values = data['steering']
         handle_steering(values)
     # --- camera pan servo ---
-    if 'camera_pan' in _command_entities.keys():
-        values = _command_entities['camera_pan']['value']
+    if 'camera_pan' in data.keys():
+        values = data['camera_pan']
         handle_camera_pan(values)
     # --- camera tilt servo ---
-    if 'camera_tilt' in _command_entities.keys():
-        values = _command_entities['camera_tilt']['value']
+    if 'camera_tilt' in data.keys():
+        values = data['camera_tilt']
         handle_camera_tilt(values)
         
     # vision processing
     # ------------------------------------
     # --- color detection ---
-    if 'color_detection_switch' in _command_entities.keys():
-        values = _command_entities['color_detection_switch']['value']
+    if 'color_detection_switch' in data.keys():
+        values = data['color_detection_switch']
         handle_color_detection_switch(values)
     # --- face detection ---
-    if 'face_detection_switch' in _command_entities.keys():
-        values = _command_entities['face_detection_switch']['value']
+    if 'face_detection_switch' in data.keys():
+        values = data['face_detection_switch']
         handle_face_detection_switch(values)
     # --- traffic sign detection ---
-    if 'traffic_sign_detection_switch' in _command_entities.keys():
-        values = _command_entities['traffic_sign_detection_switch']['value']
+    if 'traffic_sign_detection_switch' in data.keys():
+        values = data['traffic_sign_detection_switch']
         handle_traffic_sign_detection_switch(values)
     # --- qr code detection ---
-    if 'qr_code_detection_switch' in _command_entities.keys():
-        values = _command_entities['qr_code_detection_switch']['value']
+    if 'qr_code_detection_switch' in data.keys():
+        values = data['qr_code_detection_switch']
         handle_qr_code_detection_switch(values)
 
     # sound and music
     # ------------------------------------
     # --- sound effect ---
-    if 'front_sound_effect' in _command_entities.keys():
-        values = _command_entities['front_sound_effect']['value']
-        handle_front_sound_effect(values)
+    if 'sound_effect' in data.keys():
+        values = data['sound_effect']
+        handle_sound_effect(values)
     # --- music ---
-    if 'background_music' in _command_entities.keys():
-        values = _command_entities['background_music']['value']
-        handle_background_music(values)
+    if 'music' in data.keys():
+        values = data['music']
+        handle_music(values)
     # --- music control ---
-    if 'background_music_control' in _command_entities.keys():
-        values = _command_entities['background_music_control']['value']
-        handle_background_music_control(values)
+    if 'music_control' in data.keys():
+        values = data['music_control']
+        handle_music_control(values)
     # --- music volume ---
-    if 'background_music_volume' in _command_entities.keys():
-        values = _command_entities['background_music_volume']['value']
-        handle_background_music_volume(values)
-    # if 'background_music' in _command_entities.keys() or 'background_music_control' in _command_entities.keys() or 'background_music_volume' in _command_entities.keys():
-    #     _music_index = commands['background_music']['value']
-    #     _last_music_index = commands['background_music']['last_value']
-    #     _music_control = commands['background_music_control']['value']
-    #     _last_music_control = commands['background_music_control']['last_value']
-    #     _music_volume = commands['background_music_volume']['value']
-    #     _last_music_volume = commands['background_music_volume']['last_value']
-
-    #     print(_music_index, _last_music_index, _last_music_control[0])
-
-    #     if _music_control[0] == 1:
-    #         if (_last_music_control[0] == 0) or _music_index != _last_music_index:
-    #             commands['background_music']['last_value'] = list(_music_index)
-    #             _msic_path = picarx_musics[_music_index[0]-1]
-    #             music.play_music(_msic_path)
-    #             sensors['background_music_pos']['value'][0] = music.get_music_length(_msic_path)
-
-    #     if _music_volume != _last_music_volume:
-    #         music.set_music_volume(_music_volume[0])
-    #     if _music_control != _last_music_control:
-    #         music.music_control(_music_control[0])
-    #     #
-    #     commands['background_music_control']['last_value'] = list(_music_control)
-    #     commands['background_music_volume']['last_value'] = list(_music_volume)
-    #     #
-    #     if music.get_music_busy():
-    #         sensors['background_music_status']['value'] = list(_music_control)
-    #     else:
-    #         sensors['background_music_status']['value'] = [0]
+    if 'music_volume' in data.keys():
+        values = data['music_volume']
+        handle_music_volume(values)
 
     # track_mode
     # ------------------------------------
-    if 'track_mode' in _command_entities.keys():
-        values = _command_entities['track_mode']['value']
+    if 'track_mode' in data.keys():
+        values = data['track_mode']
         handle_track_mode(values)
     # obstacle_mode
     # ------------------------------------
-    if 'obstacle_mode' in _command_entities.keys():
-        values = _command_entities['obstacle_mode']['value']
+    if 'obstacle_mode' in data.keys():
+        values = data['obstacle_mode']
         handle_obstacle_mode(values)
 
-    # servos_calibration
+    # Calibrations
     # ------------------------------------
-    if 'servos_calibration' in _command_entities.keys():
-        values = _command_entities['servos_calibration']['value']
+    # servos_calibration
+    if 'servos_calibration' in data.keys():
+        values = data['servos_calibration']
         handle_servo_calibation(values)
     # motors calibration
-    # ------------------------------------
-    if 'motors_calibration' in _command_entities.keys():
-        values = _command_entities['motors_calibration']['value']
+    if 'motors_calibration' in data.keys():
+        values = data['motors_calibration']
         handle_motors_calibation(values)
+    
+    # GPT
+    # ------------------------------------
+    # set api-key
+    if 'set_api_key' in data.keys():
+        value = data['set_api_key']
+        handle_set_api_key(value)
+    # set assistant-id
+    if 'set_assistant_id' in data.keys():
+        value = data['set_assistant_id']
+        handle_set_assistant_id(value)
+    # listen
+    if 'listen' in data.keys():
+        handle_listen()
+    # think
+    if 'think' in data.keys():
+        value = data['think']
+        handle_think(value, with_image=False)
+    if 'think_with_image' in data.keys():
+        value = data['think_with_image']
+        handle_think(value, with_image=True)
+    # speak
+    if 'speak' in data.keys():
+        value = data['speak']
+        handle_speak(value)
+
+def on_device_config(commands):
+    print("device changed")
+    for command, value in commands.items():
+        print(f"command: {command}, value: {value}")
+        if command == 'name':
+            handle_name_changed(value)
 
 async def on_connect(**kwargs):
     # if 'client' in kwargs:
@@ -306,53 +379,23 @@ async def on_connect(**kwargs):
 async def on_disconnect(**kwargs):
     pass
 
-async def on_receive(data, client_id):
-    # client = ws.clients[client_id]
-
-    # string data
-    # -----------------------------------------------
-    if isinstance(data, str):
-        # print(f"Received string ({client_id}): {data}")
-        if data.startswith('SET+'):
-            try:
-                data = data[4:]
-                data = json.loads(data)
-                await ws.response('OK')
-            except Exception as e:
-                await ws.response('ERROR', ['Invalid json format', f'{e}'] )
-        else:
-            await ws.response('ERROR', ['Invalid command format'])
-
-    # binary data
-    # -----------------------------------------------
-    elif isinstance(data, bytes):
-        # print(f"Received bytes ({client_id}): {data}")
-
-        # read command
-        _command_entities = ws.bytes_to_entities(commands, data)
-        if isinstance(_command_entities, dict):
-            # handle command
-            commands__handler(_command_entities)
-            with sensor_data_lock:
-                binary_data = ws.entities_to_bytes(sensors)
-            # print(f"Send binary data ({client_id}): {binary_data}")
-            await ws.async_send(binary_data, client_id)
-
-        else:
-            print(f"Invalid command format ({client_id}): {_command_entities}")
-
 def update_data():
-    global color_detect_result, face_detect_result, traffic_sign_detect_result
-    
-    ## read sensor data
+    # Read sensor data
+    # Ultrasonic sensor data
     ultrasonic_distance = px.get_distance()
-    grayscale_data = px.get_grayscale_data()
+    value = int(ultrasonic_distance*10)
+    sensor_entities.ultrasonic.value = value
+
+    # Battery voltage
     battery_voltage = get_battery_voltage()
     if battery_voltage < 6:
         battery_voltage = 6
     elif battery_voltage > 8.5:
         battery_voltage = 8.5
+    sensor_entities.battery_voltage.value = int((battery_voltage-6)*100)
 
+    # Grayscale sensor data
+    grayscale_data = px.get_grayscale_data()
     grayscale_status = []
     for data in grayscale_data:
         if data > 1000:
@@ -361,8 +404,11 @@ def update_data():
             grayscale_status.append(1)
         else:
             grayscale_status.append(2)
+    sensor_entities.grayscale.values = grayscale_data
+    sensor_entities.grayscale_status.values = list.copy(grayscale_status)
 
-    if commands['color_detection_switch']['value'][0] == 1:
+    # Color detection data
+    if command_entities.color_detection_switch.value == 1:
         color_detect_result = [
             Vilib.color_obj_parameter['n'],
             Vilib.color_obj_parameter['x'],
@@ -370,7 +416,9 @@ def update_data():
             # Vilib.color_obj_parameter['w'],
             # Vilib.color_obj_parameter['h'],
         ]
-    if commands['face_detection_switch']['value'][0] == 1:
+        sensor_entities.color_detection.values = color_detect_result
+    # Face detection data
+    if command_entities.face_detection_switch.value == 1:
         face_detect_result = [
             Vilib.face_obj_parameter['n'],
             Vilib.face_obj_parameter['x'],
@@ -378,78 +426,85 @@ def update_data():
             # Vilib.face_obj_parameter['w'],
             # Vilib.face_obj_parameter['h'],
         ]
-    if commands['traffic_sign_detection_switch']['value'][0] == 1:
-        # traffic_sign_detect_result = [
-        #     Vilib.traffic_sign_obj_parameter['n'],
-        #     Vilib.traffic_sign_obj_parameter['x'],
-        #     Vilib.traffic_sign_obj_parameter['y'],
-        #     # Vilib.traffic_sign_obj_parameter['w'],
-        #     # Vilib.traffic_sign_obj_parameter['h'],
-        # ]
-
+        sensor_entities.face_detection.values = face_detect_result
+    # Traffic sign detection data
+    if command_entities.traffic_sign_detection_switch.value == 1:
         _traffic_sign = Vilib.traffic_sign_obj_parameter['t']
         traffic_sign_detect_result = [traffic_sign_label[_traffic_sign]]
-        
-    ###
-    if commands['qr_code_detection_switch']['value'][0] == 1:
+        sensor_entities.traffic_sign_detection.values = traffic_sign_detect_result
+    # QR code detection data
+    if command_entities.qr_code_detection_switch.value == 1:
         qr_cod_tests = [x['text'] for x in Vilib.detect_obj_parameter['qr_list']]
         if len(qr_cod_tests) > 0:
             ws.send(qr_cod_tests)
 
-
-    ###
+    # Sound status
     if music.get_sound_busy():
-        sensors['sound_effect_status']['value'] = [1]
+        sensor_entities.sound_effect_status.value = 1
     else:
-        sensors['sound_effect_status']['value'] = [0]
+        sensor_entities.sound_effect_status.value = 0
 
-    # --- update music position ---
+    # Music status
     if music.get_music_busy():
-        sensors['background_music_pos']['value'][1] = music.get_music_pos()
-
-    sensors['ultrasonic']['value'] = int(ultrasonic_distance*10)
-    sensors['grayscale']['value'] = grayscale_data
-    sensors['battery_voltage']['value'] = int((battery_voltage-6)*100)
-    sensors['color_detection']['value'] = list.copy(color_detect_result)
-    sensors['face_detection']['value'] = list.copy(face_detect_result)
-    sensors['traffic_sign_detection']['value'] = list.copy(traffic_sign_detect_result)
-    sensors['grayscale_status']['value'] = list.copy(grayscale_status)
+        # sensor_entities.music_position.values = [music.get_music_length(), music.get_music_pos()]
+        sensor_entities.music_position.values = [0, music.get_music_pos()]
 
 def main():
+    global openai, status, error
 
-    # ws.on_connect = on_connect
-    # ws.on_disconnect = on_disconnect  
-    ws.on_receive = on_receive
+    ips = get_ips()
+    print(ips)
+    ip = '0.0.0.0'
+    if 'wlan0' in ips:
+        ip = ips['wlan0']
+    elif 'eth0' in ips:
+        ip = ips['eth0']
+
+    DEVICE_INFO["Name"] = px.config_file.get("name", default_value=DEVICE_INFO["Name"])
+    DEVICE_INFO["video"] = f"{ip}:9000/mjpg"
+    print(json.dumps(DEVICE_INFO, indent=4))
+    px.reset()
+
+    # --- Init Vilib ---
+    try:
+        Vilib.camera_start(vflip=False, hflip=False, size=CAMERA_SIZE)
+        Vilib.show_fps()
+        Vilib.display(local=False,web=True)
+    except Exception as e:
+        vilib_obj_error.add(str(e))
+        print(e)
+
+    # --- Init Websocket ---
+    ws.device_info = DEVICE_INFO
+    ws.command_entities = command_entities
+    ws.sensor_entities = sensor_entities
+    ws.on_device_config = on_device_config
+    ws.on_io_data = on_io_data
     ws.start()
     # pause()
 
     usage_st = time.time()
 
-    while True:
-        # if time.time() - usage_st > 1:
-        #     usage_st = time.time()
+    sensor_entities.motors_offset.values = list.copy(px.cali_dir_value)
+    servo_offset = [round(px.cam_pan_cali_val * 10), round(px.cam_tilt_cali_val * 10), round(px.dir_cali_val * 10)]
+    sensor_entities.servos_offset.values = servo_offset
 
-        #     num_fds = process.num_fds()
-        #     memory_usage = process.memory_info().rss / 1024 / 1024  # MB 
-        #     print(term.skyblue(f'num_fds: {num_fds} , memory: {memory_usage:.5f} MB'))
-        
-        with sensor_data_lock:
+    while True:
+        with sensor_entities.data_lock:
+            # print(f"[INFO] update data")
             update_data()
-        #     binary_data = ws.entities_to_bytes(sensors)
-        # ws.send(binary_data)
+
         time.sleep(0.02)
 
 
 if __name__ == "__main__":
     try:
         main()
-    except KeyboardInterrupt:
-        print("KeyboardInterrupt")
-    except Exception as e:
-        print(e)
+    # except KeyboardInterrupt:
+    #     print("KeyboardInterrupt")
+    # except Exception as e:
+    #     print(e)
     finally:
         print("Exiting")
         # ws.close()
         px.stop()
-        # if vilib_obj_status == 'OK':
-        #     Vilib.camera_close()

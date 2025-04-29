@@ -159,6 +159,7 @@ class Music:
         
         self.music = Music()
         self.sound_thread = None
+        self.music_path = None
 
     def play_sound_effect(self, file_path, volume=100):
         global sound_thread
@@ -170,6 +171,7 @@ class Music:
         sound_thread.start()
 
     def play_music(self, file_path):
+        self.music_path = file_path
         self.music.music_play(file_path)
 
     def music_control(self, action):
@@ -190,7 +192,9 @@ class Music:
     def get_music_busy(self):
         return self.music.pygame.mixer.music.get_busy()
     
-    def get_music_length(self, file_path):
+    def get_music_length(self, file_path=None):
+        if file_path is None:
+            file_path = self.music_path
         sound = self.music.pygame.mixer.Sound(file_path)
         return int(sound.get_length())
 
