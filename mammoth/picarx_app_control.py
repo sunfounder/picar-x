@@ -188,14 +188,14 @@ def handle_set_api_key(value):
     global api_key
     if value != api_key:
         api_key = value
-        print(f"[INFO] api-key: {api_key}")
+        print(f"[INFO] set api-key: {api_key}")
         init_openai()
     
 def handle_set_assistant_id(value):
     global assistant_id
     if value!= assistant_id:
         assistant_id = value
-        print(f"[INFO] assistant-id: {assistant_id}")
+        print(f"[INFO] set assistant-id: {assistant_id}")
         init_openai()
 
 def handle_listen():
@@ -237,12 +237,13 @@ def handle_think(value, with_image=False):
     print(f"Think result: {response}")
     sensor_entities.think_result.values = response
 
-def handle_speak(value):
+def handle_say(value):
     if openai is None:
         if not init_openai():
             print("Open AI init error")
             return
 
+    print(f"[INFO] speak: [{value}]")
     voice = "echo" # alloy, echo, fable, onyx, nova, and shimmer
     gain = 3
     timestamp = time.strftime("%y-%m-%d_%H-%M-%S", time.localtime())
@@ -252,6 +253,8 @@ def handle_speak(value):
     if status:
         new_filename = f"./tts/{timestamp}_{gain}dB.wav"
         status = volume_gain(filename, new_filename, gain)
+        if status:
+            music.play_music(new_filename)
 
 def on_io_data(data):
     # control
@@ -354,9 +357,9 @@ def on_io_data(data):
         value = data['think_with_image']
         handle_think(value, with_image=True)
     # speak
-    if 'speak' in data.keys():
-        value = data['speak']
-        handle_speak(value)
+    if 'say' in data.keys():
+        value = data['say']
+        handle_say(value)
 
 def on_device_config(commands):
     print("device changed")
