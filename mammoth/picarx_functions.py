@@ -59,7 +59,7 @@ def outHandle(px):
 def line_track(px, speed):
     global last_line_state
     gm_val_list = px.get_grayscale_data()
-    gm_state = get_status(gm_val_list)
+    gm_state = get_line_status(gm_val_list)
 
     if gm_state != "stop":
         last_line_state = gm_state
@@ -104,7 +104,7 @@ last_line_state = "stop"
 LINE_TRACK_SPEED = 10
 LINE_TRACK_ANGLE_OFFSET = 20
 
-def get_status(px, val_list):
+def get_line_status(px, val_list):
     _state = px.get_line_status(val_list)  # [bool, bool, bool], 0 means line, 1 means background
     if _state == [0, 0, 0]:
         return 'stop'
@@ -160,17 +160,21 @@ class Music:
         self.music = Music()
         self.sound_thread = None
         self.music_path = None
+        self.volume = 100
 
-    def play_sound_effect(self, file_path, volume=100):
+    def play_sound(self, file_path):
+        self.music.sound_play(filename=file_path, volume=self.volume)
+
+    def play_sound_background(self, file_path, volume=100):
         global sound_thread
         sound_thread = threading.Thread(target=self.music.sound_play, kwargs={
             "filename": file_path,
             "volume": volume
             }
-            )
+        )
         sound_thread.start()
 
-    def play_music(self, file_path):
+    def play_music_background(self, file_path):
         self.music_path = file_path
         self.music.music_play(file_path)
 
@@ -187,6 +191,7 @@ class Music:
             volume = 100
         elif volume < 0:
             volume = 0
+        self.volume = volume
         self.music.music_set_volume(volume)
 
     def get_music_busy(self):

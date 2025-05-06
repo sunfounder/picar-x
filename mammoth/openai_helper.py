@@ -3,6 +3,79 @@ import time
 import shutil
 import os
 
+STT_LANGUAGES = {
+  "Afrikaans": "af",
+  "Arabic": "ar",
+  "Armenian": "hy",
+  "Azerbaijani": "az",
+  "Belarusian": "be",
+  "Bosnian": "bs",
+  "Bulgarian": "bg",
+  "Catalan": "ca",
+  "Chinese": "zh",
+  "Croatian": "hr",
+  "Czech": "cs",
+  "Danish": "da",
+  "Dutch": "nl",
+  "English": "en",
+  "Estonian": "et",
+  "Finnish": "fi",
+  "French": "fr",
+  "Galician": "gl",
+  "German": "de",
+  "Greek": "el",
+  "Hebrew": "he",
+  "Hindi": "hi",
+  "Hungarian": "hu",
+  "Icelandic": "is",
+  "Indonesian": "id",
+  "Italian": "it",
+  "Japanese": "ja",
+  "Kannada": "kn",
+  "Kazakh": "kk",
+  "Korean": "ko",
+  "Latvian": "lv",
+  "Lithuanian": "lt",
+  "Macedonian": "mk",
+  "Malay": "ms",
+  "Marathi": "mr",
+  "Maori": "mi",
+  "Nepali": "ne",
+  "Norwegian": "no",
+  "Persian": "fa",
+  "Polish": "pl",
+  "Portuguese": "pt",
+  "Romanian": "ro",
+  "Russian": "ru",
+  "Serbian": "sr",
+  "Slovak": "sk",
+  "Slovenian": "sl",
+  "Spanish": "es",
+  "Swahili": "sw",
+  "Swedish": "sv",
+  "Tagalog": "tl",
+  "Tamil": "ta",
+  "Thai": "th",
+  "Turkish": "tr",
+  "Ukrainian": "uk",
+  "Urdu": "ur",
+  "Vietnamese": "vi",
+  "Welsh": "cy",
+}
+
+TTS_VOICES = [
+    "alloy",
+    "ash",
+    "ballad",
+    "coral",
+    "echo",
+    "fable",
+    "nova",
+    "onyx",
+    "sage",
+    "shimmer"
+]
+
 # utils
 # =================================================================
 def chat_print(label, message):
@@ -62,30 +135,24 @@ class OpenAiHelper():
             assistant_id=assistant_id,
         )
 
-    def stt(self, audio, language='en'):
+    def stt(self, audio, language='auto'):
         try:
-            import wave
             from io import BytesIO
 
             wav_data = BytesIO(audio.get_wav_data())
             wav_data.name = self.STT_OUT
 
-            transcript = self.client.audio.transcriptions.create(
-                model="whisper-1", 
-                file=wav_data,
-                language=language,
-                prompt="this is the conversation between me and a robot"
-            )
+            options = {
+                "model": "whisper-1",
+                "file": wav_data,
+            }
 
-            # file = "./stt_output.wav"
-            # with wave.open(file, "wb") as wf:
-            #     wf.write(audio.get_wav_data())
+            if language in STT_LANGUAGES.values():
+                options['language'] = language
+            elif language != 'auto':
+                print(f"[Warning] stt language not supported: {language}")
 
-            # with open(file, 'rb') as f:
-            #     transcript = client.audio.transcriptions.create(
-            #         model="whisper-1", 
-            #         file=f
-            #     )
+            transcript = self.client.audio.transcriptions.create(**options)
             return transcript.text
         except Exception as e:
             print(f"stt err:{e}")
@@ -204,6 +271,9 @@ class OpenAiHelper():
         '''
         voice: alloy, echo, fable, onyx, nova, and shimmer
         '''
+        if voice not in TTS_VOICES:
+            print(f"[Warning] tts voice not supported: {voice}")
+            voice = 'alloy'
         try:
             # check dir
             dir = os.path.dirname(output_file)
