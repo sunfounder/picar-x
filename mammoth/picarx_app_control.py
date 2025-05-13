@@ -200,10 +200,10 @@ def handle_motor(left_power, right_power):
     right_power = constrain(right_power, -100, 100)
     log.debug(f"Set motor: [{left_power}, {right_power}]")
     if left_power != left_motor_power:
-        px.set_motor_speed(1, left_power)
+        px.set_motor_power(1, left_power)
         left_motor_power = left_power
     if right_power!= right_motor_power:
-        px.set_motor_speed(2, right_power)
+        px.set_motor_power(2, right_power)
         right_motor_power = right_power
 
 def handle_steering(angle):
@@ -211,7 +211,7 @@ def handle_steering(angle):
     angle = constrain(angle, -30, 30)
     log.debug(f"Set steering angle: {angle}")
     if angle!= steering_angle:
-        px.set_dir_servo_angle(angle)
+        px.set_steering_angle(angle)
         steering_angle = angle
 
 def handle_camera_pan(angle):
@@ -219,7 +219,7 @@ def handle_camera_pan(angle):
     angle = constrain(angle, -90, 90)
     log.debug(f"Set camera pan angle: {angle}")
     if angle!= camera_pan_angle:
-        px.set_cam_pan_angle(angle)
+        px.set_camera_pan_angle(angle)
         camera_pan_angle = angle
 
 def handle_camera_tilt(angle):
@@ -227,7 +227,7 @@ def handle_camera_tilt(angle):
     angle = constrain(angle, -30, 30)
     log.debug(f"Set camera tilt angle: {angle}")
     if angle!= camera_tilt_angle:
-        px.set_cam_tilt_angle(angle)
+        px.set_camera_tilt_angle(angle)
         camera_tilt_angle = angle
 
 def handle_color_detection(mode_index):
@@ -313,21 +313,21 @@ def handle_steering_offset(offset):
     offset = constrain(offset, -20, 20)
     offset = round(offset, 2)
     log.debug(f"Set steering offset: {offset}")
-    px.dir_servo_calibrate(offset)
+    px.set_steering_offset(offset)
     io_data['steering_offset'] = offset
 
 def handle_camera_pan_offset(offset):
     offset = constrain(offset, -20, 20)
     offset = round(offset, 2)
     log.debug(f"Set camera pan offset: {offset}")
-    px.cam_pan_servo_calibrate(offset)
+    px.set_camera_pan_offset(offset)
     io_data['camera_pan_offset'] = offset
 
 def handle_camera_tilt_offset(offset):
     offset = constrain(offset, -20, 20)
     offset = round(offset, 2)
     log.debug(f"Set camera tilt offset: {offset}")
-    px.cam_tilt_servo_calibrate(offset)
+    px.set_camera_tilt_offset(offset)
     io_data['camera_tilt_offset'] = offset
 
 def handle_motors_reverse(left_reverse, right_reverse):
@@ -336,7 +336,7 @@ def handle_motors_reverse(left_reverse, right_reverse):
     px.motor_direction_calibrate(1, left_reverse)
     px.motor_direction_calibrate(2, right_reverse)
     io_data['motor_reverse'] = [left_reverse, right_reverse]
-    px.set_power(30)
+    px.set_motor_powers(30, 30)
     if delay_stop_motor_timer is not None:
         delay_stop_motor_timer.cancel()
     delay_stop_motor_timer = threading.Timer(2, lambda: px.stop())
@@ -616,9 +616,9 @@ def init():
     ws.start()
 
     io_data['motor_reverse'] = list.copy(px.cali_dir_value)
-    io_data['steering_offset'] = px.dir_cali_val
-    io_data['camera_pan_offset'] = px.cam_pan_cali_val
-    io_data['camera_tilt_offset'] = px.cam_tilt_cali_val
+    io_data['steering_offset'] = px.steering_offset
+    io_data['camera_pan_offset'] = px.camera_pan_offset
+    io_data['camera_tilt_offset'] = px.camera_tilt_offset
 
 def main():
 

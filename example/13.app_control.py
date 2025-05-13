@@ -45,14 +45,14 @@ def horn():
 def avoid_obstacles():
     distance = px.get_distance()
     if distance >= SafeDistance:
-        px.set_dir_servo_angle(0)
+        px.set_steering_angle(0)
         px.forward(AVOID_OBSTACLES_SPEED)
     elif distance >= DangerDistance:
-        px.set_dir_servo_angle(30)
+        px.set_steering_angle(30)
         px.forward(AVOID_OBSTACLES_SPEED)
         sleep(0.1)
     else:
-        px.set_dir_servo_angle(-30)
+        px.set_steering_angle(-30)
         px.backward(AVOID_OBSTACLES_SPEED)
         sleep(0.5) 
 
@@ -70,10 +70,10 @@ def get_status(val_list):
 def outHandle():
     global last_line_state, current_line_state
     if last_line_state == 'left':
-        px.set_dir_servo_angle(-30)
+        px.set_steering_angle(-30)
         px.backward(10)
     elif last_line_state == 'right':
-        px.set_dir_servo_angle(30)
+        px.set_steering_angle(30)
         px.backward(10)
     while True:
         gm_val_list = px.get_grayscale_data()
@@ -92,13 +92,13 @@ def line_track():
         last_line_state = gm_state
 
     if gm_state == 'forward':
-        px.set_dir_servo_angle(0)
+        px.set_steering_angle(0)
         px.forward(LINE_TRACK_SPEED) 
     elif gm_state == 'left':
-        px.set_dir_servo_angle(LINE_TRACK_ANGLE_OFFSET)
+        px.set_steering_angle(LINE_TRACK_ANGLE_OFFSET)
         px.forward(LINE_TRACK_SPEED) 
     elif gm_state == 'right':
-        px.set_dir_servo_angle(-LINE_TRACK_ANGLE_OFFSET)
+        px.set_steering_angle(-LINE_TRACK_ANGLE_OFFSET)
         px.forward(LINE_TRACK_SPEED) 
     else:
         outHandle()
@@ -138,16 +138,16 @@ def main():
         elif speak in ["backward"]:
             px.backward(speed)
         elif speak in ["left"]:
-            px.set_dir_servo_angle(-30)
+            px.set_steering_angle(-30)
             px.forward(60)
             sleep(1.2)
-            px.set_dir_servo_angle(0)
+            px.set_steering_angle(0)
             px.forward(speed)
         elif speak in ["right", "white", "rice"]:
-            px.set_dir_servo_angle(30)
+            px.set_steering_angle(30)
             px.forward(60)
             sleep(1.2)
-            px.set_dir_servo_angle(0)
+            px.set_steering_angle(0)
             px.forward(speed)
         elif speak in ["stop"]:
             px.stop()
@@ -168,7 +168,7 @@ def main():
             if Joystick_K_Val != None:
                 dir_angle = utils.mapping(Joystick_K_Val[0], -100, 100, -30, 30)
                 speed = Joystick_K_Val[1]
-                px.set_dir_servo_angle(dir_angle)
+                px.set_steering_angle(dir_angle)
                 if speed > 0:
                     px.forward(speed)
                 elif speed < 0:
@@ -182,8 +182,8 @@ def main():
         if Joystick_Q_Val != None:
             pan = min(90, max(-90, Joystick_Q_Val[0]))
             tilt = min(65, max(-35, Joystick_Q_Val[1]))
-            px.set_cam_pan_angle(pan)
-            px.set_cam_tilt_angle(tilt)
+            px.set_camera_pan_angle(pan)
+            px.set_camera_tilt_angle(tilt)
 
         # image recognition
         if sc.get('N') == True:

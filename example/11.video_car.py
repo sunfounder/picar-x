@@ -45,16 +45,16 @@ def move(operate:str, speed):
         px.stop()  
     else:
         if operate == 'forward':
-            px.set_dir_servo_angle(0)
+            px.set_steering_angle(0)
             px.forward(speed)
         elif operate == 'backward':
-            px.set_dir_servo_angle(0)
+            px.set_steering_angle(0)
             px.backward(speed)
         elif operate == 'turn left':
-            px.set_dir_servo_angle(-30)
+            px.set_steering_angle(-30)
             px.forward(speed)
         elif operate == 'turn right':
-            px.set_dir_servo_angle(30)
+            px.set_steering_angle(30)
             px.forward(speed)
         
 

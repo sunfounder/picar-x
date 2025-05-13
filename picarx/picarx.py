@@ -48,17 +48,17 @@ class PiCarX(object):
         self.config_file = fileDB(config, 777, os.getlogin())
 
         # --------- servos init ---------
-        self.cam_pan = Servo(servo_pins[0])
-        self.cam_tilt = Servo(servo_pins[1])   
-        self.dir_servo_pin = Servo(servo_pins[2])
+        self.camera_pan_servo = Servo(servo_pins[0])
+        self.camera_tilt_servo = Servo(servo_pins[1])   
+        self.steering_servo = Servo(servo_pins[2])
         # get calibration values
-        self.dir_cali_val = float(self.config_file.get("picarx_dir_servo", default_value=0))
-        self.cam_pan_cali_val = float(self.config_file.get("picarx_cam_pan_servo", default_value=0))
-        self.cam_tilt_cali_val = float(self.config_file.get("picarx_cam_tilt_servo", default_value=0))
+        self.steering_offset = float(self.config_file.get("steering_offset", default_value=0))
+        self.camera_pan_offset = float(self.config_file.get("camera_pan_offset", default_value=0))
+        self.camera_tilt_offset = float(self.config_file.get("camera_tilt_offset", default_value=0))
         # set servos to init angle
-        self.dir_servo_pin.angle(self.dir_cali_val)
-        self.cam_pan.angle(self.cam_pan_cali_val)
-        self.cam_tilt.angle(self.cam_tilt_cali_val)
+        self.set_steering_angle(0)
+        self.set_camera_pan_angle(0)
+        self.set_camera_tilt_angle(0)
 
         # --------- motors init ---------
         self.left_rear_dir_pin = Pin(motor_pins[0])
@@ -71,7 +71,7 @@ class PiCarX(object):
         self.cali_dir_value = self.config_file.get("picarx_dir_motor", default_value="[1, 1]")
         self.cali_dir_value = [int(i.strip()) for i in self.cali_dir_value.strip().strip("[]").split(",")]
         self.cali_speed_value = [0, 0]
-        self.dir_current_angle = 0
+        self.steering_angle = 0
         # init pwm
         for pin in self.motor_speed_pins:
             pin.period(self.PERIOD)
@@ -94,34 +94,35 @@ class PiCarX(object):
         self.usr_btn = Pin("USER", mode=Pin.IN, pull=Pin.PULL_UP)
         self.rst_btn = Pin("RST", mode=Pin.IN, pull=Pin.PULL_UP)
         self.led = Pin("LED", mode=Pin.OUT)
-        
-    def set_motor_speed(self, motor, speed):
-        ''' set motor speed
+
+    def set_motor_power(self, motor, power):
+        ''' set motor power
         
         param motor: motor index, 1 means left motor, 2 means right motor
         type motor: int
-        param speed: speed
-        type speed: int      
+        param power: power
+        type power: int      
         '''
-        speed = constrain(speed, -100, 100)
+        power = constrain(power, -100, 100)
         motor -= 1
-        if speed >= 0:
+        if power >= 0:
             direction = 1 * self.cali_dir_value[motor]
-        elif speed < 0:
+        elif power < 0:
             direction = -1 * self.cali_dir_value[motor]
-        speed = abs(speed)
-        # print(f"direction: {direction}, speed: {speed}")
-        if speed != 0:
-            speed = int(speed /2 ) + 50
-        speed = speed - self.cali_speed_value[motor]
+        power = abs(power)
+        # print(f"direction: {direction}, power: {power}")
+        if power != 0:
+            power = int(power /2 ) + 50
+        power = power - self.cali_speed_value[motor]
         if direction < 0:
             self.motor_direction_pins[motor].high()
-            self.motor_speed_pins[motor].pulse_width_percent(speed)
+            self.motor_speed_pins[motor].pulse_width_percent(power)
         else:
             self.motor_direction_pins[motor].low()
-            self.motor_speed_pins[motor].pulse_width_percent(speed)
+            self.motor_speed_pins[motor].pulse_width_percent(power)
 
-    def motor_speed_calibration(self, value):
+    def set_motor_power_offset(self, value):
+        ''' set motor power offset'''
         self.cali_speed_value = value
         if value < 0:
             self.cali_speed_value[0] = 0
@@ -145,71 +146,75 @@ class PiCarX(object):
             self.cali_dir_value[motor] = -1
         self.config_file.set("picarx_dir_motor", self.cali_dir_value)
 
-    def dir_servo_calibrate(self, value):
-        self.dir_cali_val = value
-        self.config_file.set("picarx_dir_servo", "%s"%value)
-        self.set_dir_servo_angle(0)
+    def set_steering_angle(self, value):
+        ''' set steering angle'''
+        self.steering_angle = constrain(value, self.DIR_MIN, self.DIR_MAX)
+        angle_value  = self.steering_angle + self.steering_offset
+        self.steering_servo.angle(angle_value)
 
-    def set_dir_servo_angle(self, value):
-        self.dir_current_angle = constrain(value, self.DIR_MIN, self.DIR_MAX)
-        angle_value  = self.dir_current_angle + self.dir_cali_val
-        self.dir_servo_pin.angle(angle_value)
-
-    def cam_pan_servo_calibrate(self, value):
-        self.cam_pan_cali_val = value
-        self.config_file.set("picarx_cam_pan_servo", "%s"%value)
-        self.set_cam_pan_angle(0)
-
-    def cam_tilt_servo_calibrate(self, value):
-        self.cam_tilt_cali_val = value
-        self.config_file.set("picarx_cam_tilt_servo", "%s"%value)
-        self.set_cam_tilt_angle(0)
-
-    def set_cam_pan_angle(self, value):
+    def set_camera_pan_angle(self, value):
+        ''' set camera pan servo angle'''
         value = constrain(value, self.CAM_PAN_MIN, self.CAM_PAN_MAX)
-        self.cam_pan.angle(-(value - self.cam_pan_cali_val))
+        self.camera_pan_servo.angle(-(value - self.camera_pan_offset))
 
-    def set_cam_tilt_angle(self,value):
+    def set_camera_tilt_angle(self, value):
         value = constrain(value, self.CAM_TILT_MIN, self.CAM_TILT_MAX)
-        self.cam_tilt.angle(-(value + self.cam_tilt_cali_val))
+        self.camera_tilt_servo.angle(-(value + self.camera_tilt_offset))
 
-    def set_power(self, speed):
-        self.set_motor_speed(1, speed)
-        self.set_motor_speed(2, speed)
+    def set_steering_offset(self, value):
+        ''' set steering offset'''
+        self.steering_offset = value
+        self.config_file.set("steering_offset", "%s"%value)
+        self.set_steering_angle(0)
+
+    def set_camera_pan_offset(self, value):
+        ''' set camera pan servo offset'''
+        self.camera_pan_offset = value
+        self.config_file.set("camera_pan_offset", "%s"%value)
+        self.set_camera_pan_angle(0)
+
+    def set_camera_tilt_offset(self, value):
+        ''' set camera tilt servo offset'''
+        self.camera_tilt_offset = value
+        self.config_file.set("camera_tilt_offset", "%s"%value)
+        self.set_camera_tilt_angle(0)
+
+    def set_motor_powers(self, left_speed, right_speed):
+        ''' set motor powers'''
+        self.set_motor_power(1, left_speed)
+        self.set_motor_power(2, right_speed)
 
     def backward(self, speed):
-        current_angle = self.dir_current_angle
+        ''' backward '''
+        current_angle = self.steering_angle
         if current_angle != 0:
             abs_current_angle = abs(current_angle)
             if abs_current_angle > self.DIR_MAX:
                 abs_current_angle = self.DIR_MAX
             power_scale = (100 - abs_current_angle) / 100.0 
             if (current_angle / abs_current_angle) > 0:
-                self.set_motor_speed(1, 1*speed)
-                self.set_motor_speed(2, speed * power_scale)
+                self.set_motor_powers(1*speed, speed * power_scale)
             else:
-                self.set_motor_speed(1, 1*speed * power_scale)
-                self.set_motor_speed(2, speed )
+                self.set_motor_powers(1*speed * power_scale, speed)
         else:
-            self.set_motor_speed(1, 1*speed)
-            self.set_motor_speed(2, speed)  
+            self.set_motor_powers(1*speed, speed)
 
     def forward(self, speed):
-        current_angle = self.dir_current_angle
+        ''' forward '''
+        current_angle = self.steering_angle
         if current_angle != 0:
             abs_current_angle = abs(current_angle)
             if abs_current_angle > self.DIR_MAX:
                 abs_current_angle = self.DIR_MAX
             power_scale = (100 - abs_current_angle) / 100.0
             if (current_angle / abs_current_angle) > 0:
-                self.set_motor_speed(1, 1*speed * power_scale)
-                self.set_motor_speed(2, speed) 
+                self.set_motor_powers(speed * power_scale, speed) 
             else:
-                self.set_motor_speed(1, speed)
-                self.set_motor_speed(2, 1*speed * power_scale)
+                self.set_motor_powers(speed, speed * power_scale)
         else:
-            self.set_motor_speed(1, speed)
-            self.set_motor_speed(2, 1*speed)
+            self.set_motor_powers(speed, speed)
+
+
 
     def stop(self):
         '''
@@ -255,9 +260,72 @@ class PiCarX(object):
 
     def reset(self):
         self.stop()
-        self.set_dir_servo_angle(0)
-        self.set_cam_tilt_angle(0)
-        self.set_cam_pan_angle(0)
+        self.set_steering_angle(0)
+        self.set_camera_tilt_angle(0)
+        self.set_camera_pan_angle(0)
+
+
+    # DEPRECATED function
+    
+    def set_motor_speed(self, motor, speed):
+        ''' DEPRECATED
+        set motor speed
+        
+        param motor: motor index, 1 means left motor, 2 means right motor
+        type motor: int
+        param speed: speed
+        type speed: int      
+        '''
+        speed = constrain(speed, -100, 100)
+        motor -= 1
+        if speed >= 0:
+            direction = 1 * self.cali_dir_value[motor]
+        elif speed < 0:
+            direction = -1 * self.cali_dir_value[motor]
+        speed = abs(speed)
+        # print(f"direction: {direction}, speed: {speed}")
+        if speed != 0:
+            speed = int(speed /2 ) + 50
+        speed = speed - self.cali_speed_value[motor]
+        if direction < 0:
+            self.motor_direction_pins[motor].high()
+            self.motor_speed_pins[motor].pulse_width_percent(speed)
+        else:
+            self.motor_direction_pins[motor].low()
+            self.motor_speed_pins[motor].pulse_width_percent(speed)
+
+    def set_dir_servo_angle(self, value):
+        ''' DEPRECATED set direction servo angle'''
+        self.set_steering_angle(value)
+
+    def dir_servo_calibrate(self, value):
+        ''' DEPRECATED set direction servo calibration value'''
+        self.set_steering_offset(value)
+
+    def cam_pan_servo_calibrate(self, value):
+        ''' DEPRECATED set camera pan servo calibration value'''
+        self.set_camera_pan_offset(value)
+
+    def cam_tilt_servo_calibrate(self, value):
+        ''' DEPRECATED set camera tilt servo calibration value'''
+        self.set_camera_tilt_offset(value)
+
+    def set_cam_pan_angle(self, value):
+        ''' DEPRECATED set camera pan servo angle'''
+        self.set_camera_pan_angle(value)
+
+    def set_cam_tilt_angle(self,value):
+        ''' DEPRECATED set camera tilt servo angle'''
+        self.set_camera_tilt_angle(value)
+
+    def set_power(self, speed):
+        ''' DEPRECATED set motor power'''
+        self.set_motor_powers(speed, speed)
+
+    def motor_speed_calibration(self, value):
+        ''' DEPRECATED set motor speed calibration value'''
+        self.set_motor_power_offset(value)
+
 
 if __name__ == "__main__":
     px = PiCarX()

@@ -29,10 +29,10 @@ last_state = "stop"
 def outHandle():
     global last_state, current_state
     if last_state == 'left':
-        px.set_dir_servo_angle(-30)
+        px.set_steering_angle(-30)
         px.backward(10)
     elif last_state == 'right':
-        px.set_dir_servo_angle(30)
+        px.set_steering_angle(30)
         px.backward(10)
     while True:
         gm_val_list = px.get_grayscale_data()
@@ -65,13 +65,13 @@ if __name__=='__main__':
                 last_state = gm_state
 
             if gm_state == 'forward':
-                px.set_dir_servo_angle(0)
+                px.set_steering_angle(0)
                 px.forward(px_power) 
             elif gm_state == 'left':
-                px.set_dir_servo_angle(offset)
+                px.set_steering_angle(offset)
                 px.forward(px_power) 
             elif gm_state == 'right':
-                px.set_dir_servo_angle(-offset)
+                px.set_steering_angle(-offset)
                 px.forward(px_power) 
             else:
                 outHandle()

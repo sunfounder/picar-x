@@ -10,14 +10,14 @@ DangerDistance = 20 # > 20 && < 40 turn around, < 20 backward
 def avoid_obstacles(px, speed):
     distance = px.get_distance()
     if distance >= SafeDistance:
-        px.set_dir_servo_angle(0)
+        px.set_steering_angle(0)
         px.forward(speed)
     elif distance >= DangerDistance:
-        px.set_dir_servo_angle(30)
+        px.set_steering_angle(30)
         px.forward(speed)
         time.sleep(0.1)
     else:
-        px.set_dir_servo_angle(-30)
+        px.set_steering_angle(-30)
         px.backward(speed)
         time.sleep(0.5)
 
@@ -43,10 +43,10 @@ def get_status(px, val_list):
 def outHandle(px):
     global last_line_state, current_line_state
     if last_line_state == 'left':
-        px.set_dir_servo_angle(-30)
+        px.set_steering_angle(-30)
         px.backward(10)
     elif last_line_state == 'right':
-        px.set_dir_servo_angle(30)
+        px.set_steering_angle(30)
         px.backward(10)
     while True:
         gm_val_list = px.get_grayscale_data()
@@ -65,13 +65,13 @@ def line_track(px, speed):
         last_line_state = gm_state
 
     if gm_state == 'forward':
-        px.set_dir_servo_angle(0)
+        px.set_steering_angle(0)
         px.forward(speed) 
     elif gm_state == 'left':
-        px.set_dir_servo_angle(LINE_TRACK_ANGLE_OFFSET)
+        px.set_steering_angle(LINE_TRACK_ANGLE_OFFSET)
         px.forward(speed) 
     elif gm_state == 'right':
-        px.set_dir_servo_angle(-LINE_TRACK_ANGLE_OFFSET)
+        px.set_steering_angle(-LINE_TRACK_ANGLE_OFFSET)
         px.forward(speed) 
     else:
         outHandle()
@@ -85,14 +85,14 @@ DangerDistance = 20 # > 20 && < 40 turn around, < 20 backward
 def avoid_obstacles(px, speed):
     distance = px.get_distance()
     if distance >= SafeDistance:
-        px.set_dir_servo_angle(0)
+        px.set_steering_angle(0)
         px.forward(speed)
     elif distance >= DangerDistance:
-        px.set_dir_servo_angle(30)
+        px.set_steering_angle(30)
         px.forward(speed)
         time.sleep(0.1)
     else:
-        px.set_dir_servo_angle(-30)
+        px.set_steering_angle(-30)
         px.backward(speed)
         time.sleep(0.5)
 
@@ -118,10 +118,10 @@ def get_line_status(px, val_list):
 def outHandle(px):
     global last_line_state, current_line_state
     if last_line_state == 'left':
-        px.set_dir_servo_angle(-30)
+        px.set_steering_angle(-30)
         px.backward(10)
     elif last_line_state == 'right':
-        px.set_dir_servo_angle(30)
+        px.set_steering_angle(30)
         px.backward(10)
     while True:
         gm_val_list = px.get_grayscale_data()
@@ -140,13 +140,13 @@ def line_track(px, speed):
         last_line_state = gm_state
 
     if gm_state == 'forward':
-        px.set_dir_servo_angle(0)
+        px.set_steering_angle(0)
         px.forward(speed) 
     elif gm_state == 'left':
-        px.set_dir_servo_angle(LINE_TRACK_ANGLE_OFFSET)
+        px.set_steering_angle(LINE_TRACK_ANGLE_OFFSET)
         px.forward(speed) 
     elif gm_state == 'right':
-        px.set_dir_servo_angle(-LINE_TRACK_ANGLE_OFFSET)
+        px.set_steering_angle(-LINE_TRACK_ANGLE_OFFSET)
         px.forward(speed) 
     else:
         outHandle()
@@ -213,34 +213,3 @@ class Music:
             return True
         else:
             return False
-        
-# calibration
-# ================================================================
-picarx_servos_offset = [0, 0, 0] # [dir_offset, cam_pan_offset, cam_tilt_offset]
-
-def  init_picarx_servos_offset(px):
-    global picarx_servos_offset
-    _dir_offset = px.dir_cali_val
-    _cam_pan_offset = px.cam_pan_cali_val
-    _cam_tilt_offset = px.cam_tilt_cali_val
-    picarx_servos_offset = [_dir_offset, _cam_pan_offset, _cam_tilt_offset]
-
-def set_picarx_servos_offset(px, servo_index, option):
-    global picarx_servos_offset
-    if option == 1: # increase
-        picarx_servos_offset[servo_index] += 1
-    elif option == -1: # decrease
-        picarx_servos_offset[servo_index] -= 1
-
-    if servo_index == 0: # dir
-        px.dir_servo_pin.angle(picarx_servos_offset[servo_index])
-    elif servo_index == 1: # cam_pan
-        px.cam_pan_servo_pin.angle(picarx_servos_offset[servo_index])
-    elif servo_index == 2: # cam_tilt
-        px.cam_tilt_servo_pin.angle(picarx_servos_offset[servo_index])
-
-def save_picarx_servos_offset(px):
-    global picarx_servos_offset
-    px.dir_servo_calibrate(picarx_servos_offset[0])
-    px.cam_pan_servo_calibrate(picarx_servos_offset[1])
-    px.cam_tilt_servo_calibrate(picarx_servos_offset[2])

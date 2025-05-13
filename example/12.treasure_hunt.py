@@ -48,16 +48,16 @@ def key_scan_thread():
 
 def car_move(key):
     if 'w' == key:
-        px.set_dir_servo_angle(0)
+        px.set_steering_angle(0)
         px.forward(80)
     elif 's' == key:
-        px.set_dir_servo_angle(0)
+        px.set_steering_angle(0)
         px.backward(80)
     elif 'a' == key:
-        px.set_dir_servo_angle(-30)
+        px.set_steering_angle(-30)
         px.forward(80)
     elif 'd' == key:
-        px.set_dir_servo_angle(30)
+        px.set_steering_angle(30)
         px.forward(80)
 
 

@@ -59,11 +59,11 @@ def enable_cursor():
 
 # test direc servo
 # ==========================================
-px.set_dir_servo_angle(-30)
+px.set_steering_angle(-30)
 time.sleep(0.5)
-px.set_dir_servo_angle(30)
+px.set_steering_angle(30)
 time.sleep(0.5)
-px.set_dir_servo_angle(0)
+px.set_steering_angle(0)
 time.sleep(0.5)
 
 # read grayscale value thread
@@ -157,25 +157,25 @@ def start_line_calibrate():
         _angle = 35
         _delay = 0.8
         # front left
-        px.set_dir_servo_angle(-_angle)
+        px.set_steering_angle(-_angle)
         px.forward(10)
         time.sleep(_delay)
         # back left
         px.backward(10)
         time.sleep(_delay)
         # stop
-        px.set_dir_servo_angle(0)
+        px.set_steering_angle(0)
         px.stop()
         time.sleep(0.2)
         # front right
-        px.set_dir_servo_angle(_angle)
+        px.set_steering_angle(_angle)
         px.forward(10)
         time.sleep(_delay)
         # back right
         px.backward(10)
         time.sleep(_delay)
         # stop
-        px.set_dir_servo_angle(0)
+        px.set_steering_angle(0)
         px.stop()
         time.sleep(0.2)
         current_mode = 'line_cali_done'

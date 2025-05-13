@@ -222,14 +222,14 @@ def main():
     global tts_file
 
     my_car.reset()
-    my_car.set_cam_tilt_angle(DEFAULT_HEAD_TILT)
+    my_car.set_camera_tilt_angle(DEFAULT_HEAD_TILT)
 
     speak_thread.start()
     action_thread.start()
 
     while True:
         if input_mode == 'voice':
-            my_car.set_cam_tilt_angle(DEFAULT_HEAD_TILT)
+            my_car.set_camera_tilt_angle(DEFAULT_HEAD_TILT)
 
             # listen
             # ----------------------------------------------------------------
@@ -256,7 +256,7 @@ def main():
                 continue
 
         elif input_mode == 'keyboard':
-            my_car.set_cam_tilt_angle(DEFAULT_HEAD_TILT)
+            my_car.set_camera_tilt_angle(DEFAULT_HEAD_TILT)
 
             with action_lock:
                 action_status = 'standby'
