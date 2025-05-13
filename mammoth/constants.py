@@ -4,14 +4,14 @@ from enum import StrEnum
 CAMERA_SIZE = (800, 600)
 
 
-SOUND_DIR = '/home/xo/picar-x/sounds/'
+SOUND_DIR = '../sounds/'
 picarx_sounds = [
     f'{SOUND_DIR}car-double-horn.wav',
     f'{SOUND_DIR}car-start-engine.wav',
     f'{SOUND_DIR}car-double-horn.wav'
 ]
 
-music_dir = '/home/xo/picar-x/musics/'
+music_dir = '../musics/'
 picarx_musics = [
     f'{music_dir}spry.mp3',
     f'{music_dir}peace.mp3',
