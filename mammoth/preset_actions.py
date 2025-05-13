@@ -245,7 +245,7 @@ sounds_dict = {
 
 
 if __name__ == "__main__":
-    from picarx import Picarx
+    from picarx import PiCarX
     from robot_hat import Music
     import os
 
@@ -253,7 +253,7 @@ if __name__ == "__main__":
     current_path = os.path.dirname(os.path.abspath(__file__))
     os.chdir(current_path) # change working directory
 
-    my_car = Picarx()
+    my_car = PiCarX()
     my_car.reset()
 
     music = Music()

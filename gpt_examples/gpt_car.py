@@ -7,7 +7,7 @@ import readline # optimize keyboard input, only need to import
 
 import speech_recognition as sr
 
-from picarx import Picarx
+from picarx import PiCarX
 from robot_hat import Music, Pin
 
 import time
@@ -53,7 +53,7 @@ SOUND_EFFECT_ACTIONS = ["honking", "start engine"]
 # car init 
 # =================================================================
 try:
-    my_car = Picarx()
+    my_car = PiCarX()
     time.sleep(1)
 except Exception as e:
     raise RuntimeError(e)

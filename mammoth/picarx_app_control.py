@@ -4,7 +4,7 @@ from constants import color_detection_command, picarx_sounds, picarx_musics, tra
 from picarx_functions import *
 
 from preset_actions import *
-from picarx import Picarx
+from picarx import PiCarX
 
 from openai_helper import OpenAiHelper
 import speech_recognition as sr
@@ -40,7 +40,7 @@ DEVICE_INFO = {
 
 ws = MammothWebSocket()
 openai = None
-px = Picarx()
+px = PiCarX()
 music = Music()
 recognizer = sr.Recognizer()
 recognizer.dynamic_energy_adjustment_damping = 0.16

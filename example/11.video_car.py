@@ -1,7 +1,7 @@
 # #!/usr/bin/env python3
 
 from robot_hat.utils import reset_mcu
-from picarx import Picarx
+from picarx import PiCarX
 from vilib import Vilib
 from time import sleep, time, strftime, localtime
 import readchar
@@ -29,7 +29,7 @@ Press key to call the function(non-case sensitive):
 '''
 
 
-px = Picarx()
+px = PiCarX()
 
 def take_photo():
     _time = strftime('%Y-%m-%d-%H-%M-%S',localtime(time()))

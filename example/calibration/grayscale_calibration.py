@@ -1,10 +1,10 @@
-from picarx import Picarx
+from picarx import PiCarX
 import time
 import threading
 import readchar 
 import os
 
-px = Picarx()
+px = PiCarX()
 config_path = px.CONFIG
 
 manual = f'''\

@@ -1,4 +1,4 @@
-from picarx import Picarx
+from picarx import PiCarX
 from time import sleep
 from robot_hat import Music,TTS
 from vilib import Vilib
@@ -6,7 +6,7 @@ import readchar
 import random
 import threading
 
-px = Picarx()
+px = PiCarX()
 
 music = Music()
 tts = TTS()

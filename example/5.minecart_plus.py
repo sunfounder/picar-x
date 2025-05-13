@@ -12,11 +12,10 @@
         and the background gray value.
 
 '''
-from picarx import Picarx
+from picarx import PiCarX
 from time import sleep
 
-px = Picarx()
-# px = Picarx(grayscale_pins=['A0', 'A1', 'A2'])
+px = PiCarX()
 
 # Please run ./calibration/grayscale_calibration.py to Auto calibrate grayscale values
 # or manual modify reference value by follow code

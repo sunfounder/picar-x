@@ -10,7 +10,7 @@ def constrain(x, min_val, max_val):
     '''
     return max(min_val, min(max_val, x))
 
-class Picarx(object):
+class PiCarX(object):
     CONFIG = '/opt/picar-x/picar-x.conf'
 
     DEFAULT_LINE_REF = [1000, 1000, 1000]
@@ -260,7 +260,7 @@ class Picarx(object):
         self.set_cam_pan_angle(0)
 
 if __name__ == "__main__":
-    px = Picarx()
+    px = PiCarX()
     px.forward(50)
     time.sleep(1)
     px.stop()

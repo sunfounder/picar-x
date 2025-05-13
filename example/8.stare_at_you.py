@@ -1,8 +1,8 @@
-from picarx import Picarx
+from picarx import PiCarX
 from time import sleep
 from vilib import Vilib
 
-px = Picarx()
+px = PiCarX()
 
 def clamp_number(num,a,b):
   return max(min(num, max(a, b)), min(a, b))

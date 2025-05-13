@@ -1,5 +1,5 @@
 from sunfounder_controller import SunFounderController
-from picarx import Picarx
+from picarx import PiCarX
 from robot_hat import utils, Music
 from vilib import Vilib
 import os
@@ -11,12 +11,12 @@ sleep(0.2)
 
 # init SunFounder Controller class
 sc = SunFounderController()
-sc.set_name('Picarx-001')
-sc.set_type('Picarx')
+sc.set_name('PiCarX-001')
+sc.set_type('PiCarX')
 sc.start()
 
 # init picarx
-px = Picarx()
+px = PiCarX()
 speed = 0
 
 current_line_state = None

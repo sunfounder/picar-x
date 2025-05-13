@@ -22,7 +22,7 @@ setup(
     # https://packaging.python.org/en/latest/single_source_version.html
     version=__version__,
 
-    description='Picarx gait Library for Raspberry Pi',
+    description='PiCarX gait Library for Raspberry Pi',
     long_description=long_description,
 
     # The project's main homepage.
