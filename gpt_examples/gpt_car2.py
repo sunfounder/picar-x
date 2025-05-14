@@ -281,17 +281,11 @@ def main():
 
             # listen
             # ----------------------------------------------------------------
-            gray_print("listening ...")
+            print("listening ...")
 
             with action_lock:
                 action_status = 'standby'
 
-            _stderr_back = redirect_error_2_null() # ignore error print to ignore ALSA errors
-            # If the chunk_size is set too small (default_size=1024), it may cause the program to freeze
-            with sr.Microphone(chunk_size=8192) as source:
-                cancel_redirect_error(_stderr_back) # restore error print
-                recognizer.adjust_for_ambient_noise(source)
-                audio = recognizer.listen(source)
 
             # stt
             # ----------------------------------------------------------------
