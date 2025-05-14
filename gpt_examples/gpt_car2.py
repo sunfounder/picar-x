@@ -84,24 +84,6 @@ if with_img:
     time.sleep(.5)
     print('\n')
 
-# speech_recognition init
-# =================================================================
-'''
-self.energy_threshold = 300  # minimum audio energy to consider for recording
-self.dynamic_energy_threshold = True
-self.dynamic_energy_adjustment_damping = 0.15
-self.dynamic_energy_ratio = 1.5
-self.pause_threshold = 0.8  # seconds of non-speaking audio before a phrase is considered complete
-self.operation_timeout = None  # seconds after an internal operation (e.g., an API request) starts before it times out, or ``None`` for no timeout
-
-self.phrase_threshold = 0.3  # minimum seconds of speaking audio before we consider the speaking audio a phrase - values below this are ignored (for filtering out clicks and pops)
-self.non_speaking_duration = 0.5  # seconds of non-speaking audio to keep on both sides of the recording
-
-'''
-recognizer = sr.Recognizer()
-recognizer.dynamic_energy_adjustment_damping = 0.16
-recognizer.dynamic_energy_ratio = 1.6
-
 # speak_hanlder
 # =================================================================
 speech_loaded = False
@@ -226,7 +208,7 @@ def on_connect(client, userdata, flags, rc):
 
 def on_message(client, userdata, msg):
     """Callback function for when a message is received on the subscribed topic."""
-    stt_text = msg.payload
+    stt_text = msg.payload.decode('utf-8')
     print(f"Received STT text from MQTT: {stt_text}")
     
 # main
@@ -278,31 +260,12 @@ def main():
     while True:
         if input_mode == 'voice':
             my_car.set_cam_tilt_angle(DEFAULT_HEAD_TILT)
-
-            # listen
-            # ----------------------------------------------------------------
             print("listening ...")
 
             with action_lock:
                 action_status = 'standby'
-
-
-            # stt
-            # ----------------------------------------------------------------
             st = time.time()
             _result = stt_text(f'\033[1;30m{"intput: "}\033[0m').encode(sys.stdin.encoding).decode('utf-8')
-
-            if _result == False or _result == "":
-                print() # new line
-                continue
-
-        elif input_mode == 'keyboard':
-            my_car.set_cam_tilt_angle(DEFAULT_HEAD_TILT)
-
-            with action_lock:
-                action_status = 'standby'
-
-            _result = input(f'\033[1;30m{"intput: "}\033[0m').encode(sys.stdin.encoding).decode('utf-8')
 
             if _result == False or _result == "":
                 print() # new line
