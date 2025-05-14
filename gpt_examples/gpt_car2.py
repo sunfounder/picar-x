@@ -273,6 +273,7 @@ def main():
 
         else:
             raise ValueError("Invalid input mode")
+            print("failing ...")
 
         # chat-gpt
         # ---------------------------------------------------------------- 
