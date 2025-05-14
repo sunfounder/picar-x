@@ -16,6 +16,8 @@ import random
 
 import os
 import sys
+import json  # Import the json module
+import paho.mqtt.client as mqtt  # Import the paho-mqtt library
 
 os.popen("pinctrl set 20 op dh") # enable robot_hat speake switch
 current_path = os.path.dirname(os.path.abspath(__file__))
@@ -38,7 +40,7 @@ else:
 # =================================================================
 openai_helper = OpenAiHelper(OPENAI_API_KEY, OPENAI_ASSISTANT_ID, 'picarx')
 
-LANGUAGE = []
+LANGUAGE = ['no']
 # LANGUAGE = ['zh', 'en'] # config stt language code, https://en.wikipedia.org/wiki/List_of_ISO_639_language_codes
 
 # VOLUME_DB = 5
@@ -212,7 +214,21 @@ def action_handler():
 action_thread = threading.Thread(target=action_handler)
 action_thread.daemon = True
 
+# MQTT Functions
+# =================================================================
+def on_connect(client, userdata, flags, rc):
+    """Callback function for when the MQTT client connects."""
+    if rc == 0:
+        print("Connected to MQTT broker")
+        client.subscribe("picarx/stt")  # Subscribe to the topic
+    else:
+        print(f"Failed to connect to MQTT broker, rc={rc}")
 
+def on_message(client, userdata, msg):
+    """Callback function for when a message is received on the subscribed topic."""
+    stt_text = msg.payload
+    print(f"Received STT text from MQTT: {stt_text}")
+    
 # main
 # =================================================================
 def main():
@@ -226,6 +242,38 @@ def main():
 
     speak_thread.start()
     action_thread.start()
+    
+    # Setup MQTT Client
+    client = mqtt.Client()
+    client.on_connect = on_connect
+    client.on_message = on_message
+
+    #  MQTT Broker Address
+    mqtt_broker_address = "IP_ADRESS"  # Replace with your broker's address
+    mqtt_username = "user"
+    mqtt_password = "pass"
+    try:
+        client.username_pw_set(mqtt_username, mqtt_password)
+        client.connect(mqtt_broker_address, 1883, 60)  # Connect to the broker
+        print("Connecting to MQTT broker...") # Add log
+    except Exception as e:
+        print(f"\033[31mERROR: Could not connect to MQTT broker: {e}\033[m")
+        print("Please check your MQTT broker address and ensure it is running.")
+        sys.exit(1)
+
+    # client.connect("localhost", 1883, 60)
+
+    client.loop_start()  # Start the MQTT loop in a non-blocking thread
+
+    print("Waiting for STT data from Home Assistant via MQTT topic 'picarx/stt'")
+    try:
+        while True:
+            time.sleep(0.1)  # Keep the main thread alive
+    except KeyboardInterrupt:
+        print("Stopping...")
+        my_car.reset()
+        client.loop_stop()  # Stop the MQTT loop
+        client.disconnect()  # Disconnect from the broker
 
     while True:
         if input_mode == 'voice':
@@ -248,8 +296,7 @@ def main():
             # stt
             # ----------------------------------------------------------------
             st = time.time()
-            _result = openai_helper.stt(audio, language=LANGUAGE)
-            gray_print(f"stt takes: {time.time() - st:.3f} s")
+            _result = stt_text(f'\033[1;30m{"intput: "}\033[0m').encode(sys.stdin.encoding).decode('utf-8')
 
             if _result == False or _result == "":
                 print() # new line
