@@ -25,7 +25,7 @@ motor_num = 0
 servo_names = ['direction servo', 'camera pan servo', 'camera tilt servo']
 motor_names = ['left motor', 'right motor']
 servos_cali = [px.steering_offset, px.camera_pan_offset, px.camera_tilt_offset]
-motors_cali = px.cali_dir_value
+motors_cali = px.motor_reverses
 servos_offset = list.copy(servos_cali)
 motors_offset = list.copy(motors_cali)
 
@@ -123,7 +123,7 @@ def cali_helper():
         # motors move
         elif key == 'q': 
             motors_offset[motor_num] = -1 * motors_offset[motor_num]
-            px.cali_dir_value = list.copy(motors_offset)
+            px.motor_reverses = list.copy(motors_offset)
             motor_run = True
             px.forward(px_power)
             show_info()

@@ -615,7 +615,7 @@ def init():
     ws.set_on_io_data(on_io_data)
     ws.start()
 
-    io_data['motor_reverse'] = list.copy(px.cali_dir_value)
+    io_data['motor_reverse'] = list.copy(px.motor_reverses)
     io_data['steering_offset'] = px.steering_offset
     io_data['camera_pan_offset'] = px.camera_pan_offset
     io_data['camera_tilt_offset'] = px.camera_tilt_offset
