@@ -17,11 +17,11 @@ class MusicFiles(StrEnum):
     SLOW_TRAIL = str(MUSIC_DIR.joinpath('slow-trail-Ahjay_Stelino.mp3'))
 
 class SoundFiles(StrEnum):
-    CAR_DOUBLE_HORN = str(SOUND_DIR.joinpath('car-double-horn.wav')),
-    CAR_START_ENGINE = str(SOUND_DIR.joinpath('car-start-engine.wav')),
+    DOUBLE_HORN = str(SOUND_DIR.joinpath('car-double-horn.wav')),
+    START_ENGINE = str(SOUND_DIR.joinpath('car-start-engine.wav')),
 
 music_list = [MusicFiles.SPRY, MusicFiles.PEACE, MusicFiles.SLOW_TRAIL]
-sound_list = [SoundFiles.CAR_DOUBLE_HORN, SoundFiles.CAR_START_ENGINE]
+sound_list = [SoundFiles.DOUBLE_HORN, SoundFiles.START_ENGINE]
 
 # sound effect and music
 # =================================================================

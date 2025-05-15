@@ -93,23 +93,27 @@ SGBRG10_CSI2P,2592x1944/0 - Score: 1567
 def init_openai():
     global openai, ai_status, ai_error
     ai_status = AIStatus.INITIALIZING
+    ai_error = ""
     log.info(f"Init OpenAI with API Key: {ai_api_key} and Assistant ID: {ai_assistant_id}")
     try:
         openai = OpenAiHelper(ai_api_key, ai_assistant_id, 'picar-x')
         ai_status = AIStatus.IDLE
     except Exception as e:
         log.error(f"OpenAI init failed: {e}")
-        ai_error = str(e)
+        ai_error = f"[ERROR] {str(e)}"
         ai_status = AIStatus.FAILED
         return False
     return True
 
 def check_openai():
+    global ai_error
     if ai_status == AIStatus.NOT_INITIALIZED:
         log.error("Open AI not initialized")
+        ai_error = "[ERROR] Open AI not initialized"
         return False
     elif ai_status != AIStatus.IDLE:
         log.warning(f"Open AI is {ai_status}, wait...")
+        ai_error = f"[WARNING] Open AI is {ai_status}, wait..."
         for _ in range(10):
             if ai_status == AIStatus.IDLE:
                 log.info(f"Open AI init done")
@@ -117,6 +121,7 @@ def check_openai():
             time.sleep(1)
         if ai_status != AIStatus.IDLE:
             log.error(f"Open AI init timeout")
+            ai_error = "[ERROR] Open AI init timeout"
             return False
 
     return True
@@ -380,12 +385,12 @@ def handle_ai_init(enable):
     
     if ai_api_key is None or ai_api_key == '' \
         or ai_assistant_id is None or ai_assistant_id == '':
-        ai_error = "API Key or Assistant ID is empty"
+        ai_error = "[ERROR] API Key or Assistant ID is empty"
         return False
     
     if ai_status == AIStatus.INITIALIZING:
         log.warning(f"Open AI is initializing")
-        ai_error = "Open AI is initializing"
+        ai_error = "[ERROR] Open AI is initializing"
         return False
     
     if ai_status in [AIStatus.NOT_INITIALIZED, AIStatus.FAILED]:

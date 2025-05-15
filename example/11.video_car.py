@@ -1,6 +1,6 @@
 # #!/usr/bin/env python3
 
-from robot_hat.utils import reset_mcu
+from picarx.utils import reset_mcu
 from picarx import PiCarX
 from vilib import Vilib
 from time import sleep, time, strftime, localtime

@@ -78,7 +78,7 @@ TTS_VOICES = [
 ]
 
 class AIStatus(StrEnum):
-    """AI状态枚举（字符串类型）"""
+    """ AI Status """
     NOT_INITIALIZED = "NOT_INITIALIZED"
     INITIALIZING = "INITIALIZING"
     IDLE = "IDLE"

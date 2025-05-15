@@ -86,7 +86,7 @@ def speak_block(music, name, volume=100):
     _status, _ = run_command('sudo killall pulseaudio') # Solve the problem that there is no sound when running in the vnc environment
     
     if os.path.isfile(name):
-        music.sound_play(name, volume)
+        music.play_sound(name, volume)
     else:
         warn(f'No sound found for {name}')
         return False

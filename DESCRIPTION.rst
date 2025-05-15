@@ -1,3 +1,0 @@
-picarx
-=======================
-Library for picarx

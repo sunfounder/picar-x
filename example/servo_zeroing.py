@@ -1,9 +1,7 @@
 
 from robot_hat import Servo
-from robot_hat.utils import reset_mcu
 from time import sleep
 
-reset_mcu()
 sleep(0.2)
 
 if __name__ == '__main__':

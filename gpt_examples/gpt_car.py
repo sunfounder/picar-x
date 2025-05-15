@@ -1,14 +1,10 @@
-from openai_helper import OpenAiHelper
+from picarx import PiCarX
+from picarx import Music
+from picarx.openai_helper import OpenAiHelper
 from keys import OPENAI_API_KEY, OPENAI_ASSISTANT_ID
-from preset_actions import *
-from utils import *
-
-import readline # optimize keyboard input, only need to import
+from picarx.utils import *
 
 import speech_recognition as sr
-
-from picarx import PiCarX
-from robot_hat import Music, Pin
 
 import time
 import threading
@@ -53,14 +49,12 @@ SOUND_EFFECT_ACTIONS = ["honking", "start engine"]
 # car init 
 # =================================================================
 try:
-    my_car = PiCarX()
+    car = PiCarX()
     time.sleep(1)
 except Exception as e:
     raise RuntimeError(e)
 
 music = Music()
-
-led = Pin('LED')
 
 DEFAULT_HEAD_TILT = 20
 
@@ -160,24 +154,24 @@ def action_handler():
 
         if led_status == 'standby':
             if time.time() - last_led_time > LED_DOUBLE_BLINK_INTERVAL:
-                led.off()
-                led.on()
+                car.led.off()
+                car.led.on()
                 sleep(.1)
-                led.off()
+                car.led.off()
                 sleep(.1)
-                led.on()
+                car.led.on()
                 sleep(.1)
-                led.off()
+                car.led.off()
                 last_led_time = time.time()
         elif led_status == 'think':
             if time.time() - last_led_time > LED_BLINK_INTERVAL:
-                led.off()
+                car.led.off()
                 sleep(LED_BLINK_INTERVAL)
-                led.on()
+                car.led.on()
                 sleep(LED_BLINK_INTERVAL)
                 last_led_time = time.time()
         elif led_status == 'actions':
-                led.on() 
+                car.led.on() 
 
         # actions
         # ------------------------------
@@ -190,15 +184,14 @@ def action_handler():
         elif _state == 'think':
             if last_action_status != 'think':
                 last_action_status = 'think'
-                # think(my_car)
-                keep_think(my_car)
+                car.keep_think()
         elif _state == 'actions':
             last_action_status = 'actions'
             with action_lock:
                 _actions = actions_to_be_done
             for _action in _actions:
                 try:
-                    actions_dict[_action](my_car)
+                    car.actions_dict[_action]()
                 except Exception as e:
                     print(f'action error: {e}')
                 time.sleep(0.5)
@@ -221,15 +214,15 @@ def main():
     global action_status, actions_to_be_done
     global tts_file
 
-    my_car.reset()
-    my_car.set_camera_tilt_angle(DEFAULT_HEAD_TILT)
+    car.reset()
+    car.set_camera_tilt_angle(DEFAULT_HEAD_TILT)
 
     speak_thread.start()
     action_thread.start()
 
     while True:
         if input_mode == 'voice':
-            my_car.set_camera_tilt_angle(DEFAULT_HEAD_TILT)
+            car.set_camera_tilt_angle(DEFAULT_HEAD_TILT)
 
             # listen
             # ----------------------------------------------------------------
@@ -256,7 +249,7 @@ def main():
                 continue
 
         elif input_mode == 'keyboard':
-            my_car.set_camera_tilt_angle(DEFAULT_HEAD_TILT)
+            car.set_camera_tilt_angle(DEFAULT_HEAD_TILT)
 
             with action_lock:
                 action_status = 'standby'
@@ -341,7 +334,7 @@ def main():
             # --- sound effects and voice ---
             for _sound in _sound_actions:
                 try:
-                    sounds_dict[_sound](music)
+                    car.sounds_dict[_sound]()
                 except Exception as e:
                     print(f'action error: {e}')
 
@@ -381,5 +374,5 @@ if __name__ == "__main__":
     finally:
         if with_img:
             Vilib.camera_close()
-        my_car.reset()
+        car.reset()
 

@@ -12,9 +12,8 @@
         and the background gray value.
 
 '''
-from picarx import PiCarX
+from picarx import PiCarX, TTS
 from time import sleep
-from robot_hat import TTS
 
 tts = TTS()
 tts.lang("en-US")

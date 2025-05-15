@@ -1,6 +1,6 @@
 from robot_hat import Pin, ADC, PWM, Servo, fileDB
 from robot_hat import Grayscale_Module, Ultrasonic, utils
-from robot_hat.utils import get_battery_voltage
+from .music import Music, SoundFiles
 import time
 import os
 
@@ -108,6 +108,10 @@ class PiCarX(object):
         self.usr_btn = Pin("USER", mode=Pin.IN, pull=Pin.PULL_UP)
         self.rst_btn = Pin("RST", mode=Pin.IN, pull=Pin.PULL_UP)
         self.led = Pin("LED", mode=Pin.OUT)
+
+        # --------- music init ---------
+        self.music = Music()
+        self.music.set_volume(100)
 
         # --------- Actions ---------
         self.actions_dict = {
@@ -546,13 +550,13 @@ class PiCarX(object):
         self.set_camera_pan_angle(0)
         sleep(.2)
 
-    def honking(music):
+    def honking(self):
         ''' Honking '''
-        music.sound_play_threading("../sounds/self-double-horn.wav", 100)
+        self.music.play_sound_background(SoundFiles.DOUBLE_HORN, volume=100)
 
     def start_engine(music):
         ''' Start engine '''
-        music.sound_play_threading("../sounds/self-start-engine.wav", 50)
+        self.music.play_sound_background(SoundFiles.START_ENGINE, volume=50)
 
     # DEPRECATED function
     
