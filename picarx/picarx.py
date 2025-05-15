@@ -1,7 +1,10 @@
 from robot_hat import Pin, ADC, PWM, Servo, fileDB
 from robot_hat import Grayscale_Module, Ultrasonic, utils
+from robot_hat.utils import get_battery_voltage
 import time
 import os
+
+from time import sleep
 
 
 def constrain(x, min_val, max_val):
@@ -83,7 +86,6 @@ class PiCarX(object):
         self.motor_reverses = self.config_file.get("picarx_dir_motor", default_value="[1, 1]")
         self.motor_reverses = [int(i.strip()) for i in self.motor_reverses.strip().strip("[]").split(",")]
         self.motor_power_offset = [0, 0]
-        self.steering_angle = 0
         # init pwm
         for pin in self.motor_speed_pins:
             pin.period(self.PERIOD)
@@ -106,6 +108,25 @@ class PiCarX(object):
         self.usr_btn = Pin("USER", mode=Pin.IN, pull=Pin.PULL_UP)
         self.rst_btn = Pin("RST", mode=Pin.IN, pull=Pin.PULL_UP)
         self.led = Pin("LED", mode=Pin.OUT)
+
+        # --------- Actions ---------
+        self.actions_dict = {
+            "shake head": self.shake_head, 
+            "nod": self.nod,
+            "wave hands": self.wave_hands,
+            "resist": self.resist,
+            "act cute": self.act_cute,
+            "rub hands": self.rub_hands,
+            "think": self.think,
+            "twist body": self.twist_body,
+            "celebrate": self.celebrate,
+            "depressed": self.depressed,
+        }
+
+        self.sounds_dict = {
+            "honking": self.honking,
+            "start engine": self.start_engine,
+        }
 
     def set_motor_power(self, motor, power):
         ''' Set a single motor power
@@ -217,34 +238,31 @@ class PiCarX(object):
         self.config_file.set("camera_tilt_offset", "%s"%value)
         self.set_camera_tilt_angle(0)
 
-    def set_motor_powers(self, left_speed, right_speed):
+    def set_motor_powers(self, power):
         ''' Set motor powers
         
-        param left_speed: left motor speed
-        type left_speed: int
-        param right_speed: right motor speed
-        type right_speed: int
+        param power: power value, (-100 ~ 100)
+        type power: int
         '''
-        self.set_motor_power(1, left_speed)
-        self.set_motor_power(2, right_speed)
+        # power_scale = (100 - self.steering_angle) / 100.0
+        # if self.steering_angle > 0:
+        #     left = power
+        #     right = power * power_scale
+        # else:
+        #     left = power * power_scale
+        #     right = power
+        # print(f"left: {left}, right: {right}")
+        left = power
+        right = power
+        self.set_motor_power(1, left)
+        self.set_motor_power(2, right)
 
     def backward(self, power):
         ''' Backward
         
         param power: power
         type power: int'''
-        current_angle = self.steering_angle
-        if current_angle != 0:
-            abs_current_angle = abs(current_angle)
-            if abs_current_angle > self.DIR_MAX:
-                abs_current_angle = self.DIR_MAX
-            power_scale = (100 - abs_current_angle) / 100.0 
-            if (current_angle / abs_current_angle) > 0:
-                self.set_motor_powers(power, power * power_scale)
-            else:
-                self.set_motor_powers(power * power_scale, power)
-        else:
-            self.set_motor_powers(power, power)
+        self.set_motor_powers(-power)
 
     def forward(self, power):
         ''' Forward
@@ -252,22 +270,11 @@ class PiCarX(object):
         param power: power
         type power: int
         '''
-        current_angle = self.steering_angle
-        if current_angle != 0:
-            abs_current_angle = abs(current_angle)
-            if abs_current_angle > self.DIR_MAX:
-                abs_current_angle = self.DIR_MAX
-            power_scale = (100 - abs_current_angle) / 100.0
-            if (current_angle / abs_current_angle) > 0:
-                self.set_motor_powers(power * power_scale, power) 
-            else:
-                self.set_motor_powers(power, power * power_scale)
-        else:
-            self.set_motor_powers(power, power)
+        self.set_motor_powers(power)
 
     def stop(self):
         ''' Stop motors '''
-        self.set_motor_powers(0, 0)
+        self.set_motor_powers(0)
 
     def get_distance(self):
         ''' Get distance from ultrasonic sensor '''
@@ -290,7 +297,7 @@ class PiCarX(object):
         ''' Get grayscale data '''
         return list.copy(self.grayscale.read())
 
-    def get_line_status(self,gm_val_list):
+    def get_line_status(self, gm_val_list):
         ''' Get line status
         
         param gm_val_list: grayscale value list
@@ -329,6 +336,14 @@ class PiCarX(object):
         else:
             raise ValueError("grayscale reference must be a 1*3 list")
 
+    def get_battery_voltage(self):
+        ''' Get battery voltage '''
+        return utils.get_battery_voltage()
+
+    def reset_mcu(self):
+        ''' Reset robot_hat '''
+        return utils.reset_mcu()
+
     def reset(self):
         ''' Reset robot '''
         self.stop()
@@ -336,6 +351,208 @@ class PiCarX(object):
         self.set_camera_tilt_angle(0)
         self.set_camera_pan_angle(0)
 
+    # Actions
+    def wave_hands(self):
+        ''' Wave hands '''
+        self.reset()
+        self.set_camera_tilt_angle(20)
+        for _ in range(2):
+            self.set_steering_angle(-25)
+            sleep(.1)
+            self.set_steering_angle(25)
+            sleep(.1)
+        self.set_steering_angle(0)
+
+    def resist(self):
+        ''' Resist '''
+        self.reset()
+        self.set_camera_tilt_angle(10)
+        for _ in range(3):
+            self.set_steering_angle(-15)
+            self.set_camera_pan_angle(15)
+            sleep(.1)
+            self.set_steering_angle(15)
+            self.set_camera_pan_angle(-15)
+            sleep(.1)
+        self.stop()
+        self.set_steering_angle(0)
+        self.set_camera_pan_angle(0)
+
+    def act_cute(self):
+        ''' Act cute '''
+        self.reset()
+        self.set_camera_tilt_angle(-20)
+        for i in range(15):
+            self.forward(5)
+            sleep(0.02)
+            self.backward(5)
+            sleep(0.02)
+        self.set_camera_tilt_angle(0)
+        self.stop()
+
+    def rub_hands(self):
+        ''' Rub hands '''
+        self.reset()
+        for i in range(5):
+            self.set_steering_angle(-6)
+            sleep(.5)
+            self.set_steering_angle(6)
+            sleep(.5)
+        self.reset()
+
+    def think(self):
+        ''' Think '''
+        self.reset()
+
+        for i in range(11):
+            self.set_camera_pan_angle(i*3)
+            self.set_camera_tilt_angle(-i*2)
+            self.set_steering_angle(i*2)
+            sleep(.05)
+        sleep(1)
+        self.set_camera_pan_angle(15)
+        self.set_camera_tilt_angle(-10)
+        self.set_steering_angle(10)
+        sleep(.1)
+        self.reset()
+
+    def keep_think(self):
+        ''' Keep thinking '''
+        self.reset()
+        for i in range(11):
+            self.set_camera_pan_angle(i*3)
+            self.set_camera_tilt_angle(-i*2)
+            self.set_steering_angle(i*2)
+            sleep(.05)
+
+    def shake_head(self):
+        ''' Shake head '''
+        self.stop()
+        self.set_camera_pan_angle(0)
+        self.set_camera_pan_angle(60)
+        sleep(.2)
+        self.set_camera_pan_angle(-50)
+        sleep(.1)
+        self.set_camera_pan_angle(40)
+        sleep(.1)
+        self.set_camera_pan_angle(-30)
+        sleep(.1)
+        self.set_camera_pan_angle(20)
+        sleep(.1)
+        self.set_camera_pan_angle(-10)
+        sleep(.1)
+        self.set_camera_pan_angle(10)
+        sleep(.1)
+        self.set_camera_pan_angle(-5)
+        sleep(.1)
+        self.set_camera_pan_angle(0)
+
+    def nod(self):
+        ''' Nod '''
+        self.reset()
+        self.set_camera_tilt_angle(0)
+        self.set_camera_tilt_angle(5)
+        sleep(.1)
+        self.set_camera_tilt_angle(-30)
+        sleep(.1)
+        self.set_camera_tilt_angle(5)
+        sleep(.1)
+        self.set_camera_tilt_angle(-30)
+        sleep(.1)
+        self.set_camera_tilt_angle(0)
+
+    def depressed(self):
+        ''' Depressed '''
+        self.reset()
+        self.set_camera_tilt_angle(0)
+        self.set_camera_tilt_angle(20)
+        sleep(.22)
+        self.set_camera_tilt_angle(-22)
+        sleep(.1)
+        self.set_camera_tilt_angle(10)
+        sleep(.1)
+        self.set_camera_tilt_angle(-22)
+        sleep(.1)
+        self.set_camera_tilt_angle(0)
+        sleep(.1)
+        self.set_camera_tilt_angle(-22)
+        sleep(.1)
+        self.set_camera_tilt_angle(-10)
+        sleep(.1)
+        self.set_camera_tilt_angle(-22)
+        sleep(.1)
+        self.set_camera_tilt_angle(-15)
+        sleep(.1)
+        self.set_camera_tilt_angle(-22)
+        sleep(.1)
+        self.set_camera_tilt_angle(-19)
+        sleep(.1)
+        self.set_camera_tilt_angle(-22)
+        sleep(.1)
+
+        sleep(1.5)
+        self.reset()
+
+    def twist_body(self):
+        ''' Twist body '''
+        self.reset()
+        for _ in range(3):
+            self.forward(20)
+            self.set_camera_pan_angle(-20)
+            self.set_steering_angle(-10)
+            sleep(.1)
+            self.stop()
+            self.set_camera_pan_angle(0)
+            self.set_steering_angle(0)
+            sleep(.1)
+            self.backward(20)
+            self.set_camera_pan_angle(20)
+            self.set_steering_angle(10)
+            sleep(.1)
+            self.stop()
+            self.set_camera_pan_angle(0)
+            self.set_steering_angle(0)
+
+            sleep(.1)
+
+    def celebrate(self):
+        ''' Celebrate '''
+        self.reset()
+        self.set_camera_tilt_angle(20)
+
+        self.set_steering_angle(30)
+        self.set_camera_pan_angle(60)
+        sleep(.3)
+        self.set_steering_angle(10)
+        self.set_camera_pan_angle(30)
+        sleep(.1)
+        self.set_steering_angle(30)
+        self.set_camera_pan_angle(60)
+        sleep(.3)
+        self.set_steering_angle(0)
+        self.set_camera_pan_angle(0)
+        sleep(.2)
+
+        self.set_steering_angle(-30)
+        self.set_camera_pan_angle(-60)
+        sleep(.3)
+        self.set_steering_angle(-10)
+        self.set_camera_pan_angle(-30)
+        sleep(.1)
+        self.set_steering_angle(-30)
+        self.set_camera_pan_angle(-60)
+        sleep(.3)
+        self.set_steering_angle(0)
+        self.set_camera_pan_angle(0)
+        sleep(.2)
+
+    def honking(music):
+        ''' Honking '''
+        music.sound_play_threading("../sounds/self-double-horn.wav", 100)
+
+    def start_engine(music):
+        ''' Start engine '''
+        music.sound_play_threading("../sounds/self-start-engine.wav", 50)
 
     # DEPRECATED function
     

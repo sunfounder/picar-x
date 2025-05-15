@@ -1,0 +1,33 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "picarx"
+authors = [
+  { name="SunFounder", email="service@sunfounder.com" },
+]
+description = "Library for SunFounder PiCar-X robot car"
+readme = "README.md"
+requires-python = ">=3.7"
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "License :: OSI Approved :: GNU General Public License v2 (GPLv2)",
+  "Operating System :: OS Independent",
+]
+dynamic = ["version"]
+
+dependencies = [
+  'readchar',
+]
+
+[tool.setuptools]
+packages = ["picarx"]
+include-package-data = true
+
+[project.urls]
+"Homepage" = "https://github.com/sunfounder/picar-x"
+"Bug Tracker" = "https://github.com/sunfounder/picar-x/issues"
+
+[tool.setuptools.dynamic]
+version = {attr = "picarx.version.__version__"}

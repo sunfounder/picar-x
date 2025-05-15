@@ -1,15 +1,14 @@
 from mammoth_websocket.mammoth_websocket import MammothWebSocket
 from mammoth_websocket.utils import get_ips
-from constants import color_detection_command, picarx_sounds, picarx_musics, traffic_sign_label, AIStatus, CAMERA_SIZE
-from picarx_functions import *
 
-from preset_actions import *
 from picarx import PiCarX
+from picarx.music import Music, music_list, sound_list
+from picarx.utils import *
+from picarx.auto_drive import LineFollowing, ObstacleAvoidance
+from picarx.openai_helper import OpenAiHelper, AIStatus
 
-from openai_helper import OpenAiHelper
 import speech_recognition as sr
 
-from robot_hat.utils import get_battery_voltage
 import json
 from vilib import Vilib
 import cv2
@@ -17,8 +16,6 @@ import cv2
 import time
 import logging
 import threading
-
-from utils import *
 
 # --- debug ---
 import psutil
@@ -38,6 +35,11 @@ DEVICE_INFO = {
     "video": "",
 }
 
+CAMERA_SIZE = (800, 600)
+
+COLOR_DETECTION_COMMANDS = ['close','red','orange','yellow','green','blue','purple']
+TRAFFIC_SIGNS =  ['none', 'stop', 'right', 'left', 'forward']
+
 ws = MammothWebSocket()
 openai = None
 px = PiCarX()
@@ -49,18 +51,21 @@ recognizer.pause_threshold = 1
 log = logging.getLogger("PiCar-X")
 data_interval = 5 # miliseconds
 
+line_following = LineFollowing(px)
+obstacle_avoidance = ObstacleAvoidance(px)
+
 #----
 ai_api_key = None
 ai_assistant_id = None
 ai_listen_language = "auto"
 ai_say_voice = "alloy"
 ai_status = AIStatus.NOT_INITIALIZED
-ai_need_reinitialize = False
+ai_error = ""
 color_detection_mode = "close"
 face_detection_enable = False
 traffic_sign_detection_enable = False
 qr_code_detection_enable = False
-line_tracking_power = 80
+line_following_power = 80
 obstacle_avoidance_power = 80
 left_motor_power = 0
 right_motor_power = 0
@@ -86,14 +91,17 @@ SGBRG10_CSI2P,2592x1944/0 - Score: 1567
 '''
 
 def init_openai():
-    global openai, ai_status
-    if ai_api_key is None or ai_api_key == '' \
-        or ai_assistant_id is None or ai_assistant_id == '':
-        return False
+    global openai, ai_status, ai_error
     ai_status = AIStatus.INITIALIZING
     log.info(f"Init OpenAI with API Key: {ai_api_key} and Assistant ID: {ai_assistant_id}")
-    openai = OpenAiHelper(ai_api_key, ai_assistant_id, 'picar-x')
-    ai_status = AIStatus.IDLE
+    try:
+        openai = OpenAiHelper(ai_api_key, ai_assistant_id, 'picar-x')
+        ai_status = AIStatus.IDLE
+    except Exception as e:
+        log.error(f"OpenAI init failed: {e}")
+        ai_error = str(e)
+        ai_status = AIStatus.FAILED
+        return False
     return True
 
 def check_openai():
@@ -233,7 +241,7 @@ def handle_camera_tilt(angle):
 def handle_color_detection(mode_index):
     global color_detection_mode
     try:
-        mode = color_detection_command[mode_index]
+        mode = COLOR_DETECTION_COMMANDS[mode_index]
     except KeyError:
         log.error(f"Invalid color detection mode: {mode_index}")
         return
@@ -250,7 +258,7 @@ def handle_face_detection(enable):
 def handle_traffic_sign_detection(enable):
     global traffic_sign_detection_enable
     log.debug(f"Set traffic sign detection: {enable}")
-    Vilib.traffic_light_detect_switch(enable)
+    Vilib.traffic_detect_switch(enable)
     traffic_sign_detection_enable = enable
 
 def handle_qr_code_detection(enable):
@@ -264,7 +272,7 @@ def handle_sound(index):
         log.error(f"Sound effect is busy")
         return
     try:
-        sound_file = picarx_sounds[index]
+        sound_file = sound_list[index]
     except IndexError:
         log.error(f"Invalid sound effect index: {index}")
         return
@@ -276,7 +284,7 @@ def handle_music(index):
         log.error(f"Music is busy")
         return
     try:
-        music_file = picarx_musics[index]
+        music_file = music_list[index]
     except IndexError:
         log.error(f"Invalid music index: {index}")
         return
@@ -284,30 +292,38 @@ def handle_music(index):
     io_data["music_length"] = music.get_music_length(music_file)
     music.play_music_background(music_file)
 
-def handle_music_control(flag):
-    log.debug(f"Music control: {flag}")
-    music.music_control(flag)
+def handle_music_control(control):
+    log.debug(f"Music control: {control}")
+    music.music_control(control)
 
 def handle_music_volume(volume):
     volume = constrain(volume, 0, 100)
     log.debug(f"Set music volume: {volume}")
     music.set_music_volume(volume)
 
-def handle_line_tracking(enable):
+def handle_line_following(enable):
     if enable == 0:
-        log.debug(f"Stop line tracking")
-        px.stop()
+        log.debug(f"Stop line following")
+        line_following.stop()
     elif enable == 1:
-        log.debug(f"Set line tracking power: {line_tracking_power}")
-        line_track(line_tracking_power)
+        log.debug(f"Start line following")
+        line_following.start()
+
+def handle_line_following_power(power):
+    log.debug(f"Set line following power: {power}")
+    line_following.set_power(power)
 
 def handle_obstacle_avoidance(enable):
     if enable == 0:
         log.debug(f"Stop obstacle avoidance")
-        px.stop()
+        obstacle_avoidance.stop()
     elif enable == 1:
-        log.debug(f"Set obstacle avoidance power: {obstacle_avoidance_power}")
-        avoid_obstacles(obstacle_avoidance_power)
+        log.debug(f"Start obstacle avoidance")
+        obstacle_avoidance.start()
+
+def handle_obstacle_avoidance_power(power):
+    log.debug(f"Set obstacle avoidance power: {power}")
+    obstacle_avoidance.set_power(power)
 
 def handle_steering_offset(offset):
     offset = constrain(offset, -20, 20)
@@ -336,7 +352,7 @@ def handle_motors_reverse(left_reverse, right_reverse):
     px.motor_direction_calibrate(1, left_reverse)
     px.motor_direction_calibrate(2, right_reverse)
     io_data['motor_reverse'] = [left_reverse, right_reverse]
-    px.set_motor_powers(30, 30)
+    px.forward(30)
     if delay_stop_motor_timer is not None:
         delay_stop_motor_timer.cancel()
     delay_stop_motor_timer = threading.Timer(2, lambda: px.stop())
@@ -348,8 +364,6 @@ def handle_ai_api_key(value):
         return
     log.debug(f"Set api-key: {value}")
     ai_api_key = value
-    task = threading.Thread(target=init_openai)
-    task.start()
     
 def handle_ai_assistant_id(value):
     global ai_assistant_id
@@ -357,8 +371,30 @@ def handle_ai_assistant_id(value):
         return
     log.debug(f"Set assistant-id: {value}")
     ai_assistant_id = value
-    task = threading.Thread(target=init_openai)
-    task.start()
+
+def handle_ai_init(enable):
+    global ai_error
+    log.debug(f"Init OpenAI: {enable}")
+    if enable == 0:
+        return
+    
+    if ai_api_key is None or ai_api_key == '' \
+        or ai_assistant_id is None or ai_assistant_id == '':
+        ai_error = "API Key or Assistant ID is empty"
+        return False
+    
+    if ai_status == AIStatus.INITIALIZING:
+        log.warning(f"Open AI is initializing")
+        ai_error = "Open AI is initializing"
+        return False
+    
+    if ai_status in [AIStatus.NOT_INITIALIZED, AIStatus.FAILED]:
+        task = threading.Thread(target=init_openai)
+        task.start()
+        return True
+
+    log.warning(f"Open AI is already initialized")
+    return True
 
 def handle_ai_say_voice(value):
     global ai_say_voice
@@ -400,11 +436,11 @@ def handle_ai_say(value):
     task.start()
 
 def handle_do_action(action):
-    if action not in actions_dict:
+    if action not in px.actions_dict:
         log.error(f"Invalid action: {action}")
         return
     
-    actions_dict[action](px)
+    px.actions_dict[action]()
 
 def handle_led(status):
     if status not in [0, 1]:
@@ -414,7 +450,7 @@ def handle_led(status):
     px.led.value(status)
 
 def on_io_data(data):
-    global line_tracking_power, obstacle_avoidance_power
+    global line_following_power, obstacle_avoidance_power
     
     with io_lock:
         # control
@@ -444,15 +480,15 @@ def on_io_data(data):
         if 'music_volume' in data.keys():
             handle_music_volume(data['music_volume'])
         # track_mode
-        if 'line_tracking' in data.keys():
-            handle_line_tracking(data['line_tracking'])
-        if 'line_tracking_power' in data.keys():
-            line_tracking_power = data['line_tracking_power']
+        if 'line_following' in data.keys():
+            handle_line_following(data['line_following'])
+        if 'line_following_power' in data.keys():
+            handle_line_following_power(data['line_following_power'])
         # obstacle_mode
         if 'obstacle_avoidance' in data.keys():
             handle_obstacle_avoidance(data['obstacle_avoidance'])
         if 'obstacle_avoidance_power' in data.keys():
-            obstacle_avoidance_power = data['obstacle_avoidance_power']
+            handle_obstacle_avoidance_power(data['obstacle_avoidance_power'])
         # Calibrations
         if 'steering_offset' in data.keys():
             handle_steering_offset(data['steering_offset'])
@@ -468,12 +504,14 @@ def on_io_data(data):
             handle_ai_api_key(data['ai_api_key'])
         if 'ai_assistant_id' in data.keys():
             handle_ai_assistant_id(data['ai_assistant_id'])
+        if 'ai_init' in data.keys():
+            handle_ai_init(data['ai_init'])
         if 'ai_listen_language' in data.keys():
             handle_ai_listen_language(data['ai_listen_language'])
         if 'ai_say_voice' in data.keys():
             handle_ai_say_voice(data['ai_say_voice'])
         if 'ai_listen' in data.keys():
-            handle_ai_listen()
+            handle_ai_listen(data['ai_listen'])
         if 'ai_think' in data.keys():
             handle_ai_think(data['ai_think'])
         if 'ai_think_with_image' in data.keys():
@@ -506,7 +544,7 @@ def update_data():
     io_data["ultrasonic_distance"] = px.get_distance()
 
     # Battery voltage
-    battery_voltage = get_battery_voltage()
+    battery_voltage = px.get_battery_voltage()
     battery_voltage = constrain(battery_voltage, 6.2, 8.4)
     io_data["battery_voltage"] = battery_voltage
 
@@ -525,34 +563,40 @@ def update_data():
 
     # Color detection data
     if color_detection_mode != "close":
-        color_detect_result = [
-            Vilib.color_obj_parameter['n'],
-            Vilib.color_obj_parameter['x'],
-            Vilib.color_obj_parameter['y'],
-            int(Vilib.color_obj_parameter['w']),
-            int(Vilib.color_obj_parameter['h']),
-        ]
-        io_data["color_detection"] = color_detect_result
+        io_data["color_detection"] = {
+            "x": int(Vilib.color_obj_parameter['x']),
+            "y": int(Vilib.color_obj_parameter['y']),
+            "w": int(Vilib.color_obj_parameter['w']),
+            "h": int(Vilib.color_obj_parameter['h']),
+            "n": int(Vilib.color_obj_parameter['n']),
+        }
     # Face detection data
     if face_detection_enable == True:
-        face_detect_result = [
-            Vilib.face_obj_parameter['n'],
-            Vilib.face_obj_parameter['x'],
-            Vilib.face_obj_parameter['y'],
-            int(Vilib.face_obj_parameter['w']),
-            int(Vilib.face_obj_parameter['h']),
-        ]
-        log.debug(f"face_detect_result: {face_detect_result}")
-        io_data["face_detection"] = face_detect_result
+        io_data["face_detection"] = {
+            "x": int(Vilib.face_obj_parameter['x']),
+            "y": int(Vilib.face_obj_parameter['y']),
+            "w": int(Vilib.face_obj_parameter['w']),
+            "h": int(Vilib.face_obj_parameter['h']),
+            "n": int(Vilib.face_obj_parameter['n']),
+        }
     # Traffic sign detection data
     if traffic_sign_detection_enable == True:
-        traffic_sign = Vilib.traffic_sign_obj_parameter['t']
-        traffic_sign_detect_result = [traffic_sign_label[traffic_sign]]
-        io_data["traffic_sign_detection"] = traffic_sign_detect_result
+        io_data["traffic_sign_detection"] = {
+            "x": int(Vilib.traffic_obj_parameter['x']),
+            "y": int(Vilib.traffic_obj_parameter['y']),
+            "w": int(Vilib.traffic_obj_parameter['w']),
+            "h": int(Vilib.traffic_obj_parameter['h']),
+            "t": str(Vilib.traffic_obj_parameter['t']),
+        }
     # QR code detection data
     if qr_code_detection_enable == True:
-        result = [x['text'] for x in Vilib.detect_obj_parameter['qr_list']]
-        io_data["qr_code_detection"] = result
+        io_data["qr_code_detection"] = {
+            "x": int(Vilib.qrcode_obj_parameter['x']),
+            "y": int(Vilib.qrcode_obj_parameter['y']),
+            "w": int(Vilib.qrcode_obj_parameter['w']),
+            "h": int(Vilib.qrcode_obj_parameter['h']),
+            "d": str(Vilib.qrcode_obj_parameter['data']),
+        }
 
     # Sound status
     io_data["sound_status"] = int(music.get_sound_busy())
@@ -564,6 +608,7 @@ def update_data():
 
     # AI status
     io_data["ai_status"] = ai_status.value
+    io_data["ai_error"] = ai_error
 
     # Button status
     io_data["user_button_pressed"] = bool(px.usr_btn.value())

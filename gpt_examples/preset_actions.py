@@ -163,19 +163,19 @@ def depressed(car):
 def twist_body(car):
     car.reset()
     for i in range(3):
-        car.set_motor_powers(20, 20)
+        car.forward(20)
         car.set_camera_pan_angle(-20)
         car.set_steering_angle(-10)
         sleep(.1)
-        car.set_motor_powers(0, 0)
+        car.stop()
         car.set_camera_pan_angle(0)
         car.set_steering_angle(0)
         sleep(.1)
-        car.set_motor_powers(-20, -20)
+        car.backward(20)
         car.set_camera_pan_angle(20)
         car.set_steering_angle(10)
         sleep(.1)
-        car.set_motor_powers(0, 0)
+        car.stop()
         car.set_camera_pan_angle(0)
         car.set_steering_angle(0)
 

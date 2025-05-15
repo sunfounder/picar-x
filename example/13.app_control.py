@@ -1,12 +1,11 @@
 from sunfounder_controller import SunFounderController
-from picarx import PiCarX
-from robot_hat import utils, Music
+from picarx import PiCarX, reset_mcu
 from vilib import Vilib
 import os
 from time import sleep
 
 # reset robot_hat
-utils.reset_mcu()
+reset_mcu()
 sleep(0.2)
 
 # init SunFounder Controller class

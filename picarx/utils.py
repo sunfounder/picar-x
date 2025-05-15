@@ -1,3 +1,7 @@
+from robot_hat.utils import reset_mcu
+
+def constrain(value, min_value, max_value):
+    return min(max(value, min_value), max_value)
 
 def redirect_error_2_null():
     import os, sys
@@ -31,20 +35,3 @@ def volume_gain(input_file, output_file, gain):
     except Exception as e:
         print(f"[ERROR] volume_gain err: {e}")
         return False
-
-def constrain(value, min_value, max_value):
-    return min(max(value, min_value), max_value)
-
-
-def clear_terminal():
-    """清除终端内容"""
-    import os
-    os.system('cls' if os.name == 'nt' else 'clear')
-
-def print_at_fixed_position(text, line=1, column=1):
-    import os
-    """在终端的固定位置打印文本"""
-    if os.name == 'nt':  # Windows系统
-        print(f"\033[{line};{column}H{text}")
-    else:  # Linux/Mac系统
-        print(f"\033[{line};{column}f{text}")

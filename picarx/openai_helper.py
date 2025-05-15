@@ -1,4 +1,5 @@
 from openai import OpenAI
+from enum import StrEnum
 import time
 import shutil
 import os
@@ -75,6 +76,18 @@ TTS_VOICES = [
     "sage",
     "shimmer"
 ]
+
+class AIStatus(StrEnum):
+    """AI状态枚举（字符串类型）"""
+    NOT_INITIALIZED = "NOT_INITIALIZED"
+    INITIALIZING = "INITIALIZING"
+    IDLE = "IDLE"
+    FAILED = "FAILED"
+    LISTENING = "LISTENING" 
+    STT = "STT"
+    TTS = "TTS"
+    THINKING = "THINKING"
+    SPEAKING = "SPEAKING"
 
 # utils
 # =================================================================
