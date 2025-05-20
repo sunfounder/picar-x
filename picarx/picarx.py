@@ -111,7 +111,7 @@ class PiCarX(object):
 
         # --------- music init ---------
         self.music = Music()
-        self.music.set_volume(100)
+        self.music.set_music_volume(100)
 
         # --------- Actions ---------
         self.actions_dict = {
@@ -151,6 +151,7 @@ class PiCarX(object):
         if power != 0:
             power = int(power /2 ) + 50
         power = power - self.motor_power_offset[motor]
+        print(f"power: {power}")
         if direction < 0:
             self.motor_direction_pins[motor].high()
             self.motor_speed_pins[motor].pulse_width_percent(power)
