@@ -6,7 +6,7 @@
     Auto calibrate grayscale values:
         Please run ./calibration/grayscale_calibration.py
     Manual modification:
-        Use the following: 
+        Use the tracking: 
             px.set_cliff_reference([200, 200, 200])
         The reference value be close to the middle of the line gray value
         and the background gray value.

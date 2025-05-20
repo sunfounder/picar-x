@@ -1,0 +1,12 @@
+# https://www.freedesktop.org/software/systemd/man/systemd.service.html
+[Unit]
+Description=picarx service
+After=multi-user.target
+
+[Service]
+Type=forking
+WorkingDirectory=/home/pi/picar-x/mammoth
+ExecStart=python3 app.py &
+
+[Install]
+WantedBy=multi-user.target

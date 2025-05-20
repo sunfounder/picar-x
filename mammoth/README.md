@@ -25,6 +25,23 @@ When using pip install outside of a virtual environment you may need to use the 
 
 ----------------------------------------------------------------
 
+## Usage
+
+Run the example program
+
+```bash
+sudo python3 app.py
+```
+
+Or set auto run on startup
+
+```bash
+sudo cp picar-x-app.service /etc/systemd/system/
+sudo systemctl enable picar-x-app.service
+sudo systemctl daemon-reload
+sudo systemctl start picar-x-app.service
+```
+
 ## Create your own GPT assistant
 
 ### GET API KEY
@@ -69,8 +86,3 @@ Fill your ASSISTANT_ID into the `keys.py` file.
     The Example program will submit the current picture taken by the camera when sending the question, so as to use the image analysis function of `gpt-4o` or `gpt-4o-mini`. Of course, you can also choose `gpt3.5-turbo` or other models
 
 ----------------------------------------------------------------
-
-## Start
-
-```bash
-sudo python3 picarx_app_control.py

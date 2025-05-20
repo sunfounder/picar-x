@@ -60,7 +60,7 @@ class PiCarX(object):
         time.sleep(0.2)
 
         # --------- config_file ---------
-        self.config_file = fileDB(config, 777, os.getlogin())
+        self.config_file = fileDB(config, 777, 1000)
 
         # --------- servos init ---------
         self.camera_pan_servo = Servo(servo_pins[0])
@@ -83,7 +83,7 @@ class PiCarX(object):
         self.motor_direction_pins = [self.left_rear_dir_pin, self.right_rear_dir_pin]
         self.motor_speed_pins = [self.left_rear_pwm_pin, self.right_rear_pwm_pin]
         # get calibration values
-        self.motor_reverses = self.config_file.get("picarx_dir_motor", default_value="[1, 1]")
+        self.motor_reverses = self.config_file.get("motor_reverses", default_value="[1, -1]")
         self.motor_reverses = [int(i.strip()) for i in self.motor_reverses.strip().strip("[]").split(",")]
         self.motor_power_offset = [0, 0]
         # init pwm

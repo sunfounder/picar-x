@@ -1,6 +1,6 @@
 import threading
 import time
-from picarx.utils import constrain
+from picarx.utils import constrain, CameraDetector
 
 class AutoDrive():
     def __init__(self, car):
@@ -59,7 +59,7 @@ class ObstacleAvoidance(AutoDrive):
             self.car.backward(self.power)
             time.sleep(0.5)
     
-class LineFollowing(AutoDrive):
+class LineTracking(AutoDrive):
     BIG_TURNING_ANGLE = 30
     SMALL_TURNING_ANGLE = 15
 
@@ -119,6 +119,36 @@ class LineFollowing(AutoDrive):
         else:
             self.outHandle()
 
+class Following(AutoDrive):
+    STEP = 3
+
+    def __init__(self, car):
+        super().__init__(car)
+        self.detector = CameraDetector()
+        self.camera_pan_angle = 0
+        self.camera_tilt_angle = 0
+        self.steering_angle = 0
+
+    def set_mode(self, mode):
+        self.detector.set_mode(mode)
+
+    def loop(self):
+        if self.detector.founded:
+            if self.detector.size > 50:
+                self.car.set_camera_pan_angle(0)
+                x, y = self.detector.direction
+                self.steering_angle += x * self.STEP
+                self.camera_pan_angle += x * self.STEP
+                self.camera_tilt_angle += y * self.STEP
+                self.steering_angle = constrain(self.steering_angle, -30, 30)
+                self.camera_pan_angle = constrain(self.camera_pan_angle, -30, 30)
+                self.camera_tilt_angle = constrain(self.camera_tilt_angle, -30, 30)
+                self.car.set_steering_angle(self.steering_angle)
+                self.car.set_camera_pan_angle(self.camera_pan_angle)
+                self.car.set_camera_tilt_angle(self.camera_tilt_angle)
+                self.car.forward(self.power)
+            else:
+                self.car.stop()
 
 if __name__ == "__main__":
     from picarx import PiCarX

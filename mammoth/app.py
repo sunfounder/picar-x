@@ -4,7 +4,7 @@ from mammoth_websocket.utils import get_ips
 from picarx import PiCarX
 from picarx.music import Music, music_list, sound_list
 from picarx.utils import *
-from picarx.auto_drive import LineFollowing, ObstacleAvoidance
+from picarx.auto_drive import LineTracking, ObstacleAvoidance, Following
 from picarx.openai_helper import OpenAiHelper, AIStatus
 
 import speech_recognition as sr
@@ -51,8 +51,9 @@ recognizer.pause_threshold = 1
 log = logging.getLogger("PiCar-X")
 data_interval = 5 # miliseconds
 
-line_following = LineFollowing(px)
+line_tracking = LineTracking(px)
 obstacle_avoidance = ObstacleAvoidance(px)
+following = Following(px)
 
 #----
 ai_api_key = None
@@ -65,8 +66,6 @@ color_detection_mode = "close"
 face_detection_enable = False
 traffic_sign_detection_enable = False
 qr_code_detection_enable = False
-line_following_power = 80
-obstacle_avoidance_power = 80
 left_motor_power = 0
 right_motor_power = 0
 steering_angle = 0
@@ -306,17 +305,17 @@ def handle_music_volume(volume):
     log.debug(f"Set music volume: {volume}")
     music.set_music_volume(volume)
 
-def handle_line_following(enable):
+def handle_line_tracking(enable):
     if enable == 0:
-        log.debug(f"Stop line following")
-        line_following.stop()
+        log.debug(f"Stop line tracking")
+        line_tracking.stop()
     elif enable == 1:
-        log.debug(f"Start line following")
-        line_following.start()
+        log.debug(f"Start line tracking")
+        line_tracking.start()
 
-def handle_line_following_power(power):
-    log.debug(f"Set line following power: {power}")
-    line_following.set_power(power)
+def handle_line_tracking_power(power):
+    log.debug(f"Set line tracking power: {power}")
+    line_tracking.set_power(power)
 
 def handle_obstacle_avoidance(enable):
     if enable == 0:
@@ -329,6 +328,22 @@ def handle_obstacle_avoidance(enable):
 def handle_obstacle_avoidance_power(power):
     log.debug(f"Set obstacle avoidance power: {power}")
     obstacle_avoidance.set_power(power)
+
+def handle_following(enable):
+    if enable == 0:
+        log.debug(f"Stop following")
+        following.stop()
+    elif enable == 1:
+        log.debug(f"Start following")
+        following.start()
+
+def handle_following_power(power):
+    log.debug(f"Set following power: {power}")
+    following.set_power(power)
+
+def handle_following_mode(mode):
+    log.debug(f"Set following mode: {mode}")
+    following.set_mode(mode)
 
 def handle_steering_offset(offset):
     offset = constrain(offset, -20, 20)
@@ -455,7 +470,7 @@ def handle_led(status):
     px.led.value(status)
 
 def on_io_data(data):
-    global line_following_power, obstacle_avoidance_power
+    global line_tracking_power, obstacle_avoidance_power
     
     with io_lock:
         # control
@@ -485,15 +500,22 @@ def on_io_data(data):
         if 'music_volume' in data.keys():
             handle_music_volume(data['music_volume'])
         # track_mode
-        if 'line_following' in data.keys():
-            handle_line_following(data['line_following'])
-        if 'line_following_power' in data.keys():
-            handle_line_following_power(data['line_following_power'])
+        if 'line_tracking' in data.keys():
+            handle_line_tracking(data['line_tracking'])
+        if 'line_tracking_power' in data.keys():
+            handle_line_tracking_power(data['line_tracking_power'])
         # obstacle_mode
         if 'obstacle_avoidance' in data.keys():
             handle_obstacle_avoidance(data['obstacle_avoidance'])
         if 'obstacle_avoidance_power' in data.keys():
             handle_obstacle_avoidance_power(data['obstacle_avoidance_power'])
+        # following
+        if 'following' in data.keys():
+            handle_following(data['following'])
+        if 'following_power' in data.keys():
+            handle_following_power(data['following_power'])
+        if 'following_mode' in data.keys():
+            handle_following_mode(data['following_mode'])
         # Calibrations
         if 'steering_offset' in data.keys():
             handle_steering_offset(data['steering_offset'])
