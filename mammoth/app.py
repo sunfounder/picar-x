@@ -42,7 +42,7 @@ TRAFFIC_SIGNS =  ['none', 'stop', 'right', 'left', 'forward']
 
 ws = MammothWebSocket()
 openai = None
-px = PiCarX()
+car = PiCarX()
 music = Music()
 recognizer = sr.Recognizer()
 recognizer.dynamic_energy_adjustment_damping = 0.16
@@ -51,9 +51,9 @@ recognizer.pause_threshold = 1
 log = logging.getLogger("PiCar-X")
 data_interval = 5 # miliseconds
 
-line_tracking = LineTracking(px)
-obstacle_avoidance = ObstacleAvoidance(px)
-following = Following(px)
+line_tracking = LineTracking(car)
+obstacle_avoidance = ObstacleAvoidance(car)
+following = Following(car)
 
 #----
 ai_api_key = None
@@ -66,8 +66,7 @@ color_detection_mode = "close"
 face_detection_enable = False
 traffic_sign_detection_enable = False
 qr_code_detection_enable = False
-left_motor_power = 0
-right_motor_power = 0
+motor_power = 0
 steering_angle = 0
 camera_pan_angle = 0
 camera_tilt_angle = 0
@@ -204,26 +203,21 @@ def say_task(value):
 def handle_name_changed(name):
     DEVICE_INFO["Name"] = name
     print(f"Name changed to {name}")
-    px.config_file.set("name", name)
+    car.config_file.set("name", name)
 
-def handle_motor(left_power, right_power):
-    global left_motor_power, right_motor_power
-    left_power = constrain(left_power, -100, 100)
-    right_power = constrain(right_power, -100, 100)
-    log.debug(f"Set motor: [{left_power}, {right_power}]")
-    if left_power != left_motor_power:
-        px.set_motor_power(1, left_power)
-        left_motor_power = left_power
-    if right_power!= right_motor_power:
-        px.set_motor_power(2, right_power)
-        right_motor_power = right_power
+def handle_motor(power):
+    global motor_power
+    log.debug(f"Set motor power: {power}")
+    if motor_power != power:
+        car.set_motor_powers(power)
+        motor_power = power
 
 def handle_steering(angle):
     global steering_angle
     angle = constrain(angle, -30, 30)
     log.debug(f"Set steering angle: {angle}")
     if angle!= steering_angle:
-        px.set_steering_angle(angle)
+        car.set_steering_angle(angle)
         steering_angle = angle
 
 def handle_camera_pan(angle):
@@ -231,7 +225,7 @@ def handle_camera_pan(angle):
     angle = constrain(angle, -90, 90)
     log.debug(f"Set camera pan angle: {angle}")
     if angle!= camera_pan_angle:
-        px.set_camera_pan_angle(angle)
+        car.set_camera_pan_angle(angle)
         camera_pan_angle = angle
 
 def handle_camera_tilt(angle):
@@ -239,7 +233,7 @@ def handle_camera_tilt(angle):
     angle = constrain(angle, -30, 30)
     log.debug(f"Set camera tilt angle: {angle}")
     if angle!= camera_tilt_angle:
-        px.set_camera_tilt_angle(angle)
+        car.set_camera_tilt_angle(angle)
         camera_tilt_angle = angle
 
 def handle_color_detection(mode_index):
@@ -349,33 +343,33 @@ def handle_steering_offset(offset):
     offset = constrain(offset, -20, 20)
     offset = round(offset, 2)
     log.debug(f"Set steering offset: {offset}")
-    px.set_steering_offset(offset)
+    car.set_steering_offset(offset)
     io_data['steering_offset'] = offset
 
 def handle_camera_pan_offset(offset):
     offset = constrain(offset, -20, 20)
     offset = round(offset, 2)
     log.debug(f"Set camera pan offset: {offset}")
-    px.set_camera_pan_offset(offset)
+    car.set_camera_pan_offset(offset)
     io_data['camera_pan_offset'] = offset
 
 def handle_camera_tilt_offset(offset):
     offset = constrain(offset, -20, 20)
     offset = round(offset, 2)
     log.debug(f"Set camera tilt offset: {offset}")
-    px.set_camera_tilt_offset(offset)
+    car.set_camera_tilt_offset(offset)
     io_data['camera_tilt_offset'] = offset
 
 def handle_motors_reverse(left_reverse, right_reverse):
     global delay_stop_motor_timer
     log.debug(f"Set motors reverse: [{left_reverse}, {right_reverse}]")
-    px.motor_direction_calibrate(1, left_reverse)
-    px.motor_direction_calibrate(2, right_reverse)
+    car.motor_direction_calibrate(1, left_reverse)
+    car.motor_direction_calibrate(2, right_reverse)
     io_data['motor_reverse'] = [left_reverse, right_reverse]
-    px.forward(30)
+    car.forward(30)
     if delay_stop_motor_timer is not None:
         delay_stop_motor_timer.cancel()
-    delay_stop_motor_timer = threading.Timer(2, lambda: px.stop())
+    delay_stop_motor_timer = threading.Timer(2, lambda: car.stop())
     delay_stop_motor_timer.start()
 
 def handle_ai_api_key(value):
@@ -456,18 +450,18 @@ def handle_ai_say(value):
     task.start()
 
 def handle_do_action(action):
-    if action not in px.actions_dict:
+    if action not in car.actions_dict:
         log.error(f"Invalid action: {action}")
         return
     
-    px.actions_dict[action]()
+    car.actions_dict[action]()
 
 def handle_led(status):
     if status not in [0, 1]:
         log.error(f"Invalid led status: {status}")
         return
     log.debug(f"Set led: {status}")
-    px.led.value(status)
+    car.led.value(status)
 
 def on_io_data(data):
     global line_tracking_power, obstacle_avoidance_power
@@ -475,7 +469,7 @@ def on_io_data(data):
     with io_lock:
         # control
         if 'motor' in data.keys():
-            handle_motor(*data['motor'])
+            handle_motor(data['motor'])
         if 'steering' in data.keys():
             handle_steering(data['steering'])
         if 'camera_pan' in data.keys():
@@ -568,15 +562,15 @@ def on_disconnect(client_id):
 def update_data():
     # Read sensor data
     # Ultrasonic sensor data
-    io_data["ultrasonic_distance"] = px.get_distance()
+    io_data["ultrasonic_distance"] = car.get_distance()
 
     # Battery voltage
-    battery_voltage = px.get_battery_voltage()
+    battery_voltage = car.get_battery_voltage()
     battery_voltage = constrain(battery_voltage, 6.2, 8.4)
     io_data["battery_voltage"] = battery_voltage
 
     # Grayscale sensor data
-    grayscale_value = px.get_grayscale_data()
+    grayscale_value = car.get_grayscale_data()
     grayscale_status = []
     for data in grayscale_value:
         if data > grayscale_line_reference:
@@ -638,8 +632,8 @@ def update_data():
     io_data["ai_error"] = ai_error
 
     # Button status
-    io_data["user_button_pressed"] = bool(px.usr_btn.value())
-    io_data["reset_button_pressed"] = bool(px.rst_btn.value())
+    io_data["user_button_pressed"] = bool(car.usr_btn.value())
+    io_data["reset_button_pressed"] = bool(car.rst_btn.value())
 
 def set_log():
     log.setLevel(logging.DEBUG)
@@ -666,10 +660,10 @@ def init():
     elif 'eth0' in ips:
         ip = ips['eth0']
 
-    DEVICE_INFO["Name"] = px.config_file.get("name", default_value=DEVICE_INFO["Name"])
+    DEVICE_INFO["Name"] = car.config_file.get("name", default_value=DEVICE_INFO["Name"])
     DEVICE_INFO["video"] = f"{ip}:9000/mjpg"
     log.info(json.dumps(DEVICE_INFO, indent=4))
-    px.reset()
+    car.reset()
     # --- Init Vilib ---
     try:
         Vilib.camera_start(vflip=False, hflip=False, size=CAMERA_SIZE)
@@ -687,10 +681,10 @@ def init():
     ws.set_on_io_data(on_io_data)
     ws.start()
 
-    io_data['motor_reverse'] = list.copy(px.motor_reverses)
-    io_data['steering_offset'] = px.steering_offset
-    io_data['camera_pan_offset'] = px.camera_pan_offset
-    io_data['camera_tilt_offset'] = px.camera_tilt_offset
+    io_data['motor_reverse'] = list.copy(car.motor_reverses)
+    io_data['steering_offset'] = car.steering_offset
+    io_data['camera_pan_offset'] = car.camera_pan_offset
+    io_data['camera_tilt_offset'] = car.camera_tilt_offset
 
 def main():
 
@@ -714,4 +708,4 @@ if __name__ == "__main__":
     finally:
         log.info("Exiting")
         ws.close()
-        px.stop()
+        car.stop()
