@@ -1,20 +1,15 @@
-from robot_hat import Pin, ADC, PWM, Servo, fileDB
+from robot_hat import Pin, ADC, Servo
 from robot_hat import Grayscale_Module, Ultrasonic, utils
+from .motors import Motors
 from .music import Music, SoundFiles
-import time
+from .utils import Config, constrain
 import os
+import json
 
 from time import sleep
 
-
-def constrain(x, min_val, max_val):
-    '''
-    Constrains value to be within a range.
-    '''
-    return max(min_val, min(max_val, x))
-
 class PiCarX(object):
-    CONFIG = '/opt/picar-x/picar-x.conf'
+    CONFIG = '/opt/picar-x/picar-x.json'
 
     DEFAULT_LINE_REF = [1000, 1000, 1000]
     DEFAULT_CLIFF_REF = [500, 500, 500]
@@ -26,20 +21,18 @@ class PiCarX(object):
     CAM_TILT_MIN = -35
     CAM_TILT_MAX = 65
 
-    PERIOD = 4095
-    PRESCALER = 10
-    TIMEOUT = 0.02
-
-    LEFT_MOTOR = 1
-    RIGHT_MOTOR = 0
+    # Distance between the front wheels and the rear wheels, in centimeters.
+    WHEEL_BASE = 8.724
+    # Distance between the left wheels and the right wheels, in centimeters.
+    TRACK_WIDTH = 11.665
 
     def __init__(
         self,
         servo_pins: list = ['P0', 'P1', 'P2'],
-        motor_pins: list = ['D4', 'D5', 'P13', 'P12'],
         grayscale_pins: list = ['A0', 'A1', 'A2'],
+        motor_pins: list = ['P13', 'D4', 'P12', 'D5'],
         ultrasonic_pins: list = ['D2', 'D3'],  # 添加空格
-        config: str = CONFIG,
+        config_file: str = CONFIG,
     ):
         '''
         Initializes the PiCarX object.
@@ -52,53 +45,41 @@ class PiCarX(object):
         type grayscale_pins: list of str
         param ultrasonic_pins: list of ultrasonic pins. trig, echo, Default is ['D2','D3'].
         type ultrasonic_pins: list of str
-        param config: path of config file. Default is '/opt/picar-x/picar-x.conf'.
-        type config: str
+        param config_file: path of config_file file. Default is '/opt/picar-x/picar-x.conf'.
+        type config_file: str
         '''
         # reset robot_hat
         utils.reset_mcu()
-        time.sleep(0.2)
+        sleep(0.2)
 
         # --------- config_file ---------
-        self.config_file = fileDB(config, 777, 1000)
+        self.config = Config(config_file)
 
         # --------- servos init ---------
-        self.camera_pan_servo = Servo(servo_pins[0])
-        self.camera_tilt_servo = Servo(servo_pins[1])   
-        self.steering_servo = Servo(servo_pins[2])
         # get calibration values
-        self.steering_offset = float(self.config_file.get("steering_offset", default_value=0))
-        self.camera_pan_offset = float(self.config_file.get("camera_pan_offset", default_value=0))
-        self.camera_tilt_offset = float(self.config_file.get("camera_tilt_offset", default_value=0))
+        steering_offset = self.config.get("steering_offset", default_value=0.0)
+        camera_pan_offset = self.config.get("camera_pan_offset", default_value=0.0)
+        camera_tilt_offset = self.config.get("camera_tilt_offset", default_value=0.0)
+        self.camera_pan_servo = Servo(servo_pins[0], offset=camera_pan_offset)
+        self.camera_tilt_servo = Servo(servo_pins[1], offset=camera_tilt_offset)   
+        self.steering_servo = Servo(servo_pins[2], offset=steering_offset)
         # set servos to init angle
         self.set_steering_angle(0)
         self.set_camera_pan_angle(0)
         self.set_camera_tilt_angle(0)
 
         # --------- motors init ---------
-        self.left_rear_dir_pin = Pin(motor_pins[0])
-        self.right_rear_dir_pin = Pin(motor_pins[1])
-        self.left_rear_pwm_pin = PWM(motor_pins[2])
-        self.right_rear_pwm_pin = PWM(motor_pins[3])
-        self.motor_direction_pins = [self.left_rear_dir_pin, self.right_rear_dir_pin]
-        self.motor_speed_pins = [self.left_rear_pwm_pin, self.right_rear_pwm_pin]
-        # get calibration values
-        self.motor_reverses = self.config_file.get("motor_reverses", default_value="[1, -1]")
-        self.motor_reverses = [int(i.strip()) for i in self.motor_reverses.strip().strip("[]").split(",")]
-        self.motor_power_offset = [0, 0]
-        # init pwm
-        for pin in self.motor_speed_pins:
-            pin.period(self.PERIOD)
-            pin.prescaler(self.PRESCALER)
+        left_motor_reversed = self.config.get("left_motor_reversed", default_value=False)
+        right_motor_reversed = self.config.get("right_motor_reversed", default_value=True)
+        self.motors = Motors(*motor_pins, left_reversed=left_motor_reversed, right_reversed=right_motor_reversed)
+        self.motors.init_differential_drive(self.WHEEL_BASE, self.TRACK_WIDTH)
 
         # --------- grayscale module init ---------
         adc0, adc1, adc2 = [ADC(pin) for pin in grayscale_pins]
         self.grayscale = Grayscale_Module(adc0, adc1, adc2, reference=None)
         # get reference
-        self.line_reference = self.config_file.get("line_reference", default_value=str(self.DEFAULT_LINE_REF))
-        self.line_reference = [float(i) for i in self.line_reference.strip().strip('[]').split(',')]
-        self.cliff_reference = self.config_file.get("cliff_reference", default_value=str(self.DEFAULT_CLIFF_REF))
-        self.cliff_reference = [float(i) for i in self.cliff_reference.strip().strip('[]').split(',')]
+        self.line_reference = self.config.get("line_reference", default_value=self.DEFAULT_LINE_REF)
+        self.cliff_reference = self.config.get("cliff_reference", default_value=self.DEFAULT_CLIFF_REF)
         # transfer reference
         self.grayscale.reference(self.line_reference)
 
@@ -132,47 +113,35 @@ class PiCarX(object):
             "start engine": self.start_engine,
         }
 
-    def set_motor_power(self, motor, power):
-        ''' Set a single motor power
-
-        param motor: motor index, (1:left motor, 2: right motor)
-        type motor: int
-        param power: power (-100 ~ 100)
-        type power: int
-        '''
-        power = constrain(power, -100, 100)
-        motor -= 1
-        if power >= 0:
-            direction = 1 * self.motor_reverses[motor]
-        elif power < 0:
-            direction = -1 * self.motor_reverses[motor]
-        power = abs(power)
-        # print(f"direction: {direction}, power: {power}")
-        if power != 0:
-            power = int(power /2 ) + 50
-        power = power - self.motor_power_offset[motor]
-        print(f"power: {power}")
-        if direction < 0:
-            self.motor_direction_pins[motor].high()
-            self.motor_speed_pins[motor].pulse_width_percent(power)
-        else:
-            self.motor_direction_pins[motor].low()
-            self.motor_speed_pins[motor].pulse_width_percent(power)
-
-    def set_motor_power_offset(self, value):
-        ''' Set motor power offset to even the speed of the two motors.
-
-        param value: offset value
+    def set_steering_angle(self, angle):
+        ''' Set steering angle
+        
+        param value: angle value
         type value: int
         '''
-        self.motor_power_offset = value
-        if value < 0:
-            self.motor_power_offset[0] = 0
-            self.motor_power_offset[1] = abs(self.motor_power_offset)
-        else:
-            self.motor_power_offset[0] = abs(self.motor_power_offset)
-            self.motor_power_offset[1] = 0
+        angle = constrain(angle, self.DIR_MIN, self.DIR_MAX)
+        self.steering_servo.angle(angle)
+        self.motors.set_power(self.motors.power, angle)
 
+    def set_camera_pan_angle(self, angle):
+        ''' Set camera pan servo angle
+        
+        param angle: angle angle
+        type angle: int
+        '''
+        angle = constrain(angle, self.CAM_PAN_MIN, self.CAM_PAN_MAX)
+        self.camera_pan_servo.angle(angle)
+
+    def set_camera_tilt_angle(self, angle):
+        ''' Set camera tilt servo angle
+
+        param angle: angle angle
+        type angle: int
+        '''
+        angle = constrain(angle, self.CAM_TILT_MIN, self.CAM_TILT_MAX)
+        self.camera_tilt_servo.angle(angle)
+
+    # Calibration functions
     def set_motor_reverse(self, motor, value):
         ''' Set if a motor is reversed.
         
@@ -180,48 +149,22 @@ class PiCarX(object):
         type motor: int
         param value: speed
         type value: int
-        '''      
-        motor -= 1
-        self.motor_reverses[motor] = value
-        self.config_file.set("picarx_dir_motor", self.motor_reverses)
-
-    def set_steering_angle(self, value):
-        ''' Set steering angle
-        
-        param value: angle value
-        type value: int
         '''
-        self.steering_angle = constrain(value, self.DIR_MIN, self.DIR_MAX)
-        angle_value  = self.steering_angle + self.steering_offset
-        self.steering_servo.angle(angle_value)
+        if motor == 1:
+            self.motors.set_left_reverse(value)
+            self.config.set("left_motor_reversed", value)
+        elif motor == 2:
+            self.motors.set_right_reverse(value)
+            self.config.set("right_motor_reversed", value)
 
-    def set_camera_pan_angle(self, value):
-        ''' Set camera pan servo angle
-        
-        param value: angle value
-        type value: int
-        '''
-        value = constrain(value, self.CAM_PAN_MIN, self.CAM_PAN_MAX)
-        self.camera_pan_servo.angle(-(value - self.camera_pan_offset))
-
-    def set_camera_tilt_angle(self, value):
-        ''' Set camera tilt servo angle
-
-        param value: angle value
-        type value: int
-        '''
-        value = constrain(value, self.CAM_TILT_MIN, self.CAM_TILT_MAX)
-        self.camera_tilt_servo.angle(-(value + self.camera_tilt_offset))
-
-    def set_steering_offset(self, value):
+    def set_steering_offset(self, offset):
         ''' Set steering offset
         
-        param value: offset value
-        type value: int
+        param offset: offset offset
+        type offset: int
         '''
-        self.steering_offset = value
-        self.config_file.set("steering_offset", "%s"%value)
-        self.set_steering_angle(0)
+        self.config.set("steering_offset", offset)
+        self.steering_servo.offset(offset)
 
     def set_camera_pan_offset(self, value):
         ''' Set camera pan servo offset
@@ -229,9 +172,8 @@ class PiCarX(object):
         param value: offset value
         type value: int
         '''
-        self.camera_pan_offset = value
-        self.config_file.set("camera_pan_offset", "%s"%value)
-        self.set_camera_pan_angle(0)
+        self.config_file.set("camera_pan_offset", value)
+        self.camera_pan_servo.offset(value)
 
     def set_camera_tilt_offset(self, value):
         ''' Set camera tilt servo offset
@@ -239,35 +181,15 @@ class PiCarX(object):
         param value: offset value
         type value: int
         '''
-        self.camera_tilt_offset = value
         self.config_file.set("camera_tilt_offset", "%s"%value)
-        self.set_camera_tilt_angle(0)
-
-    def set_motor_powers(self, power):
-        ''' Set motor powers
-        
-        param power: power value, (-100 ~ 100)
-        type power: int
-        '''
-        # power_scale = (100 - self.steering_angle) / 100.0
-        # if self.steering_angle > 0:
-        #     left = power
-        #     right = power * power_scale
-        # else:
-        #     left = power * power_scale
-        #     right = power
-        # print(f"left: {left}, right: {right}")
-        left = power
-        right = power
-        self.set_motor_power(1, left)
-        self.set_motor_power(2, right)
+        self.camera_tilt_servo.offset(value)
 
     def backward(self, power):
         ''' Backward
         
         param power: power
         type power: int'''
-        self.set_motor_powers(-power)
+        self.motors.set_power(-power, self.steering_servo.angle())
 
     def forward(self, power):
         ''' Forward
@@ -275,7 +197,7 @@ class PiCarX(object):
         param power: power
         type power: int
         '''
-        self.set_motor_powers(power)
+        self.motors.set_power(power, self.steering_servo.angle())
 
     def stop(self):
         ''' Stop motors '''
@@ -624,8 +546,3 @@ class PiCarX(object):
         ''' DEPRECATED set motor direction calibration value'''
         self.set_motor_reverse(motor, value)
 
-if __name__ == "__main__":
-    px = PiCarX()
-    px.forward(50)
-    time.sleep(1)
-    px.stop()

@@ -1,11 +1,13 @@
 from robot_hat.utils import reset_mcu
 from vilib import Vilib
+import os, sys
+import subprocess
+import json
 
 def constrain(value, min_value, max_value):
     return min(max(value, min_value), max_value)
 
 def redirect_error_2_null():
-    import os, sys
     # https://github.com/spatialaudio/python-sounddevice/issues/11
 
     devnull = os.open(os.devnull, os.O_WRONLY)
@@ -16,12 +18,25 @@ def redirect_error_2_null():
     return old_stderr
 
 def cancel_redirect_error(stderr=None):
-    import os
     if stderr is None:
         stderr = redirect_error_2_null() # ignore error print to ignore ALSA errors
     os.dup2(stderr, 2)
     os.close(stderr)
 
+def run_command(cmd):
+    """
+    Run command and return status and output
+
+    :param cmd: command to run
+    :type cmd: str
+    :return: status, output
+    :rtype: tuple
+    """
+    p = subprocess.Popen(
+        cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+    result = p.stdout.read().decode('utf-8')
+    status = p.poll()
+    return status, result
 
 def volume_gain(input_file, output_file, gain):
     import sox
@@ -140,3 +155,73 @@ class CameraDetector():
             bool: True if the object is founded, False otherwise.
         '''
         return int(self.detect_result['n']) > 0
+
+GRAY = '1;30'
+RED = '0;31'
+GREEN = '0;32'
+YELLOW = '0;33'
+BLUE = '0;34'
+PURPLE = '0;35'
+DARK_GREEN = '0;36'
+WHITE = '0;37'
+
+def print_color(msg, end='\n', file=sys.stdout, flush=False, color=''):
+    print('\033[%sm%s\033[0m'%(color, msg), end=end, file=file, flush=flush)
+
+def gray_print(msg, end='\n', file=sys.stdout, flush=False):
+    print_color(msg, end=end, file=file, flush=flush, color=GRAY)
+
+def warn(msg, end='\n', file=sys.stdout, flush=False):
+    print_color(msg, end=end, file=file, flush=flush, color=YELLOW)
+
+def error(msg, end='\n', file=sys.stdout, flush=False):
+    print_color(msg, end=end, file=file, flush=flush, color=RED)
+
+class Config():
+    def __init__(self, config_file):
+        self.config_file = config_file
+        
+        if not os.path.exists(config_file):
+            os.system(f'touch {config_file}')
+            os.system(f'chown 1000:1000 {config_file}')
+        with open(config_file, 'r') as f:
+            content = f.read()
+            self._config = json.loads(content)
+
+    def get(self, key, default_value=None):
+        return self._config.get(key, default_value)
+
+    def set(self, key, value):
+        self._config[key] = value
+        with open(self.config_file, 'w') as f:
+            json.dump(self._config, f, indent=4)
+
+    def delete(self, key):
+        if key in self._config:
+            del self._config[key]
+            with open(self.config_file, 'w') as f:
+                json.dump(self._config, f, indent=4)
+
+    def __getitem__(self, key):
+        return self.get(key)
+
+    def __setitem__(self, key, value):
+        self.set(key, value)
+
+    def __delitem__(self, key):
+        self.delete(key)
+
+    def __contains__(self, key):
+        return key in self._config
+
+    def __iter__(self):
+        return iter(self._config)
+
+    def __len__(self):
+        return len(self._config)
+
+    def __str__(self):
+        return json.dumps(self._config, indent=4)
+
+    def __repr__(self):
+        return f'Config({self.config_file})'

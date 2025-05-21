@@ -107,7 +107,7 @@ def speak_hanlder():
             _isloaded = speech_loaded
         if _isloaded:
             # gray_print('speak start')
-            speak_block(music, tts_file)
+            music.play_sound(tts_file)
             # gray_print('speak done')
             with speech_lock:
                 speech_loaded = False
@@ -322,7 +322,7 @@ def main():
                 _tts_status = openai_helper.text_to_speech(answer, _tts_f, TTS_VOICE, response_format='wav') # alloy, echo, fable, onyx, nova, and shimmer
                 if _tts_status:
                     tts_file = f"./tts/{_time}_{VOLUME_DB}dB.wav"
-                    _tts_status = sox_volume(_tts_f, tts_file, VOLUME_DB)
+                    _tts_status = volume_gain(_tts_f, tts_file, VOLUME_DB)
                 gray_print(f'tts takes: {time.time() - st:.3f} s')
 
             # ---- actions ----
