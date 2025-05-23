@@ -1,17 +1,10 @@
 from robot_hat import Pin, ADC, PWM, Servo, fileDB
 from robot_hat import Grayscale_Module, Ultrasonic, utils
 from .music import Music, SoundFiles
+from .utils import constrain, with_robot_hat_i2c_lock
 import time
-import os
 
 from time import sleep
-
-
-def constrain(x, min_val, max_val):
-    '''
-    Constrains value to be within a range.
-    '''
-    return max(min_val, min(max_val, x))
 
 class PiCarX(object):
     CONFIG = '/opt/picar-x/picar-x.conf'
@@ -44,16 +37,12 @@ class PiCarX(object):
         '''
         Initializes the PiCarX object.
 
-        param servo_pins: list of servo pins. camera_pan_servo, camera_tilt_servo, direction_servo, Default is ['P0', 'P1', 'P2'].
-        type servo_pins: list of str
-        param motor_pins: list of motor pins. left_swicth, right_swicth, left_pwm, right_pwm, Default is ['D4', 'D5', 'P13', 'P12'].
-        type motor_pins: list of str
-        param grayscale_pins: list of grayscale pins. Default is ['A0', 'A1', 'A2'].
-        type grayscale_pins: list of str
-        param ultrasonic_pins: list of ultrasonic pins. trig, echo, Default is ['D2','D3'].
-        type ultrasonic_pins: list of str
-        param config: path of config file. Default is '/opt/picar-x/picar-x.conf'.
-        type config: str
+        Args:
+            servo_pins (list): List of servo pin names. Defaults to ['P0', 'P1', 'P2'].
+            motor_pins (list): List of motor pin names. Defaults to ['D4', 'D5', 'P13', 'P12'].
+            grayscale_pins (list): List of grayscale sensor pin names. Defaults to ['A0', 'A1', 'A2'].
+            ultrasonic_pins (list): List of ultrasonic sensor pin names. Defaults to ['D2', 'D3'].
+            config (str): Path to the configuration file. Defaults to CONFIG.
         '''
         # reset robot_hat
         utils.reset_mcu()
@@ -132,13 +121,13 @@ class PiCarX(object):
             "start engine": self.start_engine,
         }
 
+    @with_robot_hat_i2c_lock
     def set_motor_power(self, motor, power):
         ''' Set a single motor power
 
-        param motor: motor index, (1:left motor, 2: right motor)
-        type motor: int
-        param power: power (-100 ~ 100)
-        type power: int
+        Args:
+            motor (int): motor index, 1 means left motor, 2 means right motor.
+            power (int): power value, range from -100 to 100.
         '''
         power = constrain(power, -100, 100)
         motor -= 1
@@ -151,7 +140,7 @@ class PiCarX(object):
         if power != 0:
             power = int(power /2 ) + 50
         power = power - self.motor_power_offset[motor]
-        print(f"power: {power}")
+
         if direction < 0:
             self.motor_direction_pins[motor].high()
             self.motor_speed_pins[motor].pulse_width_percent(power)
@@ -162,8 +151,8 @@ class PiCarX(object):
     def set_motor_power_offset(self, value):
         ''' Set motor power offset to even the speed of the two motors.
 
-        param value: offset value
-        type value: int
+        Args:
+            value (int): offset value, range from -100 to 100.
         '''
         self.motor_power_offset = value
         if value < 0:
@@ -176,39 +165,41 @@ class PiCarX(object):
     def set_motor_reverse(self, motor, value):
         ''' Set if a motor is reversed.
         
-        param motor: motor index, 1 means left motor, 2 means right motor
-        type motor: int
-        param value: speed
-        type value: int
+        Args:
+            motor (int): motor index, 1 means left motor, 2 means right motor.
+            value (int): 1 means forward, -1 means reverse.
         '''      
         motor -= 1
         self.motor_reverses[motor] = value
         self.config_file.set("picarx_dir_motor", self.motor_reverses)
 
+    @with_robot_hat_i2c_lock
     def set_steering_angle(self, value):
         ''' Set steering angle
         
-        param value: angle value
-        type value: int
+        Args:
+            value (int): angle value, range from -30 to 30.
         '''
         self.steering_angle = constrain(value, self.DIR_MIN, self.DIR_MAX)
         angle_value  = self.steering_angle + self.steering_offset
         self.steering_servo.angle(angle_value)
 
+    @with_robot_hat_i2c_lock
     def set_camera_pan_angle(self, value):
         ''' Set camera pan servo angle
         
-        param value: angle value
-        type value: int
+        Args:
+            value (int): angle value, range from -90 to 90.
         '''
         value = constrain(value, self.CAM_PAN_MIN, self.CAM_PAN_MAX)
         self.camera_pan_servo.angle(-(value - self.camera_pan_offset))
 
+    @with_robot_hat_i2c_lock
     def set_camera_tilt_angle(self, value):
         ''' Set camera tilt servo angle
 
-        param value: angle value
-        type value: int
+        Args:
+            value (int): angle value, range from -35 to 65.
         '''
         value = constrain(value, self.CAM_TILT_MIN, self.CAM_TILT_MAX)
         self.camera_tilt_servo.angle(-(value + self.camera_tilt_offset))
@@ -216,8 +207,8 @@ class PiCarX(object):
     def set_steering_offset(self, value):
         ''' Set steering offset
         
-        param value: offset value
-        type value: int
+        Args:
+            value (int): offset value, range from -30 to 30.
         '''
         self.steering_offset = value
         self.config_file.set("steering_offset", "%s"%value)
@@ -226,8 +217,8 @@ class PiCarX(object):
     def set_camera_pan_offset(self, value):
         ''' Set camera pan servo offset
         
-        param value: offset value
-        type value: int
+        Args:
+            value (int): offset value, range from -90 to 90.
         '''
         self.camera_pan_offset = value
         self.config_file.set("camera_pan_offset", "%s"%value)
@@ -236,8 +227,8 @@ class PiCarX(object):
     def set_camera_tilt_offset(self, value):
         ''' Set camera tilt servo offset
         
-        param value: offset value
-        type value: int
+        Args:
+            value (int): offset value, range from -35 to 65.
         '''
         self.camera_tilt_offset = value
         self.config_file.set("camera_tilt_offset", "%s"%value)
@@ -246,21 +237,11 @@ class PiCarX(object):
     def set_motor_powers(self, power):
         ''' Set motor powers
         
-        param power: power value, (-100 ~ 100)
-        type power: int
+        Args:
+            power (int): power value, range from -100 to 100.
         '''
-        # power_scale = (100 - self.steering_angle) / 100.0
-        # if self.steering_angle > 0:
-        #     left = power
-        #     right = power * power_scale
-        # else:
-        #     left = power * power_scale
-        #     right = power
-        # print(f"left: {left}, right: {right}")
-        left = power
-        right = power
-        self.set_motor_power(1, left)
-        self.set_motor_power(2, right)
+        self.set_motor_power(1, power)
+        self.set_motor_power(2, power)
 
     def backward(self, power):
         ''' Backward
@@ -298,6 +279,7 @@ class PiCarX(object):
         else:
             raise ValueError("grayscale reference must be a 1*3 list")
 
+    @with_robot_hat_i2c_lock
     def get_grayscale_data(self):
         ''' Get grayscale data '''
         return list.copy(self.grayscale.read())
@@ -341,6 +323,7 @@ class PiCarX(object):
         else:
             raise ValueError("grayscale reference must be a 1*3 list")
 
+    @with_robot_hat_i2c_lock
     def get_battery_voltage(self):
         ''' Get battery voltage '''
         return utils.get_battery_voltage()

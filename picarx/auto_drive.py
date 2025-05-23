@@ -58,7 +58,7 @@ class ObstacleAvoidance(AutoDrive):
             self.car.set_steering_angle(-30)
             self.car.backward(self.power)
             time.sleep(0.5)
-    
+
 class LineTracking(AutoDrive):
     BIG_TURNING_ANGLE = 30
     SMALL_TURNING_ANGLE = 15
@@ -85,16 +85,15 @@ class LineTracking(AutoDrive):
 
     def outHandle(self):
         if self.direction in ['left', 'little_left']:
-            self.car.set_steering_angle(-30)
-            self.car.backward(10)
-        elif self.direction in ['right', 'little_right']:
             self.car.set_steering_angle(30)
             self.car.backward(10)
-        while True:
+        elif self.direction in ['right', 'little_right']:
+            self.car.set_steering_angle(-30)
+            self.car.backward(10)
+        while self.running:
             new_direction = self.get_direction()
             if new_direction != self.direction:
                 break
-        time.sleep(0.001)
 
     def loop(self):
         direction = self.get_direction()
@@ -105,22 +104,22 @@ class LineTracking(AutoDrive):
             self.car.set_steering_angle(0)
             self.car.forward(self.power) 
         elif direction == 'left':
-            self.car.set_steering_angle(self.BIG_TURNING_ANGLE)
-            self.car.forward(self.power)
-        elif direction == 'little_left':
-            self.car.set_steering_angle(self.SMALL_TURNING_ANGLE)
-            self.car.forward(self.power)
-        elif direction == 'right':
             self.car.set_steering_angle(-self.BIG_TURNING_ANGLE)
             self.car.forward(self.power)
-        elif direction == 'little_right':
+        elif direction == 'little_left':
             self.car.set_steering_angle(-self.SMALL_TURNING_ANGLE)
+            self.car.forward(self.power)
+        elif direction == 'right':
+            self.car.set_steering_angle(self.BIG_TURNING_ANGLE)
+            self.car.forward(self.power)
+        elif direction == 'little_right':
+            self.car.set_steering_angle(self.SMALL_TURNING_ANGLE)
             self.car.forward(self.power)
         else:
             self.outHandle()
 
 class Following(AutoDrive):
-    STEP = 3
+    STEP = 0.3
 
     def __init__(self, car):
         super().__init__(car)
@@ -133,22 +132,24 @@ class Following(AutoDrive):
         self.detector.set_mode(mode)
 
     def loop(self):
-        if self.detector.founded:
-            if self.detector.size > 50:
-                self.car.set_camera_pan_angle(0)
-                x, y = self.detector.direction
-                self.steering_angle += x * self.STEP
-                self.camera_pan_angle += x * self.STEP
-                self.camera_tilt_angle += y * self.STEP
-                self.steering_angle = constrain(self.steering_angle, -30, 30)
-                self.camera_pan_angle = constrain(self.camera_pan_angle, -30, 30)
-                self.camera_tilt_angle = constrain(self.camera_tilt_angle, -30, 30)
-                self.car.set_steering_angle(self.steering_angle)
-                self.car.set_camera_pan_angle(self.camera_pan_angle)
-                self.car.set_camera_tilt_angle(self.camera_tilt_angle)
-                self.car.forward(self.power)
-            else:
-                self.car.stop()
+        if self.detector.founded and self.detector.size > 50:
+            x, y = self.detector.direction
+            self.steering_angle += x * self.STEP
+            self.camera_pan_angle += x * self.STEP
+            self.camera_tilt_angle += y * self.STEP
+            self.steering_angle = constrain(self.steering_angle, -30, 30)
+            self.camera_pan_angle = constrain(self.camera_pan_angle, -90, 90)
+            self.camera_tilt_angle = constrain(self.camera_tilt_angle, -90, 90)
+            self.car.set_steering_angle(self.steering_angle)
+            self.car.set_camera_pan_angle(self.camera_pan_angle)
+            self.car.set_camera_tilt_angle(self.camera_tilt_angle)
+            self.car.forward(self.power)
+        else:
+            self.car.stop()
+    
+    def stop(self):
+        super().stop()
+        self.detector.close()
 
 if __name__ == "__main__":
     from picarx import PiCarX
