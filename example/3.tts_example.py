@@ -1,6 +1,6 @@
 from time import sleep
 from picarx import Music, TTS
-from picarx.music import MusicFiles, SoundFiles
+from picarx.music import MusicFiles, SoundFiles, MusicStatus
 import readchar
 from os import geteuid
 
@@ -35,16 +35,16 @@ def main():
                 music.play_music_background(MusicFiles.SLOW_TRAIL)
             else:
                 print('Stop Music')
-                music.music_stop()
+                music.music_control(MusicStatus.STOP)
 
         elif key == readchar.key.SPACE:
             print('Beep beep beep !')
-            music.play_sound(SoundFiles.CAR_DOUBLE_HORN)
+            music.play_sound(SoundFiles.DOUBLE_HORN)
             sleep(0.05)
 
         elif key == "c":
             print('Beep beep beep !')
-            music.play_sound_background(SoundFiles.CAR_DOUBLE_HORN)
+            music.play_sound_background(SoundFiles.DOUBLE_HORN)
             sleep(0.05)
 
         elif key == "t":

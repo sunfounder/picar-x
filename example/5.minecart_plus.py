@@ -15,67 +15,79 @@
 from picarx import PiCarX
 from time import sleep
 
-px = PiCarX()
+car = PiCarX()
 
 # Please run ./calibration/grayscale_calibration.py to Auto calibrate grayscale values
 # or manual modify reference value by follow code
 # px.set_line_reference([1400, 1400, 1400])
 
-current_state = None
-px_power = 10
+POWER = 30
+BIG_TURNING_ANGLE = 30
+SMALL_TURNING_ANGLE = 15
+
+direction = NotImplementedError
 offset = 20
 last_state = "stop"
 
-def outHandle():
-    global last_state, current_state
-    if last_state == 'left':
-        px.set_steering_angle(-30)
-        px.backward(10)
-    elif last_state == 'right':
-        px.set_steering_angle(30)
-        px.backward(10)
-    while True:
-        gm_val_list = px.get_grayscale_data()
-        gm_state = get_status(gm_val_list)
-        print("outHandle gm_val_list: %s, %s"%(gm_val_list, gm_state))
-        currentSta = gm_state
-        if currentSta != last_state:
-            break
-    sleep(0.001)
-
-def get_status(val_list):
-    _state = px.get_line_status(val_list)  # [bool, bool, bool], 0 means line, 1 means background
-    if _state == [0, 0, 0]:
+def get_direction():
+    data = car.get_grayscale_data()
+    status = car.get_line_status(data)
+    if status == [0, 0, 0]:
         return 'stop'
-    elif _state[1] == 1:
+    elif status == [0, 1, 0]:
         return 'forward'
-    elif _state[0] == 1:
-        return 'right'
-    elif _state[2] == 1:
+    elif status == [1, 0, 0]:
         return 'left'
+    elif status == [1, 1, 0]:
+        return 'little_left'
+    elif status == [0, 0, 1]:
+        return 'right'
+    elif status == [0, 1, 1]:
+        return 'little_right'
+
+def outHandle():
+    print("Run out of line")
+    if direction in ['left', 'little_left']:
+        print("Turn right")
+        car.set_steering_angle(30)
+        car.backward(10)
+    elif direction in ['right', 'little_right']:
+        print("Turn left")
+        car.set_steering_angle(-30)
+        car.backward(10)
+    while True:
+        new_direction = get_direction()
+        if new_direction != direction:
+            break
+    print("Get back to line")
+
+def main():
+    while True:
+        direction = get_direction()
+        print(f"Direction: {direction}")
+
+        if direction != "stop":
+            direction = direction
+        if direction == 'forward':
+            car.set_steering_angle(0)
+            car.forward(POWER) 
+        elif direction == 'left':
+            car.set_steering_angle(-BIG_TURNING_ANGLE)
+            car.forward(POWER)
+        elif direction == 'little_left':
+            car.set_steering_angle(-SMALL_TURNING_ANGLE)
+            car.forward(POWER)
+        elif direction == 'right':
+            car.set_steering_angle(BIG_TURNING_ANGLE)
+            car.forward(POWER)
+        elif direction == 'little_right':
+            car.set_steering_angle(SMALL_TURNING_ANGLE)
+            car.forward(POWER)
+        else:
+            outHandle()
 
 if __name__=='__main__':
     try:
-        while True:
-            gm_val_list = px.get_grayscale_data()
-            gm_state = get_status(gm_val_list)
-            print("gm_val_list: %s, %s"%(gm_val_list, gm_state))
-
-            if gm_state != "stop":
-                last_state = gm_state
-
-            if gm_state == 'forward':
-                px.set_steering_angle(0)
-                px.forward(px_power) 
-            elif gm_state == 'left':
-                px.set_steering_angle(offset)
-                px.forward(px_power) 
-            elif gm_state == 'right':
-                px.set_steering_angle(-offset)
-                px.forward(px_power) 
-            else:
-                outHandle()
+        main()
     finally:
-        px.stop()
-        print("stop and exit")
-        sleep(0.1)
+        car.stop()

@@ -60,6 +60,9 @@ class PiCarX(object):
         self.camera_pan_servo = Servo(servo_pins[0], offset=camera_pan_offset, min=self.CAM_PAN_MIN, max=self.CAM_PAN_MAX)
         self.camera_tilt_servo = Servo(servo_pins[1], offset=camera_tilt_offset, min=self.CAM_TILT_MIN, max=self.CAM_TILT_MAX)
         self.steering_servo = Servo(servo_pins[2], offset=steering_offset, min=self.DIR_MIN, max=self.DIR_MAX)
+        print(f"steering_offset: {steering_offset}")
+        print(f"camera_pan_offset: {camera_pan_offset}")
+        print(f"camera_tilt_offset: {camera_tilt_offset}")
         # set servos to init angle
         self.camera_pan_servo.angle(0)
         self.camera_tilt_servo.angle(0)
@@ -112,91 +115,46 @@ class PiCarX(object):
         }
 
 
-    def set_steering_angle(self, angle):
+    def set_steering_angle(self, angle:float):
         ''' Set steering angle
         
         Args:
-            angle (int): angle value, range from -30 to 30.
+            angle (float): angle value, range from -30 to 30.
         '''
-        print("angle: ", angle)
         self.steering_angle = angle
         self.steering_servo.angle(self.steering_angle)
-        print(f"Update motor power to {self.power} and angle {self.steering_angle}")
         self.motors.set_power(self.power, self.steering_angle)
-        print("Set motor power done")
 
-    def set_camera_pan_angle(self, angle):
+    def set_camera_pan_angle(self, angle:float):
         ''' Set camera pan servo angle
         
         Args:
-            angle (int): angle value, range from -90 to 90.
+            angle (float): angle value, range from -90 to 90.
         '''
         self.camera_pan_servo.angle(-angle)
 
-    def set_camera_tilt_angle(self, angle):
+    def set_camera_tilt_angle(self, angle:float):
         ''' Set camera tilt servo angle
 
         Args:
-            angle (int): angle value, range from -35 to 65.
+            angle (float): angle value, range from -35 to 65.
         '''
         self.camera_tilt_servo.angle(-angle)
 
-    # Calibration functions
-    def set_motor_reverse(self, motor, value):
-        ''' Set if a motor is reversed.
-        
-        Args:
-            motor (int): motor index, 1 means left motor, 2 means right motor.
-            value (int): 1 means forward, -1 means reverse.
-        '''
-        if motor == 1:
-            self.motors.set_left_reverse(value)
-            self.config.set("left_motor_reversed", value)
-        elif motor == 2:
-            self.motors.set_right_reverse(value)
-            self.config.set("right_motor_reversed", value)
-
-    def set_steering_offset(self, offset):
-        ''' Set steering offset
-        
-        Args:
-            offset (int): offset value, range from -30 to 30.
-        '''
-        self.config.set("steering_offset", offset)
-        self.steering_servo.offset(offset)
-
-    def set_camera_pan_offset(self, value):
-        ''' Set camera pan servo offset
-        
-        Args:
-            value (int): offset value, range from -90 to 90.
-        '''
-        self.config_file.set("camera_pan_offset", value)
-        self.camera_pan_servo.offset(value)
-
-    def set_camera_tilt_offset(self, value):
-        ''' Set camera tilt servo offset
-        
-        Args:
-            value (int): offset value, range from -35 to 65.
-        '''
-        self.config_file.set("camera_tilt_offset", "%s"%value)
-        self.camera_tilt_servo.offset(value)
-
-    def backward(self, power):
+    def backward(self, power:float):
         ''' Backward
         
         Args:
-            power (int): power value, range from 0 to 100.
+            power (float): power value, range from 0 to 100.
         '''
         self.power = -power
         self.motors.set_power(self.power, self.steering_angle)
 
-    def forward(self, power):
+    def forward(self, power:float):
         ''' Forward
         
         Args:
-            power (int): power value, range from 0 to 100.
+            power (float): power value, range from 0 to 100.
         '''
         self.power = power
         self.motors.set_power(self.power, self.steering_angle)
@@ -213,19 +171,6 @@ class PiCarX(object):
         '''
         return self.ultrasonic.read()
 
-    def set_grayscale_reference(self, value):
-        ''' Set grayscale reference
-
-        Args:
-            value (list): reference value, range from 0 to 1023.
-        '''
-        if isinstance(value, list) and len(value) == 3:
-            self.line_reference = value
-            self.grayscale.reference(self.line_reference)
-            self.config_file.set("line_reference", self.line_reference)
-        else:
-            raise ValueError("grayscale reference must be a 1*3 list")
-
     def get_grayscale_data(self):
         ''' Get grayscale data
         
@@ -234,7 +179,7 @@ class PiCarX(object):
         '''
         return list.copy(self.grayscale.read())
 
-    def get_line_status(self, gm_val_list):
+    def get_line_status(self, gm_val_list:list):
         ''' Get line status
         
         Args:
@@ -244,15 +189,7 @@ class PiCarX(object):
         '''
         return self.grayscale.read_status(gm_val_list)
 
-    def set_line_reference(self, value):
-        ''' Set line reference
-        
-        Args:
-            value (list): reference value, range from 0 to 1023.
-        '''
-        self.set_grayscale_reference(value)
-
-    def get_cliff_status(self,gm_val_list):
+    def get_cliff_status(self, gm_val_list:list):
         ''' Get cliff status
 
         Args:
@@ -264,18 +201,6 @@ class PiCarX(object):
             if gm_val_list[i]<=self.cliff_reference[i]:
                 return True
         return False
-
-    def set_cliff_reference(self, value):
-        ''' Set cliff reference
-
-        Args:
-            value (list): reference value, range from 0 to 1023.
-        '''
-        if isinstance(value, list) and len(value) == 3:
-            self.cliff_reference = value
-            self.config_file.set("cliff_reference", self.cliff_reference)
-        else:
-            raise ValueError("grayscale reference must be a 1*3 list")
 
     def get_battery_voltage(self):
         ''' Get battery voltage
@@ -295,6 +220,81 @@ class PiCarX(object):
         self.set_steering_angle(0)
         self.set_camera_tilt_angle(0)
         self.set_camera_pan_angle(0)
+
+    # Calibration functions
+    def set_left_motor_reverse(self, reversed:bool):
+        ''' Set if left motor is reversed
+        
+        Args:
+            reversed (bool): True for reversed, False for not reversed.
+        '''
+        self.motors.set_left_reverse(reversed)
+        self.config.set("left_motor_reversed", reversed)
+
+    def set_right_motor_reverse(self, reversed:bool):
+        ''' Set if right motor is reversed
+
+        Args:
+            reversed (bool): True for reversed, False for not reversed.
+        '''
+        self.motors.set_right_reverse(reversed)
+        self.config.set("right_motor_reversed", reversed)
+
+    def set_steering_offset(self, offset:float):
+        ''' Set steering offset
+        
+        Args:
+            offset (float): offset value, range from -20.0 to 20.0.
+        '''
+        self.config.set("steering_offset", offset)
+        self.steering_servo.offset(offset)
+        self.steering_servo.angle(0)
+
+    def set_camera_pan_offset(self, offset:float):
+        ''' Set camera pan servo offset
+        
+        Args:
+            offset (float): offset value, range from -20.0 to 20.0.
+        '''
+        self.config.set("camera_pan_offset", offset)
+        self.camera_pan_servo.offset(offset)
+        self.camera_pan_servo.angle(0)
+
+    def set_camera_tilt_offset(self, offset:float):
+        ''' Set camera tilt servo offset
+        
+        Args:
+            offset (float): offset value, range from -20.0 to 20.0.
+        '''
+        self.config.set("camera_tilt_offset", offset)
+        self.camera_tilt_servo.offset(offset)
+        self.camera_tilt_servo.angle(0)
+
+    def set_line_reference(self, value:list):
+        ''' Set line reference
+        
+        Args:
+            value (list): reference value, range from 0 to 1023.
+        '''
+
+        if isinstance(value, list) and len(value) == 3:
+            self.line_reference = value
+            self.grayscale.reference(self.line_reference)
+            self.config.set("line_reference", self.line_reference)
+        else:
+            raise ValueError("grayscale reference must be a 1*3 list")
+
+    def set_cliff_reference(self, value:list):
+        ''' Set cliff reference
+
+        Args:
+            value (list): reference value, range from 0 to 1023.
+        '''
+        if isinstance(value, list) and len(value) == 3:
+            self.cliff_reference = value
+            self.config.set("cliff_reference", self.cliff_reference)
+        else:
+            raise ValueError("grayscale reference must be a 1*3 list")
 
     # Actions
     def wave_hands(self):
@@ -495,7 +495,7 @@ class PiCarX(object):
         ''' Honking '''
         self.music.play_sound_background(SoundFiles.DOUBLE_HORN, volume=100)
 
-    def start_engine(music):
+    def start_engine():
         ''' Start engine '''
         self.music.play_sound_background(SoundFiles.START_ENGINE, volume=50)
 

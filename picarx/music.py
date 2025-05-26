@@ -4,7 +4,7 @@ from enum import IntEnum, StrEnum
 from importlib.resources import files
 
 SOUND_DIR = files('picarx').joinpath('sounds')
-MUSIC_DIR = files('picarx').joinpath('music')
+MUSIC_DIR = files('picarx').joinpath('musics')
 
 class MusicStatus(IntEnum):
     STOP = 0

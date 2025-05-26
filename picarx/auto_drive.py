@@ -44,17 +44,14 @@ class ObstacleAvoidance(AutoDrive):
 
     def loop(self):
         distance = self.car.get_distance()
-        print("distance: ", distance)
         if distance >= self.SAFE_DISTANCE:
             self.car.set_steering_angle(0)
             self.car.forward(self.power)
         elif distance >= self.DANGER_DISTANCE:
-            print("Obstacle detected! turn right!")
             self.car.set_steering_angle(30)
             self.car.forward(self.power)
             time.sleep(0.1)
         else:
-            print("Danger!, backward!")
             self.car.set_steering_angle(-30)
             self.car.backward(self.power)
             time.sleep(0.5)
