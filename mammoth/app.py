@@ -17,6 +17,10 @@ import time
 import logging
 import threading
 
+import wave
+from io import BytesIO
+import os
+
 # --- debug ---
 import psutil
 import os
@@ -47,7 +51,7 @@ music = Music()
 recognizer = sr.Recognizer()
 recognizer.dynamic_energy_adjustment_damping = 0.16
 recognizer.dynamic_energy_ratio = 1.6
-recognizer.pause_threshold = 1
+# recognizer.pause_threshold = 1
 log = logging.getLogger("PiCar-X")
 data_interval = 5 # miliseconds
 
@@ -61,6 +65,8 @@ ai_assistant_id = None
 ai_listen_language = "auto"
 ai_say_voice = "alloy"
 ai_status = AIStatus.NOT_INITIALIZED
+ai_listen_result = None
+ai_think_result = None
 ai_error = ""
 color_detection_mode = "close"
 face_detection_enable = False
@@ -74,11 +80,6 @@ io_data = {}
 grayscale_line_reference = 1000
 grayscale_cliff_reference = 300
 
-# Robot Hat read ADC with I2C, set PWM also use I2C,
-# and set and update is not in the same thread, so we need
-# a io_lock to prevent the conflict.
-io_lock = threading.Lock()
-
 delay_stop_motor_timer = None
 
 '''
@@ -87,6 +88,34 @@ SGBRG10_CSI2P,1296x972/0 - Score: 1000
 SGBRG10_CSI2P,1920x1080/0 - Score: 1349.67
 SGBRG10_CSI2P,2592x1944/0 - Score: 1567
 '''
+
+class Timer():
+    def __init__(self):
+        self.start = None
+        self.end = None
+
+    def print(self, func):
+        def wrapper(*args, **kwargs):
+            start = time.time()
+            # 计算函数运行的间隔
+            interval = None
+            if self.start is not None:
+                interval = start - self.start
+                interval = round(interval*1000, 2)
+            self.start = start
+
+            result = func(*args, **kwargs)
+            self.end = time.time()
+            duration = self.end - self.start
+            duration = round(duration*1000, 2)
+            if interval is None:
+                print(f"[{duration:>6}] {func.__name__}")
+            else:
+                print(f"[{interval:>6}, {duration:>6}] {func.__name__}")
+            return result
+        return wrapper
+
+update_data_timer = Timer()
 
 def init_openai():
     global openai, ai_status, ai_error
@@ -125,28 +154,46 @@ def check_openai():
     return True
     
 def listen_task():
-    global ai_status
+    global ai_status, ai_listen_result
     if not check_openai():
         return
     
     # recording audio
     ai_status = AIStatus.LISTENING
     log.debug(f"Start listening...")
-    with sr.Microphone(chunk_size=8192) as source:
-        cancel_redirect_error() # restore error print
-        recognizer.adjust_for_ambient_noise(source)
-        audio = recognizer.listen(source)
+    for _ in range(10):
+        with sr.Microphone(chunk_size=8192) as source:
+            cancel_redirect_error() # restore error print
+            recognizer.adjust_for_ambient_noise(source)
+            audio = recognizer.listen(source)
 
-    # stt
-    log.debug(f"Converting audio to text...")
-    ai_status = AIStatus.STT
-    result = openai.stt(audio, language=ai_listen_language)
-    io_data['ai_listen_result'] = result
-    log.debug(f"Listen result: {result}")
-    ai_status = AIStatus.IDLE
+            wav_data = BytesIO(audio.get_wav_data())
+            wav_data.name = "stt_output.wav"
+            
+            file = "./stt_output.wav"
+            with wave.open(file, "wb") as wf:
+                wf.setnchannels(1)  # 单声道
+                wf.setsampwidth(audio.sample_width)  # 采样宽度（来自AudioData）
+                wf.setframerate(audio.sample_rate)  # 采样率（来自AudioData）
+                wf.writeframes(audio.get_wav_data())
+
+            os.system("aplay ./stt_output.wav")
+
+        # stt
+        log.debug(f"Converting audio to text...")
+        ai_status = AIStatus.STT
+        result = openai.stt(audio, language=ai_listen_language)
+        result = result.strip()
+        if len(result) == 0:
+            log.warning(f"Listen result empty, try again...")
+            continue
+        ai_listen_result = result
+        log.debug(f"Listen result: {result}")
+        ai_status = AIStatus.IDLE
+        break
 
 def think_task(value, with_image=False):
-    global ai_status
+    global ai_status, ai_think_result
     if not check_openai():
         return
     
@@ -168,7 +215,7 @@ def think_task(value, with_image=False):
         response = response[:65535]
     log.debug(f"Think result: {response}")
     ai_status = AIStatus.IDLE
-    io_data['ai_think_result'] = response
+    ai_think_result = response
 
 def say_task(value):
     global ai_status
@@ -420,8 +467,10 @@ def handle_ai_listen_language(value):
     ai_listen_language = value
     log.debug(f"Set listen language: {ai_listen_language}")
 
-def handle_ai_listen():
+def handle_ai_listen(enable):
     if not check_openai():
+        return
+    if enable == 0:
         return
 
     task = threading.Thread(target=listen_task)
@@ -463,103 +512,104 @@ def handle_led(status):
     log.debug(f"Set led: {status}")
     car.led.value(status)
 
-def on_io_data(data):
+async def on_io_data(data):
     global line_tracking_power, obstacle_avoidance_power
     
-    with io_lock:
-        # control
-        if 'motor' in data.keys():
-            handle_motor(data['motor'])
-        if 'steering' in data.keys():
-            handle_steering(data['steering'])
-        if 'camera_pan' in data.keys():
-            handle_camera_pan(data['camera_pan'])
-        if 'camera_tilt' in data.keys():
-            handle_camera_tilt(data['camera_tilt'])
-        if 'color_detection' in data.keys():
-            handle_color_detection(data['color_detection'])
-        if 'face_detection' in data.keys():
-            handle_face_detection(data['face_detection'])
-        if 'traffic_sign_detection' in data.keys():
-            handle_traffic_sign_detection(data['traffic_sign_detection'])
-        if 'qr_code_detection' in data.keys():
-            handle_qr_code_detection(data['qr_code_detection'])
-        # sound and music
-        if 'play_sound' in data.keys():
-            handle_sound(data['play_sound'])
-        if 'play_music' in data.keys():
-            handle_music(data['play_music'])
-        if 'music_control' in data.keys():
-            handle_music_control(data['music_control'])
-        if 'music_volume' in data.keys():
-            handle_music_volume(data['music_volume'])
-        # track_mode
-        if 'line_tracking' in data.keys():
-            handle_line_tracking(data['line_tracking'])
-        if 'line_tracking_power' in data.keys():
-            handle_line_tracking_power(data['line_tracking_power'])
-        # obstacle_mode
-        if 'obstacle_avoidance' in data.keys():
-            handle_obstacle_avoidance(data['obstacle_avoidance'])
-        if 'obstacle_avoidance_power' in data.keys():
-            handle_obstacle_avoidance_power(data['obstacle_avoidance_power'])
-        # following
-        if 'following' in data.keys():
-            handle_following(data['following'])
-        if 'following_power' in data.keys():
-            handle_following_power(data['following_power'])
-        if 'following_mode' in data.keys():
-            handle_following_mode(data['following_mode'])
-        # Calibrations
-        if 'steering_offset' in data.keys():
-            handle_steering_offset(data['steering_offset'])
-        if 'camera_pan_offset' in data.keys():
-            handle_camera_pan_offset(data['camera_pan_offset'])
-        if 'camera_tilt_offset' in data.keys():
-            handle_camera_tilt_offset(data['camera_tilt_offset'])
-        # motors calibration
-        if 'motor_reverse' in data.keys():
-            handle_motors_reverse(*data['motor_reverse'])
-        # GPT
-        if 'ai_api_key' in data.keys():
-            handle_ai_api_key(data['ai_api_key'])
-        if 'ai_assistant_id' in data.keys():
-            handle_ai_assistant_id(data['ai_assistant_id'])
-        if 'ai_init' in data.keys():
-            handle_ai_init(data['ai_init'])
-        if 'ai_listen_language' in data.keys():
-            handle_ai_listen_language(data['ai_listen_language'])
-        if 'ai_say_voice' in data.keys():
-            handle_ai_say_voice(data['ai_say_voice'])
-        if 'ai_listen' in data.keys():
-            handle_ai_listen(data['ai_listen'])
-        if 'ai_think' in data.keys():
-            handle_ai_think(data['ai_think'])
-        if 'ai_think_with_image' in data.keys():
-            handle_ai_think(data['ai_think_with_image'], with_image=True)
-        if 'ai_say' in data.keys():
-            handle_ai_say(data['ai_say'])
+    # control
+    if 'motor' in data.keys():
+        handle_motor(data['motor'])
+    if 'steering' in data.keys():
+        handle_steering(data['steering'])
+    if 'camera_pan' in data.keys():
+        handle_camera_pan(data['camera_pan'])
+    if 'camera_tilt' in data.keys():
+        handle_camera_tilt(data['camera_tilt'])
+    if 'color_detection' in data.keys():
+        handle_color_detection(data['color_detection'])
+    if 'face_detection' in data.keys():
+        handle_face_detection(data['face_detection'])
+    if 'traffic_sign_detection' in data.keys():
+        handle_traffic_sign_detection(data['traffic_sign_detection'])
+    if 'qr_code_detection' in data.keys():
+        handle_qr_code_detection(data['qr_code_detection'])
+    # sound and music
+    if 'play_sound' in data.keys():
+        handle_sound(data['play_sound'])
+    if 'play_music' in data.keys():
+        handle_music(data['play_music'])
+    if 'music_control' in data.keys():
+        handle_music_control(data['music_control'])
+    if 'music_volume' in data.keys():
+        handle_music_volume(data['music_volume'])
+    # track_mode
+    if 'line_tracking' in data.keys():
+        handle_line_tracking(data['line_tracking'])
+    if 'line_tracking_power' in data.keys():
+        handle_line_tracking_power(data['line_tracking_power'])
+    # obstacle_mode
+    if 'obstacle_avoidance' in data.keys():
+        handle_obstacle_avoidance(data['obstacle_avoidance'])
+    if 'obstacle_avoidance_power' in data.keys():
+        handle_obstacle_avoidance_power(data['obstacle_avoidance_power'])
+    # following
+    if 'following' in data.keys():
+        handle_following(data['following'])
+    if 'following_power' in data.keys():
+        handle_following_power(data['following_power'])
+    if 'following_mode' in data.keys():
+        handle_following_mode(data['following_mode'])
+    # Calibrations
+    if 'steering_offset' in data.keys():
+        handle_steering_offset(data['steering_offset'])
+    if 'camera_pan_offset' in data.keys():
+        handle_camera_pan_offset(data['camera_pan_offset'])
+    if 'camera_tilt_offset' in data.keys():
+        handle_camera_tilt_offset(data['camera_tilt_offset'])
+    # motors calibration
+    if 'motor_reverse' in data.keys():
+        handle_motors_reverse(*data['motor_reverse'])
+    # GPT
+    if 'ai_api_key' in data.keys():
+        handle_ai_api_key(data['ai_api_key'])
+    if 'ai_assistant_id' in data.keys():
+        handle_ai_assistant_id(data['ai_assistant_id'])
+    if 'ai_init' in data.keys():
+        handle_ai_init(data['ai_init'])
+    if 'ai_listen_language' in data.keys():
+        handle_ai_listen_language(data['ai_listen_language'])
+    if 'ai_say_voice' in data.keys():
+        handle_ai_say_voice(data['ai_say_voice'])
+    if 'ai_listen' in data.keys():
+        handle_ai_listen(data['ai_listen'])
+    if 'ai_think' in data.keys():
+        handle_ai_think(data['ai_think'])
+    if 'ai_think_with_image' in data.keys():
+        handle_ai_think(data['ai_think_with_image'], with_image=True)
+    if 'ai_say' in data.keys():
+        handle_ai_say(data['ai_say'])
 
-        # do actions
-        if 'do_action' in data.keys():
-            handle_do_action(data['do_action'])
-        if 'led' in data.keys():
-            handle_led(data['led'])
+    # do actions
+    if 'do_action' in data.keys():
+        handle_do_action(data['do_action'])
+    if 'led' in data.keys():
+        handle_led(data['led'])
+    
+    # pack data and send
+    # update_data()
+    payload = get_packed_io_data()
+    await ws.send(payload)
+    clear_once_io_data()
 
-def on_device_config(commands):
+async def on_device_config(commands):
     log.debug("device changed")
     for command, value in commands.items():
         log.debug(f"command: {command}, value: {value}")
         if command == 'name':
             handle_name_changed(value)
 
-def on_connect(client_id):
-    pass
-
-def on_disconnect(client_id):
-    pass
-
+# @update_data_timer.print
 def update_data():
+    global ai_listen_result, ai_think_result
     # Read sensor data
     # Ultrasonic sensor data
     io_data["ultrasonic_distance"] = car.get_distance()
@@ -591,6 +641,10 @@ def update_data():
             "h": int(Vilib.color_obj_parameter['h']),
             "n": int(Vilib.color_obj_parameter['n']),
         }
+    else:
+        if 'color_detection' in io_data:
+            del io_data['color_detection']
+
     # Face detection data
     if face_detection_enable == True:
         io_data["face_detection"] = {
@@ -600,15 +654,23 @@ def update_data():
             "h": int(Vilib.face_obj_parameter['h']),
             "n": int(Vilib.face_obj_parameter['n']),
         }
+    else:
+        if 'face_detection' in io_data:
+            del io_data['face_detection']
+
     # Traffic sign detection data
     if traffic_sign_detection_enable == True:
         io_data["traffic_sign_detection"] = {
-            "x": int(Vilib.traffic_obj_parameter['x']),
-            "y": int(Vilib.traffic_obj_parameter['y']),
-            "w": int(Vilib.traffic_obj_parameter['w']),
-            "h": int(Vilib.traffic_obj_parameter['h']),
-            "t": str(Vilib.traffic_obj_parameter['t']),
+            "x": int(Vilib.traffic_sign_obj_parameter['x']),
+            "y": int(Vilib.traffic_sign_obj_parameter['y']),
+            "w": int(Vilib.traffic_sign_obj_parameter['w']),
+            "h": int(Vilib.traffic_sign_obj_parameter['h']),
+            "t": str(Vilib.traffic_sign_obj_parameter['t']),
         }
+    else:
+        if 'traffic_sign_detection' in io_data:
+            del io_data['traffic_sign_detection']
+
     # QR code detection data
     if qr_code_detection_enable == True:
         io_data["qr_code_detection"] = {
@@ -618,6 +680,9 @@ def update_data():
             "h": int(Vilib.qrcode_obj_parameter['h']),
             "d": str(Vilib.qrcode_obj_parameter['data']),
         }
+    else:
+        if 'qr_code_detection' in io_data:
+            del io_data['qr_code_detection']
 
     # Sound status
     io_data["sound_status"] = int(music.get_sound_busy())
@@ -630,6 +695,12 @@ def update_data():
     # AI status
     io_data["ai_status"] = ai_status.value
     io_data["ai_error"] = ai_error
+    if ai_listen_result is not None:
+        io_data["ai_listen_result"] = ai_listen_result
+        ai_listen_result = None
+    if ai_think_result is not None:
+        io_data["ai_think_result"] = ai_think_result
+        ai_think_result = None
 
     # Button status
     io_data["user_button_pressed"] = bool(car.usr_btn.value())
@@ -643,11 +714,19 @@ def set_log():
     console_handler.setFormatter(formatter)
     log.addHandler(console_handler)
 
-def clean_io_data():
+def clear_once_io_data():
     if 'ai_listen_result' in io_data:
         del io_data['ai_listen_result']
     if 'ai_think_result' in io_data:
         del io_data['ai_think_result']
+
+def get_packed_io_data():
+    data = { "io_data": io_data }
+    data = json.dumps(data)
+
+    # Add data header
+    data = f'DATA+{data}'
+    return data
 
 def init():
     set_log()
@@ -675,8 +754,6 @@ def init():
 
     # --- Init Websocket ---
     ws.set_device_info(DEVICE_INFO)
-    ws.set_on_connect(on_connect)
-    ws.set_on_disconnect(on_disconnect)
     ws.set_on_device_config(on_device_config)
     ws.set_on_io_data(on_io_data)
     ws.start()
@@ -690,12 +767,17 @@ def main():
 
     init()
 
+    start = time.time()
     while True:
-        with io_lock:
-            update_data()
-        ws.update_io_data(io_data)
-        clean_io_data()
-        time.sleep(data_interval/1000)
+        # with io_lock:
+        update_data()
+        # ws.update_io_data(io_data)
+        # clean_io_data()
+        delay = time.time() - start
+        delay = delay * 1000
+        delay = data_interval - delay
+        delay = max(delay, 0)
+        time.sleep(delay)
 
 
 if __name__ == "__main__":

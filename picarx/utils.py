@@ -3,6 +3,18 @@ from vilib import Vilib
 import os, sys
 import subprocess
 import json
+from threading import Lock
+
+# Robot Hat read ADC with I2C, set PWM also use I2C,
+# and set and update is not in the same thread, so we need
+# a io_lock to prevent the conflict.
+ROBOT_HAT_I2C_LOCK = Lock()
+
+def with_robot_hat_i2c_lock(func):
+    def wrapper(*args, **kwargs):
+        with ROBOT_HAT_I2C_LOCK:
+            return func(*args, **kwargs)
+    return wrapper
 
 def constrain(value, min_value, max_value):
     return min(max(value, min_value), max_value)
@@ -118,10 +130,10 @@ class CameraDetector():
         y = int(self.detect_result['y'])
         camera_width = Vilib.camera_width
         camera_height = Vilib.camera_height
-        x += camera_width / 2
-        y += camera_height / 2
+        x -= camera_width / 2
+        y -= camera_height / 2
         x = round(x, 2)
-        y = round(y, 2)
+        y = -round(y, 2)
         return (x, y)
 
     @property
@@ -225,3 +237,10 @@ class Config():
 
     def __repr__(self):
         return f'Config({self.config_file})'
+    def close(self):
+        ''' Close the camera.
+        '''
+        if self.mode == "face":
+            Vilib.face_detect_switch(0)
+        elif self.mode in self.COLORS:
+            Vilib.color_detect('none')
