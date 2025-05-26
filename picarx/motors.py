@@ -74,7 +74,7 @@ class Motors():
             power (float): power for both motors (-100.0~100.0)
         """
         if self.differential_drive_enabled:
-            left, right = self.differential_drive(power, angle)
+            left, right = self.differential_drive(angle, power)
         else:
             left = right = power
         self.left.power(left)
@@ -100,19 +100,19 @@ class Motors():
         radius = self.wheel_base / math.tan(steering_angle_rad)
 
         # calculate the radius of the left and right wheel
-        left_radius = radius - self.track_width / 2
-        right_radius = radius + self.track_width / 2
+        right_radius = radius - self.track_width / 2
+        left_radius = radius + self.track_width / 2
 
         # calculate the ratio of the left and right wheel
-        ratio = left_radius / right_radius
+        ratio = right_radius / left_radius
 
         # Check which is the outer and which is the inner wheel
         if ratio > 1: # turn left, left wheel is inner wheel
-            left_power = power
-            right_power = power / ratio
-        else: # turn right, right wheel is inner wheel
-            left_power = power * ratio
+            left_power = power / ratio
             right_power = power
+        else: # turn right, right wheel is inner wheel
+            left_power = power
+            right_power = power * ratio
         
         # constraint the power to -100 ~ 100
         max_power = max(abs(left_power), abs(right_power))

@@ -5,17 +5,6 @@ import subprocess
 import json
 from threading import Lock
 
-# Robot Hat read ADC with I2C, set PWM also use I2C,
-# and set and update is not in the same thread, so we need
-# a io_lock to prevent the conflict.
-ROBOT_HAT_I2C_LOCK = Lock()
-
-def with_robot_hat_i2c_lock(func):
-    def wrapper(*args, **kwargs):
-        with ROBOT_HAT_I2C_LOCK:
-            return func(*args, **kwargs)
-    return wrapper
-
 def constrain(value, min_value, max_value):
     return min(max(value, min_value), max_value)
 
@@ -198,6 +187,8 @@ class Config():
             os.system(f'chown 1000:1000 {config_file}')
         with open(config_file, 'r') as f:
             content = f.read()
+            if content == '':
+                content = '{}'
             self._config = json.loads(content)
 
     def get(self, key, default_value=None):
