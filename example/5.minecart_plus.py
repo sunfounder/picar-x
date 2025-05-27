@@ -17,9 +17,9 @@ from time import sleep
 
 car = PiCarX()
 
-# Please run ./calibration/grayscale_calibration.py to Auto calibrate grayscale values
+# Please run ./calibration/grayscale.py to calibrate grayscale values
 # or manual modify reference value by follow code
-# px.set_line_reference([1400, 1400, 1400])
+# car.set_line_reference([1400, 1400, 1400])
 
 POWER = 30
 BIG_TURNING_ANGLE = 30
@@ -89,5 +89,9 @@ def main():
 if __name__=='__main__':
     try:
         main()
+    except KeyboardInterrupt:
+        print("Keyboard interrupt")
     finally:
-        car.stop()
+        car.reset()
+        print("Stop and exit")
+        sleep(0.1)

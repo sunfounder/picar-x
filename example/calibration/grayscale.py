@@ -36,7 +36,7 @@ cliff_reference = None
 def show_info():
     print("\033[H\033[J", end='')  # clear terminal windows
     print(usage)
-    print(f"    {str(on_line_value).center(16)}        {str(off_line_value).center(16)}           {str(clift_value).center(16)}")
+    print(f"    {str(on_line_value).center(16)}         {str(off_line_value).center(16)}          {str(clift_value).center(16)}")
     print(f"")
     if line_reference == None:
         print(f"   Line Reference: {car.line_reference}(Not set)")

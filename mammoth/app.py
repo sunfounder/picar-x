@@ -32,8 +32,8 @@ process = psutil.Process(pid)
 VERSION = "0.0.1"
 
 DEVICE_INFO = {
-    "Name": "Picar-X-001", ## TODO: get the name from the device
-    "Type": "Picar-X",
+    "Name": "PiCar-X",
+    "Type": "PiCar-X",
     "Check": "MC",
     "Version": VERSION,
     "video": "",
@@ -250,7 +250,7 @@ def say_task(value):
 def handle_name_changed(name):
     DEVICE_INFO["Name"] = name
     print(f"Name changed to {name}")
-    car.config_file.set("name", name)
+    car.set_name(name)
 
 def handle_motor(power):
     global motor_power
@@ -739,7 +739,7 @@ def init():
     elif 'eth0' in ips:
         ip = ips['eth0']
 
-    DEVICE_INFO["Name"] = car.config_file.get("name", default_value=DEVICE_INFO["Name"])
+    DEVICE_INFO["Name"] = car.name
     DEVICE_INFO["video"] = f"{ip}:9000/mjpg"
     log.info(json.dumps(DEVICE_INFO, indent=4))
     car.reset()
@@ -758,10 +758,10 @@ def init():
     ws.set_on_io_data(on_io_data)
     ws.start()
 
-    io_data['motor_reverse'] = list.copy(car.motor_reverses)
-    io_data['steering_offset'] = car.steering_offset
-    io_data['camera_pan_offset'] = car.camera_pan_offset
-    io_data['camera_tilt_offset'] = car.camera_tilt_offset
+    io_data['motor_reverse'] = [car.motors.left_reversed, car.motors.right_reversed]
+    io_data['steering_offset'] = car.steering_servo.offset()
+    io_data['camera_pan_offset'] = car.camera_pan_servo.offset()
+    io_data['camera_tilt_offset'] = car.camera_tilt_servo.offset()
 
 def main():
 

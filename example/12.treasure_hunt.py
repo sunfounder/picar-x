@@ -6,7 +6,7 @@ import readchar
 import random
 import threading
 
-px = PiCarX()
+car = PiCarX()
 tts = TTS()
 
 manual = '''
@@ -46,17 +46,17 @@ def key_scan_thread():
 
 def car_move(key):
     if 'w' == key:
-        px.set_steering_angle(0)
-        px.forward(80)
+        car.set_steering_angle(0)
+        car.forward(80)
     elif 's' == key:
-        px.set_steering_angle(0)
-        px.backward(80)
+        car.set_steering_angle(0)
+        car.backward(80)
     elif 'a' == key:
-        px.set_steering_angle(-30)
-        px.forward(80)
+        car.set_steering_angle(-30)
+        car.forward(80)
     elif 'd' == key:
-        px.set_steering_angle(30)
-        px.forward(80)
+        car.set_steering_angle(30)
+        car.forward(80)
 
 
 def main():
@@ -85,7 +85,7 @@ def main():
             if key != None and key in ('wsad'):
                 car_move(key)
                 sleep(0.5)
-                px.stop()
+                car.stop()
                 key =  None
             elif key == 'space':
                 tts.say("Look for " + color)
@@ -101,10 +101,9 @@ if __name__ == "__main__":
     try:
         main()
     except KeyboardInterrupt:
-        pass
-    except Exception as e:
-        print(f"ERROR: {e}")
+        print("Keyboard interrupt")
     finally:
         Vilib.camera_close()
-        px.stop()
-        sleep(.2)
+        car.reset()
+        print("Stop and exit")
+        sleep(0.1)

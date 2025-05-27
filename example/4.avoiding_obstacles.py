@@ -1,5 +1,5 @@
 from picarx import PiCarX
-import time
+from time import sleep
 
 POWER = 50
 SAFE_DISTANCE = 30
@@ -18,16 +18,20 @@ def main():
             print("Obstacle detected! turn right!")
             car.set_steering_angle(30)
             car.forward(POWER)
-            time.sleep(0.1)
+            sleep(0.1)
         else:
             print("Danger!, backward!")
             car.set_steering_angle(-30)
             car.backward(POWER)
-            time.sleep(0.5)
+            sleep(0.5)
 
 if __name__ == "__main__":
     try:
         main()
+    except KeyboardInterrupt:
+        print("Keyboard interrupt")
     finally:
-        car.forward(0)
+        car.reset()
+        print("Stop and exit")
+        sleep(0.1)
 

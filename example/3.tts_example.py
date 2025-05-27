@@ -53,4 +53,10 @@ def main():
             tts.say(words)
 
 if __name__ == "__main__":
-    main()
+    try:
+        main()
+    except KeyboardInterrupt:
+        print("Keyboard interrupt")
+    finally:
+        print("Stop and exit")
+        sleep(0.1)

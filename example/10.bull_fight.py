@@ -1,12 +1,9 @@
 from picarx import PiCarX
+from picarx.utils import constrain
 from time import sleep
 from vilib import Vilib
 
-
-px = PiCarX()
-
-def clamp_number(num,a,b):
-  return max(min(num, max(a, b)), min(a, b))
+car = PiCarX()
 
 def main():
     Vilib.camera_start()
@@ -23,12 +20,12 @@ def main():
             
             # change the pan-tilt angle for track the object
             x_angle +=(coordinate_x*10/640)-5
-            x_angle = clamp_number(x_angle,-35,35)
-            px.set_camera_pan_angle(x_angle)
+            x_angle = constrain(x_angle,-35,35)
+            car.set_camera_pan_angle(x_angle)
 
             y_angle -=(coordinate_y*10/480)-5
-            y_angle = clamp_number(y_angle,-35,35)
-            px.set_camera_tilt_angle(y_angle)
+            y_angle = constrain(y_angle,-35,35)
+            car.set_camera_tilt_angle(y_angle)
 
             # move
             # The movement direction will change slower than the pan/tilt direction 
@@ -37,21 +34,22 @@ def main():
                 dir_angle -= 1
             elif dir_angle < x_angle:
                 dir_angle += 1
-            px.set_steering_angle(x_angle)
-            px.forward(speed)
+            car.set_steering_angle(x_angle)
+            car.forward(speed)
             sleep(0.05)
 
         else :
-            px.forward(0)
+            car.forward(0)
             sleep(0.05)
 
 
 if __name__ == "__main__":
     try:
        main()
-    
-    
+    except KeyboardInterrupt:
+        print("Keyboard interrupt")    
     finally:
-        px.stop()
-        print("stop and exit")
+        car.reset()
+        Vilib.camera_close()
+        print("Stop and exit")
         sleep(0.1)

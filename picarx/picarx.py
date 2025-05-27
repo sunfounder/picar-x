@@ -51,6 +51,7 @@ class PiCarX(object):
 
         # --------- config_file ---------
         self.config = Config(config_file)
+        self.name = self.config.get("name", default_value="PiCar-X")
 
         # --------- servos init ---------
         # get calibration values
@@ -179,24 +180,29 @@ class PiCarX(object):
         '''
         return list.copy(self.grayscale.read())
 
-    def get_line_status(self, gm_val_list:list):
+    def get_line_status(self, gm_val_list=None):
         ''' Get line status
         
         Args:
-            gm_val_list (list): grayscale value list, range from 0 to 1023.
+            gm_val_list (list): grayscale value list, range from 0 to 1023, None means read from grayscale module.
         Returns:
             list: line status list, 1 means on line, 0 means off line.
         '''
+        if gm_val_list is None:
+            gm_val_list = self.get_grayscale_data()
         return self.grayscale.read_status(gm_val_list)
 
-    def get_cliff_status(self, gm_val_list:list):
-        ''' Get cliff status
+    def is_on_cliff(self, gm_val_list=None):
+        ''' Detect if on cliff
 
         Args:
-            gm_val_list (list): grayscale value list, range from 0 to 1023.
+            gm_val_list (list): grayscale value list, range from 0 to 1023. None means read from grayscale module.
         Returns:
             bool: True means on cliff, False means not on cliff.
         '''
+        if gm_val_list is None:
+            gm_val_list = self.get_grayscale_data()
+        # If any of the three sensors detects a cliff, return True
         for i in range(0,3):
             if gm_val_list[i]<=self.cliff_reference[i]:
                 return True
@@ -220,6 +226,15 @@ class PiCarX(object):
         self.set_steering_angle(0)
         self.set_camera_tilt_angle(0)
         self.set_camera_pan_angle(0)
+
+    def set_name(self, name:str):
+        ''' Set robot name
+        
+        Args:
+            name (str): robot name.
+        '''
+        self.name = name
+        self.config.set("name", name)
 
     # Calibration functions
     def set_left_motor_reverse(self, reversed:bool):

@@ -7,7 +7,7 @@
         Please run ./calibration/grayscale_calibration.py
     Manual modification:
         Use the tracking: 
-            px.set_cliff_reference([200, 200, 200])
+            car.set_cliff_reference([200, 200, 200])
         The reference value be close to the middle of the line gray value
         and the background gray value.
 
@@ -18,38 +18,39 @@ from time import sleep
 tts = TTS()
 tts.lang("en-US")
 
-px = PiCarX()
+car = PiCarX()
 # manual modify reference value
-px.set_cliff_reference([200, 200, 200])
+car.set_cliff_reference([200, 200, 200])
 
 current_state = None
 px_power = 10
 offset = 20
 last_state = "safe"
 
+def main():
+    while True:
+
+        if car.is_on_cliff():
+            state = "danger"   
+            car.backward(80)
+            if last_state == "safe":
+                print("Danger!")
+                tts.say("danger")
+                sleep(0.1)
+        else:
+            state = "safe"
+            car.stop()
+        last_state = state
 
 
 if __name__=='__main__':
     try:
-        while True:
-            gm_val_list = px.get_grayscale_data()
-            gm_state = px.get_cliff_status(gm_val_list)
-            # print("cliff status is:  %s"%gm_state)
-
-            if gm_state is False:
-                state = "safe"
-                px.stop()
-            else:
-                state = "danger"   
-                px.backward(80)
-                if last_state == "safe":
-                    tts.say("danger")
-                    sleep(0.1)
-            last_state = state
-
+        main()
+    except KeyboardInterrupt:
+        print("Keyboard interrupt")
     finally:
-        px.stop()
-        print("stop and exit")
+        car.stop()
+        print("Stop and exit")
         sleep(0.1)
 
 

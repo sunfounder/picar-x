@@ -1,4 +1,4 @@
-from time import sleep,strftime,localtime
+from time import sleep, strftime, localtime
 from vilib import Vilib
 import readchar
 import os
@@ -65,4 +65,11 @@ def main():
         sleep(0.1)
 
 if __name__ == "__main__":
-    main()
+    try:
+        main()
+    except KeyboardInterrupt:
+        print("Keyboard interrupt")
+    finally:
+        Vilib.camera_close()
+        print("Stop and exit")
+        sleep(0.1)

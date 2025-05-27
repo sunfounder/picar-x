@@ -1,7 +1,7 @@
 # #!/usr/bin/env python3
 
-from picarx.utils import reset_mcu
 from picarx import PiCarX
+from picarx.utils import reset_mcu
 from vilib import Vilib
 from time import sleep, time, strftime, localtime
 import readchar
@@ -29,7 +29,7 @@ Press key to call the function(non-case sensitive):
 '''
 
 
-px = PiCarX()
+car = PiCarX()
 
 def take_photo():
     _time = strftime('%Y-%m-%d-%H-%M-%S',localtime(time()))
@@ -42,22 +42,20 @@ def take_photo():
 def move(operate:str, speed):
 
     if operate == 'stop':
-        px.stop()  
+        car.stop()  
     else:
         if operate == 'forward':
-            px.set_steering_angle(0)
-            px.forward(speed)
+            car.set_steering_angle(0)
+            car.forward(speed)
         elif operate == 'backward':
-            px.set_steering_angle(0)
-            px.backward(speed)
+            car.set_steering_angle(0)
+            car.backward(speed)
         elif operate == 'turn left':
-            px.set_steering_angle(-30)
-            px.forward(speed)
+            car.set_steering_angle(-30)
+            car.forward(speed)
         elif operate == 'turn right':
-            px.set_steering_angle(30)
-            px.forward(speed)
-        
-
+            car.set_steering_angle(30)
+            car.forward(speed)
 
 def main():
     speed = 0
@@ -111,7 +109,7 @@ def main():
         # quit
         elif key == readchar.key.CTRL_C:
             print('\nquit ...')
-            px.stop()
+            car.stop()
             Vilib.camera_close()
             break 
 
@@ -121,11 +119,11 @@ def main():
 if __name__ == "__main__":
     try:
         main()
-    except Exception as e:    
-        print("error:%s"%e)
+    except KeyboardInterrupt:
+        print("Keyboard interrupt")
     finally:
-        px.stop()
+        car.reset()
         Vilib.camera_close()
-
-
+        print("Stop and exit")
+        sleep(0.1)
         

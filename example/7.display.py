@@ -1,4 +1,3 @@
-from pydoc import text
 from vilib import Vilib
 from time import sleep, time, strftime, localtime
 import threading
@@ -131,4 +130,11 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    try:
+        main()
+    except KeyboardInterrupt:
+        print("Keyboard interrupt")
+    finally:
+        Vilib.camera_close()
+        print("Stop and exit")
+        sleep(0.1)

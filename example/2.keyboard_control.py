@@ -75,12 +75,11 @@ if __name__ == "__main__":
     try:
         main()
     except KeyboardInterrupt:
-        print("\n Quit")
+        print("Keyboard interrupt")
     finally:
-        car.set_camera_tilt_angle(0)
-        car.set_camera_pan_angle(0)  
-        car.set_steering_angle(0)  
-        car.stop()
-        sleep(.2)
+        car.reset()
+        print("Stop and exit")
+        sleep(0.1)
+
 
 
