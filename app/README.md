@@ -1,4 +1,4 @@
-## Picar-X GPT examples usage
+## Picar-X APP examples usage
 
 ----------------------------------------------------------------
 

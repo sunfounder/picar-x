@@ -88,3 +88,6 @@ class Music:
             return True
         else:
             return False
+
+    def stop(self):
+        self.music.music_stop()

@@ -2,7 +2,7 @@ from robot_hat import Pin, ADC, Servo
 from robot_hat import Grayscale_Module, Ultrasonic, utils
 from .motors import Motors
 from .music import Music, SoundFiles
-from .utils import Config
+from .utils import Config, LazyReader
 
 from time import sleep
 
@@ -92,6 +92,9 @@ class PiCarX(object):
         self.rst_btn = Pin("RST", mode=Pin.IN, pull=Pin.PULL_UP)
         self.led = Pin("LED", mode=Pin.OUT)
 
+        # --------- battery voltage ---------
+        self.battery_reader = LazyReader(utils.get_battery_voltage, 60)
+
         # --------- music init ---------
         self.music = Music()
         self.music.set_music_volume(100)
@@ -170,6 +173,8 @@ class PiCarX(object):
         Returns:
             int: distance value, range from 0 to 500.
         '''
+        if not self.ultrasonic.thread_started:
+            self.ultrasonic.start_thread()
         return self.ultrasonic.read()
 
     def get_grayscale_data(self):
@@ -214,7 +219,7 @@ class PiCarX(object):
         Returns:
             float: battery voltage value, range from 0 to 3.3.
         '''
-        return utils.get_battery_voltage()
+        return self.battery_reader.read()
 
     def reset_mcu(self):
         ''' Reset robot_hat '''
@@ -226,6 +231,10 @@ class PiCarX(object):
         self.set_steering_angle(0)
         self.set_camera_tilt_angle(0)
         self.set_camera_pan_angle(0)
+        if self.ultrasonic.thread_started: # stop ultrasonic thread
+            self.ultrasonic.stop_thread()
+        self.music.stop()
+        self.led.value(0)
 
     def set_name(self, name:str):
         ''' Set robot name

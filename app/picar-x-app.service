@@ -5,8 +5,8 @@ After=multi-user.target
 
 [Service]
 Type=forking
-WorkingDirectory=/home/pi/picar-x/mammoth
-ExecStart=python3 app.py &
+WorkingDirectory=/home/pi/picar-x/app
+ExecStart=python3 app.py &&
 
 [Install]
 WantedBy=multi-user.target

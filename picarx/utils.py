@@ -3,7 +3,7 @@ from vilib import Vilib
 import os, sys
 import subprocess
 import json
-from threading import Lock
+import time
 
 def constrain(value, min_value, max_value):
     return min(max(value, min_value), max_value)
@@ -56,7 +56,9 @@ def volume_gain(input_file, output_file, gain):
 
 class CameraDetector():
     COLORS = ["red", "orange", "yellow", "green", "blue", "purple"]
-    MODES = ["face"] + COLORS
+    CLOSE = ["none", "close"]
+    FACE = ["face"]
+    MODES = COLORS + CLOSE + FACE
     EMPTY_RESULT = {
         'n': 0,
         'x': 0,
@@ -77,12 +79,15 @@ class CameraDetector():
         if mode not in self.MODES:
             raise ValueError("Invalid mode")
         if self.mode != mode:
-            if mode == "face":
+            if mode in self.FACE:
                 Vilib.face_detect_switch(1)
                 Vilib.color_detect('none')
             elif mode in self.COLORS:
                 Vilib.face_detect_switch(0)
                 Vilib.color_detect(mode)
+            elif mode in self.CLOSE:
+                Vilib.face_detect_switch(0)
+                Vilib.color_detect('none')
             self.mode = mode
 
     @property
@@ -235,3 +240,31 @@ class Config():
             Vilib.face_detect_switch(0)
         elif self.mode in self.COLORS:
             Vilib.color_detect('none')
+
+class LazyReader():
+    ''' Lazy reader. Read something in a given interval,
+    even if you read it multiple times in a short time.
+    For those who don't need to read it too frequently.
+    '''
+    def __init__(self, read_function, interval=10):
+        ''' Initialize the lazy reader.
+
+        Args:
+            read_function (function): The function to read.
+            interval (int): The interval to read.
+        '''
+        self.read_function = read_function
+        self.interval = interval
+        self.value = None
+        self.last_read_time = 0
+
+    def read(self):
+        ''' Read the value.
+
+        Returns:
+            The value.
+        '''
+        if time.time() - self.last_read_time > self.interval:
+            self.value = self.read_function()
+            self.last_read_time = time.time()
+        return self.value

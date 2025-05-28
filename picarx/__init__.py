@@ -2,4 +2,4 @@
 from .picarx import PiCarX
 from .version import __version__
 from .music import Music
-from robot_hat import TTS
+from .tts import TTS
