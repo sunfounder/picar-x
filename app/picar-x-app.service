@@ -4,9 +4,9 @@ Description=picarx service
 After=multi-user.target
 
 [Service]
-Type=forking
+Type=simple
 WorkingDirectory=/home/pi/picar-x/app
-ExecStart=python3 app.py &&
+ExecStart=python3 app.py
 
 [Install]
 WantedBy=multi-user.target

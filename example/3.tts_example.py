@@ -23,7 +23,6 @@ def main():
 
     flag_bgm = False
     music.set_music_volume(20)
-    tts.lang("en-US")
 
     while True:
         key = readchar.readkey()

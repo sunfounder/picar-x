@@ -19,6 +19,7 @@ dynamic = ["version"]
 
 dependencies = [
   'readchar',
+  'piper-tts',
 ]
 
 [tool.setuptools]

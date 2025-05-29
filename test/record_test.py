@@ -2,6 +2,7 @@ import speech_recognition as sr
 import wave
 from io import BytesIO
 import os
+from picarx import PiCarX
 
 # speech_recognition init
 # =================================================================
@@ -22,6 +23,7 @@ recognizer.dynamic_energy_adjustment_damping = 0.16
 recognizer.dynamic_energy_ratio = 1.6
 # recognizer.pause_threshold = 0.8
 
+car = PiCarX()
 
 while True:
     with sr.Microphone(chunk_size=8192) as source:

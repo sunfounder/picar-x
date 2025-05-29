@@ -1,3 +1,4 @@
+import os
 from .utils import run_command
 
 PIPER_MODELS = {
@@ -208,10 +209,25 @@ for country in COUNTRYS:
     for model in PIPER_MODELS[country].keys():
         MODELS += PIPER_MODELS[country][model]
 
+PIPER_MODEL_DIR = "/opt/piper_models"
 
 class TTS():
+    DEFAULT_MODEL = "en_US-danny-low"
+
+    TTS_TEMPELATE = "echo \"{text}\" | piper \
+--model {model} \
+--output_file {output_file}"
+
+    STREAM_TEMPELATE = "echo \"{text}\" | piper \
+--model {model} \
+--output-raw | aplay -r 16000 -f S16_LE -t raw -"
+
     def __init__(self, model=None):
         self.model = None
+        if not os.path.exists(PIPER_MODEL_DIR):
+            run_command(f"mkdir -p {PIPER_MODEL_DIR}")
+            run_command(f"chown 1000:1000 {PIPER_MODEL_DIR}")
+        self.set_model(self.DEFAULT_MODEL)
 
     def set_model(self, model):
         if model in MODELS:
@@ -219,19 +235,61 @@ class TTS():
         else:
             raise ValueError("Model not found")
 
+    def model_downloaded(self, model=None):
+        if model is None:
+            model = self.model
+        onnx_file = os.path.join(PIPER_MODEL_DIR, model + ".onnx")
+        json_file = onnx_file + ".json"
+        onnx_exists = os.path.exists(onnx_file)
+        json_exists = os.path.exists(json_file)
+        return onnx_exists and json_exists
+    
+    def download_model(self, model=None):
+        if model is None:
+            model = self.model
+        print(f"Downloading model: {model}")
+        onnx_file = os.path.join(PIPER_MODEL_DIR, model + ".onnx")
+        json_file = os.path.join(PIPER_MODEL_DIR, model + ".json")
+        run_command(f"piper --model {model} --download-dir {PIPER_MODEL_DIR}")
+        run_command(f"chown 1000:1000 {onnx_file}")
+        run_command(f"chown 1000:1000 {json_file}")
+
     def tts(self, text, file):
         if self.model is None:
             raise ValueError("Model not set")
-        print(f"TTS: {text}")
-        cmd = f"echo '{text}' | piper --model {self.model} --output_file {file}"
+        text = text.replace('"', '\\"')
+        model_path = os.path.join(PIPER_MODEL_DIR, self.model + ".onnx")
+        args = {
+            "text": text,
+            "model": model_path,
+            "output_file": file
+        }
+        cmd = self.TTS_TEMPELATE.format(**args)
         status, result = run_command(cmd)
-        if status != 0:
-            raise ValueError(f"Error: {result}")
+        if status not in [0, None]:
+            raise RuntimeError(f"Run command error: \n  Command:{cmd}\n  Status {status}\n  Error: {result}")
         return status == 0
 
-    def say(self, text):
-        self.tts(text, "tmp.wav")
-        run_command(f"aplay tmp.wav")
+    def stream(self, text):
+        if self.model is None:
+            raise ValueError("Model not set")
+        text = text.replace('"', '\\"')
+        model_path = os.path.join(PIPER_MODEL_DIR, self.model + ".onnx")
+        args = {
+            "text": text,
+            "model": model_path
+        }
+        cmd = self.STREAM_TEMPELATE.format(**args)
+        status, result = run_command(cmd)
+        if status not in [0, None]:
+            raise RuntimeError(f"Run command error: \n  Command:{cmd}\n  Status {status}\n  Error: {result}")
+
+    def say(self, text, stream=True):
+        if stream:
+            self.stream(text)
+        else:
+            self.tts(text, "tmp.wav")
+            run_command(f"aplay tmp.wav")
 
     def available_models(self, country=None):
         if country is not None:

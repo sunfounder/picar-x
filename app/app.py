@@ -2,12 +2,13 @@ from mammoth_websocket.mammoth_websocket import MammothWebSocket
 from mammoth_websocket.utils import get_ips
 
 from picarx import PiCarX, TTS
-from picarx.music import Music, music_list, sound_list
+from picarx.music import Music, SoundFiles, music_list, sound_list
 from picarx.utils import *
 from picarx.auto_drive import LineTracking, ObstacleAvoidance, Following
 from picarx.openai_helper import OpenAiHelper, AIStatus
 
 import speech_recognition as sr
+import signal
 
 import json
 from vilib import Vilib
@@ -22,10 +23,10 @@ from io import BytesIO
 import os
 
 # --- debug ---
-import psutil
-import os
-pid = os.getpid()
-process = psutil.Process(pid)
+# import psutil
+# import os
+# pid = os.getpid()
+# process = psutil.Process(pid)
 
 # global variables
 # =================================================================
@@ -45,16 +46,16 @@ COLOR_DETECTION_COMMANDS = ['close','red','orange','yellow','green','blue','purp
 TRAFFIC_SIGNS =  ['none', 'stop', 'right', 'left', 'forward']
 
 ws = MammothWebSocket()
-openai = None
+music = Music()
 car = PiCarX()
 piper = TTS()
-music = Music()
 recognizer = sr.Recognizer()
 recognizer.dynamic_energy_adjustment_damping = 0.16
 recognizer.dynamic_energy_ratio = 1.6
 # recognizer.pause_threshold = 1
 log = logging.getLogger("PiCar-X")
 data_interval = 5 # miliseconds
+openai = None
 
 line_tracking = LineTracking(car)
 obstacle_avoidance = ObstacleAvoidance(car)
@@ -70,7 +71,6 @@ ai_status = AIStatus.IDLE
 ai_listen_result = None
 ai_think_result = None
 ai_error = ""
-piper_saying = False
 color_detection_mode = "close"
 face_detection_enable = False
 traffic_sign_detection_enable = False
@@ -250,16 +250,30 @@ def ai_say_task(value):
     ai_status = AIStatus.IDLE
 
 def piper_say_task(value):
-    global piper_saying
-    piper_saying = True
+    data_to_send["piper_saying"] = True
+    start = time.time()
+    if not piper.model_downloaded:
+        log.info(f"Downloading piper model:{piper.model}")
+        piper.download_model()
     piper.say(value)
-    piper_saying = False
+    duration = round(time.time() - start, 3)
+    log.debug(f"piper_say done in {duration} s")
+    data_to_send["piper_saying"] = False
 
 # --- handler functions ---
 def handle_name_changed(name):
     DEVICE_INFO["Name"] = name
-    print(f"Name changed to {name}")
+    log.debug(f"Name changed to {name}")
     car.set_name(name)
+
+def handle_ai_api_key(value):
+    global ai_api_key
+    if ai_api_key == value:
+        return
+    DEVICE_INFO["AI_API_KEY"] = value
+    car.config.set("AI_API_KEY", value)
+    log.debug(f"Set api-key: {value}")
+    ai_api_key = value
 
 def handle_motor(power):
     global motor_power
@@ -428,13 +442,6 @@ def handle_motors_reverse(left_reverse, right_reverse):
     delay_stop_motor_timer = threading.Timer(2, lambda: car.stop())
     delay_stop_motor_timer.start()
 
-def handle_ai_api_key(value):
-    global ai_api_key
-    if ai_api_key == value:
-        return
-    log.debug(f"Set api-key: {value}")
-    ai_api_key = value
-    
 def handle_ai_assistant_id(value):
     global ai_assistant_id
     if ai_assistant_id == value:
@@ -500,7 +507,7 @@ def handle_ai_think_with_image(value):
     handle_ai_think(value, with_image=True)
 
 def handle_ai_say(value):
-    print(f"handle_ai_say: {value}")
+    log.debug(f"handle_ai_say: {value}")
     # if not check_openai():
     #     return
 
@@ -508,7 +515,7 @@ def handle_ai_say(value):
         log.error(f"Invalid speak content: {value}")
         return
 
-    task = threading.Thread(target=say_task, args=(value,))
+    task = threading.Thread(target=ai_say_task, args=(value,))
     task.start()
 
 def handle_do_action(action):
@@ -528,9 +535,10 @@ def handle_led(status):
 def handle_piper_set_model(model):
     log.debug(f"Set piper model: {model}")
     piper.set_model(model)
+    data_to_send['piper_model'] = model
 
 def handle_piper_say(value):
-    print(f"handle_piper_say: {value}")
+    log.debug(f"handle_piper_say: {value}")
     task = threading.Thread(target=piper_say_task, args=(value,))
     task.start()
 
@@ -580,7 +588,6 @@ COMMAND_MAP = {
     "led": handle_led,
 }
 
-
 def handle_received_data():
     global data_received
 
@@ -625,6 +632,8 @@ def update_data():
     data_to_send["battery_voltage"] = car.get_battery_voltage()
     data_to_send["grayscale_value"] = car.get_grayscale_data()
     data_to_send["grayscale_status"] = car.get_line_status(data_to_send["grayscale_value"])
+    data_to_send["user_button_pressed"] = bool(car.usr_btn.value())
+    data_to_send["reset_button_pressed"] = bool(car.rst_btn.value())
 
     # Color detection data
     if color_detection_mode != "close":
@@ -696,10 +705,6 @@ def update_data():
         data_to_send["ai_think_result"] = ai_think_result
         ai_think_result = None
 
-    # Button status
-    data_to_send["user_button_pressed"] = bool(car.usr_btn.value())
-    data_to_send["reset_button_pressed"] = bool(car.rst_btn.value())
-
 def set_log():
     log.setLevel(logging.DEBUG)
     console_handler = logging.StreamHandler()
@@ -715,6 +720,7 @@ def clear_once_data_to_send():
         del data_to_send['ai_think_result']
 
 def init():
+    global ai_api_key
     set_log()
 
     ips = get_ips()
@@ -727,6 +733,9 @@ def init():
 
     DEVICE_INFO["Name"] = car.name
     DEVICE_INFO["video"] = f"{ip}:9000/mjpg"
+    ai_api_key = car.config.get("AI_API_KEY", default_value="")
+    DEVICE_INFO["AI_API_KEY"] = ai_api_key
+
     log.info(json.dumps(DEVICE_INFO, indent=4))
     car.reset()
     # --- Init Vilib ---
@@ -744,16 +753,24 @@ def init():
     ws.set_io_data_handler(on_io_data)
     ws.start()
 
+    # --- Get initial data ---
     data_to_send['motor_reverse'] = [car.motors.left_reversed, car.motors.right_reversed]
     data_to_send['steering_offset'] = car.steering_servo.offset()
     data_to_send['camera_pan_offset'] = car.camera_pan_servo.offset()
     data_to_send['camera_tilt_offset'] = car.camera_tilt_servo.offset()
+    data_to_send['piper_model'] = piper.model
+    data_to_send['piper_saying'] = False
+
+    # --- setup signal handler ---
+    signal.signal(signal.SIGINT, close)
+    signal.signal(signal.SIGTERM, close)
 
 def main():
 
     init()
 
     start = time.time()
+    music.play_sound(SoundFiles.START_ENGINE)
     while True:
         handle_received_data()
         update_data()
@@ -764,16 +781,19 @@ def main():
         time.sleep(delay)
         # time.sleep(1)
 
+def close():
+    log.info("Exiting")
+    ws.close()
+    Vilib.camera_close()
+    car.reset()
+    exit(0)
 
 if __name__ == "__main__":
     try:
         main()
     except KeyboardInterrupt:
-        print("KeyboardInterrupt")
+        log.debug("KeyboardInterrupt")
     # except Exception as e:
     #     print(e)
     finally:
-        log.info("Exiting")
-        ws.close()
-        Vilib.camera_close()
-        car.reset()
+        close()

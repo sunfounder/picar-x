@@ -61,9 +61,6 @@ class PiCarX(object):
         self.camera_pan_servo = Servo(servo_pins[0], offset=camera_pan_offset, min=self.CAM_PAN_MIN, max=self.CAM_PAN_MAX)
         self.camera_tilt_servo = Servo(servo_pins[1], offset=camera_tilt_offset, min=self.CAM_TILT_MIN, max=self.CAM_TILT_MAX)
         self.steering_servo = Servo(servo_pins[2], offset=steering_offset, min=self.DIR_MIN, max=self.DIR_MAX)
-        print(f"steering_offset: {steering_offset}")
-        print(f"camera_pan_offset: {camera_pan_offset}")
-        print(f"camera_tilt_offset: {camera_tilt_offset}")
         # set servos to init angle
         self.camera_pan_servo.angle(0)
         self.camera_tilt_servo.angle(0)
@@ -117,7 +114,6 @@ class PiCarX(object):
             "honking": self.honking,
             "start engine": self.start_engine,
         }
-
 
     def set_steering_angle(self, angle:float):
         ''' Set steering angle
