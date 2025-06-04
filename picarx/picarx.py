@@ -97,17 +97,18 @@ class PiCarX(object):
         self.music.set_music_volume(100)
 
         # --------- Actions ---------
-        self.actions_dict = {
-            "shake head": self.shake_head, 
-            "nod": self.nod,
+        self.actions = {
             "wave hands": self.wave_hands,
             "resist": self.resist,
             "act cute": self.act_cute,
             "rub hands": self.rub_hands,
             "think": self.think,
+            "keep think": self.keep_think,
+            "shake head": self.shake_head,
+            "nod": self.nod,
+            "depressed": self.depressed,
             "twist body": self.twist_body,
             "celebrate": self.celebrate,
-            "depressed": self.depressed,
         }
 
         self.sounds_dict = {
@@ -161,6 +162,7 @@ class PiCarX(object):
 
     def stop(self):
         ''' Stop motors '''
+        self.power = 0
         self.motors.set_power(0)
 
     def get_distance(self):
@@ -223,12 +225,10 @@ class PiCarX(object):
 
     def reset(self):
         ''' Reset robot '''
-        self.stop()
         self.set_steering_angle(0)
         self.set_camera_tilt_angle(0)
         self.set_camera_pan_angle(0)
-        if self.ultrasonic.thread_started: # stop ultrasonic thread
-            self.ultrasonic.stop_thread()
+        self.stop()
         self.music.stop()
         self.led.value(0)
 

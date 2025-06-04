@@ -191,7 +191,7 @@ def action_handler():
                 _actions = actions_to_be_done
             for _action in _actions:
                 try:
-                    car.actions_dict[_action]()
+                    car.actions[_action]()
                 except Exception as e:
                     print(f'action error: {e}')
                 time.sleep(0.5)

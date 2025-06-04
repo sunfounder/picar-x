@@ -35,9 +35,6 @@ class AutoDrive():
             self.thread = None
         self.car.stop()
 
-    def __del__(self):
-        self.stop()
-
 class ObstacleAvoidance(AutoDrive):
     SAFE_DISTANCE = 30
     DANGER_DISTANCE = 15

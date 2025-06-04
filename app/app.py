@@ -270,8 +270,8 @@ def handle_ai_api_key(value):
     global ai_api_key
     if ai_api_key == value:
         return
-    DEVICE_INFO["AI_API_KEY"] = value
-    car.config.set("AI_API_KEY", value)
+    DEVICE_INFO["ai_api_key"] = value
+    car.config.set("ai_api_key", value)
     log.debug(f"Set api-key: {value}")
     ai_api_key = value
 
@@ -519,11 +519,11 @@ def handle_ai_say(value):
     task.start()
 
 def handle_do_action(action):
-    if action not in car.actions_dict:
+    if action not in car.actions:
         log.error(f"Invalid action: {action}")
         return
     
-    car.actions_dict[action]()
+    car.actions[action]()
 
 def handle_led(status):
     if status not in [0, 1]:
@@ -541,6 +541,11 @@ def handle_piper_say(value):
     log.debug(f"handle_piper_say: {value}")
     task = threading.Thread(target=piper_say_task, args=(value,))
     task.start()
+
+DEVICE_INFO_MAP = {
+    "name": handle_name_changed,
+    "ai_api_key": handle_ai_api_key,
+}
 
 COMMAND_MAP = {
     # Robot control
@@ -600,7 +605,7 @@ def handle_received_data():
     # clear data received
     data_received = {}
 
-async def on_io_data(data):
+async def handle_io_data(data):
     global data_received
 
     # Save received data
@@ -614,14 +619,21 @@ async def on_io_data(data):
     await ws.send(data)
     clear_once_data_to_send()
 
-async def on_device_config(commands):
+async def handle_device_config(commands):
     log.debug("device changed")
     for command, value in commands.items():
-        log.debug(f"command: {command}, value: {value}")
-        if command == 'name':
-            handle_name_changed(value)
-        elif command == 'ai_api_key':
-            handle_ai_api_key(value)
+        if command not in DEVICE_INFO_MAP:
+            log.error(f"Invalid command: {command}")
+            continue
+        DEVICE_INFO_MAP[command](value)
+
+async def handle_disconnected():
+    log.debug("handle_disconnected")
+    # Reset robot
+    car.stop()
+    car.set_steering_angle(0)
+    car.set_camera_pan_angle(0)
+    car.set_camera_tilt_angle(0)
 
 # @update_data_timer.print
 def update_data():
@@ -733,8 +745,8 @@ def init():
 
     DEVICE_INFO["Name"] = car.name
     DEVICE_INFO["video"] = f"{ip}:9000/mjpg"
-    ai_api_key = car.config.get("AI_API_KEY", default_value="")
-    DEVICE_INFO["AI_API_KEY"] = ai_api_key
+    ai_api_key = car.config.get("ai_api_key", default_value="")
+    DEVICE_INFO["ai_api_key"] = ai_api_key
 
     log.info(json.dumps(DEVICE_INFO, indent=4))
     car.reset()
@@ -749,8 +761,9 @@ def init():
 
     # --- Init Websocket ---
     ws.set_device_info(DEVICE_INFO)
-    ws.set_device_config_handler(on_device_config)
-    ws.set_io_data_handler(on_io_data)
+    ws.set_device_config_handler(handle_device_config)
+    ws.set_io_data_handler(handle_io_data)
+    ws.set_disconnect_handler(handle_disconnected)
     ws.start()
 
     # --- Get initial data ---
