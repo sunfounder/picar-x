@@ -54,63 +54,34 @@ class ObstacleAvoidance(AutoDrive):
             time.sleep(0.5)
 
 class LineTracking(AutoDrive):
-    BIG_TURNING_ANGLE = 30
-    SMALL_TURNING_ANGLE = 15
 
     def __init__(self, car):
         super().__init__(car)
-        self.direction = "stop"
-
-    def get_direction(self):
-        data = self.car.get_grayscale_data()
-        status = self.car.get_line_status(data)
-        if status == [0, 0, 0]:
-            return 'stop'
-        elif status == [0, 1, 0]:
-            return 'forward'
-        elif status == [1, 0, 0]:
-            return 'left'
-        elif status == [1, 1, 0]:
-            return 'little_left'
-        elif status == [0, 0, 1]:
-            return 'right'
-        elif status == [0, 1, 1]:
-            return 'little_right'
-
-    def outHandle(self):
-        if self.direction in ['left', 'little_left']:
-            self.car.set_steering_angle(30)
-            self.car.backward(10)
-        elif self.direction in ['right', 'little_right']:
-            self.car.set_steering_angle(-30)
-            self.car.backward(10)
-        while self.running:
-            new_direction = self.get_direction()
-            if new_direction != self.direction:
-                break
+        self.position = 0
 
     def loop(self):
-        direction = self.get_direction()
+        data = self.car.get_grayscale_data
 
-        if direction != "stop":
-            self.direction = direction
-        if direction == 'forward':
-            self.car.set_steering_angle(0)
-            self.car.forward(self.power) 
-        elif direction == 'left':
-            self.car.set_steering_angle(-self.BIG_TURNING_ANGLE)
+        if car.is_on_line(data=data):
+            position = self.car.get_line_position(data=data)
+            steering_angle = position * 30
+            self.car.set_steering_angle(steering_angle)
             self.car.forward(self.power)
-        elif direction == 'little_left':
-            self.car.set_steering_angle(-self.SMALL_TURNING_ANGLE)
-            self.car.forward(self.power)
-        elif direction == 'right':
-            self.car.set_steering_angle(self.BIG_TURNING_ANGLE)
-            self.car.forward(self.power)
-        elif direction == 'little_right':
-            self.car.set_steering_angle(self.SMALL_TURNING_ANGLE)
-            self.car.forward(self.power)
+            self.position = position
         else:
-            self.outHandle()
+            if self.position < 0:
+                self.car.set_steering_angle(30)
+                self.car.backward(10)
+            else:
+                self.car.set_steering_angle(-30)
+                self.car.backward(10)
+                while self.running:
+                    if car.is_on_line():
+                        break
+
+
+        
+
 
 class Following(AutoDrive):
     STEP = 0.3

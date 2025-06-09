@@ -1,5 +1,5 @@
 from robot_hat import Pin, ADC, Servo
-from robot_hat import Grayscale_Module, Ultrasonic, utils
+from robot_hat import LineTracker, Ultrasonic, utils
 from .motors import Motors
 from .music import Music, SoundFiles
 from .utils import Config, LazyReader
@@ -74,13 +74,11 @@ class PiCarX(object):
             self.motors.init_differential_drive(self.WHEEL_BASE, self.TRACK_WIDTH)
 
         # --------- grayscale module init ---------
+        self.gs_slopes = self.config.get("grayscale_slopes", default_value=[1.0, 1.0, 1.0])
+        self.gs_offsets = self.config.get("grayscale_offsets", default_value=[0.0, 0.0, 0.0])
         adc0, adc1, adc2 = [ADC(pin) for pin in grayscale_pins]
-        self.grayscale = Grayscale_Module(adc0, adc1, adc2, reference=None)
-        # get reference
-        self.line_reference = self.config.get("line_reference", default_value=self.DEFAULT_LINE_REF)
-        self.cliff_reference = self.config.get("cliff_reference", default_value=self.DEFAULT_CLIFF_REF)
-        # transfer reference
-        self.grayscale.reference(self.line_reference)
+        self.grayscale = LineTracker(adc0, adc1, adc2)
+        self.grayscale.set_calibration_data(self.gs_slopes, self.gs_offsets)
 
         # --------- ultrasonic init ---------
         trig, echo= ultrasonic_pins
@@ -179,37 +177,42 @@ class PiCarX(object):
         ''' Get grayscale data
         
         Returns:
-            list: grayscale value list, range from 0 to 1023.
+            list: grayscale data, range from 0 to 1023.
         '''
-        return list.copy(self.grayscale.read())
+        return self.grayscale.read()
 
-    def get_line_status(self, gm_val_list=None):
-        ''' Get line status
-        
+    def get_line_position(self, data: list = None):
+        ''' Get line position
+
         Args:
-            gm_val_list (list): grayscale value list, range from 0 to 1023, None means read from grayscale module.
-        Returns:
-            list: line status list, 1 means on line, 0 means off line.
-        '''
-        if gm_val_list is None:
-            gm_val_list = self.get_grayscale_data()
-        return self.grayscale.read_status(gm_val_list)
+            data (list): grayscale data, range from 0 to 1023. If None, use get_grayscale_data() to get data.
 
-    def is_on_cliff(self, gm_val_list=None):
+        Returns:
+            float: line position value, range from -1.0 to 1.0.
+        '''
+        return self.grayscale.get_line_position(data=data)
+
+    def is_on_cliff(self, data: list = None):
         ''' Detect if on cliff
 
         Args:
-            gm_val_list (list): grayscale value list, range from 0 to 1023. None means read from grayscale module.
+            data (list): grayscale data, range from 0 to 1023. If None, use get_grayscale_data() to get data.
+
         Returns:
             bool: True means on cliff, False means not on cliff.
         '''
-        if gm_val_list is None:
-            gm_val_list = self.get_grayscale_data()
-        # If any of the three sensors detects a cliff, return True
-        for i in range(0,3):
-            if gm_val_list[i]<=self.cliff_reference[i]:
-                return True
-        return False
+        return self.grayscale.is_on_cliff(data=data)
+
+    def is_on_line(self, data: list = None):
+        ''' Detect if on line
+
+        Args:
+            data (list): grayscale data, range from 0 to 1023. If None, use get_grayscale_data() to get data.
+
+        Returns:
+            bool: True means on line, False means not on line.
+        '''
+        return self.grayscale.is_on_line(data=data)
 
     def get_battery_voltage(self):
         ''' Get battery voltage
@@ -290,31 +293,16 @@ class PiCarX(object):
         self.camera_tilt_servo.offset(offset)
         self.camera_tilt_servo.angle(0)
 
-    def set_line_reference(self, value:list):
-        ''' Set line reference
-        
-        Args:
-            value (list): reference value, range from 0 to 1023.
+    def set_grayscale_calibration(self, slopes, offsets):
         '''
+        Set the calibration values for the grayscale sensors.
 
-        if isinstance(value, list) and len(value) == 3:
-            self.line_reference = value
-            self.grayscale.reference(self.line_reference)
-            self.config.set("line_reference", self.line_reference)
-        else:
-            raise ValueError("grayscale reference must be a 1*3 list")
-
-    def set_cliff_reference(self, value:list):
-        ''' Set cliff reference
-
-        Args:
-            value (list): reference value, range from 0 to 1023.
+        slopes: list - Grayscale sensor slopes.
+        offsets: list - Grayscale sensor offsets.
         '''
-        if isinstance(value, list) and len(value) == 3:
-            self.cliff_reference = value
-            self.config.set("cliff_reference", self.cliff_reference)
-        else:
-            raise ValueError("grayscale reference must be a 1*3 list")
+        self.grayscale.set_calibration_data(slopes, offsets)
+        self.config.set("grayscale_slopes", slopes)
+        self.config.set("grayscale_offsets", offsets)
 
     # Actions
     def wave_hands(self):

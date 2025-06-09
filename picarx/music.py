@@ -36,11 +36,11 @@ class Music:
     def play_sound(self, file_path):
         self.music.sound_play(filename=file_path, volume=self.volume)
 
-    def play_sound_background(self, file_path, volume=100):
+    def play_sound_background(self, file_path):
         global sound_thread
         sound_thread = threading.Thread(target=self.music.sound_play, kwargs={
             "filename": file_path,
-            "volume": volume
+            "volume": self.volume
             }
         )
         sound_thread.start()

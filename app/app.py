@@ -638,14 +638,20 @@ async def handle_disconnected():
 # @update_data_timer.print
 def update_data():
     global ai_listen_result, ai_think_result
+
     # Read sensor data
 
     data_to_send["ultrasonic_distance"] = car.get_distance()
     data_to_send["battery_voltage"] = car.get_battery_voltage()
-    data_to_send["grayscale_value"] = car.get_grayscale_data()
-    data_to_send["grayscale_status"] = car.get_line_status(data_to_send["grayscale_value"])
     data_to_send["user_button_pressed"] = bool(car.usr_btn.value())
     data_to_send["reset_button_pressed"] = bool(car.rst_btn.value())
+
+    # Grayscale data
+    grayscale_data = car.get_grayscale_data()
+    data_to_send["grayscale_data"] = grayscale_data
+    data_to_send["is_on_line"] = car.is_on_line(data=grayscale_data)
+    data_to_send["is_on_cliff"] = car.is_on_cliff(data=grayscale_data)
+    data_to_send["line_position"] = car.get_line_position(data=grayscale_data)
 
     # Color detection data
     if color_detection_mode != "close":

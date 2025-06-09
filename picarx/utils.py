@@ -5,6 +5,9 @@ import subprocess
 import json
 import time
 
+def mapping(x, in_min, in_max, out_min, out_max):
+    return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min
+
 def constrain(value, min_value, max_value):
     return min(max(value, min_value), max_value)
 
