@@ -60,7 +60,7 @@ class LineTracking(AutoDrive):
         self.position = 0
 
     def loop(self):
-        data = self.car.get_grayscale_data
+        data = self.car.get_grayscale_data()
 
         if car.is_on_line(data=data):
             position = self.car.get_line_position(data=data)

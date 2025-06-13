@@ -173,13 +173,13 @@ class PiCarX(object):
             self.ultrasonic.start_thread()
         return self.ultrasonic.read()
 
-    def get_grayscale_data(self):
+    def get_grayscale_data(self, raw=False):
         ''' Get grayscale data
         
         Returns:
             list: grayscale data, range from 0 to 1023.
         '''
-        return self.grayscale.read()
+        return self.grayscale.read(raw=raw)
 
     def get_line_position(self, data: list = None):
         ''' Get line position
@@ -293,7 +293,7 @@ class PiCarX(object):
         self.camera_tilt_servo.offset(offset)
         self.camera_tilt_servo.angle(0)
 
-    def set_grayscale_calibration(self, slopes, offsets):
+    def set_grayscale_calibration_data(self, slopes: list, offsets: list):
         '''
         Set the calibration values for the grayscale sensors.
 
@@ -303,6 +303,20 @@ class PiCarX(object):
         self.grayscale.set_calibration_data(slopes, offsets)
         self.config.set("grayscale_slopes", slopes)
         self.config.set("grayscale_offsets", offsets)
+
+    def get_grayscale_calibration_data(self):
+        ''' Get the calibration values for the grayscale sensors. '''
+        return self.grayscale.get_calibration_data()
+
+    def calibrate_grayscale(self, light: list, dark: list):
+        ''' Calibrate grayscale sensors
+
+        Args:
+            light (list): light values, range from 0 to 4095.
+            dark (list): dark values, range from 0 to 4095.
+        '''
+        slopes, offsets = self.grayscale.calibrate(light, dark)
+        self.set_grayscale_calibration_data(slopes, offsets)
 
     # Actions
     def wave_hands(self):

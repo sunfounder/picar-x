@@ -12,7 +12,9 @@
         and the background gray value.
 
 '''
+from turtle import position
 from picarx import PiCarX
+from picarx.utils import print_line_position
 from time import sleep
 
 car = PiCarX()
@@ -22,69 +24,32 @@ car = PiCarX()
 # car.set_line_reference([1400, 1400, 1400])
 
 POWER = 30
-BIG_TURNING_ANGLE = 30
-SMALL_TURNING_ANGLE = 15
 
-direction = NotImplementedError
-offset = 20
-last_state = "stop"
-
-def get_direction():
-    data = car.get_grayscale_data()
-    status = car.get_line_status(data)
-    if status == [0, 0, 0]:
-        return 'stop'
-    elif status == [0, 1, 0]:
-        return 'forward'
-    elif status == [1, 0, 0]:
-        return 'left'
-    elif status == [1, 1, 0]:
-        return 'little_left'
-    elif status == [0, 0, 1]:
-        return 'right'
-    elif status == [0, 1, 1]:
-        return 'little_right'
-
-def outHandle():
-    print("Run out of line")
-    if direction in ['left', 'little_left']:
-        print("Turn right")
-        car.set_steering_angle(30)
-        car.backward(10)
-    elif direction in ['right', 'little_right']:
-        print("Turn left")
-        car.set_steering_angle(-30)
-        car.backward(10)
-    while True:
-        new_direction = get_direction()
-        if new_direction != direction:
-            break
-    print("Get back to line")
+position = 0
 
 def main():
-    while True:
-        direction = get_direction()
-        print(f"Direction: {direction}")
+    global position
 
-        if direction != "stop":
-            direction = direction
-        if direction == 'forward':
-            car.set_steering_angle(0)
-            car.forward(POWER) 
-        elif direction == 'left':
-            car.set_steering_angle(-BIG_TURNING_ANGLE)
-            car.forward(POWER)
-        elif direction == 'little_left':
-            car.set_steering_angle(-SMALL_TURNING_ANGLE)
-            car.forward(POWER)
-        elif direction == 'right':
-            car.set_steering_angle(BIG_TURNING_ANGLE)
-            car.forward(POWER)
-        elif direction == 'little_right':
-            car.set_steering_angle(SMALL_TURNING_ANGLE)
+    while True:
+        data = car.get_grayscale_data()
+
+        if car.is_on_line(data=data):
+            position = car.get_line_position(data=data)
+            print_line_position(position)
+            steering_angle = position * 30
+            car.set_steering_angle(steering_angle)
             car.forward(POWER)
         else:
-            outHandle()
+            if position < 0:
+                car.set_steering_angle(30)
+                car.backward(10)
+            else:
+                car.set_steering_angle(-30)
+                car.backward(10)
+                while True:
+                    if car.is_on_line():
+                        break
+
 
 if __name__=='__main__':
     try:

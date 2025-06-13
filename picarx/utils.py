@@ -271,3 +271,9 @@ class LazyReader():
             self.value = self.read_function()
             self.last_read_time = time.time()
         return self.value
+
+def print_line_position(position, length: int = 30):
+    value = int(position * length)
+    left_count = length + value
+    right_count = length - value
+    print(f"[{' ' * left_count}▓▓{' ' * right_count}]  [{position:.2f}]")

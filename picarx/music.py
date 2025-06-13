@@ -89,5 +89,8 @@ class Music:
         else:
             return False
 
+    def get_volume(self):
+        return self.volume
+
     def stop(self):
         self.music.music_stop()

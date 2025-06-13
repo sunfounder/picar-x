@@ -1,82 +1,105 @@
 #!/usr/bin/env python3
 from picarx import PiCarX
+from picarx.utils import print_line_position
 import readchar 
 from time import sleep
-
-AVERAGE_COUNT = 10
+from statistics import median
+from threading import Thread
 
 usage = '''
 ---------------- Picar-X Grayscale Sensor Calibration Helper ----------------
 
-- Put all 3 sensors over the line and press [Q] to get on-line values
-- Put all 3 sensors off the line and press [W] to get off-line values
-- Lift all 3 sensors up and press [E] to get cliff values
+- Put all 3 sensors over the Dark and press [Q] to get dark values
+- Put all 3 sensors off the Light and press [W] to get light values
 
 After all values are set, reference values will calculate automatically
 And save to the config file.
 Press [Ctrl] + [C] to quit.
 
-                           ___________________
-                           -------------------
-   ______┌─────┐______           ┌─────┐                   ┌─────┐      
-   ------└┌───┐┘------           └┌───┐┘         ┌─────────└┌───┐┘─────────┐
-      ┌─┐ │   │ ┌─┐           ┌─┐ │   │ ┌─┐      │      ┌─┐ │   │ ┌─┐      │
-      │ │=│   │=│ │           │ │=│   │=│ │      │      │ │=│   │=│ │      │
-      └─┘ │   │ └─┘           └─┘ │   │ └─┘      │      └─┘ │   │ └─┘      │
-
-           [Q]                     [W]                       [E]'''    
+                DARK                                     LIGHT
+           ▓▓▓▓▓▓▓▓▓▓▓▓▓                             ┌───────────┐
+           ▓▓▓┌─────┐▓▓▓                             │  ┌─────┐  │
+           ▓▓▓└┌───┐┘▓▓▓                             └──└┌───┐┘──┘
+           ┌─┐ │   │ ┌─┐                             ┌─┐ │   │ ┌─┐
+           │ │=│   │=│ │                             │ │=│   │=│ │
+           └─┘ │   │ └─┘                             └─┘ │   │ └─┘
+                [Q]                                       [W]
+'''
 
 car = PiCarX()
-off_line_value = None
-on_line_value = None
-clift_value = None
-line_reference = None
-cliff_reference = None
+dark_value = None
+light_value = None
+running = False
+info_thread = None
+
+def get_median_data(times=10, delay=0.001):
+    left_datas = []
+    middle_datas = []
+    right_datas = []
+    datas = []
+
+    for _ in range(times):
+        g0, g1, g2 = car.get_grayscale_data(raw=True)
+        left_datas.append(g0)
+        middle_datas.append(g1)
+        right_datas.append(g2)
+        if delay > 0:
+            sleep(delay)
+    
+    datas = [left_datas, middle_datas, right_datas]
+
+    median_data = [median(datas[i]) for i in range(3)]
+    return median_data
 
 def show_info():
     print("\033[H\033[J", end='')  # clear terminal windows
     print(usage)
-    print(f"    {str(on_line_value).center(16)}         {str(off_line_value).center(16)}          {str(clift_value).center(16)}")
+    dark_value_string = "Not set" if dark_value is None else str(dark_value)
+    light_value_string = "Not set" if light_value is None else str(light_value)
+    dark_value_string = dark_value_string.center(25)
+    light_value_string = light_value_string.center(25)
+    print(f"     {dark_value_string}                 {light_value_string}")
     print(f"")
-    if line_reference == None:
-        print(f"   Line Reference: {car.line_reference}(Not set)")
-        print(f"  Cliff Reference: {car.cliff_reference}(Not set)")
+    print(f"")
+    raw_data = car.get_grayscale_data(raw=True)
+    calibrated_data = car.grayscale.calibrate_data(raw_data)
+    print(f"         Raw value: {raw_data}")
+    print(f"  Calibrated value: {calibrated_data}")
+    if car.is_on_cliff(data=calibrated_data):
+        print(f"            Status: On Cliff")
+    elif car.is_on_line(data=calibrated_data):
+        position = car.get_line_position(data=calibrated_data)
+        print_line_position(position)
     else:
-        print(f"   Line Reference: {line_reference}")
-        print(f"  Cliff Reference: {cliff_reference}")
+        print("")
+    print(f"")
 
-def get_average_values():
-    datas = []
-    for _ in range(AVERAGE_COUNT):
-        datas.append(car.get_grayscale_data())
-        sleep(0.1)
-    
-    result = [int(sum(x)/AVERAGE_COUNT) for x in zip(*datas)]
-    return result
-
-def calculate_reference():
-    global line_reference, cliff_reference
-    line_reference = [int((x+y)/2) for x, y in zip(on_line_value, off_line_value)]
-    cliff_reference = [int((x+y)/5) for x, y in zip(clift_value, line_reference)]
-    car.set_line_reference(line_reference)
-    car.set_cliff_reference(cliff_reference)
+def show_info_thread():
+    while running:
+        show_info()
+        sleep(0.01)
 
 def main(): 
-    global off_line_value, on_line_value, clift_value, line_reference, cliff_reference
+    global dark_value, light_value, running, info_thread
+
+    running = True
+
+    # show info thread
+    info_thread = Thread(target=show_info_thread)
+    info_thread.daemon = True
+    info_thread.start()
+
     # key control
     while True:
-        show_info()
         # readkey
         key = readchar.readkey()
         key = key.lower()
         # select the servo 
         if key in ('qwe'):
             if key == 'q':
-                on_line_value = get_average_values()
+                dark_value = get_median_data()
             elif key == 'w':
-                off_line_value = get_average_values()
-            elif key == 'e':
-                clift_value = get_average_values()
+                light_value = get_median_data()
 
         # quit
         elif key == readchar.key.CTRL_C or key in readchar.key.ESC:
@@ -84,9 +107,8 @@ def main():
             break 
 
         sleep(0.01)
-        if off_line_value is not None and on_line_value is not None and clift_value is not None:
-            calculate_reference()
-
+        if dark_value is not None and light_value is not None:
+            car.calibrate_grayscale(light_value, dark_value)
 
 if __name__ == "__main__":
     try:
@@ -96,4 +118,6 @@ if __name__ == "__main__":
     except Exception as e:
         print(e)
     finally:
+        running = False
+        info_thread.join()
         car.stop()

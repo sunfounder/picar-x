@@ -79,6 +79,8 @@ motor_power = 0
 steering_angle = 0
 camera_pan_angle = 0
 camera_tilt_angle = 0
+grayscale_calibrate_light_data = None
+grayscale_calibrate_dark_data = None
 
 data_received = {}
 data_to_send = {}
@@ -281,6 +283,7 @@ def handle_motor(power):
     if motor_power != power:
         car.forward(power)
         motor_power = power
+        data_to_send["motor_power"] = power
 
 def handle_steering(angle):
     global steering_angle
@@ -289,6 +292,7 @@ def handle_steering(angle):
     if angle!= steering_angle:
         car.set_steering_angle(angle)
         steering_angle = angle
+        data_to_send["steering_angle"] = angle
 
 def handle_camera_pan(angle):
     global camera_pan_angle
@@ -297,6 +301,7 @@ def handle_camera_pan(angle):
     if angle!= camera_pan_angle:
         car.set_camera_pan_angle(angle)
         camera_pan_angle = angle
+        data_to_send["camera_pan_angle"] = angle
 
 def handle_camera_tilt(angle):
     global camera_tilt_angle
@@ -305,6 +310,7 @@ def handle_camera_tilt(angle):
     if angle!= camera_tilt_angle:
         car.set_camera_tilt_angle(angle)
         camera_tilt_angle = angle
+        data_to_send["camera_tilt_angle"] = angle
 
 def handle_color_detection(mode_index):
     global color_detection_mode
@@ -430,17 +436,32 @@ def handle_camera_tilt_offset(offset):
     car.set_camera_tilt_offset(offset)
     data_to_send['camera_tilt_offset'] = offset
 
-def handle_motors_reverse(left_reverse, right_reverse):
+def handle_motors_reverse(data):
     global delay_stop_motor_timer
+    left_reverse, right_reverse = data
     log.debug(f"Set motors reverse: [{left_reverse}, {right_reverse}]")
-    car.motor_direction_calibrate(1, left_reverse)
-    car.motor_direction_calibrate(2, right_reverse)
+    car.set_left_motor_reverse(left_reverse)
+    car.set_right_motor_reverse(right_reverse)
     data_to_send['motor_reverse'] = [left_reverse, right_reverse]
     car.forward(30)
     if delay_stop_motor_timer is not None:
         delay_stop_motor_timer.cancel()
     delay_stop_motor_timer = threading.Timer(2, lambda: car.stop())
     delay_stop_motor_timer.start()
+
+def handle_grayscale_calibration(data):
+    light, dark = data
+    if not isinstance(light, list):
+        log.error(f"light must be list, light: {light}")
+        return
+    if not isinstance(dark, list):
+        log.error(f"dark must be list, dark: {dark}")
+        return
+    log.debug(f"Set grayscale calibration, light: {light}, dark: {dark}")
+    if min(light) < max(dark):
+        log.error(f"light must larger than dark, light: {light}, dark: {dark}")
+        return
+    car.calibrate_grayscale(light, dark)
 
 def handle_ai_assistant_id(value):
     global ai_assistant_id
@@ -576,6 +597,7 @@ COMMAND_MAP = {
     "camera_pan_offset": handle_camera_pan_offset,
     "camera_tilt_offset": handle_camera_tilt_offset,
     "motor_reverse": handle_motors_reverse,
+    "grayscale_calibration": handle_grayscale_calibration,
     # AI
     "ai_api_key": handle_ai_api_key,
     "ai_assistant_id": handle_ai_assistant_id,
@@ -600,7 +622,9 @@ def handle_received_data():
         if command not in COMMAND_MAP:
             log.error(f"Invalid command: {command}")
             continue
-        COMMAND_MAP[command](data_received[command])
+        data = data_received[command]
+        if data is not None:
+            COMMAND_MAP[command](data_received[command])
 
     # clear data received
     data_received = {}
@@ -647,8 +671,10 @@ def update_data():
     data_to_send["reset_button_pressed"] = bool(car.rst_btn.value())
 
     # Grayscale data
-    grayscale_data = car.get_grayscale_data()
+    raw_grayscale_data = car.get_grayscale_data(raw=True)
+    grayscale_data = car.grayscale.calibrate_data(raw_grayscale_data)
     data_to_send["grayscale_data"] = grayscale_data
+    data_to_send["grayscale_data_raw"] = raw_grayscale_data
     data_to_send["is_on_line"] = car.is_on_line(data=grayscale_data)
     data_to_send["is_on_cliff"] = car.is_on_cliff(data=grayscale_data)
     data_to_send["line_position"] = car.get_line_position(data=grayscale_data)
@@ -777,8 +803,14 @@ def init():
     data_to_send['steering_offset'] = car.steering_servo.offset()
     data_to_send['camera_pan_offset'] = car.camera_pan_servo.offset()
     data_to_send['camera_tilt_offset'] = car.camera_tilt_servo.offset()
+    data_to_send['volume'] = music.get_volume()
+    data_to_send['motor_power'] = 0
+    data_to_send['steering_angle'] = 0
+    data_to_send['camera_pan_angle'] = 0
+    data_to_send['camera_tilt_angle'] = 0
     data_to_send['piper_model'] = piper.model
     data_to_send['piper_saying'] = False
+    data_to_send['grayscale_calibration_data'] = car.get_grayscale_calibration_data()
 
     # --- setup signal handler ---
     signal.signal(signal.SIGINT, close)
@@ -812,7 +844,7 @@ if __name__ == "__main__":
         main()
     except KeyboardInterrupt:
         log.debug("KeyboardInterrupt")
-    # except Exception as e:
-    #     print(e)
+    except Exception as e:
+        log.exception(e)
     finally:
         close()
