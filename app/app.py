@@ -84,6 +84,7 @@ grayscale_calibrate_dark_data = None
 
 data_received = {}
 data_to_send = {}
+data_rec_lock = threading.Lock()
 
 delay_stop_motor_timer = None
 
@@ -618,22 +619,26 @@ COMMAND_MAP = {
 def handle_received_data():
     global data_received
 
-    for command in data_received.keys():
+    rec = {}
+    with data_rec_lock:
+        rec = data_received
+        data_received = {}
+
+    for command in rec.keys():
         if command not in COMMAND_MAP:
             log.error(f"Invalid command: {command}")
             continue
-        data = data_received[command]
+        data = rec[command]
         if data is not None:
-            COMMAND_MAP[command](data_received[command])
+            COMMAND_MAP[command](rec[command])
 
-    # clear data received
-    data_received = {}
 
 async def handle_io_data(data):
     global data_received
 
     # Save received data
-    data_received.update(data)
+    with data_rec_lock:
+        data_received.update(data)
 
     # pack data and send
     data = { "io_data": data_to_send }
