@@ -624,6 +624,9 @@ def handle_received_data():
         rec = data_received
         data_received = {}
 
+    # if rec != {}:
+    #     log.debug(f"Received data: {rec}")
+
     for command in rec.keys():
         if command not in COMMAND_MAP:
             log.error(f"Invalid command: {command}")
