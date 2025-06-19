@@ -394,7 +394,7 @@ class PiCarX(object):
 
     def shake_head(self):
         ''' Shake head '''
-        self.stop()
+        # self.stop()
         self.set_camera_pan_angle(0)
         self.set_camera_pan_angle(60)
         sleep(.2)
