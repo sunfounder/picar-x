@@ -546,7 +546,9 @@ def handle_do_action(action):
         log.error(f"Invalid action: {action}")
         return
     
+    data_to_send['action_status'] = True
     car.actions[action]()
+    data_to_send['action_status'] = False
 
 def handle_led(status):
     if status not in [0, 1]:
@@ -820,6 +822,7 @@ def init():
     data_to_send['piper_model'] = piper.model
     data_to_send['piper_saying'] = False
     data_to_send['grayscale_calibration_data'] = car.get_grayscale_calibration_data()
+    data_to_send['action_status'] = False
 
     # --- setup signal handler ---
     signal.signal(signal.SIGINT, close)
