@@ -32,6 +32,9 @@ import time
 
 while True:
     text = input("Enter text to say: ")
+    if not tts.model_downloaded():
+        print("Downloading model...")
+        tts.download_model()
     start = time.time()
     tts.say(text)
     duration = time.time() - start

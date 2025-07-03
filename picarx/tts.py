@@ -242,6 +242,8 @@ class TTS():
         json_file = onnx_file + ".json"
         onnx_exists = os.path.exists(onnx_file)
         json_exists = os.path.exists(json_file)
+        print(f"Model {model} onnx file exists: {onnx_exists}")
+        print(f"Model {model} json file exists: {json_exists}")
         return onnx_exists and json_exists
     
     def download_model(self, model=None):
@@ -250,9 +252,19 @@ class TTS():
         print(f"Downloading model: {model}")
         onnx_file = os.path.join(PIPER_MODEL_DIR, model + ".onnx")
         json_file = os.path.join(PIPER_MODEL_DIR, model + ".json")
-        run_command(f"piper --model {model} --download-dir {PIPER_MODEL_DIR}")
-        run_command(f"chown 1000:1000 {onnx_file}")
-        run_command(f"chown 1000:1000 {json_file}")
+
+
+        status, result = run_command(f"piper --model {model} --download-dir {PIPER_MODEL_DIR}")
+        if status != 0:
+            raise RuntimeError(f"Download model error: \n  Command:piper --model {model} --download-dir {PIPER_MODEL_DIR}\n  Status {status}\n  Error: {result}")
+
+        status, result = run_command(f"chown 1000:1000 {onnx_file}")
+        if status != 0:
+            raise RuntimeError(f"Chown model error: \n  Command:chown 1000:1000 {onnx_file}\n  Status {status}\n  Error: {result}")
+
+        status, result = run_command(f"chown 1000:1000 {json_file}")
+        if status != 0:
+            raise RuntimeError(f"Chown model error: \n  Command:chown 1000:1000 {json_file}\n  Status {status}\n  Error: {result}")
 
     def tts(self, text, file):
         if self.model is None:
@@ -281,6 +293,9 @@ class TTS():
         }
         cmd = self.STREAM_TEMPELATE.format(**args)
         status, result = run_command(cmd)
+        print(f"Stream command: {cmd}")
+        print(f"Stream status: {status}")
+        print(f"Stream result: {result}")
         if status not in [0, None]:
             raise RuntimeError(f"Run command error: \n  Command:{cmd}\n  Status {status}\n  Error: {result}")
 

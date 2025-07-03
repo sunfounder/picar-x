@@ -1,6 +1,5 @@
-from asyncio import constants
+
 from picarx import PiCarX
-from picarx.utils import constrain
 
 car = PiCarX()
 
@@ -13,13 +12,15 @@ def print_position(position, data, length: int = 30):
 def loop():
     data = car.get_grayscale_data()
     # print(f"{data}")
-    if car.is_on_line(data=data):
+    if car.is_on_cliff(data=data):
+        print(f"!! Cliff !! ({data})")
+    elif car.is_on_line(data=data):
         position = car.get_line_position(data=data)
         print_position(position, data)
         steering_angle = position * 30
         car.set_steering_angle(steering_angle)
     else:
-        print("Lost line")
+        print(f"Lost line ({data})")
 
 
 if __name__ == "__main__":

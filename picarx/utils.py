@@ -36,10 +36,15 @@ def run_command(cmd):
     :return: status, output
     :rtype: tuple
     """
+    cmd = f"set -o pipefail; {cmd}"
     p = subprocess.Popen(
-        cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+        cmd,
+        shell=True,
+        executable="/bin/bash",
+        stdout=subprocess.PIPE,
+        stderr=subprocess.STDOUT)
     result = p.stdout.read().decode('utf-8')
-    status = p.poll()
+    status = p.wait()
     return status, result
 
 def volume_gain(input_file, output_file, gain):
@@ -272,8 +277,11 @@ class LazyReader():
             self.last_read_time = time.time()
         return self.value
 
-def print_line_position(position, length: int = 30):
+def print_line_position(position, length: int = 30, no_print=False):
     value = int(position * length)
     left_count = length + value
     right_count = length - value
-    print(f"[{' ' * left_count}▓▓{' ' * right_count}]  [{position:.2f}]")
+    msg = f"[{' ' * left_count}▓▓{' ' * right_count}]  [{position:.2f}]"
+    if not no_print:
+        print(msg)
+    return msg

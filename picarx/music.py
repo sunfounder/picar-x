@@ -60,7 +60,7 @@ class Music:
             self.music.music_pause()
         self.music_status = action
 
-    def set_music_volume(self, volume):
+    def set_volume(self, volume):
         if volume > 100:
             volume = 100
         elif volume < 0:
@@ -68,7 +68,7 @@ class Music:
         self.volume = volume
         self.music.music_set_volume(volume)
 
-    def get_music_busy(self):
+    def is_music_busy(self):
         return self.music.pygame.mixer.music.get_busy()
     
     def get_music_length(self, file_path=None):
@@ -80,7 +80,7 @@ class Music:
     def get_music_pos(self):
         return int(self.music.pygame.mixer.music.get_pos() / 1000)
     
-    def get_sound_busy(self):
+    def is_sound_busy(self):
         if self.sound_thread is None:
             return False
         if self.sound_thread.is_alive():

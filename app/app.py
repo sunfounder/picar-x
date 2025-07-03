@@ -81,6 +81,7 @@ camera_pan_angle = 0
 camera_tilt_angle = 0
 grayscale_calibrate_light_data = None
 grayscale_calibrate_dark_data = None
+music_index = None
 
 data_received = {}
 data_to_send = {}
@@ -255,7 +256,7 @@ def ai_say_task(value):
 def piper_say_task(value):
     data_to_send["piper_saying"] = True
     start = time.time()
-    if not piper.model_downloaded:
+    if not piper.model_downloaded():
         log.info(f"Downloading piper model:{piper.model}")
         piper.download_model()
     piper.say(value)
@@ -343,7 +344,7 @@ def handle_qr_code_detection(enable):
     qr_code_detection_enable = enable
 
 def handle_play_sound(index):
-    if music.get_sound_busy():
+    if music.is_sound_busy():
         log.error(f"Sound effect is busy")
         return
     try:
@@ -355,16 +356,20 @@ def handle_play_sound(index):
     music.play_sound_background(sound_file)
 
 def handle_play_music(index):
-    if music.get_sound_busy():
-        log.error(f"Music is busy")
-        return
+    global music_index
     try:
         music_file = music_list[index]
     except IndexError:
         log.error(f"Invalid music index: {index}")
         return
+
+    if index == music_index and music.is_music_busy():
+        log.warning(f"Music {index} {music_file} is already playing")
+        return
+        
     log.debug(f"Play music: {index} {music_file}")
     data_to_send["music_length"] = music.get_music_length(music_file)
+    music_index = index
     music.play_music_background(music_file)
 
 def handle_music_control(control):
@@ -375,7 +380,7 @@ def handle_music_volume(volume):
     volume = constrain(volume, 0, 100)
     log.debug(f"Set music volume: {volume}")
     data_to_send["volume"] = volume
-    music.set_music_volume(volume)
+    music.set_volume(volume)
 
 def handle_line_tracking(enable):
     if enable == 0:
@@ -464,6 +469,11 @@ def handle_grayscale_calibration(data):
         log.error(f"light must larger than dark, light: {light}, dark: {dark}")
         return
     car.calibrate_grayscale(light, dark)
+
+def handle_grayscale_cliff_threshold(value):
+    log.debug(f"Set grayscale cliff threshold: {value}")
+    data_to_send['grayscale_cliff_threshold'] = value
+    car.grayscale.set_cliff_threshold(value)
 
 def handle_ai_assistant_id(value):
     global ai_assistant_id
@@ -602,6 +612,7 @@ COMMAND_MAP = {
     "camera_tilt_offset": handle_camera_tilt_offset,
     "motor_reverse": handle_motors_reverse,
     "grayscale_calibration": handle_grayscale_calibration,
+    "grayscale_cliff_threshold": handle_grayscale_cliff_threshold,
     # AI
     "ai_api_key": handle_ai_api_key,
     "ai_assistant_id": handle_ai_assistant_id,
@@ -743,11 +754,11 @@ def update_data():
             del data_to_send['qr_code_detection']
 
     # Sound status
-    data_to_send["sound_status"] = int(music.get_sound_busy())
+    data_to_send["sound_status"] = int(music.is_sound_busy())
 
     # Music status
-    data_to_send["music_status"] = int(music.get_music_busy())
-    if music.get_music_busy():
+    data_to_send["music_status"] = int(music.is_music_busy())
+    if music.is_music_busy():
         data_to_send["music_position"] = music.get_music_pos()
 
     # AI status
@@ -814,6 +825,7 @@ def init():
     data_to_send['steering_offset'] = car.steering_servo.offset()
     data_to_send['camera_pan_offset'] = car.camera_pan_servo.offset()
     data_to_send['camera_tilt_offset'] = car.camera_tilt_servo.offset()
+    data_to_send['grayscale_cliff_threshold'] = car.grayscale.cliff_threshold
     data_to_send['volume'] = music.get_volume()
     data_to_send['motor_power'] = 0
     data_to_send['steering_angle'] = 0

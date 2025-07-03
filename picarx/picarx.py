@@ -76,9 +76,12 @@ class PiCarX(object):
         # --------- grayscale module init ---------
         self.gs_slopes = self.config.get("grayscale_slopes", default_value=[1.0, 1.0, 1.0])
         self.gs_offsets = self.config.get("grayscale_offsets", default_value=[0.0, 0.0, 0.0])
+        self.gs_cliff_threshold = self.config.get("grayscale_cliff_threshold", default_value=120)
+
         adc0, adc1, adc2 = [ADC(pin) for pin in grayscale_pins]
         self.grayscale = LineTracker(adc0, adc1, adc2)
         self.grayscale.set_calibration_data(self.gs_slopes, self.gs_offsets)
+        self.grayscale.set_cliff_threshold(self.gs_cliff_threshold)
 
         # --------- ultrasonic init ---------
         trig, echo= ultrasonic_pins
@@ -92,7 +95,7 @@ class PiCarX(object):
 
         # --------- music init ---------
         self.music = Music()
-        self.music.set_music_volume(100)
+        self.music.set_volume(100)
 
         # --------- Actions ---------
         self.actions = {
@@ -292,6 +295,15 @@ class PiCarX(object):
         self.config.set("camera_tilt_offset", offset)
         self.camera_tilt_servo.offset(offset)
         self.camera_tilt_servo.angle(0)
+
+    def set_cliff_threshold(self, threshold: int):
+        ''' Set grayscale cliff threshold
+        
+        Args:
+            threshold (int): threshold value, range from 0 to 1023.
+        '''
+        self.config.set("grayscale_cliff_threshold", threshold)
+        self.grayscale.set_cliff_threshold(threshold)
 
     def set_grayscale_calibration_data(self, slopes: list, offsets: list):
         '''

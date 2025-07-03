@@ -272,13 +272,12 @@ class STT:
             self.record_thread.join()
         
         if self.stream:
-            self.stream.close()
+            self.stream.close()  # 修复streamlose拼写错误
         self.pa.terminate()
-
-if __name__ == "__main__":  # 修复拼写错误
+        p__main__":
     stt = STT(
         device_index=1,
-        model_path="/opt/vosk-models/vosk-model-small-en-us-0.15",
+        model_path="/opt/vosk-models/vosk-model-small-en-us-0.15",  # 替换为你的模型路径
     )
 
     try:

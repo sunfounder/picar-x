@@ -22,7 +22,7 @@ def main():
     print(manual)
 
     flag_bgm = False
-    music.set_music_volume(20)
+    music.set_volume(20)
 
     while True:
         key = readchar.readkey()
