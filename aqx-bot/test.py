@@ -92,7 +92,7 @@ def sensor_stream():
             dist = px.ultrasonic.read() if hasattr(px, "ultrasonic") else -1.0
             data = {
                 "ultrasonic_distance": dist,
-                "timestamp": time.time()
+                "timestamp": time.time()  # Fixed: using time module correctly
             }
             msg = json.dumps(data).encode('utf-8')
             sock.sendto(msg, (ROS2_UDP_IP, ROS2_UDP_PORT))
@@ -101,7 +101,7 @@ def sensor_stream():
             print(f"Sensor stream error: {e}")
             sleep(1)
     sock.close()
-
+    
 # Motion Control Listener
 def control_listener():
     global last_dir_angle, last_camera_yaw, last_camera_pitch

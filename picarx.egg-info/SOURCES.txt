@@ -1,0 +1,14 @@
+DESCRIPTION.rst
+LICENSE
+MANIFEST.in
+README.md
+setup.py
+picarx/__init__.py
+picarx/picarx.py
+picarx/version.py
+picarx.egg-info/PKG-INFO
+picarx.egg-info/SOURCES.txt
+picarx.egg-info/dependency_links.txt
+picarx.egg-info/not-zip-safe
+picarx.egg-info/requires.txt
+picarx.egg-info/top_level.txt

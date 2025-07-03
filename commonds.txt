@@ -1,0 +1,2 @@
+source picarx-env/bin/activate
+sudo shutdown -h now

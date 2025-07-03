@@ -1,0 +1,22 @@
+Metadata-Version: 2.1
+Name: picarx
+Version: 2.0.5
+Summary: Picarx gait Library for Raspberry Pi
+Home-page: https://github.com/sunfounder/piarm
+Author: SunFounder
+Author-email: service@sunfounder.com
+License: GNU
+Keywords: python raspberry pi GPIO sunfounder
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: Topic :: Software Development :: Build Tools
+Classifier: License :: OSI Approved :: GNU License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.2
+Classifier: Programming Language :: Python :: 3.3
+Classifier: Programming Language :: Python :: 3.4
+License-File: LICENSE
+
+picarx
+=======================
+Library for picarx
