@@ -378,7 +378,7 @@ def handle_music_control(control):
 
 def handle_music_volume(volume):
     volume = constrain(volume, 0, 100)
-    log.debug(f"Set music volume: {volume}")
+    log.debug(f"Set volume: {volume}")
     data_to_send["volume"] = volume
     music.set_volume(volume)
 

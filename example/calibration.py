@@ -5,214 +5,305 @@ from statistics import median
 from threading import Thread, Lock
 from time import sleep
 
-ACS_ULCORNER = chr(0x256D)  # 左上角 ╭
-ACS_URCORNER = chr(0x256E)  # 右上角 ╮
-ACS_LLCORNER = chr(0x2570)  # 左下角 ╰
-ACS_LRCORNER = chr(0x256F)  # 右下角 ╯
+# Border character constants
+ACS_ULCORNER = chr(0x256D)  # Upper left corner ╭
+ACS_URCORNER = chr(0x256E)  # Upper right corner ╮
+ACS_LLCORNER = chr(0x2570)  # Lower left corner ╰
+ACS_LRCORNER = chr(0x256F)  # Lower right corner ╯
 
 class Calibration:
+    """Main class for PiCar-X calibration tool, supporting grayscale sensor and servo/motor calibration"""
+    
+    # Operation modes
+    MODE_GRAYSCALE = 0
+    MODE_SERVO = 1
+
+    # Color definitions
+    COLOR_TITLE = 1
+    COLOR_STATUS = 2
+    COLOR_HIGHLIGHT = 3
+    COLOR_WARNING = 4
+    COLOR_ERROR = 5
+    COLOR_NORMAL = 6
+    COLOR_BORDER = 7
+    COLOR_STATUS_ERROR = 8
+    COLOR_STATUS_NORMAL = 9
+    COLOR_STATUS_WARNING = 10
+    
+    # Interface constants
+    CONTENT_WIDTH = 80
+    CONTENT_HEIGHT = 23
+    MIN_WIDTH = CONTENT_WIDTH
+    MIN_HEIGHT = CONTENT_HEIGHT + 2
+    TAB_WIDTH = 20
+
+    # Calibration constants
+    SERVO_STEP = 0.1
+    DATA_SAMPLE_TIMES = 10
+    MOTOR_POWER = 20
+
+    # Others
+    HELP_MESSAGE = "Press [Tab] to switch modes | [Ctrl+C] to exit "
+    
     def __init__(self, stdscr):
         self.stdscr = stdscr
         self.car = PiCarX()
-        self.current_mode = 0  # 0: 灰度校准, 1: 伺服电机校准
-        self.modes = ["Grayscale Calibration", "Servo & Motor Calibration"]
+        self.current_mode = self.MODE_GRAYSCALE
+        self.modes = ["Grayscale", "Servos & Motors"]
         self.running = False
         self.info_thread = None
         self.grayscale_read_lock = Lock()
+        self.current_height, self.current_width = self.stdscr.getmaxyx()
         
-        # 灰度校准变量
+        # Grayscale calibration parameters
+        self.tilt_offset = self.car.camera_tilt_servo.offset()
+        self.pan_offset = self.car.camera_pan_servo.offset()
+        self.steering_offset = self.car.steering_servo.offset()
+        self.left_reversed = self.car.motors.left_reversed
+        self.right_reversed = self.car.motors.right_reversed
         self.dark_value = None
         self.light_value = None
         self.cliff_threshold = self.car.grayscale.cliff_threshold
-        self.status = "Waiting for operation..."
+        self.status = ""
         self.line_position = ""
         
-        # 伺服电机校准变量
-        self.servo_step = 0.1
-        self.power = 30
-        self.motor_runs = False
-        
-        # 初始化curses
-        curses.curs_set(0)  # 隐藏光标
-        curses.noecho()
-        curses.init_pair(1, curses.COLOR_WHITE, curses.COLOR_BLUE)   # 标题颜色
-        curses.init_pair(2, curses.COLOR_GREEN, curses.COLOR_BLACK) # 正常文本
-        curses.init_pair(3, curses.COLOR_YELLOW, curses.COLOR_BLACK)# 警告文本
-        curses.init_pair(4, curses.COLOR_RED, curses.COLOR_BLACK)   # 错误文本
-        curses.init_pair(5, curses.COLOR_WHITE, -1) # 内容背景色（使用终端默认背景）
-        curses.init_pair(6, curses.COLOR_BLACK, curses.COLOR_WHITE)  # 选中标签高亮
-        curses.init_pair(7, curses.COLOR_CYAN, -1)  # 非活动标签边框(使用CYAN替代GRAY)
-        curses.init_pair(8, curses.COLOR_CYAN, -1)   # 内容区域边框
-        
-        self.stdscr.nodelay(1)  # 非阻塞输入
-        self.current_height, self.current_width = self.stdscr.getmaxyx()
-        self.content_width = 80
-        self.content_height = 18
-        
-        # 首次绘制界面
+        # Initialize curses environment
+        self._init_curses()
         self.initial_draw()
 
-    def get_median_data(self, times=10):
-        """获取传感器数据的中位数"""
-        left_datas = []
-        middle_datas = []
-        right_datas = []
+    def is_too_small(self):
+        height, width = self.stdscr.getmaxyx()
+        return  height < self.MIN_HEIGHT or width < self.MIN_WIDTH
+
+    def _init_curses(self):
+        """Initialize curses environment settings"""
+        curses.curs_set(0)          # Hide cursor
+        curses.noecho()             # Disable input echoing
+        curses.start_color()        # Enable color support
+        
+        # Initialize color pairs
+        curses.init_pair(self.COLOR_TITLE, curses.COLOR_WHITE, curses.COLOR_BLUE)
+        curses.init_pair(self.COLOR_STATUS, curses.COLOR_BLACK, curses.COLOR_WHITE)
+        curses.init_pair(self.COLOR_BORDER, curses.COLOR_CYAN, curses.COLOR_BLACK)
+        curses.init_pair(self.COLOR_HIGHLIGHT, curses.COLOR_GREEN, curses.COLOR_BLACK)
+        curses.init_pair(self.COLOR_WARNING, curses.COLOR_YELLOW, curses.COLOR_BLACK)
+        curses.init_pair(self.COLOR_ERROR, curses.COLOR_RED, curses.COLOR_BLACK)
+        curses.init_pair(self.COLOR_NORMAL, curses.COLOR_WHITE, curses.COLOR_BLACK)
+        curses.init_pair(self.COLOR_STATUS_ERROR, curses.COLOR_RED, curses.COLOR_WHITE)
+        curses.init_pair(self.COLOR_STATUS_NORMAL, curses.COLOR_BLACK, curses.COLOR_WHITE)
+        curses.init_pair(self.COLOR_STATUS_WARNING, curses.COLOR_YELLOW, curses.COLOR_WHITE)
+        
+        self.stdscr.nodelay(1)  # Non-blocking input
+
+    def get_median_data(self, times=DATA_SAMPLE_TIMES):
+        """Get median samples from grayscale sensors
+        
+        Args:
+            times: Number of samples to take
+        
+        Returns:
+            List containing median values from left, middle, and right sensors
+        """
+        samples = [[], [], []]  # Left, middle, right
         
         for _ in range(times):
             with self.grayscale_read_lock:
-                g0, g1, g2 = self.car.get_grayscale_data(raw=True)
-            left_datas.append(g0)
-            middle_datas.append(g1)
-            right_datas.append(g2)
+                left, middle, right = self.car.get_grayscale_data(raw=True)
+            samples[0].append(left)
+            samples[1].append(middle)
+            samples[2].append(right)
             sleep(0.01)
         
-        return [median(left_datas), median(middle_datas), median(right_datas)]
+        return [median(samples[i]) for i in range(3)]
 
     def calculate_cliff_threshold(self):
-        """计算悬崖检测阈值"""
-        datas = []
+        """Automatically calculate cliff detection threshold"""
+        samples = []
         for _ in range(10):
             with self.grayscale_read_lock:
-                datas += self.car.get_grayscale_data()
+                samples += self.car.get_grayscale_data()
             sleep(0.01)
         
-        self.cliff_threshold = max(datas) * 1.5
+        self.cliff_threshold = max(samples) * 1.5
         self.cliff_threshold = round(self.cliff_threshold)
-        self.update_region('data3', "Cliff Threshold", self.cliff_threshold)
+        self.update_region('gs_cliff', "Cliff Threshold", self.cliff_threshold)
+        self.update_log("Cliff threshold set to: {}".format(self.cliff_threshold))
 
     def check_window_resize(self):
-        """检查窗口大小是否变化"""
-        height, width = self.stdscr.getmaxyx()
-        if height != self.current_height or width != self.current_width:
-            self.current_height, self.current_width = height, width
-            self.initial_draw()
-            return True
+        """Check if window size has changed and update dimensions"""
+        try:
+            height, width = self.stdscr.getmaxyx()
+            if height != self.current_height or width != self.current_width:
+                self.current_height, self.current_width = height, width
+                self.initial_draw()
+                return True
+        except curses.error:
+            pass
         return False
 
     def initial_draw(self):
-        """绘制或重新绘制整个界面"""
+        """Draw or redraw the entire interface"""
         self.stdscr.clear()
-        height, width = self.current_height, self.current_width
         
-        # 计算内容区域偏移量
-        self.offset_x = max(0, (width - self.content_width) // 2)
-        
-        # 检查窗口是否足够大
-        min_height = 25
-        min_width = 80
-        
-        if height < min_height or width < min_width:
-            self.stdscr.addstr(0, 0, f"Please resize terminal (at least {min_width}x{min_height})", curses.color_pair(4))
-            self.stdscr.refresh()
+        self._calculate_content_area()
+
+        # Check if window is large enough
+        if self.is_too_small():
+            self._draw_window_too_small_message()
             return
+
+        self._draw_title()
+        self._draw_borders()
+        self._draw_tabs()
+        self._initialize_mode_content()
+        self.update_status_bar()
+        self.stdscr.refresh()
         
-        # 计算内容区域垂直居中位置
-        self.content_start_y = max(1, (height - self.content_height) // 2)
+    def _draw_window_too_small_message(self):
+        """Display message when window size is insufficient"""
+        height, width = self.stdscr.getmaxyx()
+        msg = f"Please resize terminal (at least 80x25), current size: {width}x{height}"
+        msg_width = len(msg)
+        center_y = height // 2
+        msg_x = (width - msg_width) // 2
+        border_start_x = msg_x - 2
+        border_start_y = center_y - 2
+        border_end_x = msg_x + msg_width + 2
+        border_end_y = center_y + 2
+
+        self.stdscr.clear()
+
+        self.stdscr.addstr(center_y, msg_x, msg, curses.color_pair(self.COLOR_ERROR))
+
+        # Draw boarder
+        self.stdscr.attron(curses.color_pair(self.COLOR_BORDER))
+        self.stdscr.hline(border_start_y, border_start_x, curses.ACS_HLINE, msg_width + 4)
+        self.stdscr.hline(border_end_y, border_start_x, curses.ACS_HLINE, msg_width + 4)
+        self.stdscr.vline(border_start_y, border_start_x, curses.ACS_VLINE, 4)
+        self.stdscr.vline(border_start_y, border_end_x, curses.ACS_VLINE, 4)
+        self.stdscr.addstr(border_start_y, border_start_x, ACS_ULCORNER)
+        self.stdscr.addstr(border_start_y, border_end_x, ACS_URCORNER)
+        self.stdscr.addstr(border_end_y, border_start_x, ACS_LLCORNER)
+        self.stdscr.addstr(border_end_y, border_end_x, ACS_LRCORNER)
+        self.stdscr.attroff(curses.color_pair(self.COLOR_BORDER))
+
+        self.stdscr.refresh()
         
-        # 动态计算内容区域坐标，确保垂直居中
-        content_height = 25  # 增加内容区域高度以避免重叠
-        start_y = max(3, (height - content_height) // 2) + 1
-        end_y = start_y + content_height
-        self.content_width = 80  # 固定内容框宽度为80
-        self.content_area = (start_y, (width - self.content_width) // 2, end_y, (width - self.content_width) // 2 + self.content_width - 1)
-        start_y, start_x, end_y, end_x = self.content_area
+    def _calculate_content_area(self):
+        """Calculate coordinates for content area and display regions"""
+        height, width = self.stdscr.getmaxyx()
+        start_y = (height - self.CONTENT_HEIGHT) // 2
+        end_y = start_y + self.CONTENT_HEIGHT
+        content_start_x = (width - self.CONTENT_WIDTH) // 2
+        content_end_x = content_start_x + self.CONTENT_WIDTH - 1
         
-        # 绘制内容区域底色背景
-        for y in range(start_y, end_y):
-            self.stdscr.addstr(y, start_x, ' ' * (end_x - start_x), curses.color_pair(5))
+        self.content_area = (start_y, content_start_x, end_y, content_end_x)
         
-        # 屏幕区域定义
-        # 调整区域坐标以适应内容边框
+        # Define display regions
         self.regions = {
             'title': (0, 0),
-            'tag': (start_y+1, start_x),
-            'instructions': (start_y+4, start_x),
-            'data1': (start_y + 17, start_x + 2),
-            'data2': (start_y + 18, start_x + 2),
-            'data3': (start_y + 19, start_x + 2),
-            'data4': (start_y + 20, start_x + 2),
-            'data5': (start_y + 21, start_x + 2),
-            'data6': (start_y + 22, start_x + 2),
-            'data7': (start_y + 23, start_x + 2),
-            'log': (-2, 0),
-            'status_bar': (-1, 0)
+            'tab': (start_y+1, content_start_x),
+            'instructions': (start_y+3, content_start_x),
+            'gs_dark': (start_y + 15, content_start_x + 2),
+            'gs_light': (start_y + 16, content_start_x + 2),
+            'gs_cliff': (start_y + 17, content_start_x + 2),
+            'gs_raw': (start_y + 18, content_start_x + 2),
+            'gs_calibrated': (start_y + 19, content_start_x + 2),
+            'gs_status': (start_y + 20, content_start_x + 2),
+            'gs_position': (start_y + 21, content_start_x + 2),
+
+            'steering': (start_y + 17, content_start_x + 2),
+            'pan': (start_y + 18, content_start_x + 2),
+            'tilt': (start_y + 19, content_start_x + 2),
+            'lmotor': (start_y + 20, content_start_x + 2),
+            'rmotor': (start_y + 21, content_start_x + 2),
+            'status_bar': (-1, 0)  # Bottom row
         }
         
-        # 绘制标题
-        title = "PiCar-X Calibration Tool"
-        title_bar = title.center(width, '-')
-        self.stdscr.addstr(0, 0, title_bar, curses.color_pair(1))
-        
-        # 绘制浏览器式标签页和内容边框
-        content_end_y, content_end_x = self.stdscr.getmaxyx()
-        content_end_y -= 2
-        content_end_x -= 2
+    def _draw_title(self):
+        """Draw main title bar"""
+        height, width = self.stdscr.getmaxyx()
+        title = f"PiCar-X Calibration Tool"
+        title_bar = title.center(width)
+        self.stdscr.addstr(0, 0, title_bar, curses.color_pair(self.COLOR_TITLE))
 
-        # 绘制内容区域边框
-        self.stdscr.attron(curses.color_pair(8))
-        # 上边框
-        self.stdscr.hline(start_y, start_x, curses.ACS_HLINE, end_x - start_x)
-        # 下边框
-        self.stdscr.hline(end_y, start_x, curses.ACS_HLINE, end_x - start_x)
-        # 左边框
-        self.stdscr.vline(start_y, start_x, curses.ACS_VLINE, end_y - start_y)
-        # 右边框
-        self.stdscr.vline(start_y, end_x, curses.ACS_VLINE, end_y - start_y)
-        # 四个角
-        self.stdscr.addch(start_y, start_x, ACS_ULCORNER)
+    def _draw_borders(self):
+        """Draw borders for content area"""
+        start_y, start_x, end_y, end_x = self.content_area
+        start_y = start_y + 2
+        end_y = end_y - 1
+        
+        self.stdscr.attron(curses.color_pair(self.COLOR_BORDER))
+        self.stdscr.hline(start_y, start_x, curses.ACS_HLINE, end_x - start_x)  # Top
+        self.stdscr.hline(end_y, start_x, curses.ACS_HLINE, end_x - start_x)  # Bottom
+        self.stdscr.vline(start_y, start_x, curses.ACS_VLINE, end_y - start_y)  # Left
+        self.stdscr.vline(start_y, end_x, curses.ACS_VLINE, end_y - start_y)  # Right
+        
+        # Draw corners
         self.stdscr.addch(start_y, end_x, ACS_URCORNER)
         self.stdscr.addch(end_y, start_x, ACS_LLCORNER)
         self.stdscr.addch(end_y, end_x, ACS_LRCORNER)
-        self.stdscr.attroff(curses.color_pair(8))
+        self.stdscr.attroff(curses.color_pair(self.COLOR_BORDER))
 
-        # 标签页宽度最大化，两个占满内容区域宽度
-        tab_width = self.content_width // 2
-        # 标签页与内容框左对齐
-        tab1_start_x = start_x + 1
-        tab2_start_x = tab1_start_x + tab_width
+    def _draw_tabs(self):
+        """Draw mode selection tabs"""
+        start_y, start_x, end_y, end_x = self.content_area
+        tab_y, _ = self.regions["tab"]
+        tab_end_y = tab_y + 1
+        tab_start_y = tab_y - 1
 
-        tab_start_y = self.regions["tag"][0]
-        self.stdscr.attron(curses.color_pair(7))
-        # Draw tag text
-        self.stdscr.addstr(tab_start_y, tab1_start_x, f'{self.modes[0].center(tab_width - 2)}')
-        self.stdscr.addstr(tab_start_y, tab2_start_x, f'{self.modes[1].center(tab_width - 2)}')
-        # 绘制从标签页到内容区域的垂直线
-        self.stdscr.vline(tab_start_y, tab2_start_x-1, curses.ACS_VLINE, 1, curses.color_pair(8))
-        # Draw change tab connections
-        if self.current_mode == 0:
-            self.stdscr.hline(tab_start_y+1, tab2_start_x, curses.ACS_HLINE, tab_width-2, curses.color_pair(8))
-            self.stdscr.addch(start_y, tab2_start_x-1, ACS_URCORNER)
-            self.stdscr.addch(tab_start_y+1, tab2_start_x-1, ACS_LLCORNER)
-            self.stdscr.addch(tab_start_y+1, end_x, ACS_URCORNER)
+        for i, mode in enumerate(self.modes):
+            current_tab_start_x = start_x + i * (self.TAB_WIDTH + 1)
+            current_tab_end_x = current_tab_start_x + self.TAB_WIDTH + 1
+            mode = mode.center(self.TAB_WIDTH)
+            print(f"{mode}")
+            self.stdscr.attron(curses.color_pair(self.COLOR_NORMAL))
+            self.stdscr.addstr(tab_y, current_tab_start_x + 1, mode)
+            self.stdscr.attron(curses.color_pair(self.COLOR_BORDER))
+            self.stdscr.hline(tab_start_y, current_tab_start_x, curses.ACS_HLINE, self.TAB_WIDTH+2)
+            self.stdscr.vline(tab_y, current_tab_start_x, curses.ACS_VLINE, 1)
+            self.stdscr.vline(tab_y, current_tab_end_x, curses.ACS_VLINE, 1)
+            self.stdscr.addch(tab_start_y, current_tab_start_x, ACS_ULCORNER)
+            self.stdscr.addch(tab_start_y, current_tab_end_x, ACS_URCORNER)
+
+        # Active tab style
+        active_start_x = start_x + self.current_mode * (self.TAB_WIDTH + 1)
+        active_end_x = active_start_x + self.TAB_WIDTH + 1
+        self.stdscr.addch(tab_start_y, active_start_x, ACS_ULCORNER)
+        self.stdscr.addch(tab_start_y, active_end_x, ACS_URCORNER)
+        # add tab left bottom corner and top left corner except the first one
+        if self.current_mode != 0:
+            self.stdscr.addch(tab_end_y, active_start_x, ACS_LRCORNER)
+            self.stdscr.addch(tab_end_y, start_x, ACS_ULCORNER)
+        self.stdscr.addch(tab_end_y, active_end_x, ACS_LLCORNER)
+        self.stdscr.hline(tab_end_y, active_start_x+1, " ", self.TAB_WIDTH)
+
+    def _initialize_mode_content(self):
+        """Initialize content display for current mode"""
+        if self.current_mode == self.MODE_GRAYSCALE:
+            self._draw_mode_instructions(self._get_grayscale_instructions())
+            self._initialize_grayscale_regions()
         else:
-            self.stdscr.hline(tab_start_y+1, tab1_start_x, curses.ACS_HLINE, tab_width-1, curses.color_pair(8))
-            self.stdscr.addch(start_y, tab2_start_x-1, ACS_ULCORNER)
-            self.stdscr.addch(tab_start_y+1, tab2_start_x-1, ACS_LRCORNER)
-            self.stdscr.addch(tab_start_y+1, start_x, ACS_ULCORNER)
+            self._draw_mode_instructions(self._get_servo_instructions())
+            self._initialize_servo_regions()
 
-        # 根据当前模式在内容区域内绘制不同内容
-        if self.current_mode == 0:
-            self.draw_grayscale_mode()
-        else:
-            self.draw_servo_motor_mode()
+    def _draw_mode_instructions(self, instructions):
+        """Draw mode-specific operation instructions"""
+        start_y, start_x, end_y, end_x = self.content_area
+        instruction_start_y = self.regions['instructions'][0]
         
-        # 绘制底部状态栏
-        self.update_status_bar()
-        self.stdscr.refresh()
+        self.stdscr.attron(curses.color_pair(self.COLOR_NORMAL))
+        for y, line in enumerate(instructions):
+            current_y = instruction_start_y + y
+            if current_y < end_y:
+                display_line = line[:end_x - start_x - 2]
+                self.stdscr.addstr(current_y, start_x + 1, display_line)
 
-    def update_log(self, text):
-        """更新日志区域"""
-        y, x = self.regions['log']
-        self.stdscr.addstr(y, x, " " * (self.content_width - 2))
-        self.stdscr.addstr(y, x, text)
-        self.stdscr.refresh()
-
-    def draw_grayscale_mode(self):
-        """绘制灰度传感器校准界面"""
-        # 绘制使用说明
-        instructions = [
-            "  - Place all 3 sensors on the DARK area and press [Q] to set dark values",
-            "  - Place all 3 sensors on the LIGHT area and press [W] to set light values",
+    def _get_grayscale_instructions(self):
+        """Get operation instructions for grayscale calibration mode"""
+        return [
+            "  - Place all 3 sensors on DARK area and press [Q] to set dark values",
+            "  - Place all 3 sensors on LIGHT area and press [W] to set light values",
             "  - Press [E] to calculate cliff detection threshold automatically",
             "",
             "      ▓▓▓▓▓▓▓▓▓▓▓▓▓              ┌───────────┐                 ┌─────┐  ",
@@ -224,34 +315,12 @@ class Calibration:
             "           [Q]                        [W]                        [E]",
             ""
         ]
-        
-        # 调整内容绘制位置以适应边框
-        start_y, start_x, end_y, end_x = self.content_area
-        instruction_start_y = self.regions['instructions'][0]
 
-        self.stdscr.attron(curses.color_pair(5))
-        for y, line in enumerate(instructions):
-            current_y = instruction_start_y + y
-            if current_y < end_y:
-                x = start_x + 1
-                display_line = line[:end_x - start_x - 2]
-                self.stdscr.addstr(current_y, x, display_line)
-
-            # 计算数据区域起始Y坐标（最后一条指令下方2行）
-        self.update_region('data1', "Dark Values", f"{self.dark_value if self.dark_value is not None else 'Not set'}")
-        self.update_region('data2', "Light Values", f"{self.light_value if self.light_value is not None else 'Not set'}")
-        self.update_region('data3', "Cliff Threshold", f"{self.cliff_threshold:.2f}")
-        self.update_region('data4', "Raw Values", "")
-        self.update_region('data5', "Calibrated Values", "")
-        self.update_region('data6', "Status", f"{self.status}")
-        self.update_region('data7', "Line Position", f"{self.line_position}")
-
-    def draw_servo_motor_mode(self):
-        """绘制伺服电机校准界面"""
-        # 绘制使用说明
-        instructions = [
-            "  - Use W/A/S/D to adjust the up/down/left/right offsets of the camera",
-            "  - Use Q/E to adjust the left/right offsets of steering servo",
+    def _get_servo_instructions(self):
+        """Get operation instructions for servo/motor calibration mode"""
+        return [
+            "  - Use W/A/S/D to adjust camera up/down/left/right offsets",
+            "  - Use Q/E to adjust steering servo left/right offsets",
             "  - Use Z/C to toggle left/right motor reversal",
             "",
             "                                                  ┌─────┐",
@@ -265,129 +334,170 @@ class Calibration:
             "                                                  └─────┘",
             ""
         ]
+
+    def _initialize_grayscale_regions(self):
+        """Initialize data display regions for grayscale calibration mode"""
+        self.update_region('gs_dark', "Dark Values", self.dark_value or 'Not set')
+        self.update_region('gs_light', "Light Values", self.light_value or 'Not set')
+        self.update_region('gs_cliff', "Cliff Threshold", self.cliff_threshold)
+        self.update_region('gs_raw', "Raw Values", "")
+        self.update_region('gs_calibrated', "Calibrated Values", "")
+        self.update_region('gs_status', "Status", self.status)
+        self.update_region('gs_position', "Line Position", self.line_position)
+
+    def _initialize_servo_regions(self):
+        """Initialize data display regions for servo/motor calibration mode"""
+        self.update_region('steering', "Steering Servo Offset", f"{self.car.steering_servo.offset():.2f}")
+        self.update_region('pan', "Camera Pan Servo Offset", f"{self.car.camera_pan_servo.offset():.2f}")
+        self.update_region('tilt', "Camera Tilt Servo Offset", f"{self.car.camera_tilt_servo.offset():.2f}")
+        self.update_region('lmotor', "Left Motor Reversed", f"{self.car.motors.left_reversed}")
+        self.update_region('rmotor', "Right Motor Reversed", f"{self.car.motors.right_reversed}")
+
+    def update_region(self, region_name, name, value, attr=None):
+        """Update display content for specified region
         
-        # 调整内容绘制位置以适应边框
-        start_y, start_x, end_y, end_x = self.content_area
-        instruction_start_y = self.regions['instructions'][0]
-
-        self.stdscr.attron(curses.color_pair(5))
-        for y, line in enumerate(instructions):
-            current_y = instruction_start_y + y
-            if current_y < end_y:
-                x = start_x + 1
-                display_line = line[:end_x - start_x - 2]
-                self.stdscr.addstr(current_y, x, display_line)
-
-        # 计算数据区域起始Y坐标（最后一条指令下方2行）
-        # 初始化各区域
-        self.update_region('data1', "Steering Servo Offset", f"{self.car.steering_servo.offset():.2f}")
-        self.update_region('data2', "Camera Pan Servo Offset", f"{self.car.camera_pan_servo.offset():.2f}")
-        self.update_region('data3', "Camera Tilt Servo Offset", f"{self.car.camera_tilt_servo.offset():.2f}")
-        self.update_region('data4', "Left Motor Reversed", f"{self.car.motors.left_reversed}")
-        self.update_region('data5', "Right Motor Reversed", f"{self.car.motors.right_reversed}")
-
-    def update_region(self, region_name, name, value, attr=0):
-        """更新指定区域的内容"""
-        height, width = self.current_height, self.current_width
+        Args:
+            region_name: Name of the region
+            name: Display name
+            value: Display value
+            attr: Text attributes
+        """
+        if attr is None:
+            attr = curses.color_pair(self.COLOR_NORMAL)
+        height, width = self.stdscr.getmaxyx()
         y, x = self.regions[region_name]
-
-        name_width = 25
-        value_width = 45
-        value_text = str(value)
         
-        # 处理底部行
+        # Handle bottom row
         if y == -1:
             y = height - 1
         
-        # 确保不超出屏幕范围
-        if y < height:
-            # Clear the region
-            self.stdscr.addstr(y, x, ' ' * (name_width+value_width), curses.color_pair(5))
-            self.stdscr.addstr(y, x, f"{name:>{name_width}}: {value_text:<{value_width}}", attr | curses.color_pair(5))
+        if y > height:
+            return
+
+        name_width = 25
+        value_width = 45
+        if isinstance(value, float):
+            value_text = f"{value:.2f}"
+        else:
+            value_text = str(value)
+        
+        # Clear and update region
+        self.stdscr.addstr(y, x, ' ' * (name_width + value_width), curses.color_pair(self.COLOR_NORMAL))
+        self.stdscr.addstr(y, x, f"{name:>{name_width}}: {value_text:<{value_width}}", attr)
 
     def update_status_bar(self):
-        """更新底部状态栏"""
+        """Update bottom status bar"""
         try:
-            current_height, current_width = self.stdscr.getmaxyx()
-            if current_height < 1 or current_width < 1:
+            height, width = self.stdscr.getmaxyx()
+            if height < 1 or width < 1:
                 return
-            status_bar = " Press [Tab] to switch modes | [Ctrl+C] to exit "
-            status_bar = status_bar.center(current_width, ' ')
-            self.stdscr.addstr(current_height - 1, 0, status_bar, curses.A_REVERSE)
+                
+            status_bar = self.HELP_MESSAGE.rjust(width)
+            self.stdscr.addstr(height - 1, 0, status_bar, curses.color_pair(self.COLOR_STATUS))
         except curses.error:
-            pass
+            pass  # Handle window resize errors
+
+    def update_log(self, msg, level='info'):
+        """Update log with specified message"""
+        height, width = self.stdscr.getmaxyx()
+        width -= len(self.HELP_MESSAGE)
+
+        if len(msg) > width:
+            msg = msg[:width-3]
+            msg += '...'
+
+        if height < 1 or width < 1:
+            return
+        if level == "info":
+            attr = curses.color_pair(self.COLOR_STATUS_NORMAL)
+        elif level == "warning":
+            attr = curses.color_pair(self.COLOR_STATUS_WARNING)
+        elif level == "error":
+            attr = curses.color_pair(self.COLOR_STATUS_ERROR)
+        else:
+            attr = curses.color_pair(self.COLOR_STATUS_NORMAL)
+        
+        self.stdscr.addstr(height-1, 0, msg, attr)
 
     def update_display(self, grayscale_raw_data=None):
-        """更新显示内容"""
+        """Update dynamic display content
+        
+        Args:
+            grayscale_raw_data: Raw data from grayscale sensors
+        """
         if self.check_window_resize():
             return
         
-        height, width = self.current_height, self.current_width
-        min_height = 25
-        min_width = 80
-        
-        if height < min_height or width < min_width:
-            self.stdscr.clear()
-            self.stdscr.addstr(0, 0, f"Please resize terminal (at least {min_width}x{min_height})", curses.color_pair(4))
-            self.stdscr.refresh()
+        if self.is_too_small():
             return
-        
-        # 根据当前模式更新显示
-        if self.current_mode == 0:
-            self.update_grayscale_display(grayscale_raw_data)
+            
+        if self.current_mode == self.MODE_GRAYSCALE:
+            self._update_grayscale_display(grayscale_raw_data)
         else:
-            self.update_servo_motor_display()
-        
+            self._update_servo_display()
+            
         self.stdscr.noutrefresh()
         curses.doupdate()
 
-    def update_grayscale_display(self, grayscale_raw_data=None):
-        """更新灰度校准显示"""
-        # 更新暗色值
-        text = self.dark_value if self.dark_value is not None else 'Not set'
-        attr = curses.color_pair(2) if self.dark_value is not None else curses.color_pair(3)
-        self.update_region('data1', "Dark Values", text, attr)
+    def _update_grayscale_display(self, grayscale_raw_data=None):
+        """Update display content for grayscale calibration mode"""
+        # Update dark values with status color
+        if self.dark_value is None:
+            attr = curses.color_pair(self.COLOR_WARNING)
+            text = 'Not set'
+        elif self.is_dark_light_error():
+            attr = curses.color_pair(self.COLOR_ERROR)
+            text = self.dark_value
+        else:
+            attr = curses.color_pair(self.COLOR_HIGHLIGHT)
+            text = self.dark_value
+        self.update_region('gs_dark', "Dark Values", text, attr)
         
-        # 更新亮色值
-        text = self.light_value if self.light_value is not None else 'Not set'
-        attr = curses.color_pair(2) if self.light_value is not None else curses.color_pair(3)
-        self.update_region('data2', "Light Values", text, attr)
+        # Update light values with status color
+        if self.light_value is None:
+            attr = curses.color_pair(self.COLOR_WARNING)
+            text = 'Not set'
+        elif self.is_dark_light_error():
+            attr = curses.color_pair(self.COLOR_ERROR)
+            text = self.light_value
+        else:
+            attr = curses.color_pair(self.COLOR_HIGHLIGHT)
+            text = self.light_value
+        self.update_region('gs_light', "Light Values", text, attr)
         
-        # 更新悬崖阈值
-        self.update_region('data3', "Cliff Threshold", self.cliff_threshold)
+        # Update other values
+        self.update_region('gs_cliff', "Cliff Threshold", self.cliff_threshold)
+        self.update_region('gs_raw', "Raw Values", grayscale_raw_data)
         
-        # 获取并检查原始值
-        self.update_region('data4', "Raw Values", grayscale_raw_data)
-        
-        # 获取并检查校准值
-        calibrated_values = self.car.grayscale.calibrate_data(grayscale_raw_data)
-        self.update_region('data5', "Calibrated Values", calibrated_values)
-        
-        # 更新状态
-        attr = curses.color_pair(2) if "On line" in self.status else \
-                curses.color_pair(4) if "Cliff" in self.status else \
-                curses.color_pair(3)
-        self.update_region('data6', "Status", self.status, attr)
-        
-        # 检查并更新线路位置
-        self.update_region('data7', "Line Position", self.line_position)
+        if grayscale_raw_data:
+            calibrated_values = self.car.grayscale.calibrate_data(grayscale_raw_data)
+            self.update_region('gs_calibrated', "Calibrated Values", calibrated_values)
 
-    def update_servo_motor_display(self):
-        """更新伺服电机校准显示"""
-        self.update_region('data1', "Steering Servo Offset", f"{self.car.steering_servo.offset():.2f}")
-        self.update_region('data2', "Camera Pan Servo Offset", f"{self.car.camera_pan_servo.offset():.2f}")
-        self.update_region('data3', "Camera Tilt Servo Offset", f"{self.car.camera_tilt_servo.offset():.2f}")
-        self.update_region('data4', "Left Motor Reversed", f"{self.car.motors.left_reversed}")
-        self.update_region('data5', "Right Motor Reversed", f"{self.car.motors.right_reversed}")
+        
+        # Update status with appropriate color
+        attr = curses.color_pair(self.COLOR_HIGHLIGHT) if "On line" in self.status else \
+               curses.color_pair(self.COLOR_ERROR) if "Cliff" in self.status else \
+               curses.color_pair(self.COLOR_WARNING)
+        self.update_region('gs_status', "Status", self.status, attr)
+        self.update_region('gs_position', "Line Position", self.line_position)
+
+    def _update_servo_display(self):
+        """Update display content for servo/motor calibration mode"""
+        self.update_region('steering', "Steering Servo Offset", self.steering_offset)
+        self.update_region('pan', "Camera Pan Servo Offset", self.pan_offset)
+        self.update_region('tilt', "Camera Tilt Servo Offset", self.tilt_offset)
+        self.update_region('lmotor', "Left Motor Reversed", self.left_reversed)
+        self.update_region('rmotor', "Right Motor Reversed", self.right_reversed)
 
     def update_sensor_status(self):
-        """更新传感器状态信息"""
+        """Background thread to continuously update sensor status and display"""
         while self.running:
-            if self.current_mode == 0:
+            if self.current_mode == self.MODE_GRAYSCALE:
                 with self.grayscale_read_lock:
-                    grayscale_raw_data = self.car.get_grayscale_data(raw=True)
-                calibrated_data = self.car.grayscale.calibrate_data(grayscale_raw_data)
+                    left, middle, right = self.car.get_grayscale_data(raw=True)
                 
+                # Check line and cliff status
+                calibrated_data = self.car.grayscale.calibrate_data([left, middle, right])
                 if self.car.is_on_cliff(data=calibrated_data):
                     self.status = "Cliff detected!"
                 elif self.car.is_on_line(data=calibrated_data):
@@ -397,108 +507,162 @@ class Calibration:
                 else:
                     self.status = "Off line"
                 
-                self.update_display(grayscale_raw_data)
+                self.update_display([left, middle, right])
             else:
-                # 伺服电机模式下定期更新显示
-                self.update_display()
-                
+                self.update_display()  # Update servo display periodically
             
-            sleep(0.1)
+            sleep(0.1)  # Reduce CPU usage
 
     def _get_line_position_text(self, position):
-        """生成线路位置的可视化文本"""
-        pos_text = [" "]*21
-        pos_idx = int((position + 1) * 10)
-        pos_idx = max(0, min(20, pos_idx))
-        pos_text[pos_idx] = "█"
+        """Generate visual text for line position
+        
+        Args:
+            position: Normalized line position value (-1.0 to 1.0)
+        
+        Returns:
+            String with visual indicator of line position
+        """
+        pos_text = [" "] * 21  # 21 character positions
+        pos_idx = int((position + 1) * 10)  # Convert to index (0-20)
+        pos_idx = max(0, min(20, pos_idx))  # Clamp to valid range
+        pos_text[pos_idx] = "█"  # Place indicator
+        
         return f"Position: {''.join(pos_text)} ({position:.2f})"
 
     def run(self):
-        """主运行循环"""
+        """Main execution loop"""
         self.running = True
         self.info_thread = Thread(target=self.update_sensor_status)
         self.info_thread.start()
 
         try:
             while True:
-                key = self.stdscr.getch()
-                if key == ord('\t'):  # Tab键切换模式
-                    self.current_mode = 1 - self.current_mode
+                # Check for window resize first
+                if self.check_window_resize():
                     self.initial_draw()
-                elif key == ord('q') and self.current_mode == 0:  # 设置暗值
-                    self.dark_value = self.get_median_data()
-                elif key == ord('w') and self.current_mode == 0:  # 设置亮值
-                    self.light_value = self.get_median_data()
-                elif key == ord('e') and self.current_mode == 0:  # 计算悬崖阈值
-                    self.calculate_cliff_threshold()
-                elif self.current_mode == 1:  # 舵机电机校准模式
-                    if key == ord('w'):  # 摄像头向上
-                        offset = self.car.camera_tilt_servo.offset() 
-                        offset -= self.servo_step
-                        self.car.set_camera_tilt_offset(offset)
-                    elif key == ord('s'):  # 摄像头向下
-                        offset = self.car.camera_tilt_servo.offset()
-                        offset += self.servo_step
-                        self.car.set_camera_tilt_offset(offset)
-                    elif key == ord('a'):  # 摄像头向左
-                        offset = self.car.camera_pan_servo.offset()
-                        offset -= self.servo_step
-                        self.car.set_camera_pan_offset(offset)
-                    elif key == ord('d'):  # 摄像头向右
-                        offset = self.car.camera_pan_servo.offset()
-                        offset += self.servo_step
-                        self.car.set_camera_pan_offset(offset)
-                    elif key == ord('q'):  # 转向舵机向左
-                        offset = self.car.steering_servo.offset()
-                        offset -= self.servo_step
-                        self.car.set_steering_offset(offset)
-                    elif key == ord('e'):  # 转向舵机向右
-                        offset = self.car.steering_servo.offset()
-                        offset += self.servo_step
-                        self.car.set_steering_offset(offset)
-                    elif key == ord('z'):  # 左电机反转切换
-                        reversed = self.car.motors.left_reversed
-                        reversed = not reversed
-                        self.car.set_left_motor_reverse(reversed)
-                        self.car.forward(10)
-                        sleep(2)
-                        self.car.stop()
-                    elif key == ord('c'):  # 右电机反转切换
-                        reversed = self.car.motors.right_reversed
-                        reversed = not reversed
-                        self.car.set_right_motor_reverse(reversed)
-                        self.car.forward(10)
-                        sleep(2)
-                        self.car.stop()
-
-                # 检查是否可以校准
-                if self.dark_value is not None and self.light_value is not None:
-                    self.car.calibrate_grayscale(self.light_value, self.dark_value)
+                    self.update_display()
                 
-                # 清空输入缓冲区，防止按键事件堆积
+                key = self.stdscr.getch()
+                self._handle_key_press(key)
+                
+                # Apply grayscale calibration if both values are set
+                if self.dark_value and self.light_value and not self.is_dark_light_error():
+                    self.car.calibrate_grayscale(self.light_value, self.dark_value)
+                    self.update_log("Grayscale calibration applied")
+                
+                # Clear input buffer to prevent key event accumulation
                 curses.flushinp()
-                sleep(0.1)
+                sleep(0.05)
         except KeyboardInterrupt:
             pass
         finally:
             self.running = False
             self.info_thread.join()
 
+    def _handle_key_press(self, key):
+        """Handle key press events
+        
+        Args:
+            key: Key code
+        """
+        # Handle mode switching
+        if key == ord('\t'):
+            self.current_mode = (self.current_mode + 1) % len(self.modes)
+            self.initial_draw()
+            return
+            
+        # Handle mode-specific keys
+        if self.current_mode == self.MODE_GRAYSCALE:
+            self._handle_grayscale_keys(key)
+        else:
+            self._handle_servo_keys(key)
+
+    def _handle_grayscale_keys(self, key):
+        """Handle key presses for grayscale calibration mode"""
+        key_handlers = {
+            ord('q'): self._set_dark_value,
+            ord('w'): self._set_light_value,
+            ord('e'): self.calculate_cliff_threshold
+        }
+        
+        if key in key_handlers:
+            key_handlers[key]()
+
+    def _set_dark_value(self):
+        """Set dark values for grayscale sensors"""
+        self.dark_value = self.get_median_data()
+        self.update_region('gs_dark', "Dark Values", self.dark_value, curses.color_pair(self.COLOR_HIGHLIGHT))
+        self.update_log("Dark value set to: {}".format(self.dark_value))
+
+    def _set_light_value(self):
+        """Set light values for grayscale sensors"""
+        self.light_value = self.get_median_data()
+        self.update_region('gs_light', "Light Values", self.light_value, curses.color_pair(self.COLOR_HIGHLIGHT))
+        self.update_log("Light value set to: {}".format(self.light_value))
+
+    def _handle_servo_keys(self, key):
+        """Handle key presses for servo/motor calibration mode"""
+        if key in (ord('w'), ord('s')):
+            if key == ord('w'):
+                self.tilt_offset -= self.SERVO_STEP
+            elif key == ord('s'):
+                self.tilt_offset += self.SERVO_STEP
+            self.tilt_offset = round(self.tilt_offset, 2)
+            self.car.set_camera_tilt_offset(self.tilt_offset)
+            self.update_log("Tilt offset adjusted to: {}".format(self.tilt_offset))
+        elif key in (ord('a'), ord('d')):
+            self.pan_offset = self.car.camera_pan_servo.offset()
+            if key == ord('a'):
+                self.pan_offset -= self.SERVO_STEP
+            elif key == ord('d'):
+                self.pan_offset += self.SERVO_STEP
+            self.pan_offset = round(self.pan_offset, 2)
+            self.car.set_camera_pan_offset(self.pan_offset)
+            self.update_log("Pan offset adjusted to: {}".format(self.pan_offset))
+        elif key in (ord('q'), ord('e')):
+            self.steering_offset = self.car.steering_servo.offset()
+            if key == ord('q'):
+                self.steering_offset -= self.SERVO_STEP
+            elif key == ord('e'):
+                self.steering_offset += self.SERVO_STEP
+            self.steering_offset = round(self.steering_offset, 2)
+            self.car.set_steering_offset(self.steering_offset)
+            self.update_log("Steering offset adjusted to: {}".format(self.steering_offset))
+        elif key in (ord('z'), ord('c')):
+            if key == ord('z'):
+                self.left_reversed = not self.left_reversed
+                self.car.set_left_motor_reverse(self.left_reversed)
+                self.update_log("Left motor reversed: {}".format(self.left_reversed))
+            elif key == ord('c'):
+                self.right_reversed = not self.right_reversed
+                self.car.set_right_motor_reverse(self.right_reversed)
+                self.update_log("Right motor reversed: {}".format(self.right_reversed))
+
+            # Test motor direction briefly
+            self.car.forward(self.MOTOR_POWER)
+            sleep(0.5)
+            self.car.stop()
+
+    def is_dark_light_error(self):
+        """Check if dark or light values are in error state"""
+        if self.dark_value is None or self.light_value is None:
+            return False
+        for i in range(3):
+            if self.dark_value[i] > self.light_value[i]:
+                self.update_log(f"Error: Dark value must be less than light value", level="error")
+                return True
+        return False
 
 def main():
-    """主函数，启动校准程序"""
+    """Main function to start calibration program"""
     try:
         stdscr = curses.initscr()
-        curses.start_color()
-        curses.use_default_colors()
         calibrator = Calibration(stdscr)
         calibrator.run()
     except KeyboardInterrupt:
-        print("程序已退出")
+        print("Program exited by user")
     finally:
-        # 确保资源正确释放
-        curses.endwin()
-
+        curses.endwin()  # Ensure proper cleanup
 
 if __name__ == "__main__":
     main()

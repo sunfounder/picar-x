@@ -272,6 +272,7 @@ class PiCarX(object):
         Args:
             offset (float): offset value, range from -20.0 to 20.0.
         '''
+        offset = round(offset, 2)
         self.config.set("steering_offset", offset)
         self.steering_servo.offset(offset)
         self.steering_servo.angle(0)
@@ -282,6 +283,7 @@ class PiCarX(object):
         Args:
             offset (float): offset value, range from -20.0 to 20.0.
         '''
+        offset = round(offset, 2)
         self.config.set("camera_pan_offset", offset)
         self.camera_pan_servo.offset(offset)
         self.camera_pan_servo.angle(0)
@@ -292,6 +294,7 @@ class PiCarX(object):
         Args:
             offset (float): offset value, range from -20.0 to 20.0.
         '''
+        offset = round(offset, 2)
         self.config.set("camera_tilt_offset", offset)
         self.camera_tilt_servo.offset(offset)
         self.camera_tilt_servo.angle(0)
