@@ -66,8 +66,8 @@ ai_api_key = None
 ai_assistant_id = None
 ai_listen_language = "auto"
 ai_say_voice = "alloy"
-# ai_status = AIStatus.NOT_INITIALIZED
-ai_status = AIStatus.IDLE
+ai_status = AIStatus.NOT_INITIALIZED
+# ai_status = AIStatus.IDLE
 ai_listen_result = None
 ai_think_result = None
 ai_error = ""
@@ -184,7 +184,7 @@ def ai_listen_task():
                 wf.setframerate(audio.sample_rate)  # 采样率（来自AudioData）
                 wf.writeframes(audio.get_wav_data())
 
-            os.system("aplay ./stt_output.wav")
+            # os.system("aplay ./stt_output.wav")
 
         # stt
         log.debug(f"Converting audio to text...")
@@ -641,6 +641,9 @@ def handle_received_data():
     # if rec != {}:
     #     log.debug(f"Received data: {rec}")
 
+    if 'ai_say' in rec.keys():
+        print(f"AI say:  {rec['ai_say']}")
+
     for command in rec.keys():
         if command not in COMMAND_MAP:
             log.error(f"Invalid command: {command}")
@@ -742,13 +745,16 @@ def update_data():
 
     # QR code detection data
     if qr_code_detection_enable == True:
-        data_to_send["qr_code_detection"] = {
-            "x": int(Vilib.qrcode_obj_parameter['x']),
-            "y": int(Vilib.qrcode_obj_parameter['y']),
-            "w": int(Vilib.qrcode_obj_parameter['w']),
-            "h": int(Vilib.qrcode_obj_parameter['h']),
-            "d": str(Vilib.qrcode_obj_parameter['data']),
-        }
+        data = str(Vilib.qrcode_obj_parameter['data'])
+        if data != "None":
+            data_to_send["qr_code_detection"] = {
+                "x": int(Vilib.qrcode_obj_parameter['x']),
+                "y": int(Vilib.qrcode_obj_parameter['y']),
+                "w": int(Vilib.qrcode_obj_parameter['w']),
+                "h": int(Vilib.qrcode_obj_parameter['h']),
+                "d": data,
+            }
+            print(data_to_send["qr_code_detection"])
     else:
         if 'qr_code_detection' in data_to_send:
             del data_to_send['qr_code_detection']
@@ -784,6 +790,16 @@ def clear_once_data_to_send():
         del data_to_send['ai_listen_result']
     if 'ai_think_result' in data_to_send:
         del data_to_send['ai_think_result']
+    if 'color_detection' in data_to_send:
+        del data_to_send['color_detection']
+    if 'face_detection' in data_to_send:
+        del data_to_send['face_detection']
+    if 'traffic_sign_detection' in data_to_send:
+        del data_to_send['traffic_sign_detection']
+    if 'qr_code_detection' in data_to_send:
+        del data_to_send['qr_code_detection']
+    if 'music_position' in data_to_send:
+        del data_to_send['music_position']
 
 def init():
     global ai_api_key
