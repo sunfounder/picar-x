@@ -1,7 +1,6 @@
 # #!/usr/bin/env python3
 
 from picarx import PiCarX
-from picarx.utils import reset_mcu
 from vilib import Vilib
 from time import sleep, time, strftime, localtime
 import readchar
@@ -9,9 +8,6 @@ import readchar
 import os
 user = os.getlogin()
 user_home = os.path.expanduser(f'~{user}')
-
-reset_mcu()
-sleep(0.2)
 
 manual = '''
 Press key to call the function(non-case sensitive):

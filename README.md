@@ -11,16 +11,28 @@ Picar-X Python library for Raspberry Pi.
 
 ## Installation
 
- > **Note**
-  You also need to install robot_hat, vilib, sunfounder_controller and other dependent libraries.\
-  <https://docs.sunfounder.com/projects/picar-x-v20/en/latest/python/python_start/install_all_modules.html>
-
 ```bash
-git clone -b v2.0 https://github.com/sunfounder/picar-x.git
+git clone -b v3.x https://github.com/sunfounder/picar-x.git
 cd picar-x
-sudo python3 setup.py install
+sudo bash install.sh
+
+# Setup peaker and microphone. you may need to run this command again after reboot
+sudo bash i2samp.sh
+# Reboot when it ask "Would you like to reboot and retry now? (Y/N):"
+
+# After reboot, run the command again.
+cd picar-x
+sudo bash i2samp.sh
+# Enter Y when it ask "Do you wish to test speaker now? [y/N]"
 
 ```
+
+## Debug command list
+
+```
+cd ~/fusion-hat && sudo pip3 install . --break-system-packages --no-build-isolation
+cd ~/picar-x && sudo pip3 install . --break-system-packages --no-build-isolation
+cd ~/picar-x/app && sudo python3 app.py
 
 ## Trouble Shooting
 

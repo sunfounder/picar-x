@@ -1,4 +1,4 @@
-from robot_hat import Music as RobotHatMusic
+from fusion_hat.music import Music as RobotHatMusic
 import threading
 from enum import IntEnum, StrEnum
 from importlib.resources import files

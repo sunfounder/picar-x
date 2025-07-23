@@ -565,7 +565,7 @@ def handle_led(status):
         log.error(f"Invalid led status: {status}")
         return
     log.debug(f"Set led: {status}")
-    car.led.value(status)
+    car.set_user_led(status)
 
 def handle_piper_set_model(model):
     log.debug(f"Set piper model: {model}")
@@ -689,11 +689,9 @@ def update_data():
     global ai_listen_result, ai_think_result
 
     # Read sensor data
-
     data_to_send["ultrasonic_distance"] = car.get_distance()
     data_to_send["battery_voltage"] = car.get_battery_voltage()
-    data_to_send["user_button_pressed"] = bool(car.usr_btn.value())
-    data_to_send["reset_button_pressed"] = bool(car.rst_btn.value())
+    data_to_send["user_button_pressed"] = bool(car.get_usr_btn())
 
     # Grayscale data
     raw_grayscale_data = car.get_grayscale_data(raw=True)

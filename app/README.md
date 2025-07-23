@@ -2,29 +2,6 @@
 
 ----------------------------------------------------------------
 
-## Install dependencies
-
-- Make sure you have installed Pidog and related dependencies first
-
-    <https://docs.sunfounder.com/projects/picar-x-v20/en/latest/python/python_start/install_all_modules.html>
-
-- Install openai and speech processing libraries
-
-> [!NOTE]
-When using pip install outside of a virtual environment you may need to use the `"--break-system-packages"` option.
-
-    ```bash
-    sudo pip3 install -U openai --break-system-packages
-    sudo pip3 install -U openai-whisper --break-system-packages
-    sudo pip3 install SpeechRecognition --break-system-packages
-
-    sudo apt install python3-pyaudio
-    sudo apt install sox
-    sudo pip3 install -U sox --break-system-packages
-    ```
-
-----------------------------------------------------------------
-
 ## Usage
 
 Run the example program
@@ -36,10 +13,8 @@ sudo python3 app.py
 Or set auto run on startup
 
 ```bash
-sudo cp picar-x-app.service /etc/systemd/system/
-sudo systemctl enable picar-x-app.service
-sudo systemctl daemon-reload
-sudo systemctl start picar-x-app.service
+cd ~/picar-x
+sudo bash install.sh app
 ```
 
 ## Create your own GPT assistant

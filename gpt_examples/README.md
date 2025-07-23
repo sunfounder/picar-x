@@ -96,7 +96,7 @@ sudo python3 gpt_car.py --keyboard --no-img
 
 > [!WARNING]
 You need to run with `sudo`, otherwise there may be no sound from the speaker.
-For certain Robot HATs, you might need to turn on the speaker switch with the command `"pinctrl set 20 op dh"` or `"robot-hat enable_speaker"`
+For certain Robot HATs, you might need to turn on the speaker switch with the command `"pinctrl set 20 op dh"` or `"fusion-hat enable_speaker"`
 
 ## Modify parameters [optional]
 

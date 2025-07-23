@@ -2,7 +2,7 @@ from picarx import PiCarX
 from picarx import Music
 from picarx.openai_helper import OpenAiHelper
 from keys import OPENAI_API_KEY, OPENAI_ASSISTANT_ID
-from picarx.utils import *
+from fusion_hat.utils import gray_print
 
 import speech_recognition as sr
 
@@ -13,7 +13,6 @@ import random
 import os
 import sys
 
-os.popen("pinctrl set 20 op dh") # enable robot_hat speake switch
 current_path = os.path.dirname(os.path.abspath(__file__))
 os.chdir(current_path) # change working directory
 
@@ -154,24 +153,24 @@ def action_handler():
 
         if led_status == 'standby':
             if time.time() - last_led_time > LED_DOUBLE_BLINK_INTERVAL:
-                car.led.off()
-                car.led.on()
+                car.set_user_led(0)
+                car.set_user_led(1)
                 sleep(.1)
-                car.led.off()
+                car.set_user_led(0)
                 sleep(.1)
-                car.led.on()
+                car.set_user_led(1)
                 sleep(.1)
-                car.led.off()
+                car.set_user_led(0)
                 last_led_time = time.time()
         elif led_status == 'think':
             if time.time() - last_led_time > LED_BLINK_INTERVAL:
-                car.led.off()
+                car.set_user_led(0)
                 sleep(LED_BLINK_INTERVAL)
-                car.led.on()
+                car.set_user_led(1)
                 sleep(LED_BLINK_INTERVAL)
                 last_led_time = time.time()
         elif led_status == 'actions':
-                car.led.on() 
+                car.set_user_led(1) 
 
         # actions
         # ------------------------------

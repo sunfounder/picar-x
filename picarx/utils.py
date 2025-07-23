@@ -1,4 +1,3 @@
-from robot_hat.utils import reset_mcu
 from vilib import Vilib
 import os, sys
 import subprocess
@@ -60,7 +59,6 @@ def volume_gain(input_file, output_file, gain):
     except Exception as e:
         print(f"[ERROR] volume_gain err: {e}")
         return False
-
 
 class CameraDetector():
     COLORS = ["red", "orange", "yellow", "green", "blue", "purple"]
@@ -170,6 +168,14 @@ class CameraDetector():
         '''
         return int(self.detect_result['n']) > 0
 
+    def close(self):
+        ''' Close the camera.
+        '''
+        if self.mode == "face":
+            Vilib.face_detect_switch(0)
+        elif self.mode in self.COLORS:
+            Vilib.color_detect('none')
+
 GRAY = '1;30'
 RED = '0;31'
 GREEN = '0;32'
@@ -190,92 +196,6 @@ def warn(msg, end='\n', file=sys.stdout, flush=False):
 
 def error(msg, end='\n', file=sys.stdout, flush=False):
     print_color(msg, end=end, file=file, flush=flush, color=RED)
-
-class Config():
-    def __init__(self, config_file):
-        self.config_file = config_file
-        
-        if not os.path.exists(config_file):
-            os.system(f'touch {config_file}')
-            os.system(f'chown 1000:1000 {config_file}')
-        with open(config_file, 'r') as f:
-            content = f.read()
-            if content == '':
-                content = '{}'
-            self._config = json.loads(content)
-
-    def get(self, key, default_value=None):
-        return self._config.get(key, default_value)
-
-    def set(self, key, value):
-        self._config[key] = value
-        with open(self.config_file, 'w') as f:
-            json.dump(self._config, f, indent=4)
-
-    def delete(self, key):
-        if key in self._config:
-            del self._config[key]
-            with open(self.config_file, 'w') as f:
-                json.dump(self._config, f, indent=4)
-
-    def __getitem__(self, key):
-        return self.get(key)
-
-    def __setitem__(self, key, value):
-        self.set(key, value)
-
-    def __delitem__(self, key):
-        self.delete(key)
-
-    def __contains__(self, key):
-        return key in self._config
-
-    def __iter__(self):
-        return iter(self._config)
-
-    def __len__(self):
-        return len(self._config)
-
-    def __str__(self):
-        return json.dumps(self._config, indent=4)
-
-    def __repr__(self):
-        return f'Config({self.config_file})'
-    def close(self):
-        ''' Close the camera.
-        '''
-        if self.mode == "face":
-            Vilib.face_detect_switch(0)
-        elif self.mode in self.COLORS:
-            Vilib.color_detect('none')
-
-class LazyReader():
-    ''' Lazy reader. Read something in a given interval,
-    even if you read it multiple times in a short time.
-    For those who don't need to read it too frequently.
-    '''
-    def __init__(self, read_function, interval=10):
-        ''' Initialize the lazy reader.
-
-        Args:
-            read_function (function): The function to read.
-            interval (int): The interval to read.
-        '''
-        self.read_function = read_function
-        self.interval = interval
-        self.value = None
-        self.last_read_time = 0
-
-    def read(self):
-        ''' Read the value.
-
-        Returns:
-            The value.
-        '''
-        if time.time() - self.last_read_time > self.interval:
-            self.value = self.read_function()
-            self.last_read_time = time.time()
-        return self.value
 
 def print_line_position(position, length: int = 30, no_print=False):
     value = int(position * length)

@@ -20,6 +20,11 @@ dynamic = ["version"]
 dependencies = [
   'readchar',
   'piper-tts',
+  'sox',
+  'openai',
+  'openai-whisper',
+  'SpeechRecognition',
+  'mammoth_websocket @ git+https://github.com/sunfounder/mammoth_websocket@main',
 ]
 
 [tool.setuptools]
