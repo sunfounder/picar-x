@@ -117,7 +117,7 @@ class Following(AutoDrive):
         self.detector.close()
 
 if __name__ == "__main__":
-    from picarx import PiCarX
+    from picarx.picarx import PiCarX
     try:
         car = PiCarX()
         auto_drive = ObstacleAvoidance(car)

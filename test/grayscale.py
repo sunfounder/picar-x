@@ -1,5 +1,5 @@
 
-from picarx import PiCarX
+from picarx.picarx import PiCarX
 
 car = PiCarX()
 

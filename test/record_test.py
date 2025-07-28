@@ -2,7 +2,7 @@ import speech_recognition as sr
 import wave
 from io import BytesIO
 import os
-from picarx import PiCarX
+from picarx.picarx import PiCarX
 
 # speech_recognition init
 # =================================================================

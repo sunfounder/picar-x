@@ -1,8 +1,9 @@
 from mammoth_websocket.mammoth_websocket import MammothWebSocket
 from mammoth_websocket.utils import get_ips
 
-from picarx import PiCarX, TTS
-from picarx.music import Music, SoundFiles, music_list, sound_list
+from picarx.picarx import PiCarX
+from picarx.tts import TTS
+from picarx.music import SoundFiles, music_list, sound_list
 from picarx.utils import *
 from picarx.auto_drive import LineTracking, ObstacleAvoidance, Following
 from picarx.openai_helper import OpenAiHelper, AIStatus
@@ -46,7 +47,6 @@ COLOR_DETECTION_COMMANDS = ['close','red','orange','yellow','green','blue','purp
 TRAFFIC_SIGNS =  ['none', 'stop', 'right', 'left', 'forward']
 
 ws = MammothWebSocket()
-music = Music()
 car = PiCarX()
 piper = TTS()
 recognizer = sr.Recognizer()
@@ -246,7 +246,7 @@ def ai_say_task(value):
         new_filename = f"./tts/{timestamp}_{gain}dB.wav"
         status = volume_gain(filename, new_filename, gain)
         if status:
-            music.play_sound(new_filename)
+            car.music.play_sound(new_filename)
     # Cleanup tts files
     if status:
         os.remove(filename)
@@ -344,7 +344,7 @@ def handle_qr_code_detection(enable):
     qr_code_detection_enable = enable
 
 def handle_play_sound(index):
-    if music.is_sound_busy():
+    if car.music.is_sound_busy():
         log.error(f"Sound effect is busy")
         return
     try:
@@ -353,7 +353,7 @@ def handle_play_sound(index):
         log.error(f"Invalid sound effect index: {index}")
         return
     log.debug(f"Play sound effect: {index} {sound_file}")
-    music.play_sound_background(sound_file)
+    car.music.play_sound_background(sound_file)
 
 def handle_play_music(index):
     global music_index
@@ -363,24 +363,24 @@ def handle_play_music(index):
         log.error(f"Invalid music index: {index}")
         return
 
-    if index == music_index and music.is_music_busy():
+    if index == music_index and car.music.is_music_busy():
         log.warning(f"Music {index} {music_file} is already playing")
         return
         
     log.debug(f"Play music: {index} {music_file}")
-    data_to_send["music_length"] = music.get_music_length(music_file)
+    data_to_send["music_length"] = car.music.get_music_length(music_file)
     music_index = index
-    music.play_music_background(music_file)
+    car.music.play_music_background(music_file)
 
 def handle_music_control(control):
     log.debug(f"Music control: {control}")
-    music.music_control(control)
+    car.music.music_control(control)
 
 def handle_music_volume(volume):
     volume = constrain(volume, 0, 100)
     log.debug(f"Set volume: {volume}")
     data_to_send["volume"] = volume
-    music.set_volume(volume)
+    car.music.set_volume(volume)
 
 def handle_line_tracking(enable):
     if enable == 0:
@@ -691,6 +691,7 @@ def update_data():
     # Read sensor data
     data_to_send["ultrasonic_distance"] = car.get_distance()
     data_to_send["battery_voltage"] = car.get_battery_voltage()
+    data_to_send["charge_state"] = car.get_charge_state()
     data_to_send["user_button_pressed"] = bool(car.get_usr_btn())
 
     # Grayscale data
@@ -758,12 +759,12 @@ def update_data():
             del data_to_send['qr_code_detection']
 
     # Sound status
-    data_to_send["sound_status"] = int(music.is_sound_busy())
+    data_to_send["sound_status"] = int(car.music.is_sound_busy())
 
     # Music status
-    data_to_send["music_status"] = int(music.is_music_busy())
-    if music.is_music_busy():
-        data_to_send["music_position"] = music.get_music_pos()
+    data_to_send["music_status"] = int(car.music.is_music_busy())
+    if car.music.is_music_busy():
+        data_to_send["music_position"] = car.music.get_music_pos()
 
     # AI status
     data_to_send["ai_status"] = ai_status.value
@@ -840,7 +841,7 @@ def init():
     data_to_send['camera_pan_offset'] = car.camera_pan_servo.offset()
     data_to_send['camera_tilt_offset'] = car.camera_tilt_servo.offset()
     data_to_send['grayscale_cliff_threshold'] = car.grayscale.cliff_threshold
-    data_to_send['volume'] = music.get_volume()
+    data_to_send['volume'] = car.music.get_volume()
     data_to_send['motor_power'] = 0
     data_to_send['steering_angle'] = 0
     data_to_send['camera_pan_angle'] = 0
@@ -859,7 +860,7 @@ def main():
     init()
 
     start = time.time()
-    music.play_sound(SoundFiles.START_ENGINE)
+    car.music.play_sound(SoundFiles.START_ENGINE)
     while True:
         handle_received_data()
         update_data()

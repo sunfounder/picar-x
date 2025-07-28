@@ -1,6 +1,6 @@
 # #!/usr/bin/env python3
 
-from picarx import PiCarX
+from picarx.picarx import PiCarX
 from vilib import Vilib
 from time import sleep, time, strftime, localtime
 import readchar

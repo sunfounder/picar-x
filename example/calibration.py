@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 import curses
-from picarx import PiCarX
+from picarx.picarx import PiCarX
 from statistics import median
 from threading import Thread, Lock
 from time import sleep

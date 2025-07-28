@@ -1,4 +1,4 @@
-from picarx import PiCarX
+from picarx.picarx import PiCarX
 import time
 from picarx.auto_drive import Following
 from vilib import Vilib

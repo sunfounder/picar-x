@@ -1,4 +1,4 @@
-from picarx import TTS
+from picarx.tts import TTS
 
 tts = TTS()
 

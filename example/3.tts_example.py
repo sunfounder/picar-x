@@ -1,6 +1,6 @@
 from time import sleep
-from picarx import Music, TTS
-from picarx.music import MusicFiles, SoundFiles, MusicStatus
+from picarx.music import Music, MusicFiles, SoundFiles, MusicStatus
+from picarx.tts import TTS
 import readchar
 from os import geteuid
 

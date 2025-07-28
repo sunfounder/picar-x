@@ -3,7 +3,7 @@ from fusion_hat.adc import ADC
 from fusion_hat.servo import Servo
 from fusion_hat.modules.grayscale_module import LineTracker
 from fusion_hat.modules.ultrasonic import Ultrasonic
-from fusion_hat.utils import get_battery_voltage, enable_speaker
+from fusion_hat.utils import get_battery_voltage, get_charge_state
 from fusion_hat.utils import LazyReader
 from fusion_hat.utils import get_usr_btn, set_user_led
 from fusion_hat.config import Config
@@ -104,6 +104,7 @@ class PiCarX(object):
 
         # --------- battery voltage ---------
         self.battery_reader = LazyReader(get_battery_voltage, 60)
+        self.charge_state_reader = LazyReader(get_charge_state, 5)
 
         # --------- music init ---------
         self.music = Music()
@@ -135,8 +136,22 @@ class PiCarX(object):
     def set_user_led(self, value: int):
         set_user_led(value)
 
-    def enable_speaker(self):
-        enable_speaker()
+    def get_charge_state(self):
+        ''' Get charge state
+        
+        Returns:
+            bool: True if charging
+        '''
+        return self.charge_state_reader.read()
+
+    def get_battery_voltage(self):
+        ''' Get battery voltage
+        
+        Returns:
+            float: battery voltage value, range from 0 to 3.3.
+        '''
+        return self.battery_reader.read()
+
 
     def set_steering_angle(self, angle:float):
         ''' Set steering angle
@@ -237,14 +252,6 @@ class PiCarX(object):
             bool: True means on line, False means not on line.
         '''
         return self.grayscale.is_on_line(data=data)
-
-    def get_battery_voltage(self):
-        ''' Get battery voltage
-        
-        Returns:
-            float: battery voltage value, range from 0 to 3.3.
-        '''
-        return self.battery_reader.read()
 
     def reset(self):
         ''' Reset robot '''

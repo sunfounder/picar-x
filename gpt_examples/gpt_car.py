@@ -1,5 +1,5 @@
-from picarx import PiCarX
-from picarx import Music
+from picarx.picarx import PiCarX
+from picarx.music import Music
 from picarx.openai_helper import OpenAiHelper
 from keys import OPENAI_API_KEY, OPENAI_ASSISTANT_ID
 from fusion_hat.utils import gray_print

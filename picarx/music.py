@@ -1,4 +1,5 @@
-from fusion_hat.music import Music as RobotHatMusic
+from fusion_hat.music import Music as FusionHatMusic
+from fusion_hat.utils import enable_speaker
 import threading
 from enum import IntEnum, StrEnum
 from importlib.resources import files
@@ -27,11 +28,12 @@ sound_list = [SoundFiles.DOUBLE_HORN, SoundFiles.START_ENGINE]
 # =================================================================
 class Music:
     def __init__(self):
-        self.music = RobotHatMusic()
+        self.music = FusionHatMusic()
         self.sound_thread = None
         self.music_path = None
         self.volume = 100
         self.music_status = MusicStatus.STOP
+        enable_speaker()
 
     def play_sound(self, file_path):
         self.music.sound_play(filename=file_path, volume=self.volume)
@@ -55,7 +57,8 @@ class Music:
             if self.music_status == MusicStatus.PAUSE:
                 self.music.music_resume()
             else:
-                self.music.music_play(self.music_path)
+                if self.music_path is not None:
+                    self.music.music_play(self.music_path)
         elif action == MusicStatus.PAUSE:
             self.music.music_pause()
         self.music_status = action

@@ -1,3 +1,4 @@
-include DESCRIPTION.rst
-include picarx/sounds/*
-include picarx/musics/*
+include picarx/sounds/*.wav
+include picarx/sounds/*.mp3
+include picarx/musics/*.wav
+include picarx/musics/*.mp3

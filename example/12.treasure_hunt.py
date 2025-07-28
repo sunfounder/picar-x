@@ -1,7 +1,8 @@
-from picarx import PiCarX
-from time import sleep
-from picarx import TTS
+from picarx.picarx import PiCarX
+from picarx.tts import TTS
 from vilib import Vilib
+
+from time import sleep
 import readchar
 import random
 import threading

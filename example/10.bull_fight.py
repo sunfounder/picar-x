@@ -1,4 +1,4 @@
-from picarx import PiCarX
+from picarx.picarx import PiCarX
 from picarx.utils import constrain
 from time import sleep
 from vilib import Vilib

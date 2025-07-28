@@ -30,8 +30,8 @@ sudo bash i2samp.sh
 ## Debug command list
 
 ```
-cd ~/fusion-hat && sudo pip3 install . --break-system-packages --no-build-isolation
-cd ~/picar-x && sudo pip3 install . --break-system-packages --no-build-isolation
+cd ~/fusion-hat && sudo pip3 install . --break-system-packages --no-build-isolation --no-deps
+cd ~/picar-x && sudo pip3 install . --break-system-packages --no-build-isolation --no-deps
 cd ~/picar-x/app && sudo python3 app.py
 
 ## Trouble Shooting

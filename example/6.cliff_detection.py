@@ -12,7 +12,7 @@
         and the background gray value.
 
 '''
-from picarx import PiCarX, TTS
+from picarx.picarx import PiCarX, TTS
 from time import sleep
 
 tts = TTS()

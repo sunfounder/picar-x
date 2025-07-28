@@ -7,7 +7,9 @@ class Motors():
     RIGHT_MOTOR = 'M1'
 
     # Minimum power to prevent the motor from not turning
-    MIN_POWER = 20
+    MIN_POWER = 10
+    # Maximum power
+    MAX_POWER = 70
 
     def __init__(self,
         left_motor: str = LEFT_MOTOR,
@@ -23,8 +25,8 @@ class Motors():
             left_reversed (bool, optional): left motor is reversed or not. Defaults to False.
             right_reversed (bool, optional): right motor is reversed or not. Defaults to False.
         """
-        self.left = Motor(left_motor, min_power=self.MIN_POWER)
-        self.right = Motor(right_motor, min_power=self.MIN_POWER)
+        self.left = Motor(left_motor, min=self.MIN_POWER, max=self.MAX_POWER)
+        self.right = Motor(right_motor, min=self.MIN_POWER, max=self.MAX_POWER)
         self.power = 0
         self.wheel_base = 0
         self.track_width = 0

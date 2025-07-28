@@ -1,6 +1,6 @@
 # Differential drive test
 
-from picarx import PiCarX
+from picarx.picarx import PiCarX
 from time import sleep
 
 

@@ -13,7 +13,7 @@
 
 '''
 from turtle import position
-from picarx import PiCarX
+from picarx.picarx import PiCarX
 from picarx.utils import print_line_position
 from time import sleep
 

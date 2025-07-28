@@ -3,7 +3,7 @@
 
 import os
 import time
-from picarx import Music
+from picarx.music import Music
 
 music = Music()
 

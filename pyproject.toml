@@ -9,10 +9,10 @@ authors = [
 ]
 description = "Library for SunFounder PiCar-X robot car"
 readme = "README.md"
+license = { file = "LICENSE" }
 requires-python = ">=3.7"
 classifiers = [
   "Programming Language :: Python :: 3",
-  "License :: OSI Approved :: GNU General Public License v2 (GPLv2)",
   "Operating System :: OS Independent",
 ]
 dynamic = ["version"]
@@ -28,8 +28,12 @@ dependencies = [
 ]
 
 [tool.setuptools]
-packages = ["picarx"]
 include-package-data = true
+packages = [
+  "picarx",
+  "picarx.musics",
+  "picarx.sounds",
+]
 
 [project.urls]
 "Homepage" = "https://github.com/sunfounder/picar-x"
