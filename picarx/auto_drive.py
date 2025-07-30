@@ -2,12 +2,15 @@ import threading
 import time
 from picarx.utils import constrain, CameraDetector
 
+import logging
+
 class AutoDrive():
-    def __init__(self, car):
+    def __init__(self, car, log=None):
         self.car = car
         self.thread = None
         self.running = False
         self.power = 50
+        self.log = log or logging.getLogger(__name__)
 
     def set_power(self, power):
         power = constrain(power, 0, 100)
@@ -42,52 +45,56 @@ class ObstacleAvoidance(AutoDrive):
     def loop(self):
         distance = self.car.get_distance()
         if distance >= self.SAFE_DISTANCE:
+            self.log.debug("[ObstacleAvoidance] safe distance")
             self.car.set_steering_angle(0)
             self.car.forward(self.power)
         elif distance >= self.DANGER_DISTANCE:
+            self.log.debug("[ObstacleAvoidance] danger distance")
             self.car.set_steering_angle(30)
             self.car.forward(self.power)
             time.sleep(0.1)
         else:
+            self.log.debug("[ObstacleAvoidance] too close")
             self.car.set_steering_angle(-30)
             self.car.backward(self.power)
             time.sleep(0.5)
 
 class LineTracking(AutoDrive):
 
-    def __init__(self, car):
-        super().__init__(car)
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
         self.position = 0
 
     def loop(self):
         data = self.car.get_grayscale_data()
 
-        if car.is_on_line(data=data):
+        if self.car.is_on_line(data=data):
+            self.log.debug("[LineTracking] on line")
             position = self.car.get_line_position(data=data)
+            self.log.debug(f"[LineTracking] position: {position}")
             steering_angle = position * 30
             self.car.set_steering_angle(steering_angle)
             self.car.forward(self.power)
             self.position = position
         else:
+            self.log.debug("[LineTracking] off line")
             if self.position < 0:
+                self.log.debug("[LineTracking] turn right")
                 self.car.set_steering_angle(30)
                 self.car.backward(10)
             else:
+                self.log.debug("[LineTracking] turn left")
                 self.car.set_steering_angle(-30)
                 self.car.backward(10)
-                while self.running:
-                    if car.is_on_line():
-                        break
-
-
-        
-
+            while self.running:
+                if self.car.is_on_line():
+                    break
 
 class Following(AutoDrive):
     STEP = 0.3
 
-    def __init__(self, car):
-        super().__init__(car)
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
         self.detector = CameraDetector()
         self.camera_pan_angle = 0
         self.camera_tilt_angle = 0
@@ -98,6 +105,7 @@ class Following(AutoDrive):
 
     def loop(self):
         if self.detector.founded and self.detector.size > 50:
+            self.log.debug(f"[Following] founded: {self.detector.founded}, size: {self.detector.size}, direction: {self.detector.direction}")
             x, y = self.detector.direction
             self.steering_angle += x * self.STEP
             self.camera_pan_angle += x * self.STEP

@@ -357,6 +357,11 @@ class PiCarX(object):
         slopes, offsets = self.grayscale.calibrate(light, dark)
         self.set_grayscale_calibration_data(slopes, offsets)
 
+    def close(self):
+        ''' Close robot '''
+        self.reset()
+        self.ultrasonic.stop_thread()
+
     # Actions
     def wave_hands(self):
         ''' Wave hands '''

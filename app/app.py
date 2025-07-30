@@ -57,9 +57,9 @@ log = logging.getLogger("PiCar-X")
 data_interval = 5 # miliseconds
 openai = None
 
-line_tracking = LineTracking(car)
-obstacle_avoidance = ObstacleAvoidance(car)
-following = Following(car)
+line_tracking = LineTracking(car, log=log)
+obstacle_avoidance = ObstacleAvoidance(car, log=log)
+following = Following(car, log=log)
 
 #----
 ai_api_key = None
@@ -852,8 +852,12 @@ def init():
     data_to_send['action_status'] = False
 
     # --- setup signal handler ---
-    signal.signal(signal.SIGINT, close)
-    signal.signal(signal.SIGTERM, close)
+    signal.signal(signal.SIGINT, handle_signal)
+    signal.signal(signal.SIGTERM, handle_signal)
+
+def handle_signal(signal, frame):
+    log.info(f"Received signal {signal}")
+    close()
 
 def main():
 
@@ -875,7 +879,7 @@ def close():
     log.info("Exiting")
     ws.close()
     Vilib.camera_close()
-    car.reset()
+    car.close()
     exit(0)
 
 if __name__ == "__main__":
