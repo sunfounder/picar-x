@@ -87,13 +87,13 @@ class CameraDetector():
         if self.mode != mode:
             if mode in self.FACE:
                 Vilib.face_detect_switch(1)
-                Vilib.color_detect('none')
+                Vilib.color_detect('close')
             elif mode in self.COLORS:
                 Vilib.face_detect_switch(0)
                 Vilib.color_detect(mode)
             elif mode in self.CLOSE:
                 Vilib.face_detect_switch(0)
-                Vilib.color_detect('none')
+                Vilib.color_detect('close')
             self.mode = mode
 
     @property
@@ -174,7 +174,7 @@ class CameraDetector():
         if self.mode == "face":
             Vilib.face_detect_switch(0)
         elif self.mode in self.COLORS:
-            Vilib.color_detect('none')
+            Vilib.color_detect('close')
 
 GRAY = '1;30'
 RED = '0;31'

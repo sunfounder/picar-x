@@ -420,7 +420,10 @@ def handle_following_power(power):
 
 def handle_following_mode(mode):
     log.debug(f"Set following mode: {mode}")
-    following.set_mode(mode)
+    try:
+        following.set_mode(mode)
+    except ValueError as e:
+        log.error(f"Invalid following mode: {mode}, err: {e}")
 
 def handle_steering_offset(offset):
     offset = constrain(offset, -20, 20)
