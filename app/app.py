@@ -82,6 +82,9 @@ camera_tilt_angle = 0
 grayscale_calibrate_light_data = None
 grayscale_calibrate_dark_data = None
 music_index = None
+button_pressed = False
+button_pressed_for = 0
+button_pressed_at = 0
 
 data_received = {}
 data_to_send = {}
@@ -687,6 +690,39 @@ async def handle_disconnected():
     car.set_camera_pan_angle(0)
     car.set_camera_tilt_angle(0)
 
+def handle_restart_service(delay=0):
+    log.info(f"Restart service in {delay}s")
+    blink_delay = 0.1
+    for_count = int(delay / blink_delay / 2)
+    for _ in range(for_count):
+        handle_led(1)
+        time.sleep(blink_delay)
+        handle_led(0)
+        time.sleep(blink_delay)
+    log.info("Restart service")
+    os.system("systemctl restart picar-x-app.service")
+
+def get_button_status():
+    global button_pressed, button_pressed_for, button_pressed_at
+    pressed = bool(car.get_usr_btn())
+
+    if pressed == True:
+        if button_pressed == False:
+            button_pressed = True
+            button_pressed_at = time.time()
+        else:
+            button_pressed_for = time.time() - button_pressed_at
+            if button_pressed_for > 5:
+                log.debug("Press button for 5s, restart service")
+                handle_restart_service(delay=2)
+    else:
+        if button_pressed == True:
+            button_pressed = False
+            button_pressed_for = 0
+            button_pressed_at = 0
+
+    return pressed
+
 # @update_data_timer.print
 def update_data():
     global ai_listen_result, ai_think_result
@@ -695,7 +731,7 @@ def update_data():
     data_to_send["ultrasonic_distance"] = car.get_distance()
     data_to_send["battery_voltage"] = car.get_battery_voltage()
     data_to_send["charge_state"] = car.get_charge_state()
-    data_to_send["user_button_pressed"] = bool(car.get_usr_btn())
+    data_to_send["user_button_pressed"] = get_button_status()
 
     # Grayscale data
     raw_grayscale_data = car.get_grayscale_data(raw=True)
