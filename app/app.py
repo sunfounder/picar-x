@@ -41,6 +41,7 @@ DEVICE_INFO = {
     "video": "",
 }
 
+CHECK_WIFI_EVERY = 5 # seconds
 CAMERA_SIZE = (800, 600)
 
 COLOR_DETECTION_COMMANDS = ['close','red','orange','yellow','green','blue','purple']
@@ -85,6 +86,9 @@ music_index = None
 button_pressed = False
 button_pressed_for = 0
 button_pressed_at = 0
+connected = False
+connected_changed = False
+check_wifi_time = 0
 
 data_received = {}
 data_to_send = {}
@@ -682,8 +686,18 @@ async def handle_device_config(commands):
             continue
         DEVICE_INFO_MAP[command](value)
 
+async def handle_connected(client_ip):
+    global connected, connected_changed
+    connected = True
+    connected_changed = True
+    log.info(f"Client {client_ip} connected")
+
 async def handle_disconnected():
+    global connected, connected_changed
+    connected = False
+    connected_changed = True
     log.debug("handle_disconnected")
+
     # Reset robot
     car.stop()
     car.set_steering_angle(0)
@@ -695,9 +709,9 @@ def handle_restart_service(delay=0):
     blink_delay = 0.1
     for_count = int(delay / blink_delay / 2)
     for _ in range(for_count):
-        handle_led(1)
+        car.set_user_led(1)
         time.sleep(blink_delay)
-        handle_led(0)
+        car.set_user_led(0)
         time.sleep(blink_delay)
     log.info("Restart service")
     os.system("systemctl restart picar-x-app.service")
@@ -871,6 +885,7 @@ def init():
     ws.set_device_info(DEVICE_INFO)
     ws.set_device_config_handler(handle_device_config)
     ws.set_io_data_handler(handle_io_data)
+    ws.set_connect_handler(handle_connected)
     ws.set_disconnect_handler(handle_disconnected)
     ws.start()
 
@@ -898,13 +913,54 @@ def handle_signal(signal, frame):
     log.info(f"Received signal {signal}")
     close()
 
+def check_wifi():
+    global check_wifi_time
+    # Get wifi interface ip with command
+    if time.time() - check_wifi_time < CHECK_WIFI_EVERY:
+        return True
+    check_wifi_time = time.time()
+    ips = get_ips()
+    if 'wlan0' not in ips:
+        return False
+
+    return True
+
+def check_connection():
+    if not check_wifi():
+        return False
+    return True
+
 def main():
+    global connected_changed
 
     init()
 
     start = time.time()
     car.music.play_sound(SoundFiles.START_ENGINE)
     while True:
+        if not check_wifi():
+            log.error("No wifi connection, try restart wifi")
+            os.system("sudo nmcli device down wlan0")
+            car.set_user_led(1)
+            time.sleep(0.5)
+            car.set_user_led(0)
+            time.sleep(0.5)
+            car.set_user_led(1)
+            time.sleep(0.5)
+            car.set_user_led(0)
+            os.system("sudo nmcli device up wlan0")
+            time.sleep(2)
+            continue
+        if connected_changed:
+            connected_changed = False
+            if connected:
+                car.set_user_led(0)
+        if not connected:
+            car.set_user_led(1)
+            time.sleep(1)
+            car.set_user_led(0)
+            time.sleep(1)
+            continue
         handle_received_data()
         update_data()
         delay = time.time() - start
@@ -912,7 +968,6 @@ def main():
         delay = data_interval - delay
         delay = max(delay, 0)
         time.sleep(delay)
-        # time.sleep(1)
 
 def close():
     log.info("Exiting")

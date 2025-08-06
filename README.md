@@ -31,6 +31,7 @@ sudo bash i2samp.sh
 
 ```
 cd ~/fusion-hat && sudo pip3 install . --break-system-packages --no-build-isolation --no-deps
+cd ~/mammoth_websocket && sudo pip3 install . --break-system-packages --no-build-isolation --no-deps
 cd ~/picar-x && sudo pip3 install . --break-system-packages --no-build-isolation --no-deps
 cd ~/picar-x/app && sudo python3 app.py
 
