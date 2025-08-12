@@ -1,6 +1,6 @@
 from time import sleep
 from picarx.music import Music, MusicFiles, SoundFiles, MusicStatus
-from picarx.tts import TTS
+from picarx.tts import Pico2Wave
 import readchar
 from os import geteuid
 
@@ -8,7 +8,7 @@ if geteuid() != 0:
     print(f"\033[0;33m{'The program needs to be run using sudo, otherwise there may be no sound.'}\033[0m")
 
 music = Music()
-tts = TTS()
+tts = Pico2Wave()
 
 manual = '''
 Input key to call the function!

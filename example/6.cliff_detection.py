@@ -12,11 +12,12 @@
         and the background gray value.
 
 '''
-from picarx.picarx import PiCarX, TTS
+from picarx.picarx import PiCarX
+from fusion_hat.tts import Pico2Wave
+
 from time import sleep
 
-tts = TTS()
-tts.lang("en-US")
+tts = Pico2Wave()
 
 car = PiCarX()
 # manual modify reference value

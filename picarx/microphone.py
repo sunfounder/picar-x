@@ -1,0 +1,1 @@
+from fusion_hat.microphone import Microphone

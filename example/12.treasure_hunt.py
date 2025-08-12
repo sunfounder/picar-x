@@ -1,5 +1,6 @@
 from picarx.picarx import PiCarX
-from picarx.tts import TTS
+from fusion_hat.tts import Pico2Wave
+
 from vilib import Vilib
 
 from time import sleep
@@ -8,7 +9,7 @@ import random
 import threading
 
 car = PiCarX()
-tts = TTS()
+tts = Pico2Wave()
 
 manual = '''
 Press keys on keyboard to control Picar-X!

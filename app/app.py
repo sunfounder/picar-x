@@ -2,13 +2,16 @@ from mammoth_websocket.mammoth_websocket import MammothWebSocket
 from mammoth_websocket.utils import get_ips
 
 from picarx.picarx import PiCarX
-from picarx.tts import TTS
+from picarx.tts import Piper, OpenAI_TTS
+from picarx.stt import OpenAI_STT, Vosk
+from picarx.llm import LLM
+from picarx.microphone import Microphone
+
 from picarx.music import SoundFiles, music_list, sound_list
 from picarx.utils import *
 from picarx.auto_drive import LineTracking, ObstacleAvoidance, Following
-from picarx.openai_helper import OpenAiHelper, AIStatus
 
-import speech_recognition as sr
+from utils import Timer, Task, Status
 import signal
 
 import json
@@ -19,15 +22,7 @@ import time
 import logging
 import threading
 
-import wave
-from io import BytesIO
 import os
-
-# --- debug ---
-# import psutil
-# import os
-# pid = os.getpid()
-# process = psutil.Process(pid)
 
 # global variables
 # =================================================================
@@ -48,30 +43,33 @@ COLOR_DETECTION_COMMANDS = ['close','red','orange','yellow','green','blue','purp
 TRAFFIC_SIGNS =  ['none', 'stop', 'right', 'left', 'forward']
 
 ws = MammothWebSocket()
+
 car = PiCarX()
-piper = TTS()
-recognizer = sr.Recognizer()
-recognizer.dynamic_energy_adjustment_damping = 0.16
-recognizer.dynamic_energy_ratio = 1.6
-# recognizer.pause_threshold = 1
+piper = Piper()
+openai_tts = OpenAI_TTS()
+openai_stt = OpenAI_STT(model="gpt-4o-mini-transcribe")
+vosk = Vosk()
+llm = LLM(model="gpt-4o-mini")
+microphone = Microphone()
+
 log = logging.getLogger("PiCar-X")
 data_interval = 5 # miliseconds
-openai = None
 
 line_tracking = LineTracking(car, log=log)
 obstacle_avoidance = ObstacleAvoidance(car, log=log)
 following = Following(car, log=log)
 
 #----
+alert_message = None
 ai_api_key = None
-ai_assistant_id = None
 ai_listen_language = "auto"
-ai_say_voice = "alloy"
-ai_status = AIStatus.NOT_INITIALIZED
-# ai_status = AIStatus.IDLE
-ai_listen_result = None
-ai_think_result = None
-ai_error = ""
+ai_status = Status.NOT_INITIALIZED
+ai_listen_result = ""
+ai_think_result = ""
+ai_think_running = False
+ai_listen_task = None
+ai_think_task = None
+ai_say_task = None
 color_detection_mode = "close"
 face_detection_enable = False
 traffic_sign_detection_enable = False
@@ -89,6 +87,10 @@ button_pressed_at = 0
 connected = False
 connected_changed = False
 check_wifi_time = 0
+vosk_listen_result = ""
+vosk_language = ""
+vosk_set_language_task = None
+vosk_listen_task = None
 
 data_received = {}
 data_to_send = {}
@@ -103,162 +105,135 @@ SGBRG10_CSI2P,1920x1080/0 - Score: 1349.67
 SGBRG10_CSI2P,2592x1944/0 - Score: 1567
 '''
 
-class Timer():
-    def __init__(self):
-        self.start = None
-        self.end = None
+# update_data_timer = Timer()
 
-    def print(self, func):
-        def wrapper(*args, **kwargs):
-            start = time.time()
-            # 计算函数运行的间隔
-            interval = None
-            if self.start is not None:
-                interval = start - self.start
-                interval = round(interval*1000, 2)
-            self.start = start
+class VoskSetLanguageTask(Task):
+    def download_callback(self, current, total):
+        percent = current / total * 100
+        log.debug(f"Downloading STT model: {current} / {total} ({percent:.2f}%)")
+        alert("info", f"Downloading STT model: {percent:.2f}%")
 
-            result = func(*args, **kwargs)
-            self.end = time.time()
-            duration = self.end - self.start
-            duration = round(duration*1000, 2)
-            if interval is None:
-                print(f"[{duration:>6}] {func.__name__}")
-            else:
-                print(f"[{interval:>6}, {duration:>6}] {func.__name__}")
-            return result
-        return wrapper
+    def main(self, language):
+        global vosk_language
+        try:
+            if not vosk.is_model_downloaded(language):
+                log.warning(f"Model {language} not downloaded, download it")
+                vosk.download_model(language, progress_callback=self.download_callback)
+                log.info(f"Model {language} downloaded")
 
-update_data_timer = Timer()
-
-def init_openai():
-    global openai, ai_status, ai_error
-    ai_status = AIStatus.INITIALIZING
-    ai_error = ""
-    log.info(f"Init OpenAI with API Key: {ai_api_key} and Assistant ID: {ai_assistant_id}")
-    try:
-        openai = OpenAiHelper(ai_api_key, ai_assistant_id, 'picar-x')
-        ai_status = AIStatus.IDLE
-    except Exception as e:
-        log.error(f"OpenAI init failed: {e}")
-        ai_error = f"[ERROR] {str(e)}"
-        ai_status = AIStatus.FAILED
-        return False
-    return True
-
-def check_openai():
-    global ai_error
-    if ai_status == AIStatus.NOT_INITIALIZED:
-        log.error("Open AI not initialized")
-        ai_error = "[ERROR] Open AI not initialized"
-        return False
-    elif ai_status != AIStatus.IDLE:
-        log.warning(f"Open AI is {ai_status}, wait...")
-        ai_error = f"[WARNING] Open AI is {ai_status}, wait..."
-        for _ in range(10):
-            if ai_status == AIStatus.IDLE:
-                log.info(f"Open AI init done")
-                return True
+            vosk.set_language(language)
+            log.debug(f"Set Vosk language: {language}")
+            vosk_language = language
             time.sleep(1)
-        if ai_status != AIStatus.IDLE:
-            log.error(f"Open AI init timeout")
-            ai_error = "[ERROR] Open AI init timeout"
-            return False
+        except Exception as e:
+            log.error(f"Set Vosk language failed: {e}")
 
-    return True
-    
-def ai_listen_task():
-    global ai_status, ai_listen_result
-    if not check_openai():
-        return
-    
-    # recording audio
-    ai_status = AIStatus.LISTENING
-    log.debug(f"Start listening...")
-    for _ in range(10):
-        with sr.Microphone(chunk_size=8192) as source:
-            cancel_redirect_error() # restore error print
-            recognizer.adjust_for_ambient_noise(source)
-            audio = recognizer.listen(source)
+class VoskListenTask(Task):
+    def main(self):
+        global vosk_listen_result
+        print(vosk.language())
+        if not vosk.language():
+            log.error("Vosk language not set")
+            alert("error", "Set Vosk language first")
+            return
+        
+        log.debug(f"Vosk start listening...")
+        vosk_listen_result = ""
+        for result in vosk.listen(stream=True):
+            if not self.running:
+                log.debug(f"Vosk listen terminated")
+                break
+            if result["done"]:
+                log.debug(f"Vosk final result: {result['final']}")
+                vosk_listen_result = result['final']
+                break
+            else:
+                log.debug(f"Vosk partial result: {result['partial']}")
+                vosk_listen_result = result['partial']
 
-            wav_data = BytesIO(audio.get_wav_data())
-            wav_data.name = "stt_output.wav"
+class AiListenTask(Task):
+    def main(self):
+        global ai_status, ai_listen_result
+        if not openai_stt.is_ready:
+            log.error("Open AI STT not ready")
+            ai_status = Status.FAILED
+            alert("error", "Open AI STT not ready")
+            return
             
-            file = "./stt_output.wav"
-            with wave.open(file, "wb") as wf:
-                wf.setnchannels(1)  # 单声道
-                wf.setsampwidth(audio.sample_width)  # 采样宽度（来自AudioData）
-                wf.setframerate(audio.sample_rate)  # 采样率（来自AudioData）
-                wf.writeframes(audio.get_wav_data())
+        ai_status = Status.LISTENING
+        microphone.listen("/temp/picar-x-app-listening.wav")
+        try:
+            ai_listen_result = ""
+            result = openai_stt.stt("/temp/picar-x-app-listening.wav", stream=True)
+            for next_word in result:
+                log.debug(f"OpenAI STT partial result: {next_word}")
+                ai_listen_result += next_word
+                if not self.running:
+                    break
+            log.info(f"OpenAI STT result: {ai_listen_result}")
+            ai_status = Status.IDLE
+        except Exception as e:
+            log.error(f"OpenAI STT failed: {e}")
+            alert("error", f"OpenAI STT failed: {e}")
+            ai_status = Status.FAILED
+            return
 
-            # os.system("aplay ./stt_output.wav")
+class AiThinkTask(Task):
+    def main(self, value, with_image=False):
+        global ai_status, ai_think_result, ai_think_running
+        if not llm.is_ready:
+            log.error("LLM not ready")
+            ai_status = Status.FAILED
+            alert("error", "LLM not ready")
+            return
+        
+        content = value.strip()
+        if len(content) == 0:
+            log.error(f"Invalid think content: {content}")
+            return
 
-        # stt
-        log.debug(f"Converting audio to text...")
-        ai_status = AIStatus.STT
-        result = openai.stt(audio, language=ai_listen_language)
-        result = result.strip()
-        if len(result) == 0:
-            log.warning(f"Listen result empty, try again...")
-            continue
-        ai_listen_result = result
-        log.debug(f"Listen result: {result}")
-        ai_status = AIStatus.IDLE
-        break
+        ai_status = Status.THINKING
+        ai_think_running = True
+        log.debug(f"Think with: {content}, with image: {with_image}")
+        try:
+            if with_image:
+                img_path = '/tmp/picar-x-app-think-img.jpg'
+                # Save image
+                cv2.imwrite(img_path, Vilib.img)
+                response = llm.prompt(content, img_path, stream=True)
+            else:
+                response = llm.prompt(content, stream=True)
+        except Exception as e:
+            log.error(f"LLM failed: {e}")
+            alert("error", f"LLM failed: {e}")
+            ai_status = Status.FAILED
+            return
+        ai_think_result = ""
+        for chunk in response:
+            if chunk != None and len(chunk) > 0:
+                ai_think_result = f"{ai_think_result}{chunk}"
+            log.debug(f"Think result: {chunk}")
+        ai_status = Status.IDLE
+        ai_think_running = False
 
-def ai_think_task(value, with_image=False):
-    global ai_status, ai_think_result
-    if not check_openai():
-        return
-    
-    content = value.strip()
-    if len(content) == 0:
-        log.error(f"Invalid think content: {content}")
-        return
+class AiSayTask(Task):
+    def main(self, value):
+        global ai_status
+        if not openai_tts.is_ready:
+            log.error("Open AI TTS not ready")
+            ai_status = Status.FAILED
+            alert("error", "Open AI TTS not ready")
+            return
 
-    ai_status = AIStatus.THINKING
-    log.debug(f"Think with: {content}, with image: {with_image}")
-    if with_image:
-        img_path = './img_imput.jpg'
-        cv2.imwrite(img_path, Vilib.img)
-        response = openai.dialogue_with_img(content, img_path)
-    else:
-        response = openai.dialogue(content)
-    if len(response) > 65535:
-        log.warning(f"think result is too long, {len(response)} > 65535, cut to 65535")
-        response = response[:65535]
-    log.debug(f"Think result: {response}")
-    ai_status = AIStatus.IDLE
-    ai_think_result = response
+        content = value.strip()
+        if len(content) == 0:
+            log.error(f"Invalid speak content: {content}")
+            return
 
-def ai_say_task(value):
-    global ai_status
-    if not check_openai():
-        return
-
-    content = value.strip()
-    if len(content) == 0:
-        log.error(f"Invalid speak content: {content}")
-        return
-
-    ai_status = AIStatus.TTS
-    log.debug(f"speak: [{content}]")
-    gain = 3
-    timestamp = time.strftime("%y-%m-%d_%H-%M-%S", time.localtime())
-    filename = f"./tts/{timestamp}_raw.wav"
-    status = openai.text_to_speech(content, filename, ai_say_voice, response_format='wav')
-    # software volume gain
-    if status:
-        ai_status = AIStatus.SPEAKING
-        new_filename = f"./tts/{timestamp}_{gain}dB.wav"
-        status = volume_gain(filename, new_filename, gain)
-        if status:
-            car.music.play_sound(new_filename)
-    # Cleanup tts files
-    if status:
-        os.remove(filename)
-        os.remove(new_filename)
-    ai_status = AIStatus.IDLE
+        ai_status = Status.TTS
+        log.debug(f"speak: [{content}]")
+        openai_tts.say(content)
+        ai_status = Status.IDLE
 
 def piper_say_task(value):
     data_to_send["piper_saying"] = True
@@ -271,20 +246,27 @@ def piper_say_task(value):
     log.debug(f"piper_say done in {duration} s")
     data_to_send["piper_saying"] = False
 
+def alert(type, msg):
+    global alert_message
+    if type == 'error':
+        type = 'warn'
+    alert_message = [type, msg]
+
 # --- handler functions ---
 def handle_name_changed(name):
     DEVICE_INFO["Name"] = name
     log.debug(f"Name changed to {name}")
     car.set_name(name)
 
-def handle_ai_api_key(value):
-    global ai_api_key
-    if ai_api_key == value:
-        return
-    DEVICE_INFO["ai_api_key"] = value
-    car.config.set("ai_api_key", value)
-    log.debug(f"Set api-key: {value}")
-    ai_api_key = value
+def handle_ai_api_key(api_key):
+    global ai_status
+    DEVICE_INFO["ai_api_key"] = api_key
+    car.config.set("ai_api_key", api_key)
+    openai_stt.set_api_key(api_key)
+    openai_tts.set_api_key(api_key)
+    llm.set_api_key(api_key)
+    log.debug(f"Set api-key: {api_key}")
+    ai_status = Status.IDLE
 
 def handle_motor(power):
     global motor_power
@@ -492,34 +474,9 @@ def handle_ai_assistant_id(value):
     log.debug(f"Set assistant-id: {value}")
     ai_assistant_id = value
 
-def handle_ai_init(enable):
-    global ai_error
-    log.debug(f"Init OpenAI: {enable}")
-    if enable == 0:
-        return
-    
-    if ai_api_key is None or ai_api_key == '' \
-        or ai_assistant_id is None or ai_assistant_id == '':
-        ai_error = "[ERROR] API Key or Assistant ID is empty"
-        return False
-    
-    if ai_status == AIStatus.INITIALIZING:
-        log.warning(f"Open AI is initializing")
-        ai_error = "[ERROR] Open AI is initializing"
-        return False
-    
-    if ai_status in [AIStatus.NOT_INITIALIZED, AIStatus.FAILED]:
-        task = threading.Thread(target=init_openai)
-        task.start()
-        return True
-
-    log.warning(f"Open AI is already initialized")
-    return True
-
-def handle_ai_say_voice(value):
-    global ai_say_voice
-    ai_say_voice = value
-    log.debug(f"Set speak voice: {ai_say_voice}")
+def handle_ai_say_voice(voice):
+    openai_tts.set_voice(voice)
+    log.debug(f"Set speak voice: {voice}")
 
 def handle_ai_listen_language(value):
     global ai_listen_language
@@ -527,41 +484,49 @@ def handle_ai_listen_language(value):
     log.debug(f"Set listen language: {ai_listen_language}")
 
 def handle_ai_listen(enable):
-    if not check_openai():
-        return
     if enable == 0:
+        ai_listen_task.stop()
+        ai_status = Status.IDLE
         return
-
-    task = threading.Thread(target=ai_listen_task)
-    task.start()
+    if ai_status == Status.IDLE:
+        ai_listen_task.start()
 
 def handle_ai_think(value, with_image=False):
-    if not check_openai():
-        return
-    
     if len(value) == 0:
-        log.error(f"Invalid think content: {content}")
+        log.error(f"Invalid think content: {value}")
         return
-
-    task = threading.Thread(target=ai_think_task, args=(value, with_image))
-    task.start()
+    if value == "[STOP]":
+        ai_think_task.stop()
+        ai_status = Status.IDLE
+        log.debug(f"Stop think")
+        return
+    if ai_status == Status.IDLE:
+        ai_think_task.start(value, with_image)
 
 def handle_ai_think_with_image(value):
     handle_ai_think(value, with_image=True)
 
 def handle_ai_say(value):
+    global ai_status
     log.debug(f"handle_ai_say: {value}")
-    # if not check_openai():
-    #     return
 
     if len(value) == 0:
         log.error(f"Invalid speak content: {value}")
         return
 
-    task = threading.Thread(target=ai_say_task, args=(value,))
-    task.start()
+    if value == "[STOP]":
+        ai_say_task.stop()
+        ai_status = Status.IDLE
+        log.debug(f"Stop say")
+        return
+
+    if ai_status == Status.IDLE:
+        ai_say_task.start(value)
 
 def handle_do_action(action):
+    if action == "[STOP]":
+        log.debug(f"Stop action")
+        return
     if action not in car.actions:
         log.error(f"Invalid action: {action}")
         return
@@ -586,6 +551,21 @@ def handle_piper_say(value):
     log.debug(f"handle_piper_say: {value}")
     task = threading.Thread(target=piper_say_task, args=(value,))
     task.start()
+
+def handle_vosk_set_language(language):
+    if language == "[STOP]":
+        log.debug(f"Vosk stop set language")
+        vosk.cancel_download()
+        vosk_set_language_task.stop()
+        return
+    vosk_set_language_task.start(language)
+
+def handle_vosk_listen(enable):
+    if enable == 0:
+        log.debug(f"Vosk stop listen")
+        vosk_listen_task.stop()
+        return
+    vosk_listen_task.start()
 
 DEVICE_INFO_MAP = {
     "name": handle_name_changed,
@@ -626,16 +606,19 @@ COMMAND_MAP = {
     # AI
     "ai_api_key": handle_ai_api_key,
     "ai_assistant_id": handle_ai_assistant_id,
-    "ai_init": handle_ai_init,
     "ai_listen_language": handle_ai_listen_language,
     "ai_say_voice": handle_ai_say_voice,
     "ai_listen": handle_ai_listen,
     "ai_think": handle_ai_think,
     "ai_think_with_image": handle_ai_think_with_image,
     "ai_say": handle_ai_say,
-    # Others
+    # PiPer
     "piper_set_model": handle_piper_set_model,
     "piper_say": handle_piper_say,
+    # Vosk
+    "vosk_set_language": handle_vosk_set_language,
+    "vosk_listen": handle_vosk_listen,
+    # Others
     "do_action": handle_do_action,
     "led": handle_led,
 }
@@ -662,7 +645,6 @@ def handle_received_data():
         if data is not None:
             COMMAND_MAP[command](rec[command])
 
-
 async def handle_io_data(data):
     global data_received
 
@@ -672,7 +654,14 @@ async def handle_io_data(data):
 
     # pack data and send
     data = { "io_data": data_to_send }
-    data = json.dumps(data)
+    if "alert" in data_to_send.keys():
+        print(f"Alert message: {data_to_send['alert']}")
+
+    try:
+        data = json.dumps(data)
+    except:
+        log.error(f"Failed to dump data: {data}")
+        return
     # Add data header
     data = f'DATA+{data}'
     await ws.send(data)
@@ -739,7 +728,7 @@ def get_button_status():
 
 # @update_data_timer.print
 def update_data():
-    global ai_listen_result, ai_think_result
+    global ai_listen_result, ai_think_result, alert_message
 
     # Read sensor data
     data_to_send["ultrasonic_distance"] = car.get_distance()
@@ -806,7 +795,6 @@ def update_data():
                 "h": int(Vilib.qrcode_obj_parameter['h']),
                 "d": data,
             }
-            print(data_to_send["qr_code_detection"])
     else:
         if 'qr_code_detection' in data_to_send:
             del data_to_send['qr_code_detection']
@@ -820,28 +808,24 @@ def update_data():
         data_to_send["music_position"] = car.music.get_music_pos()
 
     # AI status
-    data_to_send["ai_status"] = ai_status.value
-    data_to_send["ai_error"] = ai_error
-    if ai_listen_result is not None:
+    data_to_send["ai_status"] = ai_status
+    if alert_message is not None:
+        data_to_send["alert"] = alert_message
+        alert_message = None
+    if ai_listen_result != "":
         data_to_send["ai_listen_result"] = ai_listen_result
-        ai_listen_result = None
-    if ai_think_result is not None:
+    if ai_think_result != "":
         data_to_send["ai_think_result"] = ai_think_result
-        ai_think_result = None
-
-def set_log():
-    log.setLevel(logging.DEBUG)
-    console_handler = logging.StreamHandler()
-    console_handler.setLevel(logging.DEBUG)
-    formatter = logging.Formatter('%(asctime)s.%(msecs)03d [%(levelname)s] %(message)s', datefmt='%y/%m/%d %H:%M:%S')
-    console_handler.setFormatter(formatter)
-    log.addHandler(console_handler)
+    
+    # Vosk status
+    data_to_send["vosk_listening"] = vosk_listen_task.running
+    data_to_send["vosk_language_setting"] = vosk_set_language_task.running
+    data_to_send["vosk_language"] = vosk_language
+    data_to_send["vosk_listen_result"] = vosk_listen_result
 
 def clear_once_data_to_send():
     if 'ai_listen_result' in data_to_send:
         del data_to_send['ai_listen_result']
-    if 'ai_think_result' in data_to_send:
-        del data_to_send['ai_think_result']
     if 'color_detection' in data_to_send:
         del data_to_send['color_detection']
     if 'face_detection' in data_to_send:
@@ -852,10 +836,21 @@ def clear_once_data_to_send():
         del data_to_send['qr_code_detection']
     if 'music_position' in data_to_send:
         del data_to_send['music_position']
+    if 'alert' in data_to_send:
+        del data_to_send['alert']
+
+def init_log():
+    log.setLevel(logging.DEBUG)
+    console_handler = logging.StreamHandler()
+    console_handler.setLevel(logging.DEBUG)
+    formatter = logging.Formatter('%(asctime)s.%(msecs)03d [%(levelname)s] %(message)s', datefmt='%y/%m/%d %H:%M:%S')
+    console_handler.setFormatter(formatter)
+    log.addHandler(console_handler)
 
 def init():
-    global ai_api_key
-    set_log()
+    global ai_status
+    global vosk_listen_task, vosk_set_language_task, ai_listen_task, ai_think_task, ai_say_task
+    init_log()
 
     ips = get_ips()
     log.debug(f"IPs: {ips}")
@@ -888,6 +883,22 @@ def init():
     ws.set_connect_handler(handle_connected)
     ws.set_disconnect_handler(handle_disconnected)
     ws.start()
+
+    # --- Init AI ---
+    if ai_api_key:
+        try:
+            openai_stt.set_api_key(ai_api_key)
+            openai_tts.set_api_key(ai_api_key)
+            llm.set_api_key(ai_api_key)
+            ai_status = Status.IDLE
+        except Exception as e:
+            log.exception(str(e))
+
+    vosk_set_language_task = VoskSetLanguageTask()
+    vosk_listen_task = VoskListenTask()
+    ai_listen_task = AiListenTask()
+    ai_think_task = AiThinkTask()
+    ai_say_task = AiSayTask()
 
     # --- Get initial data ---
     data_to_send['motor_reverse'] = [car.motors.left_reversed, car.motors.right_reversed]
