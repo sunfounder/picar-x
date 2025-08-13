@@ -46,7 +46,7 @@ ws = MammothWebSocket()
 
 car = PiCarX()
 piper = Piper()
-openai_tts = OpenAI_TTS()
+openai_tts = OpenAI_TTS(gain=3, model="tts-1", voice="alloy", stream=False)
 openai_stt = OpenAI_STT(model="gpt-4o-mini-transcribe")
 vosk = Vosk()
 llm = LLM(model="gpt-4o-mini")
@@ -131,7 +131,6 @@ class VoskSetLanguageTask(Task):
 class VoskListenTask(Task):
     def main(self):
         global vosk_listen_result
-        print(vosk.language())
         if not vosk.language():
             log.error("Vosk language not set")
             alert("error", "Set Vosk language first")
@@ -161,9 +160,9 @@ class AiListenTask(Task):
             return
             
         ai_status = Status.LISTENING
+        ai_listen_result = ""
         microphone.listen("/temp/picar-x-app-listening.wav")
         try:
-            ai_listen_result = ""
             result = openai_stt.stt("/temp/picar-x-app-listening.wav", stream=True)
             for next_word in result:
                 log.debug(f"OpenAI STT partial result: {next_word}")
@@ -193,6 +192,7 @@ class AiThinkTask(Task):
             return
 
         ai_status = Status.THINKING
+        ai_think_result = ""
         ai_think_running = True
         log.debug(f"Think with: {content}, with image: {with_image}")
         try:
@@ -492,6 +492,7 @@ def handle_ai_listen(enable):
         ai_listen_task.start()
 
 def handle_ai_think(value, with_image=False):
+    global ai_status
     if len(value) == 0:
         log.error(f"Invalid think content: {value}")
         return
@@ -634,8 +635,8 @@ def handle_received_data():
     # if rec != {}:
     #     log.debug(f"Received data: {rec}")
 
-    if 'ai_say' in rec.keys():
-        print(f"AI say:  {rec['ai_say']}")
+    # if 'ai_say' in rec.keys():
+    #     print(f"AI say:  {rec['ai_say']}")
 
     for command in rec.keys():
         if command not in COMMAND_MAP:
@@ -654,8 +655,8 @@ async def handle_io_data(data):
 
     # pack data and send
     data = { "io_data": data_to_send }
-    if "alert" in data_to_send.keys():
-        print(f"Alert message: {data_to_send['alert']}")
+    # if "vosk_language_setting" in data_to_send.keys():
+    #     print(f"Vosk language setting: {data_to_send['vosk_language_setting']}")
 
     try:
         data = json.dumps(data)
