@@ -6,6 +6,7 @@ from picarx.tts import Piper, OpenAI_TTS
 from picarx.stt import OpenAI_STT, Vosk
 from picarx.llm import LLM
 from picarx.microphone import Microphone
+from picarx.user_button import UserButton
 
 from picarx.music import SoundFiles, music_list, sound_list
 from picarx.utils import *
@@ -23,6 +24,8 @@ import logging
 import threading
 
 import os
+from systemd import test
+test()
 
 # global variables
 # =================================================================
@@ -46,6 +49,8 @@ ws = MammothWebSocket()
 
 car = PiCarX()
 piper = Piper()
+user_button = UserButton()
+
 openai_tts = OpenAI_TTS(gain=3, model="tts-1", voice="alloy", stream=False)
 openai_stt = OpenAI_STT(model="gpt-4o-mini-transcribe")
 vosk = Vosk()
@@ -81,9 +86,6 @@ camera_tilt_angle = 0
 grayscale_calibrate_light_data = None
 grayscale_calibrate_dark_data = None
 music_index = None
-button_pressed = False
-button_pressed_for = 0
-button_pressed_at = 0
 connected = False
 connected_changed = False
 check_wifi_time = 0
@@ -694,7 +696,8 @@ async def handle_disconnected():
     car.set_camera_pan_angle(0)
     car.set_camera_tilt_angle(0)
 
-def handle_restart_service(delay=0):
+def handle_restart_service():
+    delay = 3
     log.info(f"Restart service in {delay}s")
     blink_delay = 0.1
     for_count = int(delay / blink_delay / 2)
@@ -706,27 +709,6 @@ def handle_restart_service(delay=0):
     log.info("Restart service")
     os.system("systemctl restart picar-x-app.service")
 
-def get_button_status():
-    global button_pressed, button_pressed_for, button_pressed_at
-    pressed = bool(car.get_usr_btn())
-
-    if pressed == True:
-        if button_pressed == False:
-            button_pressed = True
-            button_pressed_at = time.time()
-        else:
-            button_pressed_for = time.time() - button_pressed_at
-            if button_pressed_for > 5:
-                log.debug("Press button for 5s, restart service")
-                handle_restart_service(delay=2)
-    else:
-        if button_pressed == True:
-            button_pressed = False
-            button_pressed_for = 0
-            button_pressed_at = 0
-
-    return pressed
-
 # @update_data_timer.print
 def update_data():
     global ai_listen_result, ai_think_result, alert_message
@@ -735,7 +717,7 @@ def update_data():
     data_to_send["ultrasonic_distance"] = car.get_distance()
     data_to_send["battery_voltage"] = car.get_battery_voltage()
     data_to_send["charge_state"] = car.get_charge_state()
-    data_to_send["user_button_pressed"] = get_button_status()
+    data_to_send["user_button_pressed"] = user_button.is_pressed()
 
     # Grayscale data
     raw_grayscale_data = car.get_grayscale_data(raw=True)
@@ -901,6 +883,10 @@ def init():
     ai_think_task = AiThinkTask()
     ai_say_task = AiSayTask()
 
+    # --- Init User Button ---
+    user_button.set_on_long_press(handle_restart_service, duration=5)
+    user_button.start()
+
     # --- Get initial data ---
     data_to_send['motor_reverse'] = [car.motors.left_reversed, car.motors.right_reversed]
     data_to_send['steering_offset'] = car.steering_servo.offset()
@@ -925,7 +911,7 @@ def handle_signal(signal, frame):
     log.info(f"Received signal {signal}")
     close()
 
-def check_wifi():
+def is_wifi_connected():
     global check_wifi_time
     # Get wifi interface ip with command
     if time.time() - check_wifi_time < CHECK_WIFI_EVERY:
@@ -937,11 +923,6 @@ def check_wifi():
 
     return True
 
-def check_connection():
-    if not check_wifi():
-        return False
-    return True
-
 def main():
     global connected_changed
 
@@ -950,7 +931,7 @@ def main():
     start = time.time()
     car.music.play_sound(SoundFiles.START_ENGINE)
     while True:
-        if not check_wifi():
+        if not is_wifi_connected():
             log.error("No wifi connection, try restart wifi")
             os.system("sudo nmcli device down wlan0")
             car.set_user_led(1)
@@ -961,7 +942,6 @@ def main():
             time.sleep(0.5)
             car.set_user_led(0)
             os.system("sudo nmcli device up wlan0")
-            time.sleep(2)
             continue
         if connected_changed:
             connected_changed = False
@@ -984,6 +964,7 @@ def main():
 def close():
     log.info("Exiting")
     ws.close()
+    user_button.stop()
     Vilib.camera_close()
     car.close()
     exit(0)
