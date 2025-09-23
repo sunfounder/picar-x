@@ -14,7 +14,7 @@
 
 .. _py_keyboard_control:
 
-2. Keyboard Control
+3. Keyboard Control
 ================================
 
 
@@ -30,7 +30,7 @@ You can control the PiCar-X to move forward, backward, left, and right.
 .. code-block::
 
     cd ~/picar-x/example
-    sudo python3 2.keyboard_control.py
+    sudo python3 3.keyboard_control.py
 
 Press keys on keyboard to control PiCar-X! 
 

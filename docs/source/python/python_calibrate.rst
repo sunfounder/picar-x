@@ -14,7 +14,7 @@
 
 .. _py_calibrate:
 
-0. Calibrating the PiCar-X
+1. Calibrating the PiCar-X
 =================================
 
 Calibrate Motors & Servo
@@ -33,14 +33,14 @@ Of course, you can skip this chapter if you think the assembly is perfect and do
 
     .. code-block::
 
-        cd ~/picar-x/example/calibration
-        sudo python3 calibration.py
+        cd ~/picar-x/example
+        sudo python3 1.cali_servo_motor.py
 
 #. After running the code, you will see the following interface displayed in the terminal.
 
     .. image:: img/calibrate1.png
 
-#. The ``R`` key is used to test if the 3 servos are working properly. After selecting a servo with the ``1``, ``2`` or ``3`` keys, then press the ``R`` key to test that servo.
+#. The ``R`` key is used to test if the 3 servos are working properly.
 
 #. Press the number key ``1`` to select the front wheel servo, and then press the ``W/S`` key to let the front wheel looks as forward as possible without skewing left and right.
 
@@ -74,7 +74,7 @@ You can fine-tune these settings through this program to achieve better results.
 #. Lay down a strip of black electrical tape, about 15cm long, on a light-colored floor. Center your PiCar-X so that it straddles the tape. In this setup, the middle sensor of the greyscale module should be directly above the tape, while the two flanking sensors should hover over the lighter surface.
 
 
-#. Run the ``grayscale_calibration.py``.
+#. Run the code.
 
     .. raw:: html
 
@@ -82,8 +82,8 @@ You can fine-tune these settings through this program to achieve better results.
 
     .. code-block::
 
-        cd ~/picar-x/example/calibration
-        sudo python3 grayscale_calibration.py
+        cd ~/picar-x/example
+        sudo python3 1.cali_grayscale.py
 
 #. After running the code, you will see the following interface displayed in the terminal.
 

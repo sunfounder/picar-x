@@ -12,65 +12,117 @@
 
     👉 Ready to explore and create with us? Click [|link_sf_facebook|] and join today!
 
+.. _setup_pi:
+
 4. Set up Your Raspberry Pi
 ============================
+
+To start programming and controlling your PiCar-X, you first need to access your Raspberry Pi.
+This section will guide you through two common methods: using a monitor, keyboard, and mouse, or setting up a headless connection so you can log in remotely from another computer.
+
 If You Have a Screen
 -------------------------
 
-.. note:: The Raspberry Pi ZERO installed on the Robot is not easy to connect to the screen, please use the method without a screen to set it up.
-
-
-If you have a screen, it will be easy for you to operate on the
-Raspberry Pi.
+.. note:: The Raspberry Pi Zero 2W installed on the Robot is not easy to connect to a screen. We recommend the **headless (no-screen)** method.
 
 **Required Components**
 
 * Raspberry Pi
 * Power Adapter
 * Micro SD card
-* Screen Power Adapter
 * HDMI cable
 * Screen
 * Mouse
 * Keyboard
 
-#. Plug in the Mouse and Keyboard.
-
-#. Connect the screen to Raspberry Pi's HDMI port and make sure your screen is plugged into a wall socket and switched on.
-
-    .. note::
-
-        If you use a Raspberry Pi 4/5, you need to connect the screen to the HDMI0 (nearest the power in port).
-
-#. Use the power adapter to power the Raspberry Pi.
-
-#. After a few seconds, the Raspberry Pi OS desktop will be displayed. Now you can open the Terminal to start entering commands.
+#. Insert the microSD card into your Raspberry Pi.
+#. Connect mouse, keyboard, and screen (for Pi 4/5 use **HDMI0**, the port nearest to the power input).
+#. Power on the Raspberry Pi.
+#. After a short while, Raspberry Pi OS desktop will appear and you can open a Terminal to enter commands.
 
     .. image:: img/bookwarm.png
         :align: center
 
-If You Have No Screen
---------------------------
 
-If you don't have a monitor, you can remotely log into your Raspberry Pi.
+If You Have No Screen (Headless Setup)
+-----------------------------------------
+
+Without a monitor, you can configure and log into your Raspberry Pi remotely. This is the most convenient way to get started.
 
 **Required Components**
 
 * Raspberry Pi
 * Power Adapter
 * Micro SD card
+* A computer on the same network
 
-You can apply the SSH command to open the Raspberry Pi's Bash shell. Bash is the standard default shell for Linux. The shell itself is a command (instruction) when the user uses Unix/Linux. Most of what you need to do can be done through the shell.
+**Tips**
+ 
+* Set the **Wireless LAN country** correctly using the ISO/IEC alpha-2 code (e.g., ``US``, ``UK``, ``CN``); otherwise Wi-Fi will not work.  
+* Ensure that your Raspberry Pi and your computer are on the same local network.  
+* For a more reliable connection, use a direct network connection (Ethernet) whenever possible.  
 
-If you're not satisfied with using the command window to access your Raspberry Pi, you can also use the remote desktop feature to easily manage files on your Raspberry Pi using a GUI.
 
-See below for detailed tutorials for each system.
+**Connect via SSH**
 
+1. On your computer, open a terminal (Windows: **PowerShell**, macOS/Linux: **Terminal**) and type:
 
-.. toctree::
+   .. code-block::
 
-    remote_macosx
-    remote_windows
-    remote_linux
-    remote_desktop
+      ssh <username>@<hostname>.local
+      # Example:
+      ssh daisy@picarx.local
 
+#. Alternatively, check your router’s DHCP/client list, find the Pi’s IP, and connect using:
+
+   .. code-block::
+
+      ssh <username>@<IP>
+      
+      # Example:
+
+      ssh daisy@192.xxx.xx.xx
+
+#. On first login, you will see a security prompt. Enter ``yes`` to proceed:
+
+#. Enter the password you set in Raspberry Pi Imager. (Characters will not appear while typing; this is normal.)
+
+   .. note::
+      The absence of visible characters when typing the password is a standard security feature. Just type carefully.
+
+#. Once connected, your Raspberry Pi is ready for remote operations.
+
+   .. image:: img/ssh_login.png
+      :align: center
+
+**Troubleshooting**
+
+* **ssh: Could not resolve hostname ...**  
+
+  * Check that the hostname is correct.  
+  * If it still fails, use the Pi’s IP address instead of ``<hostname>.local``.
+
+* **The term 'ssh' is not recognized... (Windows)**  
+
+  * Your system does not have OpenSSH installed. Install OpenSSH manually (see :ref:`openssh_powershell`), or use a third-party SSH client (see :ref:`login_windows`).  
+
+* **Permission denied (publickey,password)**  
+
+  * Make sure you are using the username and password you configured in Raspberry Pi Imager.  
+
+* **Connection refused**  
+
+  * Wait 1–2 minutes after powering on.  
+  * Confirm that SSH was enabled in Raspberry Pi Imager.
+
+**Graphical Access Options**
+
+If you prefer a graphical interface instead of command line, you have two options:
+
+    .. image:: img/bookwarm.png
+        :align: center
+
+* :ref:`remote_desktop`: Enable **VNC (Virtual Network Computing)** for a full desktop experience on your Pi.  
+* |link_rpi_connect|: Use **Raspberry Pi Connect** for secure remote access from anywhere, directly in a browser.  
+
+Now you cancontrol your Raspberry Pi without a monitor, either through SSH for command-line operations, or with VNC / Raspberry Pi Connect for a graphical desktop experience.

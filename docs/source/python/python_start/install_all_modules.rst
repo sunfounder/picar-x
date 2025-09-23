@@ -51,9 +51,9 @@ Install ``robot-hat``.
 .. code-block::
 
     cd ~/
-    git clone -b v2.0 https://github.com/sunfounder/robot-hat.git
+    git clone -b 2.5.x https://github.com/sunfounder/robot-hat.git --depth 1
     cd robot-hat
-    sudo python3 setup.py install
+    sudo python3 install.py
 
 
 Then download and install the ``vilib`` module.
@@ -65,7 +65,7 @@ Then download and install the ``vilib`` module.
 .. code-block::
 
     cd ~/
-    git clone -b picamera2 https://github.com/sunfounder/vilib.git
+    git clone -b picamera2 https://github.com/sunfounder/vilib.git --depth 1
     cd vilib
     sudo python3 install.py
 
@@ -78,7 +78,7 @@ Download and install the ``picar-x`` module.
 .. code-block::
 
     cd ~/
-    git clone -b v2.0 https://github.com/sunfounder/picar-x.git --depth 1
+    git clone -b 2.1.x https://github.com/sunfounder/picar-x.git --depth 1
     cd picar-x
     sudo python3 setup.py install
 

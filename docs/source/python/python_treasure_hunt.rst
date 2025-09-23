@@ -1,206 +1,256 @@
-.. note::
-
-    Hello, welcome to the SunFounder Raspberry Pi & Arduino & ESP32 Enthusiasts Community on Facebook! Dive deeper into Raspberry Pi, Arduino, and ESP32 with fellow enthusiasts.
-
-    **Why Join?**
-
-    - **Expert Support**: Solve post-sale issues and technical challenges with help from our community and team.
-    - **Learn & Share**: Exchange tips and tutorials to enhance your skills.
-    - **Exclusive Previews**: Get early access to new product announcements and sneak peeks.
-    - **Special Discounts**: Enjoy exclusive discounts on our newest products.
-    - **Festive Promotions and Giveaways**: Take part in giveaways and holiday promotions.
-
-    👉 Ready to explore and create with us? Click [|link_sf_facebook|] and join today!
-
 .. _py_treasure:
 
-12. Treasure Hunt
+20. Treasure Hunt
 ============================
 
-Arrange a maze in your room and place six different color cards in six corners. Then control PiCar-X to search for these color cards one by one!
+In this lesson, you will turn your PiCar-X into a **treasure hunter robot**.  
+Arrange a maze in your room and place six different color cards in different corners.  
+Your PiCar-X will **search, recognize, and celebrate** when it finds the target color.  
 
-.. note:: You can download and print the :download:`PDF Color Cards <https://github.com/sunfounder/sf-pdf/raw/master/prop_card/object_detection/color-cards.pdf>` for color detection.
+This project combines three skills you've learned so far:
 
+* **Computer Vision** – detecting colored cards with the Pi camera.  
+* **Keyboard Control** – driving the robot manually through the maze.  
+* **Speech Feedback** – Pico2Wave announces the target color and success.  
 
-**Run the Code**
+It's a fun game that shows how robots can **see, think, and act** just like treasure hunters!
+
+.. note::  
+   You can download and print the :download:`PDF Color Cards <https://github.com/sunfounder/sf-pdf/raw/master/prop_card/object_detection/color-cards.pdf>` for reliable color detection.  
+
+Run the Code
+------------
 
 .. raw:: html
 
     <run></run>
 
-.. code-block::
+.. code-block:: bash
 
     cd ~/picar-x/example
-    sudo python3 12.treasure_hunt.py
+    sudo python3 20.treasure_hunt.py
 
-**View the Image**
+After running, you'll see a message like this:
 
-After the code runs, the terminal will display the following prompt:
+.. code-block:: text
 
-.. code-block::
-
-    No desktop !
-    * Serving Flask app "vilib.vilib" (lazy loading)
-    * Environment: production
-    WARNING: Do not use the development server in a production environment.
-    Use a production WSGI server instead.
-    * Debug mode: off
     * Running on http://0.0.0.0:9000/ (Press CTRL+C to quit)
 
-Then you can enter ``http://<your IP>:9000/mjpg`` in the browser to view the video screen. such as:  ``http://192.168.18.113:9000/mjpg``
+Then, open ``http://<your IP>:9000/mjpg`` in your browser to view the live video feed.  
+Example: ``http://192.168.18.113:9000/mjpg``  
 
 .. image:: img/display.png
 
-**Code**
+Game Rules
+----------
+
+1. The robot randomly selects a **target color** and says:  **“Look for red!”**  
+2. You drive PiCar-X with the keyboard:  
+
+   * ``w`` = forward  
+   * ``a`` = turn left  
+   * ``s`` = backward  
+   * ``d`` = turn right  
+   * ``space`` = repeat target  
+   * ``Ctrl+C`` = quit  
+
+3. When the camera sees the target color card, PiCar-X says **“Well done!”**  
+4. A new target color is chosen, and the hunt continues!  
+
+Code
+----
 
 .. code-block:: python
 
+    #!/usr/bin/env python3
+
     from picarx import Picarx
-    from time import sleep
-    from robot_hat import Music,TTS
     from vilib import Vilib
+    from robot_hat.tts import Pico2Wave
+
+    from time import sleep
+    import threading
     import readchar
     import random
-    import threading
-    
+
+    # -----------------------
+    # Settings
+    # -----------------------
+    COLORS = ["red", "orange", "yellow", "green", "blue", "purple"]
+    DETECTION_WIDTH_THRESHOLD = 100  # how wide the color blob must be
+    DRIVE_SPEED = 80
+    TURN_ANGLE = 30
+
+    MANUAL = """
+    Press keys to control PiCar-X:
+      w: forward    a: turn left    s: backward    d: turn right
+      space: repeat target          Ctrl+C: quit
+    """
+
+    # -----------------------
+    # Init
+    # -----------------------
     px = Picarx()
-    
-    music = Music()
-    tts = TTS()
-    
-    manual = '''
-    Press keys on keyboard to control Picar-X!
-        w: Forward
-        a: Turn left
-        s: Backward
-        d: Turn right
-        space: Say the target again
-        ctrl+c: Quit
-    '''
-    
-    color = "red"
-    color_list=["red","orange","yellow","green","blue","purple"]
-    
-    def renew_color_detect():
-        global color
-        color = random.choice(color_list)
-        Vilib.color_detect(color)
-        tts.say("Look for " + color)
-    
+
+    tts = Pico2Wave()
+    tts.set_lang("en-US")
+
+    current_color = "red"
     key = None
     lock = threading.Lock()
+
+    def say(line: str):
+        print(f"[SAY] {line}")
+        tts.say(line)
+
+    def renew_color_detect():
+        """Choose a new target color and start detection."""
+        global current_color
+        current_color = random.choice(COLORS)
+        Vilib.color_detect(current_color)
+        say(f"Look for {current_color}!")
+
     def key_scan_thread():
+        """Background thread reading keys."""
         global key
         while True:
-            key_temp = readchar.readkey()
-            print('\r',end='')
+            k = readchar.readkey()
+            # Map special keys before lowercasing
+            if k == readchar.key.SPACE:
+                mapped = "space"
+            elif k == readchar.key.CTRL_C:
+                mapped = "quit"
+            else:
+                mapped = k.lower()
+
             with lock:
-                key = key_temp.lower()
-                if key == readchar.key.SPACE:
-                    key = 'space'
-                elif key == readchar.key.CTRL_C:
-                    key = 'quit'
-                    break
+                key = mapped
+
+            if mapped == "quit":
+                return
             sleep(0.01)
-    
-    def car_move(key):
-        if 'w' == key:
+
+    def car_move(k: str):
+        if k == "w":
             px.set_dir_servo_angle(0)
-            px.forward(80)
-        elif 's' == key:
+            px.forward(DRIVE_SPEED)
+        elif k == "s":
             px.set_dir_servo_angle(0)
-            px.backward(80)
-        elif 'a' == key:
-            px.set_dir_servo_angle(-30)
-            px.forward(80)
-        elif 'd' == key:
-            px.set_dir_servo_angle(30)
-            px.forward(80)
-    
-    
+            px.backward(DRIVE_SPEED)
+        elif k == "a":
+            px.set_dir_servo_angle(-TURN_ANGLE)
+            px.forward(DRIVE_SPEED)
+        elif k == "d":
+            px.set_dir_servo_angle(TURN_ANGLE)
+            px.forward(DRIVE_SPEED)
+
     def main():
         global key
-        Vilib.camera_start(vflip=False,hflip=False)
-        Vilib.display(local=False,web=True)
+
+        # Start camera and web preview
+        Vilib.camera_start(vflip=False, hflip=False)
+        Vilib.display(local=False, web=True)
         sleep(0.8)
-        print(manual)
-    
-        sleep(1)
-        _key_t = threading.Thread(target=key_scan_thread)
-        _key_t.setDaemon(True)
-        _key_t.start()
-    
-        tts.say("game start")
-        sleep(0.05)
+
+        print(MANUAL.strip())
+        say("Game start!")
+        sleep(0.1)
         renew_color_detect()
-        while True:
-    
-            if Vilib.detect_obj_parameter['color_n']!=0 and Vilib.detect_obj_parameter['color_w']>100:
-                tts.say("will done")
-                sleep(0.05)
-                renew_color_detect()
-    
-            with lock:
-                if key != None and key in ('wsad'):
-                    car_move(key)
+
+        # Start keyboard thread (modern style)
+        key_thread = threading.Thread(target=key_scan_thread, daemon=True)
+        key_thread.start()
+
+        try:
+            while True:
+                # Check detection: if target color present and wide enough
+                if (Vilib.detect_obj_parameter.get("color_n", 0) != 0 and
+                    Vilib.detect_obj_parameter.get("color_w", 0) > DETECTION_WIDTH_THRESHOLD):
+                    say("Well done!")
+                    sleep(0.1)
+                    renew_color_detect()
+
+                # Take a snapshot of the last key (and clear it)
+                with lock:
+                    k = key
+                    key = None
+
+                # Handle movement / actions
+                if k in ("w", "a", "s", "d"):
+                    car_move(k)
                     sleep(0.5)
                     px.stop()
-                    key =  None
-                elif key == 'space':
-                    tts.say("Look for " + color)
-                    key =  None
-                elif key == 'quit':
-                    _key_t.join()
-                    print("\n\rQuit")
+                elif k == "space":
+                    say(f"Look for {current_color}!")
+                elif k == "quit":
+                    print("\n[INFO] Quit requested.")
                     break
-    
-            sleep(0.05)
-    
-    if __name__ == "__main__":
-        try:
-            main()
+
+                sleep(0.05)
+
         except KeyboardInterrupt:
-            pass
-        except Exception as e:
-            print(f"ERROR: {e}")
+            print("\n[INFO] Stopped by user.")
         finally:
-            Vilib.camera_close()
+            try:
+                Vilib.camera_close()
+            except Exception:
+                pass
             px.stop()
-            sleep(.2)
+            say("Goodbye!")
+            sleep(0.2)
+
+    if __name__ == "__main__":
+        main()
 
 
-**How it works?**
+How It Works
+------------
 
-To understand the basic logic of this code, you can focus on the following key parts:
+1. **Initialization** 
 
-1. **Initialization and Imports:**
-   Import statements at the beginning of the code to understand the libraries being used.
+   * Import modules and configure PiCar-X, camera, and TTS.  
+   * Set color list, speed, and steering angle.  
 
-2. **Global Variables:**
-   Definitions of global variables, such as ``color`` and ``key``, which are used throughout the code to track the target color and keyboard input.
+2. **Target Selection**
 
-3. ``renew_color_detect()`` :
-   This function selects a random color from a list and sets it as the target color for detection. It also uses text-to-speech to announce the selected color.
+   * ``renew_color_detect()`` randomly picks a target color.  
+   * The robot announces the target with Pico2Wave.  
 
-4. ``key_scan_thread()`` :
-   This function runs in a separate thread and continuously scans for keyboard input, updating the ``key`` variable with the pressed key. It uses a lock for thread-safe access.
+3. **Keyboard Control** 
 
-5. ``car_move(key)`` :
-   This function controls the movement of the PiCar-X based on the keyboard input (``key``). It sets the direction and speed of the robot's movement.
+   * ``key_scan_thread()`` runs in the background to capture keys.  
+   * Keys ``w, a, s, d`` control motion; ``space`` repeats target.  
 
-6. ``main()`` :The primary function that orchestrates the overall logic of the code. It does the following:
+4. **Color Detection**  
 
-    * Initializes the camera and starts displaying the camera feed.
-    * Creates a separate thread to scan for keyboard input.
-    * Announces the start of the game using text-to-speech.
-    * Enters a continuous loop to:
+   * Camera constantly checks if the target color is visible.  
+   * If the detected blob is large enough, PiCar-X celebrates.  
 
-        * Check for detected colored objects and trigger actions when a valid object is detected.
-        * Handle keyboard input to control the robot and interact with the game.
-    * Handles quitting the game and exceptions like KeyboardInterrupt.
-    * Ensures that the camera is closed and the PiCar-X is stopped when exiting.
+5. **Main Loop**
 
-By understanding these key parts of the code, 
-you can grasp the fundamental logic of how the PiCar-X robot responds to keyboard 
-input and detects and interacts with objects of a 
-specific color using the camera and audio output capabilities.
+   * Continuously handles movement, detection, and feedback.  
+   * Cleanly stops the robot and camera when quitting.  
+
+Troubleshooting
+---------------
+
+* **Camera feed not working?**  
+
+  Run ``libcamera-hello`` to check if the Pi camera is connected properly.  
+
+* **Robot doesn't detect colors?** 
+
+  Ensure the cards are printed clearly and placed in good lighting. Try adjusting ``DETECTION_WIDTH_THRESHOLD``.  
+
+* **No voice feedback?**  
+
+  Check that ``pico2wave`` is installed and your audio output is configured.  
+
+* **Car doesn't move?**  
+
+  Verify PiCar-X power is on and the motor calibration is correct.  
+
+----
+
+By completing this lesson, you've built a **mini treasure hunt game** with PiCar-X,  
+combining **vision, control, and interaction** into one project!  
