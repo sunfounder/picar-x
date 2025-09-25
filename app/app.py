@@ -3,7 +3,7 @@ from mammoth_websocket.utils import get_ips
 
 from picarx.picarx import PiCarX
 from picarx.tts import Piper, OpenAI_TTS
-from picarx.stt import OpenAI_STT, Vosk
+from picarx.stt import Vosk
 from picarx.llm import LLM
 from picarx.microphone import Microphone
 from picarx.user_button import UserButton
@@ -24,8 +24,6 @@ import logging
 import threading
 
 import os
-from systemd import test
-test()
 
 # global variables
 # =================================================================
@@ -51,8 +49,7 @@ car = PiCarX()
 piper = Piper()
 user_button = UserButton()
 
-openai_tts = OpenAI_TTS(gain=3, model="tts-1", voice="alloy", stream=False)
-openai_stt = OpenAI_STT(model="gpt-4o-mini-transcribe")
+openai_tts = OpenAI_TTS(gain=3, model="tts-1", voice="alloy")
 vosk = Vosk()
 llm = LLM(model="gpt-4o-mini")
 microphone = Microphone()
@@ -72,7 +69,6 @@ ai_status = Status.NOT_INITIALIZED
 ai_listen_result = ""
 ai_think_result = ""
 ai_think_running = False
-ai_listen_task = None
 ai_think_task = None
 ai_say_task = None
 color_detection_mode = "close"
@@ -151,33 +147,6 @@ class VoskListenTask(Task):
             else:
                 log.debug(f"Vosk partial result: {result['partial']}")
                 vosk_listen_result = result['partial']
-
-class AiListenTask(Task):
-    def main(self):
-        global ai_status, ai_listen_result
-        if not openai_stt.is_ready:
-            log.error("Open AI STT not ready")
-            ai_status = Status.FAILED
-            alert("error", "Open AI STT not ready")
-            return
-            
-        ai_status = Status.LISTENING
-        ai_listen_result = ""
-        microphone.listen("/temp/picar-x-app-listening.wav")
-        try:
-            result = openai_stt.stt("/temp/picar-x-app-listening.wav", stream=True)
-            for next_word in result:
-                log.debug(f"OpenAI STT partial result: {next_word}")
-                ai_listen_result += next_word
-                if not self.running:
-                    break
-            log.info(f"OpenAI STT result: {ai_listen_result}")
-            ai_status = Status.IDLE
-        except Exception as e:
-            log.error(f"OpenAI STT failed: {e}")
-            alert("error", f"OpenAI STT failed: {e}")
-            ai_status = Status.FAILED
-            return
 
 class AiThinkTask(Task):
     def main(self, value, with_image=False):
@@ -264,7 +233,6 @@ def handle_ai_api_key(api_key):
     global ai_status
     DEVICE_INFO["ai_api_key"] = api_key
     car.config.set("ai_api_key", api_key)
-    openai_stt.set_api_key(api_key)
     openai_tts.set_api_key(api_key)
     llm.set_api_key(api_key)
     log.debug(f"Set api-key: {api_key}")
@@ -481,17 +449,10 @@ def handle_ai_say_voice(voice):
     log.debug(f"Set speak voice: {voice}")
 
 def handle_ai_listen_language(value):
-    global ai_listen_language
-    ai_listen_language = value
-    log.debug(f"Set listen language: {ai_listen_language}")
+    log.error(f"handle_ai_listen_language: is deprecated")
 
 def handle_ai_listen(enable):
-    if enable == 0:
-        ai_listen_task.stop()
-        ai_status = Status.IDLE
-        return
-    if ai_status == Status.IDLE:
-        ai_listen_task.start()
+    log.error(f"handle_ai_listen: is deprecated")
 
 def handle_ai_think(value, with_image=False):
     global ai_status
@@ -832,7 +793,7 @@ def init_log():
 
 def init():
     global ai_status
-    global vosk_listen_task, vosk_set_language_task, ai_listen_task, ai_think_task, ai_say_task
+    global vosk_listen_task, vosk_set_language_task, ai_think_task, ai_say_task
     init_log()
 
     ips = get_ips()
@@ -870,7 +831,6 @@ def init():
     # --- Init AI ---
     if ai_api_key:
         try:
-            openai_stt.set_api_key(ai_api_key)
             openai_tts.set_api_key(ai_api_key)
             llm.set_api_key(ai_api_key)
             ai_status = Status.IDLE
@@ -879,7 +839,6 @@ def init():
 
     vosk_set_language_task = VoskSetLanguageTask()
     vosk_listen_task = VoskListenTask()
-    ai_listen_task = AiListenTask()
     ai_think_task = AiThinkTask()
     ai_say_task = AiSayTask()
 

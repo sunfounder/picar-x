@@ -1,1 +1,1 @@
-from fusion_hat.llm import LLM
+from fusion_hat.llm import *
