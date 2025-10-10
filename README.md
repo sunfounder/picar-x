@@ -29,11 +29,15 @@ sudo bash i2samp.sh
 
 ## Debug command list
 
-```
+```bash
 cd ~/fusion-hat && sudo pip3 install . --break-system-packages --no-build-isolation --no-deps
 cd ~/mammoth_websocket && sudo pip3 install . --break-system-packages --no-build-isolation --no-deps
 cd ~/picar-x && sudo pip3 install . --break-system-packages --no-build-isolation --no-deps
 sudo python3 ~/picar-x/app/app.py
+
+sudo pip uninstall --break fusion_hat -y && sudo pip install --break git+https://github.com/sunfounder/fusion-hat.git@1.1.x
+sudo systemctl restart picar-x-app && journalctl -xefu picar-x-app
+```
 
 ## Trouble Shooting
 
