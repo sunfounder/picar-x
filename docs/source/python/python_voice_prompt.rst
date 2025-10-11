@@ -32,7 +32,7 @@ Its voice sounds robotic, but it is highly configurable: you can adjust volume, 
   .. code-block:: python
   
       from picarx import Picarx
-      from robot_hat.tts import Espeak
+      from picarx.tts import Espeak
       import time
   
       px = Picarx()
@@ -78,7 +78,7 @@ It's simpler to use but less flexible — you can only change the language, not 
   .. code-block:: python
   
       from picarx import Picarx
-      from robot_hat.tts import Pico2Wave
+      from picarx.tts import Pico2Wave
       import time
   
       px = Picarx()
@@ -121,11 +121,11 @@ This makes your car safer, friendlier, and more interactive.
 .. code-block:: python
 
   from picarx import Picarx
-  from robot_hat.tts import Espeak
+  from picarx.tts import Espeak
   import time
 
   # If you want to try Pico2Wave instead of Espeak, uncomment below:
-  # from robot_hat.tts import Pico2Wave
+  # from picarx.tts import Pico2Wave
   # tts = Pico2Wave()
   # tts.set_lang('en-US')  # Options: en-US, en-GB, de-DE, es-ES, fr-FR, it-IT
 

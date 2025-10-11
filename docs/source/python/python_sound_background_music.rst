@@ -44,7 +44,7 @@ Input key to call the function!
 .. code-block:: python
 
     from time import sleep
-    from robot_hat import Music
+    from picarx.music import Music
     import readchar
 
     music = Music()

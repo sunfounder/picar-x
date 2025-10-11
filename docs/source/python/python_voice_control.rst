@@ -71,7 +71,7 @@ Before using speech recognition, make sure your USB microphone works correctly.
 
    .. code-block:: python
 
-      from robot_hat.stt import Vosk
+      from picarx.stt import Vosk
 
       vosk = Vosk(language="en-us")
 
@@ -114,7 +114,7 @@ You can also stream speech continuously to see partial results as you speak:
 
 .. code-block:: python
 
-   from robot_hat.stt import Vosk
+   from picarx.stt import Vosk
 
    vosk = Vosk(language="en-us")
 
@@ -159,7 +159,7 @@ In this program, the car:
 .. code-block:: python
 
    from picarx import Picarx
-   from robot_hat.stt import Vosk
+   from picarx.stt import Vosk
    import time
 
    px = Picarx()

@@ -26,7 +26,7 @@ At the end, your PiCar-X will drive around and tell jokes like a little storytel
 
    .. code-block:: python
 
-       from robot_hat.tts import Piper
+       from picarx.tts import Piper
 
        tts = Piper()
 
@@ -105,7 +105,7 @@ At the end, your PiCar-X will drive around and tell jokes like a little storytel
 
    .. code-block:: python
 
-      from robot_hat.tts import OpenAI_TTS
+      from picarx.tts import OpenAI_TTS
       from secret import OPENAI_API_KEY   # or use the try/except version shown above
 
       # Initialize OpenAI TTS
@@ -192,12 +192,12 @@ It’s like having a little robot storyteller on wheels!
 
    # === TTS Configuration ===
    # Default: Piper
-   from robot_hat.tts import Piper
+   from picarx.tts import Piper
    tts = Piper()
    tts.set_model("en_US-amy-low")  # use the voice model you installed
 
    # Optional: switch to OpenAI TTS
-   # from robot_hat.tts import OpenAI_TTS
+   # from picarx.tts import OpenAI_TTS
    # from secret import OPENAI_API_KEY
    # tts = OpenAI_TTS(api_key=OPENAI_API_KEY)
    # tts.set_model("gpt-4o-mini-tts")  # low-latency TTS model

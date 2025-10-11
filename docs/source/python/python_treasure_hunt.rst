@@ -66,7 +66,7 @@ Code
 
     from picarx import Picarx
     from vilib import Vilib
-    from robot_hat.tts import Pico2Wave
+    from picarx.tts import Pico2Wave
 
     from time import sleep
     import threading

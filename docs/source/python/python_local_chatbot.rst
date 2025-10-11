@@ -70,9 +70,9 @@ Code
 
    import re
    import time
-   from robot_hat.llm import Ollama
-   from robot_hat.stt import Vosk
-   from robot_hat.tts import Piper
+   from picarx.llm import Ollama
+   from picarx.stt import Vosk
+   from picarx.tts import Piper
 
    # Initialize speech recognition
    stt = Vosk(language="en-us")
@@ -163,9 +163,9 @@ Code Analysis
 
    import re
    import time
-   from robot_hat.llm import Ollama
-   from robot_hat.stt import Vosk
-   from robot_hat.tts import Piper
+   from picarx.llm import Ollama
+   from picarx.stt import Vosk
+   from picarx.tts import Piper
 
 Brings in the three subsystems you built earlier:
 **Vosk** for speech-to-text (STT), **Ollama** for the LLM, and **Piper** for text-to-speech (TTS).

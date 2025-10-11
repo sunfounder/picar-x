@@ -117,7 +117,7 @@ Once Ollama is installed and your model is ready, you can quickly test it with a
 
    .. code-block:: python
  
-      from robot_hat.llm import Ollama
+      from picarx.llm import Ollama
  
       INSTRUCTIONS = "You are a helpful assistant."
       WELCOME = "Hello, I am a helpful assistant. How can I help you?"
@@ -205,7 +205,7 @@ This is a minimal “see & tell” baseline you can later extend with color/face
 
 .. code-block:: python
 
-   from robot_hat.llm import Ollama
+   from picarx.llm import Ollama
    from picamera2 import Picamera2
    import time
 
