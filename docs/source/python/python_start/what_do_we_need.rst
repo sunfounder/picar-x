@@ -12,62 +12,83 @@
 
     👉 Ready to explore and create with us? Click [|link_sf_facebook|] and join today!
 
-1. What Do We Need?
-====================
+1. What Else Do You Need?
+===============================
+
+Before we start playing with PiCar-X, let’s prepare the essential hardware.  
+Think of these components as the **brain, heart, and senses** of PiCar-X — without them, the car cannot run properly.
 
 Required Components
------------------------
+------------------------------
 
-**Raspberry Pi**
+* **Raspberry Pi**
 
-The Raspberry Pi is a low cost, credit-card sized computer that plugs
-into a computer monitor or TV, and uses a standard keyboard and mouse.
-It is a capable little device that enables people of all ages to explore
-computing, and to learn how to program in languages like Scratch and
-Python.
+  The Raspberry Pi acts as the **brain** of PiCar-X, handling all computing, sensing, and control tasks.  
+  
+  .. image:: img/need_pi.jpg
 
-.. image:: img/compitable_pi.jpg
-    :width: 600
-    :align: center
+  * **Compatible models**: Compatible with Raspberry Pi 5, 4, 3, and Raspberry Pi Zero 2 W (best on Pi 5 or Pi 4).
+  * **Minimum**: **2GB RAM** — sufficient for all PiCar-X standard functions (movement, sensors, camera streaming) and for using **online AI services** such as OpenAI Whisper, TTS, or LLMs.  
+  * **Recommended**: **4GB RAM or more** — ensures smoother performance when running **local AI models** (e.g., Vosk speech recognition, Piper TTS, or lightweight LLMs) alongside camera streaming and control tasks.  
+  
 
-**Power Adapter**
+* **Power Adapter**
 
-To connect to a power socket, the Raspberry Pi has a micro USB port (the
-same found on many mobile phones). You will need a power supply which
-provides at least 2.5 amps.
+  PiCar-X comes with an **18650 battery pack** and a **Robot HAT** board featuring a built-in charging circuit.
+  
+  .. image:: img/need_power.png
+    :width: 400
 
-**Micro SD Card**
+  * For charging, it is recommended to use a **5V 3A power supply**, such as the official **Raspberry Pi 15W USB-C adapter**.  
+  * You may also use a **USB-C Power Delivery (PD) charger** or a **QC 2.0 fast charger**.  
+  * A full charge typically takes about **2 hours** (from 0% to 100%).  
 
-Your Raspberry Pi needs an Micro SD card to store all its files and the
-Raspberry Pi OS. You will need a micro SD card with a capacity of at
-least 8 GB
 
+* **Micro SD Card**
+
+  The Raspberry Pi does not have a built-in hard drive. It boots and stores all files on a **Micro SD card**.  
+  
+  .. image:: img/need_sd.jpg
+    :width: 200
+
+  * Minimum: **16GB**  
+  * Recommended: **32GB** for better stability  
+  * Brand: Use reliable options such as **SanDisk** or **Samsung** to avoid read/write errors  
+  
 Optional Components
--------------------------
+------------------------
 
-**Screen**
+Although not strictly required, the following peripherals will greatly improve your learning and debugging experience:
 
-To view the desktop environment of Raspberry Pi, you need to use the
-screen that can be a TV screen or a computer monitor. If the screen has
-built-in speakers, the Pi plays sounds via them.
+* **Monitor (HDMI or TV)** 
 
-**Mouse & Keyboard**
+  For beginners, we strongly recommend a display with an HDMI input, so you can easily configure Raspberry Pi OS and run graphical programs.  
 
-When you use a screen , a USB keyboard and a USB mouse are also needed.
+  .. image:: img/need_screen.png
+    :width: 400
 
-**HDMI**
+* **HDMI Cable (Standard / Mini / Micro)**
+ 
+  Different Raspberry Pi models use different HDMI connectors, be sure to check your Pi model and prepare the correct cable. 
+  
+  * **Raspberry Pi 4 / 5**: Micro HDMI  
+  * **Raspberry Pi 3**: Standard HDMI  
+  * **Raspberry Pi Zero 2W**: Mini HDMI 
 
-The Raspberry Pi has a HDMI output port that is compatible with the HDMI
-ports of most modern TV and computer monitors. If your screen has only
-DVI or VGA ports, you will need to use the appropriate conversion line.
+  .. image:: img/need_hdmi.png
+    :width: 400
 
-**Case**
+* **Keyboard & Mouse**
 
-You can put the Raspberry Pi in a case; by this means, you can protect
-your device.
+  Very useful during the initial setup of Raspberry Pi OS. Later, you may switch to remote access (SSH/VNC), but for beginners we recommend preparing a basic USB or wireless set.  
 
-**Sound or Earphone**
+  .. image:: img/need_keyboard_mouse.png
+    :width: 500
+ 
 
-The Raspberry Pi is equipped with an audio port about 3.5 mm that can be
-used when your screen has no built-in speakers or when there is no
-screen operation.
+**Tips for Preparation**
+
+* If you purchased the **PiCar-X kit**, most accessories are included, but you still need to prepare the Raspberry Pi board, Micro SD card, and power adapter separately.  
+* Not sure what to buy? 👉 The most stable and universal choice is:  
+  **Raspberry Pi 4 (2GB) + Official Power Supply + 32GB Micro SD card**.  
+

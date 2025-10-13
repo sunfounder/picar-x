@@ -14,7 +14,7 @@
 
 .. _py_line_tracking:
 
-5. Line Tracking
+6. Line Tracking
 ====================================
 
 This project will use the Grayscale module to make the PiCar-X move forward along a line. 
@@ -30,7 +30,7 @@ Some experimenting might be needed if the PiCar-X is derailed.
 .. code-block::
 
     cd ~/picar-x/example
-    sudo python3 5.minecart_plus.py
+    sudo python3 6.line_tracking.py
     
 After running the code, PiCar-X will move forward along a line.
 
@@ -109,12 +109,15 @@ After running the code, PiCar-X will move forward along a line.
                     px.forward(px_power) 
                 else:
                     outHandle()
+
+        except KeyboardInterrupt:
+            print("\nKeyboardInterrupt: stop and exit")
+
         finally:
             px.stop()
             print("stop and exit")
             sleep(0.1)
-       
-
+            
 **How it works?** 
 
 This Python script controls a Picarx robot car using grayscale sensors for navigation. Here's a breakdown of its main components:

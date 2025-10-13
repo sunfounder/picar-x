@@ -205,34 +205,48 @@ If your PiCar-X does not have a microphone, you can use keyboard input text to i
 Voice Communication
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-If your PiCar-X is equipped with a microphone, or you can purchase one by clicking |link_microphone|, you can interact with PiCar-X using voice commands.
+1. Check Your Microphone
+--------------------------
 
-#. First, verify that the Raspberry Pi has detected the microphone.
+Before using speech recognition, make sure your USB microphone works correctly.
 
-   .. code-block:: shell
+#. List available recording devices:
+
+   .. code-block:: bash
 
       arecord -l
 
-   If successful, you will receive the following information, indicating that your microphone has been detected.
+   Look for a line like ``card 1: ... device 0``.  
 
-   .. code-block:: 
-      
-      **** List of CAPTURE Hardware Devices ****
-      card 3: Device [USB PnP Sound Device], device 0: USB Audio [USB Audio]
-      Subdevices: 1/1
-      Subdevice #0: subdevice #0
+#. Record a short sample (replace ``1,0`` with the numbers you found):
 
-#. Run the following command, then speak to PiCar-X or make some sounds. The microphone will record the sounds into the ``op.wav`` file. Press ``Ctrl + C`` to stop recording.
+   .. code-block:: bash
 
-   .. code-block:: shell
+      arecord -D plughw:1,0 -f S16_LE -r 16000 -d 3 test.wav
 
-      rec op.wav
+   * Example: if your device is ``card 2, device 0``, use:
 
-#. Finally, use the command below to play back the recorded sound, confirming that the microphone is functioning properly.
+   .. code-block:: bash
 
-   .. code-block:: shell
+      arecord -D plughw:2,0 -f S16_LE -r 16000 -d 3 test.wav
 
-      sudo play op.wav
+#. Play it back to confirm the recording:
+
+   .. code-block:: bash
+
+      aplay test.wav
+
+#. Adjust microphone volume if needed:
+
+   .. code-block:: bash
+
+      alsamixer
+
+   * Press **F6** to select your USB microphone.  
+   * Find the **Mic** or **Capture** channel.  
+   * Make sure it is not muted (**[MM]** means mute, press ``M`` to unmute → should show **[OO]**).  
+   * Use ↑ / ↓ arrow keys to change the recording volume.
+
 
 #. Now, run the following commands using sudo, as PiCar-X's speaker will not function without it. The process will take some time to complete.
 

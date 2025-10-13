@@ -28,7 +28,7 @@ This project will officially enter the field of computer vision!
 .. code-block::
 
     cd ~/picar-x/example
-    sudo python3 7.display.py
+    sudo python3 7.computer_vision.py
 
 **View the Image**
 

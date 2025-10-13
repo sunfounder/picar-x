@@ -14,13 +14,13 @@
 
 .. _py_cliff:
 
-6. Cliff Detection 
+5. Cliff Detection 
 ===========================
 
 Let us give PiCar-X a little self-protection awareness and let it learn to use its own grayscale module to avoid rushing down the cliff.
 
 In this example, the car will be dormant. 
-If you push it to a cliff, it will be awakened urgently, then back up, and say "danger".
+If you push it to a cliff, it will be awakened urgently, then back up.
 
 **Run the Code**
 
@@ -31,7 +31,7 @@ If you push it to a cliff, it will be awakened urgently, then back up, and say "
 .. code-block::
 
     cd ~/picar-x/example
-    sudo python3 6.cliff_detection.py
+    sudo python3 5.cliff_detection.py
     
 
 **Code**
@@ -45,45 +45,42 @@ If you push it to a cliff, it will be awakened urgently, then back up, and say "
 
 .. code-block:: python
 
+
     from picarx import Picarx
     from time import sleep
-    from robot_hat import TTS
-
-    tts = TTS()
-    tts.lang("en-US")
 
     px = Picarx()
     # px = Picarx(grayscale_pins=['A0', 'A1', 'A2'])
     # manual modify reference value
     px.set_cliff_reference([200, 200, 200])
 
-    current_state = None
-    px_power = 10
-    offset = 20
     last_state = "safe"
 
-    if __name__=='__main__':
+    if __name__ == '__main__':
         try:
             while True:
                 gm_val_list = px.get_grayscale_data()
                 gm_state = px.get_cliff_status(gm_val_list)
-                # print("cliff status is:  %s"%gm_state)
+                # print("cliff status is: %s" % gm_state)
 
                 if gm_state is False:
                     state = "safe"
                     px.stop()
                 else:
-                    state = "danger"   
+                    state = "danger"
                     px.backward(80)
                     if last_state == "safe":
-                        tts.say("danger")
                         sleep(0.1)
+
                 last_state = state
+
+        except KeyboardInterrupt:
+            print("\nKeyboardInterrupt: stop and exit")
 
         finally:
             px.stop()
-            print("stop and exit")
             sleep(0.1)
+
 
 **How it works?** 
 

@@ -69,7 +69,7 @@ Then you can enter ``http://<your IP>:9000/mjpg`` in the browser to view the vid
     
     #!/usr/bin/env python3
 
-    from robot_hat.utils import reset_mcu
+    from picarx.utils import reset_mcu
     from picarx import Picarx
     from vilib import Vilib
     from time import sleep, time, strftime, localtime
