@@ -14,7 +14,7 @@
 
 .. _py_cliff:
 
-6. Klippenerkennung 
+5. Klippenerkennung 
 ===========================
 
 Geben wir PiCar-X ein wenig Selbstschutz-Bewusstsein und lassen es lernen, sein eigenes Graustufenmodul zu nutzen, um nicht über die Klippe zu stürzen.
@@ -31,7 +31,8 @@ Wenn Sie es an eine Klippe schieben, wird es dringend geweckt, fährt dann zurü
 .. code-block::
 
     cd ~/picar-x/example
-    sudo python3 6.cliff_detection.py
+    sudo python3 5.cliff_detection.py
+    
     
 
 **Code**
@@ -47,43 +48,40 @@ Wenn Sie es an eine Klippe schieben, wird es dringend geweckt, fährt dann zurü
 
     from picarx import Picarx
     from time import sleep
-    from robot_hat import TTS
-
-    tts = TTS()
-    tts.lang("en-US")
 
     px = Picarx()
     # px = Picarx(grayscale_pins=['A0', 'A1', 'A2'])
     # manual modify reference value
     px.set_cliff_reference([200, 200, 200])
 
-    current_state = None
-    px_power = 10
-    offset = 20
     last_state = "safe"
 
-    if __name__=='__main__':
+    if __name__ == '__main__':
         try:
             while True:
                 gm_val_list = px.get_grayscale_data()
                 gm_state = px.get_cliff_status(gm_val_list)
-                # print("cliff status is:  %s"%gm_state)
+                # print("cliff status is: %s" % gm_state)
 
                 if gm_state is False:
                     state = "safe"
                     px.stop()
                 else:
-                    state = "danger"   
+                    state = "danger"
                     px.backward(80)
                     if last_state == "safe":
-                        tts.say("danger")
                         sleep(0.1)
+
                 last_state = state
+
+        except KeyboardInterrupt:
+            print("\nKeyboardInterrupt: stop and exit")
 
         finally:
             px.stop()
-            print("stop and exit")
             sleep(0.1)
+
+
 
 **Wie funktioniert des?** 
 

@@ -14,7 +14,7 @@
 
 .. _py_line_tracking:
 
-5. Linienverfolgung
+6. Linienverfolgung
 ====================================
 
 Dieses Projekt wird das Graustufenmodul verwenden, um den PiCar-X entlang einer Linie vorwärtsfahren zu lassen. 
@@ -30,7 +30,7 @@ Einige Experimente könnten notwendig sein, wenn der PiCar-X entgleist.
 .. code-block::
 
     cd ~/picar-x/example
-    sudo python3 5.minecart_plus.py
+    sudo python3 6.line_tracking.py
     
 Nachdem der Code ausgeführt wurde, wird PiCar-X entlang einer Linie vorwärtsfahren.
 
@@ -109,6 +109,10 @@ Nachdem der Code ausgeführt wurde, wird PiCar-X entlang einer Linie vorwärtsfa
                     px.forward(px_power) 
                 else:
                     outHandle()
+                    
+        except KeyboardInterrupt:
+            print("\nKeyboardInterrupt: stop and exit")
+
         finally:
             px.stop()
             print("stop and exit")

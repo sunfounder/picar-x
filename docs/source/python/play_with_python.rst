@@ -14,34 +14,60 @@
 
 .. _play_python:
 
-Spielen mit Python
+Mit Python spielen
 =======================
 
-Für Anfänger und Einsteiger, die in Python programmieren möchten, sind grundlegende Programmierkenntnisse in Python sowie Wissen über das Betriebssystem des Raspberry Pi erforderlich.
-Um mit der Konfiguration des Raspberry Pi zu beginnen, beziehen Sie sich bitte auf den Schnellstartführer für Python:
+Für Anfänger und Einsteiger, die in Python programmieren möchten, sind **grundlegende Python-Kenntnisse** und etwas **Vertrautheit mit dem Raspberry Pi OS** hilfreich.  
+In diesem Abschnitt wirst du Schritt für Schritt angeleitet — vom Einrichten deines Raspberry Pi über die Bewegung des PiCar-X bis hin zu **Computer Vision** sowie **Sprach- und KI-Interaktion**.
+
+.. _quick_guide_python:
+
+1. Schnellstart mit Python
+---------------------------
+
+Lerne, wie du deine Raspberry Pi Umgebung einrichtest:  
+Installiere Raspberry Pi OS, konfiguriere WLAN und aktiviere den Fernzugriff, sodass du Python-Code einfach ausführen kannst.  
+Wenn du bereits weißt, wie du Raspberry Pi nutzt und auf die Kommandozeile zugreifst, kannst du diesen Teil überspringen.
 
 .. toctree:: 
-    :maxdepth: 2
+    :maxdepth: 1
     
-    python_start/quick_guide_on_python
+    python_start/what_do_we_need
+    python_start/installing_the_os
+    python_start/power_supply
+    python_start/set_up_your_raspberry_pi
+    python_start/install_all_modules
+    python_start/enable_i2c
+    python_start/py_servo_adjust
+
+2. Grundbewegungen
+-----------------------
+
+Nachdem du deinen PiCar-X zusammengebaut hast, beginnst du mit einfachen Bewegungsprogrammen.  
+Du lernst, wie du die Motoren steuerst, vorwärts/rückwärts fährst, Kurven machst und einfache Sensoren zum Hindernisvermeiden oder Linienfolgen nutzt.
+
+.. toctree:: 
+    :maxdepth: 1
+    
     python_calibrate
-
-
-Nachdem die Montage des PiCar-X abgeschlossen ist, versuchen Sie, die untenstehenden Projekte auszuführen:
-
-.. toctree::
-
-
     python_move
     python_keyboard
-    python_tts
     python_avoid
-    python_line_track
     python_cliff
+    python_line_track
+
+3. Computer Vision
+----------------------
+
+Gib deinem PiCar-X die Fähigkeit zu **sehen** – mit der Kamera.  
+In diesem Abschnitt lernst du spannende Vision-Projekte wie Gesichtserkennung, Aufzeichnung, Objektinteraktion und Steuerung per Video oder App kennen.
+
+.. toctree:: 
+    :maxdepth: 1
+
     python_computer_vision
     python_stare_at_you
     python_record
     python_bull_fight
     python_video_car
-    python_treasure_hunt
     control_by_app

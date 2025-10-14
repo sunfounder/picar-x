@@ -12,65 +12,80 @@
 
     👉 Sind Sie bereit, mit uns zu erkunden und zu erschaffen? Klicken Sie auf [|link_sf_facebook|] und treten Sie heute bei!
 
-1. Was Brauchen Wir?
-====================
+1. Was du sonst noch brauchst
+===============================
 
-Benötigte Komponenten
------------------------
+Bevor wir mit dem PiCar-X loslegen, bereiten wir die wichtigste Hardware vor.  
+Stell dir diese Komponenten als das **Gehirn, Herz und die Sinne** des PiCar-X vor — ohne sie kann das Auto nicht richtig funktionieren.
 
-**Raspberry Pi**
+Erforderliche Komponenten
+------------------------------
 
-Der Raspberry Pi ist ein kostengünstiger, kreditkartengroßer Computer, der
-an einen Computermonitor oder Fernseher angeschlossen wird und eine
-Standardtastatur sowie eine Maus verwendet. Es ist ein leistungsfähiges
-kleines Gerät, das Menschen aller Altersgruppen ermöglicht, die Welt der
-Computer zu erkunden und das Programmieren in Sprachen wie Scratch und
-Python zu erlernen.
+* **Raspberry Pi**
 
-.. image:: img/compitable_pi.jpg
-    :width: 600
-    :align: center
+  Der Raspberry Pi fungiert als **Gehirn** des PiCar-X und übernimmt alle Rechen-, Sensor- und Steueraufgaben.
+  
+  .. image:: img/need_pi.jpg
 
-**Netzteil**
+  * **Kompatible Modelle**: Raspberry Pi 5, 4, 3 und Raspberry Pi Zero 2 W (am besten auf Pi 5 oder Pi 4)  
+  * **Minimum**: **2 GB RAM** — ausreichend für alle Standardfunktionen des PiCar-X (Bewegung, Sensoren, Kamerastreaming) sowie für **Online-KI-Dienste** wie OpenAI Whisper, TTS oder LLMs.  
+  * **Empfohlen**: **4 GB RAM oder mehr** — sorgt für eine flüssigere Leistung beim gleichzeitigen Ausführen **lokaler KI-Modelle** (z. B. Vosk-Spracherkennung, Piper TTS oder leichte LLMs) zusammen mit Kamerastreaming und Steuerung.
 
-Für den Anschluss an eine Steckdose verfügt der Raspberry Pi über einen
-Micro-USB-Anschluss (wie er auch bei vielen Mobiltelefonen zu finden ist). 
-Sie benötigen ein Netzteil, das mindestens 2,5 Ampere liefert.
+* **Netzteil**
 
-**Micro SD-Karte**
+  PiCar-X wird mit einem **18650-Akkupack** und einer **Robot HAT**-Platine mit integriertem Ladegerät geliefert.
+  
+  .. image:: img/need_power.png
+    :width: 400
 
-Ihr Raspberry Pi benötigt eine Micro SD-Karte, um alle seine Dateien und
-das Raspberry Pi OS zu speichern. Sie benötigen eine Micro SD-Karte mit 
-einer Kapazität von mindestens 8 GB.
+  * Zum Laden wird ein **5 V 3 A Netzteil** empfohlen, z. B. das offizielle **Raspberry Pi 15 W USB-C Netzteil**.  
+  * Alternativ kannst du ein **USB-C Power Delivery (PD)**-Ladegerät oder ein **QC 2.0 Schnellladegerät** verwenden.  
+  * Eine vollständige Ladung dauert etwa **2 Stunden** (von 0 % auf 100 %).
+
+* **Micro-SD-Karte**
+
+  Der Raspberry Pi hat **keine eingebaute Festplatte**. Er startet und speichert alle Dateien auf einer Micro-SD-Karte.
+  
+  .. image:: img/need_sd.jpg
+    :width: 200
+
+  * Minimum: **16 GB**  
+  * Empfohlen: **32 GB** für mehr Stabilität  
+  * Marke: Verwende zuverlässige Karten wie **SanDisk** oder **Samsung**, um Lese-/Schreibfehler zu vermeiden.
 
 Optionale Komponenten
--------------------------
+------------------------
 
-**Bildschirm**
+Diese Komponenten sind nicht zwingend erforderlich, verbessern aber die Einrichtung und Fehlersuche deutlich:
 
-Um die Desktop-Umgebung des Raspberry Pi zu nutzen, benötigen Sie einen
-Bildschirm, der ein Fernsehbildschirm oder ein Computermonitor sein kann. 
-Wenn der Bildschirm eingebaute Lautsprecher hat, gibt der Pi über diese 
-den Ton wieder.
+* **Monitor (HDMI oder TV)**
 
-**Maus & Tastatur**
+  Für Anfänger empfehlen wir ein Display mit HDMI-Eingang, um das Raspberry Pi OS einfach zu konfigurieren und grafische Programme auszuführen.
 
-Wenn Sie einen Bildschirm verwenden, benötigen Sie auch eine USB-Tastatur
-und eine USB-Maus.
+  .. image:: img/need_screen.png
+    :width: 400
 
-**HDMI**
+* **HDMI-Kabel (Standard / Mini / Micro)**
 
-Der Raspberry Pi verfügt über einen HDMI-Ausgangsport, der mit den HDMI-Anschlüssen
-der meisten modernen Fernseher und Computermonitore kompatibel ist. Wenn Ihr Bildschirm
-nur DVI- oder VGA-Anschlüsse hat, benötigen Sie die entsprechende Umwandlungsleitung.
+  Je nach Raspberry Pi-Modell wird ein anderer HDMI-Typ benötigt. Prüfe dein Modell und verwende das passende Kabel.
 
-**Gehäuse**
+  * **Raspberry Pi 4 / 5**: Micro HDMI  
+  * **Raspberry Pi 3**: Standard HDMI  
+  * **Raspberry Pi Zero 2W**: Mini HDMI
 
-Sie können den Raspberry Pi in ein Gehäuse setzen; dadurch können Sie
-Ihr Gerät schützen.
+  .. image:: img/need_hdmi.png
+    :width: 400
 
-**Lautsprecher oder Kopfhörer**
+* **Tastatur & Maus**
 
-Der Raspberry Pi ist mit einem etwa 3,5 mm großen Audioanschluss ausgestattet, 
-der verwendet werden kann, wenn Ihr Bildschirm keine eingebauten Lautsprecher hat 
-oder wenn kein Bildschirm verwendet wird.
+  Sehr hilfreich bei der ersten Einrichtung des Raspberry Pi OS. Später kannst du per SSH oder VNC auf den Pi zugreifen, aber für den Einstieg empfehlen wir ein einfaches USB- oder Funkset.
+
+  .. image:: img/need_keyboard_mouse.png
+    :width: 500
+
+**Vorbereitungstipps**
+
+* Wenn du das **PiCar-X Kit** gekauft hast, sind die meisten Zubehörteile enthalten.  
+  Du musst jedoch die **Raspberry Pi-Platine**, die **Micro-SD-Karte** und das **Netzteil** separat vorbereiten.  
+* Nicht sicher, was du kaufen sollst? 👉 Die stabilste und universellste Wahl ist:  
+  **Raspberry Pi 4 (2 GB) + offizielles Netzteil + 32 GB Micro-SD-Karte**.

@@ -14,7 +14,7 @@
 
 .. _py_move:
 
-1. Lassen Sie PiCar-X sich bewegen
+2. Lassen Sie PiCar-X sich bewegen
 ======================================
 
 Dies ist das erste Projekt, testen wir die grundlegende Bewegung des Picar-X.
@@ -28,7 +28,7 @@ Dies ist das erste Projekt, testen wir die grundlegende Bewegung des Picar-X.
 .. code-block::
 
     cd ~/picar-x/example
-    sudo python3 1.move.py
+    sudo python3 2.move.py
 
 Nachdem der Code ausgeführt wurde, wird PiCar-X vorwärts fahren, in einer S-Form abbiegen, anhalten und den Kopf schütteln.
 

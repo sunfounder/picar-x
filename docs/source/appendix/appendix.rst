@@ -22,5 +22,6 @@ Anhang
     filezilla
     login_windows
     install_openssh_powershell
+    remote_desktop
 
 

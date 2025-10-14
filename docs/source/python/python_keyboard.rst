@@ -14,7 +14,7 @@
 
 .. _py_keyboard_control:
 
-2. Tastatursteuerung
+3. Tastatursteuerung
 ================================
 
 In diesem Projekt lernen wir, wie man die Tastatur verwendet, um den PiCar-X aus der Ferne zu steuern.
@@ -29,7 +29,7 @@ Sie können den PiCar-X vorwärts, rückwärts, nach links und nach rechts steue
 .. code-block::
 
     cd ~/picar-x/example
-    sudo python3 2.keyboard_control.py
+    sudo python3 3.keyboard_control.py
 
 Drücken Sie Tasten auf der Tastatur, um PiCar-X zu steuern!
 

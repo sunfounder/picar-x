@@ -12,58 +12,113 @@
 
     👉 Sind Sie bereit, mit uns zu erkunden und zu erschaffen? Klicken Sie auf [|link_sf_facebook|] und treten Sie heute bei!
 
-4. Einrichten Ihres Raspberry Pi
-=====================================
+4. Richte deinen Raspberry Pi ein
+========================================
 
-Einrichten mit einem Bildschirm
---------------------------------------
+Um mit der Programmierung und Steuerung deines PiCar-X zu beginnen, musst du zuerst auf deinen Raspberry Pi zugreifen.  
+In diesem Abschnitt lernst du zwei gängige Methoden kennen:  
+die Verwendung eines Monitors mit Tastatur und Maus oder die Einrichtung einer **Headless-Verbindung** (ohne Bildschirm), um dich **remote von einem anderen Computer** einzuloggen.
 
-Mit einem Bildschirm wird das Arbeiten mit Ihrem Raspberry Pi erheblich vereinfacht.
+Wenn du einen Bildschirm hast
+------------------------------
+
+.. note:: Der auf dem Roboter installierte Raspberry Pi Zero 2W ist schwer an einen Bildschirm anzuschließen.  
+Wir empfehlen die **Headless-Methode (ohne Bildschirm)**.
 
 **Benötigte Komponenten**
 
-* Raspberry Pi
-* Stromadapter
-* Micro-SD-Karte
-* Stromadapter für den Bildschirm
-* HDMI-Kabel
-* Bildschirm
-* Maus
+* Raspberry Pi  
+* Netzteil  
+* Micro-SD-Karte  
+* HDMI-Kabel  
+* Bildschirm  
+* Maus  
 * Tastatur
 
-**Schritte**:
-
-#. Schließen Sie die Maus und die Tastatur an den Raspberry Pi an.
-
-#. Verwenden Sie das HDMI-Kabel, um den Bildschirm mit dem HDMI-Port des Raspberry Pi zu verbinden. Stellen Sie sicher, dass der Bildschirm an eine Stromquelle angeschlossen und eingeschaltet ist.
-
-#. Versorgen Sie den Raspberry Pi mit Strom über den Stromadapter. 
-
-#. Nach einigen Sekunden wird der Desktop von Raspberry Pi OS angezeigt. Nun können Sie das Terminal öffnen, um mit der Eingabe von Befehlen zu beginnen.
+#. Setze die Micro-SD-Karte in deinen Raspberry Pi ein.  
+#. Schließe Maus, Tastatur und Bildschirm an (bei Pi 4/5 **HDMI0** verwenden – den Anschluss neben dem Stromanschluss).  
+#. Schalte den Raspberry Pi ein.  
+#. Nach kurzer Zeit erscheint der Raspberry Pi OS Desktop und du kannst ein Terminal öffnen, um Befehle einzugeben.
 
     .. image:: img/bookwarm.png
         :align: center
 
-Einrichten ohne Bildschirm
-------------------------------
 
-Wenn Sie keinen Monitor haben, ist der Fernzugriff eine praktikable Option.
+Wenn du keinen Bildschirm hast (Headless Setup)
+-----------------------------------------------
+
+Ohne Monitor kannst du deinen Raspberry Pi **fern konfigurieren und einloggen**.  
+Dies ist die bequemste Methode für den Einstieg.
 
 **Benötigte Komponenten**
 
-* Raspberry Pi
-* Stromadapter
-* Micro-SD-Karte
+* Raspberry Pi  
+* Netzteil  
+* Micro-SD-Karte  
+* Ein Computer im selben Netzwerk
 
-Mit SSH können Sie auf die Bash-Shell des Raspberry Pi zugreifen, die die Standard-Linux-Shell ist. Bash bietet eine Befehlszeilenschnittstelle für die Durchführung verschiedener Aufgaben.
+**Tipps**
 
-Für diejenigen, die eine grafische Benutzeroberfläche (GUI) bevorzugen, ist die Fernzugriffsfunktionalität per Desktop eine bequeme Alternative für die Verwaltung von Dateien und Operationen.
+* Stelle das **WLAN-Land** korrekt ein (ISO/IEC Alpha-2-Code, z. B. ``US``, ``UK``, ``CN``); sonst funktioniert WLAN nicht.  
+* Achte darauf, dass dein Raspberry Pi und dein Computer im **gleichen lokalen Netzwerk** sind.  
+* Für eine stabilere Verbindung verwende, wenn möglich, **ein Netzwerkkabel (Ethernet)**.
 
-Für detaillierte Einrichtungsanleitungen, die auf Ihrem Betriebssystem basieren, siehe die folgenden Abschnitte:
+**Verbindung über SSH herstellen**
 
-.. toctree::
+1. Öffne auf deinem Computer ein Terminal (Windows: **PowerShell**, macOS/Linux: **Terminal**) und gib ein:
 
-    remote_macosx
-    remote_windows
-    remote_linux
-    remote_desktop
+   .. code-block::
+
+      ssh <Benutzername>@<Hostname>.local
+      # Beispiel:
+      ssh daisy@picarx.local
+
+2. Alternativ kannst du im DHCP-/Client-Register deines Routers die IP-Adresse des Pi finden und dich so verbinden:
+
+   .. code-block::
+
+      ssh <Benutzername>@<IP>
+      
+      # Beispiel:
+      ssh daisy@192.xxx.xx.xx
+
+3. Beim ersten Login erscheint eine Sicherheitsabfrage. Gib ``yes`` ein, um fortzufahren.
+
+4. Gib das Passwort ein, das du im Raspberry Pi Imager festgelegt hast. (Die Zeichen werden beim Tippen **nicht angezeigt** – das ist normal.)
+
+   .. note::
+      Dass beim Passwort keine Zeichen angezeigt werden, ist ein Sicherheitsstandard. Tippe einfach sorgfältig.
+
+5. Sobald du verbunden bist, ist dein Raspberry Pi bereit für Remote-Zugriff.
+
+   .. image:: img/ssh_login.png
+      :align: center
+
+**Fehlerbehebung**
+
+* **ssh: Could not resolve hostname ...**  
+  * Überprüfe, ob der Hostname korrekt ist.  
+  * Falls es nicht funktioniert, verwende die IP-Adresse anstelle von ``<hostname>.local``.
+
+* **The term 'ssh' is not recognized... (Windows)**  
+  * OpenSSH ist nicht installiert. Installiere es manuell (siehe :ref:`openssh_powershell`) oder verwende einen SSH-Client (siehe :ref:`login_windows`).
+
+* **Permission denied (publickey,password)**  
+  * Achte darauf, dass du den richtigen Benutzernamen und das Passwort aus dem Raspberry Pi Imager verwendest.
+
+* **Connection refused**  
+  * Warte 1–2 Minuten nach dem Einschalten.  
+  * Stelle sicher, dass SSH im Raspberry Pi Imager aktiviert wurde.
+
+**Optionen für grafischen Zugriff**
+
+Wenn du lieber eine grafische Oberfläche als die Kommandozeile verwendest, hast du zwei Möglichkeiten:
+
+    .. image:: img/bookwarm.png
+        :align: center
+
+* :ref:`remote_desktop`: Aktiviere **VNC (Virtual Network Computing)**, um den vollständigen Desktop des Pi anzuzeigen.  
+* |link_rpi_connect|: Verwende **Raspberry Pi Connect**, um sicher und überall direkt im Browser auf deinen Pi zuzugreifen.
+
+Jetzt kannst du deinen Raspberry Pi **ohne Monitor** steuern –  
+entweder über **SSH** für Kommandozeilenoperationen oder über **VNC / Raspberry Pi Connect** für eine grafische Desktop-Erfahrung.

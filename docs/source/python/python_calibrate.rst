@@ -14,7 +14,7 @@
 
 .. _py_calibrate:
 
-0. Kalibrierung des PiCar-X
+1. Kalibrierung des PiCar-X
 =================================
 
 Kalibrierung von Motoren & Servo
@@ -32,14 +32,14 @@ Natürlich können Sie dieses Kapitel überspringen, wenn Sie denken, dass die M
 
     .. code-block::
 
-        cd ~/picar-x/example/calibration
-        sudo python3 calibration.py
+        cd ~/picar-x/example
+        sudo python3 1.cali_servo_motor.py
 
 #. Nachdem Sie den Code ausgeführt haben, wird folgende Oberfläche im Terminal angezeigt.
 
     .. image:: img/calibrate1.png
 
-#. Die Taste ``R`` wird verwendet, um zu testen, ob die 3 Servos einwandfrei funktionieren. Nachdem ein Servo mit den Tasten ``1``, ``2`` oder ``3`` ausgewählt wurde, drücken Sie die Taste ``R``, um diesen Servo zu testen.
+#. Die Taste ``R`` wird verwendet, um zu testen, ob die 3 Servos einwandfrei funktionieren.
 
 #. Drücken Sie die Zahlentaste ``1``, um den Servo des Vorderrads auszuwählen, und dann die Tasten ``W/S``, damit das Vorderrad so gerade wie möglich aussieht, ohne nach links oder rechts abzuweichen.
 
@@ -73,7 +73,7 @@ Sie können diese Einstellungen über dieses Programm feinjustieren, um bessere 
 #. Legen Sie einen Streifen schwarzes Isolierband, etwa 15 cm lang, auf einen hellen Boden. Zentrieren Sie Ihr PiCar-X, sodass es über dem Band steht. Dabei sollte der mittlere Sensor des Graustufenmoduls direkt über dem Band sein, während die beiden flankierenden Sensoren über der helleren Oberfläche schweben sollten.
 
 
-#. Führen Sie ``grayscale_calibration.py`` aus.
+#. Führe den Code aus.
 
     .. raw:: html
 
@@ -81,8 +81,8 @@ Sie können diese Einstellungen über dieses Programm feinjustieren, um bessere 
 
     .. code-block::
 
-        cd ~/picar-x/example/calibration
-        sudo python3 grayscale_calibration.py
+        cd ~/picar-x/example
+        sudo python3 1.cali_grayscale.py
 
 #. Nachdem Sie den Code ausgeführt haben, wird folgende Oberfläche im Terminal angezeigt.
 
