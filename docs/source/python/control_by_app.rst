@@ -14,7 +14,7 @@
 
 .. _control_by_app:
 
-13. Contrôlé par l'application
+12. Contrôlé par l'application
 ==================================
 
 Le contrôleur SunFounder est utilisé pour contrôler les robots basés sur Raspberry Pi/Pico.
@@ -53,7 +53,7 @@ Personnalisons un contrôleur PiCar-X à l'aide de cette application.
     .. code-block::
 
         cd ~/picar-x/example
-        sudo python3 13.app_control.py
+        sudo python3 12.app_control.py
 
 #. Installez le `SunFounder Controller <https://docs.sunfounder.com/projects/sf-controller/en/latest/>`_ depuis **APP Store (iOS)** ou **Google Play (Android)**.
 

@@ -14,7 +14,7 @@
 
 .. _py_keyboard_control:
 
-2. Contrôle par clavier
+3. Contrôle par clavier
 ================================
 
 
@@ -30,7 +30,7 @@ Vous pourrez contrôler le PiCar-X pour qu'il avance, recule, tourne à gauche e
 .. code-block::
 
     cd ~/picar-x/example
-    sudo python3 2.keyboard_control.py
+    sudo python3 3.keyboard_control.py
 
 Appuyez sur les touches du clavier pour contrôler le PiCar-X !
 

@@ -14,51 +14,34 @@
 
 .. _assembly_instructions:
 
-
-Instructions d'assemblage
+Assembler la PiCar-X
 ==========================================
 
-Avant d'assembler le PiCar-X, veuillez d'abord vérifier que toutes les pièces et composants sont inclus. Si des composants manquent ou sont endommagés, veuillez contacter SunFounder immédiatement à l'adresse service@sunfounder.com afin de résoudre le problème dès que possible.
+Avant d’assembler la PiCar-X, veuillez d’abord vérifier que **toutes les pièces et tous les composants** sont bien inclus.  
+S’il manque des éléments ou si certains sont endommagés, contactez immédiatement SunFounder à **service@sunfounder.com** afin de résoudre le problème au plus vite.
 
-.. Veuillez suivre les étapes du PDF suivant pour les instructions d'assemblage : 
-
-.. :download:`[PDF]Component List and Assembly of PiCar-X <https://github.com/sunfounder/sf-pdf/raw/master/assembly_file/z0104v33-a0001013-picar-x.pdf>`.
-
-**Monter le Raspberry Pi Zero W sur le PiCar-X**
-
-Si votre carte principale est un Raspberry Pi Zero W, voici les étapes pour l'installer sur le PiCar-X. 
+Cette vidéo vous guidera étape par étape dans le montage complet de votre robot.
 
 .. note::
 
-    Les étapes d'assemblage dans la vidéo peuvent différer légèrement des instructions imprimées que vous avez. Veuillez donner la priorité au suivi des instructions imprimées. Si certaines étapes ne sont pas claires, vous pouvez vous référer à la vidéo pour plus de précisions.
+    Les étapes de montage présentées dans la vidéo peuvent légèrement différer des instructions imprimées que vous possédez.  
+    Veuillez **prioriser les instructions imprimées**. Si certaines étapes ne sont pas claires, vous pouvez vous référer à la vidéo pour plus de précisions.
 
-.. raw:: html
-
-    <iframe width="700" height="500" src="https://www.youtube.com/embed/DcobAsvRrV0?si=9cEGmphSqD9WVKzV" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-
-Ensuite, vous pouvez continuer à suivre les instructions de la vidéo ci-dessous à partir de **1:45** pour terminer l'assemblage.
-
-
-**Vidéo Tutoriel d'Assemblage (Modèles Raspberry Pi 4/3/1)**
-
-Cette vidéo vous guidera dans le processus d'assemblage de votre robot depuis le début.
-
-.. note::
-
-    Les étapes d'assemblage dans la vidéo peuvent différer légèrement des instructions imprimées que vous avez. Veuillez donner la priorité au suivi des instructions imprimées. Si certaines étapes ne sont pas claires, vous pouvez vous référer à la vidéo pour plus de précisions.
-    
 Dans ce tutoriel, vous apprendrez :
 
-* **Préparation** : Nous vous présenterons tous les outils et pièces nécessaires pour vous assurer que vous êtes entièrement équipé avant de commencer l'assemblage.
+* **Préparation** : présentation de tous les outils et pièces nécessaires pour que vous soyez prêt avant de commencer l’assemblage.
 
-* **Étapes d'assemblage** : Nous vous démontrerons chaque étape d'assemblage de manière systématique.
+* **Étapes d’assemblage** : démonstration de chaque étape de montage de manière systématique.
 
-* **Conseils et considérations** : Tout au long du processus, nous partagerons des conseils et astuces essentiels pour vous aider à éviter les erreurs courantes et garantir le bon fonctionnement de votre voiture.
+* **Astuces et recommandations** : tout au long du processus, nous partagerons des conseils essentiels pour éviter les erreurs courantes et assurer le bon fonctionnement de votre voiture.
 
-* **Réglage d'un servo** : Avant de fixer chaque servo, il doit être mis à zéro. Les étapes pour le mettre à zéro consistent à installer d'abord le système d'exploitation Raspberry Pi, à installer les modules requis, puis à exécuter un script (pour régler l'angle de toutes les broches PWM à 0). Ensuite, branchez le fil du servo pour le calibrer.
+* **Mise à zéro d’un servo** : avant de fixer chaque servo, il doit être remis à zéro.  
+  Les étapes pour cette opération sont :
+  1. Installer Raspberry Pi OS,  
+  2. Installer les modules requis,  
+  3. Exécuter un script pour définir l’angle de toutes les broches PWM à 0,  
+  4. Enfin, brancher le câble du servo pour effectuer la mise à zéro.
 
 .. raw:: html
 
-    <iframe width="700" height="500" src="https://www.youtube.com/embed/i5FpY3FAcyA?si=2WlfchM0ryLU3yi1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-
-
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/GkLSBvtch0g?si=OtQmRZ31je_denSi" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>

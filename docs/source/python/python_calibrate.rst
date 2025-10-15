@@ -14,7 +14,7 @@
 
 .. _py_calibrate:
 
-0. Calibration du PiCar-X
+1. Calibration du PiCar-X
 =============================
 
 Calibration des moteurs et du servo
@@ -32,14 +32,15 @@ Bien entendu, vous pouvez passer cette étape si vous estimez que l'assemblage e
 
     .. code-block::
 
-        cd ~/picar-x/example/calibration
-        sudo python3 calibration.py
+        cd ~/picar-x/example
+        sudo python3 1.cali_servo_motor.py
+
 
 #. Après l'exécution du code, vous verrez l'interface suivante s'afficher dans le terminal.
 
     .. image:: img/calibrate1.png
 
-#. La touche ``R`` permet de tester si les 3 servos fonctionnent correctement. Après avoir sélectionné un servo avec les touches ``1``, ``2`` ou ``3``, appuyez sur la touche ``R`` pour tester le servo correspondant.
+#. La touche ``R`` permet de tester si les 3 servos fonctionnent correctement. 
 
 #. Appuyez sur la touche numérique ``1`` pour sélectionner le servo des roues avant, puis appuyez sur ``W/S`` pour aligner les roues avant le plus droit possible sans incliner à gauche ou à droite.
 
@@ -76,7 +77,7 @@ ruban. Dans cette configuration, le capteur central du module de niveaux
 de gris doit se trouver directement au-dessus du ruban, tandis que les 
 deux capteurs latéraux doivent survoler la surface plus claire.
 
-#. Exécutez le fichier ``grayscale_calibration.py``.
+#. Exécutez le code.
 
     .. raw:: html
 
@@ -84,8 +85,9 @@ deux capteurs latéraux doivent survoler la surface plus claire.
 
     .. code-block::
 
-        cd ~/picar-x/example/calibration
-        sudo python3 grayscale_calibration.py
+        cd ~/picar-x/example
+        sudo python3 1.cali_grayscale.py
+
 
 #. Après l'exécution du code, l'interface suivante s'affichera dans le terminal.
 

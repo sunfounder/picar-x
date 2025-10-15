@@ -68,8 +68,7 @@ Vous pouvez ensuite entrer ``http://<your IP>:9000/mjpg`` dans le navigateur pou
 .. code-block:: python
     
     #!/usr/bin/env python3
-
-    from robot_hat.utils import reset_mcu
+    from picarx.utils import reset_mcu
     from picarx import Picarx
     from vilib import Vilib
     from time import sleep, time, strftime, localtime

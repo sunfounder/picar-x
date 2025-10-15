@@ -14,13 +14,13 @@
 
 .. _py_cliff:
 
-6. Détection de Falaise 
+5. Détection de Falaise 
 ===========================
 
 Apprenons à PiCar-X un peu de conscience de protection pour qu'il utilise son module de niveaux de gris afin d'éviter de tomber d'une falaise.
 
-Dans cet exemple, la voiture sera en veille. 
-Si vous la poussez vers une falaise, elle se réveillera immédiatement, reculera et dira "danger".
+Dans cet exemple, la voiture restera en mode veille.  
+Si vous la poussez vers une falaise, elle se réveillera immédiatement et reculera.
 
 **Exécution du Code**
 
@@ -31,9 +31,8 @@ Si vous la poussez vers une falaise, elle se réveillera immédiatement, reculer
 .. code-block::
 
     cd ~/picar-x/example
-    sudo python3 6.cliff_detection.py
+    sudo python3 5.cliff_detection.py
     
-
 **Code**
 
 .. note::
@@ -45,44 +44,40 @@ Si vous la poussez vers une falaise, elle se réveillera immédiatement, reculer
 
 .. code-block:: python
 
+
     from picarx import Picarx
     from time import sleep
-    from robot_hat import TTS
-
-    tts = TTS()
-    tts.lang("en-US")
 
     px = Picarx()
     # px = Picarx(grayscale_pins=['A0', 'A1', 'A2'])
-    # modifier manuellement la valeur de référence
+    # manual modify reference value
     px.set_cliff_reference([200, 200, 200])
 
-    current_state = None
-    px_power = 10
-    offset = 20
     last_state = "safe"
 
-    if __name__=='__main__':
+    if __name__ == '__main__':
         try:
             while True:
                 gm_val_list = px.get_grayscale_data()
                 gm_state = px.get_cliff_status(gm_val_list)
-                # print("état de la falaise :  %s"%gm_state)
+                # print("cliff status is: %s" % gm_state)
 
                 if gm_state is False:
                     state = "safe"
                     px.stop()
                 else:
-                    state = "danger"   
+                    state = "danger"
                     px.backward(80)
                     if last_state == "safe":
-                        tts.say("danger")
                         sleep(0.1)
+
                 last_state = state
+
+        except KeyboardInterrupt:
+            print("\nKeyboardInterrupt: stop and exit")
 
         finally:
             px.stop()
-            print("stop and exit")
             sleep(0.1)
 
 **Comment ça fonctionne ?** 

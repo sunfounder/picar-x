@@ -15,10 +15,10 @@
 .. _install_all_modules:
 
 
-5. Installer tous les modules (Important)
-=============================================
+5. Installer Tous les Modules (Important)
+===========================================
 
-Assurez-vous d'être connecté à Internet et mettez à jour votre système :
+Assurez-vous d’être connecté à Internet et mettez votre système à jour :
 
 .. raw:: html
 
@@ -31,18 +31,19 @@ Assurez-vous d'être connecté à Internet et mettez à jour votre système :
 
 .. note::
 
-    Les paquets liés à Python3 doivent être installés si vous utilisez la version Lite de l'OS.
+    Si vous utilisez la version **Lite** de Raspberry Pi OS, vous devez installer les paquets liés à Python3.
 
     .. raw:: html
 
         <run></run>
 
     .. code-block::
-    
+
         sudo apt install git python3-pip python3-setuptools python3-smbus
 
+----
 
-Installez ``robot-hat``.
+Installer le module ``robot-hat``.
 
 .. raw:: html
 
@@ -51,12 +52,13 @@ Installez ``robot-hat``.
 .. code-block::
 
     cd ~/
-    git clone -b v2.0 https://github.com/sunfounder/robot-hat.git
+    git clone -b 2.5.x https://github.com/sunfounder/robot-hat.git --depth 1
     cd robot-hat
-    sudo python3 setup.py install
+    sudo python3 install.py
 
+----
 
-Ensuite, téléchargez et installez le module ``vilib``.
+Télécharger et installer le module ``vilib``.
 
 .. raw:: html
 
@@ -65,11 +67,13 @@ Ensuite, téléchargez et installez le module ``vilib``.
 .. code-block::
 
     cd ~/
-    git clone -b picamera2 https://github.com/sunfounder/vilib.git
+    git clone -b picamera2 https://github.com/sunfounder/vilib.git --depth 1
     cd vilib
     sudo python3 install.py
 
-Téléchargez et installez le module ``picar-x``.
+----
+
+Télécharger et installer le module ``picar-x``.
 
 .. raw:: html
 
@@ -78,13 +82,16 @@ Téléchargez et installez le module ``picar-x``.
 .. code-block::
 
     cd ~/
-    git clone -b v2.0 https://github.com/sunfounder/picar-x.git --depth 1
+    git clone -b 2.1.x https://github.com/sunfounder/picar-x.git --depth 1
     cd picar-x
-    sudo python3 setup.py install
+    sudo pip3 install . --break
 
-Cette étape prendra un certain temps, soyez patient.
+> ⏳ Cette étape peut prendre un certain temps, soyez patient.
 
-Enfin, vous devez exécuter le script ``i2samp.sh`` pour installer les composants requis par l'amplificateur i2s, sinon le Picar-X n'aura pas de son.
+----
+
+Enfin, vous devez exécuter le script ``i2samp.sh`` pour installer les composants nécessaires à l’amplificateur i2s.  
+Sans cela, la PiCar-X **n’aura pas de son**.
 
 .. raw:: html
 
@@ -94,18 +101,19 @@ Enfin, vous devez exécuter le script ``i2samp.sh`` pour installer les composant
 
     cd ~/picar-x
     sudo bash i2samp.sh
-	
+
 .. image:: img/i2s.png
 
-Tapez ``y`` et appuyez sur Entrée pour continuer à exécuter le script.
+Tapez **y** puis appuyez sur Entrée pour continuer.
 
 .. image:: img/i2s2.png
 
-Tapez ``y`` et appuyez sur Entrée pour exécuter ``/dev/zero`` en arrière-plan.
+Tapez **y** et appuyez sur Entrée pour exécuter ``/dev/zero`` en arrière-plan.
 
 .. image:: img/i2s3.png
 
-Tapez ``y`` et appuyez sur Entrée pour redémarrer le Picar-X.
+Tapez **y** et appuyez sur Entrée pour redémarrer la PiCar-X.
 
 .. note::
-    S'il n'y a pas de son après le redémarrage, vous devrez peut-être exécuter le script i2samp.sh plusieurs fois.
+
+    Si vous n’entendez toujours aucun son après le redémarrage, il peut être nécessaire d’exécuter le script ``i2samp.sh`` plusieurs fois.

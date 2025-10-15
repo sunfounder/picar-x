@@ -14,7 +14,7 @@
 
 .. _py_line_tracking:
 
-5. Suivi de ligne
+6. Suivi de ligne
 ====================================
 
 Dans ce projet, nous allons utiliser le module de détection de niveaux de 
@@ -29,7 +29,7 @@ gris pour faire avancer le PiCar-X le long d'une ligne. Utilisez un ruban adhés
 .. code-block::
 
     cd ~/picar-x/example
-    sudo python3 5.minecart_plus.py
+    sudo python3 6.line_tracking.py
     
 Après avoir exécuté le code, le PiCar-X se déplacera le long de la ligne.
 
@@ -108,6 +108,10 @@ Après avoir exécuté le code, le PiCar-X se déplacera le long de la ligne.
                     px.forward(px_power) 
                 else:
                     outHandle()
+
+        except KeyboardInterrupt:
+            print("\nKeyboardInterrupt: stop and exit")
+            
         finally:
             px.stop()
             print("stop and exit")

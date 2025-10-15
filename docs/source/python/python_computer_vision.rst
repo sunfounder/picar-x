@@ -28,7 +28,8 @@ Ce projet vous fera entrer officiellement dans le domaine de la vision par ordin
 .. code-block::
 
     cd ~/picar-x/example
-    sudo python3 7.display.py
+    sudo python3 7.computer_vision.py
+
 
 **Voir l'image**
 
