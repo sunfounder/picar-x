@@ -15,47 +15,27 @@
 .. _assembly_instructions:
 
 
-Istruzioni di montaggio
+Assemble the PiCar-X
 ==========================================
 
-Prima di assemblare il PiCar-X, verifica che tutte le parti e i componenti siano presenti. Se ci sono componenti mancanti o danneggiati, contatta immediatamente SunFounder all'indirizzo service@sunfounder.com per risolvere il problema il prima possibile.
+Prima di assemblare il PiCar-X, verifica che tutte le parti e i componenti siano inclusi. Se mancano pezzi o sono danneggiati, contatta immediatamente SunFounder all’indirizzo service@sunfounder.com per risolvere il problema il prima possibile.
 
-.. Segui i passaggi nel seguente PDF per le istruzioni di montaggio: 
-
-.. :download:`[PDF]Component List and Assembly of PiCar-X <https://github.com/sunfounder/sf-pdf/raw/master/assembly_file/z0104v33-a0001013-picar-x.pdf>`.
-
-**Montare Raspberry Pi Zero W sul PiCar-X**
-
-Se la tua scheda madre è un Raspberry Pi Zero W, ecco i passaggi per installarlo sul PiCar-X.
+Questo video ti guiderà passo dopo passo nell’assemblaggio completo del tuo robot.
 
 .. note::
 
-    I passaggi di assemblaggio nel video possono differire leggermente dalle istruzioni stampate che hai. Si prega di dare la priorità al seguire le istruzioni stampate. Se alcuni passaggi non sono chiari, puoi fare riferimento al video per ulteriori chiarimenti.
-
-.. raw:: html
-
-    <iframe width="700" height="500" src="https://www.youtube.com/embed/DcobAsvRrV0?si=9cEGmphSqD9WVKzV" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-
-Successivamente, puoi continuare a seguire le istruzioni nel video qui sotto a partire da **1:45** per completare l'assemblaggio.
-
-
-**Video tutorial di montaggio (Modelli Raspberry Pi 4/3/1)**
-
-Questo video ti guiderà nel processo di assemblaggio del tuo robot da zero.
-
-.. note::
-
-    I passaggi di assemblaggio nel video possono differire leggermente dalle istruzioni stampate che hai. Si prega di dare la priorità al seguire le istruzioni stampate. Se alcuni passaggi non sono chiari, puoi fare riferimento al video per ulteriori chiarimenti.
+    I passaggi di assemblaggio mostrati nel video possono differire leggermente dalle istruzioni stampate. Ti consigliamo di dare priorità alle istruzioni stampate. Se qualche passaggio non è chiaro, puoi fare riferimento al video per ulteriori chiarimenti.
 
 In questo tutorial imparerai:
 
-* **Preparazione**: Ti presenteremo tutti gli strumenti e le parti necessari, assicurandoti di essere completamente equipaggiato prima di iniziare l'assemblaggio.
+* **Preparation**: Ti presenteremo tutti gli strumenti e i componenti necessari per assicurarti di avere tutto il necessario prima di iniziare l’assemblaggio.
 
-* **Passaggi di assemblaggio**: Ti mostreremo ciascun passaggio di assemblaggio in modo sistematico.
+* **Assembly Steps**: Ti mostreremo ogni fase dell’assemblaggio in modo sistematico.
 
-* **Suggerimenti e considerazioni**: Durante il processo, condivideremo suggerimenti essenziali per aiutarti a evitare errori comuni e garantire che la tua auto funzioni senza problemi.
-* **Azzeramento di un servo**: Prima di fissare ciascun servo, è necessario azzerarlo. I passaggi per l'azzeramento sono: prima installare il sistema operativo Raspberry Pi, poi i moduli necessari, e infine eseguire uno script (impostare l'angolo di tutti i pin PWM su 0). Dopo di ciò, collega il filo del servo per azzerare il servo.
+* **Tips and Considerations**: Durante tutto il processo condivideremo suggerimenti e trucchi utili per evitare errori comuni e garantire il corretto funzionamento della tua macchina.
+
+* **Zeroing a Servo**: Prima di fissare ogni servo, è necessario azzerarlo. I passaggi per azzerarlo sono: installare il sistema operativo Raspberry Pi OS, quindi installare i moduli richiesti e infine eseguire uno script (impostare l’angolo di tutti i pin PWM su 0). Dopo di ciò, collega il cavo del servo per completare l’azzeramento.
 
 .. raw:: html
 
-    <iframe width="700" height="500" src="https://www.youtube.com/embed/i5FpY3FAcyA?si=2WlfchM0ryLU3yi1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/GkLSBvtch0g?si=OtQmRZ31je_denSi" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
