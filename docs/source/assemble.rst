@@ -20,27 +20,6 @@ Instrucciones de montaje
 
 Antes de ensamblar el PiCar-X, por favor verifica que todas las piezas y componentes estén incluidos. Si falta algún componente o está dañado, ponte en contacto con SunFounder de inmediato en service@sunfounder.com para resolver el problema lo antes posible.
 
-.. Por favor sigue los pasos del siguiente PDF para las instrucciones de montaje:
-
-.. :download:`[PDF]Component List and Assembly of PiCar-X <https://github.com/sunfounder/sf-pdf/raw/master/assembly_file/z0104v33-a0001013-picar-x.pdf>`.
-
-**Montar Raspberry Pi Zero W en el PiCar-X**
-
-Si tu placa base es una Raspberry Pi Zero W, aquí tienes los pasos para instalarla en el PiCar-X.
-
-.. note::
-
-    Los pasos de montaje en el video pueden diferir ligeramente de las instrucciones impresas que tiene. Por favor, dé prioridad a seguir las instrucciones impresas. Si hay algún paso poco claro, puede consultar el video para obtener más aclaraciones.
-
-.. raw:: html
-
-    <iframe width="700" height="500" src="https://www.youtube.com/embed/DcobAsvRrV0?si=9cEGmphSqD9WVKzV" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-
-Después, puedes continuar siguiendo las instrucciones en el video a partir del **1:45** para ensamblarlo.
-
-
-**Video Tutorial de Montaje (Modelos Raspberry Pi 4/3/1)**
-
 Este video te guiará a través del proceso de ensamblar tu robot desde cero.
 
 .. note::
@@ -59,5 +38,5 @@ En este tutorial, aprenderás:
 
 .. raw:: html
 
-    <iframe width="700" height="500" src="https://www.youtube.com/embed/i5FpY3FAcyA?si=2WlfchM0ryLU3yi1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/GkLSBvtch0g?si=OtQmRZ31je_denSi" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 

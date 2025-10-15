@@ -14,7 +14,7 @@
 
 .. _py_keyboard_control:
 
-2. Control por Teclado
+3. Control por Teclado
 ================================
 
 
@@ -31,7 +31,7 @@ a la derecha.
 .. code-block::
 
     cd ~/picar-x/example
-    sudo python3 2.keyboard_control.py
+    sudo python3 3.keyboard_control.py
 
 ¡Presiona teclas en el teclado para controlar el PiCar-X!
 

@@ -14,7 +14,7 @@
 
 .. _py_line_tracking:
 
-5. Seguimiento de Línea
+6. Seguimiento de Línea
 ====================================
 
 Este proyecto usará el módulo de escala de grises para hacer que el PiCar-X avance siguiendo una línea. 
@@ -30,7 +30,7 @@ Puede que necesites experimentar un poco si el PiCar-X se sale de la línea.
 .. code-block::
 
     cd ~/picar-x/example
-    sudo python3 5.minecart_plus.py
+    sudo python3 6.minecart_plus.py
     
 Después de ejecutar el código, el PiCar-X se moverá hacia adelante siguiendo una línea.
 
@@ -109,6 +109,8 @@ Después de ejecutar el código, el PiCar-X se moverá hacia adelante siguiendo 
                     px.forward(px_power) 
                 else:
                     outHandle()
+        except KeyboardInterrupt:
+            print("\nKeyboardInterrupt: stop and exit")
         finally:
             px.stop()
             print("stop and exit")

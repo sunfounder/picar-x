@@ -17,30 +17,57 @@
 Juega con Python
 =======================
 
-Para los principiantes que desean programar en Python, se requieren algunos conocimientos básicos de programación en Python y del sistema operativo Raspberry Pi. 
-Para comenzar a configurar la Raspberry Pi, consulta la Guía rápida de Python:
+Para principiantes y novatos que deseen programar en Python, es útil tener algunas habilidades básicas de Python y familiaridad con el sistema operativo Raspberry Pi OS.  
+Esta sección te guiará paso a paso — desde la configuración de tu Raspberry Pi, hasta mover el PiCar-X, usar visión por computadora y finalmente agregar voz e interacción con IA.
+
+.. _quick_guide_python:
+
+1. Guía Rápida de Python
+---------------------------
+
+Aprende cómo configurar tu entorno Raspberry Pi:  
+instalar Raspberry Pi OS, configurar Wi-Fi y habilitar el acceso remoto para que puedas ejecutar código Python fácilmente.  
+Si ya sabes cómo usar Raspberry Pi y acceder a su línea de comandos, puedes saltar directamente a las siguientes secciones.
 
 .. toctree:: 
-    :maxdepth: 2
+    :maxdepth: 1
     
-    python_start/quick_guide_on_python
+    python_start/what_do_we_need
+    python_start/installing_the_os
+    python_start/power_supply
+    python_start/set_up_your_raspberry_pi
+    python_start/install_all_modules
+    python_start/enable_i2c
+    python_start/py_servo_adjust
+
+2. Movimiento Básico
+-----------------------
+
+Después de ensamblar tu PiCar-X, comienza con programas de movimiento simples.  
+Aprenderás a controlar los motores, avanzar/retroceder, girar y usar sensores básicos para evitar obstáculos o seguir líneas.
+
+.. toctree:: 
+    :maxdepth: 1
+    
     python_calibrate
-
-Una vez que el ensamblaje de PiCar-X esté completo, intenta ejecutar los siguientes proyectos:
-
-.. toctree::
-
-
     python_move
     python_keyboard
-    python_tts
     python_avoid
-    python_line_track
     python_cliff
+    python_line_track
+
+3. Visión por Computadora
+----------------------------
+
+Dale a tu PiCar-X la capacidad de ver usando su cámara.  
+Esta sección incluye proyectos divertidos basados en visión, como seguimiento facial, grabación, interacción con objetos y control del coche por video o aplicación móvil.
+
+.. toctree:: 
+    :maxdepth: 1
+
     python_computer_vision
     python_stare_at_you
     python_record
     python_bull_fight
     python_video_car
-    python_treasure_hunt
     control_by_app
