@@ -1,3 +1,16 @@
+.. note::
+
+    Hello, welcome to the SunFounder Raspberry Pi & Arduino & ESP32 Enthusiasts Community on Facebook! Dive deeper into Raspberry Pi, Arduino, and ESP32 with fellow enthusiasts.
+
+    **Why Join?**
+
+    - **Expert Support**: Solve post-sale issues and technical challenges with help from our community and team.
+    - **Learn & Share**: Exchange tips and tutorials to enhance your skills.
+    - **Exclusive Previews**: Get early access to new product announcements and sneak peeks.
+    - **Special Discounts**: Enjoy exclusive discounts on our newest products.
+    - **Festive Promotions and Giveaways**: Take part in giveaways and holiday promotions.
+
+    👉 Ready to explore and create with us? Click [|link_sf_facebook|] and join today!
 
 .. _py_online_llm:
 
@@ -192,9 +205,9 @@ Mainland China users can instead use the **Bailian (百炼)** console.
   #. Sign in or create an **Alibaba Cloud** account.  
   #. Navigate to **Model Studio** (choose Singapore or Beijing region).  
     
-    * If an “Activate Now” prompt appears at the top of the page, click it to activate Model Studio and receive the free quota (Singapore only).  
-    * Activation is free — you will only be charged after your free quota is used.  
-    * If no activation prompt appears, the service is already active. 
+      * If an “Activate Now” prompt appears at the top of the page, click it to activate Model Studio and receive the free quota (Singapore only).  
+      * Activation is free — you will only be charged after your free quota is used.  
+      * If no activation prompt appears, the service is already active. 
   
   #. Go to the **Key Management** page. On the **API Key** tab, click **Create API Key**.  
   #. After creation, copy your API Key and keep it safe.  

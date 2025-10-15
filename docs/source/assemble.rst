@@ -20,34 +20,6 @@ Assemble the PiCar-X
 
 Before assembling the PiCar-X, please first verify that all parts and components have been included. If there are any missing or damaged components, please contact SunFounder immediately at service@sunfounder.com to resolve the issue as soon as possible.
 
-.. **Download Assembly Instructions**
-
-.. The printed assembly instructions are updated periodically based on requirements, and you can check the version number in the top right corner of your booklet. If you've misplaced your printed instructions or prefer a PDF version, you can download the corresponding version from the links below. Make sure the version number matches the one on your printed instructions.
-
-.. .. image:: img/version_number.png
-..     :width: 300
-..     :align: center
-
-.. * :download:`Z0104V40 <https://github.com/sunfounder/sf-pdf/raw/master/assembly_file/z0104v40-a0001013-picar-x.pdf>`
-.. * :download:`Z0104V33 <https://github.com/sunfounder/sf-pdf/raw/master/assembly_file/z0104v33-a0001013-picar-x.pdf>`
-
-**Mount Raspberry Pi Zero W on PiCar-X**
-
-If your mainboard is a Raspberry Pi Zero W, here are the steps to install it on the PiCar-X. 
-
-.. note::
-
-    The assembly steps in the video may differ slightly from the printed instructions you have. Please prioritize following the printed instructions. If any steps are unclear, you can refer to the video for further clarification.
-
-.. raw:: html
-
-    <iframe width="700" height="500" src="https://www.youtube.com/embed/DcobAsvRrV0?si=9cEGmphSqD9WVKzV" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-
-Afterward, you can continue following the instructions in the video below from **1:45** onwards to assemble it.
-
-
-**Assembly Tutorial Video(Raspberry Pi 5/4/3/1 Model)**
-
 This video will walk you through the process of assembling your robot from scratch.
 
 .. note::
@@ -66,6 +38,4 @@ In this tutorial, you will learn:
 
 .. raw:: html
 
-    <iframe width="700" height="500" src="https://www.youtube.com/embed/i5FpY3FAcyA?si=2WlfchM0ryLU3yi1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-
-
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/GkLSBvtch0g?si=OtQmRZ31je_denSi" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
