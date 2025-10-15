@@ -201,9 +201,9 @@ Nutzer in Festlandchina können die **Bailian (百炼)** Konsole verwenden.
   #. Melde dich an oder erstelle ein **Alibaba Cloud** Konto.  
   #. Navigiere zu **Model Studio** (Region Singapur oder Peking wählen).  
     
-    * Wenn ein „Activate Now“-Hinweis oben erscheint, aktiviere Model Studio, um ein kostenloses Kontingent zu erhalten (nur Singapur).  
-    * Die Aktivierung ist kostenlos — Gebühren fallen erst nach Verbrauch des Freikontingents an.  
-    * Wenn keine Aktivierungsaufforderung erscheint, ist der Dienst bereits aktiv.
+      * Wenn ein „Activate Now“-Hinweis oben erscheint, aktiviere Model Studio, um ein kostenloses Kontingent zu erhalten (nur Singapur).  
+      * Die Aktivierung ist kostenlos — Gebühren fallen erst nach Verbrauch des Freikontingents an.  
+      * Wenn keine Aktivierungsaufforderung erscheint, ist der Dienst bereits aktiv.
   
   #. Gehe zur Seite **Key Management**. Auf dem Reiter **API Key** klicke auf **Create API Key**.  
   #. Nach der Erstellung kopiere deinen API-Schlüssel und bewahre ihn sicher auf.
