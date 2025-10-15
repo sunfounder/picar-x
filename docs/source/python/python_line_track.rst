@@ -14,7 +14,7 @@
 
 .. _py_line_tracking:
 
-5. Tracciamento della Linea
+6. Tracciamento della Linea
 ====================================
 
 In questo progetto, useremo il modulo Grayscale per far muovere il PiCar-X lungo una linea. 
@@ -30,7 +30,7 @@ Potrebbe essere necessario fare alcuni esperimenti se il PiCar-X si discosta dal
 .. code-block::
 
     cd ~/picar-x/example
-    sudo python3 5.minecart_plus.py
+    sudo python3 6.line_tracking.py
     
 Dopo aver eseguito il codice, il PiCar-X si muoverà lungo la linea.
 
@@ -109,6 +109,8 @@ Dopo aver eseguito il codice, il PiCar-X si muoverà lungo la linea.
                     px.forward(px_power) 
                 else:
                     outHandle()
+        except KeyboardInterrupt:
+            print("\nKeyboardInterrupt: stop and exit")
         finally:
             px.stop()
             print("stop and exit")

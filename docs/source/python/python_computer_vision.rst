@@ -28,7 +28,8 @@ Questo progetto ci introduce ufficialmente nel campo della visione artificiale!
 .. code-block::
 
     cd ~/picar-x/example
-    sudo python3 7.display.py
+    sudo python3 7.computer_vision.py
+
 
 **Visualizza l'immagine**
 

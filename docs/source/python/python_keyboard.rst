@@ -14,7 +14,7 @@
 
 .. _py_keyboard_control:
 
-2. Controllo tramite Tastiera
+3. Controllo tramite Tastiera
 ================================
 
 
@@ -30,7 +30,7 @@ Puoi controllare PiCar-X per avanzare, retrocedere, girare a sinistra e a destra
 .. code-block::
 
     cd ~/picar-x/example
-    sudo python3 2.keyboard_control.py
+    sudo python3 3.keyboard_control.py
 
 Premi i tasti sulla tastiera per controllare PiCar-X!
 

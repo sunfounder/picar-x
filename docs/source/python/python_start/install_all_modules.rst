@@ -14,11 +14,10 @@
 
 .. _install_all_modules:
 
+5. Installare tutti i moduli (Importante)
+========================================
 
-5. Installare Tutti i Moduli (Importante)
-============================================
-
-Assicurati di essere connesso a Internet e aggiorna il tuo sistema:
+Assicurati di essere connesso a Internet e aggiorna il sistema:
 
 .. raw:: html
 
@@ -31,7 +30,7 @@ Assicurati di essere connesso a Internet e aggiorna il tuo sistema:
 
 .. note::
 
-    I pacchetti relativi a Python3 devono essere installati se si sta utilizzando la versione Lite del sistema operativo.
+    I pacchetti relativi a Python3 devono essere installati se stai installando la versione Lite del sistema operativo.
 
     .. raw:: html
 
@@ -51,12 +50,12 @@ Installa ``robot-hat``.
 .. code-block::
 
     cd ~/
-    git clone -b v2.0 https://github.com/sunfounder/robot-hat.git
+    git clone -b 2.5.x https://github.com/sunfounder/robot-hat.git --depth 1
     cd robot-hat
-    sudo python3 setup.py install
+    sudo python3 install.py
 
 
-Scarica e installa il modulo ``vilib``.
+Quindi scarica e installa il modulo ``vilib``.
 
 .. raw:: html
 
@@ -65,7 +64,7 @@ Scarica e installa il modulo ``vilib``.
 .. code-block::
 
     cd ~/
-    git clone -b picamera2 https://github.com/sunfounder/vilib.git
+    git clone -b picamera2 https://github.com/sunfounder/vilib.git --depth 1
     cd vilib
     sudo python3 install.py
 
@@ -78,13 +77,13 @@ Scarica e installa il modulo ``picar-x``.
 .. code-block::
 
     cd ~/
-    git clone -b v2.0 https://github.com/sunfounder/picar-x.git --depth 1
+    git clone -b 2.1.x https://github.com/sunfounder/picar-x.git --depth 1
     cd picar-x
-    sudo python3 setup.py install
+    sudo pip3 install . --break
 
-Questa operazione richiederà un po' di tempo, quindi sii paziente.
+Questo passaggio richiederà un po’ di tempo, quindi sii paziente.
 
-Infine, devi eseguire lo script ``i2samp.sh`` per installare i componenti necessari per l'amplificatore i2s, altrimenti il Picar-X non avrà suono.
+Infine, è necessario eseguire lo script ``i2samp.sh`` per installare i componenti richiesti dall’amplificatore i2s, altrimenti il picar-x non avrà audio.
 
 .. raw:: html
 
@@ -97,7 +96,7 @@ Infine, devi eseguire lo script ``i2samp.sh`` per installare i componenti necess
 	
 .. image:: img/i2s.png
 
-Digita ``y`` e premi invio per continuare l'esecuzione dello script.
+Digita ``y`` e premi invio per continuare l’esecuzione dello script.
 
 .. image:: img/i2s2.png
 
@@ -108,4 +107,4 @@ Digita ``y`` e premi invio per eseguire ``/dev/zero`` in background.
 Digita ``y`` e premi invio per riavviare il Picar-X.
 
 .. note::
-    Se non senti alcun suono dopo il riavvio, potrebbe essere necessario eseguire lo script i2samp.sh più volte.
+    Se non c’è audio dopo il riavvio, potrebbe essere necessario eseguire lo script i2samp.sh più volte.
