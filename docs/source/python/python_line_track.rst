@@ -1,6 +1,6 @@
 .. _py_line_tracking:
 
-5. 线路追踪
+6. 线路追踪
 ====================================
 
 本项目将使用灰度模块让 PiCar-X 沿着一条线向前移动。使用深色胶带制作一条尽可能直且
@@ -15,7 +15,7 @@
 .. code-block::
 
     cd ~/picar-x/example
-    sudo python3 5.minecart_plus.py
+    sudo python3 6.minecart_plus.py
 
 运行代码后，PiCar-X 将沿着线路向前移动。
 
@@ -94,6 +94,10 @@
                     px.forward(px_power)
                 else:
                     outHandle()
+
+        except KeyboardInterrupt:
+            print("\nKeyboardInterrupt: stop and exit")
+
         finally:
             px.stop()
             print("stop and exit")

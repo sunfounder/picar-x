@@ -1,51 +1,80 @@
-1. 我们需要什么？
-====================
+1. 你还需要准备什么？
+===============================
 
-所需组件
------------------------
+在开始使用 PiCar-X 之前，我们先来准备必要的硬件。  
+这些部件就像是 PiCar-X 的 **大脑、心脏和感官**——缺少它们，小车就无法正常运行。
 
-**Raspberry Pi**
+必需组件
+------------------------------
 
-Raspberry Pi 是一款低成本、信用卡大小的计算机设备，可连接到电脑显示器或电视，
-并使用标准的键盘和鼠标。这款功能强大的小设备让各年龄段的人都可以探索计算机技术，
-并学习使用 Scratch 和 Python 等编程语言。
+* **Raspberry Pi（树莓派）**
 
-.. image:: img/compitable_pi.jpg
-    :width: 600
-    :align: center
+  树莓派是 PiCar-X 的“大脑”，负责所有计算、感知和控制任务。
+  
+  .. image:: img/need_pi.jpg
 
-**电源适配器**
+  * **兼容型号**：支持 Raspberry Pi 5、4、3 以及 Raspberry Pi Zero 2 W（推荐 Pi 5 或 Pi 4）。  
+  * **最低配置**：2GB RAM —— 足够运行 PiCar-X 的基本功能（运动、传感器、摄像头流）以及 **在线 AI 服务** （如 OpenAI Whisper、TTS 或 LLM）。  
+  * **推荐配置**：4GB RAM 或以上 —— 能流畅运行 **本地 AI 模型** （如 Vosk 语音识别、Piper TTS、轻量级 LLM）并同时进行摄像头流媒体与控制任务。
+  
 
-Raspberry Pi 通过一个 micro USB 接口（与许多手机上使用的相同）连接电源插座。
-您需要一个提供至少 2.5 安培电流的电源适配器。
+* **电源适配器**
 
-**Micro SD 卡**
+  PiCar-X 配有 **18650 电池组** 和带有充电电路的 **Robot HAT** 控制板。
+  
+  .. image:: img/need_power.png
+    :width: 400
 
-Raspberry Pi 需要一张 Micro SD 卡来存储所有文件和操作系统（Raspberry Pi OS）。
-建议使用容量至少为 8 GB 的 Micro SD 卡。
+  * 充电建议使用 **5V 3A 电源适配器**，例如官方的 **Raspberry Pi 15W USB-C 适配器**。  
+  * 也可以使用 **USB-C PD 快充** 或 **QC 2.0 快充**。  
+  * 从 0% 充到 100% 通常约需 **2 小时**。
+  
+
+* **Micro SD 卡**
+
+  树莓派没有内置硬盘，系统启动和所有文件都保存在 **Micro SD 卡** 上。
+  
+  .. image:: img/need_sd.jpg
+    :width: 200
+
+  * 最低容量：16GB  
+  * 推荐容量：32GB（更稳定）  
+  * 品牌建议：使用 **SanDisk** 或 **Samsung** 等可靠品牌，避免读写错误。
+  
 
 可选组件
--------------------------
+------------------------
 
-**屏幕**
+这些不是必须的，但能大大提升你的体验，尤其是调试时非常有用：
 
-若需查看 Raspberry Pi 的桌面环境，您需要一台显示屏，显示屏可以是电视或电脑显示器。
-如果显示屏自带扬声器，Raspberry Pi 可以通过这些扬声器播放声音。
+* **显示器（HDMI 或电视）**
 
-**鼠标和键盘**
+  对初学者非常友好，可以更直观地设置树莓派系统并运行图形程序。
+  
+  .. image:: img/need_screen.png
+    :width: 400
 
-使用屏幕时，还需要一套 USB 键盘和 USB 鼠标。
+* **HDMI 连接线（标准 / Mini / Micro）**
+ 
+  不同树莓派型号的 HDMI 接口不同，请准备对应的线缆：
+  
+  * Raspberry Pi 4 / 5：Micro HDMI  
+  * Raspberry Pi 3：标准 HDMI  
+  * Raspberry Pi Zero 2W：Mini HDMI
 
-**HDMI**
+  .. image:: img/need_hdmi.png
+    :width: 400
 
-Raspberry Pi 配有 HDMI 输出接口，与大多数现代电视和电脑显示器的 HDMI 接口兼容。
-如果您的显示屏只有 DVI 或 VGA 接口，您需要使用相应的转换线。
+* **键盘与鼠标**
 
-**外壳**
+  在树莓派系统初始配置时非常实用。后续可通过 SSH/VNC 远程访问，但我们建议初学者准备一套基础 USB 或无线键鼠。
+  
+  .. image:: img/need_keyboard_mouse.png
+    :width: 500
+  
 
-您可以为 Raspberry Pi 配备一个外壳，这样可以更好地保护设备。
+**准备小贴士**
 
-**音箱或耳机**
-
-Raspberry Pi 配备了一个 3.5 毫米音频接口，当显示屏没有内置扬声器或没有连接显示屏时，
-可以通过该接口输出音频。
+* 如果你购买了 **PiCar-X 套件**，大部分配件已经包含，但仍需自行准备 Raspberry Pi 主板、Micro SD 卡和电源适配器。  
+* 不知道该买什么？👉 最稳定、通用的选择是：  
+  **Raspberry Pi 4（2GB） + 官方电源 + 32GB Micro SD 卡**。

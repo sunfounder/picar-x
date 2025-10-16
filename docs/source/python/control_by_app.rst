@@ -1,6 +1,6 @@
 .. _control_by_app:
 
-13. 通过 APP 控制
+12. 通过 APP 控制
 ==================================
 
 SunFounder Controller 可用于控制基于 Raspberry Pi/Pico 的机器人。
@@ -39,7 +39,7 @@ SunFounder Controller 可用于控制基于 Raspberry Pi/Pico 的机器人。
     .. code-block::
 
         cd ~/picar-x/example
-        sudo python3 13.app_control.py
+        sudo python3 12.app_control.py
 
 
 #. 从 **APP Store(iOS)** 或 **Google Play(Android)** 下载并安装 `SunFounder Controller <https://docs.sunfounder.com/projects/sf-controller/en/latest/>`_。

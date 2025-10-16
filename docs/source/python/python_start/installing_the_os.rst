@@ -116,6 +116,6 @@
 
 #. 现在，将已设置好 Raspberry Pi OS 的 SD 卡插入 Raspberry Pi 底部的 Micro SD 卡槽。
 
-    .. .. image:: img/insert_sd_card.png
-    ..     :width: 500
-    ..     :align: center
+    .. image:: img/os_sd_to_pi.jpg
+        :width: 500
+        :align: center

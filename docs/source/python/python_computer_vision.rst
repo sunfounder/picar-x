@@ -14,7 +14,7 @@
 .. code-block::
 
     cd ~/picar-x/example
-    sudo python3 7.display.py
+    sudo python3 7.computer_vision.py
 
 **查看视频画面**
 

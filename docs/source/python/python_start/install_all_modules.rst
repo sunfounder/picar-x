@@ -3,7 +3,7 @@
 5. 安装所有模块（重要）
 ========================================
 
-确保您的设备已连接互联网并更新系统：
+确保你的树莓派已连接到互联网，并先更新系统：
 
 .. raw:: html
 
@@ -16,7 +16,7 @@
 
 .. note::
 
-    如果您使用的是 Lite 版本的操作系统，必须安装与 Python3 相关的包。
+    如果你安装的是 Lite 版本系统，还需要安装 Python3 相关的依赖包：
 
     .. raw:: html
 
@@ -27,7 +27,7 @@
         sudo apt install git python3-pip python3-setuptools python3-smbus
 
 
-安装 ``robot-hat`` 模块。
+安装 ``robot-hat`` 模块：
 
 .. raw:: html
 
@@ -36,12 +36,12 @@
 .. code-block::
 
     cd ~/
-    git clone -b v2.0 https://github.com/sunfounder/robot-hat.git
+    git clone -b 2.5.x https://github.com/sunfounder/robot-hat.git --depth 1
     cd robot-hat
-    sudo python3 setup.py install
+    sudo python3 install.py
 
 
-然后下载并安装 ``vilib`` 模块。
+然后下载并安装 ``vilib`` 模块：
 
 .. raw:: html
 
@@ -50,11 +50,11 @@
 .. code-block::
 
     cd ~/
-    git clone -b picamera2 https://github.com/sunfounder/vilib.git
+    git clone -b picamera2 https://github.com/sunfounder/vilib.git --depth 1
     cd vilib
     sudo python3 install.py
 
-下载并安装 ``picar-x`` 模块。
+下载并安装 ``picar-x`` 模块：
 
 .. raw:: html
 
@@ -63,13 +63,13 @@
 .. code-block::
 
     cd ~/
-    git clone -b v2.0 https://github.com/sunfounder/picar-x.git
+    git clone -b 2.1.x https://github.com/sunfounder/picar-x.git --depth 1
     cd picar-x
-    sudo python3 setup.py install
+    sudo pip3 install . --break
 
-这一步可能需要一些时间，请耐心等待。
+此步骤会花费一些时间，请耐心等待。
 
-最后，您需要运行脚本 ``i2samp.sh`` 来安装 i2s 放大器所需的组件，否则 picar-x 将无法发出声音。
+最后，你需要运行 ``i2samp.sh`` 脚本来安装 i2s 放大器所需的组件，否则 PiCar-X 将无法发声：
 
 .. raw:: html
 
@@ -82,15 +82,15 @@
 	
 .. image:: img/i2s.png
 
-输入 ``y`` 并按回车以继续运行脚本。
+输入 ``y`` 并按回车继续运行脚本。
 
 .. image:: img/i2s2.png
 
-输入 ``y`` 并按回车以在后台运行 ``/dev/zero``。
+输入 ``y`` 并按回车运行 ``/dev/zero`` 后台程序。
 
 .. image:: img/i2s3.png
 
-输入 ``y`` 并按回车以重启 Picar-X。
+输入 ``y`` 并按回车重启 PiCar-X。
 
 .. note::
-    如果重启后仍然没有声音，您可能需要多次运行 i2samp.sh 脚本。
+    如果重启后仍然没有声音，可能需要多次运行 ``i2samp.sh`` 脚本。

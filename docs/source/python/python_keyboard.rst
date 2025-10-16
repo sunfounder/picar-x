@@ -1,6 +1,6 @@
 .. _py_keyboard_control:
 
-2. 键盘控制
+3. 键盘控制
 ================================
 
 
@@ -16,7 +16,7 @@
 .. code-block::
 
     cd ~/picar-x/example
-    sudo python3 2.keyboard_control.py
+    sudo python3 3.keyboard_control.py
 
 使用键盘按键控制 PiCar-X！ 
 

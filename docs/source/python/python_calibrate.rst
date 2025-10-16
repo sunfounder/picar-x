@@ -1,6 +1,6 @@
 .. _py_calibrate:
 
-0. 校准 PiCar-X
+1. 校准 PiCar-X
 =================================
 
 校准电机和舵机
@@ -19,14 +19,15 @@
 
     .. code-block::
 
-        cd ~/picar-x/example/calibration
-        sudo python3 calibration.py
+        cd ~/picar-x/example
+        sudo python3 1.cali_servo_motor.py
+
 
 #. 运行代码后，终端会显示以下界面：
 
     .. image:: img/calibrate1.png
 
-#. 按 ``R`` 键测试 3 个舵机是否正常工作。使用 ``1``、 ``2`` 或 ``3`` 键选择舵机后，再按 ``R`` 键测试对应舵机。
+#. 按 ``R`` 键测试 3 个舵机是否正常工作。
 
 #. 按数字键 ``1`` 选择前轮舵机，然后按 ``W/S`` 键调整前轮方向，使其尽量保持正前方且不偏左或偏右。
 
@@ -58,7 +59,7 @@
 
 #. 在浅色地板上贴一条约 15 厘米长的黑色电工胶带。将 PiCar-X 放置在胶带上，使其跨越胶带。此时，灰度模块的中间传感器应正对胶带，而两侧传感器应悬空在浅色地面上。
 
-#. 运行 ``grayscale_calibration.py``。
+#. 运行代码。
 
     .. raw:: html
 
@@ -66,8 +67,8 @@
 
     .. code-block::
 
-        cd ~/picar-x/example/calibration
-        sudo python3 grayscale_calibration.py
+        cd ~/picar-x/example
+        sudo python3 1.cali_grayscale.py
 
 #. 运行代码后，终端会显示以下界面：
 

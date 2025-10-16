@@ -3,7 +3,7 @@
 通过 Powershell 安装 OpenSSH
 ===================================
 
-当您尝试使用 ``ssh <username>@<hostname>.local``（或 ``ssh <username>@<IP address>``）连接到 Raspberry Pi 时，出现以下错误信息：
+当您尝试使用 ``ssh <username>@<hostname>.local`` （或 ``ssh <username>@<IP address>``）连接到 Raspberry Pi 时，出现以下错误信息：
 
     .. code-block::
 

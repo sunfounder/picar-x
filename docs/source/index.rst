@@ -46,14 +46,15 @@ PiCar-X 提供两种编程语言：Blockly 和 Python。无论您选择哪种语
 .. toctree::
     :maxdepth: 3
 
-    本套件简介 <self>
-    组装指南 <assemble>
-    使用 Python 玩转 PiCar-X <python/play_with_python>
-    使用 Ezblock 玩转 PiCar-X <ezblock/play_with_ezblock>
-    调整舵机 <adjust_servo>
-    附录 <appendix/appendix>
-    硬件介绍 <hardware/cpn_hardware>
-    常见问题解答 <faq>
+    About This Kit <self>
+    assemble
+    python/play_with_python
+    ai_interaction/ai_interaction
+    ezblock/play_with_ezblock
+    adjust_servo
+    appendix/appendix
+    hardware/cpn_hardware
+    faq
 
 版权声明
 --------------------------
