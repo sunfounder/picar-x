@@ -14,48 +14,31 @@
 
 .. _assembly_instructions:
 
-組み立て手順
+PiCar-X の組み立て
 ==========================================
 
-PiCar-Xを組み立てる前に、すべての部品とコンポーネントが含まれていることを確認してください。もし不足や破損しているコンポーネントがあれば、可能な限り早くservice@sunfounder.comまでSunFounderに直ちに連絡してください。
+PiCar-X を組み立てる前に、まずすべてのパーツとコンポーネントが揃っているかを確認してください。  
+もし部品の不足や破損があれば、速やかに SunFounder（service@sunfounder.com）までご連絡ください。
 
-.. 組み立て手順については、以下のPDFを参照して手順に従ってください：
-
-.. :download:`[PDF]PiCar-Xの部品リストと組み立て <https://github.com/sunfounder/sf-pdf/raw/master/assembly_file/z0104v33-a0001013-picar-x.pdf>`。
-
-**Raspberry Pi Zero WをPiCar-Xに取り付ける**
-
-もしあなたのメインボードがRaspberry Pi Zero Wである場合、以下はPiCar-Xに取り付ける手順です。
+以下の動画では、ロボットをゼロから組み立てる手順をわかりやすく解説しています。
 
 .. note::
 
-    ビデオ内の組み立て手順は、お手元の印刷された説明書と若干異なる場合があります。印刷された説明書を優先的に参照してください。不明な点があれば、ビデオを参考にして確認できます。
+    動画の組み立て手順は、同梱の印刷された説明書と一部異なる場合があります。  
+    優先的に **印刷された説明書** に従い、不明な箇所がある場合は動画を参考にしてください。
 
-.. raw:: html
-
-    <iframe width="700" height="500" src="https://www.youtube.com/embed/DcobAsvRrV0?si=h2jvrqzU0z2InjSs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-
-その後、 **1:45** からのビデオ内の指示に従って組み立てを続けることができます。
-
-**組み立てチュートリアルビデオ（Raspberry Pi 4/3/1モデル）**
-
-
-このビデオは、ロボットの組み立て手順を詳しく説明しています。
-
-.. note::
-
-    ビデオ内の組み立て手順は、お手元の印刷された説明書と若干異なる場合があります。印刷された説明書を優先的に参照してください。不明な点があれば、ビデオを参考にして確認できます。
-    
 このチュートリアルで学べること：
 
-* **準備**：必要な工具と部品を紹介し、組み立てを開始する前に万全の態勢を整えます。
+* **準備**：必要な工具やパーツを紹介し、組み立て前にすべてが揃っていることを確認します。  
 
-* **組み立てステップ**：組み立ての各ステップを体系的にデモします。
+* **組み立て手順**：各ステップを順を追って丁寧に解説します。  
 
-* **ヒントと注意点**：プロセス全体を通じて、よくあるミスを避け、車がスムーズに動作するための重要なヒントとテクニックを共有します。
+* **コツと注意点**：作業中によくあるミスを避け、車をスムーズに動かすためのポイントを紹介します。  
 
-* **サーボのゼロリング**：各サーボを固定する前に、まずゼロリングが必要です。ゼロリングの手順は、最初にRaspberry Pi OSをインストールし、次に必要なモジュールをインストールし、その後スクリプトを実行して（すべてのPWMピンの角度を0に設定）。その後、サーボワイヤを接続してサーボをゼロリングします。
+* **サーボのゼロ位置合わせ**：各サーボを固定する前に、ゼロ位置に合わせる必要があります。  
+  その手順は、まず Raspberry Pi OS をインストールし、必要なモジュールを導入した後、  
+  すべての PWM ピンの角度を 0 に設定するスクリプトを実行し、最後にサーボ線を接続します。
 
 .. raw:: html
 
-    <iframe width="700" height="500" src="https://www.youtube.com/embed/i5FpY3FAcyA?si=2WlfchM0ryLU3yi1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/GkLSBvtch0g?si=OtQmRZ31je_denSi" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>

@@ -14,7 +14,7 @@
 
 .. _py_move:
 
-1. PiCar-Xを動かす
+2. PiCar-Xを動かす
 ========================
 
 これは最初のプロジェクトです。PiCar-Xの基本的な動きをテストしましょう。
@@ -28,7 +28,7 @@
 .. code-block::
 
     cd ~/picar-x/example
-    sudo python3 1.move.py
+    sudo python3 2.move.py
 
 このコードを実行すると、PiCar-Xは前進し、S字型に曲がり、停止して頭を振ります。
 

@@ -21,6 +21,10 @@ automatic obstacle avoidance, automatic line tracking, etc.
 
 
 <a id="update"></a>
+
+2025-10-13:
+- Add AI courses
+
 2024-10-18:
 - Added an interaction tutorial with GPT-4O.
 - Optimized version compatibility issues.

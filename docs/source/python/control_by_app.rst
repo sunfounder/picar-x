@@ -14,7 +14,7 @@
 
 .. _control_by_app:
 
-13. アプリによる制御
+12. アプリによる制御
 ==================================
 
 SunFounderコントローラーは、Raspberry Pi/Picoベースのロボットを制御するために使用されます。
@@ -54,7 +54,7 @@ A-Qまでの17エリアがあり、異なるウィジェットを配置して独
     .. code-block::
 
         cd ~/picar-x/example
-        sudo python3 13.app_control.py
+        sudo python3 12.app_control.py
 
 #. **APP Store(iOS)** または **Google Play(Android)** から `SunFounder Controller <https://docs.sunfounder.com/projects/sf-controller/en/latest/>`_ をインストールします。
 

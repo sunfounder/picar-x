@@ -14,13 +14,13 @@
 
 .. _py_cliff:
 
-6. 崖検出
+5. 崖検出
 ===========================
 
 PiCar-Xに少し自己保護意識を与えて、自身のグレースケールモジュールを使用して崖からの突進を避けるようにしましょう。
 
 この例では、車は休止状態になります。
-崖に押し出された場合、緊急に目覚め、後退し、「danger」と言います。
+もし車を崖（段差）のほうへ押すと、緊急的に起動して後退します。
 
 **コードの実行**
 
@@ -31,7 +31,7 @@ PiCar-Xに少し自己保護意識を与えて、自身のグレースケール�
 .. code-block::
 
     cd ~/picar-x/example
-    sudo python3 6.cliff_detection.py
+    sudo python3 5.cliff_detection.py
     
 
 **コード**
@@ -47,43 +47,39 @@ PiCar-Xに少し自己保護意識を与えて、自身のグレースケール�
 
     from picarx import Picarx
     from time import sleep
-    from robot_hat import TTS
-
-    tts = TTS()
-    tts.lang("en-US")
 
     px = Picarx()
     # px = Picarx(grayscale_pins=['A0', 'A1', 'A2'])
     # manual modify reference value
     px.set_cliff_reference([200, 200, 200])
 
-    current_state = None
-    px_power = 10
-    offset = 20
     last_state = "safe"
 
-    if __name__=='__main__':
+    if __name__ == '__main__':
         try:
             while True:
                 gm_val_list = px.get_grayscale_data()
                 gm_state = px.get_cliff_status(gm_val_list)
-                # print("cliff status is:  %s"%gm_state)
+                # print("cliff status is: %s" % gm_state)
 
                 if gm_state is False:
                     state = "safe"
                     px.stop()
                 else:
-                    state = "danger"   
+                    state = "danger"
                     px.backward(80)
                     if last_state == "safe":
-                        tts.say("danger")
                         sleep(0.1)
+
                 last_state = state
+
+        except KeyboardInterrupt:
+            print("\nKeyboardInterrupt: stop and exit")
 
         finally:
             px.stop()
-            print("stop and exit")
             sleep(0.1)
+
 
 **どのように動作するのか？**
 

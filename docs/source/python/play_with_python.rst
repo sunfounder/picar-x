@@ -14,33 +14,60 @@
 
 .. _play_python:
 
-Pythonを楽しもう
+Python で遊ぼう
 =======================
 
-Pythonでプログラミングを学びたい初心者やビギナーの方には、基本的なPythonプログラミングスキルとRaspberry Pi OSの知識が必要です。
-Raspberry Piの設定を始めるには、Pythonに関するクイックガイドを参照してください：
+Python でプログラミングを始めたい初心者の方は、Raspberry Pi OS の基本操作と Python の基本スキルを少し身につけておくとスムーズです。  
+このセクションでは、Raspberry Pi のセットアップから PiCar-X の走行制御、コンピュータビジョンの活用、さらに音声・AI 連携まで、段階的に学ぶことができます。
+
+.. _quick_guide_python:
+
+1. Python クイックガイド
+---------------------------
+
+Raspberry Pi の環境構築方法を学びます。  
+Raspberry Pi OS のインストール、Wi-Fi の設定、リモートアクセスの有効化など、Python コードを簡単に実行できるように準備します。  
+すでに Raspberry Pi の基本操作やコマンドラインに慣れている方は、このパートをスキップして次へ進んでもかまいません。
 
 .. toctree:: 
-    :maxdepth: 2
+    :maxdepth: 1
     
-    python_start/quick_guide_on_python
+    python_start/what_do_we_need
+    python_start/installing_the_os
+    python_start/power_supply
+    python_start/set_up_your_raspberry_pi
+    python_start/install_all_modules
+    python_start/enable_i2c
+    python_start/py_servo_adjust
+
+2. 基本的な動き
+-----------------------
+
+PiCar-X を組み立てたら、まずはシンプルな移動プログラムから始めましょう。  
+モーターの制御、前進・後退・旋回の操作、障害物回避やライントレースなどの基本的なセンサーの使い方を学びます。
+
+.. toctree:: 
+    :maxdepth: 1
+    
     python_calibrate
-
-
-PiCar-Xの組み立てが完了したら、以下のプロジェクトを実行してみてください：
-
-.. toctree::
-
     python_move
     python_keyboard
-    python_tts
     python_avoid
-    python_line_track
     python_cliff
+    python_line_track
+
+3. コンピュータビジョン
+-------------------------
+
+PiCar-X に「見る力」を与えましょう。  
+このセクションでは、顔追跡、録画、物体とのインタラクション、ビデオ制御やモバイルアプリによる操作など、カメラを活用したさまざまな楽しいプロジェクトを紹介します。
+
+.. toctree:: 
+    :maxdepth: 1
+
     python_computer_vision
     python_stare_at_you
     python_record
     python_bull_fight
     python_video_car
-    python_treasure_hunt
     control_by_app

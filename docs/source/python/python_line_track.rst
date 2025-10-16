@@ -14,7 +14,7 @@
 
 .. _py_line_tracking:
 
-5. ライン追跡
+6. ライン追跡
 ====================================
 
 このプロジェクトではグレースケールモジュールを使用して、PiCar-Xを線に沿って前進させます。
@@ -30,7 +30,7 @@ PiCar-Xが脱線した場合は、いくつかの実験が必要になるかも�
 .. code-block::
 
     cd ~/picar-x/example
-    sudo python3 5.minecart_plus.py
+    sudo python3 6.line_tracking.py
     
 コードを実行すると、PiCar-Xは線に沿って前進します。
 
@@ -110,6 +110,8 @@ PiCar-Xが脱線した場合は、いくつかの実験が必要になるかも�
                     px.forward(px_power) 
                 else:
                     outHandle()
+        except KeyboardInterrupt:
+            print("\nKeyboardInterrupt: stop and exit")
         finally:
             px.stop()
             print("stop and exit")

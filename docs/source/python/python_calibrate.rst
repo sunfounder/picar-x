@@ -14,7 +14,7 @@
 
 .. _py_calibrate:
 
-0. PiCar-Xの校正
+1. PiCar-Xの校正
 =================================
 
 モーターとサーボの校正
@@ -32,14 +32,14 @@ PiCar-Xの取り付け中やサーボ自体の限界により、サーボの角�
 
     .. code-block::
 
-        cd ~/picar-x/example/calibration
-        sudo python3 calibration.py
+        cd ~/picar-x/example
+        sudo python3 1.cali_servo_motor.py
 
 #. コードを実行すると、端末に以下のインターフェースが表示されます。
 
     .. image:: img/calibrate1.png
 
-#. ``R`` キーは、3 つのサーボが正常に動作しているかど うかをテストするために使用します。 ``1`` 、 ``2`` 、 ``3`` キーでサーボを選択したら、 ``R`` キーを押してそのサーボをテストします。
+#. ``R`` キーは、3 つのサーボが正常に動作しているかど うかをテストするために使用します。
 
 #. 数字キー ``1`` を押して前輪サーボを選択し、その後 ``W/S`` キーを押して前輪が左右に傾かずに可能な限り前を向くようにします。
 
@@ -71,8 +71,7 @@ PiCar-Xの取り付け中やサーボ自体の限界により、サーボの角�
 
 #. 明るい色の床に約15cmの黒い電気テープを敷き、PiCar-Xをテープの上に乗せます。このセットアップでは、グレースケールモジュールの中央センサーがテープの真上に、両サイドのセンサーがより明るい表面の上に来るようにします。
 
-
-#. ``grayscale_calibration.py`` を実行します。
+#. コードを実行します。
 
     .. raw:: html
 
@@ -80,8 +79,8 @@ PiCar-Xの取り付け中やサーボ自体の限界により、サーボの角�
 
     .. code-block::
 
-        cd ~/picar-x/example/calibration
-        sudo python3 grayscale_calibration.py
+        cd ~/picar-x/example
+        sudo python3 1.cali_grayscale.py
 
 #. コードを実行すると、端末に以下のインターフェースが表示されます。
 

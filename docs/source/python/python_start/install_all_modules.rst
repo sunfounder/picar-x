@@ -14,10 +14,10 @@
 
 .. _install_all_modules:
 
-5. すべてのモジュールをインストールする（重要）
-===============================================
+5. すべてのモジュールをインストール（重要）
+============================================
 
-インターネットに接続していることを確認し、システムをアップデートしてください：
+インターネットに接続されていることを確認し、システムを更新します：
 
 .. raw:: html
 
@@ -30,14 +30,14 @@
 
 .. note::
 
-    LiteバージョンのOSをインストールする場合は、Python3関連のパッケージをインストールする必要があります。
+    Lite 版 OS を使用している場合は、Python3 関連のパッケージをインストールする必要があります。
 
     .. raw:: html
 
         <run></run>
 
     .. code-block::
-    
+
         sudo apt install git python3-pip python3-setuptools python3-smbus
 
 
@@ -50,12 +50,12 @@
 .. code-block::
 
     cd ~/
-    git clone -b v2.0 https://github.com/sunfounder/robot-hat.git
+    git clone -b 2.5.x https://github.com/sunfounder/robot-hat.git --depth 1
     cd robot-hat
-    sudo python3 setup.py install
+    sudo python3 install.py
 
 
-次に、 ``vilib`` モジュールをダウンロードしてインストールします。
+次に ``vilib`` モジュールをダウンロードしてインストールします。
 
 .. raw:: html
 
@@ -64,7 +64,7 @@
 .. code-block::
 
     cd ~/
-    git clone -b picamera2 https://github.com/sunfounder/vilib.git
+    git clone -b picamera2 https://github.com/sunfounder/vilib.git --depth 1
     cd vilib
     sudo python3 install.py
 
@@ -77,13 +77,14 @@
 .. code-block::
 
     cd ~/
-    git clone -b v2.0 https://github.com/sunfounder/picar-x.git --depth 1
+    git clone -b 2.1.x https://github.com/sunfounder/picar-x.git --depth 1
     cd picar-x
-    sudo python3 setup.py install
+    sudo pip3 install . --break
 
-このステップには少し時間がかかりますので、ご patienceください。
+このステップには少し時間がかかるので、しばらくお待ちください。
 
-最後に、i2sアンプに必要なコンポーネントをインストールするためのスクリプト ``i2samp.sh`` を実行する必要があります。そうしないと、picar-xに音が出ません。
+最後に、``i2samp.sh`` スクリプトを実行して i2s アンプに必要なコンポーネントをインストールします。  
+これを行わないと、Picar-X から音が出ません。
 
 .. raw:: html
 
@@ -93,18 +94,18 @@
 
     cd ~/picar-x
     sudo bash i2samp.sh
-	
+
 .. image:: img/i2s.png
 
-スクリプトを続けて実行するために ``y`` と入力し、Enterキーを押します。
+``y`` を入力し、Enter を押してスクリプトを実行します。
 
 .. image:: img/i2s2.png
 
-バックグラウンドで ``/dev/zero`` を実行するために ``y`` と入力し、Enterキーを押します。
+``y`` を入力し、Enter を押して ``/dev/zero`` をバックグラウンドで実行します。
 
 .. image:: img/i2s3.png
 
-Picar-Xを再起動するために ``y`` と入力し、Enterキーを押します。
+``y`` を入力し、Enter を押して Picar-X を再起動します。
 
 .. note::
-    再起動後に音が出ない場合は、i2samp.shスクリプトを何度か実行する必要があるかもしれません。
+    再起動後に音が出ない場合は、i2samp.sh スクリプトを複数回実行する必要があるかもしれません。

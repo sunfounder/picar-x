@@ -14,7 +14,7 @@
 
 .. _py_keyboard_control:
 
-2. キーボード制御
+3. キーボード制御
 ================================
 
 このプロジェクトでは、キーボードを使ってPiCar-Xをリモートで制御する方法を学びます。
@@ -29,7 +29,7 @@ PiCar-Xを前進、後退、左、右に動かすことができます。
 .. code-block::
 
     cd ~/picar-x/example
-    sudo python3 2.keyboard_control.py
+    sudo python3 3.keyboard_control.py
 
 キーボードのキーを押してPiCar-Xを制御しましょう！
 

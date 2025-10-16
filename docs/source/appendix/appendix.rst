@@ -20,8 +20,7 @@
     
     filezilla
     login_windows
-    get_ip_address
     install_openssh_powershell
-    battery
+    remote_desktop
 
 
