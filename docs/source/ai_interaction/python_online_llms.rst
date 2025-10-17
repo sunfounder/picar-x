@@ -255,6 +255,13 @@ Los usuarios en China continental pueden usar la consola **Bailian (百炼)**.
 
 **Probar con código de ejemplo**
 
+#. Abre el archivo de prueba:
+
+   .. code-block:: bash
+
+       cd ~/picar-x/example
+       sudo nano 18.online_llm_test.py
+
 #. Reemplaza el contenido con el siguiente código y actualiza ``model="xxx"`` con el modelo que desees (por ejemplo, ``qwen-plus``):
 
    .. code-block:: python
@@ -320,6 +327,13 @@ Ve a la página de **Models** en la consola de xAI. Allí puedes ver todos los m
    .. image:: img/llm_grok_model.png
 
 **Probar con código de ejemplo**
+
+#. Abre el archivo de prueba:
+
+   .. code-block:: bash
+
+       cd ~/picar-x/example
+       sudo nano 18.online_llm_test.py
 
 #. Reemplaza el contenido con el siguiente código y actualiza ``model="xxx"`` con el modelo que desees (por ejemplo, ``grok-4-latest``):
 
@@ -389,6 +403,13 @@ En el momento de redactar esto (2025-09-12), DeepSeek ofrece:
 * ``deepseek-reasoner``  
 
 **Probar con código de ejemplo**
+
+#. Abre el archivo de prueba:
+
+   .. code-block:: bash
+
+       cd ~/picar-x/example
+       sudo nano 18.online_llm_test.py
 
 #. Reemplaza el contenido con el siguiente código y actualiza ``model="xxx"`` con el modelo que desees (por ejemplo, ``deepseek-chat``):
 
@@ -472,6 +493,13 @@ Doubao es la plataforma de modelos de IA de ByteDance (Volcengine Ark).
 
 **Probar con código de ejemplo**
 
+#. Abre el archivo de prueba:
+
+   .. code-block:: bash
+
+       cd ~/picar-x/example
+       sudo nano 18.online_llm_test.py
+
 #. Reemplaza el contenido con el siguiente código y actualiza ``model="xxx"`` con el modelo que desees (por ejemplo, ``doubao-seed-1-6-250615``):
 
    .. code-block:: python
@@ -533,6 +561,13 @@ Para esas plataformas, deberás obtener manualmente tu **API Key** y el **base_u
    Mantén tu clave API en privado. No subas ``secret.py`` a repositorios públicos.
 
 **Probar con código de ejemplo**
+
+#. Abre el archivo de prueba:
+
+   .. code-block:: bash
+
+       cd ~/picar-x/example
+       sudo nano 18.online_llm_test.py
 
 #. Reemplaza el contenido de un archivo Python con el siguiente ejemplo y completa ``base_url`` y ``model`` correctamente para tu plataforma:
 

@@ -92,7 +92,7 @@ Finalmente, necesitas ejecutar el script ``i2samp.sh`` para instalar los compone
 
 .. code-block::
 
-    cd ~/picar-x
+    cd ~/robot-hat
     sudo bash i2samp.sh
 	
 .. image:: img/i2s.png
