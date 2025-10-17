@@ -46,11 +46,8 @@ Die Stimme klingt zwar roboterhaft, ist aber sehr flexibel konfigurierbar: Lauts
 
   .. code-block:: python
   
-      from picarx import Picarx
       from picarx.tts import Espeak
-      import time
-  
-      px = Picarx()
+
       tts = Espeak()
   
       # Quick hello (sanity check)
@@ -92,11 +89,8 @@ Es ist einfacher zu verwenden, bietet aber weniger Einstellmöglichkeiten — du
 
   .. code-block:: python
   
-      from picarx import Picarx
       from picarx.tts import Pico2Wave
-      import time
-  
-      px = Picarx()
+
       tts = Pico2Wave()
   
       tts.set_lang('en-US')  # en-US, en-GB, de-DE, es-ES, fr-FR, it-IT

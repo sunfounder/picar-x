@@ -249,6 +249,13 @@ Nutzer in Festlandchina können die **Bailian (百炼)** Konsole verwenden.
 
 **Mit Beispielcode testen**
 
+#. Öffne die Testdatei:
+
+   .. code-block:: bash
+
+       cd ~/picar-x/example
+       sudo nano 18.online_llm_test.py
+       
 #. Ersetze den Inhalt durch folgenden Code und aktualisiere ``model="xxx"`` (z. B. ``qwen-plus``):
 
    .. code-block:: python
@@ -317,6 +324,13 @@ Gehe zur Models-Seite in der xAI-Konsole. Hier siehst du alle verfügbaren Model
 
 **Mit Beispielcode testen**
 
+#. Öffne die Testdatei:
+
+   .. code-block:: bash
+
+       cd ~/picar-x/example
+       sudo nano 18.online_llm_test.py
+       
 #. Ersetze den Inhalt durch folgenden Code und passe ``model="xxx"`` an (z. B. ``grok-4-latest``):
 
    .. code-block:: python
@@ -386,6 +400,13 @@ Stand: 2025-09-12 bietet DeepSeek folgende Modelle an:
 
 **Mit Beispielcode testen**
 
+#. Öffne die Testdatei:
+
+   .. code-block:: bash
+
+       cd ~/picar-x/example
+       sudo nano 18.online_llm_test.py
+       
 #. Ersetze den Inhalt durch folgenden Code und aktualisiere ``model="xxx"`` (z. B. ``deepseek-chat``):
 
    .. code-block:: python
@@ -469,6 +490,13 @@ Doubao ist die KI-Modellplattform von ByteDance (Volcengine Ark).
 
 **Mit Beispielcode testen**
 
+#. Öffne die Testdatei:
+
+   .. code-block:: bash
+
+       cd ~/picar-x/example
+       sudo nano 18.online_llm_test.py
+       
 #. Ersetze den Inhalt durch folgenden Code und passe ``model="xxx"`` an (z. B. ``doubao-seed-1-6-250615``):
 
    .. code-block:: python
@@ -532,6 +560,13 @@ Dazu benötigst du lediglich einen **API-Schlüssel** und die passende **base_ur
 
 **Mit Beispielcode testen**
 
+#. Öffne die Testdatei:
+
+   .. code-block:: bash
+
+       cd ~/picar-x/example
+       sudo nano 18.online_llm_test.py
+       
 #. Ersetze den Inhalt einer Python-Datei durch folgenden Code und trage die korrekte ``base_url`` und ``model`` deines Anbieters ein:
 
    .. note::

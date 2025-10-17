@@ -92,7 +92,7 @@ Andernfalls hat der PiCar-X keinen Ton.
 
 .. code-block::
 
-    cd ~/picar-x
+    cd ~/robot-hat
     sudo bash i2samp.sh
 	
 .. image:: img/i2s.png
