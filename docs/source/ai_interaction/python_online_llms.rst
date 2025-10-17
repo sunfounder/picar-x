@@ -243,6 +243,12 @@ Qwen 是由阿里云提供的一系列大语言和多模态模型。
 
 **使用示例代码进行测试**
 
+#. 打开测试文件：
+
+   .. code-block:: bash
+
+       cd ~/picar-x/example
+       sudo nano 18.online_llm_test.py
 #. 将内容替换为以下代码，并将 ``model="xxx"`` 修改为你要使用的模型（例如 ``qwen-plus``）：
 
    .. code-block:: python
@@ -307,6 +313,13 @@ Grok 是由埃隆·马斯克团队开发的 xAI 对话式 AI。你可以通过 x
    .. image:: img/llm_grok_model.png
 
 **使用示例代码进行测试**
+
+#. 打开测试文件：
+
+   .. code-block:: bash
+
+       cd ~/picar-x/example
+       sudo nano 18.online_llm_test.py
 
 #. 将文件内容替换为以下代码，并将 ``model="xxx"`` 修改为你要使用的模型（例如 ``grok-4-latest``）：
 
@@ -377,6 +390,12 @@ DeepSeek 是一家中国的大语言模型提供商，提供高性价比且功�
 
 **使用示例代码进行测试**
 
+#. 打开测试文件：
+
+   .. code-block:: bash
+
+       cd ~/picar-x/example
+       sudo nano 18.online_llm_test.py
 #. 将文件内容替换为以下代码，并将 ``model="xxx"`` 修改为你要使用的模型（例如 ``deepseek-chat``）：
 
    .. code-block:: python
@@ -459,6 +478,13 @@ Doubao 是字节跳动旗下的 AI 模型平台（Volcengine Ark）。
 
 **使用示例代码进行测试**
 
+#. 打开测试文件：
+
+   .. code-block:: bash
+
+       cd ~/picar-x/example
+       sudo nano 18.online_llm_test.py
+
 #. 将文件内容替换为以下代码，并将 ``model="xxx"`` 修改为你要使用的模型（例如 ``doubao-seed-1-6-250615``）：
 
    .. code-block:: python
@@ -519,6 +545,12 @@ General
 
 **使用示例代码进行测试**
 
+#. 打开测试文件：
+
+   .. code-block:: bash
+
+       cd ~/picar-x/example
+       sudo nano 18.online_llm_test.py
 #. 将 Python 文件内容替换为以下示例代码，并填写你所用平台的正确 ``base_url`` 和 ``model``：
 
    .. note::
