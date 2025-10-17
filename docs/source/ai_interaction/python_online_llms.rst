@@ -257,6 +257,13 @@ Qwen モデルを利用するには **APIキー** が必要です。
 
 **サンプルコードでテスト**
 
+#. テストファイルを開きます：
+
+   .. code-block:: bash
+
+       cd ~/picar-x/example
+       sudo nano 18.online_llm_test.py
+
 #. 以下のコードに置き換え、``model="xxx"`` を希望するモデル（例： ``qwen-plus``）に変更します：
 
    .. code-block:: python
@@ -321,6 +328,13 @@ xAI コンソールの Models ページにアクセスし、利用可能なモ�
    .. image:: img/llm_grok_model.png
 
 **サンプルコードでテスト**
+
+#. テストファイルを開きます：
+
+   .. code-block:: bash
+
+       cd ~/picar-x/example
+       sudo nano 18.online_llm_test.py
 
 #. 以下のコードに置き換え、``model="xxx"`` を希望のモデル（例： ``grok-4-latest``）に変更します：
 
@@ -391,6 +405,13 @@ DeepSeek は中国の LLM プロバイダーで、低価格で高性能なモデ
 * ``deepseek-reasoner``  
 
 **サンプルコードでテスト**
+
+#. テストファイルを開きます：
+
+   .. code-block:: bash
+
+       cd ~/picar-x/example
+       sudo nano 18.online_llm_test.py
 
 #. 以下のコードに置き換え、``model="xxx"`` を希望のモデル（例： ``deepseek-chat``）に変更します：
 
@@ -475,6 +496,13 @@ Doubao は ByteDance（バイトダンス）が提供する AI モデルプラ�
 
 **サンプルコードでテスト**
 
+#. テストファイルを開きます：
+
+   .. code-block:: bash
+
+       cd ~/picar-x/example
+       sudo nano 18.online_llm_test.py
+
 #. 以下のコードに置き換え、``model="xxx"`` を希望のモデル（例： ``doubao-seed-1-6-250615``）に変更します：
 
    .. code-block:: python
@@ -537,7 +565,14 @@ General
 
 **サンプルコードでテスト**
 
-#. Python ファイルの内容を以下のコードに置き換え、``base_url`` および ``model`` を適切に設定します：
+#. テストファイルを開きます：
+
+   .. code-block:: bash
+
+      cd ~/picar-x/example
+      sudo nano 18.online_llm_test.py
+
+#. Python ファイルの内容を以下のコードに置き換え、 ``base_url`` および ``model`` を適切に設定します：
 
    .. note::
 
