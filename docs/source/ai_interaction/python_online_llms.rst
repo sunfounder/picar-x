@@ -78,7 +78,7 @@ Here's how to set it up:
 
 **Test with example code**
 
-#. Open our sample code:
+#. Open sample code:
 
    .. code-block:: bash
    
@@ -255,6 +255,13 @@ Mainland China users can instead use the **Bailian (百炼)** console.
 
 **Test with example code**
 
+#. Open the test file:
+
+   .. code-block:: bash
+
+       cd ~/picar-x/example
+       sudo nano 18.online_llm_test.py
+
 #. Replace the content with the code below, and update ``model="xxx"`` to the model you want (for example, ``qwen-plus``):
 
    .. code-block:: python
@@ -320,6 +327,13 @@ Go to the Models page in the xAI console. Here you can see all the models availa
    .. image:: img/llm_grok_model.png
 
 **Test with example code**
+
+#. Open the test file:
+
+   .. code-block:: bash
+
+       cd ~/picar-x/example
+       sudo nano 18.online_llm_test.py
 
 #. Replace the content with the code below, and update ``model="xxx"`` to the model you want (for example, ``grok-4-latest``):
 
@@ -389,6 +403,13 @@ At the time of writing (2025-09-12), DeepSeek offers:
 * ``deepseek-reasoner``  
 
 **Test with example code**
+
+#. Open the test file:
+
+   .. code-block:: bash
+
+       cd ~/picar-x/example
+       sudo nano 18.online_llm_test.py
 
 #. Replace the content with the code below, and update ``model="xxx"`` to the model you want (for example, ``deepseek-chat``):
 
@@ -472,6 +493,13 @@ Doubao is ByteDance's AI model platform (Volcengine Ark).
 
 **Test with example code**
 
+#. Open the test file:
+
+   .. code-block:: bash
+
+       cd ~/picar-x/example
+       sudo nano 18.online_llm_test.py
+
 #. Replace the content with the code below, and update ``model="xxx"`` to the model you want (for example, ``doubao-seed-1-6-250615``):
 
    .. code-block:: python
@@ -534,6 +562,12 @@ For those platforms, you will need to manually obtain your **API Key** and the c
 
 **Test With Example Code**
 
+#. Open the test file:
+
+   .. code-block:: bash
+
+      cd ~/picar-x/example
+      sudo nano 18.online_llm_test.py
 
 #. Replace the content of a Python file with the following example, and fill in the correct ``base_url`` and ``model`` for your platform:
 
