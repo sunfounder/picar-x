@@ -32,9 +32,7 @@ Espeak 是树莓派系统中内置的一个轻量 TTS 引擎。
 
   .. code-block:: python
   
-      from picarx import Picarx
       from picarx.tts import Espeak
-      import time
   
       px = Picarx()
       tts = Espeak()
@@ -78,9 +76,7 @@ Pico2Wave 生成的声音更加自然，接近人声。
 
   .. code-block:: python
   
-      from picarx import Picarx
       from picarx.tts import Pico2Wave
-      import time
   
       px = Picarx()
       tts = Pico2Wave()
