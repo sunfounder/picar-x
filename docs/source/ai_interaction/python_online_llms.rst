@@ -255,6 +255,13 @@ Gli utenti nella Cina continentale possono invece utilizzare la console **Bailia
 
 **Test con codice di esempio**
 
+#. Apri il file di test:
+
+   .. code-block:: bash
+
+       cd ~/picar-x/example
+       sudo nano 18.online_llm_test.py
+       
 #. Sostituisci il contenuto con il codice qui sotto e aggiorna ``model="xxx"`` con il modello desiderato (ad esempio, ``qwen-plus``):
 
    .. code-block:: python
@@ -323,6 +330,13 @@ Vai alla pagina Models nella console xAI. Qui puoi vedere tutti i modelli dispon
 
 **Test con codice di esempio**
 
+#. Apri il file di test:
+
+   .. code-block:: bash
+
+       cd ~/picar-x/example
+       sudo nano 18.online_llm_test.py
+       
 #. Sostituisci il contenuto con il codice qui sotto e aggiorna ``model="xxx"`` con il modello desiderato (ad esempio, ``grok-4-latest``):
 
    .. code-block:: python
@@ -392,6 +406,13 @@ Alla data di stesura (2025-09-12), DeepSeek offre:
 
 **Test con codice di esempio**
 
+#. Apri il file di test:
+
+   .. code-block:: bash
+
+       cd ~/picar-x/example
+       sudo nano 18.online_llm_test.py
+       
 #. Sostituisci il contenuto con il codice seguente e aggiorna ``model="xxx"`` con il modello desiderato (ad esempio, ``deepseek-chat``):
 
    .. code-block:: python
@@ -474,6 +495,13 @@ Doubao è la piattaforma di modelli AI di ByteDance (Volcengine Ark).
 
 **Test con codice di esempio**
 
+#. Apri il file di test:
+
+   .. code-block:: bash
+
+       cd ~/picar-x/example
+       sudo nano 18.online_llm_test.py
+       
 #. Sostituisci il contenuto con il codice seguente e aggiorna ``model="xxx"`` con il modello desiderato (ad esempio, ``doubao-seed-1-6-250615``):
 
    .. code-block:: python
@@ -537,6 +565,13 @@ Per queste piattaforme, dovrai ottenere manualmente la tua **API Key** e la corr
 
 **Test con codice di esempio**
 
+#. Apri il file di test:
+
+   .. code-block:: bash
+
+       cd ~/picar-x/example
+       sudo nano 18.online_llm_test.py
+       
 #. Sostituisci il contenuto di un file Python con il seguente esempio e inserisci la corretta ``base_url`` e ``model`` per la tua piattaforma:
 
    .. note::
