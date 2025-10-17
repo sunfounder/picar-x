@@ -253,6 +253,13 @@ Les utilisateurs en Chine continentale peuvent utiliser la console **Bailian (�
 
 **Tester avec le code d’exemple**
 
+#. Ouvrez le fichier de test :
+
+   .. code-block:: bash
+
+       cd ~/picar-x/example
+       sudo nano 18.online_llm_test.py
+
 #. Remplacez le contenu par le code ci-dessous et mettez à jour ``model="xxx"`` avec le modèle souhaité (par exemple, ``qwen-plus``) :
 
    .. code-block:: python
@@ -317,6 +324,13 @@ Allez sur la page Models dans la console xAI. Vous y trouverez tous les modèles
    .. image:: img/llm_grok_model.png
 
 **Tester avec le code d’exemple**
+
+#. Ouvrez le fichier de test :
+
+   .. code-block:: bash
+
+       cd ~/picar-x/example
+       sudo nano 18.online_llm_test.py
 
 #. Remplacez le contenu par le code ci-dessous et mettez à jour ``model="xxx"`` avec le modèle souhaité (par exemple, ``grok-4-latest``) :
 
@@ -387,6 +401,13 @@ Vous devez recharger votre compte au préalable. Commencez avec un petit montant
 * ``deepseek-reasoner``  
 
 **Tester avec le code d’exemple**
+
+#. Ouvrez le fichier de test :
+
+   .. code-block:: bash
+
+       cd ~/picar-x/example
+       sudo nano 18.online_llm_test.py
 
 #. Remplacez le contenu par le code ci-dessous et mettez à jour ``model="xxx"`` avec le modèle souhaité (par exemple, ``deepseek-chat``) :
 
@@ -470,6 +491,13 @@ Doubao est la plateforme d’IA de ByteDance (Volcengine Ark).
 
 **Tester avec le code d’exemple**
 
+#. Ouvrez le fichier de test :
+
+   .. code-block:: bash
+
+       cd ~/picar-x/example
+       sudo nano 18.online_llm_test.py
+
 #. Remplacez le contenu par le code ci-dessous et mettez à jour ``model="xxx"`` avec le modèle souhaité (par exemple, ``doubao-seed-1-6-250615``) :
 
    .. code-block:: python
@@ -532,6 +560,13 @@ Pour ces plateformes, vous devrez obtenir manuellement votre **clé API** et le 
    Gardez votre clé API privée. Ne publiez jamais ``secret.py`` dans des dépôts publics.
 
 **Tester avec le code d’exemple**
+
+#. Ouvrez le fichier de test :
+
+   .. code-block:: bash
+
+       cd ~/picar-x/example
+       sudo nano 18.online_llm_test.py
 
 #. Remplacez le contenu d’un fichier Python par l’exemple ci-dessous et renseignez correctement ``base_url`` et ``model`` pour votre fournisseur :
 
