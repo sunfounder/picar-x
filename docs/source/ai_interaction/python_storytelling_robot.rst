@@ -24,6 +24,17 @@ Jetzt erkunden wir zwei leistungsstärkere Optionen: **Piper** (offline, neurona
 
 Am Ende wird dein PiCar-X **herumfahren und Witze erzählen**, wie ein kleiner Geschichtenerzähler.
 
+----
+
+Bevor du beginnst
+-----------------
+
+Stelle sicher, dass du Folgendes abgeschlossen hast:
+
+* :ref:`install_all_modules` — Installiere die Module ``robot-hat``, ``vilib``, ``picar-x`` und führe dann das Skript ``i2samp.sh`` aus.
+
+----
+
 .. _test_piper:
 
 1. Piper testen

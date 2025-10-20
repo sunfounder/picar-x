@@ -27,6 +27,15 @@ Du wirst den Unterschied in **Sprachqualität** und **Funktionsumfang** hören u
 
 ----
 
+Bevor du beginnst
+-----------------
+
+Stelle sicher, dass du Folgendes abgeschlossen hast:
+
+* :ref:`install_all_modules` — Installiere die Module ``robot-hat``, ``vilib``, ``picar-x`` und führe dann das Skript ``i2samp.sh`` aus.
+
+----
+
 1. Espeak testen
 --------------------
 

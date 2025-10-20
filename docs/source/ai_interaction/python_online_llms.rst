@@ -28,6 +28,15 @@ Wir werden lernen, wie man:
 
 ----
 
+Bevor du beginnst
+-----------------
+
+Stelle sicher, dass du Folgendes abgeschlossen hast:
+
+* :ref:`install_all_modules` — Installiere die Module ``robot-hat``, ``vilib``, ``picar-x`` und führe dann das Skript ``i2samp.sh`` aus.
+
+----
+
 OpenAI
 ----------
 

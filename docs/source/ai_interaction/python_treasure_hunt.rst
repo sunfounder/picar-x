@@ -29,9 +29,18 @@ Dieses Projekt kombiniert drei Fähigkeiten, die du bisher gelernt hast:
 * **Sprach-Feedback** – Pico2Wave kündigt die Zielfarbe an und bestätigt den Erfolg.  
 
 Ein Spaßspiel, das zeigt, wie Roboter **sehen, denken und handeln** können – wie echte Schatzsucher!
+ 
+----
 
-.. note::  
-   Du kannst die :download:`PDF-Farbkarten <https://github.com/sunfounder/sf-pdf/raw/master/prop_card/object_detection/color-cards.pdf>` herunterladen und ausdrucken, um eine zuverlässige Farberkennung zu erhalten.  
+Bevor du beginnst
+-----------------
+
+Stelle sicher, dass du Folgendes abgeschlossen hast:
+
+* :ref:`install_all_modules` — Installiere die Module ``robot-hat``, ``vilib``, ``picar-x`` und führe dann das Skript ``i2samp.sh`` aus.
+* Du kannst die :download:`PDF-Farbkarten <https://github.com/sunfounder/sf-pdf/raw/master/prop_card/object_detection/color-cards.pdf>` herunterladen und ausdrucken, um eine zuverlässige Farberkennung zu erhalten.  
+
+----
 
 Code ausführen
 --------------

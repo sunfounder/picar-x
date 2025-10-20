@@ -35,6 +35,7 @@ Bevor du beginnst
 
 Stelle sicher, dass du Folgendes abgeschlossen hast:
 
+* :ref:`install_all_modules` — Installiere die Module ``robot-hat``, ``vilib``, ``picar-x`` und führe dann das Skript ``i2samp.sh`` aus.
 * :ref:`test_piper` — Überprüfe die unterstützten Sprachen von **Piper TTS**.  
 * :ref:`test_vosk` — Überprüfe die unterstützten Sprachen von **Vosk STT**.  
 * :ref:`py_online_llm` — Dieser Schritt ist **sehr wichtig**: Besorge dir deinen **OpenAI**- oder **Doubao**-API-Schlüssel, oder den API-Schlüssel eines anderen unterstützten LLM.

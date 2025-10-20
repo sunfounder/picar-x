@@ -25,6 +25,16 @@ In dieser Lektion werden wir:
 * Vosk mit einem ausgewählten Sprachmodell installieren und testen.  
 * Ein **sprachgesteuertes PiCar-X** bauen, das auf ein Weckwort hört und auf Befehle wie **forward**, **backward**, **left** und **right** reagiert.  
 
+----
+
+Bevor du beginnst
+-----------------
+
+Stelle sicher, dass du Folgendes abgeschlossen hast:
+
+* :ref:`install_all_modules` — Installiere die Module ``robot-hat``, ``vilib``, ``picar-x`` und führe dann das Skript ``i2samp.sh`` aus.
+
+----
 
 1. Mikrofon überprüfen
 --------------------------
