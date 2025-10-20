@@ -24,6 +24,17 @@ Explorons maintenant deux options plus puissantes : **Piper** (hors ligne, basé
 
 À la fin, votre PiCar-X roulera tout en racontant des blagues comme un petit conteur.
 
+----
+
+Avant de Commencer
+-------------------
+
+Assurez-vous d’avoir terminé :
+
+* :ref:`install_all_modules` — Installe les modules ``robot-hat``, ``vilib``, ``picar-x``, puis exécute le script ``i2samp.sh``.
+
+----
+
 .. _test_piper:
 
 1. Tester Piper

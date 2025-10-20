@@ -20,6 +20,12 @@
 Dans ce projet, vous apprendrez à faire jouer au PiCar-X de la musique de fond ou des effets sonores.  
 Vous pouvez également lire des fichiers audio que vous avez enregistrés.
 
+**Avant de Commencer**
+
+Assurez-vous d’avoir terminé :
+
+* :ref:`install_all_modules` — Installe les modules ``robot-hat``, ``vilib``, ``picar-x``, puis exécute le script ``i2samp.sh``.
+
 **Exécuter le Code**
 
 .. raw:: html

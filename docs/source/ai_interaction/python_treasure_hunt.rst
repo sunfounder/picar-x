@@ -29,8 +29,17 @@ Ce projet combine trois compétences que vous avez déjà apprises :
 
 C’est un jeu amusant qui montre comment les robots peuvent **voir, réfléchir et agir** comme de vrais chasseurs de trésors !
 
-.. note::  
-   Vous pouvez télécharger et imprimer les :download:`Cartes couleur PDF <https://github.com/sunfounder/sf-pdf/raw/master/prop_card/object_detection/color-cards.pdf>` pour une détection plus fiable.
+----
+
+Avant de Commencer
+-------------------
+
+Assurez-vous d’avoir terminé :
+
+* :ref:`install_all_modules` — Installe les modules ``robot-hat``, ``vilib``, ``picar-x``, puis exécute le script ``i2samp.sh``.
+* Vous pouvez télécharger et imprimer les :download:`Cartes couleur PDF <https://github.com/sunfounder/sf-pdf/raw/master/prop_card/object_detection/color-cards.pdf>` pour une détection plus fiable.
+
+----
 
 Exécuter le code
 ---------------------

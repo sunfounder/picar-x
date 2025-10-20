@@ -25,6 +25,17 @@ Dans cette leçon, nous allons :
 * Installer et tester Vosk avec un modèle linguistique choisi.  
 * Construire une **voiture PiCar-X commandée par la voix** qui écoute un mot déclencheur puis répond à des commandes telles que **forward**, **backward**, **left** et **right**.
 
+----
+
+Avant de Commencer
+-------------------
+
+Assurez-vous d’avoir terminé :
+
+* :ref:`install_all_modules` — Installe les modules ``robot-hat``, ``vilib``, ``picar-x``, puis exécute le script ``i2samp.sh``.
+
+----
+
 1. Vérifier votre microphone
 ------------------------------------
 
