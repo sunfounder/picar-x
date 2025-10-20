@@ -15,7 +15,7 @@
 .. _install_all_modules:
 
 5. Installare tutti i moduli (Importante)
-========================================
+============================================
 
 Assicurati di essere connesso a Internet e aggiorna il sistema:
 
