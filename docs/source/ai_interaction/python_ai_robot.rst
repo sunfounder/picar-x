@@ -23,6 +23,7 @@
 
 请确保你已经完成以下步骤：
 
+* :ref:`install_all_modules` — 安装 ``robot-hat``、 ``vilib``、 ``picar-x`` 模块，然后运行脚本 ``i2samp.sh``。
 * :ref:`test_piper` — 检查 **Piper TTS** 支持的语言。  
 * :ref:`test_vosk` — 检查 **Vosk STT** 支持的语言。  
 * :ref:`py_online_llm` — 这一步 **非常重要**：获取你的 **OpenAI** 或 **豆包 Doubao** API key，或其他支持的 LLM 的 API key。

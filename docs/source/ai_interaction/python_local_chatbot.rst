@@ -20,6 +20,7 @@
 
 确保你已经准备好以下内容：
 
+* :ref:`install_all_modules` — 安装 ``robot-hat``、 ``vilib``、 ``picar-x`` 模块，然后运行脚本 ``i2samp.sh``。
 * 已测试 **Piper TTS** （:ref:`test_piper`）并选择一个可用的语音模型。  
 * 已测试 **Vosk STT** （:ref:`test_vosk`）并选择合适的语言包（例如 ``en-us``）。  
 * 在你的树莓派或另一台计算机上安装了 **Ollama** （:ref:`download_ollama`），并下载了一个模型，如 ``llama3.2:3b`` （如果内存有限，可选择更小的 ``moondream:1.8b``）。

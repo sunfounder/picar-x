@@ -16,8 +16,17 @@
 
 这是一个有趣的游戏，展示了机器人如何像寻宝者一样**看、想、做**！
 
-.. note::  
-   你可以下载并打印用于稳定颜色识别的:download:`PDF 彩色卡片 <https://github.com/sunfounder/sf-pdf/raw/master/prop_card/object_detection/color-cards.pdf>`。
+----
+
+开始之前
+----------------
+
+确保你已经准备好以下内容：
+
+* :ref:`install_all_modules` — 安装 ``robot-hat``、 ``vilib``、 ``picar-x`` 模块，然后运行脚本 ``i2samp.sh``。
+* 你可以下载并打印用于稳定颜色识别的:download:`PDF 彩色卡片 <https://github.com/sunfounder/sf-pdf/raw/master/prop_card/object_detection/color-cards.pdf>`。
+
+----
 
 运行代码
 ------------

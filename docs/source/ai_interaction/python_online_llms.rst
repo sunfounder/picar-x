@@ -17,6 +17,15 @@
 
 ----
 
+开始之前
+----------------
+
+确保你已经准备好以下内容：
+
+* :ref:`install_all_modules` — 安装 ``robot-hat``、 ``vilib``、 ``picar-x`` 模块，然后运行脚本 ``i2samp.sh``。
+
+----
+
 OpenAI
 ----------
 
