@@ -30,6 +30,13 @@ Vamos paso a paso con cada proveedor.
 
 ----
 
+Antes de Empezar
+----------------
+
+Asegúrate de haber completado:
+
+* :ref:`install_all_modules` — Instala los módulos ``robot-hat``, ``vilib``, ``picar-x`` y luego ejecuta el script ``i2samp.sh``.
+
 OpenAI
 ----------
 

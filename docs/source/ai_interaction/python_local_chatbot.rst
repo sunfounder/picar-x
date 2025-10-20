@@ -34,6 +34,7 @@ Antes de Empezar
 
 Asegúrate de haber preparado lo siguiente:
 
+* :ref:`install_all_modules` — Instala los módulos ``robot-hat``, ``vilib``, ``picar-x`` y luego ejecuta el script ``i2samp.sh``.
 * Haber probado **Piper TTS** (:ref:`test_piper`) y elegido un modelo de voz funcional.  
 * Haber probado **Vosk STT** (:ref:`test_vosk`) y elegido el paquete de idioma correcto (p. ej., ``en-us``).  
 * Haber instalado **Ollama** (:ref:`download_ollama`) en tu Pi u otro ordenador, y descargado un modelo como ``llama3.2:3b`` (o uno más pequeño como ``moondream:1.8b`` si la memoria es limitada).

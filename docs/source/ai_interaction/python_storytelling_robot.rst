@@ -23,6 +23,13 @@ Ahora exploraremos dos opciones más potentes: **Piper** (offline, basado en red
 
 Al final, tu PiCar-X conducirá y contará chistes como un pequeño narrador.  
 
+Antes de Empezar
+----------------
+
+Asegúrate de haber completado:
+
+* :ref:`install_all_modules` — Instala los módulos ``robot-hat``, ``vilib``, ``picar-x`` y luego ejecuta el script ``i2samp.sh``.
+
 .. _test_piper:
 
 1. Probar Piper

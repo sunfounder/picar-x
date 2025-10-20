@@ -64,7 +64,7 @@ Luego descarga e instala el módulo ``vilib``.
 .. code-block::
 
     cd ~/
-    git clone -b picamera2 https://github.com/sunfounder/vilib.git --depth 1
+    git clone https://github.com/sunfounder/vilib.git --depth 1
     cd vilib
     sudo python3 install.py
 

@@ -25,6 +25,13 @@ En esta lección vamos a:
 * Instalar y probar Vosk con un modelo de idioma elegido.  
 * Construir un **PiCar-X controlado por voz** que escuche una palabra de activación y luego responda a comandos como **adelante**, **atrás**, **izquierda** y **derecha**.  
 
+Antes de Empezar
+----------------
+
+Asegúrate de haber completado:
+
+* :ref:`install_all_modules` — Instala los módulos ``robot-hat``, ``vilib``, ``picar-x`` y luego ejecuta el script ``i2samp.sh``.
+
 1. Comprobar tu micrófono
 --------------------------
 
