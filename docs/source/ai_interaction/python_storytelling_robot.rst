@@ -24,6 +24,13 @@ At the end, your PiCar-X will drive around and tell jokes like a little storytel
 
 .. _test_piper:
 
+Before You Start
+----------------
+
+Make sure you‘ve completed:
+
+* :ref:`install_all_modules` — Install ``robot-hat``, ``vilib``, ``picar-x`` modules, then run the script ``i2samp.sh``.
+
 1. Testing Piper
 ------------------
 

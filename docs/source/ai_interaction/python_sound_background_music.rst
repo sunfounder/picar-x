@@ -19,6 +19,12 @@
 
 In this project, you will learn how to make the PiCar-X play background music or sound effects. You can also play music files that you have stored.
 
+**Before You Start**
+
+Make sure you‘ve completed:
+
+* :ref:`install_all_modules` — Install ``robot-hat``, ``vilib``, ``picar-x`` modules, then run the script ``i2samp.sh``.
+
 
 **Run the Code**
 

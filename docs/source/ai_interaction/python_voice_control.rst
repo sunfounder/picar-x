@@ -24,6 +24,13 @@ In this lesson, we will:
 * Install and test Vosk with a chosen language model.  
 * Build a **voice controlled PiCar-X** that listens for a wake word and then responds to commands like **forward**, **backward**, **left**, and **right**.  
 
+Before You Start
+----------------
+
+Make sure you‘ve completed:
+
+* :ref:`install_all_modules` — Install ``robot-hat``, ``vilib``, ``picar-x`` modules, then run the script ``i2samp.sh``.
+
 1. Check Your Microphone
 --------------------------
 

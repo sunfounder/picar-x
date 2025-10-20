@@ -26,6 +26,13 @@ You'll hear the difference in **voice quality** and **features**, and then build
 
 ----
 
+Before You Start
+----------------
+
+Make sure you‘ve completed:
+
+* :ref:`install_all_modules` — Install ``robot-hat``, ``vilib``, ``picar-x`` modules, then run the script ``i2samp.sh``.
+
 1. Testing Espeak
 --------------------
 

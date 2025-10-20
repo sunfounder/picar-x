@@ -32,6 +32,13 @@ It's a fun game that shows how robots can **see, think, and act** just like trea
 .. note::  
    You can download and print the :download:`PDF Color Cards <https://github.com/sunfounder/sf-pdf/raw/master/prop_card/object_detection/color-cards.pdf>` for reliable color detection.  
 
+Before You Start
+----------------
+
+Make sure you‘ve completed:
+
+* :ref:`install_all_modules` — Install ``robot-hat``, ``vilib``, ``picar-x`` modules, then run the script ``i2samp.sh``.
+
 Run the Code
 ------------
 
