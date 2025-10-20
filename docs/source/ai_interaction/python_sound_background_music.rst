@@ -19,8 +19,7 @@
 
 En este proyecto, aprenderás a hacer que el PiCar-X reproduzca música de fondo o efectos de sonido. También puedes reproducir archivos de música que hayas almacenado.
 
-Antes de Empezar
-----------------
+**Antes de Empezar**
 
 Asegúrate de haber completado:
 
