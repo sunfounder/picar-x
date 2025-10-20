@@ -19,6 +19,12 @@
 
 In questo progetto imparerai a far riprodurre al PiCar-X musica di sottofondo o effetti sonori. Puoi anche riprodurre file musicali che hai già salvato.
 
+**Prima di iniziare**
+
+Assicurati di aver completato:
+
+* :ref:`install_all_modules` — Installa i moduli ``robot-hat``, ``vilib``, ``picar-x``, poi esegui lo script ``i2samp.sh``.
+
 
 **Esegui il Codice**
 

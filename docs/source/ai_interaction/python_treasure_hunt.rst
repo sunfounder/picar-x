@@ -28,9 +28,18 @@ Questo progetto combina tre abilità che hai già imparato:
 * **Feedback vocale** – Pico2Wave annuncia il colore bersaglio e il successo.  
 
 È un gioco divertente che mostra come i robot possano **vedere, pensare e agire** proprio come dei cacciatori di tesori!
+   
+----
 
-.. note::  
-   Puoi scaricare e stampare le :download:`Carte Colori in PDF <https://github.com/sunfounder/sf-pdf/raw/master/prop_card/object_detection/color-cards.pdf>` per un rilevamento dei colori affidabile.  
+Prima di iniziare
+-----------------
+
+Assicurati di aver completato:
+
+* :ref:`install_all_modules` — Installa i moduli ``robot-hat``, ``vilib``, ``picar-x``, poi esegui lo script ``i2samp.sh``.
+* Puoi scaricare e stampare le :download:`Carte Colori in PDF <https://github.com/sunfounder/sf-pdf/raw/master/prop_card/object_detection/color-cards.pdf>` per un rilevamento dei colori affidabile.  
+
+----
 
 Esegui il Codice
 ------------------

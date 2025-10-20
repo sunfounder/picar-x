@@ -26,6 +26,15 @@ Sentirai la differenza nella **qualità della voce** e nelle **funzionalità**, 
 
 ----
 
+Prima di iniziare
+-----------------
+
+Assicurati di aver completato:
+
+* :ref:`install_all_modules` — Installa i moduli ``robot-hat``, ``vilib``, ``picar-x``, poi esegui lo script ``i2samp.sh``.
+
+----
+
 1. Testare Espeak
 -----------------
 
