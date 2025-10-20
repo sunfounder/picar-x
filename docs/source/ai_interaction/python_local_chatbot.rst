@@ -34,6 +34,7 @@ PiCar-X 上で完全オフラインで動作する **音声チャットボット
 
 以下を準備しておいてください：
 
+* :ref:`install_all_modules` — ``robot-hat``、 ``vilib``、 ``picar-x`` モジュールをインストールし、その後スクリプト ``i2samp.sh`` を実行します。
 * **Piper TTS** （:ref:`test_piper`）をテストし、動作する音声モデルを選定。  
 * **Vosk STT** （:ref:`test_vosk`）をテストし、適切な言語パック（例： ``en-us``）を選定。  
 * **Ollama** （:ref:`download_ollama`）を Pi または別のコンピュータにインストールし、 ``llama3.2:3b``  のようなモデルをダウンロード（メモリに制約がある場合は ``moondream:1.8b`` などの小型モデル）。

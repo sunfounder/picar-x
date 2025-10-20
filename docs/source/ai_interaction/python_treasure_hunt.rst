@@ -28,9 +28,18 @@ PiCar-X は **探索・認識** を行い、ターゲットカラーを見つけ
 * **音声フィードバック** – Pico2Wave でターゲットカラーと成功を音声で案内  
 
 ロボットがまるでトレジャーハンターのように **見て・考えて・行動する** 楽しいゲームです！
+ 
+----
 
-.. note::  
-   信頼性の高い色検出のために、:download:`PDF カラーカード <https://github.com/sunfounder/sf-pdf/raw/master/prop_card/object_detection/color-cards.pdf>` をダウンロードして印刷することができます。
+始める前に
+----------------
+
+以下を完了していることを確認してください：
+
+* :ref:`install_all_modules` — ``robot-hat``、 ``vilib``、 ``picar-x`` モジュールをインストールし、その後スクリプト ``i2samp.sh`` を実行します。
+* 信頼性の高い色検出のために、:download:`PDF カラーカード <https://github.com/sunfounder/sf-pdf/raw/master/prop_card/object_detection/color-cards.pdf>` をダウンロードして印刷することができます。
+
+----
 
 コードの実行
 ------------

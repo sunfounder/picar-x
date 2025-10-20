@@ -35,6 +35,7 @@
 
 以下を完了していることを確認してください：
 
+* :ref:`install_all_modules` — ``robot-hat``、 ``vilib``、 ``picar-x`` モジュールをインストールし、その後スクリプト ``i2samp.sh`` を実行します。
 * :ref:`test_piper` — **Piper TTS** の対応言語を確認。  
 * :ref:`test_vosk` — **Vosk STT** の対応言語を確認。  
 * :ref:`py_online_llm` — このステップは **非常に重要** です：  
