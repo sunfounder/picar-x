@@ -51,19 +51,20 @@ Su voz suena robótica, pero es altamente configurable: puedes ajustar el volume
 * Luego copia el código de ejemplo en él. Pulsa ``Ctrl+X``, luego ``Y`` y finalmente ``Enter`` para guardar y salir.
 
   .. code-block:: python
-  
+    
       from picarx.tts import Espeak
 
       tts = Espeak()
-  
-      # Quick hello (sanity check)
-      tts.say("Hello! I'm Espeak TTS.")
   
       # Optional voice tuning
       # tts.set_amp(100)   # 0 to 200
       # tts.set_speed(150) # 80 to 260
       # tts.set_gap(5)     # 0 to 200
       # tts.set_pitch(50)  # 0 to 99
+
+      # Quick hello (sanity check)
+      tts.say("Hello! I'm Espeak TTS.")
+
 * Ejecuta el programa con:
 
   .. code-block:: bash
