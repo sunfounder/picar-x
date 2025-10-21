@@ -139,40 +139,6 @@
 
    ``Hello! I'm OpenAI TTS.``
 
-**可用的模型与声音**
-
-.. list-table::
-   :header-rows: 1
-   :widths: 20 80
-
-   * - 分类
-     - 选项
-   * - 模型
-     - 
-       - ``tts-1``  
-       - ``tts-1-hd``  
-       - ``gpt-4o-mini-tts``  
-       - ``accent``  
-       - ``emotional-range``  
-       - ``intonation``  
-       - ``impressions``  
-       - ``speed-of-speech``  
-       - ``tone``  
-       - ``whispering``
-   * - 声音
-     - 
-       - ``alloy``  
-       - ``ash``  
-       - ``ballad``  
-       - ``coral``  
-       - ``echo``  
-       - ``fable``  
-       - ``nova``  
-       - ``onyx``  
-       - ``sage``  
-       - ``shimmer``
-
-
 3. 讲故事机器人
 ------------------------
 
