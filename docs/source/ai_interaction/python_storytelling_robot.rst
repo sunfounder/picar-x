@@ -22,7 +22,7 @@ In the previous lesson, we tried two built-in TTS engines on Raspberry Pi (**Esp
 
 At the end, your PiCar-X will drive around and tell jokes like a little storyteller.  
 
-.. _test_piper:
+----
 
 Before You Start
 ----------------
@@ -30,6 +30,10 @@ Before You Start
 Make sure you‘ve completed:
 
 * :ref:`install_all_modules` — Install ``robot-hat``, ``vilib``, ``picar-x`` modules, then run the script ``i2samp.sh``.
+
+----
+
+.. _test_piper:
 
 1. Testing Piper
 ------------------
@@ -146,40 +150,6 @@ Make sure you‘ve completed:
 #. You should hear the PiCar-X say:  
 
    ``Hello! I'm OpenAI TTS.``
-
-**Available Models and Voices**
-
-.. list-table::
-   :header-rows: 1
-   :widths: 20 80
-
-   * - Category
-     - Options
-   * - Models
-     - 
-       - ``tts-1``  
-       - ``tts-1-hd``  
-       - ``gpt-4o-mini-tts``  
-       - ``accent``  
-       - ``emotional-range``  
-       - ``intonation``  
-       - ``impressions``  
-       - ``speed-of-speech``  
-       - ``tone``  
-       - ``whispering``
-   * - Voices
-     - 
-       - ``alloy``  
-       - ``ash``  
-       - ``ballad``  
-       - ``coral``  
-       - ``echo``  
-       - ``fable``  
-       - ``nova``  
-       - ``onyx``  
-       - ``sage``  
-       - ``shimmer``
-
 
 3. Storytelling Robot
 ------------------------
