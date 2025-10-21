@@ -153,38 +153,38 @@ Assurez-vous d’avoir terminé :
 
    ``Hello! I'm OpenAI TTS.``
 
-**Modèles et voix disponibles**
+.. **Modèles et voix disponibles**
 
-.. list-table::
-   :header-rows: 1
-   :widths: 20 80
+.. .. list-table::
+..    :header-rows: 1
+..    :widths: 20 80
 
-   * - Catégorie
-     - Options
-   * - Modèles
-     -
-       - ``tts-1``  
-       - ``tts-1-hd``  
-       - ``gpt-4o-mini-tts``  
-       - ``accent``  
-       - ``emotional-range``  
-       - ``intonation``  
-       - ``impressions``  
-       - ``speed-of-speech``  
-       - ``tone``  
-       - ``whispering``
-   * - Voix
-     -
-       - ``alloy``  
-       - ``ash``  
-       - ``ballad``  
-       - ``coral``  
-       - ``echo``  
-       - ``fable``  
-       - ``nova``  
-       - ``onyx``  
-       - ``sage``  
-       - ``shimmer``
+..    * - Catégorie
+..      - Options
+..    * - Modèles
+..      -
+..        - ``tts-1``  
+..        - ``tts-1-hd``  
+..        - ``gpt-4o-mini-tts``  
+..        - ``accent``  
+..        - ``emotional-range``  
+..        - ``intonation``  
+..        - ``impressions``  
+..        - ``speed-of-speech``  
+..        - ``tone``  
+..        - ``whispering``
+..    * - Voix
+..      -
+..        - ``alloy``  
+..        - ``ash``  
+..        - ``ballad``  
+..        - ``coral``  
+..        - ``echo``  
+..        - ``fable``  
+..        - ``nova``  
+..        - ``onyx``  
+..        - ``sage``  
+..        - ``shimmer``
 
 
 3. Robot Conteur
