@@ -150,38 +150,38 @@
 
    ``Hello! I'm OpenAI TTS.``
 
-**利用可能なモデルと音声**
+.. **利用可能なモデルと音声**
 
-.. list-table::
-   :header-rows: 1
-   :widths: 20 80
+.. .. list-table::
+..    :header-rows: 1
+..    :widths: 20 80
 
-   * - カテゴリ
-     - オプション
-   * - モデル
-     - 
-       - ``tts-1``  
-       - ``tts-1-hd``  
-       - ``gpt-4o-mini-tts``  
-       - ``accent``  
-       - ``emotional-range``  
-       - ``intonation``  
-       - ``impressions``  
-       - ``speed-of-speech``  
-       - ``tone``  
-       - ``whispering``
-   * - 音声
-     - 
-       - ``alloy``  
-       - ``ash``  
-       - ``ballad``  
-       - ``coral``  
-       - ``echo``  
-       - ``fable``  
-       - ``nova``  
-       - ``onyx``  
-       - ``sage``  
-       - ``shimmer``
+..    * - カテゴリ
+..      - オプション
+..    * - モデル
+..      - 
+..        - ``tts-1``  
+..        - ``tts-1-hd``  
+..        - ``gpt-4o-mini-tts``  
+..        - ``accent``  
+..        - ``emotional-range``  
+..        - ``intonation``  
+..        - ``impressions``  
+..        - ``speed-of-speech``  
+..        - ``tone``  
+..        - ``whispering``
+..    * - 音声
+..      - 
+..        - ``alloy``  
+..        - ``ash``  
+..        - ``ballad``  
+..        - ``coral``  
+..        - ``echo``  
+..        - ``fable``  
+..        - ``nova``  
+..        - ``onyx``  
+..        - ``sage``  
+..        - ``shimmer``
 
 
 3. ストーリーテリングロボット
