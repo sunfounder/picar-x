@@ -12,7 +12,7 @@
 
     👉 Ready to explore and create with us? Click [|link_sf_facebook|] and join today!
 
-7. Servo Adjust(Important)
+Servo Adjust(Important)
 ============================
 
 .. note::
