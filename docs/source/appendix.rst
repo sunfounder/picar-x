@@ -13,15 +13,14 @@
     👉 Sind Sie bereit, mit uns zu erkunden und zu erschaffen? Klicken Sie auf [|link_sf_facebook|] und treten Sie heute bei!
 
 Anhang
-=================
-
-
+===============
 
 .. toctree::
-    
-    filezilla
-    login_windows
-    install_openssh_powershell
-    remote_desktop
+    :maxdepth: 1
 
-
+    _shared/appendix/i2c_configuration
+    _shared/appendix/spi_configuration
+    _shared/appendix/remote_desktop
+    _shared/appendix/filezilla
+    _shared/appendix/install_openssh_powershell
+    _shared/appendix/login_windows
