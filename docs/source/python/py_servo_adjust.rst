@@ -12,7 +12,7 @@
 
     👉 Prêt à explorer et à créer avec nous ? Cliquez sur [|link_sf_facebook|] et rejoignez-nous dès aujourd'hui !
 
-7. Réglage du Servo (Important)
+Réglage du Servo (Important)
 ===================================
 
 .. note::
@@ -30,23 +30,23 @@ Nous devons donc régler tous les angles des servos à 0° avant de les installe
 
 #. Pour vous assurer que le servo est correctement réglé à 0°, insérez d'abord le bras du servo dans l'axe du servo, puis faites doucement pivoter le bras à un autre angle. Ce bras de servo vous permet simplement de voir clairement que le servo tourne.
 
-    .. image:: img/servo_arm.png
+   .. image:: img/servo_arm.png
 
 #. Maintenant, exécutez ``servo_zeroing.py`` dans le dossier ``example/``.
 
-    .. raw:: html
-
-        <run></run>
-
-    .. code-block::
-
-        cd ~/picar-x/example
-        sudo python3 servo_zeroing.py
+   .. raw:: html
+   
+       <run></run>
+   
+   .. code-block::
+   
+       cd ~/picar-x/example
+       sudo python3 servo_zeroing.py
 
 #. Ensuite, branchez le câble du servo dans le port P11 comme suit. En même temps, vous verrez le bras du servo tourner jusqu'à une position (Il s'agit de la position 0°, qui est une position aléatoire et peut ne pas être verticale ou parallèle.).
 
 
-    .. image:: img/Z_P11.JPG
+   .. image:: img/Z_P11.jpg
 
 #. Maintenant, retirez le bras du servo, en veillant à ce que le fil du servo reste connecté, et ne coupez pas l'alimentation. Ensuite, poursuivez le montage en suivant les instructions papier.
 
