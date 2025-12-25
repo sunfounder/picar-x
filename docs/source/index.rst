@@ -70,7 +70,7 @@ PiCar-X supporta due linguaggi di programmazione: Blockly e Python. Qualunque si
     python_video_course/python_video_course
     ezblock/play_with_ezblock
     adjust_servo
-    appendix/appendix
+    appendix
     hardware/cpn_hardware
     faq
 
