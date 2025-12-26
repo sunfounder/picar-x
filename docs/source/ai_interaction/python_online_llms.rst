@@ -94,7 +94,7 @@ OpenAI では、**GPT-4o** や **GPT-4.1** といったテキスト・ビジョ�
        cd ~/picar-x/example
        sudo nano 18.online_llm_test.py
 
-#. 以下のコードを貼り付け、``model="xxx"`` を希望するモデル（例： ``gpt-4o``）に変更します：
+#. 以下のコードを貼り付け、 ``model="xxx"`` を希望するモデル（例： ``gpt-4o``）に変更します：
 
    .. code-block:: python
    
@@ -174,7 +174,7 @@ Gemini は Google が提供する AI モデルファミリーです。高速で�
        cd ~/picar-x/example
        sudo nano 18.online_llm_test.py
 
-#. 以下のコードを貼り付け、``model="xxx"`` を希望のモデル（例： ``gemini-2.5-flash``）に変更します：
+#. 以下のコードを貼り付け、 ``model="xxx"`` を希望のモデル（例： ``gemini-2.5-flash``）に変更します：
 
    .. code-block:: python
 
@@ -273,7 +273,7 @@ Qwen モデルを利用するには **APIキー** が必要です。
        cd ~/picar-x/example
        sudo nano 18.online_llm_test.py
 
-#. 以下のコードに置き換え、``model="xxx"`` を希望するモデル（例： ``qwen-plus``）に変更します：
+#. 以下のコードに置き換え、 ``model="xxx"`` を希望するモデル（例： ``qwen-plus``）に変更します：
 
    .. code-block:: python
    
@@ -345,7 +345,7 @@ xAI コンソールの Models ページにアクセスし、利用可能なモ�
        cd ~/picar-x/example
        sudo nano 18.online_llm_test.py
 
-#. 以下のコードに置き換え、``model="xxx"`` を希望のモデル（例： ``grok-4-latest``）に変更します：
+#. 以下のコードに置き換え、 ``model="xxx"`` を希望のモデル（例： ``grok-4-latest``）に変更します：
 
    .. code-block:: python
    
@@ -422,7 +422,7 @@ DeepSeek は中国の LLM プロバイダーで、低価格で高性能なモデ
        cd ~/picar-x/example
        sudo nano 18.online_llm_test.py
 
-#. 以下のコードに置き換え、``model="xxx"`` を希望のモデル（例： ``deepseek-chat``）に変更します：
+#. 以下のコードに置き換え、 ``model="xxx"`` を希望のモデル（例： ``deepseek-chat``）に変更します：
 
    .. code-block:: python
    
@@ -512,7 +512,7 @@ Doubao は ByteDance（バイトダンス）が提供する AI モデルプラ�
        cd ~/picar-x/example
        sudo nano 18.online_llm_test.py
 
-#. 以下のコードに置き換え、``model="xxx"`` を希望のモデル（例： ``doubao-seed-1-6-250615``）に変更します：
+#. 以下のコードに置き換え、 ``model="xxx"`` を希望のモデル（例： ``doubao-seed-1-6-250615``）に変更します：
 
    .. code-block:: python
    

@@ -48,7 +48,7 @@
       cd ~/picar-x/example
       sudo nano test_tts_piper.py
 
-#. 以下のコードをファイルにコピーし、``Ctrl+X`` → ``Y`` → ``Enter`` で保存・終了。
+#. 以下のコードをファイルにコピーし、 ``Ctrl+X`` → ``Y`` → ``Enter`` で保存・終了。
 
    .. code-block:: python
 
@@ -82,7 +82,7 @@
 #. 初回実行時、選択した音声モデルが自動でダウンロードされます。
 
    * PiCar-X が ``Hello! I'm Piper TTS.`` と話すはずです。  
-   * 別の言語モデルを使用したい場合は、``set_model()`` に別のモデル名を指定してください。
+   * 別の言語モデルを使用したい場合は、 ``set_model()`` に別のモデル名を指定してください。
 
 2. OpenAI TTS のテスト
 -------------------------------
@@ -125,7 +125,7 @@
        cd ~/picar-x/example
        sudo nano test_tts_openai.py
 
-#. 以下のコードをコピーし、``Ctrl+X`` → ``Y`` → ``Enter`` で保存・終了します。
+#. 以下のコードをコピーし、 ``Ctrl+X`` → ``Y`` → ``Enter`` で保存・終了します。
 
    .. code-block:: python
 

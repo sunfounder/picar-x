@@ -43,7 +43,7 @@
 Espeak は Raspberry Pi OS に標準で含まれる軽量な TTS エンジンです。  
 声は少しロボット的ですが、音量・ピッチ・速度などを細かく調整できます。
 
-**試してみる手順：**
+**試してみる手順**
 
 * 新しいファイルを作成：
 
@@ -52,7 +52,7 @@ Espeak は Raspberry Pi OS に標準で含まれる軽量な TTS エンジンで
       cd ~/picar-x/example
       sudo nano test_tts_espeak.py
 
-* 次のコードを貼り付けて、``Ctrl+X`` → ``Y`` → ``Enter`` で保存します。
+* 次のコードを貼り付けて、 ``Ctrl+X`` → ``Y`` → ``Enter`` で保存します。
 
   .. code-block:: python
   
@@ -86,7 +86,7 @@ Espeak は Raspberry Pi OS に標準で含まれる軽量な TTS エンジンで
 Pico2Wave は Espeak よりも自然で人間らしい音声を生成します。  
 使い方はシンプルですが、調整できるのは言語のみで、ピッチや速度は変更できません。
 
-**試してみる手順：**
+**試してみる手順**
 
 * 次のコマンドで新しいファイルを作成します：
 
@@ -95,7 +95,7 @@ Pico2Wave は Espeak よりも自然で人間らしい音声を生成します�
       cd ~/picar-x/example
       sudo nano test_tts_pico2wave.py
 
-* 以下のコードを貼り付け、``Ctrl+X`` → ``Y`` → ``Enter`` で保存します。
+* 以下のコードを貼り付け、 ``Ctrl+X`` → ``Y`` → ``Enter`` で保存します。
 
   .. code-block:: python
   

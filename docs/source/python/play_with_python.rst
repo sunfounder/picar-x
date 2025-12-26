@@ -32,13 +32,12 @@ Raspberry Pi OS のインストール、Wi-Fi の設定、リモートアクセ�
 .. toctree:: 
     :maxdepth: 1
     
-    python_start/what_do_we_need
-    python_start/installing_the_os
-    python_start/power_supply
-    python_start/set_up_your_raspberry_pi
-    python_start/install_all_modules
-    python_start/enable_i2c
-    python_start/py_servo_adjust
+    ../_shared/pi_start/need_components
+    ../_shared/pi_start/install_os_trixie
+    ../_shared/pi_start/power_supply_robot_hat
+    ../_shared/pi_start/set_up_pi
+    install_all_modules
+    py_servo_adjust
 
 2. 基本的な動き
 -----------------------
