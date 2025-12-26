@@ -13,4 +13,5 @@
     
     * 对于安卓手机，会提示用浏览器打开。下载成功后，根据提示允许浏览器安装该应用
     * 对于iPhone手机，会打开APP Store来安装该应用。
-    * 对于Linux/Mac OS X/Windoew 笔记本和电脑用户可以使用 :ref:`web_ezblock`。
+
+.. * 对于Linux/Mac OS X/Windoew 笔记本和电脑用户可以使用 :ref:`web_ezblock`。

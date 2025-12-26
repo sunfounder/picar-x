@@ -43,8 +43,8 @@
 
 #. 按下 **NEXT** ，点击 **编辑设置** 打开页面，设置主机名、启用 SSH 并设置用户名和密码。您可以选择始终使用此镜像的自定义选项。
 
-    .. note::
-        主机名用于在 :ref:`web_ezblock` 时通过主机名连接到您的产品。也可以选择不设置。
+    .. .. note::
+    ..     主机名用于在 :ref:`web_ezblock` 时通过主机名连接到您的产品。也可以选择不设置。
 
     .. image:: img/os_enable_ssh.png
         :align: center

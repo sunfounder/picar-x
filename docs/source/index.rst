@@ -52,7 +52,7 @@ PiCar-X 提供两种编程语言：Blockly 和 Python。无论您选择哪种语
     ai_interaction/ai_interaction
     ezblock/play_with_ezblock
     adjust_servo
-    appendix/appendix
+    appendix
     hardware/cpn_hardware
     faq
 
