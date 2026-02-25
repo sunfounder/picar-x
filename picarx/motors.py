@@ -1,5 +1,9 @@
-
-from fusion_hat.motor import Motor
+try:
+    import fusion_hat as extension_hat
+except ImportError:
+    import robot_hat as extension_hat
+    
+from extension_hat.motor import Motor
 import math
 
 class Motors():

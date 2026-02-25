@@ -1,12 +1,17 @@
-from fusion_hat.pin import Pin
-from fusion_hat.adc import ADC
-from fusion_hat.servo import Servo
-from fusion_hat.modules.grayscale_module import LineTracker
-from fusion_hat.modules.ultrasonic import Ultrasonic
-from fusion_hat.utils import get_battery_voltage, get_charge_state
-from fusion_hat.utils import LazyReader
-from fusion_hat.utils import get_usr_btn, set_user_led
-from fusion_hat.config import Config
+try:
+    import fusion_hat as extension_hat
+except ImportError:
+    import robot_hat as extension_hat
+
+from extension_hat.pin import Pin
+from extension_hat.adc import ADC
+from extension_hat.servo import Servo
+from extension_hat.modules.grayscale_module import LineTracker
+from extension_hat.modules.ultrasonic import Ultrasonic
+from extension_hat.utils import get_battery_voltage, get_charge_state
+from extension_hat.utils import LazyReader
+from extension_hat.utils import get_usr_btn, set_user_led
+from extension_hat.config import Config
 
 from .motors import Motors
 from .music import Music, SoundFiles

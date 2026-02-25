@@ -1,9 +1,10 @@
 from vilib import Vilib
 import os, sys
 import subprocess
-import json
-import time
-from fusion_hat.utils import LazyReader
+try:
+    from fusion_hat.utils import LazyReader
+except ImportError:
+    from robot_hat.utils import LazyReader
 
 def mapping(x, in_min, in_max, out_min, out_max):
     return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min

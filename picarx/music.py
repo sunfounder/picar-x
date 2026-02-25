@@ -1,5 +1,10 @@
-from fusion_hat.music import Music as FusionHatMusic
-from fusion_hat.utils import enable_speaker
+try:
+    import fusion_hat as extension_hat
+except ImportError:
+    import robot_hat as extension_hat
+    
+from extension_hat.music import Music as FusionHatMusic
+from extension_hat.utils import enable_speaker
 import threading
 from enum import IntEnum, StrEnum
 from importlib.resources import files

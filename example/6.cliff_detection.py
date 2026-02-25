@@ -13,7 +13,7 @@
 
 '''
 from picarx.picarx import PiCarX
-from fusion_hat.tts import Pico2Wave
+from picarx.tts import Pico2Wave
 
 from time import sleep
 

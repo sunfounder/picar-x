@@ -1,1 +1,6 @@
-from fusion_hat.stt import *
+try:
+    import fusion_hat as extension_hat
+except ImportError:
+    import robot_hat as extension_hat
+
+from extension_hat.stt import *
