@@ -69,7 +69,7 @@ class PiCarX(object):
         self.steering_angle = 0
 
         # --------- config_path ---------
-        self.config = Config(config_path)
+        self.config = Config(config_file=config_path)
         self.name = self.config.get("name", default_value="PiCar-X")
 
         # --------- camera mount init ---------
