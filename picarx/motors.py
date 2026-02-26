@@ -1,9 +1,9 @@
-try:
-    import fusion_hat as extension_hat
-except ImportError:
-    import robot_hat as extension_hat
-    
-from extension_hat.motor import Motor
+from .get_hat import is_fusion_hat
+if is_fusion_hat:
+    from fusion_hat.motor import Motor
+else:
+    from robot_hat.motor import Motor
+
 import math
 
 class Motors():

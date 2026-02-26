@@ -12,27 +12,21 @@ Picar-X Python library for Raspberry Pi.
 ## Installation
 
 ```bash
-git clone -b v3.x https://github.com/sunfounder/picar-x.git
-cd picar-x
-sudo bash install.sh
+# Install PiCar-X V4
+curl -sSL https://raw.githubusercontent.com/sunfounder/sunfounder-installer-scripts/main/install-picar-x-v4.sh | sudo bash
 
-# Setup peaker and microphone. you may need to run this command again after reboot
-sudo bash i2samp.sh
-# Reboot when it ask "Would you like to reboot and retry now? (Y/N):"
+# After installation, finished, and prompt to reboot. input "Y" to reboot.
 
-# After reboot, run the command again.
-cd picar-x
-sudo bash i2samp.sh
-# Enter Y when it ask "Do you wish to test speaker now? [y/N]"
-
+# After reboot, run the this command to setup the audio.
+sudo bash /opt/setup_robot_hat_audio.sh
 ```
 
 ## Debug command list
 
 ```bash
 cd ~/fusion-hat && sudo pip3 install . --break-system-packages --no-build-isolation --no-deps
-cd ~/mammoth_websocket && sudo pip3 install . --break-system-packages --no-build-isolation --no-deps
-cd ~/picar-x && sudo pip3 install . --break-system-packages --no-build-isolation --no-deps
+sudo pip install ~/robot-hat --break-system-packages --no-build-isolation --no-deps
+sudo pip install ~/picar-x --force-reinstall --break-system-packages --ignore-installed --no-deps
 sudo python3 ~/picar-x/app/app.py
 
 sudo pip uninstall --break fusion_hat -y && sudo pip install --break git+https://github.com/sunfounder/fusion-hat.git@1.1.x

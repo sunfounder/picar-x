@@ -1,6 +1,5 @@
-try:
-    import fusion_hat as extension_hat
-except ImportError:
-    import robot_hat as extension_hat
-
-from extension_hat.tts import *
+from .get_hat import is_fusion_hat
+if is_fusion_hat:
+    from fusion_hat.tts import *
+else:
+    from robot_hat.tts import *

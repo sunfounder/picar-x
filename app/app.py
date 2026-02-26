@@ -5,14 +5,13 @@ from picarx.picarx import PiCarX
 from picarx.tts import Piper, OpenAI_TTS
 from picarx.stt import Vosk
 from picarx.llm import LLM
-from picarx.microphone import Microphone
 from picarx.user_button import UserButton
 
 from picarx.music import SoundFiles, music_list, sound_list
 from picarx.utils import *
 from picarx.auto_drive import LineTracking, ObstacleAvoidance, Following
 
-from utils import Timer, Task, Status
+from utils import Task, Status
 import signal
 
 import json
@@ -52,7 +51,6 @@ user_button = UserButton()
 openai_tts = OpenAI_TTS(gain=3, model="tts-1", voice="alloy")
 vosk = Vosk()
 llm = LLM(model="gpt-4o-mini")
-microphone = Microphone()
 
 log = logging.getLogger("PiCar-X")
 data_interval = 5 # miliseconds

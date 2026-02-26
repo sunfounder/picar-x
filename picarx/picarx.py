@@ -1,20 +1,24 @@
-try:
-    import fusion_hat as extension_hat
-except ImportError:
-    import robot_hat as extension_hat
-
-from extension_hat.pin import Pin
-from extension_hat.adc import ADC
-from extension_hat.servo import Servo
-from extension_hat.modules.grayscale_module import LineTracker
-from extension_hat.modules.ultrasonic import Ultrasonic
-from extension_hat.utils import get_battery_voltage, get_charge_state
-from extension_hat.utils import LazyReader
-from extension_hat.utils import get_usr_btn, set_user_led
-from extension_hat.config import Config
+from .get_hat import is_fusion_hat
+if is_fusion_hat:
+    from fusion_hat.pin import Pin
+    from fusion_hat.adc import ADC
+    from fusion_hat.servo import Servo
+    from fusion_hat.modules.grayscale_module import LineTracker
+    from fusion_hat.modules.ultrasonic import Ultrasonic
+    from fusion_hat.device import get_usr_btn, set_led, get_battery_voltage, get_charge_state
+    from fusion_hat.config import Config
+else:
+    from robot_hat.pin import Pin
+    from robot_hat.adc import ADC
+    from robot_hat.servo import Servo
+    from robot_hat.modules import LineTracker
+    from robot_hat.modules import Ultrasonic
+    from robot_hat.device import get_usr_btn, set_led, get_battery_voltage
+    from robot_hat.config import Config
 
 from .motors import Motors
 from .music import Music, SoundFiles
+from .utils import LazyReader
 
 from time import sleep
 
@@ -108,8 +112,12 @@ class PiCarX(object):
         self.ultrasonic = Ultrasonic(Pin(trig), Pin(echo, mode=Pin.IN, pull=Pin.PULL_DOWN))
 
         # --------- battery voltage ---------
-        self.battery_reader = LazyReader(get_battery_voltage, 60)
-        self.charge_state_reader = LazyReader(get_charge_state, 5)
+        if is_fusion_hat:
+            self.battery_reader = LazyReader(get_battery_voltage, 60)
+            self.charge_state_reader = LazyReader(get_charge_state, 5)
+        else:
+            self.battery_reader = None
+            self.charge_state_reader = None
 
         # --------- music init ---------
         self.music = Music()
@@ -138,8 +146,8 @@ class PiCarX(object):
     def get_usr_btn(self):
         return get_usr_btn()
 
-    def set_user_led(self, value: int):
-        set_user_led(value)
+    def set_led(self, value: int):
+        set_led(value)
 
     def get_charge_state(self):
         ''' Get charge state
@@ -147,7 +155,11 @@ class PiCarX(object):
         Returns:
             bool: True if charging
         '''
-        return self.charge_state_reader.read()
+        if is_fusion_hat:
+            return self.charge_state_reader.read()
+        else:
+            print("Warning: charge state reader is not supported.")
+            return None
 
     def get_battery_voltage(self):
         ''' Get battery voltage
@@ -155,7 +167,11 @@ class PiCarX(object):
         Returns:
             float: battery voltage value, range from 0 to 3.3.
         '''
-        return self.battery_reader.read()
+        if is_fusion_hat:
+            return self.battery_reader.read()
+        else:
+            print("Warning: battery reader is not supported.")
+            return None
 
 
     def set_steering_angle(self, angle:float):
@@ -265,7 +281,7 @@ class PiCarX(object):
         self.set_camera_pan_angle(0)
         self.stop()
         self.music.stop()
-        self.set_user_led(0)
+        self.set_led(0)
 
     def set_name(self, name:str):
         ''' Set robot name
