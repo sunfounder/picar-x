@@ -26,6 +26,7 @@ sudo bash /opt/setup_robot_hat_audio.sh
 ```bash
 cd ~/fusion-hat && sudo pip3 install . --break-system-packages --no-build-isolation --no-deps
 sudo pip install ~/robot-hat --break-system-packages --no-build-isolation --no-deps
+sudo pip install ~/sunfounder-voice-assistant --break-system-packages --no-build-isolation --no-deps
 sudo pip install ~/picar-x --force-reinstall --break-system-packages --ignore-installed --no-deps
 sudo python3 ~/picar-x/app/app.py
 

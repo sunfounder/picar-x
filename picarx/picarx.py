@@ -113,11 +113,10 @@ class PiCarX(object):
 
         # --------- battery voltage ---------
         if is_fusion_hat:
-            self.battery_reader = LazyReader(get_battery_voltage, 60)
             self.charge_state_reader = LazyReader(get_charge_state, 5)
         else:
-            self.battery_reader = None
             self.charge_state_reader = None
+        self.battery_reader = LazyReader(get_battery_voltage, 60)
 
         # --------- music init ---------
         self.music = Music()
@@ -167,11 +166,7 @@ class PiCarX(object):
         Returns:
             float: battery voltage value, range from 0 to 3.3.
         '''
-        if is_fusion_hat:
-            return self.battery_reader.read()
-        else:
-            print("Warning: battery reader is not supported.")
-            return None
+        return self.battery_reader.read()
 
 
     def set_steering_angle(self, angle:float):

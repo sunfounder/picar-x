@@ -35,6 +35,9 @@ packages = [
   "picarx.sounds",
 ]
 
+[project.scripts]
+picar-x = "picarx._cli:main"
+
 [project.urls]
 "Homepage" = "https://github.com/sunfounder/picar-x"
 "Bug Tracker" = "https://github.com/sunfounder/picar-x/issues"

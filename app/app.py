@@ -2,6 +2,7 @@ from mammoth_websocket.mammoth_websocket import MammothWebSocket
 from mammoth_websocket.utils import get_ips
 
 from picarx.picarx import PiCarX
+from picarx.get_hat import is_fusion_hat
 from picarx.tts import Piper, OpenAI_TTS
 from picarx.stt import Vosk
 from picarx.llm import LLM
@@ -207,7 +208,7 @@ class AiSayTask(Task):
 def piper_say_task(value):
     data_to_send["piper_saying"] = True
     start = time.time()
-    if not piper.model_downloaded():
+    if not piper.is_model_downloaded():
         log.info(f"Downloading piper model:{piper.model}")
         piper.download_model()
     piper.say(value)
@@ -486,6 +487,7 @@ def handle_ai_say(value):
         ai_say_task.start(value)
 
 def handle_do_action(action):
+    log.debug(f"handle_do_action: {action}")
     if action == "[STOP]":
         log.debug(f"Stop action")
         return
@@ -502,7 +504,7 @@ def handle_led(status):
         log.error(f"Invalid led status: {status}")
         return
     log.debug(f"Set led: {status}")
-    car.set_user_led(status)
+    car.set_led(status)
 
 def handle_piper_set_model(model):
     log.debug(f"Set piper model: {model}")
@@ -574,7 +576,7 @@ COMMAND_MAP = {
     "ai_think": handle_ai_think,
     "ai_think_with_image": handle_ai_think_with_image,
     "ai_say": handle_ai_say,
-    # PiPer
+    # Piper
     "piper_set_model": handle_piper_set_model,
     "piper_say": handle_piper_say,
     # Vosk
@@ -661,9 +663,9 @@ def handle_restart_service():
     blink_delay = 0.1
     for_count = int(delay / blink_delay / 2)
     for _ in range(for_count):
-        car.set_user_led(1)
+        car.set_led(1)
         time.sleep(blink_delay)
-        car.set_user_led(0)
+        car.set_led(0)
         time.sleep(blink_delay)
     log.info("Restart service")
     os.system("systemctl restart picar-x-app.service")
@@ -675,7 +677,8 @@ def update_data():
     # Read sensor data
     data_to_send["ultrasonic_distance"] = car.get_distance()
     data_to_send["battery_voltage"] = car.get_battery_voltage()
-    data_to_send["charge_state"] = car.get_charge_state()
+    if is_fusion_hat:
+        data_to_send["charge_state"] = car.get_charge_state()
     data_to_send["user_button_pressed"] = user_button.is_pressed()
 
     # Grayscale data
@@ -891,23 +894,23 @@ def main():
         if not is_wifi_connected():
             log.error("No wifi connection, try restart wifi")
             os.system("sudo nmcli device down wlan0")
-            car.set_user_led(1)
+            car.set_led(1)
             time.sleep(0.5)
-            car.set_user_led(0)
+            car.set_led(0)
             time.sleep(0.5)
-            car.set_user_led(1)
+            car.set_led(1)
             time.sleep(0.5)
-            car.set_user_led(0)
+            car.set_led(0)
             os.system("sudo nmcli device up wlan0")
             continue
         if connected_changed:
             connected_changed = False
             if connected:
-                car.set_user_led(0)
+                car.set_led(0)
         if not connected:
-            car.set_user_led(1)
+            car.set_led(1)
             time.sleep(1)
-            car.set_user_led(0)
+            car.set_led(0)
             time.sleep(1)
             continue
         handle_received_data()
