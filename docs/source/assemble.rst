@@ -14,3 +14,7 @@
      :align: center
 
 * :download:`Picar-X Kit 装配折页 </_static/pdf/PICAR-X_assemble.pdf>`
+
+.. raw:: html
+
+    <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=115490026426378&bvid=BV1TV1kBCEdx&cid=36302424672&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
