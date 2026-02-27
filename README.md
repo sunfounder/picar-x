@@ -27,11 +27,16 @@ sudo bash /opt/setup_robot_hat_audio.sh
 cd ~/fusion-hat && sudo pip3 install . --break-system-packages --no-build-isolation --no-deps
 sudo pip install ~/robot-hat --break-system-packages --no-build-isolation --no-deps
 sudo pip install ~/sunfounder-voice-assistant --break-system-packages --no-build-isolation --no-deps
+sudo pip install ~/mammoth_websocket --break-system-packages --no-build-isolation --no-deps
 sudo pip install ~/picar-x --force-reinstall --break-system-packages --ignore-installed --no-deps
 sudo python3 ~/picar-x/app/app.py
 
 sudo pip uninstall --break fusion_hat -y && sudo pip install --break git+https://github.com/sunfounder/fusion-hat.git@1.1.x
-sudo systemctl restart picar-x-app && journalctl -xefu picar-x-app
+
+sudo systemctl restart picar-x-app
+sudo systemctl stop picar-x-app
+sudo systemctl start picar-x-app
+journalctl -xefu picar-x-app.service
 ```
 
 ## Trouble Shooting

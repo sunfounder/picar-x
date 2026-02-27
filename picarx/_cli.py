@@ -3,11 +3,10 @@ import asyncio
 import websockets
 import json
 import sys
-from typing import Optional, Dict, Any
+from typing import Dict, Any
 
 DEFAULT_PORT = 30102
 DEFAULT_HOST = "localhost"
-
 
 class PiCarXClient:
     def __init__(self, host: str = DEFAULT_HOST, port: int = DEFAULT_PORT):
@@ -196,30 +195,13 @@ async def async_main():
     
     subparsers = parser.add_subparsers(dest="command", help="Available commands")
     
-    motor_parser = subparsers.add_parser("motor", help="Control motor power")
-    motor_parser.add_argument("power", type=int, help="Motor power (-100 to 100)")
+    move_parser = subparsers.add_parser("move", help="Control car movement")
+    move_parser.add_argument("power", type=int, default=None, help="Motor power (-100 to 100)")
+    move_parser.add_argument("steering", type=int, default=None, help="Steering angle (-30 to 30)")
     
-    steering_parser = subparsers.add_parser("steering", help="Control steering angle")
-    steering_parser.add_argument("angle", type=int, help="Steering angle (-30 to 30)")
-    
-    camera_pan_parser = subparsers.add_parser("camera-pan", help="Control camera pan angle")
-    camera_pan_parser.add_argument("angle", type=int, help="Camera pan angle (-90 to 90)")
-    
-    camera_tilt_parser = subparsers.add_parser("camera-tilt", help="Control camera tilt angle")
-    camera_tilt_parser.add_argument("angle", type=int, help="Camera tilt angle (-30 to 30)")
-    
-    color_parser = subparsers.add_parser("color", help="Color detection")
-    color_parser.add_argument("mode", choices=["close", "red", "orange", "yellow", "green", "blue", "purple"], 
-                             help="Color detection mode")
-    
-    face_parser = subparsers.add_parser("face", help="Face detection")
-    face_parser.add_argument("enable", type=int, choices=[0, 1], help="0=disable, 1=enable")
-    
-    traffic_parser = subparsers.add_parser("traffic", help="Traffic sign detection")
-    traffic_parser.add_argument("enable", type=int, choices=[0, 1], help="0=disable, 1=enable")
-    
-    qr_parser = subparsers.add_parser("qr", help="QR code detection")
-    qr_parser.add_argument("enable", type=int, choices=[0, 1], help="0=disable, 1=enable")
+    camera_pan_parser = subparsers.add_parser("camera-pan-tilt", help="Control camera pan tile angle")
+    camera_pan_parser.add_argument("pan", type=int, default=None, help="Camera pan angle (-90 to 90)")
+    camera_pan_parser.add_argument("tilt", type=int, default=None, help="Camera tilt angle (-30 to 30)")
     
     sound_parser = subparsers.add_parser("sound", help="Play sound effect")
     sound_parser.add_argument("index", type=int, choices=[0, 1], help="Sound effect index")
@@ -235,24 +217,16 @@ async def async_main():
     
     line_tracking_parser = subparsers.add_parser("line-tracking", help="Line tracking mode")
     line_tracking_parser.add_argument("enable", type=int, choices=[0, 1], help="0=disable, 1=enable")
-    
-    line_power_parser = subparsers.add_parser("line-power", help="Line tracking power")
-    line_power_parser.add_argument("power", type=int, help="Power level (0-100)")
+    line_tracking_parser.add_argument("power", type=int, default=None, help="Power level (0-100)")
     
     obstacle_parser = subparsers.add_parser("obstacle", help="Obstacle avoidance mode")
     obstacle_parser.add_argument("enable", type=int, choices=[0, 1], help="0=disable, 1=enable")
-    
-    obstacle_power_parser = subparsers.add_parser("obstacle-power", help="Obstacle avoidance power")
-    obstacle_power_parser.add_argument("power", type=int, help="Power level (0-100)")
+    obstacle_parser.add_argument("power", type=int, default=None, help="Power level (0-100)")
     
     following_parser = subparsers.add_parser("following", help="Following mode")
     following_parser.add_argument("enable", type=int, choices=[0, 1], help="0=disable, 1=enable")
-    
-    following_power_parser = subparsers.add_parser("following-power", help="Following power")
-    following_power_parser.add_argument("power", type=int, help="Power level (0-100)")
-    
-    following_mode_parser = subparsers.add_parser("following-mode", help="Following mode type")
-    following_mode_parser.add_argument("mode", choices=["face", "red", "orange", "yellow", "green", "blue", "purple"], 
+    following_parser.add_argument("power", type=int, default=None, help="Power level (0-100)")
+    following_parser.add_argument("mode", type=str, default=None, choices=["face", "red", "orange", "yellow", "green", "blue", "purple"], 
                                       help="Following mode")
     
     led_parser = subparsers.add_parser("led", help="Control LED")
@@ -274,15 +248,13 @@ async def async_main():
     
     piper_say_parser = subparsers.add_parser("piper-say", help="Piper TTS say")
     piper_say_parser.add_argument("text", help="Text for Piper to say")
+    piper_say_parser.add_argument("model", help="Piper model name")
     
-    piper_model_parser = subparsers.add_parser("piper-model", help="Set Piper model")
-    piper_model_parser.add_argument("model", help="Piper model name")
+    # vosk_language_parser = subparsers.add_parser("vosk-language", help="Set Vosk language")
+    # vosk_language_parser.add_argument("language", help="Vosk language code")
     
-    vosk_language_parser = subparsers.add_parser("vosk-language", help="Set Vosk language")
-    vosk_language_parser.add_argument("language", help="Vosk language code")
-    
-    vosk_listen_parser = subparsers.add_parser("vosk-listen", help="Vosk listen")
-    vosk_listen_parser.add_argument("enable", type=int, choices=[0, 1], help="0=stop, 1=start")
+    # vosk_listen_parser = subparsers.add_parser("vosk-listen", help="Vosk listen")
+    # vosk_listen_parser.add_argument("enable", type=int, choices=[0, 1], help="0=stop, 1=start")
     
     data_parser = subparsers.add_parser("data", help="Get sensor data")
     data_parser.add_argument("--watch", action="store_true", help="Watch data continuously")
@@ -306,32 +278,25 @@ async def async_main():
     
     if not await client.connect():
         sys.exit(1)
+
+    await asyncio.sleep(0.5)
     
     try:
-        if args.command == "motor":
-            await client.send_command({"motor": args.power})
+        if args.command == "move":
+            data = {}
+            if args.power is not None:
+                data["motor"] = args.power
+            if args.steering is not None:
+                data["steering"] = args.steering
+            await client.send_command(data)
         
-        elif args.command == "steering":
-            await client.send_command({"steering": args.angle})
-        
-        elif args.command == "camera-pan":
-            await client.send_command({"camera_pan": args.angle})
-        
-        elif args.command == "camera-tilt":
-            await client.send_command({"camera_tilt": args.angle})
-        
-        elif args.command == "color":
-            mode_map = {"close": 0, "red": 1, "orange": 2, "yellow": 3, "green": 4, "blue": 5, "purple": 6}
-            await client.send_command({"color_detection": mode_map[args.mode]})
-        
-        elif args.command == "face":
-            await client.send_command({"face_detection": args.enable})
-        
-        elif args.command == "traffic":
-            await client.send_command({"traffic_sign_detection": args.enable})
-        
-        elif args.command == "qr":
-            await client.send_command({"qr_code_detection": args.enable})
+        elif args.command == "camera-pan-tilt":
+            data = {}
+            if args.pan is not None:
+                data["camera_pan"] = args.pan
+            if args.tilt is not None:
+                data["camera_tilt"] = args.tilt
+            await client.send_command(data)
         
         elif args.command == "sound":
             await client.send_command({"play_sound": args.index})
@@ -346,25 +311,24 @@ async def async_main():
             await client.send_command({"music_volume": args.level})
         
         elif args.command == "line-tracking":
-            await client.send_command({"line_tracking": args.enable})
-        
-        elif args.command == "line-power":
-            await client.send_command({"line_tracking_power": args.power})
+            data = {"line_tracking": args.enable}
+            if args.power is not None:
+                data["line_tracking_power"] = args.power
+            await client.send_command(data)
         
         elif args.command == "obstacle":
-            await client.send_command({"obstacle_avoidance": args.enable})
-        
-        elif args.command == "obstacle-power":
-            await client.send_command({"obstacle_avoidance_power": args.power})
+            data = {"obstacle_avoidance": args.enable}
+            if args.power is not None:
+                data["obstacle_avoidance_power"] = args.power
+            await client.send_command(data)
         
         elif args.command == "following":
-            await client.send_command({"following": args.enable})
-        
-        elif args.command == "following-power":
-            await client.send_command({"following_power": args.power})
-        
-        elif args.command == "following-mode":
-            await client.send_command({"following_mode": args.mode})
+            data = {"following": args.enable}
+            if args.mode is not None:
+                data["following_mode"] = args.mode
+            if args.power is not None:
+                data["following_power"] = args.power
+            await client.send_command(data)
         
         elif args.command == "led":
             await client.send_command({"led": args.enable})
@@ -393,19 +357,16 @@ async def async_main():
                 await client.send_command({"ai_say": args.text})
         
         elif args.command == "piper-say":
-            await client.send_command({"piper_say": args.text})
+            await client.send_command({"piper_say": args.text, "piper_set_model": args.model})
         
-        elif args.command == "piper-model":
-            await client.send_command({"piper_set_model": args.model})
+        # elif args.command == "vosk-language":
+        #     if args.language.lower() == "stop":
+        #         await client.send_command({"vosk_set_language": "[STOP]"})
+        #     else:
+        #         await client.send_command({"vosk_set_language": args.language})
         
-        elif args.command == "vosk-language":
-            if args.language.lower() == "stop":
-                await client.send_command({"vosk_set_language": "[STOP]"})
-            else:
-                await client.send_command({"vosk_set_language": args.language})
-        
-        elif args.command == "vosk-listen":
-            await client.send_command({"vosk_listen": args.enable})
+        # elif args.command == "vosk-listen":
+        #     await client.send_command({"vosk_listen": args.enable})
         
         elif args.command == "info":
             info = await client.get_device_info()
@@ -459,11 +420,13 @@ async def async_main():
                 if data:
                     client.print_io_data(data)
         
-        await asyncio.sleep(0.5)
+        await asyncio.sleep(1)
         
     finally:
         await client.disconnect()
 
-
 def main():
     asyncio.run(async_main())
+
+if __name__ == "__main__":
+    main()

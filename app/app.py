@@ -499,10 +499,7 @@ def handle_do_action(action):
     car.actions[action]()
     data_to_send['action_status'] = False
 
-def handle_led(status):
-    if status not in [0, 1]:
-        log.error(f"Invalid led status: {status}")
-        return
+def handle_led(status: bool):
     log.debug(f"Set led: {status}")
     car.set_led(status)
 
@@ -645,17 +642,17 @@ async def handle_connected(client_ip):
     connected_changed = True
     log.info(f"Client {client_ip} connected")
 
-async def handle_disconnected():
+async def handle_disconnected(ip):
     global connected, connected_changed
     connected = False
     connected_changed = True
-    log.debug("handle_disconnected")
+    log.debug(f"Client {ip} disconnected")
 
     # Reset robot
-    car.stop()
-    car.set_steering_angle(0)
-    car.set_camera_pan_angle(0)
-    car.set_camera_tilt_angle(0)
+    # car.stop()
+    # car.set_steering_angle(0)
+    # car.set_camera_pan_angle(0)
+    # car.set_camera_tilt_angle(0)
 
 def handle_restart_service():
     delay = 3
@@ -788,8 +785,9 @@ def init_log():
     log.setLevel(logging.DEBUG)
     console_handler = logging.StreamHandler()
     console_handler.setLevel(logging.DEBUG)
+    console_formatter = logging.Formatter('[%(levelname)s] %(message)s')
     formatter = logging.Formatter('%(asctime)s.%(msecs)03d [%(levelname)s] %(message)s', datefmt='%y/%m/%d %H:%M:%S')
-    console_handler.setFormatter(formatter)
+    console_handler.setFormatter(console_formatter)
     log.addHandler(console_handler)
 
 def init():
@@ -844,7 +842,7 @@ def init():
     ai_say_task = AiSayTask()
 
     # --- Init User Button ---
-    user_button.set_on_long_press(handle_restart_service, duration=5)
+    user_button.set_on_long_press(handle_restart_service, duration=3)
     user_button.start()
 
     # --- Get initial data ---
