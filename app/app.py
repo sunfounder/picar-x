@@ -888,6 +888,9 @@ def main():
 
     start = time.time()
     car.music.play_sound(SoundFiles.START_ENGINE)
+
+    led_status = False
+    start_led_time = time.time()
     while True:
         if not is_wifi_connected():
             log.error("No wifi connection, try restart wifi")
@@ -906,11 +909,10 @@ def main():
             if connected:
                 car.set_led(0)
         if not connected:
-            car.set_led(1)
-            time.sleep(1)
-            car.set_led(0)
-            time.sleep(1)
-            continue
+            if time.time() - start_led_time > 1:
+                led_status = not led_status
+                car.set_led(led_status)
+                start_led_time = time.time()
         handle_received_data()
         update_data()
         delay = time.time() - start
