@@ -5,7 +5,7 @@ from picarx.picarx import PiCarX
 from picarx.get_hat import is_fusion_hat
 from picarx.tts import Piper, OpenAI_TTS
 from picarx.stt import Vosk
-from picarx.llm import LLM
+from picarx.llm import Deepseek, Grok, Doubao, Gemini, Qwen, OpenAI
 from picarx.user_button import UserButton
 
 from picarx.music import SoundFiles, music_list, sound_list
@@ -51,7 +51,14 @@ user_button = UserButton()
 
 openai_tts = OpenAI_TTS(gain=3, model="tts-1", voice="alloy")
 vosk = Vosk()
-llm = LLM(model="gpt-4o-mini")
+
+deepseek = Deepseek()
+grok = Grok()
+doubao = Doubao()
+gemini = Gemini()
+qwen = Qwen()
+openai = OpenAI()
+llm = None
 
 log = logging.getLogger("PiCar-X")
 data_interval = 5 # miliseconds
@@ -63,9 +70,7 @@ following = Following(car, log=log)
 #----
 alert_message = None
 ai_api_key = None
-ai_listen_language = "auto"
 ai_status = Status.NOT_INITIALIZED
-ai_listen_result = ""
 ai_think_result = ""
 ai_think_running = False
 ai_think_task = None
@@ -150,10 +155,10 @@ class VoskListenTask(Task):
 class AiThinkTask(Task):
     def main(self, value, with_image=False):
         global ai_status, ai_think_result, ai_think_running
-        if not llm.is_ready:
-            log.error("LLM not ready")
+        if llm is None:
+            log.error("AI not initialized")
             ai_status = Status.FAILED
-            alert("error", "LLM not ready")
+            alert("error", "AI not initialized")
             return
         
         content = value.strip()
@@ -165,17 +170,16 @@ class AiThinkTask(Task):
         ai_think_result = ""
         ai_think_running = True
         log.debug(f"Think with: {content}, with image: {with_image}")
+        img_path = None
         try:
             if with_image:
                 img_path = '/tmp/picar-x-app-think-img.jpg'
                 # Save image
                 cv2.imwrite(img_path, Vilib.img)
-                response = llm.prompt(content, img_path, stream=True)
-            else:
-                response = llm.prompt(content, stream=True)
+            response = llm.prompt(content, image_path=img_path, stream=True)
         except Exception as e:
-            log.error(f"LLM failed: {e}")
-            alert("error", f"LLM failed: {e}")
+            log.error(f"AI failed: {e}")
+            alert("error", f"AI failed: {e}")
             ai_status = Status.FAILED
             return
         ai_think_result = ""
@@ -227,15 +231,6 @@ def handle_name_changed(name):
     DEVICE_INFO["Name"] = name
     log.debug(f"Name changed to {name}")
     car.set_name(name)
-
-def handle_ai_api_key(api_key):
-    global ai_status
-    DEVICE_INFO["ai_api_key"] = api_key
-    car.config.set("ai_api_key", api_key)
-    openai_tts.set_api_key(api_key)
-    llm.set_api_key(api_key)
-    log.debug(f"Set api-key: {api_key}")
-    ai_status = Status.IDLE
 
 def handle_motor(power):
     global motor_power
@@ -436,22 +431,37 @@ def handle_grayscale_cliff_threshold(value):
     data_to_send['grayscale_cliff_threshold'] = value
     car.grayscale.set_cliff_threshold(value)
 
-def handle_ai_assistant_id(value):
-    global ai_assistant_id
-    if ai_assistant_id == value:
-        return
-    log.debug(f"Set assistant-id: {value}")
-    ai_assistant_id = value
+def handle_ai_api_key(api_key):
+    global ai_status
+    DEVICE_INFO["ai_api_key"] = api_key
+    car.config.set("ai_api_key", api_key)
+    openai_tts.set_api_key(api_key)
+    llm.set_api_key(api_key)
+    log.debug(f"Set api-key: {api_key}")
+    ai_status = Status.IDLE
+
+def handle_ai_init(provider, model):
+    global llm, ai_status
+    if provider == "deepseek":
+        llm = deepseek
+    elif provider == "grok":
+        llm = grok
+    elif provider == "doubao":
+        llm = doubao
+    elif provider == "gemini":
+        llm = gemini
+    elif provider == "qwen":
+        llm = qwen
+    elif provider == "openai":
+        llm = openai
+    llm.set_model(model)
+    llm.set_api_key(ai_api_key)
+    log.debug(f"Set AI model: {model}")
+    ai_status = Status.IDLE
 
 def handle_ai_say_voice(voice):
     openai_tts.set_voice(voice)
     log.debug(f"Set speak voice: {voice}")
-
-def handle_ai_listen_language(value):
-    log.error(f"handle_ai_listen_language: is deprecated")
-
-def handle_ai_listen(enable):
-    log.error(f"handle_ai_listen: is deprecated")
 
 def handle_ai_think(value, with_image=False):
     global ai_status
@@ -566,10 +576,8 @@ COMMAND_MAP = {
     "grayscale_cliff_threshold": handle_grayscale_cliff_threshold,
     # AI
     "ai_api_key": handle_ai_api_key,
-    "ai_assistant_id": handle_ai_assistant_id,
-    "ai_listen_language": handle_ai_listen_language,
+    "ai_init": handle_ai_init,
     "ai_say_voice": handle_ai_say_voice,
-    "ai_listen": handle_ai_listen,
     "ai_think": handle_ai_think,
     "ai_think_with_image": handle_ai_think_with_image,
     "ai_say": handle_ai_say,
@@ -669,7 +677,7 @@ def handle_restart_service():
 
 # @update_data_timer.print
 def update_data():
-    global ai_listen_result, ai_think_result, alert_message
+    global ai_think_result, alert_message
 
     # Read sensor data
     data_to_send["ultrasonic_distance"] = car.get_distance()
@@ -754,8 +762,6 @@ def update_data():
     if alert_message is not None:
         data_to_send["alert"] = alert_message
         alert_message = None
-    if ai_listen_result != "":
-        data_to_send["ai_listen_result"] = ai_listen_result
     if ai_think_result != "":
         data_to_send["ai_think_result"] = ai_think_result
     
@@ -786,12 +792,11 @@ def init_log():
     console_handler = logging.StreamHandler()
     console_handler.setLevel(logging.DEBUG)
     console_formatter = logging.Formatter('[%(levelname)s] %(message)s')
-    formatter = logging.Formatter('%(asctime)s.%(msecs)03d [%(levelname)s] %(message)s', datefmt='%y/%m/%d %H:%M:%S')
     console_handler.setFormatter(console_formatter)
     log.addHandler(console_handler)
 
 def init():
-    global ai_status
+    global ai_status, ai_api_key
     global vosk_listen_task, vosk_set_language_task, ai_think_task, ai_say_task
     init_log()
 
@@ -828,13 +833,12 @@ def init():
     ws.start()
 
     # --- Init AI ---
-    if ai_api_key:
-        try:
-            openai_tts.set_api_key(ai_api_key)
-            llm.set_api_key(ai_api_key)
-            ai_status = Status.IDLE
-        except Exception as e:
-            log.exception(str(e))
+    # if ai_api_key:
+    #     try:
+    #         openai_tts.set_api_key(ai_api_key)
+    #         ai_status = Status.IDLE
+    #     except Exception as e:
+    #         log.exception(str(e))
 
     vosk_set_language_task = VoskSetLanguageTask()
     vosk_listen_task = VoskListenTask()
