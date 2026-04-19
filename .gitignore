@@ -1,3 +1,5 @@
 .vscode/*
 build/*
 bk/
+
+__pycache__
