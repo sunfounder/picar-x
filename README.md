@@ -11,13 +11,15 @@ Picar-X Python library for Raspberry Pi.
 
 ## Installation
 
+Install PiCar-X V4
+
 ```bash
-# Install PiCar-X V4
 curl -sSL https://raw.githubusercontent.com/sunfounder/sunfounder-installer-scripts/main/install-picar-x-v4.sh | sudo bash
+```
 
-# After installation, finished, and prompt to reboot. input "Y" to reboot.
+After installation, finished, and prompt to reboot. input "Y" to reboot. After reboot, run the this command to setup the audio.
 
-# After reboot, run the this command to setup the audio.
+```bash
 sudo bash /opt/setup_robot_hat_audio.sh
 ```
 
