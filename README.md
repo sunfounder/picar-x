@@ -29,6 +29,7 @@ sudo pip install ~/robot-hat --break-system-packages --no-build-isolation --no-d
 sudo pip install ~/sunfounder-voice-assistant --break-system-packages --no-build-isolation --no-deps
 sudo pip install ~/mammoth_websocket --break-system-packages --no-build-isolation --no-deps
 sudo pip install ~/picar-x --force-reinstall --break-system-packages --ignore-installed --no-deps
+
 sudo python3 ~/picar-x/app/app.py
 
 sudo pip uninstall --break fusion_hat -y && sudo pip install --break git+https://github.com/sunfounder/fusion-hat.git@1.1.x

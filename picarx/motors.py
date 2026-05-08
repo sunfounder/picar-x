@@ -11,9 +11,9 @@ class Motors():
     RIGHT_MOTOR = 'M1'
 
     # Minimum power to prevent the motor from not turning
-    MIN_POWER = 10
+    MIN_POWER = 30
     # Maximum power
-    MAX_POWER = 70
+    MAX_POWER = 100
 
     def __init__(self,
         left_motor: str = LEFT_MOTOR,

@@ -186,7 +186,7 @@ class AiThinkTask(Task):
         for chunk in response:
             if chunk != None and len(chunk) > 0:
                 ai_think_result = f"{ai_think_result}{chunk}"
-            log.debug(f"Think result: {chunk}")
+            # log.debug(f"Think result: {chunk}")
         ai_status = Status.IDLE
         ai_think_running = False
 
@@ -435,12 +435,14 @@ def handle_ai_api_key(api_key):
     global ai_status
     DEVICE_INFO["ai_api_key"] = api_key
     car.config.set("ai_api_key", api_key)
-    openai_tts.set_api_key(api_key)
-    llm.set_api_key(api_key)
+    # openai_tts.set_api_key(api_key)
+    # llm.set_api_key(api_key)
     log.debug(f"Set api-key: {api_key}")
     ai_status = Status.IDLE
 
-def handle_ai_init(provider, model):
+def handle_ai_init(data):
+    log.debug(f"handle_ai_init: {data}")
+    provider, model = data
     global llm, ai_status
     if provider == "deepseek":
         llm = deepseek
@@ -456,7 +458,7 @@ def handle_ai_init(provider, model):
         llm = openai
     llm.set_model(model)
     llm.set_api_key(ai_api_key)
-    log.debug(f"Set AI model: {model}")
+    log.debug(f"Set Provider: {provider}, model: {model}")
     ai_status = Status.IDLE
 
 def handle_ai_say_voice(voice):
@@ -474,6 +476,7 @@ def handle_ai_think(value, with_image=False):
         log.debug(f"Stop think")
         return
     if ai_status == Status.IDLE:
+        log.debug(f"Start think: {value}")
         ai_think_task.start(value, with_image)
 
 def handle_ai_think_with_image(value):
@@ -762,8 +765,8 @@ def update_data():
     if alert_message is not None:
         data_to_send["alert"] = alert_message
         alert_message = None
-    if ai_think_result != "":
-        data_to_send["ai_think_result"] = ai_think_result
+    # if ai_think_result != "":
+    data_to_send["ai_think_result"] = ai_think_result
     
     # Vosk status
     data_to_send["vosk_listening"] = vosk_listen_task.running
