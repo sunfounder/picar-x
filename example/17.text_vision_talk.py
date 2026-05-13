@@ -15,7 +15,7 @@ WELCOME = "Hello, I am a helpful assistant. How can I help you?"
 # If Ollama runs on the same Pi, use "localhost".
 # If it runs on another computer in your LAN, replace with that computer's IP.
 llm = Ollama(
-    ip="192.168.100.145",          # e.g., "192.168.100.145" if remote
+    ip="localhost",          # e.g., "192.168.100.145" if remote
     model="llava:7b"         # change to "moondream:1.8b" or "granite3.2-vision:2b" for 8GB RAM
 )
 
