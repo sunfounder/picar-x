@@ -30,3 +30,4 @@ Here you will explore text-to-speech (TTS), speech-to-text (STT), and large lang
     python_local_chatbot
     python_treasure_hunt
     python_ai_robot
+    ../openclaw
