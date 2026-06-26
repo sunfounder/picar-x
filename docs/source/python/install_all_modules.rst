@@ -18,29 +18,19 @@
 すべてのモジュールをインストールする（重要）
 ================================================
 
-
 #. **システムの準備**
 
    Raspberry Pi がインターネットに接続されていることを確認し、システムを更新します。
 
-   .. raw:: html
-
-      <run></run>
-
-   .. code-block::
+   ::
 
       sudo apt update
       sudo apt upgrade
 
    .. note::
-      
       Raspberry Pi OS Lite を使用している場合は、まず必要な Python 3 パッケージをインストールしてください。
 
-   .. raw:: html
-
-      <run></run>
-
-   .. code-block::
+      ::
 
          sudo apt install git python3-pip python3-setuptools python3-smbus
 
@@ -48,11 +38,7 @@
 
    ``robot-hat`` モジュールをダウンロードしてインストールします。
 
-   .. raw:: html
-
-      <run></run>
-
-   .. code-block::
+   ::
 
       cd ~/
       git clone -b 2.5.x https://github.com/sunfounder/robot-hat.git --depth 1
@@ -63,11 +49,7 @@
 
    ``vilib`` モジュールをダウンロードしてインストールします。
 
-   .. raw:: html
-
-      <run></run>
-
-   .. code-block::
+   ::
 
       cd ~/
       git clone https://github.com/sunfounder/vilib.git --depth 1
@@ -78,11 +60,7 @@
 
    ``picar-x`` モジュールをダウンロードしてインストールします。
 
-   .. raw:: html
-
-      <run></run>
-
-   .. code-block::
+   ::
 
       cd ~/
       git clone -b 2.1.x https://github.com/sunfounder/picar-x.git --depth 1
@@ -95,11 +73,7 @@
 
    音声出力を有効にするため、 ``i2samp.sh`` スクリプトを実行して、必要な I2S アンプ関連コンポーネントをインストールします。
 
-   .. raw:: html
-
-      <run></run>
-
-   .. code-block::
+   ::
 
       cd ~/robot-hat
       sudo bash i2samp.sh

@@ -86,8 +86,6 @@
     if __name__ == "__main__":
         main()
 
-
-
 **どのように動作するのか？**
 
 * Picarx モジュールのインポートと定数の初期化: 
@@ -112,7 +110,7 @@
         
         def main():
         try:
-            px = Picarx()
+        px = Picarx()
 
             while True:
                 distance = round(px.ultrasonic.read(), 2)
@@ -145,7 +143,7 @@
         try:
         # [制御ロジック]
         finally:
-            px.forward(0)
+        px.forward(0)
 
 * 実行エントリーポイント:
 

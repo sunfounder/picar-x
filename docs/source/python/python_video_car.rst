@@ -195,5 +195,3 @@ OとPで速度を調整します。
         finally:
             px.stop()
             Vilib.camera_close()
-
-

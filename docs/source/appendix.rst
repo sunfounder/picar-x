@@ -24,5 +24,3 @@
     _shared/appendix/filezilla
     _shared/appendix/install_openssh_powershell
     _shared/appendix/login_windows
-
-

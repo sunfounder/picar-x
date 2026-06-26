@@ -18,10 +18,6 @@
 Ezblockを楽しむ
 ===========================
 
-.. note::
-
-    Raspberry Pi 5を使用している場合、グラフィカルプログラミングソフトウェアEzBlockはサポートされていません。
-
 初心者やビギナーのために、EzBlockはSunFounderがRaspberry Pi用に提供しているソフトウェア開発プラットフォームです。EzBlockは、グラフィカル環境とPython環境の2つのプログラミング環境を提供しています。
 
 ほとんど全てのデバイスタイプ、Mac、PC、Androidを含む、で利用可能です。
@@ -70,8 +66,3 @@ Ezblockのプロジェクトは全てEzblock Studioの例ページにアップ�
     ezblock_beware_pedestrians
     ezblock_traffic
     ezblock_orienteering
-
-
-
-
-

@@ -45,6 +45,7 @@ PiCar-Xに少し自己保護意識を与えて、自身のグレースケール�
 
 .. code-block:: python
 
+
     from picarx import Picarx
     from time import sleep
 

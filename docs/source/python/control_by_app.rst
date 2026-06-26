@@ -69,7 +69,6 @@ A-Qまでの17エリアがあり、異なるウィジェットを配置して独
 
     .. image:: img/app_control_preset.jpg
 
-
 #. PiCar-xに接続する。
 
     **Connect** ボタンをクリックすると、近くのロボットを自動的に検索します。その名前は ``picarx_control.py`` で定義されており、常に実行されている必要があります。

@@ -89,7 +89,6 @@
 
 ``while True`` の中のこれらのコード行により、カメラが顔を追いかけます。
 
-
 .. code-block:: python
 
     while True:

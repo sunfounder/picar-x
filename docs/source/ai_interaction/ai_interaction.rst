@@ -30,3 +30,4 @@
     python_local_chatbot
     python_treasure_hunt
     python_ai_robot
+    ../openclaw

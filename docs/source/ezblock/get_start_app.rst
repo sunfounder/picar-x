@@ -20,6 +20,15 @@ EzBlock Studioのインストールと設定
 ロボットが組み立てられたら、基本的な操作を行う必要があります。
 
 * :ref:`ezblock:install_ezblock_app_latest`：デバイスにEzBlock Studioをダウンロードしてインストールするか、Webベースのバージョンを使用します。
+
+.. note::
+
+    Raspberry Pi 5をお使いの場合は、ベータバージョンをダウンロードしてください。
+    ご使用中にご質問や問題がございましたら、どうぞお気軽にお問い合わせください。
+
+    .. image:: img/ezblock_beta_version.png
+       :width: 800
+
 * :ref:`ezblock:connect_product_ezblock_latest`：Wi-Fi、Bluetoothを設定し、使用前にキャリブレーションを行います。
 * :ref:`ezblock:open_run_latest`：関連する例を直接表示または実行します。
 

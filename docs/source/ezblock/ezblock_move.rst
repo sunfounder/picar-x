@@ -21,6 +21,7 @@ Ezblock Studioの基本的な使い方を学ぶには、以下の2つのセク�
 
 * :ref:`ezblock:create_project_latest`
 
+
 .. image:: img/move.png
 
 **TIPS**
@@ -54,3 +55,4 @@ Ezblock Studioの基本的な使い方を学ぶには、以下の2つのセク�
     * EzBlock Studioの **Examples** ページで同じ名前のコードを見つけ、 **Run** または **Edit** を直接クリックしてください。
 
 .. image:: img/sp210512_113827.png
+
