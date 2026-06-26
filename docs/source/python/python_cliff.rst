@@ -15,7 +15,7 @@
 .. _py_cliff:
 
 5. Detección de acantilados 
-===============================
+===========================
 
 Vamos a dotar al PiCar-X de un poco de conciencia de autoprotección y enseñarle a usar su propio módulo de escala de grises para evitar caer por un acantilado.
 
@@ -44,6 +44,7 @@ Si lo empujas hacia un acantilado, se activará de inmediato, retrocederá y dir
     <run></run>
 
 .. code-block:: python
+
 
     from picarx import Picarx
     from time import sleep
@@ -88,4 +89,3 @@ La función para detectar acantilados funciona así:
 * ``get_grayscale_data()``: Este método proporciona directamente las lecturas de los tres sensores, de derecha a izquierda. Cuanto más brillante sea la zona, mayor será el valor obtenido.
 
 * ``get_cliff_status(gm_val_list)``: Este método compara las lecturas de las tres sondas y da un resultado. Si el resultado es verdadero, se detecta que hay un acantilado delante del coche.
-

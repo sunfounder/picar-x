@@ -13,7 +13,7 @@
     👉 ¿Listo para explorar y crear con nosotros? Haz clic en [|link_sf_facebook|] y únete hoy mismo.
 
 Video 1: Control de Movimiento del Motor y Dirección
-=========================================================
+====================================================
 
 Este video es el primer tutorial de proyectos en la serie PiCar-X, y se centra en cómo controlar los motores y el servo de dirección del PiCar-X. Los contenidos clave incluyen:
 
@@ -35,4 +35,3 @@ Este video es una excelente guía práctica para principiantes en PiCar-X, propo
 **Tutoriales en línea relacionados**
 
 * :ref:`py_move`
-

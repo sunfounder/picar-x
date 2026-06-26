@@ -13,7 +13,7 @@
     👉 ¿Listo para explorar y crear con nosotros? Haz clic en [|link_sf_facebook|] y únete hoy mismo!
 
 Decir Hola
-===================
+==========
 
 Este proyecto combinará varias funciones de los proyectos anteriores. El movimiento del PiCar-X será controlado remotamente, y la cámara del PiCar será controlada a distancia usando dos controladores tipo joystick. Cuando PiCar reconozca el rostro de alguien, asentirá cortésmente y luego dirá "¡Hola!".
 

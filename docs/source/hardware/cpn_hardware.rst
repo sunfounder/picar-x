@@ -13,7 +13,7 @@
     👉 ¿Listo para explorar y crear con nosotros? Haz clic en [|link_sf_facebook|] y únete hoy mismo.
 
 Hardware
-===========
+========
 
 Cuando estés escribiendo código, es posible que necesites saber cómo funciona cada módulo o la función de cada pin. Por favor, consulta este capítulo.
 

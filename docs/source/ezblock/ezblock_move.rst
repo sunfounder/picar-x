@@ -13,7 +13,7 @@
     👉 ¿Listo para explorar y crear con nosotros? Haz clic en [|link_sf_facebook|] y únete hoy mismo!
 
 Movimiento
-=============
+==========
 
 Este primer proyecto enseña cómo programar acciones de movimiento para el PiCar-X. En este proyecto, el programa indicará al PiCar-X que ejecute cinco acciones en el siguiente orden: “avanzar”, “retroceder”, “girar a la izquierda”, “girar a la derecha” y “detenerse”.
 

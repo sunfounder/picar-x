@@ -30,3 +30,4 @@ Aquí explorarás la conversión de texto a voz (TTS), de voz a texto (STT) y lo
     python_local_chatbot
     python_treasure_hunt
     python_ai_robot
+    ../openclaw

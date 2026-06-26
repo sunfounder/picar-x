@@ -15,7 +15,7 @@
 .. _video_car:
 
 11. Coche con Video
-==========================================
+===================
 
 ¡Este programa te proporcionará una Vista en Primera Persona desde el PiCar-X! 
 Usa las teclas WSAD del teclado para controlar la dirección del movimiento, 

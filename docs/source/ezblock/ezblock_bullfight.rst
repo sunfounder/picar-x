@@ -13,7 +13,7 @@
     👉 ¿Listo para explorar y crear con nosotros? Haz clic en [|link_sf_facebook|] y únete hoy mismo!
 
 Corrida de toros
-===================
+================
 
 ¡Convierte al PiCar-X en un toro furioso! Prepara un pañuelo rojo, como un trapo, y conviértete en un torero. Cuando el PiCar-X persiga el trapo rojo, ¡ten cuidado de no ser embestido!
 

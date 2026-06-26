@@ -13,7 +13,7 @@
     👉 ¿Listo para explorar y crear con nosotros? Haz clic en [|link_sf_facebook|] y únete hoy mismo!
 
 Minecart Plus
-=======================
+=============
 
 En este proyecto, se ha agregado la recuperación de descarrilamiento al proyecto :ref:`ezb_minecart` para permitir que el PiCar-X se adapte y recupere de una curva más pronunciada.
 

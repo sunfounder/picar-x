@@ -15,10 +15,10 @@
 .. _py_line_tracking:
 
 6. Seguimiento de Línea
-====================================
+=======================
 
-Este proyecto usará el módulo de escala de grises para hacer que el PiCar-X avance siguiendo una línea. 
-Usa cinta de color oscuro para hacer una línea lo más recta posible y con pocas curvas. 
+Este proyecto usará el módulo de escala de grises para hacer que el PiCar-X avance siguiendo una línea.
+Usa cinta de color oscuro para hacer una línea lo más recta posible y con pocas curvas.
 Puede que necesites experimentar un poco si el PiCar-X se sale de la línea.
 
 **Ejecutar el Código**
@@ -30,8 +30,8 @@ Puede que necesites experimentar un poco si el PiCar-X se sale de la línea.
 .. code-block::
 
     cd ~/picar-x/example
-    sudo python3 6.minecart_plus.py
-    
+    sudo python3 6.line_tracking.py
+
 Después de ejecutar el código, el PiCar-X se moverá hacia adelante siguiendo una línea.
 
 **Código**
@@ -100,41 +100,42 @@ Después de ejecutar el código, el PiCar-X se moverá hacia adelante siguiendo 
 
                 if gm_state == 'forward':
                     px.set_dir_servo_angle(0)
-                    px.forward(px_power) 
+                    px.forward(px_power)
                 elif gm_state == 'left':
                     px.set_dir_servo_angle(offset)
-                    px.forward(px_power) 
+                    px.forward(px_power)
                 elif gm_state == 'right':
                     px.set_dir_servo_angle(-offset)
-                    px.forward(px_power) 
+                    px.forward(px_power)
                 else:
                     outHandle()
+
         except KeyboardInterrupt:
             print("\nKeyboardInterrupt: stop and exit")
+
         finally:
             px.stop()
             print("stop and exit")
             sleep(0.1)
-       
 
-**¿Cómo funciona?** 
+**¿Cómo funciona?**
 
 Este script de Python controla un coche robótico PiCarX utilizando sensores de escala de grises para la navegación. Aquí tienes un desglose de sus componentes principales:
 
-* Importación e inicialización:
+* Importación e Inicialización:
 
     El script importa la clase Picarx para controlar el coche robótico y la función sleep del módulo time para añadir retrasos.
 
     Se crea una instancia de Picarx, y hay una línea comentada que muestra una inicialización alternativa con pines específicos de sensores de escala de grises.
 
     .. code-block:: python
-        
+
         from picarx import Picarx
         from time import sleep
 
         px = Picarx()
 
-* Configuración y variables globales:
+* Configuración y Variables Globales:
 
     ``current_state``, ``px_power``, ``offset`` y ``last_state`` son variables globales utilizadas para rastrear y controlar el movimiento del coche. ``px_power`` establece la potencia del motor, y ``offset`` se usa para ajustar el ángulo de dirección.
 
@@ -177,7 +178,7 @@ Este script de Python controla un coche robótico PiCarX utilizando sensores de 
     El estado del coche puede ser 'forward', 'left', 'right' o 'stop', dependiendo de qué sensor detecte la línea.
 
     .. code-block:: python
-        
+
         def get_status(val_list):
             _state = px.get_line_status(val_list)  # [bool, bool, bool], 0 significa línea, 1 significa fondo
             if _state == [0, 0, 0]:
@@ -189,7 +190,7 @@ Este script de Python controla un coche robótico PiCarX utilizando sensores de 
             elif _state[2] == 1:
                 return 'left'
 
-* Bucle principal:
+* Bucle Principal:
 
     El bucle ``while True`` verifica continuamente los datos de escala de grises y ajusta el movimiento del coche en consecuencia.
 
@@ -209,25 +210,25 @@ Este script de Python controla un coche robótico PiCarX utilizando sensores de 
 
                     if gm_state == 'forward':
                         px.set_dir_servo_angle(0)
-                        px.forward(px_power) 
+                        px.forward(px_power)
                     elif gm_state == 'left':
                         px.set_dir_servo_angle(offset)
-                        px.forward(px_power) 
+                        px.forward(px_power)
                     elif gm_state == 'right':
                         px.set_dir_servo_angle(-offset)
-                        px.forward(px_power) 
+                        px.forward(px_power)
                     else:
                         outHandle()
 
-* Seguridad y limpieza:
+* Seguridad y Limpieza:
 
     El bloque ``try...finally`` asegura que el coche se detenga cuando el script sea interrumpido o finalizado.
 
     .. code-block:: python
-        
+
         finally:
-        px.stop()
-        print("stop and exit")
-        sleep(0.1)
+            px.stop()
+            print("stop and exit")
+            sleep(0.1)
 
 En resumen, el script utiliza sensores de escala de grises para navegar el coche robótico PiCarX. Lee continuamente los datos del sensor para determinar la dirección y ajusta el movimiento y la dirección del coche en consecuencia. La función outHandle proporciona lógica adicional para situaciones en las que el coche necesita ajustar significativamente su ruta.

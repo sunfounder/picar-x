@@ -13,7 +13,7 @@
     👉 ¿Listo para explorar y crear con nosotros? Haz clic en [|link_sf_facebook|] y únete hoy mismo.
 
 Video 7: Visión por computadora en PiCar-X
-=============================================================
+==========================================
 
 Este tutorial en video se enfoca en las capacidades de visión por computadora del PiCar-X:
 
@@ -27,6 +27,7 @@ Este tutorial en video se enfoca en las capacidades de visión por computadora d
 * **Edición y ejecución de código**: Demuestra cómo crear, editar y ejecutar scripts de Python para diversas tareas de visión por computadora.
 
 Esta lección ofrece una guía completa para explorar las funciones de visión por computadora en el PiCar-X, con demostraciones prácticas de detección de colores, lectura de códigos QR, detección de rostros y seguimiento de movimientos de manos.
+
 
 **Video**
 

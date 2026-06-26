@@ -13,7 +13,7 @@
     👉 ¿Listo para explorar y crear con nosotros? Haz clic en [|link_sf_facebook|] y únete hoy mismo!
 
 Detección de rostros
-=========================
+====================
 
 Además de la detección de colores, PiCar-X también incluye una función de detección de rostros. En el siguiente ejemplo, el widget de Joystick se utiliza para ajustar la dirección de la cámara, y el número de rostros detectados se mostrará en el monitor de depuración.
 

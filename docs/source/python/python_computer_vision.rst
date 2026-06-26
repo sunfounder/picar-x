@@ -15,7 +15,7 @@
 .. _py_computer_vision:
 
 7. Visión por Computadora
-=============================
+=========================
 
 ¡Este proyecto te introducirá oficialmente en el campo de la visión por computadora!
 
@@ -51,6 +51,7 @@ Luego puedes ingresar ``http://<your IP>:9000/mjpg`` en el navegador para ver la
 
 Al finalizar el programa, verás la siguiente información:
 
+
 * ¡Presiona una tecla para activar la función!
 * q: Tomar foto
 * 1: Detectar color: rojo
@@ -71,6 +72,7 @@ Sigue las indicaciones para activar las funciones correspondientes.
         Escribe ``q`` en el terminal y presiona Enter. La imagen actual vista por la cámara se guardará (si la función de detección de color está activada, también aparecerá el cuadro de marca en la imagen guardada). 
         Puedes ver estas fotos en el directorio ``/home/{username}/Pictures/`` de tu Raspberry Pi.
         Puedes usar herramientas como :ref:`filezilla` para transferir las fotos a tu PC.
+        
 
     *  **Detección de Color**
 
@@ -79,6 +81,7 @@ Sigue las indicaciones para activar las funciones correspondientes.
         .. image:: img/DTC2.png
 
         .. note:: Puedes descargar e imprimir las :download:`Tarjetas de Colores en PDF <https://github.com/sunfounder/sf-pdf/raw/master/prop_card/object_detection/color-cards.pdf>` para la detección de colores.
+
 
     *  **Detección Facial**
 
@@ -95,6 +98,7 @@ Sigue las indicaciones para activar las funciones correspondientes.
     *  **Mostrar Información**
 
         Ingresar ``s`` imprimirá la información del objetivo detectado (detección facial y detección de color) en el terminal, incluyendo las coordenadas del centro (X, Y) y el tamaño (Ancho, Alto) del objeto detectado.
+
 
 **Código**
 

@@ -13,11 +13,12 @@
     👉 ¿Listo para explorar y crear con nosotros? Haz clic en [|link_sf_facebook|] y únete hoy mismo.
 
 Calibrar el Coche
-============================
+=================
 
 Después de conectar el PiCar-X, habrá un paso de calibración. Esto se debe a posibles desviaciones durante el proceso de instalación o a limitaciones de los propios servos, lo que provoca que algunos ángulos de los servos estén ligeramente desalineados. Por eso, puedes calibrarlos en este paso.
 
 Sin embargo, si crees que la ensambladura es perfecta y no se necesita calibración, también puedes omitir este paso.
+
 
 .. note::
     Si deseas recalibrar el robot durante su uso, sigue los siguientes pasos.

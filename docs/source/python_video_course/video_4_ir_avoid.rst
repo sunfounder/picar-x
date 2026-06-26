@@ -12,9 +12,8 @@
 
     👉 ¿Listo para explorar y crear con nosotros? Haz clic en [|link_sf_facebook|] y únete hoy mismo.
 
-
 Video 4: Evitación de Obstáculos con Ultrasonido
-=======================================================
+================================================
 
 Este tutorial en video cubre la evitación de obstáculos utilizando un sensor ultrasónico en el robot PiCar-X:
 

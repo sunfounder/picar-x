@@ -15,7 +15,7 @@
 .. _play_python:
 
 Juega con Python
-=======================
+================
 
 Para principiantes y novatos que desean programar en Python, es útil contar con algunas habilidades básicas de Python y familiaridad con Raspberry Pi OS.  
 Esta sección te guiará paso a paso — desde configurar tu Raspberry Pi, hasta mover el PiCar-X, usar visión por computadora y, finalmente, añadir interacción por voz e IA.
@@ -23,7 +23,7 @@ Esta sección te guiará paso a paso — desde configurar tu Raspberry Pi, hasta
 .. _quick_guide_python:
 
 1. Guía rápida de Python
------------------------------
+------------------------
 
 Aprende a configurar tu entorno de Raspberry Pi:  
 instalar Raspberry Pi OS, configurar Wi-Fi y habilitar el acceso remoto para que puedas ejecutar código Python fácilmente.  
@@ -40,7 +40,7 @@ Si ya sabes cómo usar Raspberry Pi y acceder a su línea de comandos, puedes sa
     py_servo_adjust
 
 2. Movimiento básico
---------------------------
+--------------------
 
 Después de ensamblar tu PiCar-X, comienza con programas de movimiento simples.  
 Aprenderás a controlar los motores, avanzar/retroceder, girar y usar sensores básicos para evitar obstáculos o seguir líneas.
@@ -56,7 +56,7 @@ Aprenderás a controlar los motores, avanzar/retroceder, girar y usar sensores b
     python_line_track
 
 3. Visión por computadora
--------------------------------
+-------------------------
 
 Dale a tu PiCar-X la capacidad de ver usando su cámara.  
 Esta sección cubre proyectos divertidos basados en visión, como el seguimiento de rostros, la grabación, la interacción con objetos y el control del coche mediante vídeo o una aplicación móvil.

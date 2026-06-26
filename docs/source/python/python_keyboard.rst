@@ -15,7 +15,7 @@
 .. _py_keyboard_control:
 
 3. Control por Teclado
-================================
+======================
 
 
 En este proyecto, aprenderemos a utilizar el teclado para controlar remotamente el 
@@ -160,4 +160,3 @@ de modo que las letras sean válidas sin importar el caso.
         elif key == readchar.key.CTRL_C:
             print("\n Quit")
             break
-

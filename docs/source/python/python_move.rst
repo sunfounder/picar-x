@@ -15,7 +15,7 @@
 .. _py_move:
 
 2. Haz que PiCar-X se mueva
-===============================
+===========================
 
 Este es el primer proyecto, vamos a probar los movimientos básicos del PiCar-X.
 

@@ -13,7 +13,7 @@
     👉 ¿Listo para explorar y crear con nosotros? Haz clic en [|link_sf_facebook|] y únete hoy mismo.
 
 Video 12: Controlar el PiCAR-X Robot con la app móvil
-==========================================================
+=====================================================
 
 Este tutorial proporciona una guía completa sobre cómo usar la app móvil para controlar el robot PiCar-X de SunFounder.
 

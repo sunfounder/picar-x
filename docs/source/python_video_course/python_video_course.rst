@@ -13,7 +13,7 @@
     👉 ¿Listo para explorar y crear con nosotros? Haz clic en [|link_sf_facebook|] y únete hoy mismo.
 
 Curso en video de Python
-=============================
+========================
 Este curso en video es un tutorial en línea de Python diseñado específicamente para el aprendizaje interactivo. Incluye tres videos introductorios que cubren los fundamentos esenciales: comenzando con la configuración del Raspberry Pi, el ensamblaje del PiCar-X y la instalación de los módulos necesarios del robot. Esta fase inicial asegura que todo esté listo antes de comenzar con los diferentes proyectos del PiCar-X.
 
 Después de la sección introductoria, el curso ofrece 12 videos de proyectos. Estos proyectos desarrollan progresivamente habilidades que comienzan con el movimiento básico del PiCar-X, control mediante teclado, Texto-a-Voz (TTS), evitación de obstáculos, seguimiento de líneas, y aplicaciones de visión por computadora. El curso luego avanza hacia proyectos más complejos que combinan múltiples funcionalidades. Además de enseñarte a ejecutar ejemplos del tutorial en línea, los videos proporcionan extensiones adicionales sobre cada tema, permitiendo una comprensión más profunda de cada característica.

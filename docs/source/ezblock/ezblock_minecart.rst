@@ -15,7 +15,7 @@
 .. _ezb_minecart:
 
 Carro Minero
-=====================
+============
 
 ¡Hagamos un proyecto de carro minero! Este proyecto utilizará el módulo de escala de grises para hacer que el PiCar-X avance a lo largo de una pista. 
 Usa cinta de color oscuro para crear una pista en el suelo lo más recta posible y no demasiado curva. Puede que necesites hacer algunos ajustes si el PiCar-X se descarrila.

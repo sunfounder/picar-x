@@ -12,9 +12,8 @@
 
     👉 ¿Listo para explorar y crear con nosotros? Haz clic en [|link_sf_facebook|] y únete hoy mismo!
 
-
 Video 5: Seguimiento de Líneas con Escala de Grises
-=========================================================
+===================================================
 
 Este tutorial en video explora el seguimiento de líneas utilizando escala de grises en el robot PiCar-X:
 

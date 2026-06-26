@@ -13,7 +13,7 @@
     👉 ¿Listo para explorar y crear con nosotros? Haz clic en [|link_sf_facebook|] y únete hoy mismo!
 
 Efecto de sonido
-===============================
+================
 
 El PiCar-X tiene un altavoz incorporado que se puede utilizar para experimentos de audio. Ezblock permite a los usuarios ingresar texto para que el PiCar-X hable o reproduzca efectos de sonido específicos. En este tutorial, el PiCar-X hará el sonido de un disparo después de una cuenta regresiva de 3 segundos, utilizando una función do/while.
 

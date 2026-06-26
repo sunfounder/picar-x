@@ -15,7 +15,7 @@
 .. _py_video:
 
 9. Grabar Video
-==================
+===============
 
 Este ejemplo te guiará en cómo utilizar la función de grabación.
 
@@ -30,6 +30,7 @@ Este ejemplo te guiará en cómo utilizar la función de grabación.
     cd ~/picar-x/example
     sudo python3 9.record_video.py
 
+
 Después de ejecutar el código, puedes ingresar ``http://<your IP>:9000/mjpg`` en el navegador para ver la pantalla de video, por ejemplo: ``http://192.168.18.113:9000/mjpg``
 
 .. image:: img/display.png
@@ -38,6 +39,7 @@ La grabación se puede detener o iniciar presionando las teclas en el teclado.
 
 * Presiona ``q`` para comenzar a grabar o pausar/continuar, y ``e`` para detener la grabación o guardar.
 * Si deseas salir del programa, presiona ``ctrl+c``.
+
 
 **Código** 
 
@@ -114,9 +116,7 @@ La grabación se puede detener o iniciar presionando las teclas en el teclado.
 
 **¿Cómo funciona?**
 
-
 Las funciones relacionadas con la grabación incluyen las siguientes:
-
 
 * ``Vilib.rec_video_run(video_name)`` : Inicia el hilo para grabar el video. ``video_name`` es el nombre del archivo de video, debe ser una cadena de texto.
 * ``Vilib.rec_video_start()``: Iniciar o continuar la grabación de video.

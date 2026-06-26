@@ -13,7 +13,7 @@
     👉 ¿Listo para explorar y crear con nosotros? Haz clic en [|link_sf_facebook|] y únete hoy mismo.
 
 Módulo de Cámara
-====================================
+================
 
 
 **Descripción**
@@ -31,6 +31,7 @@ La placa es pequeña, mide aproximadamente 25mm x 23mm x 9mm y pesa 3g, lo que l
    El módulo solo puede capturar imágenes y videos, no sonido.
 
 
+
 **Especificaciones**
 
 * **Resolución de Imágenes Estáticas**: 2592×1944 
@@ -43,11 +44,14 @@ La placa es pequeña, mide aproximadamente 25mm x 23mm x 9mm y pesa 3g, lo que l
 * **Sistema Operativo Compatible**: Raspberry Pi OS (se recomienda la versión más reciente)
 
 
+
 **Montar el Módulo de Cámara**
+
 
 En el módulo de cámara o Raspberry Pi, encontrarás un conector de plástico plano. Tire suavemente del interruptor de fijación negro hasta que esté parcialmente extraído. Inserte el cable FFC en el conector de plástico en la dirección mostrada y empuje el interruptor de fijación de nuevo en su lugar.
 
 Si el cable FFC está instalado correctamente, estará recto y no se saldrá cuando lo tire suavemente. Si no, vuelva a instalarlo.
+
 
 .. image:: img/connect_ffc.png
 .. image:: img/1.10_camera.png
@@ -56,3 +60,40 @@ Si el cable FFC está instalado correctamente, estará recto y no se saldrá cua
 .. warning::
 
    No instale la cámara con la alimentación encendida, ya que puede dañarla.
+
+.. **Enable the Camera Interface**
+
+.. Run the following command to enable the camera interface of your Raspberry Pi. If you have enabled it, skip this; if you do not know whether you have done that or not, please continue.
+
+.. .. raw:: html
+
+..    <run></run>
+
+.. .. code-block:: 
+
+..    sudo raspi-config
+
+.. **3 Interfacing options**
+
+.. .. image:: img/image282.png
+..    :align: center
+
+.. **P1 Camera**
+
+.. .. image:: img/camera_config1.png
+..    :align: center
+
+.. **<Yes>, then <Ok> -> <Finish>**
+
+.. .. image:: img/camera_config2.png
+..    :align: center
+
+.. After the configuration is complete, it is recommended to reboot the Raspberry Pi.
+
+.. .. raw:: html
+
+..    <run></run>
+
+.. .. code-block:: 
+
+..    sudo reboot

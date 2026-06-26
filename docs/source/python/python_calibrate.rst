@@ -15,10 +15,10 @@
 .. _py_calibrate:
 
 1. Calibración del PiCar-X
-==================================
+==========================
 
 Calibrar Motores y Servos
------------------------------
+-------------------------
 
 Algunos ángulos de los servos pueden estar ligeramente desalineados debido a posibles desviaciones durante la instalación del PiCar-X o limitaciones de los propios servos, por lo que puedes calibrarlos.
 
@@ -35,12 +35,11 @@ Por supuesto, puedes omitir este capítulo si consideras que el montaje es perfe
         cd ~/picar-x/example
         sudo python3 1.cali_servo_motor.py
 
-
 #. Después de ejecutar el código, verás la siguiente interfaz mostrada en el terminal.
 
     .. image:: img/calibrate1.png
 
-#. La tecla ``R`` se utiliza para probar si los 3 servos funcionan correctamente. 
+#. La tecla ``R`` se utiliza para probar si los 3 servos funcionan correctamente.
 
 #. Presiona la tecla numérica ``1`` para seleccionar el servo de la rueda delantera, y luego presiona las teclas ``W/S`` para que la rueda delantera mire lo más hacia adelante posible sin desviarse a la izquierda ni a la derecha.
 
@@ -64,10 +63,10 @@ Por supuesto, puedes omitir este capítulo si consideras que el montaje es perfe
 
 
 Calibrar el Módulo de Escala de Grises
------------------------------------------------
+--------------------------------------
 
-Debido a las condiciones ambientales variables y a las situaciones de iluminación, 
-los parámetros predeterminados para el módulo de escala de grises podrían no ser óptimos. 
+Debido a las condiciones ambientales variables y a las situaciones de iluminación,
+los parámetros predeterminados para el módulo de escala de grises podrían no ser óptimos.
 Puedes ajustar estos valores con este programa para lograr mejores resultados.
 
 
@@ -100,4 +99,3 @@ Puedes ajustar estos valores con este programa para lograr mejores resultados.
     .. image:: img/calibrate_g3.png
 
 #. Una vez que hayas verificado que todos los valores son precisos, presiona la tecla "Barra Espaciadora" para guardar los datos. Luego puedes salir del programa presionando Ctrl+C.
-

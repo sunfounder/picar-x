@@ -15,7 +15,7 @@
 .. _py_avoid:
 
 4. Evitación de Obstáculos
-=============================
+==========================
 
 En este proyecto, PiCar-X detectará obstáculos frente a él mientras avanza, 
 y cuando los obstáculos estén demasiado cerca, cambiará la dirección de avance.

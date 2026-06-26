@@ -13,7 +13,7 @@
     👉 ¿Listo para explorar y crear con nosotros? Haz clic en [|link_sf_facebook|] y únete hoy mismo.
 
 Video 2: Controlando el PiCar-X con el teclado
-=======================================================
+==============================================
 
 En este tutorial en video, aprenderás a controlar el robot PiCar-X usando un teclado. Se cubren los siguientes temas:
 

@@ -13,7 +13,7 @@
     👉 ¿Listo para explorar y crear con nosotros? Haz clic en [|link_sf_facebook|] y únete hoy mismo!
 
 Detección de Acantilados
-===========================
+========================
 
 Este proyecto utilizará el **módulo de escala de grises** para evitar que el PiCar-X se caiga de un acantilado mientras se desplaza libremente por tu hogar. Este es un proyecto esencial para casas con escaleras.
 

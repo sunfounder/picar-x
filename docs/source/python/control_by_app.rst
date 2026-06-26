@@ -15,7 +15,7 @@
 .. _control_by_app:
 
 12. Controlado por la APP
-==================================
+=========================
 
 El controlador de SunFounder se utiliza para controlar robots basados en Raspberry Pi/Pico.
 
@@ -32,6 +32,7 @@ Vamos a personalizar un controlador de PiCar-X usando esta aplicación.
 #. Instala el módulo ``sunfounder-controller``.
 
     Los módulos ``robot-hat``, ``vilib`` y ``picar-x`` deben estar instalados primero, para más detalles consulta: :ref:`install_all_modules`.
+
 
     .. raw:: html
 
@@ -102,3 +103,5 @@ Vamos a personalizar un controlador de PiCar-X usando esta aplicación.
     * **N**: Activa la función de reconocimiento de color.
     * **O**: Activa la función de reconocimiento facial.
     * **P**: Activa la función de reconocimiento de objetos, puede reconocer casi 90 tipos de objetos. Para la lista de modelos, consulta: https://github.com/sunfounder/vilib/blob/master/workspace/coco_labels.txt.
+
+

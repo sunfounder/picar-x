@@ -13,7 +13,7 @@
     👉 ¿Listo para explorar y crear con nosotros? Haz clic en [|link_sf_facebook|] y únete hoy mismo.
 
 Video 12: Juego de búsqueda del tesoro
-============================================
+======================================
 
 Este tutorial ofrece una experiencia educativa y entretenida en programación y robótica con el PiCar-X.
 
@@ -22,6 +22,7 @@ Este tutorial ofrece una experiencia educativa y entretenida en programación y 
 * **Juego**: El robot se mueve usando entradas de teclado para encontrar y llegar al color objetivo, el cual se anuncia a través de texto a voz.
 * **Demostración práctica**: Muestra al robot en acción, identificando con éxito y moviéndose hacia diferentes colores como rojo, amarillo y azul.
 * **Instrucciones para salir del juego**: Cubre cómo salir del juego de manera segura, deteniendo el robot y apagando la cámara.
+
 
 **Video**
 

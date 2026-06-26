@@ -13,7 +13,7 @@
     👉 ¿Listo para explorar y crear con nosotros? Haz clic en [|link_sf_facebook|] y únete hoy mismo.
 
 Video A1: Iniciando con Raspberry Pi
-==========================================
+====================================
 Este es el primer video para el PiCar-X.
 
 Este video proporciona un tutorial completo sobre cómo configurar una Raspberry Pi para usar con el coche robot PiCar-X. Cubre los siguientes temas:
@@ -34,4 +34,3 @@ Si eres principiante, se sugiere seguir los pasos uno por uno. Si ya estás más
 **Tutoriales en línea relacionados**
 
 * :ref:`quick_guide_python`
-

@@ -13,7 +13,7 @@
     👉 ¿Listo para explorar y crear con nosotros? Haz clic en [|link_sf_facebook|] y únete hoy mismo.
 
 Video A3: Calibrar el PiCar-X
-==================================
+=============================
 
 Este tercer video de la serie se centra en la calibración del PiCar-X y la introducción del Robot HAT. El tutorial se divide en varias secciones clave:
 
@@ -21,6 +21,7 @@ Este tercer video de la serie se centra en la calibración del PiCar-X y la intr
 * **Calibración de motores DC y servos**: Pasos para calibrar los motores DC para la dirección y velocidad, así como los servos de dirección y de inclinación/pan de la cámara.
 * **Automatización de scripts al inicio**: Cómo configurar scripts para que se ejecuten automáticamente al arrancar la Raspberry Pi.
 * **Visión general del Robot HAT**: Descripción detallada del Robot HAT, incluyendo sus características y funcionalidades.
+
 
 Este tutorial es crucial para aquellos que buscan ajustar su PiCar-X y comprender los aspectos técnicos del Robot HAT.
 
@@ -33,4 +34,3 @@ Este tutorial es crucial para aquellos que buscan ajustar su PiCar-X y comprende
 **Tutoriales en línea relacionados**
 
 * :ref:`py_calibrate`
-

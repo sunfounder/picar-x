@@ -15,11 +15,7 @@
 .. _ezb_servo_adjust:
 
 Guía rápida sobre EzBlock
-===========================
-
-.. note::
-
-    Si estás utilizando una Raspberry Pi 5, nuestro software de programación gráfica, EzBlock, no es compatible.
+=========================
 
 El rango de ángulo del servo es de -90 a 90°, pero el ángulo establecido en la fábrica es aleatorio, podría ser 0°, 45°, o cualquier otro; si lo ensamblamos con un ángulo así, esto puede provocar un estado caótico cuando el robot ejecute el código, o peor aún, el servo podría bloquearse y quemarse.
 
@@ -66,3 +62,5 @@ Por lo tanto, es necesario establecer todos los ángulos de los servos en 0° an
     * No gires el servo mientras esté encendido para evitar daños; si el eje del servo se inserta en el ángulo incorrecto, retira el servo y vuelve a insertarlo.
     * Antes de ensamblar cada servo, necesitas conectar el cable del servo al P11 y encender el dispositivo para establecer su ángulo en 0°.
     * Esta función de puesta a cero se desactivará si luego descargas un programa en el robot con la APP de EzBlock.
+
+

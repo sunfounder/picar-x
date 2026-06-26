@@ -15,9 +15,9 @@
 .. _py_stare:
 
 8. Te Observa
-==========================================
+=============
 
-Este proyecto también se basa en el proyecto :ref:`py_computer_vision`, 
+Este proyecto también se basa en el proyecto :ref:`py_computer_vision`,
 con la incorporación de algoritmos de detección facial.
 
 Cuando aparezcas frente a la cámara, reconocerá tu rostro y ajustará su soporte para mantener tu cara en el centro de la imagen.
@@ -60,7 +60,7 @@ Cuando el código se ejecute, la cámara del coche seguirá enfocando tu rostro.
             if Vilib.detect_obj_parameter['human_n']!=0:
                 coordinate_x = Vilib.detect_obj_parameter['human_x']
                 coordinate_y = Vilib.detect_obj_parameter['human_y']
-                
+
                 # ajustar el ángulo del soporte para seguir el rostro
                 x_angle +=(coordinate_x*10/640)-5
                 x_angle = clamp_number(x_angle,-35,35)
@@ -94,7 +94,7 @@ Estas líneas de código en el bucle ``while True`` permiten que la cámara siga
         if Vilib.detect_obj_parameter['human_n']!=0:
             coordinate_x = Vilib.detect_obj_parameter['human_x']
             coordinate_y = Vilib.detect_obj_parameter['human_y']
-            
+
             # ajustar el ángulo del soporte para seguir el rostro
             x_angle +=(coordinate_x*10/640)-5
             x_angle = clamp_number(x_angle,-35,35)
@@ -117,4 +117,3 @@ Estas líneas de código en el bucle ``while True`` permiten que la cámara siga
 4. Limita los ángulos de paneo e inclinación dentro del rango especificado usando la función ``clamp_number``.
 
 5. Configura los ángulos de paneo e inclinación de la cámara utilizando ``px.set_cam_pan_angle()`` y ``px.set_cam_tilt_angle()``.
-

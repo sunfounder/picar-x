@@ -14,7 +14,7 @@
 
 
 Video 3: Conversión de Texto a Voz
-=======================================
+==================================
 
 Este tutorial cubre las funciones de conversión de texto a voz del robot PiCar-X:
 

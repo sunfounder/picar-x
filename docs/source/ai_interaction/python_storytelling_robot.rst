@@ -21,7 +21,9 @@ Ahora exploraremos dos opciones más potentes: **Piper** (offline, basado en red
 * **Piper**: un motor TTS local que funciona sin conexión en Raspberry Pi.  
 * **OpenAI TTS**: un servicio en línea que proporciona voces muy naturales y parecidas a las humanas.  
 
-Al final, tu PiCar-X conducirá y contará chistes como un pequeño narrador.  
+Al final, tu PiCar-X conducirá y contará chistes como un pequeño narrador.
+
+----
 
 Antes de Empezar
 ----------------
@@ -29,6 +31,8 @@ Antes de Empezar
 Asegúrate de haber completado:
 
 * :ref:`install_all_modules` — Instala los módulos ``robot-hat``, ``vilib``, ``picar-x`` y luego ejecuta el script ``i2samp.sh``.
+
+----
 
 .. _test_piper:
 
@@ -147,40 +151,6 @@ Asegúrate de haber completado:
 
    ``Hello! I'm OpenAI TTS.``
 
-.. **Modelos y Voces Disponibles**
-
-.. .. list-table::
-..    :header-rows: 1
-..    :widths: 20 80
-
-..    * - Categoría
-..      - Opciones
-..    * - Modelos
-..      - 
-..        - ``tts-1``  
-..        - ``tts-1-hd``  
-..        - ``gpt-4o-mini-tts``  
-..        - ``accent``  
-..        - ``emotional-range``  
-..        - ``intonation``  
-..        - ``impressions``  
-..        - ``speed-of-speech``  
-..        - ``tone``  
-..        - ``whispering``
-..    * - Voces
-..      - 
-..        - ``alloy``  
-..        - ``ash``  
-..        - ``ballad``  
-..        - ``coral``  
-..        - ``echo``  
-..        - ``fable``  
-..        - ``nova``  
-..        - ``onyx``  
-..        - ``sage``  
-..        - ``shimmer``
-
-
 3. Robot Narrador
 ------------------------
 
@@ -204,6 +174,7 @@ En este programa, el PiCar-X:
     sudo python3 15.storytelling_robot.py
 
 **Código**
+
 
 .. code-block:: python
 

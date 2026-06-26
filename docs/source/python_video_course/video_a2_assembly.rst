@@ -13,7 +13,7 @@
     👉 ¿Listo para explorar y crear con nosotros? Haz clic en [|link_sf_facebook|] y únete hoy mismo.
 
 Video A2: Montaje del PICAR-X
-=============================================
+=============================
 
 En este video, el enfoque está en el montaje del PICAR-X. 
 
@@ -37,4 +37,3 @@ El video está diseñado para guiarte paso a paso en el proceso de ensamblaje, a
 **Tutoriales en línea relacionados**
 
 * :ref:`assembly_instructions`
-

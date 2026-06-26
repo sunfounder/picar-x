@@ -29,7 +29,7 @@ Gracias por elegir nuestro |link_PiCar_kit|.
         * |link_es_tutorials|
         * |link_it_tutorials|
         * |link_cn_tutorials|
-        
+
     Haz clic en los enlaces correspondientes para acceder al documento en tu idioma preferido.
 
 

@@ -15,7 +15,8 @@
 .. _py_bull_fight:
 
 10. Lucha de Toros
-=============================
+==================
+
 
 ¡Convierte a PiCar-X en un toro enfurecido! Usa su cámara para detectar y embestir un paño rojo.
 
@@ -55,6 +56,7 @@ Luego puedes ingresar ``http://<tu IP>:9000/mjpg`` en el navegador para ver la t
 .. note::
     Puedes **Modificar/Restablecer/Copiar/Ejecutar/Detener** el código a continuación. Pero antes de eso, debes ir a la ruta del código fuente como ``picar-x\examples``. Después de modificar el código, puedes ejecutarlo directamente para ver el efecto.
 
+
 .. raw:: html
 
     <run></run>
@@ -82,7 +84,7 @@ Luego puedes ingresar ``http://<tu IP>:9000/mjpg`` en el navegador para ver la t
             if Vilib.detect_obj_parameter['color_n']!=0:
                 coordinate_x = Vilib.detect_obj_parameter['color_x']
                 coordinate_y = Vilib.detect_obj_parameter['color_y']
-                
+
                 # change the pan-tilt angle for track the object
                 x_angle +=(coordinate_x*10/640)-5
                 x_angle = clamp_number(x_angle,-35,35)
@@ -106,6 +108,7 @@ Luego puedes ingresar ``http://<tu IP>:9000/mjpg`` en el navegador para ver la t
                 px.forward(0)
                 sleep(0.05)
 
+
     if __name__ == "__main__":
         try:
             main()
@@ -121,9 +124,9 @@ Debes prestar atención a las siguientes tres partes de este ejemplo:
 1. Definir la función principal:
 
     * Inicia la cámara usando ``Vilib.camera_start()``.
-    * Muestra la transmisión de la cámara con ``Vilib.display()``.
-    * Activa la detección de color y especifica el color objetivo como "rojo" con ``Vilib.color_detect("red")``.
-    * Inicializa variables: ``speed`` para la velocidad de movimiento del coche, ``dir_angle`` para el ángulo de dirección del movimiento del coche, ``x_angle`` para el ángulo horizontal de la cámara, y ``y_angle`` para el ángulo vertical de la cámara.
+    * Muestra la transmisión de la cámara usando ``Vilib.display()``.
+    * Habilita la detección de color y especifica el color objetivo como "red" usando ``Vilib.color_detect("red")``.
+    * Inicializa las variables: ``speed`` para la velocidad de movimiento del coche, ``dir_angle`` para el ángulo de dirección del movimiento del coche, ``x_angle`` para el ángulo panorámico de la cámara, e ``y_angle`` para el ángulo de inclinación de la cámara.
 
 2. Ingresar en un bucle continuo (while True) para seguir el objeto de color rojo:
 
@@ -139,4 +142,3 @@ Debes prestar atención a las siguientes tres partes de este ejemplo:
     * Si ``dir_angle`` es menor que ``x_angle``, aumenta ``dir_angle`` en 1.
     * Ajusta el ángulo del servo de dirección usando ``px.set_dir_servo_angle()`` para dirigir las ruedas del coche en consecuencia.
     * Mueve el coche hacia adelante a la velocidad especificada usando ``px.forward(speed)``.
-

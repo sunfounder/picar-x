@@ -13,7 +13,7 @@
     👉 ¿Listo para explorar y crear con nosotros? Haz clic en [|link_sf_facebook|] y únete hoy mismo.
 
 Video 8: PiCar-X Te Observa
-=====================================
+===========================
 
 Este tutorial enseña cómo usar una cámara y un servo en el robot PiCar-X para seguimiento de objetos:
 

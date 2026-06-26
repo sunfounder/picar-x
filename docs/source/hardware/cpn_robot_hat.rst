@@ -13,7 +13,7 @@
     👉 ¿Listo para explorar y crear con nosotros? Haz clic en [|link_sf_facebook|] y únete hoy mismo.
 
 Robot HAT
-==============
+=========
 
 |link_robot_hat_v4| est une carte d'extension multifonctionnelle qui permet de transformer rapidement le Raspberry Pi en un robot. Un MCU est intégré pour étendre la sortie PWM et l'entrée ADC pour le Raspberry Pi, ainsi qu'une puce de commande de moteur, un module audio I2S et un haut-parleur mono. Il comprend également les GPIO qui sortent directement du Raspberry Pi lui-même.
 
@@ -22,6 +22,7 @@ Il est également livré avec un haut-parleur, qui peut être utilisé pour joue
 Accepte une alimentation de 7-12V avec 2 indicateurs de batterie, 1 indicateur de charge et 1 indicateur d'alimentation. La carte dispose également d'une LED disponible pour l'utilisateur et d'un bouton permettant de tester rapidement certains effets.
 
 Pour des instructions détaillées, veuillez vous référer à : |link_robot_hat_v4|.
+
 
 
 

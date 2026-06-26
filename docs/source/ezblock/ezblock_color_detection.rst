@@ -13,7 +13,7 @@
     👉 ¿Listo para explorar y crear con nosotros? Haz clic en [|link_sf_facebook|] y únete hoy mismo!
 
 Detección de Color
-===========================
+==================
 
 El PiCar-X es un coche autónomo con una cámara integrada, lo que permite a los programas de Ezblock utilizar el código de detección de objetos y reconocimiento de colores. En esta sección, utilizaremos Ezblock para crear un programa de detección de color. 
 

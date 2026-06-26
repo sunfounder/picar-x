@@ -15,7 +15,7 @@
 .. _test_grayscale:
 
 Prueba del Módulo de Escala de Grises
-===========================================
+=====================================
 
 PiCar-X incluye un módulo de escala de grises para implementar el seguimiento de líneas, la detección de acantilados y otros experimentos divertidos. El módulo de escala de grises tiene tres sensores de detección que informarán un valor según el tono de color detectado por el sensor. Por ejemplo, un sensor que lea el tono del negro puro devolverá un valor de "0".
 

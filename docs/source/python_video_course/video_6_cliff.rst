@@ -12,9 +12,8 @@
 
     👉 ¿Listo para explorar y crear con nosotros? Haz clic en [|link_sf_facebook|] y únete hoy mismo.
 
-
 Video 6: Detección de precipicios
-=======================================
+=================================
 
 Este tutorial ofrece información clave sobre la programación y el uso de la detección de precipicios en el robot PiCar-X.
 

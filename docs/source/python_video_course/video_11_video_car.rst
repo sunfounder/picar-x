@@ -13,7 +13,7 @@
     👉 ¿Listo para explorar y crear con nosotros? Haz clic en [|link_sf_facebook|] y únete hoy mismo.
 
 Video 11: PiCar-X como Video Car
-==================================
+================================
 
 Este tutorial enseña cómo usar el PiCar-X como un coche con cámara para grabar videos:
 

@@ -13,7 +13,7 @@
     👉 ¿Listo para explorar y crear con nosotros? Haz clic en [|link_sf_facebook|] y únete hoy mismo!
 
 Música de Fondo
-======================
+===============
 
 Además de programar el PiCar-X para reproducir efectos de sonido o texto a voz (TTS), el PiCar-X también reproducirá música de fondo. Este proyecto también utilizará un widget **Deslizador** para ajustar el volumen de la música.
 

@@ -13,7 +13,7 @@
     👉 ¿Listo para explorar y crear con nosotros? Haz clic en [|link_sf_facebook|] y únete hoy mismo.
 
 Video 9: Grabación de Video
-=========================================
+===========================
 Este tutorial ofrece una guía concisa pero detallada sobre cómo grabar y gestionar videos usando el robot PiCar-X.
 
 * **Visión General**: Enseña cómo grabar videos en HD 1080p utilizando el PiCar-X, un kit de coche autónomo basado en Raspberry Pi.
@@ -23,6 +23,7 @@ Este tutorial ofrece una guía concisa pero detallada sobre cómo grabar y gesti
 * **Reproducción de Video**: Ilustra cómo localizar y reproducir los videos grabados para verificar la calidad.
 * **Características Adicionales**: Presenta el repositorio de GitHub PiCamera2 para más opciones de grabación como time-lapse y captura fácil.
 * **Scripting de Video Simple**: Destaca la creación y ejecución de scripts básicos de grabación de video con diferentes formatos y configuraciones.
+
 
 **Video**
 

@@ -13,7 +13,7 @@
     👉 ¿Listo para explorar y crear con nosotros? Haz clic en [|link_sf_facebook|] y únete hoy mismo!
 
 Orientación
-==================
+===========
 
 Este proyecto utiliza la función de control remoto para guiar al PiCar-X en una emocionante búsqueda del tesoro competitiva.
 
@@ -35,6 +35,7 @@ El objetivo es ayudar al PiCar-X a encontrar cada uno de los tres colores en el 
 
 Coloca el PiCar-X en el centro del campo y haz clic en el botón en la página de Control Remoto para comenzar el juego.
 
+
 .. image:: img/orienteering.png
 
 ¡Juega por turnos con amigos para ver quién puede ayudar al PiCar-X a completar el objetivo más rápido!
@@ -45,6 +46,7 @@ Coloca el PiCar-X en el centro del campo y haz clic en el botón en la página d
 
     * Puedes escribir el programa según la siguiente imagen, por favor revisa el tutorial: :ref:`ezblock:create_project_latest`.
     * O encuentra el código con el mismo nombre en la página de **Ejemplos** de EzBlock Studio y haz clic en **Ejecutar** o **Editar** directamente.
+
 
 .. image:: img/sp210513_154117.png
     :width: 800

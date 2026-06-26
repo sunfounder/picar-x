@@ -13,7 +13,7 @@
     👉 ¿Listo para explorar y crear con nosotros? Haz clic en [|link_sf_facebook|] y únete hoy mismo!
 
 Cuidado con los peatones
-=============================
+========================
 
 Este proyecto hará que el PiCar-X tome las medidas adecuadas según las condiciones de la carretera. Mientras conduce, el PiCar-X se detendrá por completo si detecta a un peatón en su camino.
 

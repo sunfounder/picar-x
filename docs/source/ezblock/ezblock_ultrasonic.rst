@@ -13,7 +13,7 @@
     👉 ¿Listo para explorar y crear con nosotros? Haz clic en [|link_sf_facebook|] y únete hoy mismo!
 
 Prueba del Módulo Ultrasónico
-=================================
+=============================
 
 PiCar-X tiene un módulo de sensor ultrasónico integrado que se puede usar para evitar obstáculos y realizar experimentos de seguimiento automático de objetos. En esta lección, el módulo leerá una distancia en centímetros (24 cm = 1 pulgada) y **imprimirá** los resultados en una ventana de **Depuración**.
 
@@ -45,5 +45,6 @@ Una vez que el código esté en ejecución, habilita el monitor de depuración h
 
     * Puedes escribir el programa según la siguiente imagen, consulta el tutorial: :ref:`ezblock:create_project_latest`.
     * O encuentra el código con el mismo nombre en la página de **Ejemplos** de EzBlock Studio y haz clic en **Ejecutar** o **Editar** directamente.
+
 
 .. image:: img/sp210512_115125.png

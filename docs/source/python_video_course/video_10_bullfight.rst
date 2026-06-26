@@ -13,7 +13,7 @@
     👉 ¿Listo para explorar y crear con nosotros? Haz clic en [|link_sf_facebook|] y únete hoy mismo.
 
 Video 10: Lucha de toros con PiCar-X
-========================================
+====================================
 
 Este tutorial cubre el uso del Robot PiCar-X para un juego de "lucha de toros", enfocándose en la detección de color y el movimiento:
 
@@ -24,6 +24,7 @@ Este tutorial cubre el uso del Robot PiCar-X para un juego de "lucha de toros", 
 * **Demostración**: Muestra el PiCar-X en acción, persiguiendo un objetivo rojo.
 
 Esta lección ofrece una guía completa sobre la programación del PiCar-X para un juego de seguimiento de color, con explicaciones de código y una demostración en vivo.
+
 
 **Video**
 

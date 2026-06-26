@@ -13,7 +13,7 @@
     👉 ¿Listo para explorar y crear con nosotros? Haz clic en [|link_sf_facebook|] y únete hoy mismo.
 
 Ajuste del Servo (Importante)
-=====================================
+=============================
 
 .. note::
 
@@ -46,6 +46,7 @@ Por lo tanto, es necesario configurar todos los servos a 0° antes de instalarlo
 
 #. A continuación, conecta el cable del servo al puerto P11 como se muestra a continuación. Al mismo tiempo, verás que el brazo del servo gira a una posición (esta es la posición de 0°, que es una ubicación aleatoria y puede no ser vertical ni paralela).
 
+
     .. image:: img/Z_P11.jpg
 
 #. Ahora, retira el brazo del servo asegurándote de que el cable del servo permanezca conectado y no apagues la alimentación. Luego continúa con el ensamblaje siguiendo las instrucciones en papel.
@@ -55,3 +56,4 @@ Por lo tanto, es necesario configurar todos los servos a 0° antes de instalarlo
     * No desconectes el cable del servo antes de fijarlo con el tornillo del servo; puedes desconectarlo después de fijarlo.
     * No gires el servo mientras esté encendido para evitar daños; si el eje del servo no está insertado en el ángulo correcto, retira el servo y vuelve a insertarlo.
     * Antes de ensamblar cada servo, debes conectar el cable del servo al P11 y encender la alimentación para ajustar su ángulo a 0°.
+

@@ -13,7 +13,7 @@
     👉 ¿Listo para explorar y crear con nosotros? Haz clic en [|link_sf_facebook|] y únete hoy mismo!
 
 Coche Musical
-=================
+=============
 
 Este proyecto convertirá el PiCar-X en un coche musical que recorrerá tu casa, reproduciendo música alegre. Este proyecto también demostrará cómo el PiCar-X evita chocar con paredes utilizando el sensor ultrasónico incorporado.
 

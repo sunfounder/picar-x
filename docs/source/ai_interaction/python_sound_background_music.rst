@@ -25,6 +25,7 @@ Asegúrate de haber completado:
 
 * :ref:`install_all_modules` — Instala los módulos ``robot-hat``, ``vilib``, ``picar-x`` y luego ejecuta el script ``i2samp.sh``.
 
+
 **Ejecutar el Código**
 
 .. raw:: html
