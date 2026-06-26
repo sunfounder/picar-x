@@ -22,24 +22,16 @@ Installare Tutti i Moduli (Importante)
 
    Assicurati che il tuo Raspberry Pi sia connesso a Internet, quindi aggiorna il sistema:
 
-   .. raw:: html
-
-      <run></run>
-
-   .. code-block::
+   ::
 
       sudo apt update
       sudo apt upgrade
 
    .. note::
-      
+
       Se stai utilizzando Raspberry Pi OS Lite, installa prima i pacchetti Python 3 richiesti:
 
-   .. raw:: html
-
-      <run></run>
-
-   .. code-block::
+   ::
 
          sudo apt install git python3-pip python3-setuptools python3-smbus
 
@@ -47,11 +39,7 @@ Installare Tutti i Moduli (Importante)
 
    Scarica e installa il modulo ``robot-hat``:
 
-   .. raw:: html
-
-      <run></run>
-
-   .. code-block::
+   ::
 
       cd ~/
       git clone -b 2.5.x https://github.com/sunfounder/robot-hat.git --depth 1
@@ -62,11 +50,7 @@ Installare Tutti i Moduli (Importante)
 
    Scarica e installa il modulo ``vilib``:
 
-   .. raw:: html
-
-      <run></run>
-
-   .. code-block::
+   ::
 
       cd ~/
       git clone https://github.com/sunfounder/vilib.git --depth 1
@@ -77,11 +61,7 @@ Installare Tutti i Moduli (Importante)
 
    Scarica e installa il modulo ``picar-x``:
 
-   .. raw:: html
-
-      <run></run>
-
-   .. code-block::
+   ::
 
       cd ~/
       git clone -b 2.1.x https://github.com/sunfounder/picar-x.git --depth 1
@@ -94,11 +74,7 @@ Installare Tutti i Moduli (Importante)
 
    Per abilitare l’uscita audio, esegui lo script ``i2samp.sh`` per installare i componenti necessari dell’amplificatore I2S:
 
-   .. raw:: html
-
-      <run></run>
-
-   .. code-block::
+   ::
 
       cd ~/robot-hat
       sudo bash i2samp.sh

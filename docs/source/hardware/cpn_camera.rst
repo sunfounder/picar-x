@@ -56,3 +56,40 @@ Se il cavo FFC è installato correttamente, sarà dritto e non si tirerà fuori 
 .. warning::
 
    Non installare la fotocamera con l'alimentazione accesa, potrebbe danneggiarla.
+
+.. **Abilitare l'Interfaccia della Fotocamera**
+
+.. Esegui il seguente comando per abilitare l'interfaccia della fotocamera del tuo Raspberry Pi. Se l'hai già abilitata, salta questo passaggio; se non sai se l'hai fatto o meno, continua pure.
+
+.. .. raw:: html
+
+..    <run></run>
+
+.. .. code-block::
+
+..    sudo raspi-config
+
+.. **3 Opzioni di Interfaccia**
+
+.. .. image:: img/image282.png
+..    :align: center
+
+.. **P1 Fotocamera**
+
+.. .. image:: img/camera_config1.png
+..    :align: center
+
+.. **<Sì>, poi <Ok> -> <Fine>**
+
+.. .. image:: img/camera_config2.png
+..    :align: center
+
+.. Una volta completata la configurazione, si consiglia di riavviare il Raspberry Pi.
+
+.. .. raw:: html
+
+..    <run></run>
+
+.. .. code-block::
+
+..    sudo reboot

@@ -40,3 +40,4 @@ Durante il movimento lungo la pista, le sonde sui lati sinistro e destro del mod
 .. image:: img/sp210512_171425.png
 
 .. image:: img/sp210512_171454.png
+

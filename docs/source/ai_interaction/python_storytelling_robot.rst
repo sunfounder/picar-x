@@ -152,38 +152,6 @@ Assicurati di aver completato:
 
    ``Hello! I'm OpenAI TTS.``
 
-.. **Modelli e Voci Disponibili**
-
-.. .. list-table::
-..    :header-rows: 1
-..    :widths: 20 80
-
-..    * - Categoria
-..      - Opzioni
-..    * - Modelli
-..      - 
-..        - ``tts-1``  
-..        - ``tts-1-hd``  
-..        - ``gpt-4o-mini-tts``  
-..        - ``accent``  
-..        - ``emotional-range``  
-..        - ``intonation``  
-..        - ``impressions``  
-..        - ``speed-of-speech``  
-..        - ``tone``  
-..        - ``whispering``
-..    * - Voci
-..      - 
-..        - ``alloy``  
-..        - ``ash``  
-..        - ``ballad``  
-..        - ``coral``  
-..        - ``echo``  
-..        - ``fable``  
-..        - ``nova``  
-..        - ``onyx``  
-..        - ``sage``  
-..        - ``shimmer``
 
 3. Robot Narratore
 ------------------------
@@ -326,7 +294,7 @@ Troubleshooting
 
 
 Comparison of TTS Engines
-----------------------------
+-------------------------
 
 .. list-table:: Feature comparison: Espeak vs Pico2Wave vs Piper vs OpenAI TTS
    :header-rows: 1

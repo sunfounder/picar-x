@@ -55,3 +55,4 @@ Gioca a turni con i tuoi amici per vedere chi riesce ad aiutare PiCar-X a comple
 
 .. image:: img/sp210513_154425.png
     :width: 800
+

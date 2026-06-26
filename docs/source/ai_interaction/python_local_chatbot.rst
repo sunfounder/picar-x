@@ -266,7 +266,7 @@ Saluta via terminale e altoparlante. Accade una sola volta all’avvio.
 
    text = ""
    for result in stt.listen(stream=True):
-       if result["done"]]:
+       if result["done"]:
            text = result["final"].strip()
            print(f"[YOU] {text}")
        else:

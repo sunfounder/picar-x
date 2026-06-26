@@ -13,7 +13,7 @@
     👉 Sei pronto a esplorare e creare con noi? Clicca [|link_sf_facebook|] e unisciti oggi stesso!
 
 Auto Musicale
-================
+==============
 
 Questo progetto trasformerà il PiCar-X in un'auto musicale che si muoverà per casa suonando musica allegra. Il progetto mostrerà anche come il PiCar-X evita di urtare i muri utilizzando il sensore a ultrasuoni integrato.
 
@@ -30,5 +30,6 @@ Per implementare più giudizi condizionali, cambia il semplice blocco if do in u
 
     * Puoi scrivere il programma seguendo l'immagine qui sotto, fai riferimento al tutorial: :ref:`ezblock:create_project_latest`.
     * Oppure trova il codice con lo stesso nome nella pagina **Esempi** di EzBlock Studio e clicca direttamente su **Esegui** o **Modifica**.
+
 
 .. image:: img/sp210512_163603.png

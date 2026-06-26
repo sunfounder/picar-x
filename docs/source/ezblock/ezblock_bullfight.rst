@@ -48,4 +48,3 @@ identificati più obiettivi, verranno registrate le dimensioni dell'obiettivo pi
     * Oppure trova il codice con lo stesso nome nella pagina **Esempi** di EzBlock Studio e clicca direttamente su **Esegui** o **Modifica**.
 
 .. image:: img/sp210512_175519.png
-    :width: 800

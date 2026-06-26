@@ -54,4 +54,6 @@ Questo blocco fermerà completamente il PiCar-X.
     * Puoi scrivere il programma seguendo l'immagine qui sotto, fai riferimento al tutorial: :ref:`ezblock:create_project_latest`.
     * Oppure trova il codice con lo stesso nome nella pagina **Esempi** di EzBlock Studio e clicca direttamente su **Esegui** o **Modifica**.
 
+
 .. image:: img/sp210512_113827.png
+

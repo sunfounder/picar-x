@@ -46,4 +46,5 @@ Il blocco **play sound effects - with volume - %** ha effetti sonori preimpostat
     * Puoi scrivere il programma seguendo l'immagine qui sotto, fai riferimento al tutorial: :ref:`ezblock:create_project_latest`.
     * Oppure trova il codice con lo stesso nome nella pagina **Esempi** di EzBlock Studio e clicca direttamente su **Esegui** o **Modifica**.
 
+
 .. image:: img/sp210512_144944.png

@@ -34,6 +34,7 @@ Ezblock include 6 modelli di colore per il PiCar-X: "rosso", "arancione", "giall
 
     I colori stampati possono avere una tonalità leggermente diversa rispetto ai modelli di colore di Ezblock a causa delle differenze nel toner della stampante o del supporto di stampa, come una carta di colore marrone chiaro. Questo può causare un riconoscimento dei colori meno preciso.
 
+
 .. image:: img/ezblock_color_detect.PNG
 
 **CONSIGLI**

@@ -17,10 +17,6 @@
 Gioca con EzBlock
 ===========================
 
-.. note::
-
-    Se stai usando un Raspberry Pi 5, il nostro software di programmazione grafica, EzBlock, non è supportato.
-
 Per principianti e neofiti, EzBlock è una piattaforma di sviluppo software offerta da SunFounder per Raspberry Pi. EzBlock offre due ambienti di programmazione: uno grafico e uno in Python.
 
 È disponibile per quasi tutti i tipi di dispositivi, inclusi Mac, PC e Android.
@@ -39,12 +35,12 @@ Ecco un tutorial per aiutarti a completare l'installazione, il download e l'uso 
 **Progetti**
 
 
-Questa sezione inizia con funzioni di programmazione di base per il PiCar-X e continua fino alla creazione di programmi più avanzati in EzBlock Studio. 
-Ogni tutorial contiene CONSIGLI che introducono nuove funzioni, permettendo agli utenti di scrivere il programma corrispondente. 
-C'è anche un codice di riferimento completo nella sezione Esempi, che può essere utilizzato direttamente. 
+This section begins with basic programming functions for the PiCar-X, and continues through to creating more advanced programs in Ezblock Studio. 
+Each tutorial contains TIPS that introduce new functions, allowing users to write the corresponding program. 
+There is also a complete reference code in the Example section that can be directly used. 
 Ti suggeriamo di provare a programmare senza utilizzare il codice nella sezione Esempi e di divertirti nell'affrontare le sfide!
 
-Tutti i progetti EzBlock sono stati caricati nella pagina Esempi di EzBlock Studio. Dalla pagina Esempi, gli utenti possono eseguire i programmi direttamente, oppure modificarli e salvarli nella cartella I Miei Progetti.
+All of the Ezblock projects have been uploaded to Ezblock Studio’s Examples page. From the Examples page, users can run the programs directly, or edit the examples and save them into the users My Projects folder.
 
 La pagina Esempi consente agli utenti di scegliere tra il linguaggio a Blocchi o Python. I progetti in questa sezione spiegano solo il linguaggio a Blocchi, per una spiegazione del codice Python, consulta questo `file <https://github.com/sunfounder/picar-x/blob/v2.0/docs/(EN)%20picarmini.md>`_ per aiutarti a comprendere il codice Python.
 
@@ -71,3 +67,7 @@ La pagina Esempi consente agli utenti di scegliere tra il linguaggio a Blocchi o
     ezblock_beware_pedestrians
     ezblock_traffic
     ezblock_orienteering
+
+
+
+

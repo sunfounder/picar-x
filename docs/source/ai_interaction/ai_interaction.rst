@@ -30,3 +30,4 @@ Qui esplorerai la sintesi vocale (TTS), il riconoscimento vocale (STT) e i model
     python_local_chatbot
     python_treasure_hunt
     python_ai_robot
+    ../openclaw

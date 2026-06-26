@@ -19,6 +19,7 @@ Oltre al rilevamento dei colori e dei volti, PiCar-X è anche in grado di rileva
 
 Ora combiniamo questa funzione di rilevamento dei segnali stradali con la funzione di seguimento della linea. Lasciamo che PiCar-X segua la linea, e quando metti il segnale di Stop davanti a lui, si fermerà. Quando metti il segnale di Avanti davanti a lui, riprenderà a muoversi in avanti.
 
+
 **CONSIGLI**
 
 #. PiCar riconoscerà 4 modelli di segnali stradali inclusi nel PDF stampabile qui sotto.
@@ -37,6 +38,7 @@ Ora combiniamo questa funzione di rilevamento dei segnali stradali con la funzio
     * Puoi scrivere il programma seguendo l'immagine qui sotto, fai riferimento al tutorial: :ref:`ezblock:create_project_latest`.
     * Oppure trova il codice con lo stesso nome nella pagina **Esempi** di EzBlock Studio e clicca direttamente su **Esegui** o **Modifica**.
 
+
 .. image:: img/sp210513_101526.png
 
 .. image:: img/sp210513_110948.png
@@ -44,3 +46,4 @@ Ora combiniamo questa funzione di rilevamento dei segnali stradali con la funzio
 .. image:: img/sp210512_171425.png
 
 .. image:: img/sp210512_171454.png
+

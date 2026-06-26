@@ -21,16 +21,12 @@ Ti mostreremo come installare Ollama, scaricare un modello e collegare PiCar-X a
 Con questa configurazione, PiCar-X può scattare un’istantanea con la fotocamera e il modello potrà **vedere e raccontare** —  
 potrai fare qualsiasi domanda sull’immagine e il modello risponderà in linguaggio naturale.
 
-----
-
 Prima di iniziare
 -----------------
 
 Assicurati di aver completato:
 
 * :ref:`install_all_modules` — Installa i moduli ``robot-hat``, ``vilib``, ``picar-x``, poi esegui lo script ``i2samp.sh``.
-
-----
 
 .. _download_ollama:
 

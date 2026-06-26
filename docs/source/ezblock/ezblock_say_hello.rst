@@ -40,4 +40,5 @@ Il blocco delle **istruzioni condizionali** viene utilizzato insieme al blocco *
     * Puoi scrivere il programma seguendo l'immagine qui sotto, fai riferimento al tutorial: :ref:`ezblock:create_project_latest`.
     * Oppure trova il codice con lo stesso nome nella pagina **Esempi** di EzBlock Studio e clicca direttamente su **Esegui** o **Modifica**.
 
+
 .. image:: img/sp210512_162305.png

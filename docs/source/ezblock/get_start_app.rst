@@ -20,11 +20,20 @@ Installa e Configura EzBlock Studio
 Una volta assemblato il robot, dovrai eseguire alcune operazioni di base.
 
 * :ref:`ezblock:install_ezblock_app_latest`: Scarica e installa EzBlock Studio sul tuo dispositivo o utilizza la versione web.
+
+.. note::
+
+    Se stai usando un Raspberry Pi 5, scarica la versione Beta.
+    Hai domande o problemi durante l'uso? Non esitare a contattarci.
+
+    .. image:: img/ezblock_beta_version.png
+       :width: 800
+
 * :ref:`ezblock:connect_product_ezblock_latest`: Configura Wi-Fi, Bluetooth e calibra prima dell'uso.
 * :ref:`ezblock:open_run_latest`: Visualizza o esegui direttamente l'esempio correlato.
 
 .. note::
 
     Dopo aver collegato il Picar-x, ci sarà una fase di calibrazione. Questo perché potrebbero esserci delle deviazioni durante il processo di installazione o delle limitazioni dei servi stessi, rendendo alcuni angoli dei servi leggermente inclinati, quindi è possibile calibrarli in questa fase.
-    
+
     Tuttavia, se pensi che l'assemblaggio sia perfetto e non sia necessaria alcuna calibrazione, puoi anche saltare questo passaggio.

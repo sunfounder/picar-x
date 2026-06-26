@@ -17,10 +17,12 @@
 Controllo Remoto
 =======================
 
-Questo progetto ti insegnerà come controllare da remoto il PiCar-X con il widget Joystick. 
+Questo progetto ti insegnerà come controllare da remoto il PiCar-X con il widget Joystick.
 Nota: Dopo aver trascinato e rilasciato il widget Joystick dalla pagina del Controllo Remoto, utilizza la funzione “Map” per calibrare le letture degli assi X e Y del Joystick. Per maggiori informazioni sulla funzione di controllo remoto, fai riferimento al seguente link:
 
+
 * :ref:`ezblock:remote_control_latest`
+
 
 .. image:: img/remote_control23.png
 
@@ -36,7 +38,8 @@ Trascina un Joystick nell'area centrale della pagina Controllo Remoto. Spostando
 
 .. image:: img/sp210512_114136.png
 
-Dopo aver trascinato e rilasciato un widget sulla pagina di controllo remoto, apparirà una nuova categoria chiamata "Remote" con il blocco sopra indicato. Questo blocco legge il valore del Joystick nella pagina di Controllo Remoto. Puoi cliccare sul menu a tendina per passare alla lettura dell'asse Y.
+Dopo aver trascinato e rilasciato un widget sulla pagina di controllo remoto, apparirà una nuova categoria chiamata "Remote" con il blocco sopra indicato.
+Questo blocco legge il valore del Joystick nella pagina di Controllo Remoto. Puoi cliccare sul menu a tendina per passare alla lettura dell'asse Y.
 
 .. image:: img/sp210512_114235.png
 
@@ -49,4 +52,6 @@ Il blocco di rimappatura dei valori può rimappare un numero da un intervallo a 
     * Puoi scrivere il programma seguendo l'immagine qui sotto, fai riferimento al tutorial: :ref:`ezblock:create_project_latest`.
     * Oppure trova il codice con lo stesso nome nella pagina **Esempi** di EzBlock Studio e clicca direttamente su **Esegui** o **Modifica**.
 
+
 .. image:: img/sp210512_114416.png
+

@@ -293,8 +293,6 @@ Gli utenti nella Cina continentale possono invece utilizzare la console **Bailia
    
        sudo python3 18.online_llm_test.py
 
-----
-
 Grok (xAI)
 ------------------
 Grok è l’IA conversazionale di xAI, creata dal team di Elon Musk. Puoi connetterti ad essa tramite l’API xAI.
@@ -532,8 +530,6 @@ Doubao è la piattaforma di modelli AI di ByteDance (Volcengine Ark).
    
        sudo python3 18.online_llm_test.py
 
-----
-
 General
 --------------
 
@@ -606,7 +602,5 @@ Per queste piattaforme, dovrai ottenere manualmente la tua **API Key** e la corr
 #. Esegui il programma:
 
    .. code-block:: bash
-
-      python3 18.online_llm_test.py
 
       python3 18.online_llm_test.py

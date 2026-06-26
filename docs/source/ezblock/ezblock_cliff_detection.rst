@@ -13,7 +13,7 @@
     👉 Sei pronto a esplorare e creare con noi? Clicca [|link_sf_facebook|] e unisciti oggi stesso!
 
 Rilevamento delle Scogliere
-==============================
+===========================
 
 Questo progetto utilizzerà il **modulo in scala di grigi** per impedire al PiCar-X di cadere da una scogliera mentre si muove liberamente per casa. Si tratta di un progetto essenziale per le case con scale.
 

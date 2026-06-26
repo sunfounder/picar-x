@@ -1,3 +1,17 @@
+.. note::
+
+    Ciao, benvenuto nella SunFounder Raspberry Pi & Arduino & ESP32 Enthusiasts Community su Facebook! Scopri di più su Raspberry Pi, Arduino e ESP32 insieme ad altri appassionati.
+
+    **Perché unirti a noi?**
+
+    - **Supporto Esperto**: Risolvi problemi post-vendita e sfide tecniche con l'aiuto della nostra comunità e del nostro team.
+    - **Impara e Condividi**: Scambia suggerimenti e tutorial per migliorare le tue competenze.
+    - **Anteprime Esclusive**: Accedi in anteprima agli annunci di nuovi prodotti e alle anticipazioni.
+    - **Sconti Speciali**: Approfitta di sconti esclusivi sui nostri prodotti più recenti.
+    - **Promozioni e Giveaway Festivi**: Partecipa a giveaway e promozioni in occasione delle festività.
+
+    👉 Sei pronto a esplorare e creare con noi? Clicca [|link_sf_facebook|] e unisciti oggi stesso!
+
 .. _ai_voice_assistant_car:
 
 21. Auto Assistente Vocale AI
@@ -82,6 +96,9 @@ Parola di attivazione:
    Puoi modificare la **parola di attivazione** e il **nome del robot** nel codice:
    ``NAME = "Buddy"`` oppure ``NAME = "滴滴"``  
    ``WAKE_WORD = ["hey buddy"]`` oppure ``WAKE_WORD = ["你好 滴滴"]``
+
+
+----
 
 Cosa Succederà
 ---------------

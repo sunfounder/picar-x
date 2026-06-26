@@ -13,7 +13,7 @@
     👉 Sei pronto a esplorare e creare con noi? Clicca [|link_sf_facebook|] e unisciti oggi stesso!
 
 Test del Modulo Ultrasonico
-===============================
+==============================
 
 Il PiCar-X ha un modulo sensore a ultrasuoni integrato che può essere utilizzato per esperimenti di evitamento ostacoli e inseguimento automatico di oggetti. In questa lezione, il modulo leggerà una distanza in centimetri (24 cm = 1 pollice) e stamperà i risultati in una finestra di **Debug**.
 
@@ -45,5 +45,6 @@ Una volta eseguito il codice, abilita il monitor di debug cliccando sull'icona *
 
     * Puoi scrivere il programma seguendo l'immagine qui sotto, fai riferimento al tutorial: :ref:`ezblock:create_project_latest`.
     * Oppure trova il codice con lo stesso nome nella pagina **Esempi** di EzBlock Studio e clicca direttamente su **Esegui** o **Modifica**.
+
 
 .. image:: img/sp210512_115125.png

@@ -17,10 +17,6 @@
 Guida Rapida su EzBlock
 ===========================
 
-.. note::
-
-    Se stai usando un Raspberry Pi 5, il nostro software di programmazione grafica, EzBlock, non è supportato.
-
 L'intervallo dell'angolo del servo è -90~90 gradi, ma l'angolo impostato in fabbrica è casuale, potrebbe essere 0°, potrebbe essere 45°; se lo assembliamo con questo angolo direttamente, si verificherà uno stato caotico dopo che il robot esegue il codice, o peggio, il servo potrebbe bloccarsi e bruciarsi.
 
 Quindi, qui dobbiamo impostare tutti gli angoli del servo a 0° e poi montarli, in modo che l'angolo del servo sia al centro, indipendentemente dalla direzione di rotazione.
@@ -66,3 +62,5 @@ Quindi, qui dobbiamo impostare tutti gli angoli del servo a 0° e poi montarli, 
     * Non ruotare il servo mentre è acceso per evitare danni; se l'asse del servo è inserito con l'angolazione sbagliata, estrai il servo e reinseriscilo.
     * Prima di montare ogni servo, è necessario collegare il cavo del servo alla porta P11 e accendere l'alimentazione per impostare il suo angolo su 0°.
     * Questa funzione di azzeramento sarà disabilitata se scarichi un programma sul robot successivamente tramite l'app EzBlock.
+
+
