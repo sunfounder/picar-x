@@ -61,7 +61,7 @@ PiCar-X has two programming languages: Blockly and Python. No matter what langua
 **Content**
 
 .. toctree::
-    :maxdepth: 3
+    :maxdepth: 2
 
     About This Kit <self>
     assemble
