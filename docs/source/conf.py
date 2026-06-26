@@ -58,7 +58,6 @@ html_static_path = ['_static']
 # a list of builtin themes.
 #
 html_theme = 'sphinx_rtd_theme'
-html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
 
 
 # Link to other projects’ documentation with intersphinx. Use the intersphinx_mapping configuration to indicate the name and link of the projects you want to use

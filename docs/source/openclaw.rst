@@ -61,10 +61,6 @@ If you want to experience the power of OpenClaw as quickly as possible, use this
 
     .. image:: /img/openclaw/paste_api_key_open_claw.png
 
-.. |link_openai_platform| raw:: html
-
-    <a href="https://platform.openai.com/settings/organization/api-keys" target="_blank">OpenAI Platform</a>
-
 8.  Go to |link_openai_platform| and log in. On the **API keys** page, click **Create new secret key**.
 
     .. image:: /img/openclaw/llm_openai_create.png
