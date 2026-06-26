@@ -13,7 +13,7 @@
     👉 Sind Sie bereit, mit uns zu erkunden und zu erschaffen? Klicken Sie auf [|link_sf_facebook|] und treten Sie heute bei!
 
 Farberkennung
-===========================
+=============
 
 Der PiCar-X ist ein selbstfahrendes Auto mit einer integrierten Kamera, die es ermöglicht, Ezblock-Programme für Objekterkennung und Farberkennung zu nutzen. In diesem Abschnitt wird Ezblock verwendet, um ein Programm für die Farberkennung zu erstellen.
 
@@ -23,7 +23,7 @@ Der PiCar-X ist ein selbstfahrendes Auto mit einer integrierten Kamera, die es e
 
 In diesem Programm wird Ezblock zunächst der Farbraum Hue-Saturation-Value (HSV) der zu erkennenden Farbe mitgeteilt. Anschließend wird OpenCV verwendet, um die Farben im HSV-Bereich zu verarbeiten, den Hintergrundrauschen zu entfernen und schließlich die passende Farbe einzurahmen.
 
-Für den PiCar-X bietet Ezblock sechs Farbmodelle: “red”, “orange”, “yellow”, “green”, “blue”, “purple” („rot“, „orange“, „gelb“, „grün“, „blau“ und „lila“) . Farbkarten sind im folgenden PDF vorbereitet und müssen mit einem Farbdrucker ausgedruckt werden.
+Für den PiCar-X bietet Ezblock sechs Farbmodelle: "red", "orange", "yellow", "green", "blue", "purple" („rot“, „orange“, „gelb“, „grün“, „blau“ und „lila“). Farbkarten sind im folgenden PDF vorbereitet und müssen mit einem Farbdrucker ausgedruckt werden.
 
 * :download:`[PDF]Farbkarten <https://github.com/sunfounder/sf-pdf/raw/master/prop_card/object_detection/color-cards.pdf>`
 
@@ -33,6 +33,7 @@ Für den PiCar-X bietet Ezblock sechs Farbmodelle: “red”, “orange”, “y
 .. note::
 
     Aufgrund von Unterschieden im Druckertoner oder dem bedruckten Medium, wie zum Beispiel sandfarbenem Papier, können die ausgedruckten Farben einen leicht abweichenden Farbton im Vergleich zu den Ezblock-Farbmodellen aufweisen. Dies kann zu einer weniger genauen Farberkennung führen.
+
 
 .. image:: img/ezblock_color_detect.PNG
 

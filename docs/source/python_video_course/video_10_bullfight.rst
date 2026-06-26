@@ -13,7 +13,7 @@
     👉 Sind Sie bereit, mit uns zu erkunden und zu erschaffen? Klicken Sie auf [|link_sf_facebook|] und treten Sie heute bei!
 
 Video 10: Stierkampf mit dem PiCar-X
-========================================
+=====================================
 
 Dieses Tutorial behandelt die Verwendung des PiCar-X-Roboters für ein "Stierkampf"-Spiel, wobei der Fokus auf Farberkennung und Bewegung liegt:
 
@@ -24,6 +24,7 @@ Dieses Tutorial behandelt die Verwendung des PiCar-X-Roboters für ein "Stierkam
 * **Demonstration**: Zeigt den PiCar-X in Aktion, wie er einem roten Ziel folgt.
 
 Diese Lektion bietet einen umfassenden Leitfaden zur Programmierung des PiCar-X für ein Farbverfolgungsspiel, einschließlich Code-Erklärungen und einer Live-Demonstration.
+
 
 **Video**
 

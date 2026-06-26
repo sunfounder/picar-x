@@ -13,9 +13,10 @@
     👉 Sind Sie bereit, mit uns zu erkunden und zu erschaffen? Klicken Sie auf [|link_sf_facebook|] und treten Sie heute bei!
 
 Musikauto
-==============
+=========
 
 Dieses Projekt verwandelt den PiCar-X in ein Musikauto, das durch Ihr Zuhause fährt und dabei fröhliche Musik abspielt. Außerdem wird gezeigt, wie der PiCar-X mithilfe des integrierten Ultraschallsensors Kollisionen mit Wänden vermeidet.
+
 
 **TIPPS**
 
@@ -29,5 +30,6 @@ Um mehrere bedingte Abfragen durchzuführen, ändern Sie den einfachen "if do"-B
 
     * Sie können das Programm gemäß dem folgenden Bild erstellen. Bitte beziehen Sie sich dazu auf das Tutorial: :ref:`ezblock:create_project_latest`.
     * Oder suchen Sie den Code mit dem gleichen Namen auf der **Beispiele**-Seite des EzBlock Studios und klicken Sie direkt auf **Ausführen** oder **Bearbeiten**.
+
 
 .. image:: img/sp210512_163603.png

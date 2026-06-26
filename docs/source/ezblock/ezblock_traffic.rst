@@ -13,7 +13,7 @@
     👉 Sind Sie bereit, mit uns zu erkunden und zu erschaffen? Klicken Sie auf [|link_sf_facebook|] und treten Sie heute bei!
 
 Verkehrsschilderkennung
-===============================
+=======================
 
 Neben der Farberkennung und der Gesichtserkennung kann der PiCar-X auch Verkehrsschilder erkennen.
 
@@ -22,7 +22,7 @@ Lassen Sie uns nun diese Verkehrsschilderkennung mit der Linienverfolgungsfunkti
 
 **TIPPS**
 
-#. Der PiCar erkennt 4 verschiedene Verkehrsschildmodelle, die im druckbaren PDF unten enthalten sind. 
+#. Der PiCar erkennt 4 verschiedene Verkehrsschildmodelle, die im druckbaren PDF unten enthalten sind.
 
     .. image:: img/taffics_sign.png
 
@@ -38,6 +38,7 @@ Lassen Sie uns nun diese Verkehrsschilderkennung mit der Linienverfolgungsfunkti
 
     * Sie können das Programm gemäß der folgenden Abbildung schreiben. Bitte beachten Sie das Tutorial: :ref:`ezblock:create_project_latest`.
     * Oder finden Sie den Code mit demselben Namen auf der **Examples** -Seite des EzBlock Studios und klicken Sie direkt auf **Run** oder **Edit**.
+
 
 .. image:: img/sp210513_101526.png
 

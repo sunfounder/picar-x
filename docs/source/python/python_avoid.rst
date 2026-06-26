@@ -17,7 +17,7 @@
 4. Hindernisvermeidung
 =============================
 
-In diesem Projekt wird PiCar-X Hindernisse vor sich erkennen, während es vorwärtsfährt, 
+In diesem Projekt wird PiCar-X Hindernisse vor sich erkennen, während es vorwärtsfährt,
 und wenn die Hindernisse zu nah sind, wird es die Fahrtrichtung ändern.
 
 **Code ausführen**
@@ -30,14 +30,14 @@ und wenn die Hindernisse zu nah sind, wird es die Fahrtrichtung ändern.
 
     cd ~/picar-x/example
     sudo python3 4.avoiding_obstacles.py
-    
+
 Nachdem der Code ausgeführt wurde, fährt PiCar-X vorwärts.
 
 Wenn es erkennt, dass die Entfernung des Hindernisses vor ihm weniger als 20 cm beträgt, wird es rückwärtsfahren.
 
 Wenn ein Hindernis innerhalb von 20 bis 40 cm ist, wird es nach links abbiegen.
 
-Wenn nach dem Linksabbiegen kein Hindernis in der Richtung ist oder die Hindernisentfernung größer als 25 cm ist, 
+Wenn nach dem Linksabbiegen kein Hindernis in der Richtung ist oder die Hindernisentfernung größer als 25 cm ist,
 wird es weiter vorwärtsfahren.
 
 **Code**
@@ -53,17 +53,17 @@ wird es weiter vorwärtsfahren.
 
     from picarx import Picarx
     import time
-    
+
     POWER = 50
     SafeDistance = 40   # > 40 safe
-    DangerDistance = 20 # > 20 && < 40 turn around, 
+    DangerDistance = 20 # > 20 && < 40 turn around,
                         # < 20 backward
-    
+
     def main():
         try:
             px = Picarx()
             # px = Picarx(ultrasonic_pins=['D2','D3']) # tring, echo
-           
+
             while True:
                 distance = round(px.ultrasonic.read(), 2)
                 print("distance: ",distance)
@@ -78,16 +78,15 @@ wird es weiter vorwärtsfahren.
                     px.set_dir_servo_angle(-30)
                     px.backward(POWER)
                     time.sleep(0.5)
-    
+
         finally:
             px.forward(0)
-    
-    
+
+
     if __name__ == "__main__":
         main()
 
-
-**Wie funktioniert des?**
+**Wie funktioniert es?**
 
 * Import des Picarx-Moduls und Initialisierung von Konstanten:
 
@@ -99,23 +98,23 @@ wird es weiter vorwärtsfahren.
         import time
 
         POWER = 50
-        SafeDistance = 40 # > 40 sicher
-        DangerDistance = 20 # > 20 && < 40 umdrehen,
-        # < 20 rückwärts
+        SafeDistance = 40 # > 40 safe
+        DangerDistance = 20 # > 20 && < 40 turn around,
+        # < 20 backward
 
 * Definition der Hauptfunktion und Auslesen des Ultraschallsensors:
 
     Die ``main`` Funktion ist der Ort, an dem der Picarx-Roboter gesteuert wird. Eine Instanz von ``Picarx`` wird erstellt, die die Funktionen des Roboters aktiviert. Das Skript tritt in eine endlose Schleife ein, liest ständig die Entfernung vom Ultraschallsensor und verwendet diese Entfernung, um die Bewegung des Roboters zu bestimmen.
 
     .. code-block:: python
-        
+
         def main():
         try:
-            px = Picarx()
+        px = Picarx()
 
             while True:
                 distance = round(px.ultrasonic.read(), 2)
-                # [Rest der Logik]
+                # [Rest of the logic]
 
 * Bewegungslogik basierend auf Distanz:
 
@@ -140,18 +139,18 @@ wird es weiter vorwärtsfahren.
     Der ``try...finally`` Block stellt die Sicherheit sicher, indem er die Bewegung des Roboters im Falle einer Unterbrechung oder eines Fehlers stoppt. Dies ist ein entscheidender Teil, um unkontrollierbares Verhalten des Roboters zu verhindern.
 
     .. code-block:: python
-        
+
         try:
-        # [Steuerungslogik]
+        # [Control logic]
         finally:
-            px.forward(0)
+        px.forward(0)
 
 * Ausführungseinstiegspunkt:
 
     Der standardmäßige Python-Einstiegspunkt ``if __name__ == "__main__":`` wird verwendet, um die Hauptfunktion auszuführen, wenn das Skript als eigenständiges Programm ausgeführt wird.
 
     .. code-block:: python
-        
+
         if __name__ == "__main__":
             main()
 

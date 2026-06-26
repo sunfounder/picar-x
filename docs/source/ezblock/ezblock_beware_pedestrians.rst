@@ -13,7 +13,7 @@
     👉 Sind Sie bereit, mit uns zu erkunden und zu erschaffen? Klicken Sie auf [|link_sf_facebook|] und treten Sie heute bei!
 
 Achtung Fußgänger
-=============================
+=================
 
 In diesem Projekt wird der PiCar-X entsprechende Maßnahmen basierend auf den Straßenverhältnissen durchführen. Während der Fahrt wird der PiCar-X anhalten, wenn ein Fußgänger auf seinem Weg erkannt wird.
 

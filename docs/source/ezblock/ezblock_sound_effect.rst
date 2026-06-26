@@ -13,7 +13,7 @@
     👉 Sind Sie bereit, mit uns zu erkunden und zu erschaffen? Klicken Sie auf [|link_sf_facebook|] und treten Sie heute bei!
 
 Soundeffekte
-===============================
+============
 
 Der PiCar-X verfügt über einen integrierten Lautsprecher, der für Audio-Experimente genutzt werden kann. Mit Ezblock können Nutzer Text eingeben, um den PiCar-X sprechen zu lassen oder bestimmte Soundeffekte zu erzeugen. In diesem Tutorial wird der PiCar-X nach einem 3-Sekunden-Countdown das Geräusch eines Schussabfeuers mittels einer do/while-Funktion erzeugen.
 
@@ -45,5 +45,6 @@ Der Block **Soundeffekte abspielen - mit Lautstärke - %** bietet voreingestellt
 
     * Sie können das Programm gemäß dem folgenden Bild schreiben. Bitte beziehen Sie sich auf das Tutorial: :ref:`ezblock:create_project_latest`.
     * Oder finden Sie den Code mit dem gleichen Namen auf der **Beispiele**-Seite des EzBlock Studios und klicken Sie direkt auf **Ausführen** oder **Bearbeiten**.
+
 
 .. image:: img/sp210512_144944.png

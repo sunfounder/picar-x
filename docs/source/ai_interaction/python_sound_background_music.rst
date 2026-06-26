@@ -17,8 +17,7 @@
 13. Musik und Soundeffekte abspielen
 =====================================
 
-In diesem Projekt lernst du, wie du mit dem PiCar-X Hintergrundmusik oder Soundeffekte abspielst.  
-Du kannst auch eigene Musikdateien verwenden, die auf dem Gerät gespeichert sind.
+In diesem Projekt lernst du, wie du mit dem PiCar-X Hintergrundmusik oder Soundeffekte abspielst. Du kannst auch eigene Musikdateien verwenden, die auf dem Gerät gespeichert sind.
 
 **Bevor du beginnst**
 
@@ -26,13 +25,14 @@ Stelle sicher, dass du Folgendes abgeschlossen hast:
 
 * :ref:`install_all_modules` — Installiere die Module ``robot-hat``, ``vilib``, ``picar-x`` und führe dann das Skript ``i2samp.sh`` aus.
 
+
 **Code ausführen**
 
 .. raw:: html
 
     <run></run>
 
-.. code-block:: bash
+.. code-block::
 
     cd ~/picar-x/example
     sudo python3 13.sound_background_music.py
@@ -41,9 +41,9 @@ Nachdem der Code ausgeführt wurde, folge den Anweisungen, die im Terminal angez
 
 Drücke die entsprechende Taste, um die gewünschte Funktion auszuführen:
 
-* **Leertaste**: Soundeffekt (Autohupe) abspielen  
-* **c**: Soundeffekt **in einem Thread** abspielen (gleichzeitig mit anderen Aktionen)  
-* **q**: Musik **starten oder stoppen**
+    * **Leertaste**: Soundeffekt (Autohupe) abspielen
+    * **c**: Soundeffekt in einem Thread abspielen (gleichzeitig mit anderen Aktionen)
+    * **q**: Musik starten oder stoppen
 
 **Code**
 
@@ -95,9 +95,9 @@ Drücke die entsprechende Taste, um die gewünschte Funktion auszuführen:
 
 Die Funktionen, die mit Hintergrundmusik zusammenhängen, sind:
 
-* ``music = Music()`` : Erstellt ein Musikobjekt.  
-* ``music.music_set_volume(20)`` : Legt die Lautstärke fest (Bereich 0–100).  
-* ``music.music_play('../musics/slow-trail-Ahjay_Stelino.mp3')`` : Spielt eine Musikdatei ab — hier die Datei **slow-trail-Ahjay_Stelino.mp3** im Ordner ``../musics``.  
+* ``music = Music()`` : Erstellt ein Musikobjekt.
+* ``music.music_set_volume(20)`` : Legt die Lautstärke fest (Bereich 0–100).
+* ``music.music_play('../musics/slow-trail-Ahjay_Stelino.mp3')`` : Spielt eine Musikdatei ab — hier die Datei **slow-trail-Ahjay_Stelino.mp3** im Ordner ``../musics``.
 * ``music.music_stop()`` : Stoppt die Wiedergabe der Hintergrundmusik.
 
 .. note::

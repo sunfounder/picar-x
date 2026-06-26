@@ -15,10 +15,11 @@
 .. _ezb_remote_control:
 
 Fernsteuerung
-=======================
+=============
 
-Dieses Projekt zeigt, wie Sie die PiCar-X mithilfe des Joystick-Widgets fernsteuern können. 
+Dieses Projekt zeigt, wie Sie die PiCar-X mithilfe des Joystick-Widgets fernsteuern können.
 Hinweis: Nachdem Sie das Joystick-Widget von der Fernsteuerungsseite gezogen und abgelegt haben, verwenden Sie die „Map“-Funktion, um die X- und Y-Achsen-Werte des Joysticks zu kalibrieren. Weitere Informationen zur Fernsteuerungsfunktion finden Sie unter folgendem Link:
+
 
 * :ref:`ezblock:remote_control_latest`
 
@@ -50,5 +51,6 @@ Der „Map Value“-Block kann eine Zahl von einem Bereich in einen anderen umko
 
     * Sie können das Programm gemäß dem folgenden Bild erstellen. Bitte beziehen Sie sich auf das Tutorial: :ref:`ezblock:create_project_latest`.
     * Oder finden Sie den Code mit dem gleichen Namen auf der **Beispiele**-Seite des EzBlock Studios und klicken Sie direkt auf **Ausführen** oder **Bearbeiten**.
+
 
 .. image:: img/sp210512_114416.png

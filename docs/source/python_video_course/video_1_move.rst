@@ -13,7 +13,7 @@
     👉 Sind Sie bereit, mit uns zu erkunden und zu erschaffen? Klicken Sie auf [|link_sf_facebook|] und treten Sie heute bei!
 
 Video 1: Motorsteuerung und Lenkkontrolle
-==================================================
+==========================================
 
 Dieses Video dient als erstes Projekt-Tutorial in der PiCar-X-Reihe und konzentriert sich darauf, wie man die Motoren und den Lenkservo des PiCar-X steuert. Die Schlüsselinhalte umfassen:
 

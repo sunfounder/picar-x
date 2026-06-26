@@ -17,8 +17,8 @@
 6. Linienverfolgung
 ====================================
 
-Dieses Projekt wird das Graustufenmodul verwenden, um den PiCar-X entlang einer Linie vorwärtsfahren zu lassen. 
-Verwenden Sie dunkelfarbiges Klebeband, um eine Linie so gerade wie möglich zu machen und nicht zu sehr gekrümmt. 
+Dieses Projekt wird das Graustufenmodul verwenden, um den PiCar-X entlang einer Linie vorwärtsfahren zu lassen.
+Verwenden Sie dunkelfarbiges Klebeband, um eine Linie so gerade wie möglich zu machen und nicht zu sehr gekrümmt.
 Einige Experimente könnten notwendig sein, wenn der PiCar-X entgleist.
 
 **Code ausführen**
@@ -31,7 +31,7 @@ Einige Experimente könnten notwendig sein, wenn der PiCar-X entgleist.
 
     cd ~/picar-x/example
     sudo python3 6.line_tracking.py
-    
+
 Nachdem der Code ausgeführt wurde, wird PiCar-X entlang einer Linie vorwärtsfahren.
 
 **Code**
@@ -100,16 +100,16 @@ Nachdem der Code ausgeführt wurde, wird PiCar-X entlang einer Linie vorwärtsfa
 
                 if gm_state == 'forward':
                     px.set_dir_servo_angle(0)
-                    px.forward(px_power) 
+                    px.forward(px_power)
                 elif gm_state == 'left':
                     px.set_dir_servo_angle(offset)
-                    px.forward(px_power) 
+                    px.forward(px_power)
                 elif gm_state == 'right':
                     px.set_dir_servo_angle(-offset)
-                    px.forward(px_power) 
+                    px.forward(px_power)
                 else:
                     outHandle()
-                    
+
         except KeyboardInterrupt:
             print("\nKeyboardInterrupt: stop and exit")
 
@@ -118,10 +118,7 @@ Nachdem der Code ausgeführt wurde, wird PiCar-X entlang einer Linie vorwärtsfa
             print("stop and exit")
             sleep(0.1)
 
-
-                
-
-**Wie funktioniert des?** 
+**Wie funktioniert es?**
 
 Dieses Python-Skript steuert ein Picarx-Roboterauto mithilfe von Graustufensensoren zur Navigation. Hier ist eine Zusammenfassung seiner Hauptkomponenten:
 
@@ -132,7 +129,7 @@ Dieses Python-Skript steuert ein Picarx-Roboterauto mithilfe von Graustufensenso
     Eine Instanz von Picarx wird erstellt, und es gibt eine auskommentierte Zeile, die eine alternative Initialisierung mit spezifischen Graustufensensor-Pins zeigt.
 
     .. code-block:: python
-        
+
         from picarx import Picarx
         from time import sleep
 
@@ -178,20 +175,20 @@ Dieses Python-Skript steuert ein Picarx-Roboterauto mithilfe von Graustufensenso
 
     Sie interpretiert die Graustufensensordaten (``val_list``), um den Navigationszustand des Autos zu bestimmen.
 
-    Der Zustand des Autos kann ``vorwärts``, ``links``, ``rechts`` oder ``stop`` sein, je nachdem, welcher Sensor die Linie erkennt.
+    Der Zustand des Autos kann ``forward``, ``left``, ``right`` oder ``stop`` sein, je nachdem, welcher Sensor die Linie erkennt.
 
     .. code-block:: python
-        
+
         def get_status(val_list):
-            _state = px.get_line_status(val_list)  # [bool, bool, bool], 0 bedeutet Linie, 1 bedeutet Hintergrund
+            _state = px.get_line_status(val_list)  # [bool, bool, bool], 0 means line, 1 means background
             if _state == [0, 0, 0]:
                 return 'stop'
             elif _state[1] == 1:
-                return 'vorwärts'
+                return 'forward'
             elif _state[0] == 1:
-                return 'rechts'
+                return 'right'
             elif _state[2] == 1:
-                return 'links'
+                return 'left'
 
 * Hauptschleife:
 
@@ -211,15 +208,15 @@ Dieses Python-Skript steuert ein Picarx-Roboterauto mithilfe von Graustufensenso
                     if gm_state != "stop":
                         last_state = gm_state
 
-                    if gm_state == 'vorwärts':
+                    if gm_state == 'forward':
                         px.set_dir_servo_angle(0)
-                        px.forward(px_power) 
-                    elif gm_state == 'links':
+                        px.forward(px_power)
+                    elif gm_state == 'left':
                         px.set_dir_servo_angle(offset)
-                        px.forward(px_power) 
-                    elif gm_state == 'rechts':
+                        px.forward(px_power)
+                    elif gm_state == 'right':
                         px.set_dir_servo_angle(-offset)
-                        px.forward(px_power) 
+                        px.forward(px_power)
                     else:
                         outHandle()
 
@@ -228,7 +225,7 @@ Dieses Python-Skript steuert ein Picarx-Roboterauto mithilfe von Graustufensenso
     Der ``try...finally``-Block stellt sicher, dass das Auto stoppt, wenn das Skript unterbrochen oder beendet wird.
 
     .. code-block:: python
-        
+
         finally:
             px.stop()
             print("stop and exit")

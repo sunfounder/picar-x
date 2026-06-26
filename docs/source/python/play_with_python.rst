@@ -1,4 +1,4 @@
-.. note::
+﻿.. note::
 
     Hallo und willkommen in der SunFounder Raspberry Pi & Arduino & ESP32 Enthusiasten-Gemeinschaft auf Facebook! Tauchen Sie tiefer ein in die Welt von Raspberry Pi, Arduino und ESP32 mit anderen Enthusiasten.
 
@@ -17,7 +17,7 @@
 Mit Python spielen
 =======================
 
-Für Anfänger und Einsteiger, die in Python programmieren möchten, sind **grundlegende Python-Kenntnisse** und etwas **Vertrautheit mit dem Raspberry Pi OS** hilfreich.  
+Für Anfänger und Einsteiger, die in Python programmieren möchten, sind **grundlegende Python-Kenntnisse** und etwas **Vertrautheit mit dem Raspberry Pi OS** hilfreich.
 In diesem Abschnitt wirst du Schritt für Schritt angeleitet — vom Einrichten deines Raspberry Pi über die Bewegung des PiCar-X bis hin zu **Computer Vision** sowie **Sprach- und KI-Interaktion**.
 
 .. _quick_guide_python:
@@ -25,13 +25,13 @@ In diesem Abschnitt wirst du Schritt für Schritt angeleitet — vom Einrichten 
 1. Schnellstart mit Python
 ---------------------------
 
-Lerne, wie du deine Raspberry Pi Umgebung einrichtest:  
-Installiere Raspberry Pi OS, konfiguriere WLAN und aktiviere den Fernzugriff, sodass du Python-Code einfach ausführen kannst.  
+Lerne, wie du deine Raspberry Pi Umgebung einrichtest:
+Installiere Raspberry Pi OS, konfiguriere WLAN und aktiviere den Fernzugriff, sodass du Python-Code einfach ausführen kannst.
 Wenn du bereits weißt, wie du Raspberry Pi nutzt und auf die Kommandozeile zugreifst, kannst du diesen Teil überspringen.
 
-.. toctree:: 
+.. toctree::
     :maxdepth: 1
-    
+
     ../_shared/pi_start/need_components
     ../_shared/pi_start/install_os_trixie
     ../_shared/pi_start/power_supply_robot_hat
@@ -42,12 +42,12 @@ Wenn du bereits weißt, wie du Raspberry Pi nutzt und auf die Kommandozeile zugr
 2. Grundbewegungen
 -----------------------
 
-Nachdem du deinen PiCar-X zusammengebaut hast, beginnst du mit einfachen Bewegungsprogrammen.  
+Nachdem du deinen PiCar-X zusammengebaut hast, beginnst du mit einfachen Bewegungsprogrammen.
 Du lernst, wie du die Motoren steuerst, vorwärts/rückwärts fährst, Kurven machst und einfache Sensoren zum Hindernisvermeiden oder Linienfolgen nutzt.
 
-.. toctree:: 
+.. toctree::
     :maxdepth: 1
-    
+
     python_calibrate
     python_move
     python_keyboard
@@ -58,10 +58,10 @@ Du lernst, wie du die Motoren steuerst, vorwärts/rückwärts fährst, Kurven ma
 3. Computer Vision
 ----------------------
 
-Gib deinem PiCar-X die Fähigkeit zu **sehen** – mit der Kamera.  
+Gib deinem PiCar-X die Fähigkeit zu **sehen** – mit der Kamera.
 In diesem Abschnitt lernst du spannende Vision-Projekte wie Gesichtserkennung, Aufzeichnung, Objektinteraktion und Steuerung per Video oder App kennen.
 
-.. toctree:: 
+.. toctree::
     :maxdepth: 1
 
     python_computer_vision
@@ -70,3 +70,6 @@ In diesem Abschnitt lernst du spannende Vision-Projekte wie Gesichtserkennung, A
     python_bull_fight
     python_video_car
     control_by_app
+
+
+

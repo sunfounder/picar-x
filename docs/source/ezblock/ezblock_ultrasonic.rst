@@ -13,13 +13,13 @@
     👉 Sind Sie bereit, mit uns zu erkunden und zu erschaffen? Klicken Sie auf [|link_sf_facebook|] und treten Sie heute bei!
 
 Test des Ultraschallmoduls
-==============================
+==========================
 
 Der PiCar-X verfügt über ein integriertes Ultraschall-Sensormodul, das für Hindernisvermeidung und automatische Objektverfolgungsexperimente verwendet werden kann. In dieser Lektion wird das Modul eine Entfernung in Zentimetern messen (24 cm = 1 Zoll) und die Ergebnisse in einem **Debug**-Fenster **ausgeben**.
 
 **TIPPS**
 
-.. image:: img/sp210512_114549.png 
+.. image:: img/sp210512_114549.png
 
 Der Block **Ultraschall Entfernung ablesen** ermittelt die Entfernung von PiCar-X zu einem direkt vorausliegenden Hindernis.
 
@@ -45,5 +45,6 @@ Sobald der Code läuft, aktivieren Sie den Debug-Monitor, indem Sie auf das **De
 
     * Sie können das Programm gemäß dem folgenden Bild erstellen. Bitte beziehen Sie sich auf das Tutorial: :ref:`ezblock:create_project_latest`.
     * Oder finden Sie den Code mit dem gleichen Namen auf der **Beispiele**-Seite des EzBlock Studios und klicken Sie direkt auf **Ausführen** oder **Bearbeiten**.
+
 
 .. image:: img/sp210512_115125.png

@@ -17,15 +17,15 @@
 21. KI-Sprachassistent-Auto
 ===========================
 
-In dieser Lektion verwandelst du deinen PiCar-X in einen **KI-gestützten Sprachassistenten auf Rädern**.  
-Der Roboter kann auf deine Stimme reagieren, erkennen, was du sagst, mit Emotion sprechen  
+In dieser Lektion verwandelst du deinen PiCar-X in einen **KI-gestützten Sprachassistenten auf Rädern**.
+Der Roboter kann auf deine Stimme reagieren, erkennen, was du sagst, mit Emotion sprechen
 und seine „Gefühle“ durch Bewegungen, Gesten und Lichter ausdrücken.
 
 Du wirst ein **voll interaktives Sprachassistent-Auto** bauen, das folgende Komponenten nutzt:
 
-* **LLM** – Large Language Model (OpenAI GPT oder Doubao).  
-* **STT** – Speech-to-Text (Sprache zu Text).  
-* **TTS** – Text-to-Speech (Text zu Sprache).  
+* **LLM** – Large Language Model (OpenAI GPT oder Doubao).
+* **STT** – Speech-to-Text (Sprache zu Text).
+* **TTS** – Text-to-Speech (Text zu Sprache).
 * **Sensoren + Aktionen** – Ultraschall, Kamera und eingebaute Ausdrucksaktionen.
 
 ----
@@ -36,14 +36,14 @@ Bevor du beginnst
 Stelle sicher, dass du Folgendes abgeschlossen hast:
 
 * :ref:`install_all_modules` — Installiere die Module ``robot-hat``, ``vilib``, ``picar-x`` und führe dann das Skript ``i2samp.sh`` aus.
-* :ref:`test_piper` — Überprüfe die unterstützten Sprachen von **Piper TTS**.  
-* :ref:`test_vosk` — Überprüfe die unterstützten Sprachen von **Vosk STT**.  
+* :ref:`test_piper` — Überprüfe die unterstützten Sprachen von **Piper TTS**.
+* :ref:`test_vosk` — Überprüfe die unterstützten Sprachen von **Vosk STT**.
 * :ref:`py_online_llm` — Dieser Schritt ist **sehr wichtig**: Besorge dir deinen **OpenAI**- oder **Doubao**-API-Schlüssel, oder den API-Schlüssel eines anderen unterstützten LLM.
 
 Du solltest bereits haben:
 
-* Ein funktionierendes **Mikrofon** und einen **Lautsprecher** auf deinem PiCar-X.  
-* Einen **gültigen API-Schlüssel** in ``secret.py`` gespeichert.  
+* Ein funktionierendes **Mikrofon** und einen **Lautsprecher** auf deinem PiCar-X.
+* Einen **gültigen API-Schlüssel** in ``secret.py`` gespeichert.
 * Eine stabile Netzwerkverbindung (eine **Kabelverbindung** wird für bessere Stabilität empfohlen).
 
 ----
@@ -63,8 +63,8 @@ Beide Sprachversionen befinden sich im selben Verzeichnis:
 
    sudo python3 21.voice_active_car_gpt.py
 
-* LLM: ``OpenAI GPT-4o-mini``  
-* TTS: ``en_US-ryan-low`` (Piper)  
+* LLM: ``OpenAI GPT-4o-mini``
+* TTS: ``en_US-ryan-low`` (Piper)
 * STT: Vosk (``en-us``)
 
 Aktivierungswort:
@@ -81,8 +81,8 @@ Aktivierungswort:
 
    sudo python3 21.voice_active_car_doubao_cn.py
 
-* LLM: ``Doubao-seed-1-6-250615``  
-* TTS: ``zh_CN-huayan-x_low`` (Piper)  
+* LLM: ``Doubao-seed-1-6-250615``
+* TTS: ``zh_CN-huayan-x_low`` (Piper)
 * STT: Vosk (``cn``)
 
 Aktivierungswort:
@@ -93,8 +93,8 @@ Aktivierungswort:
 
 .. note::
 
-   Du kannst das **Aktivierungswort** und den **Roboternamen** im Code ändern:  
-   ``NAME = "Buddy"`` oder ``NAME = "滴滴"``  
+   Du kannst das **Aktivierungswort** und den **Roboternamen** im Code ändern:
+   ``NAME = "Buddy"`` oder ``NAME = "滴滴"``
    ``WAKE_WORD = ["hey buddy"]`` oder ``WAKE_WORD = ["你好 滴滴"]``
 
 ----
@@ -104,23 +104,23 @@ Was passieren wird
 
 Wenn du dieses Beispiel erfolgreich ausführst:
 
-* Der Roboter **wartet auf das Aktivierungswort** (z. B. „Hey Buddy“ / „你好 滴滴“).  
+* Der Roboter **wartet auf das Aktivierungswort** (z. B. „Hey Buddy“ / „你好 滴滴“).
 * Wenn er das Aktivierungswort hört:
 
-  * Die LEDs beginnen zu **blinken** und bleiben eingeschaltet.  
+  * Die LEDs beginnen zu **blinken** und bleiben eingeschaltet.
   * Der Roboter **begrüßt dich** mit fröhlicher Stimme.
 
-* Anschließend beginnt er **in Echtzeit auf deine Stimme zu hören**.  
+* Anschließend beginnt er **in Echtzeit auf deine Stimme zu hören**.
 * Nachdem er verstanden hat, was du gesagt hast, führt er Folgendes aus:
 
-  * Sendet deine Sprache an das **LLM** (OpenAI oder Doubao).  
-  * **„Denkt“** und blinkt mit den LEDs während der Verarbeitung.  
-  * Antwortet mit einer **TTS-Stimme**.  
+  * Sendet deine Sprache an das **LLM** (OpenAI oder Doubao).
+  * **„Denkt“** und blinkt mit den LEDs während der Verarbeitung.
+  * Antwortet mit einer **TTS-Stimme**.
   * Führt **entsprechende Aktionen** aus (z. B. Nicken, Drehen, Jubeln).
 
 * Wenn du dich ihm zu sehr näherst, erkennt der Ultraschallsensor:
 
-  * Eine automatische **Rückwärtsbewegung** zur Sicherheit.  
+  * Eine automatische **Rückwärtsbewegung** zur Sicherheit.
   * Unterbricht die aktuelle Runde mit einer Warnung.
 
 **Beispielinteraktion**
@@ -150,8 +150,8 @@ Du kannst ganz einfach zu anderen LLMs, TTS- oder STT-Sprachen wechseln — mit 
   * Qwen
   * Grok
 
-* :ref:`test_piper` — Überprüfe die unterstützten Sprachen von **Piper TTS**.  
-* :ref:`test_vosk` — Überprüfe die unterstützten Sprachen von **Vosk STT**.  
+* :ref:`test_piper` — Überprüfe die unterstützten Sprachen von **Piper TTS**.
+* :ref:`test_vosk` — Überprüfe die unterstützten Sprachen von **Vosk STT**.
 
 Zum Wechseln musst du einfach den Initialisierungsteil im Code anpassen:
 
@@ -248,48 +248,49 @@ Sensor-Trigger (automatisch)
 
 * **Ultraschall-Näherung**
 
-  * Auslöser: Abstand < 10 cm  
-  * Nebeneffekt: automatisches ``backward`` + Deaktivieren des Bildes für diese Runde  
+  * Auslöser: Abstand < 10 cm
+  * Nebeneffekt: automatisches ``backward`` + Deaktivieren des Bildes für diese Runde
   * Eingefügte Meldung: ``<<<Ultrasonic sense too close: {distance}cm>>>``
 
 Lebenszyklus-Hooks (LED-Indikatoren)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-* ``before_listen`` → zweimal blinken (bereit zum Zuhören)  
-* ``before_think`` → Blinken (Denken)  
-* ``before_say`` → LED an (Sprechen)  
-* ``after_say`` → auf Aktionen warten → LED aus  
+* ``before_listen`` → zweimal blinken (bereit zum Zuhören)
+* ``before_think`` → Blinken (Denken)
+* ``before_say`` → LED an (Sprechen)
+* ``after_say`` → auf Aktionen warten → LED aus
 * ``on_stop`` → Aktionen stoppen, Geräte schließen
+
 
 ----
 
 Fehlerbehebung
 --------------
 
-* **Der Roboter reagiert nicht auf das Aktivierungswort**  
+* **Der Roboter reagiert nicht auf das Aktivierungswort**
 
-  * Überprüfe, ob das Mikrofon funktioniert.  
-  * Stelle sicher, dass ``WAKE_ENABLE = True`` ist.  
+  * Überprüfe, ob das Mikrofon funktioniert.
+  * Stelle sicher, dass ``WAKE_ENABLE = True`` ist.
   * Passe das Aktivierungswort an deine Aussprache an.
 
 * **Kein Ton aus dem Lautsprecher**
- 
-  * Überprüfe die TTS-Modellkonfiguration.  
-  * Teste Piper oder Espeak manuell.  
+
+  * Überprüfe die TTS-Modellkonfiguration.
+  * Teste Piper oder Espeak manuell.
   * Überprüfe Lautsprecheranschluss und Lautstärke.
 
-* **API-Key-Fehler oder Zeitüberschreitung** 
- 
-  * Überprüfe deinen Schlüssel in ``secret.py``.  
-  * Stelle eine stabile Netzwerkverbindung sicher.  
+* **API-Key-Fehler oder Zeitüberschreitung**
+
+  * Überprüfe deinen Schlüssel in ``secret.py``.
+  * Stelle eine stabile Netzwerkverbindung sicher.
   * Vergewissere dich, dass das LLM unterstützt wird.
 
 * **Picar-X bewegt sich nicht oder reagiert nicht**
- 
-  * Überprüfe, ob der Aktionsname mit ``actions_dict`` übereinstimmt.  
+
+  * Überprüfe, ob der Aktionsname mit ``actions_dict`` übereinstimmt.
   * Verifiziere Motor- und Servoverbindungen.
 
-* **Ultraschallsensor löst unerwartet aus**  
+* **Ultraschallsensor löst unerwartet aus**
 
-  * Überprüfe die Installationshöhe und den Winkel des Sensors.  
+  * Überprüfe die Installationshöhe und den Winkel des Sensors.
   * Passe den ``TOO_CLOSE``-Schwellwert im Code an.

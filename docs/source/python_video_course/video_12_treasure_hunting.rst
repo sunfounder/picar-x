@@ -13,7 +13,7 @@
     👉 Sind Sie bereit, mit uns zu erkunden und zu erschaffen? Klicken Sie auf [|link_sf_facebook|] und treten Sie heute bei!
 
 Video 12: Schatzsuche-Spiel
-============================================
+===========================
 
 Das Tutorial bietet eine spannende und lehrreiche Erfahrung in der Programmierung und Robotik mit dem PiCar-X.
 
@@ -22,6 +22,7 @@ Das Tutorial bietet eine spannende und lehrreiche Erfahrung in der Programmierun
 * **Spielverlauf**: Der Roboter bewegt sich mit Tastatureingaben, um eine Ziel-Farbe zu finden und zu erreichen, die mittels Text-zu-Sprache angesagt wird.
 * **Praktische Demonstration**: Zeigt den Roboter in Aktion, der erfolgreich verschiedene Farben wie Rot, Gelb und Blau identifiziert und darauf zusteuert.
 * **Spiel-Exit-Anweisungen**: Behandelt, wie man das Spiel sicher beendet, einschließlich des Anhaltens des Roboters und des Ausschaltens der Kamera.
+
 
 **Video**
 

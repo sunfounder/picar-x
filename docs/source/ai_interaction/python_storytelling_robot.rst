@@ -12,14 +12,12 @@
 
     👉 Sind Sie bereit, mit uns zu erkunden und zu erschaffen? Klicken Sie auf [|link_sf_facebook|] und treten Sie heute bei!
 
-
 15. KI-Geschichten erzählender Roboter mit Piper und OpenAI
 ====================================================================
 
-In der vorherigen Lektion haben wir zwei integrierte TTS-Engines auf dem Raspberry Pi ausprobiert (**Espeak** und **Pico2Wave**).  
-Jetzt erkunden wir zwei leistungsstärkere Optionen: **Piper** (offline, neuronales Netzwerk) und **OpenAI TTS** (online, cloudbasiert).
+In der vorherigen Lektion haben wir zwei integrierte TTS-Engines auf dem Raspberry Pi ausprobiert (**Espeak** und **Pico2Wave**). Jetzt erkunden wir zwei leistungsstärkere Optionen: **Piper** (offline, neuronales Netzwerk) und **OpenAI TTS** (online, cloudbasiert).
 
-* **Piper**: Eine lokale TTS-Engine, die offline auf dem Raspberry Pi läuft.  
+* **Piper**: Eine lokale TTS-Engine, die offline auf dem Raspberry Pi läuft.
 * **OpenAI TTS**: Ein Online-Dienst, der sehr natürliche, menschenähnliche Stimmen erzeugt.
 
 Am Ende wird dein PiCar-X **herumfahren und Witze erzählen**, wie ein kleiner Geschichtenerzähler.
@@ -49,7 +47,7 @@ Stelle sicher, dass du Folgendes abgeschlossen hast:
       cd ~/picar-x/example
       sudo nano test_tts_piper.py
 
-#. Beispielcode einfügen. Mit ``Ctrl+X``, ``Y`` und ``Enter`` speichern und beenden.
+#. Beispielcode in die Datei einfügen. Mit ``Ctrl+X``, dann ``Y`` und schließlich ``Enter`` speichern und beenden.
 
    .. code-block:: python
 
@@ -57,21 +55,21 @@ Stelle sicher, dass du Folgendes abgeschlossen hast:
 
        tts = Piper()
 
-       # Unterstützte Sprachen auflisten
+       # List supported languages
        print(tts.available_countrys())
 
-       # Modelle für Englisch (en_us) auflisten
+       # List models for English (en_us)
        print(tts.available_models('en_us'))
 
-       # Sprachmodell festlegen (automatischer Download, falls nicht vorhanden)
+       # Set a voice model (auto-download if not already present)
        tts.set_model("en_US-amy-low")
 
-       # Etwas sagen
+       # Say something
        tts.say("Hello! I'm Piper TTS.")
 
-   * ``available_countrys()``: Zeigt die unterstützten Sprachen an.  
-   * ``available_models()``: Listet verfügbare Modelle für die angegebene Sprache.  
-   * ``set_model()``: Legt das Sprachmodell fest (lädt es automatisch herunter, falls nötig).  
+   * ``available_countrys()``: Zeigt die unterstützten Sprachen an.
+   * ``available_models()``: Listet verfügbare Modelle für die angegebene Sprache.
+   * ``set_model()``: Legt das Sprachmodell fest (lädt es automatisch herunter, falls nötig).
    * ``say()``: Wandelt Text in Sprache um und spielt ihn ab.
 
 #. Programm ausführen:
@@ -82,34 +80,36 @@ Stelle sicher, dass du Folgendes abgeschlossen hast:
 
 #. Beim ersten Ausführen wird das gewählte Sprachmodell automatisch heruntergeladen.
 
-   * Du solltest hören: ``Hello! I'm Piper TTS.``  
-   * Du kannst das Sprachmodell ändern, indem du einen anderen Namen in ``set_model()`` verwendest.
+   * Du solltest dann hören, wie der PiCar-X sagt: ``Hello! I'm Piper TTS.``
+
+   * Du kannst das Sprachmodell ändern, indem du ``set_model()`` mit einem anderen Namen verwendest.
+
 
 2. OpenAI TTS testen
 -------------------------------
 
 **API-Schlüssel abrufen und speichern**
 
-#. Gehe zu |link_openai_platform| und melde dich an. Auf der Seite **API keys** auf **Create new secret key** klicken.
+#. Gehe zu |link_openai_platform| und melde dich an. Auf der Seite **API keys** klicke auf **Create new secret key**.
 
    .. image:: img/llm_openai_create.png
 
-#. Details ausfüllen (Owner, Name, Projekt, Berechtigungen falls nötig) und **Create secret key** klicken.
+#. Fülle die Details aus (Owner, Name, Projekt und Berechtigungen falls nötig), dann klicke **Create secret key**.
 
    .. image:: img/llm_openai_create_confirm.png
 
-#. Den Schlüssel sofort kopieren — du kannst ihn später nicht mehr sehen.
+#. Sobald der Schlüssel erstellt ist, kopiere ihn sofort — du kannst ihn später nicht mehr einsehen. Wenn du ihn verlierst, musst du einen neuen erstellen.
 
    .. image:: img/llm_openai_copy.png
 
-#. In deinem Projektordner (z. B. ``/picar-x/example``) eine Datei ``secret.py`` erstellen:
+#. Erstelle in deinem Projektordner (z. B. ``/picar-x/example``) eine Datei namens ``secret.py``:
 
    .. code-block:: bash
 
        cd ~/picar-x/example
        sudo nano secret.py
 
-#. Schlüssel einfügen:
+#. Füge deinen Schlüssel wie folgt in die Datei ein:
 
    .. code-block:: python
 
@@ -126,76 +126,43 @@ Stelle sicher, dass du Folgendes abgeschlossen hast:
        cd ~/picar-x/example
        sudo nano test_tts_openai.py
 
-#. Beispielcode einfügen:
+#. Kopiere den folgenden Beispielcode in die Datei. Drücke ``Ctrl+X``, dann ``Y`` und schließlich ``Enter`` zum Speichern und Beenden.
 
    .. code-block:: python
 
       from picarx.tts import OpenAI_TTS
-      from secret import OPENAI_API_KEY
+      from secret import OPENAI_API_KEY   # or use the try/except version shown above
 
-      # OpenAI TTS initialisieren
+      # Initialize OpenAI TTS
       tts = OpenAI_TTS(api_key=OPENAI_API_KEY)
-      tts.set_model('gpt-4o-mini-tts')  # Niedriglatenzmodell
-      tts.set_voice('alloy')           # Stimme auswählen
+      tts.set_model('gpt-4o-mini-tts')  # low-latency TTS model
+      tts.set_voice('alloy')            # pick a voice
 
-      # Testausgabe
+      # Quick hello (sanity check)
       tts.say("Hello! I'm OpenAI TTS.")
 
-#. Ausführen:
+#. Programm ausführen:
 
    .. code-block:: bash
 
        sudo python3 test_tts_openai.py
 
-#. Du solltest hören:
+#. Du solltest hören, wie der PiCar-X sagt:
 
    ``Hello! I'm OpenAI TTS.``
-
-**Verfügbare Modelle und Stimmen**
-
-.. .. list-table::
-..    :header-rows: 1
-..    :widths: 20 80
-
-..    * - Kategorie
-..      - Optionen
-..    * - Modelle
-..      - 
-..        - ``tts-1``  
-..        - ``tts-1-hd``  
-..        - ``gpt-4o-mini-tts``  
-..        - ``accent``  
-..        - ``emotional-range``  
-..        - ``intonation``  
-..        - ``impressions``  
-..        - ``speed-of-speech``  
-..        - ``tone``  
-..        - ``whispering``
-..    * - Stimmen
-..      - 
-..        - ``alloy``  
-..        - ``ash``  
-..        - ``ballad``  
-..        - ``coral``  
-..        - ``echo``  
-..        - ``fable``  
-..        - ``nova``  
-..        - ``onyx``  
-..        - ``sage``  
-..        - ``shimmer``
 
 3. Geschichten erzählender Roboter
 --------------------------------------------------
 
-Nachdem wir sowohl **Piper** als auch **OpenAI TTS** getestet haben, setzen wir sie nun in einem echten Projekt ein:  
+Nachdem wir sowohl **Piper** als auch **OpenAI TTS** getestet haben, setzen wir sie nun in einem echten Projekt ein:
 ein **Geschichten erzählendes Roboterauto**, das während der Fahrt Witze erzählt.
 
 In diesem Programm wird der PiCar-X:
 
-* dich beim Start mit TTS begrüßen,  
-* vorwärts fahren und den ersten Witz erzählen,  
-* erneut vorwärts fahren und einen zweiten Witz erzählen,  
-* schließlich rückwärts fahren, „nach Hause“ zurückkehren und sich verabschieden.  
+* dich beim Start mit TTS begrüßen.
+* vorwärts fahren und den ersten Witz erzählen.
+* erneut vorwärts fahren und einen zweiten Witz erzählen.
+* schließlich rückwärts fahren, „nach Hause“ zurückkehren und sich verabschieden.
 
 Es ist, als hättest du einen kleinen Geschichtenerzähler auf Rädern!
 
@@ -268,7 +235,7 @@ Fehlerbehebung
 
 * **No module named 'secret'**
 
-  Das bedeutet, dass sich ``secret.py`` nicht im gleichen Ordner wie deine Python-Datei befindet.  
+  Das bedeutet, dass sich ``secret.py`` nicht im gleichen Ordner wie deine Python-Datei befindet.
   Verschiebe ``secret.py`` in das Verzeichnis, aus dem du das Skript startest, z. B.:
 
   .. code-block:: bash
@@ -285,34 +252,34 @@ Fehlerbehebung
 
        from secret import OPENAI_API_KEY
 
-  * Bestätige die Netzwerkverbindung auf deinem Pi (z. B. mit ``ping api.openai.com``).  
+  * Bestätige die Netzwerkverbindung auf deinem Pi (versuche ``ping api.openai.com``).
 
 * **OpenAI: Quota exceeded / billing error**
 
-  * Eventuell musst du Abrechnung aktivieren oder das Kontingent im OpenAI-Dashboard erhöhen.
+  * Eventuell musst du die Abrechnung aktivieren oder das Kontingent im OpenAI-Dashboard erhöhen.
   * Versuche es nach Behebung des Konto-/Abrechnungsproblems erneut.
 
 * **Piper: tts.say() läuft, aber kein Ton**
 
-  * Prüfe, ob ein Stimmenmodell wirklich vorhanden ist:
+  * Stelle sicher, dass ein Sprachmodell tatsächlich vorhanden ist:
 
     .. code-block:: bash
 
        ls ~/.local/share/piper/voices
 
-  * Bestätige, dass der Modellname im Code exakt passt:
+  * Bestätige, dass der Modellname im Code exakt übereinstimmt:
 
     .. code-block:: python
 
        tts.set_model("en_US-amy-low")
 
-  * Überprüfe Ausgabegerät/Lautstärke auf dem Pi (``alsamixer``) sowie Anschluss und Stromversorgung der Lautsprecher.
+  * Überprüfe das Audioausgabegerät/die Lautstärke auf deinem Pi (``alsamixer``) und dass die Lautsprecher angeschlossen und eingeschaltet sind.
 
-* **ALSA-/Audiogeräte-Fehler (z. B. „Audio device busy“ oder „No such file or directory“)**
-  
-  * Andere Programme schließen, die Audio nutzen.
-  * Pi neu starten, falls das Gerät belegt bleibt.
-  * Für HDMI vs. Kopfhörerbuchse in den Audioeinstellungen von Raspberry Pi OS das richtige Gerät auswählen.
+* **ALSA-/Audiogerätefehler (z. B. "Audio device busy" oder "No such file or directory")**
+
+  * Schließe andere Programme, die Audio verwenden.
+  * Starte den Pi neu, falls das Gerät belegt bleibt.
+  * Wähle für HDMI- vs. Kopfhörerausgang das richtige Gerät in den Audioeinstellungen von Raspberry Pi OS.
 
 * **Permission denied beim Ausführen von Python**
 
@@ -371,4 +338,3 @@ Vergleich der TTS-Engines
      - Etwas bessere Offline-Stimme
      - Lokale Projekte mit besserer Qualität
      - Höchste Qualität, viele Stimmoptionen
-

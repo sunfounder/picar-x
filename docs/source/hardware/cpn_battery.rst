@@ -13,7 +13,7 @@
     👉 Sind Sie bereit, mit uns zu erkunden und zu erschaffen? Klicken Sie auf [|link_sf_facebook|] und treten Sie heute bei!
 
 3-Pin Batterie
-=======================
+==============
 
 .. image:: img/3pin_battery.jpg
 

@@ -14,8 +14,9 @@
 
 .. _assembly_instructions:
 
+
 Assemble the PiCar-X
-==========================================
+=====================
 
 Bevor Sie mit der Montage des PiCar-X beginnen, vergewissern Sie sich bitte, dass alle Teile und Komponenten enthalten sind. Sollten Komponenten fehlen oder beschädigt sein, kontaktieren Sie SunFounder umgehend unter service@sunfounder.com, damit das Problem schnell gelöst werden kann.
 

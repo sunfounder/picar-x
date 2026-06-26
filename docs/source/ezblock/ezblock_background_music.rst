@@ -13,7 +13,7 @@
     👉 Sind Sie bereit, mit uns zu erkunden und zu erschaffen? Klicken Sie auf [|link_sf_facebook|] und treten Sie heute bei!
 
 Hintergrundmusik
-======================
+================
 
 Neben der Programmierung des PiCar-X, um Soundeffekte oder Text-to-Speech (TTS) abzuspielen, kann der PiCar-X auch Hintergrundmusik wiedergeben. In diesem Projekt wird außerdem ein **Schieberegler**-Widget zur Anpassung der Musiklautstärke verwendet.
 

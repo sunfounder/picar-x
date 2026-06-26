@@ -15,11 +15,7 @@
 .. _play_ezblock:
 
 Mit Ezblock spielen
-===========================
-
-.. note::
-
-  Wenn Sie einen Raspberry Pi 5 verwenden, wird unsere grafische Programmiersoftware EzBlock nicht unterstützt.
+===================
 
 Für Anfänger ist EzBlock eine Softwareentwicklungsplattform, die von SunFounder für den Raspberry Pi angeboten wird. EzBlock bietet zwei Programmierumgebungen: eine grafische Umgebung und eine Python-Umgebung.
 
@@ -36,13 +32,12 @@ Hier ist ein Tutorial, das Ihnen hilft, die Installation, den Download und die N
 
 
 
-
-
 **Projekte**
 
-Dieser Abschnitt beginnt mit grundlegenden Programmierfunktionen für den PiCar-X und führt weiter zur Erstellung fortgeschrittenerer Programme im Ezblock Studio. 
-Jedes Tutorial enthält TIPPS, die neue Funktionen vorstellen, sodass Benutzer das entsprechende Programm schreiben können. 
-Es gibt auch einen vollständigen Referenzcode im Beispielbereich, der direkt verwendet werden kann. 
+
+Dieser Abschnitt beginnt mit grundlegenden Programmierfunktionen für den PiCar-X und führt weiter zur Erstellung fortgeschrittenerer Programme im Ezblock Studio.
+Jedes Tutorial enthält TIPPS, die neue Funktionen vorstellen, sodass Benutzer das entsprechende Programm schreiben können.
+Es gibt auch einen vollständigen Referenzcode im Beispielbereich, der direkt verwendet werden kann.
 Wir empfehlen, die Programmierung ohne den Code aus den Beispielabschnitten zu versuchen und den Spaß am Lösen von Herausforderungen zu genießen!
 
 Alle Ezblock-Projekte wurden auf die Beispielseite von Ezblock Studio hochgeladen. Von der Beispielseite aus können Benutzer die Programme direkt ausführen oder die Beispiele bearbeiten und sie im Ordner "Meine Projekte" des Benutzers speichern.
@@ -72,8 +67,3 @@ Die Beispielseite ermöglicht es den Benutzern, zwischen Block- oder Python-Spra
     ezblock_beware_pedestrians
     ezblock_traffic
     ezblock_orienteering
-
-
-
-
-

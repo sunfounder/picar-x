@@ -13,7 +13,7 @@
     👉 Sind Sie bereit, mit uns zu erkunden und zu erschaffen? Klicken Sie auf [|link_sf_facebook|] und treten Sie heute bei!
 
 Ultraschallmodul
-================================
+================
 
 .. image:: img/ultrasonic_pic.png
     :width: 400
@@ -52,7 +52,7 @@ Die grundlegenden Prinzipien sind wie folgt:
     .. image:: img/ultrasonic_prin.jpg
         :width: 800
 
-Formel: 
+Formel:
 
 * us / 58 = Entfernung in Zentimetern
 * us / 148 = Entfernung in Zoll

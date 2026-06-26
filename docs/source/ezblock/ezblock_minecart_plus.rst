@@ -13,7 +13,7 @@
     👉 Sind Sie bereit, mit uns zu erkunden und zu erschaffen? Klicken Sie auf [|link_sf_facebook|] und treten Sie heute bei!
 
 Minenwagen Plus
-=======================
+===============
 
 In diesem Projekt wurde dem :ref:`ezb_minecart`-Projekt eine Entgleisungswiederherstellung hinzugefügt, um dem PiCar-X die Anpassung und Wiederherstellung bei stärkeren Kurven zu ermöglichen.
 

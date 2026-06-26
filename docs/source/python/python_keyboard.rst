@@ -1,4 +1,4 @@
-.. note::
+﻿.. note::
 
     Hallo und willkommen in der SunFounder Raspberry Pi & Arduino & ESP32 Enthusiasten-Gemeinschaft auf Facebook! Tauchen Sie tiefer ein in die Welt von Raspberry Pi, Arduino und ESP32 mit anderen Enthusiasten.
 
@@ -17,6 +17,7 @@
 3. Tastatursteuerung
 ================================
 
+
 In diesem Projekt lernen wir, wie man die Tastatur verwendet, um den PiCar-X aus der Ferne zu steuern.
 Sie können den PiCar-X vorwärts, rückwärts, nach links und nach rechts steuern.
 
@@ -33,14 +34,14 @@ Sie können den PiCar-X vorwärts, rückwärts, nach links und nach rechts steue
 
 Drücken Sie Tasten auf der Tastatur, um PiCar-X zu steuern!
 
-    * w: Vorwärts 
-    * a: Links abbiegen 
-    * s: Rückwärts 
+    * w: Vorwärts
+    * a: Links abbiegen
+    * s: Rückwärts
     * d: Rechts abbiegen
     * i: Kopf hoch
     * k: Kopf runter
     * j: Kopf nach links drehen
-    * l: Kopf nach rechts drehen     
+    * l: Kopf nach rechts drehen
     * ctrl + c: Zweimal drücken, um das Programm zu beenden
 
 **Code**
@@ -61,8 +62,7 @@ Drücken Sie Tasten auf der Tastatur, um PiCar-X zu steuern!
         k: Head down
         j: Turn head left
         l: Turn head right
-        ctrl + c: Press twice to exit the program
-
+        ctrl+c: Quit
     '''
 
     def show_info():
@@ -79,7 +79,7 @@ Drücken Sie Tasten auf der Tastatur, um PiCar-X zu steuern!
             while True:
                 key = readchar.readkey()
                 key = key.lower()
-                if key in('wsadikjl'): 
+                if key in('wsadikjl'):
                     if 'w' == key:
                         px.set_dir_servo_angle(0)
                         px.forward(80)
@@ -107,30 +107,30 @@ Drücken Sie Tasten auf der Tastatur, um PiCar-X zu steuern!
                     elif 'j' == key:
                         pan_angle-=5
                         if pan_angle<-35:
-                            pan_angle=-35                 
+                            pan_angle=-35
 
                     px.set_cam_tilt_angle(tilt_angle)
-                    px.set_cam_pan_angle(pan_angle)      
-                    show_info()                     
+                    px.set_cam_pan_angle(pan_angle)
+                    show_info()
                     sleep(0.5)
                     px.forward(0)
-            
+
                 elif key == readchar.key.CTRL_C:
                     print("\n Quit")
                     break
 
         finally:
             px.set_cam_tilt_angle(0)
-            px.set_cam_pan_angle(0)  
-            px.set_dir_servo_angle(0)  
+            px.set_cam_pan_angle(0)
+            px.set_dir_servo_angle(0)
             px.stop()
             sleep(.2)
 
 
-**Wie funktioniert des?**
+**Wie funktioniert es?**
 
-PiCar-X sollte entsprechende Aktionen basierend auf den gelesenen Tastaturzeichen ausführen. 
-Die Funktion ``lower()`` wandelt Großbuchstaben in Kleinbuchstaben um, 
+PiCar-X sollte entsprechende Aktionen basierend auf den gelesenen Tastaturzeichen ausführen.
+Die Funktion ``lower()`` wandelt Großbuchstaben in Kleinbuchstaben um,
 damit der Buchstabe unabhängig von der Groß- oder Kleinschreibung gültig bleibt.
 
 .. code-block:: python
@@ -138,7 +138,7 @@ damit der Buchstabe unabhängig von der Groß- oder Kleinschreibung gültig blei
     while True:
         key = readchar.readkey()
         key = key.lower()
-        if key in('wsadikjl'): 
+        if key in('wsadikjl'):
             if 'w' == key:
                 pass
             elif 's' == key:
@@ -154,8 +154,8 @@ damit der Buchstabe unabhängig von der Groß- oder Kleinschreibung gültig blei
             elif 'l' == key:
                 pass
             elif 'j' == key:
-                pass             
-    
+                pass
+
         elif key == readchar.key.CTRL_C:
             print("\n Quit")
             break

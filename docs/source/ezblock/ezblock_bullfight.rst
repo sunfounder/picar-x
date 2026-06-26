@@ -13,7 +13,7 @@
     👉 Sind Sie bereit, mit uns zu erkunden und zu erschaffen? Klicken Sie auf [|link_sf_facebook|] und treten Sie heute bei!
 
 Stierkampf
-==============
+==========
 
 Verwandeln Sie den PiCar-X in einen wütenden Stier! Bereiten Sie ein rotes Tuch, wie ein Taschentuch, vor und werden Sie ein Stierkämpfer. Achten Sie darauf, nicht getroffen zu werden, wenn der PiCar-X dem roten Tuch hinterherjagt!
 

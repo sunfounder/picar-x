@@ -12,8 +12,9 @@
 
     👉 Sind Sie bereit, mit uns zu erkunden und zu erschaffen? Klicken Sie auf [|link_sf_facebook|] und treten Sie heute bei!
 
+
 Video 3: Text in Sprache
-============================
+=========================
 
 Dieses Tutorial behandelt die Text-zu-Sprache-Funktionen des PiCar-X-Roboters:
 
@@ -23,6 +24,7 @@ Dieses Tutorial behandelt die Text-zu-Sprache-Funktionen des PiCar-X-Roboters:
 * **Musikwiedergabe**: Lehrt, wie Musikdateien auf dem Roboter mit Python-Skripten abgespielt werden.
 
 Die Lektion bietet ein umfassendes Tutorial zur Integration der Text-zu-Sprache-Funktionalität in den PiCar-X-Roboter, einschließlich praktischer Demonstrationen und Code-Details.
+
 
 **Video**
 

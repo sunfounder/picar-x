@@ -13,7 +13,7 @@
     👉 Sind Sie bereit, mit uns zu erkunden und zu erschaffen? Klicken Sie auf [|link_sf_facebook|] und treten Sie heute bei!
 
 Sag Hallo
-===================
+=========
 
 Dieses Projekt kombiniert mehrere Funktionen aus den vorangegangenen Projekten. Die Bewegung des PiCar-X wird ferngesteuert, und die Kamera des PiCar wird ebenfalls durch zwei Joystick-Controller ferngesteuert. Erkennt das PiCar das Gesicht einer Person, wird es höflich nicken und „Hallo!“ sagen.
 
@@ -21,6 +21,7 @@ Dieses Projekt kombiniert mehrere Funktionen aus den vorangegangenen Projekten. 
 * :ref:`ezblock:remote_control_latest`
 
 .. image:: img/how_are_you.jpg
+
 
 **TIPPS**
 
@@ -38,5 +39,6 @@ Der **Bedingungen**-Block wird zusammen mit dem **if do**-Block verwendet. Die B
 
     * Sie können das Programm gemäß dem folgenden Bild erstellen, bitte beziehen Sie sich dazu auf das Tutorial: :ref:`ezblock:create_project_latest`.
     * Oder finden Sie den Code mit dem gleichen Namen auf der **Beispiele**-Seite des EzBlock Studios und klicken Sie direkt auf **Ausführen** oder **Bearbeiten**.
+
 
 .. image:: img/sp210512_162305.png

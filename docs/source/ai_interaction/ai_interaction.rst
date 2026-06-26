@@ -31,3 +31,4 @@ Hier wirst du Text-to-Speech (TTS), Speech-to-Text (STT) und Large Language Mode
     python_local_chatbot
     python_treasure_hunt
     python_ai_robot
+    ../openclaw

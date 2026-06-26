@@ -13,7 +13,8 @@
     👉 Sind Sie bereit, mit uns zu erkunden und zu erschaffen? Klicken Sie auf [|link_sf_facebook|] und treten Sie heute bei!
 
 Video 9: Videoaufnahme
-=========================================
+======================
+
 Dieses Tutorial bietet eine prägnante, aber detaillierte Anleitung zur Aufnahme und Verwaltung von Videos mit dem PiCar-X-Roboter.
 
 * **Überblick**: Lehrt, wie man HD 1080p-Videos mit dem PiCar-X, einem Raspberry Pi Selbstfahr-Roboterauto-Kit, aufzeichnet.
@@ -23,6 +24,7 @@ Dieses Tutorial bietet eine prägnante, aber detaillierte Anleitung zur Aufnahme
 * **Videowiedergabe**: Veranschaulicht, wie aufgenommene Videos gefunden und abgespielt werden, um die Qualität zu überprüfen.
 * **Zusätzliche Funktionen**: Stellt das PiCamera2 GitHub-Repository für weitere Aufnahmeoptionen wie Zeitraffer und einfache Aufnahme vor.
 * **Einfache Video-Skripterstellung**: Hebt das Erstellen und Ausführen von einfachen Videoaufnahme-Skripten mit verschiedenen Formaten und Konfigurationen hervor.
+
 
 **Video**
 

@@ -13,7 +13,7 @@
     👉 Sind Sie bereit, mit uns zu erkunden und zu erschaffen? Klicken Sie auf [|link_sf_facebook|] und treten Sie heute bei!
 
 Video 2: Steuerung des PiCar-X mit der Tastatur
-=======================================================
+================================================
 
 In diesem Video-Tutorial lernen Sie, wie Sie den PiCar-X-Roboter mit einer Tastatur steuern. Es umfasst:
 
@@ -24,6 +24,7 @@ In diesem Video-Tutorial lernen Sie, wie Sie den PiCar-X-Roboter mit einer Tasta
 * **Steuerung Beenden**: Erklärt das Beenden der Tastatursteuerung durch Drücken von ``Strg + C``, wodurch der Roboter in seinen Ausgangszustand zurückkehrt.
 
 Dieses Tutorial ist ideal für Anfänger und Robotik-Enthusiasten und bietet klare Anweisungen sowie eine praktische Demonstration zur Steuerung des PiCar-X-Roboters mit einer Tastatur.
+
 
 **Video**
 

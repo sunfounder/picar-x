@@ -13,7 +13,7 @@
     👉 Sind Sie bereit, mit uns zu erkunden und zu erschaffen? Klicken Sie auf [|link_sf_facebook|] und treten Sie heute bei!
 
 Video 7: PiCar-X Computervision
-=============================================================
+===============================
 
 Dieses Video-Tutorial konzentriert sich auf die Fähigkeiten der Computervision im PiCar-X:
 
@@ -27,6 +27,7 @@ Dieses Video-Tutorial konzentriert sich auf die Fähigkeiten der Computervision 
 * **Codebearbeitung und -ausführung**: Demonstriert das Erstellen, Bearbeiten und Ausführen von Python-Skripten für verschiedene Aufgaben der Computervision.
 
 Diese Lektion bietet einen umfassenden Leitfaden zur Erforschung der Funktionen der Computervision im PiCar-X, einschließlich praktischer Demonstrationen von Farberkennung, QR-Code-Lesen, Gesichtserkennung und Verfolgung von Handbewegungen.
+
 
 **Video**
 

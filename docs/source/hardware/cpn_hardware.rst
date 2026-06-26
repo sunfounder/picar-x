@@ -13,7 +13,7 @@
     👉 Sind Sie bereit, mit uns zu erkunden und zu erschaffen? Klicken Sie auf [|link_sf_facebook|] und treten Sie heute bei!
 
 Hardware
-================
+========
 
 Wenn Sie Code schreiben, müssen Sie möglicherweise wissen, wie jedes Modul funktioniert oder welche Rolle jeder Pin spielt. Sehen Sie sich dann bitte dieses Kapitel an.
 

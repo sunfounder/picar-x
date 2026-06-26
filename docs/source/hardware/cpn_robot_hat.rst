@@ -13,7 +13,7 @@
     👉 Sind Sie bereit, mit uns zu erkunden und zu erschaffen? Klicken Sie auf [|link_sf_facebook|] und treten Sie heute bei!
 
 Robot HAT
-====================
+=========
 
 |link_robot_hat_v4| ist eine multifunktionale Erweiterungsplatine, die es ermöglicht, den Raspberry Pi schnell in einen Roboter zu verwandeln. An Bord befindet sich ein Mikrocontroller (MCU), um den PWM-Ausgang und den ADC-Eingang für den Raspberry Pi zu erweitern, sowie ein Motortreiber-Chip, ein I2S-Audiomodul und ein Mono-Lautsprecher. Ebenfalls vorhanden sind die GPIOs, die vom Raspberry Pi selbst herausgeführt werden.
 
@@ -22,7 +22,6 @@ Es verfügt außerdem über einen Lautsprecher, der verwendet werden kann, um Hi
 Akzeptiert 7-12V Eingangsspannung mit 2 Batterieanzeigen, 1 Ladeanzeige und 1 Leistungsanzeige. Die Platine verfügt auch über eine benutzerfreundliche LED und einen Knopf, mit dem Sie schnell einige Effekte testen können.
 
 Für detaillierte Anweisungen, siehe: |link_robot_hat_v4|.
-
 
 
 

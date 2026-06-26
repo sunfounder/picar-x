@@ -12,19 +12,18 @@
 
     👉 Sind Sie bereit, mit uns zu erkunden und zu erschaffen? Klicken Sie auf [|link_sf_facebook|] und treten Sie heute bei!
 
-
 19. Lokaler Sprach-Chatbot
 ===========================
 
-In dieser Lektion kombinierst du alles, was du gelernt hast — **Spracherkennung (STT)**,  
-**Text-zu-Sprache (TTS)** und ein **lokales LLM (Ollama)** — um einen vollständig offline laufenden **Sprach-Chatbot**  
+In dieser Lektion kombinierst du alles, was du gelernt hast — **Spracherkennung (STT)**,
+**Text-zu-Sprache (TTS)** und ein **lokales LLM (Ollama)** — um einen vollständig offline laufenden **Sprach-Chatbot**
 auf deinem PiCar-X-System zu bauen.
 
 Der Ablauf ist einfach:
 
-#. **Zuhören** — Das Mikrofon erfasst deine Sprache und transkribiert sie mit **Vosk**.  
-#. **Denken** — Der Text wird an ein lokales **LLM** gesendet, das auf Ollama läuft (z. B. ``llama3.2:3b``).  
-#. **Sprechen** — Der Chatbot antwortet laut mit **Piper TTS**.  
+#. **Zuhören** — Das Mikrofon erfasst deine Sprache und transkribiert sie mit **Vosk**.
+#. **Denken** — Der Text wird an ein lokales **LLM** gesendet, das auf Ollama läuft (z. B. ``llama3.2:3b``).
+#. **Sprechen** — Der Chatbot antwortet laut mit **Piper TTS**.
 
 So entsteht ein **freihändig bedienbarer Konversationsroboter**, der in Echtzeit verstehen und antworten kann.
 
@@ -36,8 +35,8 @@ Bevor du beginnst
 Stelle sicher, dass du Folgendes vorbereitet hast:
 
 * :ref:`install_all_modules` — Installiere die Module ``robot-hat``, ``vilib``, ``picar-x`` und führe dann das Skript ``i2samp.sh`` aus.
-* **Piper TTS** getestet (:ref:`test_piper`) und ein funktionierendes Stimmenmodell ausgewählt.  
-* **Vosk STT** getestet (:ref:`test_vosk`) und das passende Sprachpaket gewählt (z. B. ``en-us``).  
+* **Piper TTS** getestet (:ref:`test_piper`) und ein funktionierendes Stimmenmodell ausgewählt.
+* **Vosk STT** getestet (:ref:`test_vosk`) und das passende Sprachpaket gewählt (z. B. ``en-us``).
 * **Ollama** installiert (:ref:`download_ollama`) auf deinem Pi oder einem anderen Computer und ein Modell wie ``llama3.2:3b`` heruntergeladen (oder ein kleineres wie ``moondream:1.8b``, wenn der Speicher begrenzt ist).
 
 ----
@@ -54,12 +53,12 @@ Code ausführen
 
 #. Passe die Parameter nach Bedarf an:
 
-   * ``stt = Vosk(language="en-us")``: Ändere dies passend zu deinem Akzent/Sprachpaket (z. B. ``en-us``, ``zh-cn``, ``es``).  
-   * ``tts.set_model("en_US-amy-low")``: Ersetze dies durch das Piper-Stimmenmodell, das du in :ref:`test_piper` verifiziert hast.  
-   * ``llm = Ollama(ip="localhost", model="llama3.2:3b")``: Aktualisiere sowohl ``ip`` als auch ``model`` entsprechend deiner Umgebung.  
+   * ``stt = Vosk(language="en-us")``: Ändere dies passend zu deinem Akzent/Sprachpaket (z. B. ``en-us``, ``zh-cn``, ``es``).
+   * ``tts.set_model("en_US-amy-low")``: Ersetze dies durch das Piper-Stimmenmodell, das du in :ref:`test_piper` verifiziert hast.
+   * ``llm = Ollama(ip="localhost", model="llama3.2:3b")``: Aktualisiere sowohl ``ip`` als auch ``model`` entsprechend deiner Umgebung.
 
-     * ``ip``: Wenn Ollama auf **demselben Pi** läuft, nutze ``localhost``. Läuft Ollama auf einem anderen Computer im LAN, aktiviere **Expose to network** in Ollama und setze ``ip`` auf die LAN-IP dieses Computers.  
-     * ``model``: Muss exakt dem Modellnamen entsprechen, den du in Ollama heruntergeladen/aktiviert hast.  
+     * ``ip``: Wenn Ollama auf **demselben Pi** läuft, nutze ``localhost``. Läuft Ollama auf einem anderen Computer im LAN, aktiviere **Expose to network** in Ollama und setze ``ip`` auf die LAN-IP dieses Computers.
+     * ``model``: Muss exakt dem Modellnamen entsprechen, den du in Ollama heruntergeladen/aktiviert hast.
 
 #. Starte das Skript:
 
@@ -70,11 +69,11 @@ Code ausführen
 
 #. Nach dem Start solltest du Folgendes sehen:
 
-   * Der Bot begrüßt dich mit einer gesprochenen Willkommensnachricht.  
-   * Er wartet auf gesprochene Eingaben.  
-   * Vosk transkribiert deine Sprache in Text.  
-   * Der Text wird an Ollama gesendet, das eine Antwort streamt.  
-   * Die Antwort wird bereinigt (versteckte Begründungen werden entfernt) und von Piper laut gesprochen.  
+   * Der Bot begrüßt dich mit einer gesprochenen Willkommensnachricht.
+   * Er wartet auf gesprochene Eingaben.
+   * Vosk transkribiert deine Sprache in Text.
+   * Der Text wird an Ollama gesendet, das eine Antwort streamt.
+   * Die Antwort wird bereinigt (versteckte Begründungen werden entfernt) und von Piper laut gesprochen.
    * Beende das Programm jederzeit mit ``Strg+C``.
 
 ----
@@ -183,8 +182,9 @@ Code-Analyse
    from picarx.stt import Vosk
    from picarx.tts import Piper
 
-Bindet die drei zuvor erstellten Subsysteme ein:  
+Bindet die drei zuvor erstellten Subsysteme ein:
 **Vosk** für Speech-to-Text (STT), **Ollama** für das LLM und **Piper** für Text-to-Speech (TTS).
+
 
 
 **Initialisierung STT (Vosk)**
@@ -193,8 +193,9 @@ Bindet die drei zuvor erstellten Subsysteme ein:
 
    stt = Vosk(language="en-us")
 
-Lädt das Vosk-Modell für US-Englisch.  
+Lädt das Vosk-Modell für US-Englisch.
 Ändere den Sprachcode (z. B. ``zh-cn``, ``es``), um die Erkennungsgenauigkeit an deine Sprache anzupassen.
+
 
 
 **Initialisierung TTS (Piper)**
@@ -204,8 +205,9 @@ Lädt das Vosk-Modell für US-Englisch.
    tts = Piper()
    tts.set_model("en_US-amy-low")
 
-Erstellt eine Piper-Engine und wählt eine Stimme aus.  
+Erstellt eine Piper-Engine und wählt eine Stimme aus.
 Wähle ein Modell, das du zuvor in :ref:`test_piper` getestet hast. Niedrigere Qualität = schnellere Ausführung, geringere CPU-Last.
+
 
 
 **LLM-Anweisungen und Willkommensnachricht**
@@ -220,8 +222,9 @@ Wähle ein Modell, das du zuvor in :ref:`test_piper` getestet hast. Niedrigere Q
 
 Zwei wichtige UX-Designentscheidungen:
 
-* **Kurze und direkte Antworten** sorgen für bessere TTS-Verständlichkeit.  
+* **Kurze und direkte Antworten** sorgen für bessere TTS-Verständlichkeit.
 * Versteckte „Gedanken“-Tags (z. B. <think>) werden verboten, um saubere Ausgaben zu gewährleisten.
+
 
 
 **Verbindung zu Ollama und Gesprächskontext setzen**
@@ -232,8 +235,9 @@ Zwei wichtige UX-Designentscheidungen:
    llm.set_max_messages(20)
    llm.set_instructions(INSTRUCTIONS)
 
-* ``ip="localhost"`` bedeutet, dass Ollama auf demselben Pi läuft. Läuft es auf einem anderen Rechner im LAN, aktiviere **Expose to network** und nutze dessen IP-Adresse.  
+* ``ip="localhost"`` bedeutet, dass Ollama auf demselben Pi läuft. Läuft es auf einem anderen Rechner im LAN, aktiviere **Expose to network** und nutze dessen IP-Adresse.
 * ``set_max_messages(20)`` begrenzt den Gesprächsverlauf — wichtig für Speicher und Latenz.
+
 
 
 **Verstecktes Denken / Tags entfernen**
@@ -249,8 +253,9 @@ Zwei wichtige UX-Designentscheidungen:
        text = re.sub(r"\[/?thinking\]", "", text, flags=re.IGNORECASE)
        return re.sub(r"\s+\n", "\n", text).strip()
 
-Manche Modelle geben interne Tags aus (z. B. ``<think>…``).  
+Manche Modelle geben interne Tags aus (z. B. ``<think>...``).
 Diese Funktion entfernt sie, damit die Sprachausgabe **nur die finale Antwort** wiedergibt.
+
 
 
 **Hauptschleife: Begrüßen → Zuhören → Denken → Sprechen**
@@ -261,6 +266,7 @@ Diese Funktion entfernt sie, damit die Sprachausgabe **nur die finale Antwort** 
    tts.say(WELCOME)
 
 Begrüßt den Benutzer über Terminal und Lautsprecher — einmalig beim Start.
+
 
 
 **Zuhören (Streaming-STT mit Live-Partials)**
@@ -277,8 +283,9 @@ Begrüßt den Benutzer über Terminal und Lautsprecher — einmalig beim Start.
        else:
            print(f"[YOU] {result['partial']}", end="\r", flush=True)
 
-* ``stream=True`` liefert **partielle** Transkripte in Echtzeit.  
+* ``stream=True`` liefert **partielle** Transkripte in Echtzeit und ein **finales** Transkript, wenn die Äußerung endet.
 * Das finale Ergebnis wird in ``text`` gespeichert und ausgegeben.
+
 
 
 **Sicherung:** Wenn nichts erkannt wurde, wird der LLM-Aufruf übersprungen:
@@ -290,7 +297,8 @@ Begrüßt den Benutzer über Terminal und Lautsprecher — einmalig beim Start.
        time.sleep(0.1)
        continue
 
-Dadurch werden leere Eingaben vermieden → schnellere Reaktionen und weniger Rechenlast.
+Dadurch werden leere Eingaben an das Modell vermieden (spart Zeit und Token).
+
 
 
 **Denken (LLM) mit Token-Streaming**
@@ -305,15 +313,14 @@ Dadurch werden leere Eingaben vermieden → schnellere Reaktionen und weniger Re
            reply_accum += next_word
    print("")
 
-* Sendet das finale Transkript an das lokale LLM.  
-* Antwort wird **während des Eintreffens** angezeigt → minimale Latenz.  
-* Gleichzeitig wird die vollständige Antwort in ``reply_accum`` gespeichert.
+* Sendet das finale Transkript an das lokale LLM und **zeigt die Token während des Eintreffens an** für geringe Latenz.
+* Gleichzeitig wird die vollständige Antwort in ``reply_accum`` für die Nachbearbeitung gespeichert.
+
+**Hinweis:** Wenn du die rohen Token **nicht** anzeigen möchtest, setze ``stream=False`` und gib nur den finalen String aus.
 
 
-**Hinweis:** Wenn du keine Token sehen möchtest, setze ``stream=False``.
 
-
-**Sprechen (bereinigt + TTS)**
+**Sprechen (bereinigen + einmal TTS)**
 
 .. code-block:: python
 
@@ -323,8 +330,9 @@ Dadurch werden leere Eingaben vermieden → schnellere Reaktionen und weniger Re
    else:
        tts.say("Sorry, I didn't catch that.")
 
-* Entfernt unerwünschte Tags und spricht **nur** die eigentliche Antwort.  
-* Nur **ein TTS-Aufruf** pro Antwort → klare Sprachausgabe.
+* Bereinigt den finalen Text, um versteckte Tags zu entfernen, und **spricht genau einmal**.
+* Ein einziger TTS-Durchlauf vermeidet wiederholte Ausgaben wie „[LLM] / [SAY]“.
+
 
 
 **Beenden und Aufräumen**
@@ -337,7 +345,7 @@ Dadurch werden leere Eingaben vermieden → schnellere Reaktionen und weniger Re
        tts.say("Goodbye!")
        print("Bye.")
 
-Mit **Strg+C** stoppen. Der Bot verabschiedet sich, bevor er sauber beendet.
+Verwende **Strg+C** zum Stoppen. Der Bot verabschiedet sich kurz, um einen sauberen Exit zu signalisieren.
 
 
 ----
@@ -347,25 +355,20 @@ Fehlerbehebung & FAQ
 
 * **Modell zu groß (Speicherfehler)**
 
-  Kleineres Modell wie ``moondream:1.8b`` verwenden oder Ollama auf leistungsfähigerem Rechner ausführen.
+  Verwende ein kleineres Modell wie ``moondream:1.8b`` oder führe Ollama auf einem leistungsfähigeren Computer aus.
 
 * **Keine Antwort von Ollama**
 
-  Stelle sicher, dass Ollama läuft (``ollama serve`` oder Desktop-App offen).  
-    Bei Remote: *Expose to network* aktivieren + IP prüfen.
+  Stelle sicher, dass Ollama läuft (``ollama serve`` oder Desktop-App geöffnet). Bei Remote: **Expose to network** aktivieren und IP-Adresse überprüfen.
 
-* **Vosk erkennt Sprache nicht** 
+* **Vosk erkennt keine Sprache**
 
-  Mikrofon überprüfen. Passendes Sprachpaket (z. B. ``zh-cn``) testen.
+  Überprüfe, ob dein Mikrofon funktioniert. Versuche bei Bedarf ein anderes Sprachpaket (``zh-cn``, ``es`` usw.).
 
-* **Piper bleibt stumm oder gibt Fehler** 
+* **Piper bleibt stumm oder gibt Fehler**
 
-  Stimmenmodell herunterladen und in :ref:`test_piper` testen.
+  Bestätige, dass das gewählte Stimmenmodell heruntergeladen und in :ref:`test_piper` getestet wurde.
 
-* **Antworten zu lang oder unpassend**  
+* **Antworten zu lang oder unpassend**
 
-  ``INSTRUCTIONS`` anpassen, z. B. „Keep answers short and to the point.“
-
-
-
-
+  Bearbeite ``INSTRUCTIONS``, um hinzuzufügen: **„Keep answers short and to the point.“**

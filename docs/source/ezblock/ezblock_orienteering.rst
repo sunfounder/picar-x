@@ -13,7 +13,7 @@
     👉 Sind Sie bereit, mit uns zu erkunden und zu erschaffen? Klicken Sie auf [|link_sf_facebook|] und treten Sie heute bei!
 
 Orientierungslauf
-==================
+=================
 
 In diesem Projekt wird die Fernsteuerungsfunktion verwendet, um den PiCar-X bei einer Wettbewerbs-Schnitzeljagd zu führen!
 
@@ -46,6 +46,7 @@ Spielen Sie abwechselnd mit Freunden dieses Spiel, um herauszufinden, wer dem Pi
 
     * Sie können das Programm gemäß der folgenden Abbildung schreiben. Bitte beachten Sie das Tutorial: :ref:`ezblock:create_project_latest`.
     * Oder finden Sie den Code mit demselben Namen auf der **Examples** -Seite des EzBlock Studios und klicken Sie direkt auf **Run** oder **Edit**.
+
 
 .. image:: img/sp210513_154117.png
     :width: 800

@@ -13,7 +13,7 @@
     👉 Sind Sie bereit, mit uns zu erkunden und zu erschaffen? Klicken Sie auf [|link_sf_facebook|] und treten Sie heute bei!
 
 Abgrund-Erkennung
-===========================
+=================
 
 Dieses Projekt nutzt das **Grauskalierungsmodul**, um zu verhindern, dass der PiCar-X in Ihrem Zuhause von einer Klippe oder einer Treppe stürzt. Dies ist ein unverzichtbares Projekt für Häuser mit Treppen.
 

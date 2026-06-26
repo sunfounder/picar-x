@@ -51,11 +51,12 @@ Lassen Sie uns einen PiCar-X-Controller mit dieser App anpassen.
         <run></run>
 
     .. code-block::
-        
+
         cd ~/picar-x/example
         sudo python3 12.app_control.py
 
 #. Installieren Sie `SunFounder Controller <https://docs.sunfounder.com/projects/sf-controller/en/latest/>`_ aus dem **App Store(iOS)** oder **Google Play(Android)**.
+
 
 #. Öffnen und erstellen Sie einen neuen Controller.
 
@@ -64,7 +65,7 @@ Lassen Sie uns einen PiCar-X-Controller mit dieser App anpassen.
     .. image:: img/app1.PNG
 
     Im Abschnitt 'Voreinstellungen' gibt es voreingestellte Controller für einige Produkte, die Sie bei Bedarf verwenden können. Hier wählen wir PiCar-X aus.
-    
+
     .. image:: img/app_control_preset.jpg
 
 #. Verbinden Sie sich mit PiCar-x.
@@ -72,8 +73,8 @@ Lassen Sie uns einen PiCar-X-Controller mit dieser App anpassen.
     Wenn Sie auf den **Connect**-Button klicken, wird automatisch nach Robotern in der Nähe gesucht. Der Name ist in ``picarx_control.py`` definiert und muss ständig laufen.
 
     .. image:: img/app9.PNG
-    
-    Sobald Sie auf den Produktnamen klicken, erscheint die Meldung „Connected Successfully“ und der Produktname wird in der oberen rechten Ecke angezeigt.
+
+    Sobald Sie auf den Produktnamen klicken, erscheint die Meldung "Connected Successfully" und der Produktname wird in der oberen rechten Ecke angezeigt.
 
     .. image:: img/app10.PNG
 
@@ -89,7 +90,7 @@ Lassen Sie uns einen PiCar-X-Controller mit dieser App anpassen.
     Klicken Sie auf den **Run**-Button, um den Controller zu starten, Sie sehen das Filmmaterial des Autos und können jetzt Ihr PiCar-X mit diesen Widgets steuern.
 
     .. image:: img/app12.PNG
-    
+
     Hier sind die Funktionen der Widgets.
 
     * **A**: Zeigt die aktuelle Geschwindigkeit des Autos an.
@@ -101,6 +102,5 @@ Lassen Sie uns einen PiCar-X-Controller mit dieser App anpassen.
     * **N**: Schaltet die Farberkennungsfunktion ein.
     * **O**: Schaltet die Gesichtserkennungsfunktion ein.
     * **P**: Schaltet die Objekterkennungsfunktion ein, sie kann fast 90 Arten von Objekten erkennen, für die Liste der Modelle, siehe: https://github.com/sunfounder/vilib/blob/master/workspace/coco_labels.txt.
-
 
 

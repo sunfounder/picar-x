@@ -17,14 +17,16 @@
 18. Verbindung zu Online-LLMs herstellen
 ========================================
 
-In dieser Lektion lernst du, wie du deinen PiCar-X (oder Raspberry Pi) mit verschiedenen **Online-Large-Language-Models (LLMs)** verbindest.  
+In dieser Lektion lernst du, wie du deinen PiCar-X (oder Raspberry Pi) mit verschiedenen **Online-Large-Language-Models (LLMs)** verbindest.
 Jeder Anbieter erfordert einen API-Schlüssel und bietet unterschiedliche Modelle zur Auswahl an.
 
 Wir werden lernen, wie man:
 
-* API-Schlüssel sicher erstellt und speichert.  
-* Ein passendes Modell auswählt.  
+* API-Schlüssel sicher erstellt und speichert.
+* Ein passendes Modell auswählt.
 * Beispielcode ausführt, um mit den Modellen zu chatten.
+
+Lass es uns Schritt für Schritt für jeden Anbieter durchgehen.
 
 ----
 
@@ -35,12 +37,13 @@ Stelle sicher, dass du Folgendes abgeschlossen hast:
 
 * :ref:`install_all_modules` — Installiere die Module ``robot-hat``, ``vilib``, ``picar-x`` und führe dann das Skript ``i2samp.sh`` aus.
 
-----
 
 OpenAI
 ----------
 
 OpenAI bietet leistungsstarke Modelle wie **GPT-4o** und **GPT-4.1**, die sowohl Text- als auch Vision-Aufgaben unterstützen.
+
+So richtest du es ein:
 
 **API-Schlüssel abrufen und speichern**
 
@@ -59,14 +62,14 @@ OpenAI bietet leistungsstarke Modelle wie **GPT-4o** und **GPT-4.1**, die sowohl
 #. Erstelle in deinem Projektordner (z. B. ``/picar-x/example``) eine Datei namens ``secret.py``:
 
    .. code-block:: bash
-   
+
        cd ~/picar-x/example
        sudo nano secret.py
 
 #. Füge den Schlüssel wie folgt ein:
 
    .. code-block:: python
-   
+
        # secret.py
        # Store secrets here. Never commit this file to Git.
        OPENAI_API_KEY = "sk-xxx"
@@ -86,32 +89,33 @@ OpenAI bietet leistungsstarke Modelle wie **GPT-4o** und **GPT-4.1**, die sowohl
 #. Öffne die Beispieldatei:
 
    .. code-block:: bash
-   
+
        cd ~/picar-x/example
        sudo nano 18.online_llm_test.py
 
 #. Ersetze den Inhalt durch folgenden Code und aktualisiere ``model="xxx"`` (z. B. ``gpt-4o``):
 
    .. code-block:: python
-   
+
        from picarx.llm import OpenAI
        from secret import OPENAI_API_KEY
-       
+
        INSTRUCTIONS = "You are a helpful assistant."
        WELCOME = "Hello, I am a helpful assistant. How can I help you?"
-       
+
        llm = OpenAI(
            api_key=OPENAI_API_KEY,
            model="gpt-4o",
        )
-  
+
    Speichern und beenden (``Ctrl+X``, dann ``Y``, dann ``Enter``).
 
 #. Test ausführen:
 
    .. code-block:: bash
-   
+
        sudo python3 18.online_llm_test.py
+
 
 ----
 
@@ -189,53 +193,52 @@ Gehe zur offiziellen |link_gemini_model|-Seite. Dort findest du eine Liste der M
 
        sudo python3 18.online_llm_test.py
 
-
 ----
 
 Qwen
 ------------------
 
-Qwen ist eine Familie von großen Sprach- und Multimodalmodellen, die von Alibaba Cloud bereitgestellt werden.  
+Qwen ist eine Familie von großen Sprach- und Multimodalmodellen, die von Alibaba Cloud bereitgestellt werden.
 Diese Modelle unterstützen Textgenerierung, logisches Schlussfolgern und multimodales Verständnis (z. B. Bildanalyse).
 
 **API-Schlüssel abrufen**
 
-Um Qwen-Modelle aufzurufen, benötigst du einen **API-Schlüssel**.  
-Internationale Nutzer verwenden in der Regel die **DashScope International (Model Studio)** Konsole.  
+Um Qwen-Modelle aufzurufen, benötigst du einen **API-Schlüssel**.
+Internationale Nutzer verwenden in der Regel die **DashScope International (Model Studio)** Konsole.
 Nutzer in Festlandchina können die **Bailian (百炼)** Konsole verwenden.
 
 * **Für internationale Nutzer**
 
-  #. Gehe zur offiziellen |link_qwen_inter|-Seite von **Alibaba Cloud**.  
-  #. Melde dich an oder erstelle ein **Alibaba Cloud** Konto.  
-  #. Navigiere zu **Model Studio** (Region Singapur oder Peking wählen).  
-    
-      * Wenn ein „Activate Now“-Hinweis oben erscheint, aktiviere Model Studio, um ein kostenloses Kontingent zu erhalten (nur Singapur).  
-      * Die Aktivierung ist kostenlos — Gebühren fallen erst nach Verbrauch des Freikontingents an.  
+  #. Gehe zur offiziellen |link_qwen_inter|-Seite von **Alibaba Cloud**.
+  #. Melde dich an oder erstelle ein **Alibaba Cloud** Konto.
+  #. Navigiere zu **Model Studio** (Region Singapur oder Peking wählen).
+
+      * Wenn ein "Activate Now"-Hinweis oben erscheint, aktiviere Model Studio, um ein kostenloses Kontingent zu erhalten (nur Singapur).
+      * Die Aktivierung ist kostenlos — Gebühren fallen erst nach Verbrauch des Freikontingents an.
       * Wenn keine Aktivierungsaufforderung erscheint, ist der Dienst bereits aktiv.
-  
-  #. Gehe zur Seite **Key Management**. Auf dem Reiter **API Key** klicke auf **Create API Key**.  
+
+  #. Gehe zur Seite **Key Management**. Auf dem Reiter **API Key** klicke auf **Create API Key**.
   #. Nach der Erstellung kopiere deinen API-Schlüssel und bewahre ihn sicher auf.
-  
+
     .. image:: img/llm_qwen_api_key.png
         :width: 800
-  
+
   .. note::
      Nutzer aus Hongkong, Macau und Taiwan sollten ebenfalls die **International (Model Studio)** Option wählen.
 
 * **Für Nutzer in Festlandchina**
 
-  #. Melde dich bei |link_aliyun| (Bailian-Konsole) an und verifiziere dein Konto.  
+  #. Melde dich bei |link_aliyun| (Bailian-Konsole) an und verifiziere dein Konto.
   #. Wähle **Create API Key**. Wenn eine Aktivierungsaufforderung erscheint, aktiviere den Dienst, stimme den Bedingungen zu und beanspruche dein kostenloses Kontingent.
-  
+
      .. image:: img/llm_qwen_aliyun_create.png
-  
+
   #. Klicke erneut auf **Create API Key**, überprüfe dein Konto und bestätige.
-  
+
      .. image:: img/llm_qwen_aliyun_confirm.png
-  
+
   #. Nach der Erstellung kopiere den API-Schlüssel.
-  
+
      .. image:: img/llm_qwen_aliyun_copy.png
 
 **API-Schlüssel speichern**
@@ -253,7 +256,7 @@ Nutzer in Festlandchina können die **Bailian (百炼)** Konsole verwenden.
 
         # secret.py
         # Store secrets here. Never commit this file to Git.
-        
+
         QWEN_API_KEY = "sk-xxx"
 
 **Mit Beispielcode testen**
@@ -264,11 +267,11 @@ Nutzer in Festlandchina können die **Bailian (百炼)** Konsole verwenden.
 
        cd ~/picar-x/example
        sudo nano 18.online_llm_test.py
-       
+
 #. Ersetze den Inhalt durch folgenden Code und aktualisiere ``model="xxx"`` (z. B. ``qwen-plus``):
 
    .. code-block:: python
-   
+
       from picarx.llm import Qwen
       from secret import QWEN_API_KEY
 
@@ -283,10 +286,8 @@ Nutzer in Festlandchina können die **Bailian (百炼)** Konsole verwenden.
 #. Ausführen:
 
    .. code-block:: bash
-   
-       sudo python3 18.online_llm_test.py
 
-----
+       sudo python3 18.online_llm_test.py
 
 Grok (xAI)
 ------------------
@@ -322,7 +323,7 @@ Grok ist eine von xAI entwickelte konversationelle KI, gegründet vom Team um El
 
         # secret.py
         # Store secrets here. Never commit this file to Git.
-        
+
         GROK_API_KEY = "xai-xxx"
 
 **Verfügbare Modelle prüfen**
@@ -339,17 +340,17 @@ Gehe zur Models-Seite in der xAI-Konsole. Hier siehst du alle verfügbaren Model
 
        cd ~/picar-x/example
        sudo nano 18.online_llm_test.py
-       
+
 #. Ersetze den Inhalt durch folgenden Code und passe ``model="xxx"`` an (z. B. ``grok-4-latest``):
 
    .. code-block:: python
-   
+
        from picarx.llm import Grok
        from secret import GROK_API_KEY
-   
+
        INSTRUCTIONS = "You are a helpful assistant."
        WELCOME = "Hello, I am a helpful assistant. How can I help you?"
-   
+
        llm = Grok(
            api_key=GROK_API_KEY,
            model="grok-4-latest",
@@ -358,7 +359,7 @@ Gehe zur Models-Seite in der xAI-Konsole. Hier siehst du alle verfügbaren Model
 #. Ausführen:
 
    .. code-block:: bash
-   
+
        sudo python3 18.online_llm_test.py
 
 ----
@@ -404,7 +405,7 @@ Lade ein kleines Guthaben auf (z. B. ¥10 RMB), bevor du die API nutzt.
 
 Stand: 2025-09-12 bietet DeepSeek folgende Modelle an:
 
-* ``deepseek-chat``  
+* ``deepseek-chat``
 * ``deepseek-reasoner``
 
 **Mit Beispielcode testen**
@@ -415,17 +416,17 @@ Stand: 2025-09-12 bietet DeepSeek folgende Modelle an:
 
        cd ~/picar-x/example
        sudo nano 18.online_llm_test.py
-       
+
 #. Ersetze den Inhalt durch folgenden Code und aktualisiere ``model="xxx"`` (z. B. ``deepseek-chat``):
 
    .. code-block:: python
-   
+
        from picarx.llm import Deepseek
        from secret import DEEPSEEK_API_KEY
-   
+
        INSTRUCTIONS = "You are a helpful assistant."
        WELCOME = "Hello, I am a helpful assistant. How can I help you?"
-   
+
        llm = Deepseek(
            api_key=DEEPSEEK_API_KEY,
            model="deepseek-chat",
@@ -435,7 +436,7 @@ Stand: 2025-09-12 bietet DeepSeek folgende Modelle an:
 #. Ausführen:
 
    .. code-block:: bash
-   
+
        sudo python3 18.online_llm_test.py
 
 ----
@@ -443,7 +444,7 @@ Stand: 2025-09-12 bietet DeepSeek folgende Modelle an:
 Doubao
 ------------------
 
-Doubao ist die KI-Modellplattform von ByteDance (Volcengine Ark).  
+Doubao ist die KI-Modellplattform von ByteDance (Volcengine Ark).
 
 **API-Schlüssel abrufen und speichern**
 
@@ -505,17 +506,17 @@ Doubao ist die KI-Modellplattform von ByteDance (Volcengine Ark).
 
        cd ~/picar-x/example
        sudo nano 18.online_llm_test.py
-       
+
 #. Ersetze den Inhalt durch folgenden Code und passe ``model="xxx"`` an (z. B. ``doubao-seed-1-6-250615``):
 
    .. code-block:: python
-   
+
        from picarx.llm import Doubao
        from secret import DOUBAO_API_KEY
-   
+
        INSTRUCTIONS = "You are a helpful assistant."
        WELCOME = "Hello, I am a helpful assistant. How can I help you?"
-   
+
        llm = Doubao(
            api_key=DOUBAO_API_KEY,
            model="doubao-seed-1-6-250615",
@@ -524,25 +525,24 @@ Doubao ist die KI-Modellplattform von ByteDance (Volcengine Ark).
 #. Ausführen:
 
    .. code-block:: bash
-   
+
        sudo python3 18.online_llm_test.py
 
-----
 
 Allgemein
 --------------
 
-Dieses Projekt unterstützt die Verbindung zu mehreren LLM-Plattformen über eine einheitliche Schnittstelle.  
+Dieses Projekt unterstützt die Verbindung zu mehreren LLM-Plattformen über eine einheitliche Schnittstelle.
 Integrierte Unterstützung besteht für:
 
-* **OpenAI** (ChatGPT / GPT-4o, GPT-4, GPT-3.5)  
-* **Gemini** (Google AI Studio / Vertex AI)  
-* **Grok** (xAI)  
-* **DeepSeek**  
-* **Qwen (通义千问)**  
-* **Doubao (豆包)**  
+* **OpenAI** (ChatGPT / GPT-4o, GPT-4, GPT-3.5)
+* **Gemini** (Google AI Studio / Vertex AI)
+* **Grok** (xAI)
+* **DeepSeek**
+* **Qwen (通义千问)**
+* **Doubao (豆包)**
 
-Zusätzlich kannst du dich mit **jedem anderen LLM-Dienst verbinden, der das OpenAI-API-Format unterstützt**.  
+Zusätzlich kannst du dich mit **jedem anderen LLM-Dienst verbinden, der das OpenAI-API-Format unterstützt**.
 Dazu benötigst du lediglich einen **API-Schlüssel** und die passende **base_url**.
 
 **API-Schlüssel abrufen und speichern**
@@ -573,15 +573,15 @@ Dazu benötigst du lediglich einen **API-Schlüssel** und die passende **base_ur
 
    .. code-block:: bash
 
-       cd ~/picar-x/example
-       sudo nano 18.online_llm_test.py
-       
-#. Ersetze den Inhalt einer Python-Datei durch folgenden Code und trage die korrekte ``base_url`` und ``model`` deines Anbieters ein:
+      cd ~/picar-x/example
+      sudo nano 18.online_llm_test.py
+
+#. Ersetze den Inhalt durch folgenden Code und trage die korrekte ``base_url`` und ``model`` deines Anbieters ein:
 
    .. note::
 
-      Zu ``base_url``:  
-      Unterstützt wird das **OpenAI API Format**, sowie alle APIs, die **kompatibel** damit sind.  
+      Zu ``base_url``:
+      Unterstützt wird das **OpenAI API Format**, sowie alle APIs, die **kompatibel** damit sind.
       Jeder Anbieter hat seine eigene ``base_url`` — siehe Dokumentation.
 
    .. code-block:: python
@@ -603,7 +603,3 @@ Dazu benötigst du lediglich einen **API-Schlüssel** und die passende **base_ur
    .. code-block:: bash
 
       python3 18.online_llm_test.py
-
-
-
-

@@ -12,8 +12,8 @@
 
     👉 Sind Sie bereit, mit uns zu erkunden und zu erschaffen? Klicken Sie auf [|link_sf_facebook|] und treten Sie heute bei!
 
-Video 12: Steuerung des PiCAR-X Roboters mit der mobilen App 
-=================================================================
+Video 12: Steuerung des PiCAR-X Roboters mit der mobilen App
+=============================================================
 
 Das Tutorial bietet eine umfassende Anleitung zur Verwendung der mobilen App für den Picar-X Raspberry Pi Roboter von SunFounder.
 

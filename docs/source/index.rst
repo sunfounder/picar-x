@@ -12,10 +12,12 @@
 
     👉 Sind Sie bereit, mit uns zu erkunden und zu erschaffen? Klicken Sie auf [|link_sf_facebook|] und treten Sie heute bei!
 
-SunFounder PiCar-X Kit
+SunFounder |link_PiCar_kit|
 ============================================
 
-Danke, dass Sie sich für unser PiCar-X entschieden haben.
+* |link_PiCar-X_kit|
+
+Danke, dass Sie sich für unser |link_PiCar_kit| entschieden haben.
 
 
 .. note::
@@ -62,7 +64,7 @@ Das PiCar-X unterstützt zwei Programmiersprachen: Blockly und Python. Unabhäng
 **Inhalt**
 
 .. toctree::
-    :maxdepth: 3
+    :maxdepth: 2
 
     About This Kit <self>
     assemble

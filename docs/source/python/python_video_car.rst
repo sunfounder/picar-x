@@ -1,4 +1,4 @@
-.. note::
+﻿.. note::
 
     Hallo und willkommen in der SunFounder Raspberry Pi & Arduino & ESP32 Enthusiasten-Gemeinschaft auf Facebook! Tauchen Sie tiefer ein in die Welt von Raspberry Pi, Arduino und ESP32 mit anderen Enthusiasten.
 
@@ -18,7 +18,7 @@
 ==========================================
 
 Dieses Programm ermöglicht eine First-Person-Ansicht vom PiCar-X!
-Verwenden Sie die WSAD-Tasten der Tastatur, um die Bewegungsrichtung zu steuern, 
+Verwenden Sie die WSAD-Tasten der Tastatur, um die Bewegungsrichtung zu steuern,
 sowie O und P, um die Geschwindigkeit anzupassen.
 
 **Code ausführen**
@@ -29,8 +29,8 @@ sowie O und P, um die Geschwindigkeit anzupassen.
 
 .. code-block::
 
-    cd ~/picar-x/beispiel
-    sudo python3 11.video_auto.py
+    cd ~/picar-x/example
+    sudo python3 11.video_car.py
 
 Sobald der Code läuft, können Sie sehen, was PiCar-X filmt und es steuern, indem Sie die folgenden Tasten drücken.
 
@@ -62,10 +62,11 @@ Anschließend können Sie ``http://<Ihre IP>:9000/mjpg`` im Browser eingeben, um
 
 .. image:: img/display.png
 
+
 **Code**
 
 .. code-block:: python
-    
+
     #!/usr/bin/env python3
 
     from picarx.utils import reset_mcu
@@ -86,14 +87,14 @@ Anschließend können Sie ``http://<Ihre IP>:9000/mjpg`` im Browser eingeben, um
 
         O: speed up
         P: speed down
-        W: forward  
+        W: forward
         S: backward
         A: turn left
         D: turn right
         F: stop
         T: take photo
 
-        ctrl + c: Press twice to exit the program
+        Ctrl+C: quit
     '''
 
 
@@ -110,7 +111,7 @@ Anschließend können Sie ``http://<Ihre IP>:9000/mjpg`` im Browser eingeben, um
     def move(operate:str, speed):
 
         if operate == 'stop':
-            px.stop()  
+            px.stop()
         else:
             if operate == 'forward':
                 px.set_dir_servo_angle(0)
@@ -124,7 +125,7 @@ Anschließend können Sie ``http://<Ihre IP>:9000/mjpg`` im Browser eingeben, um
             elif operate == 'turn right':
                 px.set_dir_servo_angle(30)
                 px.forward(speed)
-            
+
 
 
     def main():
@@ -135,17 +136,17 @@ Anschließend können Sie ``http://<Ihre IP>:9000/mjpg`` im Browser eingeben, um
         Vilib.display(local=True,web=True)
         sleep(2)  # wait for startup
         print(manual)
-        
+
         while True:
             print("\rstatus: %s , speed: %s    "%(status, speed), end='', flush=True)
             # readkey
             key = readchar.readkey().lower()
-            # operation 
+            # operation
             if key in ('wsadfop'):
                 # throttle
                 if key == 'o':
                     if speed <=90:
-                        speed += 10           
+                        speed += 10
                 elif key == 'p':
                     if speed >=10:
                         speed -= 10
@@ -157,7 +158,7 @@ Anschließend können Sie ``http://<Ihre IP>:9000/mjpg`` im Browser eingeben, um
                         speed = 10
                     if key == 'w':
                         # Speed limit when reversing,avoid instantaneous current too large
-                        if status != 'forward' and speed > 60:  
+                        if status != 'forward' and speed > 60:
                             speed = 60
                         status = 'forward'
                     elif key == 'a':
@@ -167,12 +168,12 @@ Anschließend können Sie ``http://<Ihre IP>:9000/mjpg`` im Browser eingeben, um
                             speed = 60
                         status = 'backward'
                     elif key == 'd':
-                        status = 'turn right' 
+                        status = 'turn right'
                 # stop
                 elif key == 'f':
                     status = 'stop'
-                # move 
-                move(status, speed)  
+                # move
+                move(status, speed)
             # take photo
             elif key == 't':
                 take_photo()
@@ -181,7 +182,7 @@ Anschließend können Sie ``http://<Ihre IP>:9000/mjpg`` im Browser eingeben, um
                 print('\nquit ...')
                 px.stop()
                 Vilib.camera_close()
-                break 
+                break
 
             sleep(0.1)
 
@@ -189,9 +190,8 @@ Anschließend können Sie ``http://<Ihre IP>:9000/mjpg`` im Browser eingeben, um
     if __name__ == "__main__":
         try:
             main()
-        except Exception as e:    
+        except Exception as e:
             print("error:%s"%e)
         finally:
             px.stop()
             Vilib.camera_close()
-

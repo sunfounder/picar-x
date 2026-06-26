@@ -13,7 +13,7 @@
     👉 Sind Sie bereit, mit uns zu erkunden und zu erschaffen? Klicken Sie auf [|link_sf_facebook|] und treten Sie heute bei!
 
 Video 4: Hindernisvermeidung mit Ultraschall
-============================================
+=============================================
 
 Dieses Video-Tutorial behandelt die Hindernisvermeidung mithilfe eines Ultraschallsensors im PiCar-X-Roboter:
 
@@ -24,6 +24,7 @@ Dieses Video-Tutorial behandelt die Hindernisvermeidung mithilfe eines Ultrascha
 * **Speichern und Aktualisieren des Codes**: Erklärt, wie man Skripte auf dem Roboter speichert und aktualisiert.
 
 Diese Lektion bietet einen wesentlichen Leitfaden zur Implementierung von ultraschallbasierten Hindernisvermeidung im PiCar-X-Roboter.
+
 
 **Video**
 

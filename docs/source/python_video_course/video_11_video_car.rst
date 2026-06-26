@@ -13,7 +13,7 @@
     👉 Sind Sie bereit, mit uns zu erkunden und zu erschaffen? Klicken Sie auf [|link_sf_facebook|] und treten Sie heute bei!
 
 Video 11: PiCar-X als Videowagen
-==================================
+================================
 
 Dieses Tutorial lehrt, wie man den PiCar-X als Videowagen mit Kamerasteuerung verwendet:
 

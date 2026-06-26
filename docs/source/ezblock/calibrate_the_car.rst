@@ -13,11 +13,12 @@
     👉 Sind Sie bereit, mit uns zu erkunden und zu erschaffen? Klicken Sie auf [|link_sf_facebook|] und treten Sie heute bei!
 
 Kalibrierung des Fahrzeugs
-===========================
+==========================
 
 Nachdem Sie die PiCar-X verbunden haben, folgt ein Kalibrierungsschritt. Dies ist notwendig, da es während der Montage zu möglichen Abweichungen oder durch die Begrenzungen der Servos selbst zu leicht schrägen Servo-Winkeln kommen kann. Diese können Sie im nächsten Schritt kalibrieren.
 
 Falls Sie jedoch der Meinung sind, dass die Montage fehlerfrei ist und keine Kalibrierung erforderlich ist, können Sie diesen Schritt auch überspringen.
+
 
 .. note::
     Wenn Sie den Roboter während des Betriebs neu kalibrieren möchten, befolgen Sie bitte die unten aufgeführten Schritte.

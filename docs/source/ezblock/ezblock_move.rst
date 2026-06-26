@@ -13,13 +13,14 @@
     👉 Sind Sie bereit, mit uns zu erkunden und zu erschaffen? Klicken Sie auf [|link_sf_facebook|] und treten Sie heute bei!
 
 Bewegung
-============
+========
 
 Dieses erste Projekt zeigt Ihnen, wie Sie Bewegungsabläufe für die PiCar-X programmieren können. In diesem Projekt wird das Programm die PiCar-X anweisen, fünf Aktionen in folgender Reihenfolge auszuführen: „Vorwärts“, „Rückwärts“, „Links abbiegen“, „Rechts abbiegen“ und „Stoppen“.
 
 Um die grundlegende Bedienung von Ezblock Studio zu erlernen, lesen Sie bitte die folgenden beiden Abschnitte:
 
 * :ref:`ezblock:create_project_latest`
+
 
 .. image:: img/move.png
 
@@ -52,5 +53,6 @@ Dieser Block bringt die PiCar-X zum vollständigen Anhalten.
 
     * Sie können das Programm entsprechend dem folgenden Bild schreiben. Bitte beachten Sie das Tutorial: :ref:`ezblock:create_project_latest`.
     * Oder suchen Sie den Code mit dem gleichen Namen auf der **Beispiele**-Seite von EzBlock Studio und klicken Sie direkt auf **Ausführen** oder **Bearbeiten**.
+
 
 .. image:: img/sp210512_113827.png

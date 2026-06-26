@@ -1,4 +1,4 @@
-.. note::
+﻿.. note::
 
     Hallo und willkommen in der SunFounder Raspberry Pi & Arduino & ESP32 Enthusiasten-Gemeinschaft auf Facebook! Tauchen Sie tiefer ein in die Welt von Raspberry Pi, Arduino und ESP32 mit anderen Enthusiasten.
 
@@ -14,13 +14,13 @@
 
 .. _py_cliff:
 
-5. Klippenerkennung 
+5. Klippenerkennung
 ===========================
 
 Geben wir PiCar-X ein wenig Selbstschutz-Bewusstsein und lassen es lernen, sein eigenes Graustufenmodul zu nutzen, um nicht über die Klippe zu stürzen.
 
-In diesem Beispiel wird das Auto im Ruhezustand sein. 
-Wenn Sie es an eine Klippe schieben, wird es dringend geweckt, fährt dann zurück und sagt „Gefahr“.
+In diesem Beispiel wird das Auto im Ruhezustand sein.
+Wenn Sie es an eine Klippe schieben, wird es dringend geweckt, fährt dann zurück.
 
 **Code ausführen**
 
@@ -32,8 +32,7 @@ Wenn Sie es an eine Klippe schieben, wird es dringend geweckt, fährt dann zurü
 
     cd ~/picar-x/example
     sudo python3 5.cliff_detection.py
-    
-    
+
 
 **Code**
 
@@ -45,6 +44,7 @@ Wenn Sie es an eine Klippe schieben, wird es dringend geweckt, fährt dann zurü
     <run></run>
 
 .. code-block:: python
+
 
     from picarx import Picarx
     from time import sleep
@@ -82,12 +82,10 @@ Wenn Sie es an eine Klippe schieben, wird es dringend geweckt, fährt dann zurü
             sleep(0.1)
 
 
-
-**Wie funktioniert des?** 
+**Wie funktioniert es?**
 
 Die Funktion zur Erkennung der Klippe sieht so aus:
 
 * ``get_grayscale_data()``: Diese Methode gibt direkt die Messwerte der drei Sensoren von rechts nach links aus. Je heller die Fläche, desto größer der erhaltene Wert.
 
 * ``get_cliff_status(gm_val_list)``: Diese Methode vergleicht die Messwerte der drei Sensoren und gibt ein Ergebnis aus. Wenn das Ergebnis wahr ist, wird erkannt, dass sich eine Klippe vor dem Auto befindet.
-

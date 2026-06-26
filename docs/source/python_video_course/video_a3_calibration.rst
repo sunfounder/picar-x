@@ -13,7 +13,7 @@
     👉 Sind Sie bereit, mit uns zu erkunden und zu erschaffen? Klicken Sie auf [|link_sf_facebook|] und treten Sie heute bei!
 
 Video A3: Kalibrierung des PiCar-X
-==================================
+===================================
 
 Dieses dritte Video der Serie konzentriert sich auf die Kalibrierung des PiCar-X und die Einführung des Robot HAT. Das Tutorial ist in mehrere Schlüsselabschnitte unterteilt:
 
@@ -21,6 +21,7 @@ Dieses dritte Video der Serie konzentriert sich auf die Kalibrierung des PiCar-X
 * **Kalibrierung der Gleichstrommotoren und Servos**: Schritte zur Kalibrierung der Gleichstrommotoren für Richtung und Geschwindigkeit sowie der Lenk- und Kamera-Pan-/Tilt-Servos.
 * **Skript-Automatisierung beim Start**: Wie man Skripte einstellt, die automatisch beim Start des Raspberry Pi ausgeführt werden.
 * **Überblick über den Robot HAT**: Detaillierter Überblick über den Robot HAT, einschließlich seiner Funktionen und Funktionalitäten.
+
 
 Dieses Tutorial ist entscheidend für diejenigen, die ihren PiCar-X feinjustieren und die technischen Aspekte des Robot HAT verstehen möchten.
 

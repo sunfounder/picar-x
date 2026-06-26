@@ -13,7 +13,7 @@
     👉 Sind Sie bereit, mit uns zu erkunden und zu erschaffen? Klicken Sie auf [|link_sf_facebook|] und treten Sie heute bei!
 
 Video 6: Abgrunderkennung
-===========================
+==========================
 
 Dieses Tutorial bietet wesentliche Einblicke in die Programmierung und Nutzung der Abgrunderkennung im PiCar-X-Roboter.
 
@@ -28,7 +28,7 @@ Dieses Tutorial bietet wesentliche Einblicke in die Programmierung und Nutzung d
 .. raw:: html
 
     <iframe width="700" height="500" src="https://www.youtube.com/embed/7-sJsRaBI8Q?si=QVsHZ9oEwLEwRUE5" title="YouTube-Videoplayer" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-        
+
 **Zugehörige Online-Tutorials**
 
 * :ref:`py_cliff`

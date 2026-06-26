@@ -13,13 +13,14 @@
     👉 Sind Sie bereit, mit uns zu erkunden und zu erschaffen? Klicken Sie auf [|link_sf_facebook|] und treten Sie heute bei!
 
 Gesichtserkennung
-======================
+=================
 
 Neben der Farberkennung bietet der PiCar-X auch eine Funktion zur Gesichtserkennung. Im folgenden Beispiel wird das Joystick-Widget zur Steuerung der Kamerarichtung verwendet, und die Anzahl der erkannten Gesichter wird im Debug-Monitor angezeigt.
 
 Für weitere Informationen zur Verwendung des Video-Widgets verweisen wir auf das Tutorial zu Ezblock-Video: :ref:`ezblock:video_latest`.
 
 .. image:: img/face_detection.PNG
+
 
 **TIPPS**
 

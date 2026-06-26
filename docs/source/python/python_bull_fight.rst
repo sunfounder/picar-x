@@ -17,7 +17,9 @@
 10. Stierkampf
 =============================
 
+
 Mache PiCar-X zu einem wütenden Stier! Verwende seine Kamera, um das rote Tuch zu verfolgen und darauf zuzurasen!
+
 
 **Code ausführen**
 
@@ -29,6 +31,7 @@ Mache PiCar-X zu einem wütenden Stier! Verwende seine Kamera, um das rote Tuch 
 
     cd ~/picar-x/example
     sudo python3 10.bull_fight.py
+
 
 **Das Bild ansehen**
 
@@ -51,8 +54,7 @@ Anschließend können Sie ``http://<Ihre IP>:9000/mjpg`` im Browser eingeben, um
 **Code**
 
 .. note::
-    Sie können den untenstehenden Code **modifizieren/zurücksetzen/kopieren/ausführen/stoppen**. Bevor Sie das tun, sollten Sie zum Quellcodepfad wie ``picar-x\beispiele`` gehen. Nachdem Sie den Code modifiziert haben, können Sie ihn direkt ausführen, um die Wirkung zu sehen.
-
+    Sie können den untenstehenden Code **modifizieren/zurücksetzen/kopieren/ausführen/stoppen**. Bevor Sie das tun, müssen Sie zum Quellcodepfad wie ``picar-x/examples`` gehen. Nachdem Sie den Code modifiziert haben, können Sie ihn direkt ausführen, um den Effekt zu sehen.
 
 
 .. raw:: html
@@ -82,7 +84,7 @@ Anschließend können Sie ``http://<Ihre IP>:9000/mjpg`` im Browser eingeben, um
             if Vilib.detect_obj_parameter['color_n']!=0:
                 coordinate_x = Vilib.detect_obj_parameter['color_x']
                 coordinate_y = Vilib.detect_obj_parameter['color_y']
-                
+
                 # change the pan-tilt angle for track the object
                 x_angle +=(coordinate_x*10/640)-5
                 x_angle = clamp_number(x_angle,-35,35)
@@ -93,7 +95,7 @@ Anschließend können Sie ``http://<Ihre IP>:9000/mjpg`` im Browser eingeben, um
                 px.set_cam_tilt_angle(y_angle)
 
                 # move
-                # The movement direction will change slower than the pan/tilt direction 
+                # The movement direction will change slower than the pan/tilt direction
                 # change to avoid confusion when the picture changes at high speed.
                 if dir_angle > x_angle:
                     dir_angle -= 1
@@ -111,13 +113,13 @@ Anschließend können Sie ``http://<Ihre IP>:9000/mjpg`` im Browser eingeben, um
     if __name__ == "__main__":
         try:
         main()
-        
+
         finally:
             px.stop()
             print("stop and exit")
             sleep(0.1)
 
-**Wie funktioniert des?**
+**Wie funktioniert es?**
 
 Sie sollten auf die folgenden drei Teile dieses Beispiels achten:
 
@@ -125,8 +127,9 @@ Sie sollten auf die folgenden drei Teile dieses Beispiels achten:
 
     * Starten Sie die Kamera mit ``Vilib.camera_start()``.
     * Zeigen Sie das Kamera-Feed mit ``Vilib.display()`` an.
-    * Aktivieren Sie die Farberkennung und legen Sie die Zielfarbe als „rot“ fest mit ``Vilib.color_detect("red")``.
+    * Aktivieren Sie die Farberkennung und legen Sie die Zielfarbe als "red" fest mit ``Vilib.color_detect("red")``.
     * Initialisieren Sie Variablen: ``speed`` für die Bewegungsgeschwindigkeit des Autos, ``dir_angle`` für den Richtungswinkel der Bewegung des Autos, ``x_angle`` für den Schwenkwinkel der Kamera und ``y_angle`` für den Neigungswinkel der Kamera.
+
 
 2. Treten Sie in eine kontinuierliche Schleife (while True), um das rotfarbene Objekt zu verfolgen:
 
@@ -135,6 +138,7 @@ Sie sollten auf die folgenden drei Teile dieses Beispiels achten:
     * Berechnen Sie neue Schwenk- und Neigungswinkel (``x_angle`` und ``y_angle``) basierend auf der Position des erkannten Objekts und passen Sie diese an, um das Objekt zu verfolgen.
     * Begrenzen Sie die Schwenk- und Neigungswinkel innerhalb des festgelegten Bereichs mit der Funktion ``clamp_number``.
     * Stellen Sie die Schwenk- und Neigungswinkel der Kamera mit ``px.set_cam_pan_angle()`` und ``px.set_cam_tilt_angle()`` ein, um das Objekt im Blick zu behalten.
+
 
 3. Steuern Sie die Bewegung des Autos basierend auf dem Unterschied zwischen ``dir_angle`` und ``x_angle``:
 

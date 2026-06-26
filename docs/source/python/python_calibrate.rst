@@ -63,10 +63,10 @@ Natürlich können Sie dieses Kapitel überspringen, wenn Sie denken, dass die M
 
 
 Kalibrierung des Graustufenmoduls
--------------------------------------
+----------------------------------
 
-Aufgrund unterschiedlicher Umgebungsbedingungen und Beleuchtungssituationen 
-sind die voreingestellten Parameter für das Graustufenmodul möglicherweise nicht optimal. 
+Aufgrund unterschiedlicher Umgebungsbedingungen und Beleuchtungssituationen
+sind die voreingestellten Parameter für das Graustufenmodul möglicherweise nicht optimal.
 Sie können diese Einstellungen über dieses Programm feinjustieren, um bessere Ergebnisse zu erzielen.
 
 
@@ -88,15 +88,15 @@ Sie können diese Einstellungen über dieses Programm feinjustieren, um bessere 
 
     .. image:: img/calibrate_g1.png
 
-#. Drücken Sie die Taste „Q“, um die Kalibrierung des Graustufenmoduls zu starten. Sie werden dann beobachten, wie das PiCar-X geringfügige Bewegungen nach links und rechts macht. Während dieses Vorgangs sollten alle drei Sensoren mindestens einmal über das Isolierband streichen.
+#. Drücken Sie die Taste "Q", um die Kalibrierung des Graustufenmoduls zu starten. Sie werden dann beobachten, wie das PiCar-X geringfügige Bewegungen nach links und rechts macht. Während dieses Vorgangs sollten alle drei Sensoren mindestens einmal über das Isolierband streichen.
 
 
-#. Zusätzlich werden Sie drei Paare von deutlich unterschiedlichen Werten im Abschnitt „Schwellenwert“ bemerken, während „Linienreferenz“ zwei Zwischenwerte anzeigt, von denen jeder den Durchschnitt eines dieser Paare darstellt.
+#. Zusätzlich werden Sie drei Paare von deutlich unterschiedlichen Werten im Abschnitt "Schwellenwert" bemerken, während "Linienreferenz" zwei Zwischenwerte anzeigt, von denen jeder den Durchschnitt eines dieser Paare darstellt.
 
     .. image:: img/calibrate_g2.png
 
-#. Suspendieren Sie anschließend das PiCar-X in der Luft (oder positionieren Sie es über einer Klippenkante) und drücken Sie die Taste „E“. Sie werden beobachten, dass auch die „Klippenreferenz“-Werte entsprechend aktualisiert werden.
+#. Suspendieren Sie anschließend das PiCar-X in der Luft (oder positionieren Sie es über einer Klippenkante) und drücken Sie die Taste "E". Sie werden beobachten, dass auch die "Klippenreferenz"-Werte entsprechend aktualisiert werden.
 
     .. image:: img/calibrate_g3.png
 
-#. Sobald Sie verifiziert haben, dass alle Werte korrekt sind, drücken Sie die „Leertaste“, um die Daten zu speichern. Sie können das Programm dann durch Drücken von Strg+C beenden.
+#. Sobald Sie verifiziert haben, dass alle Werte korrekt sind, drücken Sie die "Leertaste", um die Daten zu speichern. Sie können das Programm dann durch Drücken von Strg+C beenden.

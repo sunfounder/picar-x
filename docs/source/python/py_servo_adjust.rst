@@ -1,4 +1,4 @@
-.. note::
+﻿.. note::
 
     Hallo und willkommen in der SunFounder Raspberry Pi & Arduino & ESP32 Enthusiasten-Gemeinschaft auf Facebook! Tauchen Sie tiefer ein in die Welt von Raspberry Pi, Arduino und ESP32 mit anderen Enthusiasten.
 
@@ -23,13 +23,13 @@ Servo einstellen (Wichtig)
         :width: 500
         :align: center
 
-Der Winkelbereich eines Servos beträgt -90° bis +90°, jedoch ist der werkseitig eingestellte Winkel zufällig – möglicherweise 0°, möglicherweise 45°.  
+Der Winkelbereich eines Servos beträgt -90° bis +90°, jedoch ist der werkseitig eingestellte Winkel zufällig – möglicherweise 0°, möglicherweise 45°.
 Wenn wir das Servo mit einem solchen zufälligen Winkel direkt montieren, kann dies nach dem Start des Robotercodes zu einem chaotischen Zustand führen oder im schlimmsten Fall dazu, dass das Servo blockiert und durchbrennt.
 
-Daher müssen wir hier zunächst alle Servos auf **0°** einstellen und sie erst danach montieren.  
+Daher müssen wir hier zunächst alle Servos auf **0°** einstellen und sie erst danach montieren.
 So befindet sich das Servo immer in der Mittelstellung, unabhängig davon, in welche Richtung es sich später drehen soll.
 
-#. Um sicherzustellen, dass das Servo korrekt auf 0° eingestellt ist, stecken Sie zunächst den Servoarm auf die Servowelle und drehen Sie den Hebel vorsichtig in einen anderen Winkel.  
+#. Um sicherzustellen, dass das Servo korrekt auf 0° eingestellt ist, stecken Sie zunächst den Servoarm auf die Servowelle und drehen Sie den Hebel vorsichtig in einen anderen Winkel.
    Dieser Servoarm dient lediglich dazu, dass Sie deutlich sehen können, wie sich das Servo bewegt.
 
     .. image:: img/servo_arm.png
@@ -45,12 +45,13 @@ So befindet sich das Servo immer in der Mittelstellung, unabhängig davon, in we
         cd ~/picar-x/example
         sudo python3 servo_zeroing.py
 
-#. Stecken Sie anschließend das Servokabel wie unten gezeigt in den **P11**-Port.  
+#. Stecken Sie anschließend das Servokabel wie unten gezeigt in den **P11**-Port.
    Gleichzeitig sehen Sie, wie sich der Servoarm in eine Position dreht (dies ist die **0°-Position**, die jedoch zufällig ist und nicht unbedingt senkrecht oder parallel sein muss).
 
-    .. image:: img/Z_P11.jpg
 
-#. Entfernen Sie nun den Servoarm, während das Servokabel weiterhin angeschlossen bleibt, und schalten Sie die Stromversorgung **nicht** aus.  
+    .. image:: img/Z_P11.JPG
+
+#. Entfernen Sie nun den Servoarm, während das Servokabel weiterhin angeschlossen bleibt, und schalten Sie die Stromversorgung **nicht** aus.
    Setzen Sie anschließend die Montage gemäß der Papier-Anleitung fort.
 
 .. note::

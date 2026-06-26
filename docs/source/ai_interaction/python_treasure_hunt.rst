@@ -12,35 +12,32 @@
 
     👉 Sind Sie bereit, mit uns zu erkunden und zu erschaffen? Klicken Sie auf [|link_sf_facebook|] und treten Sie heute bei!
 
-
 .. _py_treasure:
 
 20. Schatzsuche
 ============================
 
-In dieser Lektion verwandelst du deinen PiCar-X in einen **Schatzsucher-Roboter**.  
-Baue ein Labyrinth in deinem Zimmer auf und platziere sechs verschiedenfarbige Karten in unterschiedlichen Ecken.  
-Dein PiCar-X wird **suchen, erkennen und feiern**, sobald er die Ziel­farbe gefunden hat.  
+In dieser Lektion verwandelst du deinen PiCar-X in einen **Schatzsucher-Roboter**.
+Baue ein Labyrinth in deinem Zimmer auf und platziere sechs verschiedenfarbige Karten in unterschiedlichen Ecken.
+Dein PiCar-X wird **suchen, erkennen und feiern**, sobald er die Zielfarbe gefunden hat.
 
 Dieses Projekt kombiniert drei Fähigkeiten, die du bisher gelernt hast:
 
-* **Computer Vision** – Erkennung farbiger Karten mit der Pi-Kamera.  
-* **Tastatursteuerung** – Manuelles Steuern des Roboters durch das Labyrinth.  
-* **Sprach-Feedback** – Pico2Wave kündigt die Zielfarbe an und bestätigt den Erfolg.  
+* **Computer Vision** – Erkennung farbiger Karten mit der Pi-Kamera.
+* **Tastatursteuerung** – Manuelles Steuern des Roboters durch das Labyrinth.
+* **Sprach-Feedback** – Pico2Wave kündigt die Zielfarbe an und bestätigt den Erfolg.
 
 Ein Spaßspiel, das zeigt, wie Roboter **sehen, denken und handeln** können – wie echte Schatzsucher!
- 
-----
 
-Bevor du beginnst
------------------
+.. note::
+   Du kannst die :download:`PDF-Farbkarten <https://github.com/sunfounder/sf-pdf/raw/master/prop_card/object_detection/color-cards.pdf>` herunterladen und ausdrucken, um eine zuverlässige Farberkennung zu erhalten.
+
+Before You Start
+----------------
 
 Stelle sicher, dass du Folgendes abgeschlossen hast:
 
 * :ref:`install_all_modules` — Installiere die Module ``robot-hat``, ``vilib``, ``picar-x`` und führe dann das Skript ``i2samp.sh`` aus.
-* Du kannst die :download:`PDF-Farbkarten <https://github.com/sunfounder/sf-pdf/raw/master/prop_card/object_detection/color-cards.pdf>` herunterladen und ausdrucken, um eine zuverlässige Farberkennung zu erhalten.  
-
-----
 
 Code ausführen
 --------------
@@ -60,30 +57,29 @@ Nach dem Start siehst du eine Meldung wie diese:
 
     * Running on http://0.0.0.0:9000/ (Press CTRL+C to quit)
 
-Öffne anschließend ``http://<deine IP>:9000/mjpg`` im Browser, um den Live-Videostream zu sehen.  
-Beispiel: ``http://192.168.18.113:9000/mjpg``  
+Öffne anschließend ``http://<deine IP>:9000/mjpg`` im Browser, um den Live-Videostream zu sehen.
+Beispiel: ``http://192.168.18.113:9000/mjpg``
 
 .. image:: img/display.png
 
 Spielregeln
 -----------
 
-1. Der Roboter wählt zufällig eine **Zielfarbe** und sagt: **„Suche nach Rot!“**  
-2. Du steuerst den PiCar-X mit der Tastatur:  
+1. Der Roboter wählt zufällig eine **Zielfarbe** und sagt: **„Suche nach Rot!“**
+2. Du steuerst den PiCar-X mit der Tastatur:
 
-   * ``w`` = vorwärts  
-   * ``a`` = links drehen  
-   * ``s`` = rückwärts  
-   * ``d`` = rechts drehen  
-   * ``space`` = Ziel wiederholen  
-   * ``Ctrl+C`` = beenden  
+   * ``w`` = vorwärts
+   * ``a`` = links drehen
+   * ``s`` = rückwärts
+   * ``d`` = rechts drehen
+   * ``space`` = Ziel wiederholen
+   * ``Ctrl+C`` = beenden
 
-3. Sobald die Kamera die Ziel-Farbkarte sieht, sagt PiCar-X **„Gut gemacht!“**  
-4. Es wird eine neue Zielfarbe gewählt – die Jagd geht weiter!  
+3. Sobald die Kamera die Ziel-Farbkarte sieht, sagt PiCar-X **„Gut gemacht!“**
+4. Es wird eine neue Zielfarbe gewählt – die Jagd geht weiter!
 
 Code
 ----
-
 
 .. code-block:: python
 
@@ -231,53 +227,52 @@ Code
 Funktionsweise
 ------------------------
 
-1. **Initialisierung** 
+1. **Initialisierung**
 
-   * Module importieren und PiCar-X, Kamera sowie TTS konfigurieren.  
-   * Farbliste, Geschwindigkeit und Lenkwinkel festlegen.  
+   * Module importieren und PiCar-X, Kamera sowie TTS konfigurieren.
+   * Farbliste, Geschwindigkeit und Lenkwinkel festlegen.
 
 2. **Zielauswahl**
 
-   * ``renew_color_detect()`` wählt zufällig eine Zielfarbe aus.  
-   * Der Roboter kündigt das Ziel mit Pico2Wave an.  
+   * ``renew_color_detect()`` wählt zufällig eine Zielfarbe aus.
+   * Der Roboter kündigt das Ziel mit Pico2Wave an.
 
-3. **Tastatursteuerung** 
+3. **Tastatursteuerung**
 
-   * ``key_scan_thread()`` läuft im Hintergrund und erfasst Tasteneingaben.  
-   * Tasten ``w, a, s, d`` steuern die Bewegung; ``space`` wiederholt das Ziel.  
+   * ``key_scan_thread()`` läuft im Hintergrund und erfasst Tasteneingaben.
+   * Tasten ``w, a, s, d`` steuern die Bewegung; ``space`` wiederholt das Ziel.
 
-4. **Farberkennung**  
+4. **Farberkennung**
 
-   * Die Kamera prüft kontinuierlich, ob die Zielfarbe sichtbar ist.  
-   * Wird ein ausreichend großer Farbfleck erkannt, feiert PiCar-X den Fund.  
+   * Die Kamera prüft kontinuierlich, ob die Zielfarbe sichtbar ist.
+   * Wird ein ausreichend großer Farbfleck erkannt, feiert PiCar-X den Fund.
 
 5. **Hauptschleife**
 
-   * Steuert fortlaufend Bewegung, Erkennung und Rückmeldung.  
-   * Stoppt Roboter und Kamera sauber beim Beenden.  
-
+   * Steuert fortlaufend Bewegung, Erkennung und Rückmeldung.
+   * Stoppt Roboter und Kamera sauber beim Beenden.
 
 Fehlerbehebung
 ---------------
 
-* **Kamerastream funktioniert nicht?**  
+* **Kamerastream funktioniert nicht?**
 
-  Führe ``libcamera-hello`` aus, um zu überprüfen, ob die Pi-Kamera richtig angeschlossen ist.  
+  Führe ``libcamera-hello`` aus, um zu überprüfen, ob die Pi-Kamera richtig angeschlossen ist.
 
-* **Roboter erkennt keine Farben?** 
+* **Roboter erkennt keine Farben?**
 
-  Achte darauf, dass die Karten klar gedruckt sind und bei guter Beleuchtung liegen.  
-  Versuche, ``DETECTION_WIDTH_THRESHOLD`` anzupassen.  
+  Achte darauf, dass die Karten klar gedruckt sind und bei guter Beleuchtung liegen.
+  Versuche, ``DETECTION_WIDTH_THRESHOLD`` anzupassen.
 
-* **Keine Sprachausgabe?**  
+* **Keine Sprachausgabe?**
 
-  Prüfe, ob ``pico2wave`` installiert ist und dein Audioausgang richtig konfiguriert wurde.  
+  Prüfe, ob ``pico2wave`` installiert ist und dein Audioausgang richtig konfiguriert wurde.
 
-* **Auto bewegt sich nicht?**  
+* **Auto bewegt sich nicht?**
 
-  Stelle sicher, dass die Stromversorgung des PiCar-X aktiv ist und die Motorenkalibrierung stimmt.  
+  Stelle sicher, dass die Stromversorgung des PiCar-X aktiv ist und die Motorenkalibrierung stimmt.
 
 ----
 
-Mit dieser Lektion hast du ein **Mini-Schatzsuchspiel** mit PiCar-X gebaut,  
+Mit dieser Lektion hast du ein **Mini-Schatzsuchspiel** mit PiCar-X gebaut,
 das **Bildverarbeitung, Steuerung und Interaktion** zu einem Projekt vereint!

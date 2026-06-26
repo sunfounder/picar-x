@@ -69,14 +69,14 @@ Bitte folgen Sie den Aufforderungen, um die entsprechenden Funktionen zu aktivie
 
     *  **Foto machen**
 
-        Geben Sie im Terminal ``q`` ein und drücken Sie Enter. Das von der Kamera aktuell gesehene Bild wird gespeichert (wenn die Farberkennungsfunktion eingeschaltet ist, wird auch die Markierungsbox im gespeicherten Bild angezeigt). 
+        Geben Sie im Terminal ``q`` ein und drücken Sie Enter. Das von der Kamera aktuell gesehene Bild wird gespeichert (wenn die Farberkennungsfunktion eingeschaltet ist, wird auch die Markierungsbox im gespeicherten Bild angezeigt).
         Diese Fotos können Sie im Verzeichnis ``/home/{username}/Pictures/`` des Raspberry Pi sehen.
         Sie können Tools wie :ref:`filezilla` verwenden, um Fotos auf Ihren PC zu übertragen.
-        
+
 
     *  **Farberkennung**
 
-        Durch Eingabe einer Zahl zwischen ``1~6`` wird eine der Farben „rot, orange, gelb, grün, blau, lila“ erkannt. Geben Sie ``0`` ein, um die Farberkennung auszuschalten.
+        Durch Eingabe einer Zahl zwischen ``1~6`` wird eine der Farben "rot, orange, gelb, grün, blau, lila" erkannt. Geben Sie ``0`` ein, um die Farberkennung auszuschalten.
 
         .. image:: img/DTC2.png
 
@@ -100,7 +100,7 @@ Bitte folgen Sie den Aufforderungen, um die entsprechenden Funktionen zu aktivie
         Durch Eingabe von ``s`` werden die Informationen des Gesichtserkennungs- (und Farberkennungs-) Ziels im Terminal gedruckt. Einschließlich der Mittelkoordinaten (X, Y) und Größe (Breite, Höhe) des gemessenen Objekts.
 
 
-**Code** 
+**Code**
 
 .. code-block:: python
 
@@ -239,7 +239,7 @@ Bitte folgen Sie den Aufforderungen, um die entsprechenden Funktionen zu aktivie
     if __name__ == "__main__":
         main()
 
-**Wie funktioniert des?**
+**Wie funktioniert es?**
 
 Das Erste, worauf Sie hier achten müssen, ist die folgende Funktion. Diese beiden Funktionen ermöglichen es Ihnen, die Kamera zu starten.
 
@@ -248,10 +248,10 @@ Das Erste, worauf Sie hier achten müssen, ist die folgende Funktion. Diese beid
     Vilib.camera_start()
     Vilib.display()
 
-Funktionen, die mit „Objekterkennung“ zusammenhängen:
+Funktionen, die mit "Objekterkennung" zusammenhängen:
 
 * ``Vilib.face_detect_switch(True)`` : Gesichtserkennung EIN/AUS schalten
-* ``Vilib.color_detect(color)`` : Für die Farberkennung, es kann nur eine Farberkennung gleichzeitig durchgeführt werden. Die einführbaren Parameter sind: ``"rot"``, ``"orange"``, ``"gelb"``, ``"grün"``, ``"blau"``, ``"lila"``
+* ``Vilib.color_detect(color)`` : Für die Farberkennung, es kann nur eine Farberkennung gleichzeitig durchgeführt werden. Die einführbaren Parameter sind: ``"red"``, ``"orange"``, ``"yellow"``, ``"green"``, ``"blue"``, ``"purple"``
 * ``Vilib.color_detect_switch(False)`` : Farberkennung ausschalten
 * ``Vilib.qrcode_detect_switch(False)`` : QR-Code-Erkennung EIN/AUS schalten, gibt die dekodierten Daten des QR-Codes zurück.
 * ``Vilib.gesture_detect_switch(False)`` : Gestenerkennung EIN/AUS schalten

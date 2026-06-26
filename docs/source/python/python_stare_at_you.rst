@@ -1,4 +1,4 @@
-.. note::
+﻿.. note::
 
     Hallo und willkommen in der SunFounder Raspberry Pi & Arduino & ESP32 Enthusiasten-Gemeinschaft auf Facebook! Tauchen Sie tiefer ein in die Welt von Raspberry Pi, Arduino und ESP32 mit anderen Enthusiasten.
 
@@ -17,7 +17,7 @@
 8. Blick auf Dich
 ==========================================
 
-Dieses Projekt basiert ebenfalls auf dem :ref:`py_computer_vision`-Projekt, 
+Dieses Projekt basiert ebenfalls auf dem :ref:`py_computer_vision`-Projekt,
 ergänzt um Algorithmen zur Gesichtserkennung.
 
 Wenn Sie vor der Kamera erscheinen, wird sie Ihr Gesicht erkennen und ihr Gimbal so anpassen, dass Ihr Gesicht im Zentrum des Bildes bleibt.
@@ -85,24 +85,24 @@ Wenn der Code ausgeführt wird, wird die Kamera des Autos immer auf Ihr Gesicht 
             print("stop and exit")
             sleep(0.1)
 
-**Wie funktioniert des?**
+**Wie funktioniert es?**
 
 Diese Codezeilen in ``while True`` lassen die Kamera dem Gesicht folgen.
 
 .. code-block:: python
 
     while True:
-        if Vilib.detect_obj_parameter['human_n'] != 0:
+        if Vilib.detect_obj_parameter['human_n']!=0:
             coordinate_x = Vilib.detect_obj_parameter['human_x']
             coordinate_y = Vilib.detect_obj_parameter['human_y']
             
-            # Ändere den Schwenk-Neige-Winkel, um dem Objekt zu folgen
-            x_angle += (coordinate_x*10/640) - 5
-            x_angle = clamp_number(x_angle, -35, 35)
+            # change the pan-tilt angle for track the object
+            x_angle +=(coordinate_x*10/640)-5
+            x_angle = clamp_number(x_angle,-35,35)
             px.set_cam_pan_angle(x_angle)
 
-            y_angle -= (coordinate_y*10/480) - 5
-            y_angle = clamp_number(y_angle, -35, 35)
+            y_angle -=(coordinate_y*10/480)-5
+            y_angle = clamp_number(y_angle,-35,35)
             px.set_cam_tilt_angle(y_angle)
 
 1. Überprüfe, ob ein menschliches Gesicht erkannt wurde
