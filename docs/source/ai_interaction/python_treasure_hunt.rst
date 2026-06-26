@@ -17,29 +17,27 @@
 20. Chasse au Trésor
 ============================
 
-Dans cette leçon, vous allez transformer votre PiCar-X en **robot chasseur de trésor**.  
-Aménagez un petit labyrinthe dans votre pièce et placez six cartes de couleurs différentes dans chaque coin.  
-Votre PiCar-X va **chercher, reconnaître et célébrer** lorsqu’il trouvera la couleur cible.  
+Dans cette leçon, vous allez transformer votre PiCar-X en **robot chasseur de trésor**.
+Aménagez un petit labyrinthe dans votre pièce et placez six cartes de couleurs différentes dans chaque coin.
+Votre PiCar-X va **chercher, reconnaître et célébrer** lorsqu'il trouvera la couleur cible.
 
 Ce projet combine trois compétences que vous avez déjà apprises :
 
-* **Vision par ordinateur** – détection des cartes colorées avec la caméra Pi.  
-* **Contrôle au clavier** – conduire le robot manuellement à travers le labyrinthe.  
-* **Retour vocal** – Pico2Wave annonce la couleur cible et le succès.  
+* **Vision par ordinateur** – détection des cartes colorées avec la caméra Pi.
+* **Contrôle au clavier** – conduire le robot manuellement à travers le labyrinthe.
+* **Retour vocal** – Pico2Wave annonce la couleur cible et le succès.
 
-C’est un jeu amusant qui montre comment les robots peuvent **voir, réfléchir et agir** comme de vrais chasseurs de trésors !
+C'est un jeu amusant qui montre comment les robots peuvent **voir, réfléchir et agir** comme de vrais chasseurs de trésors !
 
-----
+.. note::
+   Vous pouvez télécharger et imprimer les :download:`Cartes couleur PDF <https://github.com/sunfounder/sf-pdf/raw/master/prop_card/object_detection/color-cards.pdf>` pour une détection plus fiable.
 
 Avant de Commencer
 -------------------
 
-Assurez-vous d’avoir terminé :
+Assurez-vous d'avoir terminé :
 
-* :ref:`install_all_modules` — Installe les modules ``robot-hat``, ``vilib``, ``picar-x``, puis exécute le script ``i2samp.sh``.
-* Vous pouvez télécharger et imprimer les :download:`Cartes couleur PDF <https://github.com/sunfounder/sf-pdf/raw/master/prop_card/object_detection/color-cards.pdf>` pour une détection plus fiable.
-
-----
+* :ref:`install_all_modules` — Install ``robot-hat``, ``vilib``, ``picar-x`` modules, then run the script ``i2samp.sh``.
 
 Exécuter le code
 ---------------------
@@ -53,13 +51,13 @@ Exécuter le code
     cd ~/picar-x/example
     sudo python3 20.treasure_hunt.py
 
-Après l’exécution, vous verrez un message comme celui-ci :
+Après l'exécution, vous verrez un message comme celui-ci :
 
 .. code-block:: text
 
     * Running on http://0.0.0.0:9000/ (Press CTRL+C to quit)
 
-Ensuite, ouvrez ``http://<votre IP>:9000/mjpg`` dans votre navigateur pour voir le flux vidéo en direct.  
+Ensuite, ouvrez ``http://<votre IP>:9000/mjpg`` dans votre navigateur pour voir le flux vidéo en direct.
 Exemple : ``http://192.168.18.113:9000/mjpg``
 
 .. image:: img/display.png
@@ -67,17 +65,17 @@ Exemple : ``http://192.168.18.113:9000/mjpg``
 Règles du jeu
 ----------------------
 
-1. Le robot sélectionne aléatoirement une **couleur cible** et dit : **« Cherche le rouge ! »**  
+1. Le robot sélectionne aléatoirement une **couleur cible** et dit : **« Cherche le rouge ! »**
 2. Vous conduisez le PiCar-X avec le clavier :
 
-   * ``w`` = avancer  
-   * ``a`` = tourner à gauche  
-   * ``s`` = reculer  
-   * ``d`` = tourner à droite  
-   * ``space`` = répéter la couleur cible  
+   * ``w`` = avancer
+   * ``a`` = tourner à gauche
+   * ``s`` = reculer
+   * ``d`` = tourner à droite
+   * ``space`` = répéter la couleur cible
    * ``Ctrl+C`` = quitter
 
-3. Lorsque la caméra voit la carte de couleur cible, PiCar-X dit **« Bravo ! »**  
+3. Lorsque la caméra voit la carte de couleur cible, PiCar-X dit **« Bravo ! »**
 4. Une nouvelle couleur cible est choisie et la chasse continue !
 
 Code
@@ -231,39 +229,39 @@ Comment ça marche
 
 1. **Initialisation**
 
-   * Importer les modules et configurer PiCar-X, la caméra et la synthèse vocale TTS.  
-   * Définir la liste des couleurs, la vitesse et l’angle de direction.
+   * Importer les modules et configurer PiCar-X, la caméra et la synthèse vocale TTS.
+   * Définir la liste des couleurs, la vitesse et l'angle de direction.
 
 2. **Sélection de la couleur cible**
 
-   * ``renew_color_detect()`` choisit aléatoirement une couleur cible.  
+   * ``renew_color_detect()`` choisit aléatoirement une couleur cible.
    * Le robot annonce la couleur cible avec Pico2Wave.
 
 3. **Contrôle au clavier**
 
-   * ``key_scan_thread()`` s’exécute en arrière-plan pour capturer les touches.  
+   * ``key_scan_thread()`` s'exécute en arrière-plan pour capturer les touches.
    * Les touches ``w, a, s, d`` contrôlent le mouvement ; ``space`` répète la couleur cible.
 
 4. **Détection de couleur**
 
-   * La caméra vérifie en continu si la couleur cible est visible.  
+   * La caméra vérifie en continu si la couleur cible est visible.
    * Si la zone détectée est suffisamment grande, PiCar-X célèbre la trouvaille.
 
 5. **Boucle principale**
 
-   * Gère en continu le mouvement, la détection et le retour vocal.  
+   * Gère en continu le mouvement, la détection et le retour vocal.
    * Arrête proprement le robot et la caméra lors de la sortie.
 
 Dépannage
 ---------------
 
-* **Le flux de la caméra ne fonctionne pas ?**  
+* **Le flux de la caméra ne fonctionne pas ?**
 
   Exécutez ``libcamera-hello`` pour vérifier si la caméra Pi est correctement connectée.
 
 * **Le robot ne détecte pas les couleurs ?**
 
-  Assurez-vous que les cartes sont bien imprimées et placées dans un bon éclairage. Essayez d’ajuster ``DETECTION_WIDTH_THRESHOLD``.
+  Assurez-vous que les cartes sont bien imprimées et placées dans un bon éclairage. Essayez d'ajuster ``DETECTION_WIDTH_THRESHOLD``.
 
 * **Pas de retour vocal ?**
 
@@ -271,9 +269,9 @@ Dépannage
 
 * **La voiture ne bouge pas ?**
 
-  Vérifiez que l’alimentation de PiCar-X est allumée et que la calibration des moteurs est correcte.
+  Vérifiez que l'alimentation de PiCar-X est allumée et que la calibration des moteurs est correcte.
 
 ----
 
-En terminant cette leçon, vous avez construit un **mini-jeu de chasse au trésor** avec PiCar-X,  
+En terminant cette leçon, vous avez construit un **mini-jeu de chasse au trésor** avec PiCar-X,
 en combinant **vision**, **contrôle** et **interaction** dans un seul projet !

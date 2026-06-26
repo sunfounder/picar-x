@@ -30,3 +30,4 @@ Ici, vous explorerez la synthèse vocale (TTS), la reconnaissance vocale (STT) e
     python_local_chatbot
     python_treasure_hunt
     python_ai_robot
+    ../openclaw

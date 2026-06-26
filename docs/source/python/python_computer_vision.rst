@@ -225,7 +225,7 @@ Veuillez suivre les indications pour activer les fonctions correspondantes.
                         qrcode_thread.setDaemon(True)
                         qrcode_thread.start()
                 else:
-                    if qrcode_thread != None and qrcode_thread est vivant:
+                    if qrcode_thread != None and qrcode_thread.is_alive():
                     # attendre la fin du thread
                         qrcode_thread.join()
                         print('QRcode Detect: close')

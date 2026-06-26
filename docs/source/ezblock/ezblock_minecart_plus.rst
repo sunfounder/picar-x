@@ -28,6 +28,7 @@ Dans ce projet, une récupération de déraillement a été ajoutée au projet :
 
 #. Le bloc **Définir ref sur ()** est utilisé pour définir le seuil de niveaux de gris, vous devez le modifier en fonction de la situation réelle. Vous pouvez exécuter le test :ref:`test_grayscale` pour voir les valeurs du module de niveaux de gris sur les surfaces blanche et noire, et remplir les valeurs intermédiaires dans ce bloc.
 
+
 **EXEMPLE**
 
 .. note::

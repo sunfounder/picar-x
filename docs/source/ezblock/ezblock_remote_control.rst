@@ -20,7 +20,9 @@ Télécommande
 Ce projet vous apprendra à contrôler à distance le PiCar-X avec le widget Joystick.
 Remarque : Après avoir glissé-déposé le widget Joystick depuis la page Télécommande, utilisez la fonction "Map" pour calibrer les lectures des axes X et Y du joystick. Pour plus d'informations sur la fonction Télécommande, veuillez consulter le lien suivant :
 
+
 * :ref:`ezblock:remote_control_latest`
+
 
 .. image:: img/remote_control23.png
 

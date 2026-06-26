@@ -35,6 +35,7 @@ L'objectif est d'aider le PiCar-X à trouver chacune des trois couleurs dans le 
 
 Placez le PiCar-X au centre du terrain et cliquez sur le bouton de la page Télécommande pour commencer le jeu.
 
+
 .. image:: img/orienteering.png
 
 Jouez à tour de rôle avec des amis pour voir qui peut aider le PiCar-X à atteindre l'objectif le plus rapidement !

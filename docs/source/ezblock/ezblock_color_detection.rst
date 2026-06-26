@@ -34,6 +34,7 @@ Ezblock inclut 6 modèles de couleurs pour le PiCar-X : "rouge", "orange", "jaun
 
     Les couleurs imprimées peuvent légèrement différer des modèles de couleurs Ezblock en raison des variations de toners d'imprimante ou du support d'impression, comme un papier de couleur beige. Cela peut entraîner une reconnaissance des couleurs moins précise.
 
+
 .. image:: img/ezblock_color_detect.PNG
 
 **CONSEILS**

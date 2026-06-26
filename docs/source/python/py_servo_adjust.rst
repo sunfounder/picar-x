@@ -34,19 +34,19 @@ Nous devons donc régler tous les angles des servos à 0° avant de les installe
 
 #. Maintenant, exécutez ``servo_zeroing.py`` dans le dossier ``example/``.
 
-   .. raw:: html
-   
-       <run></run>
-   
-   .. code-block::
-   
-       cd ~/picar-x/example
-       sudo python3 servo_zeroing.py
+    .. raw:: html
+
+        <run></run>
+
+    .. code-block::
+
+        cd ~/picar-x/example
+        sudo python3 servo_zeroing.py
 
 #. Ensuite, branchez le câble du servo dans le port P11 comme suit. En même temps, vous verrez le bras du servo tourner jusqu'à une position (Il s'agit de la position 0°, qui est une position aléatoire et peut ne pas être verticale ou parallèle.).
 
 
-   .. image:: img/Z_P11.jpg
+   .. image:: img/Z_P11.JPG
 
 #. Maintenant, retirez le bras du servo, en veillant à ce que le fil du servo reste connecté, et ne coupez pas l'alimentation. Ensuite, poursuivez le montage en suivant les instructions papier.
 

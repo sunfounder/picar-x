@@ -16,24 +16,20 @@
 15. Robot Conteur avec Piper et OpenAI
 ========================================================
 
-Dans la leçon précédente, nous avons testé deux moteurs TTS intégrés sur Raspberry Pi (**Espeak** et **Pico2Wave**).  
+Dans la leçon précédente, nous avons testé deux moteurs TTS intégrés sur Raspberry Pi (**Espeak** et **Pico2Wave**).
 Explorons maintenant deux options plus puissantes : **Piper** (hors ligne, basé sur des réseaux neuronaux) et **OpenAI TTS** (en ligne, basé sur le cloud).
 
-* **Piper** : un moteur TTS local qui fonctionne hors ligne sur Raspberry Pi.  
-* **OpenAI TTS** : un service en ligne offrant des voix très naturelles et humaines.  
+* **Piper** : un moteur TTS local qui fonctionne hors ligne sur Raspberry Pi.
+* **OpenAI TTS** : un service en ligne offrant des voix très naturelles et humaines.
 
 À la fin, votre PiCar-X roulera tout en racontant des blagues comme un petit conteur.
-
-----
 
 Avant de Commencer
 -------------------
 
-Assurez-vous d’avoir terminé :
+Assurez-vous d'avoir terminé :
 
-* :ref:`install_all_modules` — Installe les modules ``robot-hat``, ``vilib``, ``picar-x``, puis exécute le script ``i2samp.sh``.
-
-----
+* :ref:`install_all_modules` — Install ``robot-hat``, ``vilib``, ``picar-x`` modules, then run the script ``i2samp.sh``.
 
 .. _test_piper:
 
@@ -63,15 +59,15 @@ Assurez-vous d’avoir terminé :
        # Liste les modèles pour l'anglais (en_us)
        print(tts.available_models('en_us'))
 
-       # Définit un modèle vocal (téléchargement automatique s’il n’est pas présent)
+       # Définit un modèle vocal (téléchargement automatique s'il n'est pas présent)
        tts.set_model("en_US-amy-low")
 
        # Prononce une phrase
        tts.say("Hello! I'm Piper TTS.")
 
-   * ``available_countrys()`` : affiche les langues prises en charge.  
-   * ``available_models()`` : liste les modèles disponibles pour cette langue.  
-   * ``set_model()`` : définit le modèle vocal (téléchargé automatiquement s’il est absent).  
+   * ``available_countrys()`` : affiche les langues prises en charge.
+   * ``available_models()`` : liste les modèles disponibles pour cette langue.
+   * ``set_model()`` : définit le modèle vocal (téléchargé automatiquement s'il est absent).
    * ``say()`` : convertit le texte en parole et le lit à voix haute.
 
 #. Exécutez le programme :
@@ -153,54 +149,21 @@ Assurez-vous d’avoir terminé :
 
    ``Hello! I'm OpenAI TTS.``
 
-.. **Modèles et voix disponibles**
-
-.. .. list-table::
-..    :header-rows: 1
-..    :widths: 20 80
-
-..    * - Catégorie
-..      - Options
-..    * - Modèles
-..      -
-..        - ``tts-1``  
-..        - ``tts-1-hd``  
-..        - ``gpt-4o-mini-tts``  
-..        - ``accent``  
-..        - ``emotional-range``  
-..        - ``intonation``  
-..        - ``impressions``  
-..        - ``speed-of-speech``  
-..        - ``tone``  
-..        - ``whispering``
-..    * - Voix
-..      -
-..        - ``alloy``  
-..        - ``ash``  
-..        - ``ballad``  
-..        - ``coral``  
-..        - ``echo``  
-..        - ``fable``  
-..        - ``nova``  
-..        - ``onyx``  
-..        - ``sage``  
-..        - ``shimmer``
-
 
 3. Robot Conteur
 ------------------------
 
-Maintenant que nous avons testé **Piper** et **OpenAI TTS**, utilisons-les dans un vrai projet :  
+Maintenant que nous avons testé **Piper** et **OpenAI TTS**, utilisons-les dans un vrai projet :
 un **robot conteur** qui se déplace tout en racontant des blagues.
 
 Dans ce programme, le PiCar-X va :
 
-* Vous saluer avec une synthèse vocale au démarrage.  
-* Avancer et raconter une première blague.  
-* Avancer à nouveau et raconter une deuxième blague.  
-* Enfin, reculer, revenir “à la maison” et dire au revoir.
+* Vous saluer avec une synthèse vocale au démarrage.
+* Avancer et raconter une première blague.
+* Avancer à nouveau et raconter une deuxième blague.
+* Enfin, reculer, revenir « à la maison » et dire au revoir.
 
-C’est comme avoir un petit robot conteur sur roues !
+C'est comme avoir un petit robot conteur sur roues !
 
 **Exécuter le code**
 
@@ -272,7 +235,7 @@ Dépannage
 
 * **No module named 'secret'**
 
-  Cela signifie que ``secret.py`` n’est pas dans le même dossier que votre fichier Python.  
+  Cela signifie que ``secret.py`` n'est pas dans le même dossier que votre fichier Python.
   Déplacez ``secret.py`` dans le même répertoire que celui où vous exécutez le script, par exemple :
 
   .. code-block:: bash
@@ -282,8 +245,8 @@ Dépannage
 
 * **OpenAI : Invalid API key / 401**
 
-  * Vérifiez que vous avez bien collé la clé complète (elle commence par ``sk-``) et qu’il n’y a pas d’espaces ou de retours à la ligne en trop.
-  * Assurez-vous que votre code l’importe correctement :
+  * Vérifiez que vous avez bien collé la clé complète (elle commence par ``sk-``) et qu'il n'y a pas d'espaces ou de retours à la ligne en trop.
+  * Assurez-vous que votre code l'importe correctement :
 
     .. code-block:: python
 
@@ -296,9 +259,9 @@ Dépannage
   * Vous devrez peut-être ajouter un moyen de paiement ou augmenter votre quota dans le tableau de bord OpenAI.
   * Réessayez après avoir résolu le problème de facturation.
 
-* **Piper : tts.say() s’exécute mais aucun son**
+* **Piper : tts.say() s'exécute mais aucun son**
 
-  * Assurez-vous qu’un modèle vocal est bien présent :
+  * Assurez-vous qu'un modèle vocal est bien présent :
 
     .. code-block:: bash
 
@@ -312,15 +275,15 @@ Dépannage
 
   * Vérifiez le périphérique de sortie audio / le volume sur votre Pi (``alsamixer``) et que les haut-parleurs sont correctement branchés et alimentés.
 
-* **Erreurs ALSA / périphérique audio (par ex. “Audio device busy” ou “No such file or directory”)**
+* **Erreurs ALSA / périphérique audio (par ex. « Audio device busy » ou « No such file or directory »)**
 
-  * Fermez les autres programmes utilisant l’audio.
+  * Fermez les autres programmes utilisant l'audio.
   * Redémarrez le Raspberry Pi si le périphérique reste occupé.
   * Pour HDMI vs prise jack, sélectionnez le bon périphérique dans les paramètres audio de Raspberry Pi OS.
 
-* **Permission denied lors de l’exécution de Python**
+* **Permission denied lors de l'exécution de Python**
 
-  * Essayez avec ``sudo`` si votre environnement l’exige :
+  * Essayez avec ``sudo`` si votre environnement l'exige :
 
     .. code-block:: bash
 
@@ -347,7 +310,7 @@ Comparaison des moteurs TTS
      - Cloud (en ligne, nécessite une clé API)
    * - Qualité de la voix
      - Robotique
-     - Plus naturelle qu’Espeak
+     - Plus naturelle qu'Espeak
      - Naturelle (TTS neuronal)
      - Très naturelle / humaine
    * - Contrôles

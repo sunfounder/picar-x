@@ -17,10 +17,6 @@
 Jouer avec Ezblock
 ===========================
 
-.. note::
-
-    Si vous utilisez un Raspberry Pi 5, notre logiciel de programmation graphique, EzBlock, n'est pas compatible.
-
 Pour les débutants et novices, EzBlock est une plateforme de développement logiciel proposée par SunFounder pour Raspberry Pi. EzBlock propose deux environnements de programmation : un environnement graphique et un environnement Python.
 
 Il est disponible pour presque tous les types d'appareils, y compris Mac, PC et Android.
@@ -71,3 +67,10 @@ La page Exemples permet aux utilisateurs de choisir entre le langage par blocs o
     ezblock_beware_pedestrians
     ezblock_traffic
     ezblock_orienteering
+
+
+
+
+
+
+

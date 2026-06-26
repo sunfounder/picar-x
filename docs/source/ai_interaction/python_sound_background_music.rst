@@ -15,16 +15,16 @@
 .. _py_tts:
 
 13. Jouer de la Musique et des Effets Sonores
-==============================================
+================================================
 
-Dans ce projet, vous apprendrez à faire jouer au PiCar-X de la musique de fond ou des effets sonores.  
+Dans ce projet, vous apprendrez à faire jouer au PiCar-X de la musique de fond ou des effets sonores.
 Vous pouvez également lire des fichiers audio que vous avez enregistrés.
 
 **Avant de Commencer**
 
-Assurez-vous d’avoir terminé :
+Assurez-vous d'avoir terminé :
 
-* :ref:`install_all_modules` — Installe les modules ``robot-hat``, ``vilib``, ``picar-x``, puis exécute le script ``i2samp.sh``.
+* :ref:`install_all_modules` — Install ``robot-hat``, ``vilib``, ``picar-x`` modules, then run the script ``i2samp.sh``.
 
 **Exécuter le Code**
 
@@ -37,13 +37,13 @@ Assurez-vous d’avoir terminé :
     cd ~/picar-x/example
     sudo python3 13.sound_background_music.py
 
-Après l’exécution du code, suivez les instructions affichées dans le terminal.
+Après l'exécution du code, veuillez suivre les instructions affichées dans le terminal.
 
-Appuyez sur une touche pour appeler une fonction :
+Appuyez sur une touche pour appeler une fonction !
 
-* **espace** : Joue un effet sonore (klaxon de voiture)  
-* **c** : Joue un effet sonore dans un thread  
-* **q** : Lecture/Arrêt de la musique
+    * space: Joue un effet sonore (klaxon de voiture)
+    * c: Joue un effet sonore avec des threads
+    * q: Lecture/Arrêt de la musique
 
 **Code**
 
@@ -95,7 +95,7 @@ Appuyez sur une touche pour appeler une fonction :
 
 Les fonctions liées à la musique de fond incluent les suivantes :
 
-* ``music = Music()`` : Déclare l’objet.
+* ``music = Music()`` : Déclare l'objet.
 * ``music.music_set_volume(20)`` : Définit le volume, la plage est de 0 à 100.
 * ``music.music_play('../musics/slow-trail-Ahjay_Stelino.mp3')`` : Lit un fichier musical, ici le fichier **slow-trail-Ahjay_Stelino.mp3** situé dans le dossier ``../musics``.
 * ``music.music_stop()`` : Arrête la lecture de la musique de fond.

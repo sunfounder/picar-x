@@ -20,8 +20,8 @@ Dans cette leçon, nous allons utiliser deux moteurs de synthèse vocale (TTS) i
 
 Ces deux moteurs sont simples et fonctionnent hors ligne, mais leurs voix sont très différentes :
 
-* **Espeak** : très léger et rapide, mais la voix est robotique. Vous pouvez régler la vitesse, la hauteur, le volume, etc.  
-* **Pico2Wave** : produit une voix plus fluide et naturelle qu’Espeak, mais avec moins d’options de configuration.
+* **Espeak** : très léger et rapide, mais la voix est robotique. Vous pouvez régler la vitesse, la hauteur, le volume, etc.
+* **Pico2Wave** : produit une voix plus fluide et naturelle qu'Espeak, mais avec moins d'options de configuration.
 
 Vous allez entendre la différence en termes de **qualité de voix** et de **fonctionnalités**, puis créer une « voiture à annonces vocales » qui annonce ses actions avant de bouger.
 
@@ -30,35 +30,35 @@ Vous allez entendre la différence en termes de **qualité de voix** et de **fon
 Avant de Commencer
 -------------------
 
-Assurez-vous d’avoir terminé :
+Assurez-vous d'avoir terminé :
 
-* :ref:`install_all_modules` — Installe les modules ``robot-hat``, ``vilib``, ``picar-x``, puis exécute le script ``i2samp.sh``.
+* :ref:`install_all_modules` — Install ``robot-hat``, ``vilib``, ``picar-x`` modules, then run the script ``i2samp.sh``.
 
 ----
 
 1. Tester Espeak
 --------------------
 
-Espeak est un moteur TTS léger inclus dans Raspberry Pi OS.  
+Espeak est un moteur TTS léger inclus dans Raspberry Pi OS.
 Sa voix est robotique mais hautement configurable : vous pouvez ajuster le volume, la vitesse, la hauteur, et plus encore.
 
-**Étapes pour l’essayer** :
+**Étapes à suivre** :
 
 * Créez un nouveau fichier avec la commande :
 
   .. code-block:: bash
-  
+
       cd ~/picar-x/example
       sudo nano test_tts_espeak.py
 
-* Copiez ensuite l’exemple de code ci-dessous. Appuyez sur ``Ctrl+X``, puis ``Y``, et enfin ``Entrée`` pour enregistrer et quitter.
+* Copiez ensuite l'exemple de code ci-dessous. Appuyez sur ``Ctrl+X``, puis ``Y``, et enfin ``Entrée`` pour enregistrer et quitter.
 
   .. code-block:: python
-  
+
       from picarx.tts import Espeak
 
       tts = Espeak()
-  
+
       # Optional voice tuning
       # tts.set_amp(100)   # 0 to 200
       # tts.set_speed(150) # 80 to 260
@@ -75,18 +75,18 @@ Sa voix est robotique mais hautement configurable : vous pouvez ajuster le volum
 
      sudo python3 test_tts_espeak.py
 
-* Vous devriez entendre la PiCar-X dire : “Hello! I'm Espeak TTS.”
-* Décommentez les lignes de réglage vocal dans le code pour expérimenter l’effet de ``amp``, ``speed``, ``gap`` et ``pitch`` sur la voix.
+* Vous devriez entendre la PiCar-X dire : "Hello! I'm Espeak TTS."
+* Décommentez les lignes de réglage vocal dans le code pour expérimenter l'effet de ``amp``, ``speed``, ``gap`` et ``pitch`` sur la voix.
 
 ----
 
 2. Tester Pico2Wave
 ---------------------
 
-Pico2Wave produit une voix plus naturelle et humaine qu’Espeak.  
+Pico2Wave produit une voix plus naturelle et humaine qu'Espeak.
 Il est plus simple à utiliser mais moins flexible — vous ne pouvez changer que la langue, pas la hauteur ou la vitesse.
 
-**Étapes pour l’essayer** :
+**Étapes à suivre** :
 
 * Créez un nouveau fichier avec la commande :
 
@@ -95,16 +95,16 @@ Il est plus simple à utiliser mais moins flexible — vous ne pouvez changer qu
       cd ~/picar-x/example
       sudo nano test_tts_pico2wave.py
 
-* Copiez ensuite l’exemple de code dans ce fichier. Appuyez sur ``Ctrl+X``, puis ``Y``, et enfin ``Entrée`` pour enregistrer et quitter.
+* Copiez ensuite l'exemple de code dans ce fichier. Appuyez sur ``Ctrl+X``, puis ``Y``, et enfin ``Entrée`` pour enregistrer et quitter.
 
   .. code-block:: python
-  
+
       from picarx.tts import Pico2Wave
 
       tts = Pico2Wave()
-  
+
       tts.set_lang('en-US')  # en-US, en-GB, de-DE, es-ES, fr-FR, it-IT
-  
+
       # Quick hello (sanity check)
       tts.say("Hello! I'm Pico2Wave TTS.")
 
@@ -114,16 +114,16 @@ Il est plus simple à utiliser mais moins flexible — vous ne pouvez changer qu
 
     sudo python3 test_tts_pico2wave.py
 
-* Vous devriez entendre la PiCar-X dire : “Hello! I'm Pico2Wave TTS.”
-* Essayez de changer la langue (par exemple, ``es-ES`` pour l’espagnol) et écoutez la différence.
+* Vous devriez entendre la PiCar-X dire : "Hello! I'm Pico2Wave TTS."
+* Essayez de changer la langue (par exemple, ``es-ES`` pour l'espagnol) et écoutez la différence.
 
 ----
 
 3. Voiture à Annonces Vocales
 -----------------------------------
 
-Nous allons maintenant combiner **Pico2Wave** ou **Espeak** avec le code de conduite de la PiCar-X pour créer une « voiture à annonces vocales » :  
-avant chaque action, la voiture annoncera ce qu’elle est sur le point de faire.
+Nous allons maintenant combiner **Pico2Wave** ou **Espeak** avec le code de conduite de la PiCar-X pour créer une « voiture à annonces vocales » :
+avant chaque action, la voiture annoncera ce qu'elle est sur le point de faire.
 
 **Exécuter le code**
 
@@ -132,7 +132,7 @@ avant chaque action, la voiture annoncera ce qu’elle est sur le point de faire
     cd ~/picar-x/example
     sudo python3 14.voice_promt_car.py
 
-Lorsque vous exécutez ce code, votre PiCar-X avancera, reculera et tournera, en annonçant chaque mouvement à l’avance.  
+Lorsque vous exécutez ce code, votre PiCar-X avancera, reculera et tournera, en annonçant chaque mouvement à l'avance.
 Cela rend votre voiture plus sûre, plus conviviale et plus interactive.
 
 **Code**
@@ -201,9 +201,9 @@ Cela rend votre voiture plus sûre, plus conviviale et plus interactive.
 Dépannage
 -------------------
 
-* **Aucun son lors de l’exécution d’Espeak ou Pico2Wave**
+* **Aucun son lors de l'exécution d'Espeak ou Pico2Wave**
 
-  * Vérifiez que vos haut-parleurs/casque sont bien branchés et que le volume n’est pas coupé.  
+  * Vérifiez que vos haut-parleurs/casque sont bien branchés et que le volume n'est pas coupé.
   * Faites un test rapide dans le terminal :
 
     .. code-block:: bash
@@ -211,20 +211,20 @@ Dépannage
        espeak "Hello world"
        pico2wave -w test.wav "Hello world" && aplay test.wav
 
-  Si vous n’entendez rien, le problème vient de la sortie audio, pas de votre code Python.
+  Si vous n'entendez rien, le problème vient de la sortie audio, pas de votre code Python.
 
-* **La voix d’Espeak est trop rapide ou trop robotique**
+* **La voix d'Espeak est trop rapide ou trop robotique**
 
-  * Essayez d’ajuster les paramètres dans votre code :
+  * Essayez d'ajuster les paramètres dans votre code :
 
     .. code-block:: python
 
        tts.set_speed(120)   # plus lent
        tts.set_pitch(60)    # hauteur différente
 
-* **Permission refusée lors de l’exécution du code**
+* **Permission refusée lors de l'exécution du code**
 
-  * Essayez d’exécuter avec ``sudo`` :
+  * Essayez d'exécuter avec ``sudo`` :
 
     .. code-block:: bash
 

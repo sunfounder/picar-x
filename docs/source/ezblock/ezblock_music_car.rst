@@ -17,6 +17,7 @@ Voiture musicale
 
 Ce projet transformera le PiCar-X en une voiture musicale qui se déplacera dans votre maison en jouant de la musique joyeuse. Ce projet montre également comment le PiCar-X évite de heurter les murs grâce à son capteur ultrason intégré.
 
+
 **CONSEILS**
 
 .. image:: img/sp210512_163224.png

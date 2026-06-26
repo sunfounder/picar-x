@@ -22,6 +22,7 @@ Ce projet combine plusieurs fonctions des projets précédents. Le mouvement du 
 
 .. image:: img/how_are_you.jpg
 
+
 **CONSEILS**
 
 .. image:: img/sp210512_161525.png

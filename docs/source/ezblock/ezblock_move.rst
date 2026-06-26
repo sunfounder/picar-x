@@ -54,3 +54,5 @@ Ce bloc arrêtera complètement le PiCar-X.
     * Ou trouvez le code portant le même nom sur la page **Exemples** d'EzBlock Studio, puis cliquez sur **Exécuter** ou **Modifier** directement.
 
 .. image:: img/sp210512_113827.png
+
+

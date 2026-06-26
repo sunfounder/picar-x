@@ -14,6 +14,7 @@
 
 .. _assembly_instructions:
 
+
 Assembler la PiCar-X
 ==========================================
 
@@ -35,12 +36,7 @@ Dans ce tutoriel, vous apprendrez :
 
 * **Astuces et recommandations** : tout au long du processus, nous partagerons des conseils essentiels pour éviter les erreurs courantes et assurer le bon fonctionnement de votre voiture.
 
-* **Mise à zéro d’un servo** : avant de fixer chaque servo, il doit être remis à zéro.  
-  Les étapes pour cette opération sont :
-  1. Installer Raspberry Pi OS,  
-  2. Installer les modules requis,  
-  3. Exécuter un script pour définir l’angle de toutes les broches PWM à 0,  
-  4. Enfin, brancher le câble du servo pour effectuer la mise à zéro.
+* **Mise à zéro d’un servo** : avant de fixer chaque servo, il doit d’abord être remis à zéro. Les étapes de mise à zéro consistent d’abord à installer le système d’exploitation Raspberry Pi, puis à installer les modules requis, puis à exécuter un script (définir l’angle de toutes les broches PWM à 0). Ensuite, branchez le câble du servo pour effectuer la mise à zéro.
 
 .. raw:: html
 

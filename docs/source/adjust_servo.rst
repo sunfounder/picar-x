@@ -27,10 +27,12 @@ du servo.
 
 .. image:: img/IMG_9897.png
 
+
 Pour les utilisateurs de Python
 -------------------------------------
 
 Veuillez consulter :ref:`quick_guide_python` pour finaliser l'installation de l'OS Raspberry Pi et ajuster l'angle des servos.
+
 
 Pour les utilisateurs d'Ezblock
 -------------------------------------

@@ -33,6 +33,7 @@ Personnalisons un contrôleur PiCar-X à l'aide de cette application.
 
     Les modules ``robot-hat``, ``vilib`` et ``picar-x`` doivent être installés en premier, pour plus de détails, consultez : :ref:`install_all_modules`.
 
+
     .. raw:: html
 
         <run></run>
@@ -55,7 +56,7 @@ Personnalisons un contrôleur PiCar-X à l'aide de cette application.
         cd ~/picar-x/example
         sudo python3 12.app_control.py
 
-#. Installez le `SunFounder Controller <https://docs.sunfounder.com/projects/sf-controller/en/latest/>`_ depuis **APP Store (iOS)** ou **Google Play (Android)**.
+#. Installez le `SunFounder Controller <https://docs.sunfounder.com/projects/sf-controller/en/latest/>`_ depuis **APP Store(iOS)** ou **Google Play(Android)**.
 
 #. Ouvrez et créez un nouveau contrôleur.
 
@@ -74,6 +75,8 @@ Personnalisons un contrôleur PiCar-X à l'aide de cette application.
     .. image:: img/app9.PNG
 
     Une fois que vous avez cliqué sur le nom du produit, le message "Connexion réussie" apparaîtra et le nom du produit s'affichera dans le coin supérieur droit.
+
+    .. image:: img/app10.PNG
 
     .. note::
 

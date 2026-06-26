@@ -80,5 +80,5 @@ Le PiCar-X peut être programmé dans deux langages : Blockly et Python. Quel qu
 Avis de droits d'auteur
 ----------------------------
 
-Tous les contenus, y compris, sans s'y limiter, les textes, les images et le code de ce manuel, appartiennent à la société SunFounder. Vous ne devez les utiliser qu'à des fins d'étude personnelle, de recherche, de divertissement ou à d'autres fins non commerciales ou à but non lucratif, conformément aux règlements et lois sur les droits d'auteur, sans enfreindre les droits légaux de l'auteur et des détenteurs des droits concernés. Pour toute personne ou organisation utilisant ces contenus à des fins lucratives sans autorisation, la société se réserve le droit d'engager des poursuites judiciaires.
+Tous les contenus, y compris mais sans s'y limiter, les textes, les images et le code de ce manuel, sont la propriété de SunFounder. Vous ne devez les utiliser qu'à des fins d'étude personnelle, de recherche, de divertissement ou à d'autres fins non commerciales ou à but non lucratif, conformément aux réglementations et lois sur les droits d'auteur, sans enfreindre les droits légaux de l'auteur et des titulaires de droits concernés. Pour toute personne ou organisation qui utilise ces contenus à des fins lucratives sans autorisation, la société se réserve le droit d'engager des poursuites judiciaires.
 

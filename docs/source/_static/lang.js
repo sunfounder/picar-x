@@ -1,3 +1,4 @@
+
 let supportLangs = {
     'en': ['This documentation is also available in', 'English', 'Never show again'],
     'de': ['Diese Dokumentation ist auch in', 'Deutsch', 'Nie wieder anzeigen'],

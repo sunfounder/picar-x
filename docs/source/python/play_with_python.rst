@@ -39,10 +39,8 @@ Si vous savez déjà utiliser le Raspberry Pi et accéder à sa ligne de command
     install_all_modules
     py_servo_adjust
 
-----
-
 2. Mouvements de Base
----------------------------
+-----------------------
 
 Une fois votre PiCar-X assemblée, commencez par des programmes simples de **mouvement**.  
 Vous apprendrez à **contrôler les moteurs**, à **avancer / reculer**, à **tourner**, et à utiliser des capteurs de base pour éviter les obstacles ou suivre une ligne.
@@ -57,10 +55,8 @@ Vous apprendrez à **contrôler les moteurs**, à **avancer / reculer**, à **to
     python_cliff
     python_line_track
 
-----
-
 3. Vision par Ordinateur
-----------------------------
+-------------------------
 
 Donnez à votre PiCar-X la capacité de **voir** grâce à sa caméra.  
 Cette section couvre des projets amusants basés sur la vision : suivi de visage, enregistrement vidéo, interactions avec des objets, ou encore **contrôle de la voiture via vidéo ou application mobile**.
@@ -74,3 +70,4 @@ Cette section couvre des projets amusants basés sur la vision : suivi de visage
     python_bull_fight
     python_video_car
     control_by_app
+

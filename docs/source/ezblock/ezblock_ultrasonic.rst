@@ -46,4 +46,5 @@ Une fois le code exécuté, activez le moniteur de débogage en cliquant sur l'i
     * Vous pouvez écrire le programme en suivant l'image ci-dessous, veuillez consulter le tutoriel : :ref:`ezblock:create_project_latest`.
     * Ou trouvez le code portant le même nom sur la page **Exemples** d'EzBlock Studio, puis cliquez sur **Exécuter** ou **Modifier** directement.
 
+
 .. image:: img/sp210512_115125.png

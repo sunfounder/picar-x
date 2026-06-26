@@ -17,14 +17,14 @@
 18. Connexion aux LLM en Ligne
 ================================
 
-Dans cette leçon, nous allons apprendre à connecter votre PiCar-X (ou Raspberry Pi) à différents **grands modèles de langage en ligne (LLM)**.  
+Dans cette leçon, nous allons apprendre à connecter votre PiCar-X (ou Raspberry Pi) à différents **grands modèles de langage en ligne (LLM)**.
 Chaque fournisseur nécessite une clé API et propose différents modèles parmi lesquels vous pouvez choisir.
 
 Nous allons voir comment :
 
-* Créer et enregistrer vos clés API en toute sécurité.  
-* Choisir un modèle adapté à vos besoins.  
-* Exécuter notre code d’exemple pour discuter avec ces modèles.
+* Créer et enregistrer vos clés API en toute sécurité.
+* Choisir un modèle adapté à vos besoins.
+* Exécuter notre code d'exemple pour discuter avec ces modèles.
 
 Allons-y étape par étape pour chaque fournisseur.
 
@@ -33,16 +33,16 @@ Allons-y étape par étape pour chaque fournisseur.
 Avant de Commencer
 -------------------
 
-Assurez-vous d’avoir terminé :
+Assurez-vous d'avoir terminé :
 
-* :ref:`install_all_modules` — Installe les modules ``robot-hat``, ``vilib``, ``picar-x``, puis exécute le script ``i2samp.sh``.
-
-----
+* :ref:`install_all_modules` — Install ``robot-hat``, ``vilib``, ``picar-x`` modules, then run the script ``i2samp.sh``.
 
 OpenAI
 ----------
 
 OpenAI propose des modèles puissants comme **GPT-4o** et **GPT-4.1** pouvant être utilisés à la fois pour des tâches textuelles et visuelles.
+
+Voici comment procéder :
 
 **Obtenir et enregistrer votre clé API**
 
@@ -75,15 +75,15 @@ OpenAI propose des modèles puissants comme **GPT-4o** et **GPT-4.1** pouvant ê
 
 **Activer la facturation et vérifier les modèles**
 
-#. Avant d’utiliser la clé, allez sur la page **Billing** de votre compte OpenAI, ajoutez vos informations de paiement et créditez un petit montant.
+#. Avant d'utiliser la clé, allez sur la page **Billing** de votre compte OpenAI, ajoutez vos informations de paiement et créditez un petit montant.
 
    .. image:: img/llm_openai_billing.png
 
-#. Ensuite, allez sur la page **Limits** pour vérifier quels modèles sont disponibles sur votre compte et copiez l’identifiant exact du modèle à utiliser dans votre code.
+#. Ensuite, allez sur la page **Limits** pour vérifier quels modèles sont disponibles sur votre compte et copiez l'identifiant exact du modèle à utiliser dans votre code.
 
    .. image:: img/llm_openai_models.png
 
-**Tester avec le code d’exemple**
+**Tester avec le code d'exemple**
 
 #. Ouvrez notre code exemple :
 
@@ -120,7 +120,7 @@ OpenAI propose des modèles puissants comme **GPT-4o** et **GPT-4.1** pouvant ê
 Gemini
 ------------------
 
-Gemini est la famille de modèles d’IA de Google. C’est un service rapide et bien adapté aux tâches générales.
+Gemini est la famille de modèles d'IA de Google. C'est un service rapide et bien adapté aux tâches générales.
 
 **Obtenir et enregistrer votre clé API**
 
@@ -151,17 +151,17 @@ Gemini est la famille de modèles d’IA de Google. C’est un service rapide et
 
    .. code-block:: python
 
-       # secret.py
-       # Stockez les secrets ici. Ne jamais valider ce fichier dans Git.
-       GEMINI_API_KEY = "AIxxx"
+        # secret.py
+        # Stockez les secrets ici. Ne jamais valider ce fichier dans Git.
+        GEMINI_API_KEY = "AIxxx"
 
 **Vérifier les modèles disponibles**
 
-Rendez-vous sur la page officielle |link_gemini_model| pour voir la liste des modèles, leurs identifiants API exacts et les cas d’usage recommandés.
+Rendez-vous sur la page officielle |link_gemini_model| pour voir la liste des modèles, leurs identifiants API exacts et les cas d'usage recommandés.
 
    .. image:: img/llm_gemini_model.png
 
-**Tester avec le code d’exemple**
+**Tester avec le code d'exemple**
 
 #. Ouvrez le fichier de test :
 
@@ -193,53 +193,52 @@ Rendez-vous sur la page officielle |link_gemini_model| pour voir la liste des mo
 
 ----
 
-
 Qwen
 ------------------
 
-Qwen est une famille de grands modèles de langage et multimodaux développée par Alibaba Cloud.  
-Ces modèles prennent en charge la génération de texte, le raisonnement et la compréhension multimodale (par exemple, l’analyse d’images).
+Qwen est une famille de grands modèles de langage et multimodaux développée par Alibaba Cloud.
+Ces modèles prennent en charge la génération de texte, le raisonnement et la compréhension multimodale (par exemple, l'analyse d'images).
 
 **Obtenir une clé API**
 
-Pour appeler les modèles Qwen, vous avez besoin d’une **clé API**.  
-La plupart des utilisateurs internationaux doivent utiliser la **console DashScope International (Model Studio)**.  
+Pour appeler les modèles Qwen, vous avez besoin d'une **clé API**.
+La plupart des utilisateurs internationaux doivent utiliser la **console DashScope International (Model Studio)**.
 Les utilisateurs en Chine continentale peuvent utiliser la console **Bailian (百炼)**.
 
 * **Pour les utilisateurs internationaux**
 
-  #. Rendez-vous sur la page officielle |link_qwen_inter| sur **Alibaba Cloud**.  
-  #. Connectez-vous ou créez un compte **Alibaba Cloud**.  
-  #. Accédez à **Model Studio** (choisissez la région Singapour ou Pékin).  
-    
-      * Si une fenêtre “Activate Now” apparaît en haut de la page, cliquez dessus pour activer Model Studio et obtenir le quota gratuit (Singapour uniquement).  
-      * L’activation est gratuite — vous ne serez facturé qu’après utilisation du quota gratuit.  
-      * Si aucun message d’activation n’apparaît, le service est déjà actif.
-  
-  #. Allez dans la page **Key Management**. Sous l’onglet **API Key**, cliquez sur **Create API Key**.  
-  #. Une fois la clé créée, copiez-la et conservez-la soigneusement.  
-  
+  #. Rendez-vous sur la page officielle |link_qwen_inter| sur **Alibaba Cloud**.
+  #. Connectez-vous ou créez un compte **Alibaba Cloud**.
+  #. Accédez à **Model Studio** (choisissez la région Singapour ou Pékin).
+
+      * Si une fenêtre "Activate Now" apparaît en haut de la page, cliquez dessus pour activer Model Studio et obtenir le quota gratuit (Singapour uniquement).
+      * L'activation est gratuite — vous ne serez facturé qu'après utilisation du quota gratuit.
+      * Si aucun message d'activation n'apparaît, le service est déjà actif.
+
+  #. Allez dans la page **Key Management**. Sous l'onglet **API Key**, cliquez sur **Create API Key**.
+  #. Une fois la clé créée, copiez-la et conservez-la soigneusement.
+
     .. image:: img/llm_qwen_api_key.png
         :width: 800
-  
+
   .. note::
-     Les utilisateurs de Hong Kong, Macao et Taïwan doivent également choisir l’option **International (Model Studio)**.
+     Les utilisateurs de Hong Kong, Macao et Taïwan doivent également choisir l'option **International (Model Studio)**.
 
 * **Pour les utilisateurs en Chine continentale**
 
   Si vous êtes en Chine continentale, vous pouvez utiliser la console **Alibaba Cloud Bailian (百炼)** :
-  
-  #. Connectez-vous à |link_aliyun| (console Bailian) et effectuez la vérification de compte.  
-  #. Sélectionnez **Create API Key**. Si un message indique que les services de modèles ne sont pas activés, cliquez sur **Activate**, acceptez les conditions et réclamez votre quota gratuit. Après activation, le bouton **Create API Key** sera activé.  
-  
+
+  #. Connectez-vous à |link_aliyun| (console Bailian) et effectuez la vérification de compte.
+  #. Sélectionnez **Create API Key**. Si un message indique que les services de modèles ne sont pas activés, cliquez sur **Activate**, acceptez les conditions et réclamez votre quota gratuit. Après activation, le bouton **Create API Key** sera activé.
+
      .. image:: img/llm_qwen_aliyun_create.png
-  
-  #. Cliquez de nouveau sur **Create API Key**, vérifiez votre compte, puis cliquez sur **Confirm**.  
-  
+
+  #. Cliquez de nouveau sur **Create API Key**, vérifiez votre compte, puis cliquez sur **Confirm**.
+
      .. image:: img/llm_qwen_aliyun_confirm.png
-  
-  #. Une fois la clé créée, copiez-la.  
-  
+
+  #. Une fois la clé créée, copiez-la.
+
      .. image:: img/llm_qwen_aliyun_copy.png
 
 **Enregistrer votre clé API**
@@ -257,10 +256,10 @@ Les utilisateurs en Chine continentale peuvent utiliser la console **Bailian (�
 
         # secret.py
         # Stockez les secrets ici. Ne jamais valider ce fichier dans Git.
-        
+
         QWEN_API_KEY = "sk-xxx"
 
-**Tester avec le code d’exemple**
+**Tester avec le code d'exemple**
 
 #. Ouvrez le fichier de test :
 
@@ -292,11 +291,11 @@ Les utilisateurs en Chine continentale peuvent utiliser la console **Bailian (�
 
 Grok (xAI)
 ------------------
-Grok est l’IA conversationnelle de xAI, créée par l’équipe d’Elon Musk. Vous pouvez vous y connecter via l’API xAI.
+Grok est l'IA conversationnelle de xAI, créée par l'équipe d'Elon Musk. Vous pouvez vous y connecter via l'API xAI.
 
 **Obtenir et enregistrer votre clé API**
 
-#. Inscrivez-vous sur |link_grok_ai|. Ajoutez d’abord des crédits à votre compte — sinon l’API ne fonctionnera pas.
+#. Inscrivez-vous sur |link_grok_ai|. Ajoutez d'abord des crédits à votre compte — sinon l'API ne fonctionnera pas.
 
 #. Allez sur la page **API Keys** et cliquez sur **Create API key**.
 
@@ -323,7 +322,7 @@ Grok est l’IA conversationnelle de xAI, créée par l’équipe d’Elon Musk.
 
         # secret.py
         # Stockez les secrets ici. Ne jamais valider ce fichier dans Git.
-        
+
         GROK_API_KEY = "xai-xxx"
 
 **Vérifier les modèles disponibles**
@@ -332,7 +331,7 @@ Allez sur la page Models dans la console xAI. Vous y trouverez tous les modèles
 
    .. image:: img/llm_grok_model.png
 
-**Tester avec le code d’exemple**
+**Tester avec le code d'exemple**
 
 #. Ouvrez le fichier de test :
 
@@ -362,7 +361,6 @@ Allez sur la page Models dans la console xAI. Vous y trouverez tous les modèles
 
        sudo python3 18.online_llm_test.py
 
-   
 ----
 
 DeepSeek
@@ -406,10 +404,10 @@ Vous devez recharger votre compte au préalable. Commencez avec un petit montant
 
 À la date du 12 septembre 2025, DeepSeek propose :
 
-* ``deepseek-chat``  
-* ``deepseek-reasoner``  
+* ``deepseek-chat``
+* ``deepseek-reasoner``
 
-**Tester avec le code d’exemple**
+**Tester avec le code d'exemple**
 
 #. Ouvrez le fichier de test :
 
@@ -444,13 +442,13 @@ Vous devez recharger votre compte au préalable. Commencez avec un petit montant
 
 Doubao
 ------------------
-Doubao est la plateforme d’IA de ByteDance (Volcengine Ark).
+Doubao est la plateforme d'IA de ByteDance (Volcengine Ark).
 
 **Obtenir et enregistrer votre clé API**
 
 #. Connectez-vous à |link_doubao|.
 
-#. Dans le menu de gauche, descendez jusqu’à **API Key Management → Create API Key**.
+#. Dans le menu de gauche, descendez jusqu'à **API Key Management → Create API Key**.
 
    .. image:: img/llm_doubao_create.png
 
@@ -458,7 +456,7 @@ Doubao est la plateforme d’IA de ByteDance (Volcengine Ark).
 
    .. image:: img/llm_doubao_name.png
 
-#. Cliquez sur l’icône **Show API Key** et copiez la clé.
+#. Cliquez sur l'icône **Show API Key** et copiez la clé.
 
    .. image:: img/llm_doubao_copy.png
 
@@ -494,11 +492,11 @@ Doubao est la plateforme d’IA de ByteDance (Volcengine Ark).
 
    .. image:: img/llm_doubao_kaitong.png
 
-#. Survolez l’ID du modèle pour le copier.
+#. Survolez l'ID du modèle pour le copier.
 
    .. image:: img/llm_doubao_copy_id.png
 
-**Tester avec le code d’exemple**
+**Tester avec le code d'exemple**
 
 #. Ouvrez le fichier de test :
 
@@ -522,7 +520,7 @@ Doubao est la plateforme d’IA de ByteDance (Volcengine Ark).
            model="doubao-seed-1-6-250615",
        )
 
-#. Exécutez :
+#. Exécutez avec :
 
    .. code-block:: bash
 
@@ -533,17 +531,17 @@ Doubao est la plateforme d’IA de ByteDance (Volcengine Ark).
 Général
 --------------
 
-Ce projet prend en charge la connexion à plusieurs plateformes LLM via une interface unifiée.  
+Ce projet prend en charge la connexion à plusieurs plateformes LLM via une interface unifiée.
 Nous avons intégré une compatibilité avec :
 
-* **OpenAI** (ChatGPT / GPT-4o, GPT-4, GPT-3.5)  
-* **Gemini** (Google AI Studio / Vertex AI)  
-* **Grok** (xAI)  
-* **DeepSeek**  
-* **Qwen (通义千问)**  
-* **Doubao (豆包)**  
+* **OpenAI** (ChatGPT / GPT-4o, GPT-4, GPT-3.5)
+* **Gemini** (Google AI Studio / Vertex AI)
+* **Grok** (xAI)
+* **DeepSeek**
+* **Qwen (通义千问)**
+* **Doubao (豆包)**
 
-De plus, vous pouvez vous connecter à **tout autre service LLM compatible avec le format de l’API OpenAI**.  
+De plus, vous pouvez vous connecter à **tout autre service LLM compatible avec le format de l'API OpenAI**.
 Pour ces plateformes, vous devrez obtenir manuellement votre **clé API** et le **base_url** correspondant.
 
 **Obtenir et enregistrer votre clé API**
@@ -568,21 +566,21 @@ Pour ces plateformes, vous devrez obtenir manuellement votre **clé API** et le 
 
    Gardez votre clé API privée. Ne publiez jamais ``secret.py`` dans des dépôts publics.
 
-**Tester avec le code d’exemple**
+**Tester avec le code d'exemple**
 
 #. Ouvrez le fichier de test :
 
    .. code-block:: bash
 
-       cd ~/picar-x/example
-       sudo nano 18.online_llm_test.py
+      cd ~/picar-x/example
+      sudo nano 18.online_llm_test.py
 
-#. Remplacez le contenu d’un fichier Python par l’exemple ci-dessous et renseignez correctement ``base_url`` et ``model`` pour votre fournisseur :
+#. Remplacez le contenu d'un fichier Python par l'exemple ci-dessous et renseignez correctement ``base_url`` et ``model`` pour votre fournisseur :
 
    .. note::
 
-      À propos de ``base_url`` :  
-      Nous prenons en charge le **format de l’API OpenAI**, ainsi que toute API **compatible**.  
+      À propos de ``base_url`` :
+      Nous prenons en charge le **format de l'API OpenAI**, ainsi que toute API **compatible**.
       Chaque fournisseur a son propre ``base_url`` — vérifiez sa documentation.
 
    .. code-block:: python

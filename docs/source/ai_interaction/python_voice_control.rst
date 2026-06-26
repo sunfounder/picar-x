@@ -12,36 +12,31 @@
 
     👉 Prêt à explorer et créer avec nous ? Cliquez sur [|link_sf_facebook|] et rejoignez-nous dès aujourd'hui !
 
-
 16. Voiture Commandée par la Voix avec Vosk (Hors ligne)
 ==============================================================
 
-Vosk est un moteur de reconnaissance vocale (STT) léger qui prend en charge de nombreuses langues et fonctionne entièrement **hors ligne** sur Raspberry Pi.  
-Vous n’avez besoin d’une connexion Internet qu’une seule fois pour télécharger un modèle linguistique. Ensuite, tout fonctionne sans réseau.
+Vosk est un moteur de reconnaissance vocale (STT) léger qui prend en charge de nombreuses langues et fonctionne entièrement **hors ligne** sur Raspberry Pi.
+Vous n'avez besoin d'une connexion Internet qu'une seule fois pour télécharger un modèle linguistique. Ensuite, tout fonctionne sans réseau.
 
 Dans cette leçon, nous allons :
 
-* Vérifier le fonctionnement du microphone sur le Raspberry Pi.  
-* Installer et tester Vosk avec un modèle linguistique choisi.  
+* Vérifier le fonctionnement du microphone sur le Raspberry Pi.
+* Installer et tester Vosk avec un modèle linguistique choisi.
 * Construire une **voiture PiCar-X commandée par la voix** qui écoute un mot déclencheur puis répond à des commandes telles que **forward**, **backward**, **left** et **right**.
-
-----
 
 Avant de Commencer
 -------------------
 
-Assurez-vous d’avoir terminé :
+Assurez-vous d'avoir terminé :
 
-* :ref:`install_all_modules` — Installe les modules ``robot-hat``, ``vilib``, ``picar-x``, puis exécute le script ``i2samp.sh``.
-
-----
+* :ref:`install_all_modules` — Install ``robot-hat``, ``vilib``, ``picar-x`` modules, then run the script ``i2samp.sh``.
 
 1. Vérifier votre microphone
 ------------------------------------
 
-Avant d’utiliser la reconnaissance vocale, assurez-vous que votre microphone USB fonctionne correctement.
+Avant d'utiliser la reconnaissance vocale, assurez-vous que votre microphone USB fonctionne correctement.
 
-#. Listez les périphériques d’enregistrement disponibles :
+#. Listez les périphériques d'enregistrement disponibles :
 
    .. code-block:: bash
 
@@ -61,7 +56,7 @@ Avant d’utiliser la reconnaissance vocale, assurez-vous que votre microphone U
 
       arecord -D plughw:2,0 -f S16_LE -r 16000 -d 3 test.wav
 
-#. Lisez l’enregistrement pour le vérifier :
+#. Lisez l'enregistrement pour le vérifier :
 
    .. code-block:: bash
 
@@ -73,10 +68,10 @@ Avant d’utiliser la reconnaissance vocale, assurez-vous que votre microphone U
 
       alsamixer
 
-   * Appuyez sur **F6** pour sélectionner votre microphone USB.  
-   * Trouvez le canal **Mic** ou **Capture**.  
-   * Assurez-vous qu’il n’est pas en mode muet (**[MM]** signifie muet, appuyez sur ``M`` pour réactiver → cela doit afficher **[OO]**).  
-   * Utilisez les flèches ↑ / ↓ pour modifier le volume d’enregistrement.
+   * Appuyez sur **F6** pour sélectionner votre microphone USB.
+   * Trouvez le canal **Mic** ou **Capture**.
+   * Assurez-vous qu'il n'est pas en mode muet (**[MM]** signifie muet, appuyez sur ``M`` pour réactiver → cela doit afficher **[OO]**).
+   * Utilisez les flèches ↑ / ↓ pour modifier le volume d'enregistrement.
 
 
 .. _test_vosk:
@@ -84,7 +79,7 @@ Avant d’utiliser la reconnaissance vocale, assurez-vous que votre microphone U
 2. Tester Vosk
 --------------------------
 
-**Étapes pour l’essayer** :
+**Étapes à suivre** :
 
 #. Créez un nouveau fichier :
 
@@ -93,7 +88,7 @@ Avant d’utiliser la reconnaissance vocale, assurez-vous que votre microphone U
       cd ~/picar-x/example
       sudo nano test_stt_vosk.py
 
-#. Copiez l’exemple de code ci-dessous, puis enregistrez avec ``Ctrl+X``, ``Y`` et ``Entrée`` :
+#. Copiez l'exemple de code ci-dessous, puis enregistrez avec ``Ctrl+X``, ``Y`` et ``Entrée`` :
 
    .. code-block:: python
 
@@ -114,7 +109,7 @@ Avant d’utiliser la reconnaissance vocale, assurez-vous que votre microphone U
 
       sudo python3 test_stt_vosk.py
 
-#. La première fois que vous exécutez ce code avec une nouvelle langue, Vosk va **télécharger automatiquement le modèle linguistique** (par défaut, la version « small »).  
+#. La première fois que vous exécutez ce code avec une nouvelle langue, Vosk va **télécharger automatiquement le modèle linguistique** (par défaut, la version « small »).
    En même temps, il affichera la liste des langues prises en charge. Ensuite vous verrez :
 
    .. code-block:: text
@@ -125,13 +120,13 @@ Avant d’utiliser la reconnaissance vocale, assurez-vous que votre microphone U
 
    Cela signifie :
 
-   * Le fichier modèle (``vosk-model-small-en-us-0.15``) a été téléchargé.  
-   * La liste des langues disponibles a été affichée.  
+   * Le fichier modèle (``vosk-model-small-en-us-0.15``) a été téléchargé.
+   * La liste des langues disponibles a été affichée.
    * Le système écoute maintenant — parlez dans le microphone du PiCar-X, et le texte reconnu apparaîtra dans le terminal.
 
    **Conseils** :
 
-   * Placez le micro à environ 15–30 cm de votre bouche.  
+   * Placez le micro à environ 15–30 cm de votre bouche.
    * Choisissez un modèle qui correspond à votre langue et à votre accent.
 
 **Mode Streaming (optionnel)**
@@ -158,7 +153,7 @@ Vous pouvez aussi utiliser le mode de streaming pour voir les résultats partiel
 
 Nous allons maintenant connecter la reconnaissance vocale au PiCar-X !
 
-Nous utiliserons un **mot déclencheur** (« hey robot ») afin que la voiture n’écoute les commandes qu’après activation.  
+Nous utiliserons un **mot déclencheur** (« hey robot ») afin que la voiture n'écoute les commandes qu'après activation.
 Cela économise des ressources CPU et évite les déclenchements accidentels.
 
 **Exécuter le code**
@@ -170,12 +165,12 @@ Cela économise des ressources CPU et évite les déclenchements accidentels.
 
 Dans ce programme, la voiture :
 
-* Attend le mot déclencheur **« hey robot »**.  
-* Ensuite, vous pouvez parler naturellement — tant que votre phrase contient un des mots-clés (**forward**, **backward**, **left**, **right**), la voiture réagit.  
+* Attend le mot déclencheur **« hey robot »**.
+* Ensuite, vous pouvez parler naturellement — tant que votre phrase contient un des mots-clés (**forward**, **backward**, **left**, **right**), la voiture réagit.
 
   Par exemple :
 
-  * « Can you move forward a little? » → la voiture avance.  
+  * « Can you move forward a little? » → la voiture avance.
   * « Please turn left now. » → la voiture tourne à gauche.
 
 * La commande **« sleep »** arrête la boucle de commande et remet la voiture en mode veille.
@@ -245,9 +240,9 @@ Dans ce programme, la voiture :
 Dépannage
 -----------------
 
-* **No such file or directory (lors de l’exécution de `arecord`)**
+* **No such file or directory (lors de l'exécution de `arecord`)**
 
-  Vous avez peut-être utilisé un mauvais numéro de carte/périphérique.  
+  Vous avez peut-être utilisé un mauvais numéro de carte/périphérique.
   Exécutez :
 
   .. code-block:: bash
@@ -264,22 +259,22 @@ Dépannage
 
      alsamixer
 
-  * Appuyez sur **F6** pour sélectionner votre micro USB.  
-  * Assurez-vous que **Mic/Capture** n’est pas en mode muet (**[OO]** au lieu de **[MM]**).  
+  * Appuyez sur **F6** pour sélectionner votre micro USB.
+  * Assurez-vous que **Mic/Capture** n'est pas en mode muet (**[OO]** au lieu de **[MM]**).
   * Augmentez le niveau avec la flèche ↑.
 
 * **Vosk ne reconnaît pas la parole**
 
-  * Assurez-vous que le **code de langue** correspond au modèle (par ex. ``en-us`` pour l’anglais, ``zh-cn`` pour le chinois).  
-  * Tenez le micro à 15–30 cm et évitez les bruits de fond.  
+  * Assurez-vous que le **code de langue** correspond au modèle (par ex. ``en-us`` pour l'anglais, ``zh-cn`` pour le chinois).
+  * Tenez le micro à 15–30 cm et évitez les bruits de fond.
   * Parlez clairement et lentement.
 
-* **Le mot déclencheur (“hey robot”) ne fonctionne pas**
+* **Le mot déclencheur ("hey robot") ne fonctionne pas**
 
-  * Dites-le d’un ton naturel, pas trop vite.  
+  * Dites-le d'un ton naturel, pas trop vite.
   * Vérifiez que le programme affiche bien le texte reconnu. Sinon, le microphone ne fonctionne probablement pas.
 
 * **Latence élevée / reconnaissance lente**
 
-  * Le téléchargement par défaut utilise un **petit modèle** (plus rapide, mais moins précis).  
-  * Si c’est encore lent, fermez d’autres programmes pour libérer du CPU.
+  * Le téléchargement par défaut utilise un **petit modèle** (plus rapide, mais moins précis).
+  * Si c'est encore lent, fermez d'autres programmes pour libérer du CPU.

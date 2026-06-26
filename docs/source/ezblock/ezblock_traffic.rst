@@ -29,6 +29,7 @@ Combinons maintenant cette détection avec la fonction de suivi de ligne. Laisse
 
 #. Le bloc **Définir ref sur ()** est utilisé pour ajuster le seuil de niveaux de gris. Vous devez le modifier en fonction de la situation réelle. Vous pouvez exécuter le test :ref:`test_grayscale` pour voir les valeurs du module de niveaux de gris sur les surfaces blanche et noire, puis remplir leurs valeurs intermédiaires dans ce bloc.
 
+
 **EXEMPLE**
 
 .. note::
