@@ -13,7 +13,8 @@ EzBlock几乎可用于所有类型的设备，包括Mac、PC和Android。
 .. toctree::
   :maxdepth: 2
 
-  ezb_start/quickUserGuide
+  quick_guide_on_ezblock
+  get_start_app
   calibrate_the_car
 
 **EzBlock项目**

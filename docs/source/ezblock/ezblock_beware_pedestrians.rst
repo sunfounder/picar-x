@@ -16,7 +16,7 @@
 
 .. note::
 
-  你可以直接打开我们提供的示例或者是按照下图来编写程序，详细教程请参考 :ref:`open_create`.
+  你可以直接打开我们提供的示例或者是按照下图来编写程序，详细教程请参考 :ref:`ezblock:create_project_latest`.
 
 
 .. image:: img/sp210512_185509.png

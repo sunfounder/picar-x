@@ -44,9 +44,9 @@ PiCar-X 提供两种编程语言：Blockly 和 Python。无论您选择哪种语
 **内容目录**
 
 .. toctree::
-    :maxdepth: 3
+    :maxdepth: 2
 
-    About This Kit <self>
+    关于此套件 <self>
     assemble
     python/play_with_python
     ai_interaction/ai_interaction
