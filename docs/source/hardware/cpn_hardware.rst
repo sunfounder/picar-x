@@ -11,4 +11,3 @@
     cpn_robot_hat
     cpn_camera
     cpn_ultrasonic
-    cpn_battery
