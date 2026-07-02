@@ -2,3 +2,12 @@
 build/*
 bk/
 *secret*
+.vscode
+build*
+.vscode/
+photo
+test/photo*
+test/scene/*
+backups/*
+**secret*
+.claude/
