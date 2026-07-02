@@ -19,8 +19,26 @@ TOO_CLOSE = 10
 # 是否开启图像识别，需要使用多模态的大语言模型
 WITH_IMAGE = True
 
+# ── TTS engines ──────────────────────────────────────────────────────────
+# Pick one. The VoiceAssistant accepts any TTS instance via the `tts=` parameter.
+
+# Default: Piper — local neural TTS, offline, fast
+from picarx.tts import Piper
+tts = Piper(model="zh_CN-huayan-x_low")
+
+# EdgeTTS — free cloud TTS, 100+ voices, no API key
+# from picarx.tts import EdgeTTS
+# tts = EdgeTTS(voice="zh-CN-XiaoxiaoNeural")
+
+# Espeak — compact offline TTS, robotic, fastest
+# from picarx.tts import Espeak
+# tts = Espeak()
+
+# Pico2Wave — compact offline TTS
+# from picarx.tts import Pico2Wave
+# tts = Pico2Wave()
+
 # 设置模型和语言
-TTS_MODEL = "zh_CN-huayan-x_low"
 STT_LANGUAGE = "cn"
 
 # 是否开启键盘输入
@@ -85,7 +103,7 @@ vac = VoiceActiveCar(
     too_close=TOO_CLOSE,
     with_image=WITH_IMAGE,
     stt_language=STT_LANGUAGE,
-    tts_model=TTS_MODEL,
+    tts=tts,
     keyboard_enable=KEYBOARD_ENABLE,
     wake_enable=WAKE_ENABLE,
     wake_word=WAKE_WORD,
