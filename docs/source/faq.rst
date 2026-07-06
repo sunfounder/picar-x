@@ -77,3 +77,10 @@ If the camera is not displaying or displaying incorrectly, follow these troubles
 .. code-block::
 
     libcamera-hello
+
+Q7: ``ERROR: No matching distribution found for piper-tts==1.3.0`` during installation?
+----------------------------------------------------------------------------------------------------
+
+This error occurs because you are using a **32-bit** operating system, while ``piper-tts==1.3.0`` only provides pre-built wheels for **64-bit** systems.
+
+**Solution**: Please install a **64-bit** version of Raspberry Pi OS (or your respective operating system) and try the installation again.
