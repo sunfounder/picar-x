@@ -82,26 +82,36 @@ intersphinx_disabled_reftypes = ["*"]
 #### RTD+
 
 html_js_files = [
-    'https://ezblock.cc/readDocFile/custom.js',
-    'https://ezblock.cc/readDocFile/readTheDoc/src/js/ace.js',
-    'https://ezblock.cc/readDocFile/readTheDoc/src/js/ext-language_tools.js',
-    'https://ezblock.cc/readDocFile/readTheDoc/src/js/theme-chrome.js',
-    'https://ezblock.cc/readDocFile/readTheDoc/src/js/mode-python.js',
-    'https://ezblock.cc/readDocFile/readTheDoc/src/js/mode-sh.js',
-    'https://ezblock.cc/readDocFile/readTheDoc/src/js/monokai.js',
-    'https://ezblock.cc/readDocFile/readTheDoc/src/js/xterm.js',
-    'https://ezblock.cc/readDocFile/readTheDoc/src/js/FitAddon.js',
-    'https://ezblock.cc/readDocFile/readTheDoc/src/js/readTheDocIndex.js',
+    'https://github.com/sunfounder/ezblock_readDocFile/blob/main/custom.js',
     './lang.js', # new
     'custom.js', #new
 
 ]
 html_css_files = [
-    'https://ezblock.cc/readDocFile/custom.css',
-    'https://ezblock.cc/readDocFile/readTheDoc/src/css/index.css',
-    'https://ezblock.cc/readDocFile/readTheDoc/src/css/xterm.css',
+    'https://github.com/sunfounder/ezblock_readDocFile/blob/main/custom.css',
+
 ]
 
+# html_js_files = [
+#     'https://ezblock.cc/readDocFile/custom.js',
+#     'https://ezblock.cc/readDocFile/readTheDoc/src/js/ace.js',
+#     'https://ezblock.cc/readDocFile/readTheDoc/src/js/ext-language_tools.js',
+#     'https://ezblock.cc/readDocFile/readTheDoc/src/js/theme-chrome.js',
+#     'https://ezblock.cc/readDocFile/readTheDoc/src/js/mode-python.js',
+#     'https://ezblock.cc/readDocFile/readTheDoc/src/js/mode-sh.js',
+#     'https://ezblock.cc/readDocFile/readTheDoc/src/js/monokai.js',
+#     'https://ezblock.cc/readDocFile/readTheDoc/src/js/xterm.js',
+#     'https://ezblock.cc/readDocFile/readTheDoc/src/js/FitAddon.js',
+#     'https://ezblock.cc/readDocFile/readTheDoc/src/js/readTheDocIndex.js',
+#     './lang.js', # new
+#     'custom.js', #new
+
+# ]
+# html_css_files = [
+#     'https://ezblock.cc/readDocFile/custom.css',
+#     'https://ezblock.cc/readDocFile/readTheDoc/src/css/index.css',
+#     'https://ezblock.cc/readDocFile/readTheDoc/src/css/xterm.css',
+# ]
 
 
 # Multi-language
