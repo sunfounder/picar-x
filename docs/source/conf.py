@@ -82,13 +82,13 @@ intersphinx_disabled_reftypes = ["*"]
 #### RTD+
 
 html_js_files = [
-    'https://github.com/sunfounder/rtd-plus/blob/main/custom.js',
+    'https://raw.githubusercontent.com/sunfounder/rtd-plus/refs/heads/main/custom.js',
     './lang.js', # new
     'custom.js', #new
 
 ]
 html_css_files = [
-    'https://github.com/sunfounder/rtd-plus/blob/main/custom.css',
+    'https://raw.githubusercontent.com/sunfounder/rtd-plus/refs/heads/main/custom.css',
 
 ]
 
