@@ -1,4 +1,4 @@
-.. note::
+﻿.. note::
 
     Hello, welcome to the SunFounder Raspberry Pi & Arduino & ESP32 Enthusiasts Community on Facebook! Dive deeper into Raspberry Pi, Arduino, and ESP32 with fellow enthusiasts.
 
@@ -69,7 +69,7 @@ Recording can be stopped or started by pressing the keys on the keyboard.
         Vilib.rec_video_set["path"] = f"/home/{username}/Videos/" # set path
 
         Vilib.camera_start(vflip=False,hflip=False)
-        Vilib.display(local=True,web=True)
+        Vilib.display(local=False,web=True)
         sleep(0.8)  # wait for startup
 
         print(manual)
