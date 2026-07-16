@@ -86,7 +86,7 @@ def main():
     qrcode_thread = None
 
     Vilib.camera_start(vflip=False,hflip=False)
-    Vilib.display(local=True,web=True)
+    Vilib.display(local=False,web=True)
     print(manual)
 
     while True:
