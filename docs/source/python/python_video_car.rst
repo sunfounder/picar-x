@@ -133,7 +133,7 @@ Anschließend können Sie ``http://<Ihre IP>:9000/mjpg`` im Browser eingeben, um
         status = 'stop'
 
         Vilib.camera_start(vflip=False,hflip=False)
-        Vilib.display(local=True,web=True)
+        Vilib.display(local=False,web=True)
         sleep(2)  # wait for startup
         print(manual)
 

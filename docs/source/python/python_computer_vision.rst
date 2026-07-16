@@ -1,4 +1,4 @@
-.. note::
+﻿.. note::
 
     Hallo und willkommen in der SunFounder Raspberry Pi & Arduino & ESP32 Enthusiasten-Gemeinschaft auf Facebook! Tauchen Sie tiefer ein in die Welt von Raspberry Pi, Arduino und ESP32 mit anderen Enthusiasten.
 
@@ -192,7 +192,7 @@ Bitte folgen Sie den Aufforderungen, um die entsprechenden Funktionen zu aktivie
         qrcode_thread = None
 
         Vilib.camera_start(vflip=False,hflip=False)
-        Vilib.display(local=True,web=True)
+        Vilib.display(local=False,web=True)
         print(manual)
 
         while True:
