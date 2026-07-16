@@ -1,4 +1,4 @@
-.. note::
+﻿.. note::
 
     Ciao, benvenuto nella Community di SunFounder Raspberry Pi & Arduino & ESP32 su Facebook! Approfondisci Raspberry Pi, Arduino ed ESP32 insieme ad altri appassionati.
 
@@ -133,7 +133,7 @@ Puoi quindi inserire ``http://<your IP>:9000/mjpg`` nel browser per visualizzare
         status = 'stop'
 
         Vilib.camera_start(vflip=False,hflip=False)
-        Vilib.display(local=True,web=True)
+        Vilib.display(local=False,web=True)
         sleep(2)  # attendi l'avvio
         print(manual)
         

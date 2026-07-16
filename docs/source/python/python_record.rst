@@ -1,4 +1,4 @@
-.. note::
+﻿.. note::
 
     Ciao, benvenuto nella community di SunFounder Raspberry Pi & Arduino & ESP32 su Facebook! Approfondisci Raspberry Pi, Arduino ed ESP32 insieme ad altri appassionati.
 
@@ -69,7 +69,7 @@ La registrazione può essere avviata o interrotta premendo i tasti sulla tastier
         Vilib.rec_video_set["path"] = f"/home/{username}/Videos/" # imposta il percorso
 
         Vilib.camera_start(vflip=False,hflip=False)
-        Vilib.display(local=True,web=True)
+        Vilib.display(local=False,web=True)
         sleep(0.8)  # attesa avvio
 
         print(manual)
