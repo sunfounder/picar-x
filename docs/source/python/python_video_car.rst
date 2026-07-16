@@ -1,4 +1,4 @@
-.. note::
+﻿.. note::
 
     こんにちは、SunFounderのRaspberry Pi & Arduino & ESP32愛好家コミュニティへようこそ！Facebook上でRaspberry Pi、Arduino、ESP32についてもっと深く掘り下げ、他の愛好家と交流しましょう。
 
@@ -133,7 +133,7 @@ OとPで速度を調整します。
         status = 'stop'
 
         Vilib.camera_start(vflip=False,hflip=False)
-        Vilib.display(local=True,web=True)
+        Vilib.display(local=False,web=True)
         sleep(2)  # wait for startup
         print(manual)
         
