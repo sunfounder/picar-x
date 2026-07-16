@@ -1,4 +1,4 @@
-.. _video_car:
+﻿.. _video_car:
 
 11. 视频小车
 ==========================================
@@ -117,7 +117,7 @@
         status = 'stop'
 
         Vilib.camera_start(vflip=False,hflip=False)
-        Vilib.display(local=True,web=True)
+        Vilib.display(local=False,web=True)
         sleep(2)  # 等待启动
         print(manual)
         

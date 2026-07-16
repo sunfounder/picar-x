@@ -1,4 +1,4 @@
-.. _py_computer_vision:
+﻿.. _py_computer_vision:
 
 7. 计算机视觉
 =======================
@@ -174,7 +174,7 @@
         qrcode_thread = None
 
         Vilib.camera_start(vflip=False,hflip=False)
-        Vilib.display(local=True,web=True)
+        Vilib.display(local=False,web=True)
         print(manual)
 
         while True:
