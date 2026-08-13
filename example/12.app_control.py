@@ -27,6 +27,8 @@ sc.start()
 px = Picarx()
 speed = 0
 
+VOICE_SPEED = 50  # default speed for voice commands (independent of joystick speed)
+
 current_line_state = None
 last_line_state = "stop"
 LINE_TRACK_SPEED = 10
@@ -154,23 +156,23 @@ def main():
             if speak is not None:
                 speak = None
                 sc.set("J", "")              # reset echo so next ack(1) is a fresh change
-        if speak in ["forward"]:
-            px.forward(speed)
-        elif speak in ["backward"]:
-            px.backward(speed)
-        elif speak in ["left"]:
+        if speak in ["forward", "move forward", "go forward", "move ahead"]:
+            px.forward(VOICE_SPEED)
+        elif speak in ["backward", "move backward", "back up", "reverse"]:
+            px.backward(VOICE_SPEED)
+        elif speak in ["left", "turn left", "from left", "go left"]:
             px.set_dir_servo_angle(-30)
             px.forward(60)
             sleep(1.2)
             px.set_dir_servo_angle(0)
-            px.forward(speed)
-        elif speak in ["right", "white", "rice"]:
+            px.forward(VOICE_SPEED)
+        elif speak in ["right", "turn right", "from right", "go right", "white", "rice"]:
             px.set_dir_servo_angle(30)
             px.forward(60)
             sleep(1.2)
             px.set_dir_servo_angle(0)
-            px.forward(speed)
-        elif speak in ["stop"]:
+            px.forward(VOICE_SPEED)
+        elif speak in ["stop", "halt", "brake"]:
             px.stop()
 
         # line_track and avoid_obstacles
@@ -183,8 +185,8 @@ def main():
             speed = AVOID_OBSTACLES_SPEED
             avoid_obstacles()
     
-        # joystick moving
-        if line_track_switch != True and avoid_obstacles_switch != True:
+        # joystick moving (voice command in progress -> joystick waits)
+        if speak is None and line_track_switch != True and avoid_obstacles_switch != True:
             Joystick_K_Val = sc.get('K')
             if Joystick_K_Val != None and isinstance(Joystick_K_Val, list) and len(Joystick_K_Val) == 2:
                 dir_angle = utils.mapping(Joystick_K_Val[0], -100, 100, -30, 30)
