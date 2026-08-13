@@ -4,6 +4,7 @@ from picarx import utils
 from picarx.music import Music
 from vilib import Vilib
 import os
+import time
 from time import sleep
 
 try:
@@ -25,6 +26,9 @@ sc.start()
 # init picarx
 px = Picarx()
 speed = 0
+
+VOICE_SPEED = 50  # default speed for voice commands (independent of joystick speed)
+VOICE_ACTION_TIME = 2.0  # seconds a voice action keeps executing (matches turn maneuver ~2s)
 
 current_line_state = None
 last_line_state = "stop"
@@ -121,6 +125,9 @@ def main():
     Vilib.camera_start(vflip=False,hflip=False)
     Vilib.display(local=False, web=True)
     speak = None
+    last_cmd = None
+    prev_j = None
+    ack_ts = 0
     while True:
         # --- send data ---
         sc.set("A", speed)
@@ -137,28 +144,56 @@ def main():
         if sc.get('M') == True:
             horn()
 
-        # speaker
-        if sc.get('J') != None:
-            speak=sc.get('J')
-            print(f'speaker: {speak}')
-        if speak in ["forward"]:
-            px.forward(speed)
-        elif speak in ["backward"]:
-            px.backward(speed)
-        elif speak in ["left"]:
-            px.set_dir_servo_angle(-30)
-            px.forward(60)
-            sleep(1.2)
-            px.set_dir_servo_angle(0)
-            px.forward(speed)
-        elif speak in ["right", "white", "rice"]:
-            px.set_dir_servo_angle(30)
-            px.forward(60)
-            sleep(1.2)
-            px.set_dir_servo_angle(0)
-            px.forward(speed)
-        elif speak in ["stop"]:
-            px.stop()
+        # speaker (J-key ack protocol: receive -> ack(1) -> execute -> done(0))
+        # Note: the App clears the command as soon as it receives J:1, so the
+        # action duration is enforced here (VOICE_ACTION_TIME), not by the App.
+        j = sc.get('J')
+        if j != prev_j:                       # edge on J value change (repeat commands trigger too)
+            prev_j = j
+            if j not in (None, ''):
+                speak = j
+                sc.set("J", 1)               # ack: App clears the pending command
+                ack_ts = time.time()
+                print(f'speaker: {speak}')
+        # enforce the action duration on the device (works whether or not the App cleared J)
+        if speak is not None and time.time() - ack_ts > VOICE_ACTION_TIME:
+            sc.set("J", 0)                   # done
+            speak = None
+
+        # execute the voice action once per new command; hold it for VOICE_ACTION_TIME
+        if speak is not None:
+            if speak != last_cmd:
+                last_cmd = speak
+                if speak in ["forward", "move forward", "go forward", "move ahead"]:
+                    px.forward(VOICE_SPEED)
+                elif speak in ["backward", "move backward", "back up", "reverse"]:
+                    px.backward(VOICE_SPEED)
+                elif speak in ["left", "turn left", "from left", "go left"]:
+                    px.set_dir_servo_angle(-30)
+                    px.forward(60)
+                    sleep(1.2)
+                    px.set_dir_servo_angle(0)
+                    px.stop()                 # turn done -> stop (no trailing forward)
+                    sc.set("J", 0)           # finish immediately
+                    speak = None
+                    last_cmd = None
+                elif speak in ["right", "turn right", "from right", "go right", "white", "rice"]:
+                    px.set_dir_servo_angle(30)
+                    px.forward(60)
+                    sleep(1.2)
+                    px.set_dir_servo_angle(0)
+                    px.stop()                 # turn done -> stop (no trailing forward)
+                    sc.set("J", 0)           # finish immediately
+                    speak = None
+                    last_cmd = None
+                elif speak in ["stop", "halt", "brake"]:
+                    px.stop()
+                    sc.set("J", 0)           # stop is instant: finish immediately
+                    speak = None
+                    last_cmd = None
+        elif last_cmd is not None:
+            px.stop()                         # action finished -> stop the car
+            last_cmd = None
 
         # line_track and avoid_obstacles
         line_track_switch = sc.get('I')
@@ -170,8 +205,8 @@ def main():
             speed = AVOID_OBSTACLES_SPEED
             avoid_obstacles()
     
-        # joystick moving
-        if line_track_switch != True and avoid_obstacles_switch != True:
+        # joystick moving (voice command in progress -> joystick waits)
+        if speak is None and line_track_switch != True and avoid_obstacles_switch != True:
             Joystick_K_Val = sc.get('K')
             if Joystick_K_Val != None and isinstance(Joystick_K_Val, list) and len(Joystick_K_Val) == 2:
                 dir_angle = utils.mapping(Joystick_K_Val[0], -100, 100, -30, 30)
