@@ -4,6 +4,7 @@ from picarx import utils
 from picarx.music import Music
 from vilib import Vilib
 import os
+import time
 from time import sleep
 
 try:
@@ -121,6 +122,7 @@ def main():
     Vilib.camera_start(vflip=False,hflip=False)
     Vilib.display(local=False, web=True)
     speak = None
+    ack_ts = 0
     while True:
         # --- send data ---
         sc.set("A", speed)
@@ -137,10 +139,21 @@ def main():
         if sc.get('M') == True:
             horn()
 
-        # speaker
-        if sc.get('J') != None:
-            speak=sc.get('J')
-            print(f'speaker: {speak}')
+        # speaker (J-key ack protocol: receive -> ack(1) -> execute -> done(0, App clears))
+        j = sc.get('J')
+        if j not in (None, ''):
+            if j != speak:                    # edge-trigger: only run on new command (repeat allowed)
+                speak = j
+                sc.set("J", 1)               # ack: tell App we're handling it
+                ack_ts = time.time()
+                print(f'speaker: {speak}')
+            elif time.time() - ack_ts > 0.3:  # same command still pending after ack -> done
+                sc.set("J", 0)               # done: App clears the pending command
+                speak = None
+        else:
+            if speak is not None:
+                speak = None
+                sc.set("J", "")              # reset echo so next ack(1) is a fresh change
         if speak in ["forward"]:
             px.forward(speed)
         elif speak in ["backward"]:
