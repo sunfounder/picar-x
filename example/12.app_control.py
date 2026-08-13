@@ -28,6 +28,7 @@ px = Picarx()
 speed = 0
 
 VOICE_SPEED = 50  # default speed for voice commands (independent of joystick speed)
+VOICE_ACTION_TIME = 1.2  # seconds a voice command keeps executing (matches turn maneuver duration)
 
 current_line_state = None
 last_line_state = "stop"
@@ -149,7 +150,7 @@ def main():
                 sc.set("J", 1)               # ack: tell App we're handling it
                 ack_ts = time.time()
                 print(f'speaker: {speak}')
-            elif time.time() - ack_ts > 0.3:  # same command still pending after ack -> done
+            elif time.time() - ack_ts > VOICE_ACTION_TIME:  # command executed long enough -> done
                 sc.set("J", 0)               # done: App clears the pending command
                 speak = None
         else:
