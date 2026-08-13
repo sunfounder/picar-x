@@ -126,6 +126,7 @@ def main():
     Vilib.display(local=False, web=True)
     speak = None
     last_cmd = None
+    prev_j = None
     ack_ts = 0
     while True:
         # --- send data ---
@@ -143,23 +144,23 @@ def main():
         if sc.get('M') == True:
             horn()
 
-        # speaker (J-key ack protocol: receive -> ack(1) -> execute -> done(0, App clears))
+        # speaker (J-key ack protocol: receive -> ack(1) -> execute -> done(0))
         # Note: the App clears the command as soon as it receives J:1, so the
         # action duration is enforced here (VOICE_ACTION_TIME), not by the App.
         j = sc.get('J')
-        if j not in (None, ''):
-            if j != speak:                    # edge-trigger: only run on new command (repeat allowed)
+        if j != prev_j:                       # edge on J value change (repeat commands trigger too)
+            prev_j = j
+            if j not in (None, ''):
                 speak = j
                 sc.set("J", 1)               # ack: App clears the pending command
                 ack_ts = time.time()
                 print(f'speaker: {speak}')
-        else:
-            # command already consumed by App; keep executing until the duration elapses
-            if speak is not None and time.time() - ack_ts > VOICE_ACTION_TIME:
-                sc.set("J", 0)               # done
-                speak = None
+        # enforce the action duration on the device (works whether or not the App cleared J)
+        if speak is not None and time.time() - ack_ts > VOICE_ACTION_TIME:
+            sc.set("J", 0)                   # done
+            speak = None
 
-        # execute the voice action once per new command, hold it for VOICE_ACTION_TIME
+        # execute the voice action once per new command; hold it for VOICE_ACTION_TIME
         if speak is not None:
             if speak != last_cmd:
                 last_cmd = speak
@@ -172,13 +173,19 @@ def main():
                     px.forward(60)
                     sleep(1.2)
                     px.set_dir_servo_angle(0)
-                    px.forward(VOICE_SPEED)
+                    px.stop()                 # turn done -> stop (no trailing forward)
+                    sc.set("J", 0)           # finish immediately
+                    speak = None
+                    last_cmd = None
                 elif speak in ["right", "turn right", "from right", "go right", "white", "rice"]:
                     px.set_dir_servo_angle(30)
                     px.forward(60)
                     sleep(1.2)
                     px.set_dir_servo_angle(0)
-                    px.forward(VOICE_SPEED)
+                    px.stop()                 # turn done -> stop (no trailing forward)
+                    sc.set("J", 0)           # finish immediately
+                    speak = None
+                    last_cmd = None
                 elif speak in ["stop", "halt", "brake"]:
                     px.stop()
                     sc.set("J", 0)           # stop is instant: finish immediately
