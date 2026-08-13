@@ -28,7 +28,7 @@ px = Picarx()
 speed = 0
 
 VOICE_SPEED = 50  # default speed for voice commands (independent of joystick speed)
-VOICE_ACTION_TIME = 1.2  # seconds a voice command keeps executing (matches turn maneuver duration)
+VOICE_ACTION_TIME = 2.0  # seconds a voice action keeps executing (matches turn maneuver ~2s)
 
 current_line_state = None
 last_line_state = "stop"
@@ -125,6 +125,7 @@ def main():
     Vilib.camera_start(vflip=False,hflip=False)
     Vilib.display(local=False, web=True)
     speak = None
+    last_cmd = None
     ack_ts = 0
     while True:
         # --- send data ---
@@ -143,38 +144,49 @@ def main():
             horn()
 
         # speaker (J-key ack protocol: receive -> ack(1) -> execute -> done(0, App clears))
+        # Note: the App clears the command as soon as it receives J:1, so the
+        # action duration is enforced here (VOICE_ACTION_TIME), not by the App.
         j = sc.get('J')
         if j not in (None, ''):
             if j != speak:                    # edge-trigger: only run on new command (repeat allowed)
                 speak = j
-                sc.set("J", 1)               # ack: tell App we're handling it
+                sc.set("J", 1)               # ack: App clears the pending command
                 ack_ts = time.time()
                 print(f'speaker: {speak}')
-            elif time.time() - ack_ts > VOICE_ACTION_TIME:  # command executed long enough -> done
-                sc.set("J", 0)               # done: App clears the pending command
-                speak = None
         else:
-            if speak is not None:
+            # command already consumed by App; keep executing until the duration elapses
+            if speak is not None and time.time() - ack_ts > VOICE_ACTION_TIME:
+                sc.set("J", 0)               # done
                 speak = None
-                sc.set("J", "")              # reset echo so next ack(1) is a fresh change
-        if speak in ["forward", "move forward", "go forward", "move ahead"]:
-            px.forward(VOICE_SPEED)
-        elif speak in ["backward", "move backward", "back up", "reverse"]:
-            px.backward(VOICE_SPEED)
-        elif speak in ["left", "turn left", "from left", "go left"]:
-            px.set_dir_servo_angle(-30)
-            px.forward(60)
-            sleep(1.2)
-            px.set_dir_servo_angle(0)
-            px.forward(VOICE_SPEED)
-        elif speak in ["right", "turn right", "from right", "go right", "white", "rice"]:
-            px.set_dir_servo_angle(30)
-            px.forward(60)
-            sleep(1.2)
-            px.set_dir_servo_angle(0)
-            px.forward(VOICE_SPEED)
-        elif speak in ["stop", "halt", "brake"]:
-            px.stop()
+
+        # execute the voice action once per new command, hold it for VOICE_ACTION_TIME
+        if speak is not None:
+            if speak != last_cmd:
+                last_cmd = speak
+                if speak in ["forward", "move forward", "go forward", "move ahead"]:
+                    px.forward(VOICE_SPEED)
+                elif speak in ["backward", "move backward", "back up", "reverse"]:
+                    px.backward(VOICE_SPEED)
+                elif speak in ["left", "turn left", "from left", "go left"]:
+                    px.set_dir_servo_angle(-30)
+                    px.forward(60)
+                    sleep(1.2)
+                    px.set_dir_servo_angle(0)
+                    px.forward(VOICE_SPEED)
+                elif speak in ["right", "turn right", "from right", "go right", "white", "rice"]:
+                    px.set_dir_servo_angle(30)
+                    px.forward(60)
+                    sleep(1.2)
+                    px.set_dir_servo_angle(0)
+                    px.forward(VOICE_SPEED)
+                elif speak in ["stop", "halt", "brake"]:
+                    px.stop()
+                    sc.set("J", 0)           # stop is instant: finish immediately
+                    speak = None
+                    last_cmd = None
+        elif last_cmd is not None:
+            px.stop()                         # action finished -> stop the car
+            last_cmd = None
 
         # line_track and avoid_obstacles
         line_track_switch = sc.get('I')
