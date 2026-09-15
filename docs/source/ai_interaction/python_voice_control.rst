@@ -20,7 +20,6 @@ Du brauchst nur einmal eine Internetverbindung, um ein Sprachmodell herunterzula
 
 In dieser Lektion werden wir:
 
-* Das Mikrofon auf dem Raspberry Pi überprüfen.
 * Vosk mit einem ausgewählten Sprachmodell installieren und testen.
 * Ein **sprachgesteuertes PiCar-X** bauen, das auf ein Weckwort hört und auf Befehle wie **forward**, **backward**, **left** und **right** reagiert.
 
@@ -31,52 +30,9 @@ Stelle sicher, dass du Folgendes abgeschlossen hast:
 
 * :ref:`install_all_modules` — Installiere die Module ``robot-hat``, ``vilib``, ``picar-x`` und führe dann das Skript ``i2samp.sh`` aus.
 
-1. Mikrofon überprüfen
---------------------------
-
-Bevor du die Spracherkennung verwendest, stelle sicher, dass dein USB-Mikrofon korrekt funktioniert.
-
-#. Verfügbare Aufnahmegeräte auflisten:
-
-   .. code-block:: bash
-
-      arecord -l
-
-   Suche nach einer Zeile wie ``card 1: ... device 0``.
-
-#. Eine kurze Testaufnahme machen (ersetze ``1,0`` durch die gefundenen Werte):
-
-   .. code-block:: bash
-
-      arecord -D plughw:1,0 -f S16_LE -r 16000 -d 3 test.wav
-
-   * Beispiel: Wenn dein Gerät ``card 2, device 0`` ist, verwende:
-
-   .. code-block:: bash
-
-      arecord -D plughw:2,0 -f S16_LE -r 16000 -d 3 test.wav
-
-#. Aufnahme abspielen, um sie zu überprüfen:
-
-   .. code-block:: bash
-
-      aplay test.wav
-
-#. Mikrofonlautstärke anpassen (falls nötig):
-
-   .. code-block:: bash
-
-      alsamixer
-
-   * Drücke **F6**, um dein USB-Mikrofon auszuwählen.
-   * Suche den Kanal **Mic** oder **Capture**.
-   * Stelle sicher, dass es nicht stummgeschaltet ist (**[MM]** bedeutet stumm – drücke ``M``, um die Stummschaltung aufzuheben → sollte **[OO]** anzeigen).
-   * Verwende die Pfeiltasten ↑ / ↓, um die Aufnahmelautstärke anzupassen.
-
-
 .. _test_vosk:
 
-2. Vosk testen
+1. Vosk testen
 --------------------------
 
 **So geht's**:
@@ -148,7 +104,7 @@ Du kannst die Spracherkennung auch im Streaming-Modus laufen lassen, um **Zwisch
                print(f"partial: {result['partial']}", end="\r", flush=True)
 
 
-3. Sprachgesteuertes Auto
+2. Sprachgesteuertes Auto
 -------------------------
 
 Jetzt verbinden wir die Spracherkennung mit dem PiCar-X!
@@ -239,29 +195,6 @@ In diesem Programm:
 
 Fehlerbehebung
 -----------------
-
-* **„No such file or directory“ (beim Ausführen von `arecord`)**
-
-  Du hast möglicherweise die falsche Karten-/Gerätenummer verwendet.
-  Führe aus:
-
-  .. code-block:: bash
-
-     arecord -l
-
-  und ersetze ``1,0`` durch die Nummern, die für dein USB-Mikrofon angezeigt werden.
-
-* **Aufgenommene Datei hat keinen Ton**
-
-  Öffne den Mixer und überprüfe die Mikrofonlautstärke:
-
-  .. code-block:: bash
-
-     alsamixer
-
-  * Drücke **F6**, um dein USB-Mikrofon auszuwählen.
-  * Stelle sicher, dass **Mic/Capture** nicht stummgeschaltet ist (**[OO]** statt **[MM]**).
-  * Erhöhe die Lautstärke mit der ↑-Taste.
 
 * **Vosk erkennt keine Sprache**
 
