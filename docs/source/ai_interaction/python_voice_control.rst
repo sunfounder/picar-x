@@ -20,7 +20,6 @@ Vous n'avez besoin d'une connexion Internet qu'une seule fois pour télécharger
 
 Dans cette leçon, nous allons :
 
-* Vérifier le fonctionnement du microphone sur le Raspberry Pi.
 * Installer et tester Vosk avec un modèle linguistique choisi.
 * Construire une **voiture PiCar-X commandée par la voix** qui écoute un mot déclencheur puis répond à des commandes telles que **forward**, **backward**, **left** et **right**.
 
@@ -31,52 +30,9 @@ Assurez-vous d'avoir terminé :
 
 * :ref:`install_all_modules` — Install ``robot-hat``, ``vilib``, ``picar-x`` modules, then run the script ``i2samp.sh``.
 
-1. Vérifier votre microphone
-------------------------------------
-
-Avant d'utiliser la reconnaissance vocale, assurez-vous que votre microphone USB fonctionne correctement.
-
-#. Listez les périphériques d'enregistrement disponibles :
-
-   .. code-block:: bash
-
-      arecord -l
-
-   Recherchez une ligne comme ``card 1: ... device 0``.
-
-#. Enregistrez un court échantillon (remplacez ``1,0`` par les numéros trouvés) :
-
-   .. code-block:: bash
-
-      arecord -D plughw:1,0 -f S16_LE -r 16000 -d 3 test.wav
-
-   * Exemple : si votre périphérique est ``card 2, device 0``, utilisez :
-
-   .. code-block:: bash
-
-      arecord -D plughw:2,0 -f S16_LE -r 16000 -d 3 test.wav
-
-#. Lisez l'enregistrement pour le vérifier :
-
-   .. code-block:: bash
-
-      aplay test.wav
-
-#. Ajustez le volume du microphone si nécessaire :
-
-   .. code-block:: bash
-
-      alsamixer
-
-   * Appuyez sur **F6** pour sélectionner votre microphone USB.
-   * Trouvez le canal **Mic** ou **Capture**.
-   * Assurez-vous qu'il n'est pas en mode muet (**[MM]** signifie muet, appuyez sur ``M`` pour réactiver → cela doit afficher **[OO]**).
-   * Utilisez les flèches ↑ / ↓ pour modifier le volume d'enregistrement.
-
-
 .. _test_vosk:
 
-2. Tester Vosk
+1. Tester Vosk
 --------------------------
 
 **Étapes à suivre** :
@@ -148,7 +104,7 @@ Vous pouvez aussi utiliser le mode de streaming pour voir les résultats partiel
                print(f"partial: {result['partial']}", end="\r", flush=True)
 
 
-3. Voiture Commandée par la Voix
+2. Voiture Commandée par la Voix
 -------------------------------------
 
 Nous allons maintenant connecter la reconnaissance vocale au PiCar-X !
@@ -239,29 +195,6 @@ Dans ce programme, la voiture :
 
 Dépannage
 -----------------
-
-* **No such file or directory (lors de l'exécution de `arecord`)**
-
-  Vous avez peut-être utilisé un mauvais numéro de carte/périphérique.
-  Exécutez :
-
-  .. code-block:: bash
-
-     arecord -l
-
-  puis remplacez ``1,0`` par les numéros indiqués pour votre microphone USB.
-
-* **Le fichier enregistré est silencieux**
-
-  Ouvrez le mixeur et vérifiez le volume du micro :
-
-  .. code-block:: bash
-
-     alsamixer
-
-  * Appuyez sur **F6** pour sélectionner votre micro USB.
-  * Assurez-vous que **Mic/Capture** n'est pas en mode muet (**[OO]** au lieu de **[MM]**).
-  * Augmentez le niveau avec la flèche ↑.
 
 * **Vosk ne reconnaît pas la parole**
 
