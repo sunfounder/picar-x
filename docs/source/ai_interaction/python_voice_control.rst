@@ -23,8 +23,8 @@ In dieser Lektion werden wir:
 * Vosk mit einem ausgewählten Sprachmodell installieren und testen.
 * Ein **sprachgesteuertes PiCar-X** bauen, das auf ein Weckwort hört und auf Befehle wie **forward**, **backward**, **left** und **right** reagiert.
 
-Before You Start
-----------------
+Bevor du beginnst
+-----------------
 
 Stelle sicher, dass du Folgendes abgeschlossen hast:
 

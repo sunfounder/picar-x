@@ -32,8 +32,8 @@ Ein Spaßspiel, das zeigt, wie Roboter **sehen, denken und handeln** können –
 .. note::
    Du kannst die :download:`PDF-Farbkarten <https://github.com/sunfounder/sf-pdf/raw/master/prop_card/object_detection/color-cards.pdf>` herunterladen und ausdrucken, um eine zuverlässige Farberkennung zu erhalten.
 
-Before You Start
-----------------
+Bevor du beginnst
+-----------------
 
 Stelle sicher, dass du Folgendes abgeschlossen hast:
 

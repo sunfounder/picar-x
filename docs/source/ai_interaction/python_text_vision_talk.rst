@@ -21,8 +21,8 @@ Wir zeigen dir, wie du Ollama installierst, ein Modell herunterlädst und den Pi
 Mit dieser Einrichtung kann der PiCar-X ein Kamerabild aufnehmen und das Modell kann **sehen und erzählen** —
 du kannst jede Frage zum Bild stellen, und das Modell antwortet in natürlicher Sprache.
 
-Before You Start
-----------------
+Bevor du beginnst
+-----------------
 
 Stelle sicher, dass du Folgendes abgeschlossen hast:
 
