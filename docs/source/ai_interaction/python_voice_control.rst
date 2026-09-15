@@ -20,63 +20,19 @@ You only need internet access once to download a language model. After that, eve
 
 In this lesson, we will:  
 
-* Check the microphone on Raspberry Pi.  
 * Install and test Vosk with a chosen language model.  
 * Build a **voice controlled PiCar-X** that listens for a wake word and then responds to commands like **forward**, **backward**, **left**, and **right**.  
 
 Before You Start
 ----------------
 
-Make sure you‘ve completed:
+Make sure you've completed:
 
 * :ref:`install_all_modules` — Install ``robot-hat``, ``vilib``, ``picar-x`` modules, then run the script ``i2samp.sh``.
 
-1. Check Your Microphone
---------------------------
-
-Before using speech recognition, make sure your USB microphone works correctly.
-
-#. List available recording devices:
-
-   .. code-block:: bash
-
-      arecord -l
-
-   Look for a line like ``card 1: ... device 0``.  
-
-#. Record a short sample (replace ``1,0`` with the numbers you found):
-
-   .. code-block:: bash
-
-      arecord -D plughw:1,0 -f S16_LE -r 16000 -d 3 test.wav
-
-   * Example: if your device is ``card 2, device 0``, use:
-
-   .. code-block:: bash
-
-      arecord -D plughw:2,0 -f S16_LE -r 16000 -d 3 test.wav
-
-#. Play it back to confirm the recording:
-
-   .. code-block:: bash
-
-      aplay test.wav
-
-#. Adjust microphone volume if needed:
-
-   .. code-block:: bash
-
-      alsamixer
-
-   * Press **F6** to select your USB microphone.  
-   * Find the **Mic** or **Capture** channel.  
-   * Make sure it is not muted (**[MM]** means mute, press ``M`` to unmute → should show **[OO]**).  
-   * Use ↑ / ↓ arrow keys to change the recording volume.
-
-
 .. _test_vosk:
 
-2. Test Vosk
+1. Test Vosk
 --------------------------
 
 **Steps to try it out**:
@@ -148,7 +104,7 @@ You can also stream speech continuously to see partial results as you speak:
                print(f"partial: {result['partial']}", end="\r", flush=True)
 
 
-3. Voice Controlled Car
+2. Voice Controlled Car
 -------------------------
 
 Now let’s connect speech recognition to the PiCar-X!  
@@ -239,29 +195,6 @@ In this program, the car:
 
 Troubleshooting
 -----------------
-
-* **No such file or directory (when running `arecord`)**
-
-  You may have used the wrong card/device number.  
-  Run:
-
-  .. code-block:: bash
-
-     arecord -l
-
-  and replace ``1,0`` with the numbers shown for your USB microphone.
-
-* **Recorded file has no sound**
-
-  Open the mixer and check the microphone volume:
-
-  .. code-block:: bash
-
-     alsamixer
-
-  * Press **F6** to select your USB mic.  
-  * Make sure **Mic/Capture** is not muted (**[OO]** instead of **[MM]**).  
-  * Increase the level with ↑.
 
 * **Vosk does not recognize speech**
 
