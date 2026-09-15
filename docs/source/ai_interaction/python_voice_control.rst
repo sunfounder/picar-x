@@ -20,7 +20,6 @@ Serve la connessione a Internet solo la prima volta per scaricare un modello lin
 
 In questa lezione impareremo a:  
 
-* Controllare il microfono su Raspberry Pi.  
 * Installare e testare Vosk con un modello linguistico scelto.  
 * Costruire una **PiCar-X a controllo vocale** che ascolta una parola di attivazione e risponde ai comandi come **forward**, **backward**, **left** e **right**.  
 
@@ -35,52 +34,9 @@ Assicurati di aver completato:
 
 ----
 
-1. Controlla il tuo Microfono
------------------------------
-
-Prima di utilizzare il riconoscimento vocale, assicurati che il tuo microfono USB funzioni correttamente.
-
-#. Elenca i dispositivi di registrazione disponibili:
-
-   .. code-block:: bash
-
-      arecord -l
-
-   Cerca una riga simile a ``card 1: ... device 0``.  
-
-#. Registra un breve campione (sostituisci ``1,0`` con i numeri trovati):
-
-   .. code-block:: bash
-
-      arecord -D plughw:1,0 -f S16_LE -r 16000 -d 3 test.wav
-
-   * Esempio: se il tuo dispositivo è ``card 2, device 0``, usa:
-
-   .. code-block:: bash
-
-      arecord -D plughw:2,0 -f S16_LE -r 16000 -d 3 test.wav
-
-#. Riproducilo per confermare la registrazione:
-
-   .. code-block:: bash
-
-      aplay test.wav
-
-#. Regola il volume del microfono se necessario:
-
-   .. code-block:: bash
-
-      alsamixer
-
-   * Premi **F6** per selezionare il tuo microfono USB.  
-   * Trova il canale **Mic** o **Capture**.  
-   * Assicurati che non sia silenziato (**[MM]** significa muto, premi ``M`` per riattivarlo → dovrebbe mostrare **[OO]**).  
-   * Usa le frecce ↑ / ↓ per modificare il volume di registrazione.
-
-
 .. _test_vosk:
 
-2. Testare Vosk
+1. Testare Vosk
 ---------------
 
 **Passaggi per provarlo**:
@@ -152,7 +108,7 @@ Puoi anche trasmettere la voce in streaming continuo per vedere i risultati parz
                print(f"partial: {result['partial']}", end="\r", flush=True)
 
 
-3. Auto a Controllo Vocale
+2. Auto a Controllo Vocale
 --------------------------
 
 Ora colleghiamo il riconoscimento vocale alla PiCar-X!  
@@ -243,29 +199,6 @@ In questo programma, l’auto:
 
 Risoluzione dei Problemi
 ------------------------
-
-* **No such file or directory (quando esegui `arecord`)**
-
-  Potresti aver usato il numero di scheda/dispositivo sbagliato.  
-  Esegui:
-
-  .. code-block:: bash
-
-     arecord -l
-
-  e sostituisci ``1,0`` con i numeri mostrati per il tuo microfono USB.
-
-* **Il file registrato non ha audio**
-
-  Apri il mixer e controlla il volume del microfono:
-
-  .. code-block:: bash
-
-     alsamixer
-
-  * Premi **F6** per selezionare il tuo microfono USB.  
-  * Assicurati che **Mic/Capture** non sia silenziato (**[OO]** invece di **[MM]**).  
-  * Aumenta il livello con la freccia ↑.
 
 * **Vosk non riconosce la voce**
 
