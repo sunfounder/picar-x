@@ -9,6 +9,7 @@ from picarx.llm import Deepseek, Grok, Doubao, Gemini, Qwen, OpenAI
 from picarx.user_button import UserButton
 
 from picarx.music import SoundFiles, music_list, sound_list
+from picarx.motors import Motors
 from picarx.utils import *
 from picarx.auto_drive import LineTracking, ObstacleAvoidance, Following
 
@@ -50,7 +51,11 @@ piper = Piper()
 user_button = UserButton()
 
 openai_tts = OpenAI_TTS(gain=3, model="tts-1", voice="alloy")
-vosk = Vosk()
+try:
+    vosk = Vosk()
+except Exception as e:
+    logging.getLogger("PiCar-X").error(f"Vosk init failed: {e}")
+    vosk = None
 
 deepseek = Deepseek()
 grok = Grok()
@@ -117,6 +122,10 @@ class VoskSetLanguageTask(Task):
 
     def main(self, language):
         global vosk_language
+        if vosk is None:
+            log.error("Vosk not initialized")
+            alert("error", "Vosk not initialized")
+            return
         try:
             if not vosk.is_model_downloaded(language):
                 log.warning(f"Model {language} not downloaded, download it")
@@ -133,6 +142,10 @@ class VoskSetLanguageTask(Task):
 class VoskListenTask(Task):
     def main(self):
         global vosk_listen_result
+        if vosk is None:
+            log.error("Vosk not initialized")
+            alert("error", "Vosk not initialized")
+            return
         if not vosk.language():
             log.error("Vosk language not set")
             alert("error", "Set Vosk language first")
@@ -183,10 +196,17 @@ class AiThinkTask(Task):
             ai_status = Status.FAILED
             return
         ai_think_result = ""
-        for chunk in response:
-            if chunk != None and len(chunk) > 0:
-                ai_think_result = f"{ai_think_result}{chunk}"
-            # log.debug(f"Think result: {chunk}")
+        try:
+            for chunk in response:
+                if chunk != None and len(chunk) > 0:
+                    ai_think_result = f"{ai_think_result}{chunk}"
+                # log.debug(f"Think result: {chunk}")
+        except Exception as e:
+            log.error(f"AI failed: {e}")
+            alert("error", f"AI failed: {e}")
+            ai_status = Status.FAILED
+            ai_think_running = False
+            return
         ai_status = Status.IDLE
         ai_think_running = False
 
@@ -403,9 +423,11 @@ def handle_motors_reverse(data):
     global delay_stop_motor_timer
     left_reverse, right_reverse = data
     log.debug(f"Set motors reverse: [{left_reverse}, {right_reverse}]")
-    car.set_left_motor_reverse(left_reverse)
-    car.set_right_motor_reverse(right_reverse)
-    data_to_send['motor_reverse'] = [left_reverse, right_reverse]
+    left_reverse = left_reverse if isinstance(left_reverse, bool) else left_reverse < 0
+    right_reverse = right_reverse if isinstance(right_reverse, bool) else right_reverse < 0
+    car.set_left_motor_reverse(Motors.DEFAULT_LEFT_REVERSED != left_reverse)
+    car.set_right_motor_reverse(Motors.DEFAULT_RIGHT_REVERSED != right_reverse)
+    data_to_send['motor_reverse'] = [-1 if left_reverse else 1, -1 if right_reverse else 1]
     car.forward(30)
     if delay_stop_motor_timer is not None:
         delay_stop_motor_timer.cancel()
@@ -432,11 +454,14 @@ def handle_grayscale_cliff_threshold(value):
     car.grayscale.set_cliff_threshold(value)
 
 def handle_ai_api_key(api_key):
-    global ai_status
+    global ai_status, ai_api_key
     DEVICE_INFO["ai_api_key"] = api_key
     car.config.set("ai_api_key", api_key)
-    # openai_tts.set_api_key(api_key)
-    # llm.set_api_key(api_key)
+    ai_api_key = api_key
+    if llm is not None:
+        llm.set_api_key(api_key)
+    openai_tts.set_api_key(api_key)
+    openai_tts.is_ready = True
     log.debug(f"Set api-key: {api_key}")
     ai_status = Status.IDLE
 
@@ -475,7 +500,7 @@ def handle_ai_think(value, with_image=False):
         ai_status = Status.IDLE
         log.debug(f"Stop think")
         return
-    if ai_status == Status.IDLE:
+    if ai_status in (Status.IDLE, Status.FAILED):
         log.debug(f"Start think: {value}")
         ai_think_task.start(value, with_image)
 
@@ -496,7 +521,7 @@ def handle_ai_say(value):
         log.debug(f"Stop say")
         return
 
-    if ai_status == Status.IDLE:
+    if ai_status in (Status.IDLE, Status.FAILED):
         ai_say_task.start(value)
 
 def handle_do_action(action):
@@ -527,6 +552,9 @@ def handle_piper_say(value):
     task.start()
 
 def handle_vosk_set_language(language):
+    if vosk is None:
+        log.error("Vosk not initialized")
+        return
     if language == "[STOP]":
         log.debug(f"Vosk stop set language")
         vosk.cancel_download()
@@ -660,10 +688,13 @@ async def handle_disconnected(ip):
     log.debug(f"Client {ip} disconnected")
 
     # Reset robot
-    # car.stop()
-    # car.set_steering_angle(0)
-    # car.set_camera_pan_angle(0)
-    # car.set_camera_tilt_angle(0)
+    handle_line_tracking(0)
+    handle_obstacle_avoidance(0)
+    handle_following(0)
+    car.stop()
+    car.set_steering_angle(0)
+    car.set_camera_pan_angle(0)
+    car.set_camera_tilt_angle(0)
 
 def handle_restart_service():
     delay = 3
@@ -685,8 +716,7 @@ def update_data():
     # Read sensor data
     data_to_send["ultrasonic_distance"] = car.get_distance()
     data_to_send["battery_voltage"] = car.get_battery_voltage()
-    if is_fusion_hat:
-        data_to_send["charge_state"] = car.get_charge_state()
+    data_to_send["charge_state"] = car.get_charge_state() if is_fusion_hat else False
     data_to_send["user_button_pressed"] = user_button.is_pressed()
 
     # Grayscale data
@@ -853,10 +883,12 @@ def init():
     user_button.start()
 
     # --- Get initial data ---
-    data_to_send['motor_reverse'] = [car.motors.left_reversed, car.motors.right_reversed]
+    data_to_send['motor_reverse'] = [
+        1 if car.config.get("left_motor_reversed", Motors.DEFAULT_LEFT_REVERSED) == Motors.DEFAULT_LEFT_REVERSED else -1,
+        1 if car.config.get("right_motor_reversed", Motors.DEFAULT_RIGHT_REVERSED) == Motors.DEFAULT_RIGHT_REVERSED else -1]
     data_to_send['steering_offset'] = car.steering_servo.offset()
-    data_to_send['camera_pan_offset'] = car.camera_pan_servo.offset()
-    data_to_send['camera_tilt_offset'] = car.camera_tilt_servo.offset()
+    data_to_send['camera_pan_offset'] = -car.camera_pan_servo.offset()
+    data_to_send['camera_tilt_offset'] = -car.camera_tilt_servo.offset()
     data_to_send['grayscale_cliff_threshold'] = car.grayscale.cliff_threshold
     data_to_send['volume'] = car.music.get_volume()
     data_to_send['motor_power'] = 0
@@ -893,12 +925,12 @@ def main():
 
     init()
 
-    start = time.time()
     car.music.play_sound(SoundFiles.START_ENGINE)
 
     led_status = False
     start_led_time = time.time()
     while True:
+        start = time.time()
         if not is_wifi_connected():
             log.error("No wifi connection, try restart wifi")
             os.system("sudo nmcli device down wlan0")
@@ -926,7 +958,7 @@ def main():
         delay = delay * 1000
         delay = data_interval - delay
         delay = max(delay, 0)
-        time.sleep(delay)
+        time.sleep(delay / 1000)
 
 def close():
     log.info("Exiting")

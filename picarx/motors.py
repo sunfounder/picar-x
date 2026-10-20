@@ -7,8 +7,19 @@ else:
 import math
 
 class Motors():
-    LEFT_MOTOR = 'M2'
-    RIGHT_MOTOR = 'M1'
+    # The two HATs wire the motor connectors the other way round: the left wheel
+    # sits on M2 on a Fusion HAT but on M1 on a Robot HAT. These are the defaults
+    # for __init__ below, and piCarX reads them so both stay in sync.
+    LEFT_MOTOR = 'M2' if is_fusion_hat else 'M1'
+    RIGHT_MOTOR = 'M1' if is_fusion_hat else 'M2'
+
+    # The two motors are mounted mirrored, so the left and right sides need
+    # opposite polarity. set_left_reverse()/set_right_reverse() negate the value
+    # they are handed, so these are the defaults for piCarX's
+    # "..._motor_reversed" config keys: the Fusion HAT compensates for the
+    # mirroring on its own, the Robot HAT does not.
+    DEFAULT_LEFT_REVERSED = False
+    DEFAULT_RIGHT_REVERSED = not is_fusion_hat
 
     # Minimum power to prevent the motor from not turning
     MIN_POWER = 30
@@ -42,8 +53,8 @@ class Motors():
         """ Initialize differential drive for both motors
 
         Args:
-            wheel_base (float): distance between the two wheels (mm)
-            track_width (float): distance between the two wheels (mm)
+            wheel_base (float): distance between the front and rear axles (mm)
+            track_width (float): distance between the left and right wheels (mm)
         """
         self.wheel_base = wheel_base
         self.track_width = track_width

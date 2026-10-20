@@ -56,8 +56,8 @@ class Calibration:
         self.current_height, self.current_width = self.stdscr.getmaxyx()
         
         # Grayscale calibration parameters
-        self.tilt_offset = self.car.camera_tilt_servo.offset()
-        self.pan_offset = self.car.camera_pan_servo.offset()
+        self.tilt_offset = -self.car.camera_tilt_servo.offset()
+        self.pan_offset = -self.car.camera_pan_servo.offset()
         self.steering_offset = self.car.steering_servo.offset()
         self.left_reversed = self.car.motors.left_reversed
         self.right_reversed = self.car.motors.right_reversed
@@ -348,8 +348,8 @@ class Calibration:
     def _initialize_servo_regions(self):
         """Initialize data display regions for servo/motor calibration mode"""
         self.update_region('steering', "Steering Servo Offset", f"{self.car.steering_servo.offset():.2f}")
-        self.update_region('pan', "Camera Pan Servo Offset", f"{self.car.camera_pan_servo.offset():.2f}")
-        self.update_region('tilt', "Camera Tilt Servo Offset", f"{self.car.camera_tilt_servo.offset():.2f}")
+        self.update_region('pan', "Camera Pan Servo Offset", f"{-self.car.camera_pan_servo.offset():.2f}")
+        self.update_region('tilt', "Camera Tilt Servo Offset", f"{-self.car.camera_tilt_servo.offset():.2f}")
         self.update_region('lmotor', "Left Motor Reversed", f"{self.car.motors.left_reversed}")
         self.update_region('rmotor', "Right Motor Reversed", f"{self.car.motors.right_reversed}")
 
@@ -604,14 +604,14 @@ class Calibration:
         """Handle key presses for servo/motor calibration mode"""
         if key in (ord('w'), ord('s')):
             if key == ord('w'):
-                self.tilt_offset -= self.SERVO_STEP
-            elif key == ord('s'):
                 self.tilt_offset += self.SERVO_STEP
+            elif key == ord('s'):
+                self.tilt_offset -= self.SERVO_STEP
             self.tilt_offset = round(self.tilt_offset, 2)
             self.car.set_camera_tilt_offset(self.tilt_offset)
             self.update_log("Tilt offset adjusted to: {}".format(self.tilt_offset))
         elif key in (ord('a'), ord('d')):
-            self.pan_offset = self.car.camera_pan_servo.offset()
+            self.pan_offset = -self.car.camera_pan_servo.offset()
             if key == ord('a'):
                 self.pan_offset -= self.SERVO_STEP
             elif key == ord('d'):
