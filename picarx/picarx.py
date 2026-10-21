@@ -15,6 +15,7 @@ else:
     from robot_hat.modules import Ultrasonic
     from robot_hat.device import get_usr_btn, set_led, get_battery_voltage
     from robot_hat.config import Config
+    from .i2c_bus import LockedADC, install as install_i2c_bus
 
 from .motors import Motors
 from .music import Music, SoundFiles
@@ -45,8 +46,8 @@ class PiCarX(object):
         pan_servo: str = 'P0',
         tilt_servo: str = 'P1',
         steering_servo: str = 'P2',
-        left_motor: str = 'M2',
-        right_motor: str = 'M1',
+        left_motor: str = Motors.LEFT_MOTOR,
+        right_motor: str = Motors.RIGHT_MOTOR,
         grayscale_pins: list = ['A0', 'A1', 'A2'],
         ultrasonic_pins: list = [27, 22],
         config_path: str = CONFIG,
@@ -59,14 +60,19 @@ class PiCarX(object):
             pan_servo (str): Pan servo pin. Defaults to 'P0'.
             tilt_servo (str): Tilt servo pin. Defaults to 'P1'.
             steering_servo (str): Steering servo pin. Defaults to 'P2'.
-            left_motor (str): Left motor pin. Defaults to 'M2'.
-            right_motor (str): Right motor pin. Defaults to 'M1'.
+            left_motor (str): Left motor pin. Defaults to Motors.LEFT_MOTOR ('M1' on a Robot HAT, 'M2' on a Fusion HAT).
+            right_motor (str): Right motor pin. Defaults to Motors.RIGHT_MOTOR ('M2' on a Robot HAT, 'M1' on a Fusion HAT).
             grayscale_pins (list): List of grayscale sensor pin for left, middle and right. Defaults to ['A0', 'A1', 'A2'].
             ultrasonic_pins (list): List of ultrasonic sensor pin for trigger and echo. Defaults to [27, 22].
             config (str): Path to the configuration file. Defaults to CONFIG.
         '''
         self.power = 0
         self.steering_angle = 0
+
+        # Keep the bus transfers of this process consistent; robot_hat itself
+        # stays untouched, other products are not affected.
+        if not is_fusion_hat:
+            install_i2c_bus()
 
         # --------- config_path ---------
         self.config = Config(config_file=config_path)
@@ -84,8 +90,8 @@ class PiCarX(object):
 
         # --------- chassis init ---------
         steering_offset = self.config.get("steering_offset", default_value=0.0)
-        left_motor_reversed = self.config.get("left_motor_reversed", default_value=False)
-        right_motor_reversed = self.config.get("right_motor_reversed", default_value=False)
+        left_motor_reversed = self.config.get("left_motor_reversed", default_value=Motors.DEFAULT_LEFT_REVERSED)
+        right_motor_reversed = self.config.get("right_motor_reversed", default_value=Motors.DEFAULT_RIGHT_REVERSED)
         self.steering_servo = Servo(steering_servo, offset=steering_offset, min=self.DIR_MIN, max=self.DIR_MAX)
         self.motors = Motors(
             left_motor=left_motor,
@@ -102,7 +108,8 @@ class PiCarX(object):
         self.gs_offsets = self.config.get("grayscale_offsets", default_value=[0.0, 0.0, 0.0])
         self.gs_cliff_threshold = self.config.get("grayscale_cliff_threshold", default_value=120)
 
-        adc0, adc1, adc2 = [ADC(pin) for pin in grayscale_pins]
+        adc_class = ADC if is_fusion_hat else LockedADC
+        adc0, adc1, adc2 = [adc_class(pin) for pin in grayscale_pins]
         self.grayscale = LineTracker(adc0, adc1, adc2)
         self.grayscale.set_calibration_data(self.gs_slopes, self.gs_offsets)
         self.grayscale.set_cliff_threshold(self.gs_cliff_threshold)
@@ -114,9 +121,11 @@ class PiCarX(object):
         # --------- battery voltage ---------
         if is_fusion_hat:
             self.charge_state_reader = LazyReader(get_charge_state, 5)
+            self.battery_reader = LazyReader(get_battery_voltage, 5)
         else:
             self.charge_state_reader = None
-        self.battery_reader = LazyReader(get_battery_voltage, 60)
+            battery_adc = LockedADC("A4")
+            self.battery_reader = LazyReader(lambda: battery_adc.read_voltage() * 3, 5)
 
         # --------- music init ---------
         self.music = Music()
@@ -321,22 +330,22 @@ class PiCarX(object):
         ''' Set camera pan servo offset
         
         Args:
-            offset (float): offset value, range from -20.0 to 20.0.
+            offset (float): offset value, range from -20.0 to 20.0. Positive turns right.
         '''
         offset = round(offset, 2)
-        self.config.set("camera_pan_offset", offset)
-        self.camera_pan_servo.offset(offset)
+        self.config.set("camera_pan_offset", -offset)
+        self.camera_pan_servo.offset(-offset)
         self.camera_pan_servo.angle(0)
 
     def set_camera_tilt_offset(self, offset:float):
         ''' Set camera tilt servo offset
         
         Args:
-            offset (float): offset value, range from -20.0 to 20.0.
+            offset (float): offset value, range from -20.0 to 20.0. Positive tilts up.
         '''
         offset = round(offset, 2)
-        self.config.set("camera_tilt_offset", offset)
-        self.camera_tilt_servo.offset(offset)
+        self.config.set("camera_tilt_offset", -offset)
+        self.camera_tilt_servo.offset(-offset)
         self.camera_tilt_servo.angle(0)
 
     def set_cliff_threshold(self, threshold: int):
