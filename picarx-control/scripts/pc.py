@@ -25,6 +25,8 @@ Examples:
 """
 
 import argparse
+import signal
+import sys
 from time import sleep
 
 
@@ -212,6 +214,8 @@ def main():
     cali_p.set_defaults(func=cmd_calibrate)
 
     args = parser.parse_args()
+    # On SIGTERM, Python's default action exits without running finally, so car.stop() would not run.
+    signal.signal(signal.SIGTERM, lambda *_: sys.exit(143))
     args.func(args)
 
 
