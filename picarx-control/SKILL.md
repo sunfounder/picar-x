@@ -20,6 +20,7 @@ When the user talks to you in natural language ("drive forward", "turn left", "c
 
 1. **Start slow**: Use speed=30 for testing, 50 for normal driving, 80 max. Reduce speed when turning.
 2. **Stop after each action**: Always call `car.stop()` after completing a movement sequence.
+   Keep `car.stop()` in a `finally:` and keep the `SIGTERM` handler the movement templates install: without it, a process that gets SIGTERM (`kill`, `timeout`, or a cancel that uses SIGTERM) exits without running `finally`.
 3. **Check surroundings first**: If the user asks to move, consider checking the ultrasonic distance first.
 4. **Flat surface**: Ensure the car is on a flat, clear surface before driving.
 5. **Don't run multiple moves simultaneously**: Wait for one action (including delays) to finish before starting the next.
@@ -88,6 +89,8 @@ Response style: When you successfully execute a command, briefly tell the user w
 ```python
 from picarx import Picarx
 from time import sleep
+import signal, sys
+signal.signal(signal.SIGTERM, lambda *_: sys.exit(143))  # on SIGTERM, finally still stops the car
 car = Picarx()
 try:
     car.forward(50)       # speed 0-100
@@ -101,6 +104,8 @@ finally:
 ```python
 from picarx import Picarx
 from time import sleep
+import signal, sys
+signal.signal(signal.SIGTERM, lambda *_: sys.exit(143))  # on SIGTERM, finally still stops the car
 car = Picarx()
 try:
     car.backward(50)
@@ -114,6 +119,8 @@ finally:
 ```python
 from picarx import Picarx
 from time import sleep
+import signal, sys
+signal.signal(signal.SIGTERM, lambda *_: sys.exit(143))  # on SIGTERM, finally still stops the car
 car = Picarx()
 try:
     car.set_dir_servo_angle(-30)   # -30=left, 30=right
@@ -301,6 +308,8 @@ Picarx first, then Grayscale_Module with auto-calibrated reference:
 from picarx import Picarx
 from robot_hat import ADC, Grayscale_Module
 from time import sleep
+import signal, sys
+signal.signal(signal.SIGTERM, lambda *_: sys.exit(143))  # on SIGTERM, finally still stops the car
 
 # Order: Picarx FIRST (reset_mcu), then ADC — avoids poisoning
 car = Picarx()
